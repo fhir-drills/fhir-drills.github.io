@@ -1,0 +1,30 @@
+# HTML
+
+Decide on an exersize name - in this example, the exersize name is ``patient-with-references``.
+
+## Full URL
+To use the full server URL of a resource, use ``class="<exersize>-location-full" id="<html resource tag>"`` - you can use this on any HTML element. For example,
+
+```html
+<note class="patient-with-references-location-full" id="rf-patient"><i>press Upload to get a Patient</i></note>
+```
+
+## Server-assigned Resource ID only
+To use the server ID only, use ``class="<exersize>-serverid" id="<html resource tag>"``.
+
+## Base server URL
+To use the base URL only, use ``class="<exersize>-baseurl" id="<html resource tag>"``.
+
+# Javascript
+
+To upload your resources, use the ``uploadFiles("<exersize>", servers.<pick a server>, [an array of arrays with the html resource tag and the file location])``. For example:
+
+```javascript
+uploadFiles("patient-with-references", servers.sqlonfhir2, [
+    ["rf-patient", "resource-examples/Patient-f001.json"],
+    ["rf-encounter", "resource-examples/Encounter-f001.json"],
+    ["rf-diagnosticorder", "resource-examples/DiagnosticOrder-f001.json"],
+    ["rf-observation1", "resource-examples/Observation-f001.json"],
+    ["rf-observation2", "resource-examples/Observation-f002.json"],
+    ["rf-diagnosticreport", "resource-examples/DiagnosticReport-f001.json"]]);
+```

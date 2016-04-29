@@ -1,0 +1,10 @@
+Module "lunajson._str_lib"
+Module "lunajson.decoder"
+Module "lunajson.encoder"
+Module "lunajson.sax"
+Module "lunajson"
+Module "inspect"
+
+Output "post-resources.web.lua"
+
+Main "post-resources.lua"
