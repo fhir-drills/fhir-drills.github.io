@@ -205,23 +205,24 @@
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="simple-patient-button">
                                     Create my FHIR patient resource on the FHIR server</button>
                                 <div id="simple-patient-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
+                                
                             </center>
                         </p>
                         
-                        <pre><b>You FHIR patient resource is: <span class="simple-patient-location-full" id="simple-patient-resourcePatient1">....Click the button for this to refreash!</span></b></pre>
+                        <p>You FHIR patient resource is: <code class="simple-patient-location-full" id="simple-patient-resourcePatient1">....Click the button for this to refreash!</code></p>
                         
                         
                         <p>So you have your own FHIR resource in the FHIR server and a post client to send and retrieve resources with. There are many publicly available FHIR servers for testing on the internet and a full list can be found <a href="http://wiki.hl7.org/index.php?title=Publicly_Available_FHIR_Servers_for_testing" rel="stylesheet">here</a>. Yet, for this tutorial we are going to be using the server found at the following address: </p>
                         
-                        <pre><b><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span></b></pre>
+                        <p><code><b><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span></b></code></p>
                         
                         <p>The address above is called the 'Service Root URL' and it is from here that all further request to this server will begin. But of course, we need to further tell the server which resource type we are interested in. This is the next part of the URL. For this tutorial, we are dealing with Patient resources so we will extend the 'Service Root URL' by appending the resource type we are looking for. Take note that all resources begin with a capital letter: e.g. '<b>Patient</b>'.</p>
                         
-                        <pre><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Pateint</b></pre>                        
+                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Pateint</b></code></p>                        
                         
                         <p>We also need to tell the server which particular Patient resource we want. Generally, you would want to use a Patient's Medicare record number or name or other identifiers and we will cover that later in searching, but for now we are going to use the resource '<b>id</b>' to locate our patient. We will also cover more about resource <b>'ids'</b> a bit later. For now, let's just add the following resource <b>id</b> to our URL we are constructing:</p>
                         
-                        <pre><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></pre>                                                
+                        <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
                         
                         <p>We're almost ready to get our resource from the FHIR server but there is one last part we need to cover. We need to understand a little bit about <a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">content negotiation</a>. Don't worry, there is not much to it. FHIR resources can be expressed in either JSON or XML, these are just two different ways that we can be format a resource's data. Before we talk to our server we need to agree on which format we are going to talk in. To tell the server what format we want to be returned we pass it the '<b>Accept</b>' property and it needs to be equal to either '<b>application/fhir+xml</b>' or '<b>application/fhir+json</b>'. This is something we need to configure in our Http post client Postman. In Postman go to the Header tab and add the following property as seen in this <a href="images/Postman-AcceptHeader.PNG" data-lightbox="Postman-AcceptHeader">screenshot</a>.</p>
                         
@@ -243,9 +244,19 @@
                         <p>With your edits made, it's time to update. But before we do that, we need to cover the last part of '<a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">content negotiation</a>'. In the '<b>GET</b>' example, we used the '<b>Accept</b>' property to tell the server the format (XML or JSON) we wanted to be returned by the server. This time, it is us sending content to the server by way of our Patient resource. In this case, we need to tell the server what format the content we are sending is in. To do this we use the '<b>Content-Type</b>' property, and as before we need to set it as either '<b>application/fhir+xml</b>' or '<b>application/fhir+json</b>'. But of course, it needs to match the actual content we are sending. So if your Patient resources is in a XML format then use '<b>application/fhir+xml</b>' or if it is JSON use '<b>application/fhir+json</b>'. <a href="images/Postman-Content-Type.PNG" data-lightbox="Postman-Content-Type">Here is a screenshot of it being set for XML</a>.</p>
                         
                         <p>Notice that the '<b>Accept</b>' property is still set from the last '<b>GET</b>' call we made. This is fine and actually desired, as long as it is still set to the content type you want to be returned. Now that these two are set Postman will remember them for our session, so no need to keep setting them; unless you want to change between XML and JSON. From here forward the exercise will just assume you have these two properties set and will not instruct you to set them again. Furthermore, our exercises will all be done in XML.</p>
-                                                
-                        <pre><b>Accept:</b>       application/fhir+xml or application/fhir+json <i>{format to be returned from the server}</i><br><b>Content-Type:</b> application/fhir+xml or application/fhir+json <i>{format being given to the server}</i>
-                        </pre>
+                        
+                        
+                        <table>                            
+                            <tr>
+                                <td><code><b>Accept:</b></code></td>
+                                <td><code>application/fhir+xml or application/fhir+json <i>{format to be returned from the server}</i></code></td>
+                            </tr>
+                            <tr>
+                                <td><code><b>Content-Type:</b></code></td>
+                                <td><code>application/fhir+xml or application/fhir+json <i>{format being given to the server}</i></code></td>
+                            </tr>
+                        </table>
+                        <br>
                         
                         <p>So now it's time to hit '<b>Send</b>' to update the Patient resource on the FHIR server. Once you have done so do a '<b>GET</b>' to see if your resource was updated. If you compare the VersionID within the resource you will see it increased by one.<img src="images/Resource-VersionID.PNG" width="50%"> </p>
                         
