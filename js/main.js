@@ -34,7 +34,8 @@ function makeAjaxPost(url, data) {
     ob["url"] = url;
     ob["data"] = data;
     ob["headers"] = {
-        Accept: "application/json+fhir; charset=utf-8"
+        Accept: "application/json+fhir; charset=utf-8",
+        Prefer: "return=representation"
     };
     return ob;
 }

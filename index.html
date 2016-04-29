@@ -341,7 +341,7 @@
 
                         <h5 id="pr-find-patient">Step 2: Find your patient</h5>
                         <p>The patient you'll be working with is:</p>
-                        <note class="patient-with-references-location-full" id="rf-patient"><i>press Upload to get a Patient</i></note>
+                        <note class="patient-with-references-location-full" id="rf-patient"><i>(press Upload to get a Patient)</i></note>
                         <p>Open Postman and retrieve the resource, following <a href="#" onclick="document.getElementById('simple-patient').click(); document.getElementById('Step2').scrollIntoView(true);">instructions here</a>. You should see <a href="images/patient-in-postman.png" data-lightbox="patient-in-postman">this</a> in Postman when successful.</p>
                         
                         <p>Our sample patient today is Pieter van de Heuvel, who came into the hospital for his scheduled heart valve replacement, but fainted before the procedure could begin - for this reason, the medical staff decided to do some blood tests on the patient first.</p>
@@ -358,8 +358,8 @@
                         <p>Instead, it is the Encounter that has a reference to the Patient. That way, more Encounters can be added without having to update the Patient resource every time (which can become very time-consuming in a large system). In the next section, you'll see how can you find the Encounter that's associated with your Patient.</p>
                         
                         <h5 id="pr-search-resource-using-reference">Step 4: Search for a resource using a reference</h5>
-                        <p>The patient's server ID is <code class="patient-with-references-serverid" id="rf-patient"><i>to be determined</i></code>, which can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field. To find which encounters our patient has, the query follows this format:</p> <note>http://spark.furore.com/fhir/Encounter?patient=&lt;patient id&gt;</note>
-                        <p>Try entering <code>http://spark.furore.com/fhir/Encounter?patient=spark2653</code></p>
+                        <p>The patient's server ID is <code class="patient-with-references-serverid" id="rf-patient"><i>(press Upload first)</i></code>, which can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field. To find which encounters our patient has, the query follows this format:</p> <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</span>/Encounter?patient=&lt;patient id&gt;</b></pre>
+                        <p>Try entering <code class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</code><code>/Encounter?patient=</code><code class="patient-with-references-serverid" id="rf-patient"></code> into Postman.</p>
                     </div>
                 </section>
             </div>
@@ -371,8 +371,6 @@
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="https://www.nehta.gov.au/">nehta.gov.au</a></li>
                             <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">Updates</a></li>
                         </ul>
                     </div>
                     <div class="mdl-mega-footer--drop-down-section">
@@ -386,12 +384,14 @@
                         </ul>
                     </div>
                 </div>
+<!--
                 <div class="mdl-mega-footer--bottom-section">
                     <ul class="mdl-mega-footer--link-list">
                         <li><a href="#">Help</a></li>
                         <li><a href="#">Privacy and Terms</a></li>
                     </ul>
                 </div>
+-->
             </footer>
         </main>
     </div>
@@ -402,7 +402,7 @@
      <script src="js/lua.vm.js/dist/lua.vm.js"></script>   
 <!--     main javascript for this page-->
     <script src="js/main.js"></script>
-<!--    supprting code to upload resources-->
+<!--    supprting code to upload resources. TODO - translate to pure Javascript -->
     <script type="text/lua">
 package.preload['lunajson._str_lib'] = (function (...)
 local inf = math.huge
@@ -2000,7 +2000,7 @@ local update_resource_references, get_resource_id, get_resource_type, do_upload,
       end)
 
     jqxhr:fail(function(_, err)
-        print("upload failed: "..err.responseText)
+        print("upload failed: "..(err.responseText and err.responseText or '(no reason available)'))
         
         js.global.failedUpload()
       end)
