@@ -1989,7 +1989,7 @@ local update_resource_references, get_resource_id, get_resource_type, do_upload,
       end)
 
     jqxhr:fail(function(_, err)
-        print("upload failed: "..err.responseText)
+        print("upload failed: "..(err.responseText and err.responseText or '(no reason available)'))
         
         js.global.failedUpload()
       end)
