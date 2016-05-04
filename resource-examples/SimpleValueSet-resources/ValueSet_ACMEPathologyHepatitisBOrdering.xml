@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir">
+<!--Is in GG server at: http://fhir3.healthintersections.com.au/open/ValueSet/5 -->
+  <id value="5"/>
+  <meta>
+    <versionId value="1"/>
+    <lastUpdated value="2016-05-04T05:52:24Z"/>
+  </meta>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Value set "ACME codes for ordering Hepatitis B testing": This is an fictions example value set .</p>
+      <p>Developed by: NEHTA NCTA Connectathon team (example)</p>
+      <p>Published for testing on 03-May 2016</p>
+      <p>This value set includes ACME codes for ordering Hepatitis B testing:</p>
+      <table class="grid">
+        <tr>
+          <td>
+            <b>Code</b> 
+          </td>
+          <td>
+            <b>Display</b> 
+          </td>
+          <td>
+            <b>Definition</b> 
+          </td> 
+        </tr>
+        <tr>
+          <td>HepBCIgMAb</td>
+          <td>Hepatitis B core IgM Ab</td>
+          <td>Hepatitis B core IgM level</td> 
+        </tr>
+        <tr>
+          <td>HepBCTAb</td>
+          <td>Hepatitis B core total Ab</td>
+          <td>Hepatitis B core antibody measurement</td> 
+        </tr>
+        <tr>
+          <td>HepBeAb</td>
+          <td>Hepatitis B e Ab</td>
+          <td>Hepatitis B e antibody level</td> 
+        </tr>
+        <tr>
+          <td>HepBeAg</td>
+          <td>Hepatitis B e Ag</td>
+          <td>Hepatitis B e antigen test</td> 
+        </tr>
+        <tr>
+          <td>HepB</td>
+          <td>Hepatitis B serology</td>
+          <td>Hepatitis B screening</td> 
+        </tr>
+        <tr>
+          <td>HepBsAb</td>
+          <td>Hepatitis B surface Ab</td>
+          <td>Hepatitis B surface antibody level</td> 
+        </tr>
+        <tr>
+          <td>HepBsAg</td>
+          <td>Hepatitis B surface Ag</td>
+          <td>Hepatitis B surface antigen level</td> 
+        </tr> 
+      </table> 
+    </div>
+  </text>
+  <url value="urn:uuid:65fb1d8a-0dde-11e6-a148-3e1d05defe78"/>
+  <identifier>
+    <system value="http://acme.com/identifiers/valuesets/ACMEPathology"/>
+    <value value="ACMEPathologyHepatitisBOrdering"/>
+  </identifier>
+  <version value="20160530"/>
+  <name value="ACME Pathology ordering codes for Hepatitis B testing"/>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <publisher value="NEHTA"/>
+  <contact>
+    <name value="Angus Millar"/>
+    <telecom>
+      <system value="email"/>
+      <value value="angus.millar@nehta.gov.au"/>
+    </telecom>
+  </contact>
+  <date value="2016-05-30"/>
+  <lockedDate value="2016-05-30"/>
+  <description value="This is an example value set of ACME pathology ordering codes for Hepatitis B"/>
+  <compose>
+    <include>
+      <system value="http://fhir3.healthintersections.com.au/open/CodeSystem/5"/>
+      <version value="20160429"/>
+      <concept>
+        <code value="HepBCIgMAb"/>
+        <display value="Hepatitis B core IgM Ab"/>
+      </concept>
+      <concept>
+        <code value="HepBCTAb"/>
+        <display value="Hepatitis B core total Ab"/>
+      </concept>
+      <concept>
+        <code value="HepBeAb"/>
+        <display value="Hepatitis B e Ab"/>
+      </concept>
+      <concept>
+        <code value="HepBeAg"/>
+        <display value="Hepatitis B e Ag"/>
+      </concept>
+      <concept>
+        <code value="HepB"/>
+        <display value="Hepatitis B serology"/>
+      </concept>
+      <concept>
+        <code value="HepBsAb"/>
+        <display value="Hepatitis B surface Ab"/>
+      </concept>
+      <concept>
+        <code value="HepBsAg"/>
+        <display value="Hepatitis B surface Ag"/>
+      </concept>
+    </include>
+  </compose>
+</ValueSet>

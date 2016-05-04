@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeSystem xmlns="http://hl7.org/fhir">
+<!--Is in GG server at: http://fhir3.healthintersections.com.au/open/CodeSystem/6 -->
+  <id value="5"/>
+  <meta>
+    <versionId value="1"/>
+    <lastUpdated value="2016-05-04T05:47:13Z"/>
+  </meta>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Code System "ACME codes for ordering Hepatitis testing": This is an fictions example CodeSystem.</p>
+      <p>Developed by: NEHTA NCTA Connectathon team (example)</p>
+      <p>Published for testing on 29-April 2016</p>
+      <p>This Code System includes all the ACME codes for ordering Hepatitis testing:</p>
+      <table>
+        <tr>
+          <td>
+            <b>Code</b> 
+          </td>
+          <td>
+            <b>Display</b> 
+          </td>
+          <td>
+            <b>Definition</b> 
+          </td> 
+        </tr>
+        <tr>
+          <td>HepAIgMAb</td>
+          <td>Hepatitis A IgM Ab</td>
+          <td>Hepatitis A virus antibody, IgM type</td> 
+        </tr>
+        <tr>
+          <td>HepATAb</td>
+          <td>Hepatitis A total Ab</td>
+          <td>Hepatitis A virus antibody, total measurement</td> 
+        </tr>
+        <tr>
+          <td>HepBCIgMAb</td>
+          <td>Hepatitis B core IgM Ab</td>
+          <td>Hepatitis B core IgM level</td> 
+        </tr>
+        <tr>
+          <td>HepBCTAb</td>
+          <td>Hepatitis B core total Ab</td>
+          <td>Hepatitis B core antibody measurement</td> 
+        </tr>
+        <tr>
+          <td>HepBeAb</td>
+          <td>Hepatitis B e Ab</td>
+          <td>Hepatitis B e antibody level</td> 
+        </tr>
+        <tr>
+          <td>HepBeAg</td>
+          <td>Hepatitis B e Ag</td>
+          <td>Hepatitis B e antigen test</td> 
+        </tr>
+        <tr>
+          <td>HepB</td>
+          <td>Hepatitis B serology</td>
+          <td>Hepatitis B screening</td> 
+        </tr>
+        <tr>
+          <td>HepBsAb</td>
+          <td>Hepatitis B surface Ab</td>
+          <td>Hepatitis B surface antibody level</td> 
+        </tr>
+        <tr>
+          <td>HepBsAg</td>
+          <td>Hepatitis B surface Ag</td>
+          <td>Hepatitis B surface antigen level</td> 
+        </tr>
+        <tr>
+          <td>HepC</td>
+          <td>Hepatitis C serology</td>
+          <td>Hepatitis C antibody test</td> 
+        </tr>
+        <tr>
+          <td>HepSerology</td>
+          <td>Hepatitis serology</td>
+          <td>Hepatitis panel measurement</td> 
+        </tr> 
+      </table> 
+    </div>
+  </text>
+  <url value="urn:uuid:78375f18-85f0-4680-bc16-9ff5b23faeaa"/>
+  <identifier>
+    <system value="http://acme.com/identifiers/codesystems/ACMEPathology"/>
+    <value value="ACMEPathologyHepatitisOrdering"/>
+  </identifier>
+  <version value="20160429"/>
+  <name value="ACME Pathology ordering codes for Hepatitis B testing"/>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <publisher value="NEHTA"/>
+  <contact>
+    <name value="Angus Millar"/>
+    <telecom>
+      <system value="email"/>
+      <value value="angus.millar@nehta.gov.au"/>
+    </telecom>
+  </contact>
+  <date value="2016-04-29"/>
+  <description value="This is an example CodeSystem of all ACME pathology ordering codes for hepatitis."/>
+  <caseSensitive value="false"/>
+  <content value="complete"/>
+  <concept>
+    <code value="HepAIgGAb"/>
+    <display value="Hepatitis A IgG Ab"/>
+    <definition value="Hepatitis A virus antibody, IgG type"/>
+  </concept>
+  <concept>
+    <code value="HepAIgMAb"/>
+    <display value="Hepatitis A IgM Ab"/>
+    <definition value="Hepatitis A virus antibody, IgM type"/>
+  </concept>
+  <concept>
+    <code value="HepATAb"/>
+    <display value="Hepatitis A total Ab"/>
+    <definition value="Hepatitis A virus antibody, total measurement"/>
+  </concept>
+  <concept>
+    <code value="HepBCIgMAb"/>
+    <display value="Hepatitis B core IgM Ab"/>
+    <definition value="Hepatitis B core IgM level"/>
+  </concept>
+  <concept>
+    <code value="HepBCTAb"/>
+    <display value="Hepatitis B core total Ab"/>
+    <definition value="Hepatitis B core antibody measurement"/>
+  </concept>
+  <concept>
+    <code value="HepBeAb"/>
+    <display value="Hepatitis B e Ab"/>
+    <definition value="Hepatitis B e antibody level"/>
+  </concept>
+  <concept>
+    <code value="HepBeAg"/>
+    <display value="Hepatitis B e Ag"/>
+    <definition value="Hepatitis B e antigen test"/>
+  </concept>
+  <concept>
+    <code value="HepB"/>
+    <display value="Hepatitis B serology"/>
+    <definition value="Hepatitis B screening"/>
+  </concept>
+  <concept>
+    <code value="HepBsAb"/>
+    <display value="Hepatitis B surface Ab"/>
+    <definition value="Hepatitis B surface antibody level"/>
+  </concept>
+  <concept>
+    <code value="HepBsAg"/>
+    <display value="Hepatitis B surface Ag"/>
+    <definition value="Hepatitis B surface antigen level"/>
+  </concept>
+  <concept>
+    <code value="HepC"/>
+    <display value="Hepatitis C serology"/>
+    <definition value="Hepatitis C antibody test"/>
+  </concept>
+  <concept>
+    <code value="HepSerology"/>
+    <display value="Hepatitis serology"/>
+    <definition value="Hepatitis panel measurement"/>
+  </concept>
+</CodeSystem>
