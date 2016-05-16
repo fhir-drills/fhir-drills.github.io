@@ -82,27 +82,15 @@
         </header>
         <main class="mdl-layout__content">
             <div class="mdl-layout__tab-panel is-active" id="overview">
-                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                    <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
-                        <i class="material-icons">play_circle_filled</i>
-                    </header>
-                    <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                <section class= "section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
+                    <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">                        
                         <div class="mdl-card__supporting-text">
-                            <h4>Features</h4> Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse.
-                        </div>
-                        <div class="mdl-card__actions">
-                            <a href="#" class="mdl-button">Read our features</a>
-                        </div>
+                            <h3>FHIR Tutorials</h3> 
+                            <p>This page has a series of tutorials for thoses beginning to learn FHIR.</p>
+                        </div>                             
                     </div>
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn1">
-                        <i class="material-icons">more_vert</i>
-                    </button>
-                    <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn1">
-                        <li class="mdl-menu__item">Lorem</li>
-                        <li class="mdl-menu__item" disabled>Ipsum</li>
-                        <li class="mdl-menu__item">Dolor</li>
-                    </ul>
                 </section>
+<!--
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                     <div class="mdl-card mdl-cell mdl-cell--12-col">
                         <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
@@ -139,6 +127,7 @@
                         <li class="mdl-menu__item">Dolor</li>
                     </ul>
                 </section>
+                
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                     <div class="mdl-card mdl-cell mdl-cell--12-col">
                         <div class="mdl-card__supporting-text">
@@ -171,6 +160,7 @@
                         <h5>Lorem ipsum dolor sit amet</h5> Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
                     </div>
                 </section>
+-->
             </div>
             <div class="mdl-layout__tab-panel" id="simple-patient">
                 <section class="section--center mdl-grid mdl-grid--no-spacing">
@@ -276,7 +266,9 @@
                         
                         <p>Now we need to edit both the resource and the URL to perform an add. For the URL we need only the 'Service Root' and the resource type, which for this example is Patient as seen below:</p>
                         
-                        <pre>NEED FHIR SERVER ADDRESS HERE VADIM<b>/Patient</b></pre>
+                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Pateint</b></code></p>    
+                        
+                        
                         
                         <p>That is the URL done, now for the resource its self. Near the very top of the resource, you will see an '<b>id</b>' element with an attribute of '<b>value</b>' which is equal to the '<b>id</b>' of the resource we copied. This is the resource id and as we are creating a brand new resource we need to remove this whole element. If we don't the server will return a '<b>403 Forbidden</b>' error. Feel free to hit <b>Send</b> before you remove it to see this error in action; don't worry, the server won't catch on fire.</p>
                         
@@ -289,12 +281,13 @@
                         
                         <h5 id="Step5">Step 5: Deleting a resource from the FHIR server</h5>
                         
-                        <p>This one's easy, set the Http verb to <b>DELETE</b> and use the 'Service Root' appended with the resource type you wish to remove e.g. 'Patient' and append to that the resource <b>id</b> of the resource you want to remove. So if you had a Patient resource with an <b>id</b> of '123456' then this URL would remove that resource</p>
-                        
-                        <pre>NEED FHIR SERVER ADDRESS HERE VADIM<b>/Patient/123456</b></pre>
+                        <p>This one's easy, set the Http verb to <b>DELETE</b> and use the 'Service Root' appended with the resource type you wish to remove e.g. 'Patient' and append to that, the resource <b>id</b> of the resource you want to remove. So if you had a Patient resource with an <b>id</b> of '123456' then this URL would remove that resource</p>
                         
                         
-                        <p>But before you delete a resource lets think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the '<b>versionId</b>'. When you delete a resource the server treats this action as just another update yet this update is marked as a deleted and you will no long find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by it's '<b>versionId</b>'. So to explain this a bit better, consider the operations in order below.</p>
+                        <p><code class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/?</code></p>
+                        
+                        
+                        <p>But before you delete a resource lets think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the '<b>versionId</b>'. When you delete a resource the server treats this action as just another update, yet this update is marked as a deleted and you will no long find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by it's '<b>versionId</b>'. So to explain this a bit better, consider the operations in order below.</p>
                         
                         <ol>
                           <li> <b>Patient</b> resource, added via a <b>'POST'</b> <i>{this is versionId = "1"}</i></li>                          
@@ -304,9 +297,14 @@
                             <li> <b>Patient</b> resource, as retrieve in step 5, added via a <b>'POST'</b> <i>{this is versionId = "4"}</i></li>                  
                         </ol>
                         
-                        <p>The key point is that deleting is also considered a version update.</p>
+                        <p><i>The key point here is that deleting a resource is also considered a version update.</i></p>
+                        
+                        <p>So lets now go ahead and delete our Patient resource. Using the URL below, setting the Http verb to '<b>DELETE</b>' and hitting '<b>Send</b>'.</p>
+                        
+                        <p><code class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/?</code></p>
                         
                         
+              
                     </div>
                 </section>
             </div>
