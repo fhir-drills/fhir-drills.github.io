@@ -1,0 +1,74 @@
+{
+  "id": "6f917077dba64a3e802bc9621766b44f",
+  "resourceType": "Patient",
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/v3/MaritalStatus",
+        "display": "Married",
+        "code": "M"
+      }
+    ]
+  },
+  "address": [
+    {
+      "country": "AUS",
+      "postalCode": "4000",
+      "use": "work",
+      "city": "Brisbane",
+      "state": "QLD",
+      "line": [
+        "400 George Street"
+      ]
+    }
+  ],
+  "text": {
+    "div": "<div xmlns='http://www.w3.org/1999/xhtml'>\n  <p>Patient: Angus Brian Millar</p>\n</div>",
+    "status": "generated"
+  },
+  "identifier": [
+    {
+      "system": "http://ns.electronichealth.net.au/id/hi/ihi/1.0",
+      "type": {
+        "text": "IHI",
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/v2/0203",
+            "display": "National unique individual identifier",
+            "code": "NI"
+          }
+        ]
+      },
+      "value": "8003601043886154"
+    }
+  ],
+  "name": [
+    {
+      "given": [
+        "Angus",
+        "Brian"
+      ],
+      "text": "Angus Brian Millar",
+      "family": [
+        "Millar"
+      ],
+      "use": "official",
+      "prefix": [
+        "Mr"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "use": "mobile",
+      "value": "+61481059995"
+    }
+  ],
+  "gender": "male",
+  "meta": {
+    "lastUpdated": "2016-05-16T09:45:17.651+00:00",
+    "versionId": "1"
+  },
+  "birthDate": "1973-09-30"
+}

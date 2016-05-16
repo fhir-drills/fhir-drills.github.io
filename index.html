@@ -77,6 +77,7 @@
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
                 <a href="#overview" class="mdl-layout__tab is-active">Overview</a>
                 <a href="#simple-patient" id="simple-patient" class="mdl-layout__tab">Simple Patient</a>
+                <a href="#simple-search" id="simple-search" class="mdl-layout__tab">Simple Search</a>
                 <a href="#patient-with-references" class="mdl-layout__tab">Patient with References</a>
             </div>
         </header>
@@ -316,7 +317,78 @@
                         
                     </div>
                 </section>
-            </div>
+            </div>            
+            <div class="mdl-layout__tab-panel" id="simple-search">
+                <section class="section--center mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h4>Simple Search</h4>
+                        <p>This tutorial will build on the foundation laid out in the <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial to introduce searching against FHIR resources.</p>
+                        <ul class="toc">
+                            <h4>Contents</h4>
+                            <!-- pr prefix stands for 'patient references'-->
+                            <a href="#ss-step1">Step 1: Name Searching</a>  
+                            <a href="#ss-step2">Step 2: Extended Search</a>  
+                            <a href="#ss-step3">Step 3: Search Parameter Types</a>  
+                            
+                        </ul>
+
+                        <h5 id="ss-step1">Step 1: Name Searching</h5>
+                        <p>Let's start with the simplest of searches, a patient's family name.</p> 
+                        
+                        <p>The <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial uploaded a Patient resource for a <b>Mr Sam Fhirman</b>. Let's try and find that Patient resource by searching on family name. To do this we need to construct a URL starting with the <b><code>[Service Root URL]</code></b> followed by the resource type <b>Patient</b>, a question mark character '<b>?</b>' and finished with the search parameters we wish to search with <b>family=Fhirman</b> in this case.</p>  
+                        
+                        <p>Perform this search in your Postman client using he Http verb <b>GET</b> now, take a few minutes to examine the result returned:</p>
+                        
+                        <p><code>https://sqlonfhir-dstu2.azurewebsites.net/fhir/Patient<b>?family=fhirman</b></code></p>
+                
+                        <p>Did you notice that you received a <b>Bundle</b> resource in return? When you perform a search you are more than likely to receive many resource matching your search. In FHIR search results are always returned as a <b>Bundle</b>. A <b>Bundle</b> is used in FHIR to gather a collection of resource into a single instance. The reason there are so many <b>Mr Sam Fhirman</b> Patient resources is due to every student taking part in the <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial uploaded their own instance of the same patient. <i>This may explain why our PAS team is so busy with duplicate patient merging.</i> Of course this should not be the case in the real world. <i>Although the PAS team may have another opinion.</i></p>
+                        
+                        <p>Now would be a good time to go to the FHIR specification to read about the <b><a href="http://hl7.org/fhir/bundle.html">bundle</a></b> resource. Do that now and come back when you’re done.</p>
+                                                                        
+                        
+                        <br>
+                        <h5 id="ss-step2">Step 2: Extended Search</h5>
+                        
+                        <p>In the previous step we searched by the patient's family name, but what else can we search upon? The search parameters you can use are Resource type dependant. Each resource type defines the parameters which you can search upon it. Right click and open the <b><a href="http://hl7.org/fhir/patient.html">Patient</a></b> resource page in a second browser tab and scroll to the very bottom of the page. Here you will find the list of possible search parameters for the Patient resource. Take a look at some other resource types and the search parameters they define.</p>
+                        
+                        <p>In the previous tutorial, <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a>, you should have created a new patient resource with your own name as the patient's name. Try and find that resource using your own surname and first name. <i>Remember to reference the FHIR specification to work out which search parameters you will need.</i></p>
+                        
+                        <br>
+                        <br>
+                        <h5 id="ss-step3">Step 3: Search Parameter Types</h5>
+                        
+                        <p>The searches we have done so far, family &amp; given, were on simple string datatypes. FHIR defines eight different search datatypes as follows: </p>
+                        
+                        <p>
+                        <li><a href="http://hl7.org/fhir/search.html#number">Number</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#date">Date/DateTime</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#string">String</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#token">Token</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#reference">Reference</a></li>                        
+                        <li><a href="http://hl7.org/fhir/search.html#composite">Composite</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#quantity">Quantity</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#uri">URI</a></li>
+                        </p>
+                        
+                        <p>Each and every search parameter on each resource page also defines the search parameter data type it uses. The screenshot below is taken from the Patient resource page. Notice that <b>given</b> uses <b>string</b> in column two and that <b>identifier</b> uses datatype <b>token</b>.</p>
+                        <p><img src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
+                        
+                        <b><a href="http://hl7.org/fhir/search.html#number">FHIR specification Search page</a></b>
+                        
+                        <h6><b>Using the references above try and answer these questions:</b></h6>
+                        
+                        <li>What datatype does the search parameter <b>length</b> use on the <b>Encounter</b> resource?</li>
+                        <br>
+                        <li>Using the references above try and find the patient with an <b>old</b> address in the suburb of <b>'Erinsborough'</b>?</li>
+                        <br>
+                        <li>Try and find the patient name for the person with an IHI (Individual  Health Identifier) of '<b>8003601043886154</b>'?</li>
+                        <br>
+                        
+                        <p>These few questions have focused on the <b>token</b> search parameter datatype but I strongly encourage you to read then entire <a href="http://hl7.org/fhir/search.html#uri">Search</a> page in the FHIR specification at a later date.</p>                        
+                        
+                    </div>
+                </section>
+            </div>            
             <div class="mdl-layout__tab-panel" id="patient-with-references">
                 <section class="section--center mdl-grid mdl-grid--no-spacing">
                     <div class="mdl-cell mdl-cell--12-col">

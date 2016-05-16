@@ -1,0 +1,72 @@
+{
+  "id": "9039397f9b6f4f03af033d2cd60041b1",
+  "resourceType": "Patient",
+  "birthDate": "1973-09-30",
+  "gender": "male",
+  "meta": {
+    "lastUpdated": "2016-05-16T10:40:04.91+00:00",
+    "versionId": "4"
+  },
+  "maritalStatus": {
+    "coding": [
+      {
+        "system": "http://hl7.org/fhir/v3/MaritalStatus",
+        "code": "A",
+        "display": "Annulled"
+      }
+    ]
+  },
+  "telecom": [
+    {
+      "value": "+61481061112",
+      "use": "mobile",
+      "system": "phone"
+    }
+  ],
+  "identifier": [
+    {
+      "system": "http://OzCare.com.au/IndividualHealthId",
+      "value": "8003601043886154"
+    }
+  ],
+  "address": [
+    {
+      "use": "work",
+      "line": [
+        "2 Park Lane"
+      ],
+      "postalCode": "W1K",
+      "country": "GBR",
+      "city": "London"
+    },
+    {
+      "use": "old",
+      "line": [
+        "1 Ramsay Street"
+      ],
+      "state": "VIC",
+      "country": "AUS",
+      "postalCode": "3000",
+      "city": "Erinsborough"
+    }
+  ],
+  "name": [
+    {
+      "family": [
+        "Robinson"
+      ],
+      "prefix": [
+        "Mr"
+      ],
+      "given": [
+        "Scott"
+      ],
+      "use": "official",
+      "text": "Scott Robinson"
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns='http://www.w3.org/1999/xhtml'>\n  <p>Patient: Scott Robinson</p>\n</div>"
+  }
+}
