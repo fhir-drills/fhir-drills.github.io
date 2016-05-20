@@ -172,7 +172,7 @@
                 <section class="section--center mdl-grid mdl-grid--no-spacing">
                     <div class="mdl-cell mdl-cell--12-col">
                         <h4>Patient resource</h4>
-                        <p>This tutorial is designed for FHIR beginners wishing to become familiarised with the basics of FHIR.</p>
+                        <p>This tutorial is designed for FHIR beginners wishing to become familiarised with the basics of FHIR. In this tutorial, we will walk through the basic CRUD operations. CRUD stands for Create, Read, Update &amp; Delete. These are the four main actions that you will use to interact with the FHIR resources within a FHIR server. Understanding these four operations is essential to working with any RESTful service which a FHIR server is an implementation of. REST stands for 'Representational state transfer' and RESTFul just means a system that conforms to the constraints of REST. You don't need to know any more about REST at this stage for the tutorial but if you want more on REST take a look at this page, <a href="https://en.wikipedia.org/wiki/Representational_state_transfer" rel="stylesheet">Representational state transfer (REST)</a></p>
                         <ul class="toc">
                             <h4>Contents</h4>
                             <a href="#Step1">Step 1: Setup a Http post client</a>
@@ -184,9 +184,11 @@
 
                         <h5 id="Step1">Step 1: Setup a Http post client</h5>
                         
-                        <p>The simplest way to retrieve and send FHIR resources to and from a FHIR server is to use a Http post client. This tutorial will use Postman. Postman can be installed as a Chrome browser extension or as a Mac App.</p>
+                        <p>The simplest way to retrieve and send FHIR resources to and from a FHIR server is to use a Http post client. This tutorial will use Postman. Postman can be installed as a Chrome browser extension or as a Mac App. You could use any of a number of post clients but the tutiorial will asume your using Postman.</p> 
                         
-                        <p>Head over to <a href="https://www.getpostman.com/" rel="stylesheet">POSTMAN</a> via the link and install Postman now if you have not already done so.</p>
+                        <p>What is a post client? It is a tool that allows you to talk to servers using Hypertext Transfer Protocol (HTTP), the protocol the internet works on. When you use a internet browser the browser is converting your clicks and text into HTTP to send to the web server and the server returns content, your web page, back via HTTP. The browser then interprits the content as a web page and displays it on screen. When we work with FHIR the content is not a web page but rather XML or JSON. Our web browser is not very good at displaying raw XML or JSON so we need a HTTP client so that we can talk in HTTP and view the XML or JSON returned.</p>
+                        
+                        <p>Head over to <a href="https://www.getpostman.com/" rel="stylesheet">POSTMAN</a> via the link and install Postman now if you have not already done so. You don't need an account to get Postman just download the application.</p>
                         
                         <p><a href="images/PostManBlank.JPG" data-lightbox="patient-in-postman">Once you are done you will have a Postman client that looks like this:</a></p>
                         
@@ -195,7 +197,9 @@
                         
                         <h5 id="Step2">Step 2: Getting your first resource from a FHIR server</h5>
                         
-                        <p>Before we can continue with this step we need you to upload a FHIR Patient resource to the FHIR server. This action will give you a resource to play with independent of the other participants.  To do this, all you need to do is hit the button below. Click the button now.</p>
+                        <p>So the first think we are going to cover is how you go about getting a FHIR resource from a FHIR server. Of course, before you can get a resource someone had to create one on the server. Luckily for you, this web page can do that for you. The button below will upload a FHIR Patient resource to a FHIR server for you and the tutorial will continue to explain how to retrieve that resource using the post client.</p>
+                        
+                        <p>So before we move on click the button below to upload a FHIR Patient resource to the FHIR server. This action will give you a resource to play with independent of the other participants.  To do this, all you need to do is hit the button below. Click the button now.</p>
                         <p>
                             <center>
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="simple-patient-button">
@@ -214,7 +218,7 @@
                         
                         <p>The address above is called the 'Service Root URL' and it is from here that all further request to this server will begin. But of course, we need to further tell the server which resource type we are interested in. This is the next part of the URL. For this tutorial, we are dealing with Patient resources so we will extend the 'Service Root URL' by appending the resource type we are looking for. Take note that all resources begin with a capital letter: e.g. <b>Patient</b>.</p>
                         
-                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Pateint</b></code></p>                        
+                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient</b></code></p>                        
                         
                         <p>We also need to tell the server which particular Patient resource we want. Generally, you would want to use a Patient's Medicare record number, name or other identifiers and we will cover that later in searching. For now we are going to use the resource <b>id</b> to locate our patient. We will also cover more about resource <b>ids</b> a bit later. For now, let's just add the following resource <b>id</b> to our URL we are constructing:</p>
                         
@@ -227,11 +231,11 @@
                         
                         <p>You should have received your first FHIR Patient resource back from the server in an XML format. Well done!</p> 
                         
-                        <p>Try changing the <b>Accept</b> property to <b>application/fhir+json</b> hit <b>Send</b> again. You will receive the same resource content although now in a JSON format. Make sure you set it back to <b>application/fhir+xml</b> when your done as the rest of this tutorial will be usig the XML format.</p>
+                        <p>Try changing the <b>Accept</b> property to <b>application/fhir+json</b> hit <b>Send</b> again. You will receive the same resource content although now in a JSON format. Make sure you set it back to <b>application/fhir+xml</b> when your done as the rest of this tutorial will be using the XML format.</p>
                         
                         <h5 id="Step3">Step 3: Updating your resource in the FHIR server</h5>
                         
-                        <p>So now you know how to get a resource from the FHIR server. Next, we are going to update an existing resource on the FHIR server. You can just use the same resource you retrieved from <a href="#Step2">Step 2: Getting your first resource from a server</a>.</p> 
+                        <p>So now you know how to get a resource from the FHIR server. Next, we are going to update an existing resource on the FHIR server. Let's pretend the patient's name was entered incorretcly and it's your job to fix it up. We are just going to use the same resource you retrieved from <a href="#Step2">Step 2: Getting your first resource from a server</a>.</p> 
                         
                         <p>In Postman, you first need to set the call type to <b>PUT</b>, then click the <b>Body</b> tab. Make sure you are clicking the right <b>Body</b> tab as there are two. The <b>Body</b> tab at the bottom is where resources returned by the FHIR server are seen, as in Step 1. The <b>Body</b> tab at the top, just under the URL box, is where we place resources to send to the server. You will also need to click the radio button labelled <b>raw</b> to allow the <b>Body's</b> text box to be seen. <a href="images/Postman-SimplePutSetup.PNG" data-lightbox="Postman-SimplePutSetup">Take a look at this screenshot for help</a>.</p>
                         
@@ -261,7 +265,7 @@
                         
                         <h5 id="Step4">Step 4: Adding a new resource to the FHIR server</h5>
                         
-                        <p>You should now know how to get a resource from a FHIR server and how to update that resource. Now we are going to look at adding a new resource to a FHIR server. In the previous '<a href="#Step3">Step 3: Updating your resource in the FHIR server</a>' we used the call type of <b>PUT</b> to update a resource. These call types are known as HTTP verbs. The most commonly used verbs for FHIR are:</p>
+                        <p>You should now know how to get a resource from a FHIR server and how to update that resource. Now we are going to look at adding a new resource to a FHIR server. Perhaps we have a brand new patient to enter into our system. In the previous '<a href="#Step3">Step 3: Updating your resource in the FHIR server</a>' we used the call type of <b>PUT</b> to update a resource. These call types are known as HTTP verbs. The most commonly used verbs for FHIR are:</p>
                         
                         <ul>
                           <li><p><b>GET: </b>Used to retrieve known existing resources and requires a resource <b>id</b> or search parameters to identify the resource or resources required.</p>        
@@ -271,7 +275,7 @@
                           <li><p><b>DELETE: </b>Used to remove an existing resource from the server and always requires a resource <b>id</b> to identify the resource being removed. Most servers keep a history of the resource so you can still retrieve the removed resources using the history interaction, we will cover this later.</p></li>                                                    
                         </ul>
                                                 
-                        <p>Let's take our same Patient resource as used in Steps 2 & 3, change it a little, and submit it to the FHIR server as a brand new resource. The first thing to do is change the Verb in Postman to be <b>POST</b> and then copy in your Patient resource into the body section at the top of Postman.</p>
+                        <p>Let's take our same Patient resource as used in Steps 2 & 3, as our template for the new patient, change it a little, and submit it to the FHIR server as a brand new resource. The first thing to do is change the verb in Postman to be <b>POST</b> and then copy in your new Patient resource into the body section at the top of Postman.</p>
                         
                         <p>Now we need to edit both the resource and the URL to perform an add. For the URL we need only the 'Service Root' and the resource type, which for this example is Patient as seen below:</p>
                         
@@ -295,7 +299,7 @@
                         <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Pateint/123456</b></code></p> 
                                                 
                         
-                        <p>But before you delete a resource lets think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update is marked as a deleted and you will no long find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by it's <b>versionId</b>. So to explain this a bit better, consider the operations in order below.</p>
+                        <p>But before you delete a resource lets think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update is marked as a deleted and you will no longer find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by it's <b>versionId</b>. So to explain this a bit better, consider the operations in order below:</p>
                         
                         <ol>
                           <li> <b>Patient</b> resource, added via a <b>POST</b> <i>{this is versionId = 1}</i></li>                          
@@ -339,7 +343,7 @@
                         </ul>
 
                         <h5 id="ss-step1">Step 1: Name Searching</h5>
-                        <p>Let's start with the simplest of searches, a patient's family name.</p> 
+                        <p>Let's start with the simplest of searches, a patient's family name search.</p> 
                         
                         <p>The <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial uploaded a Patient resource for a <b>Mr Sam Fhirman</b>. Let's try and find that Patient resource by searching on family name. To do this we need to construct a URL starting with the <b><code>[Service Root URL]</code></b> followed by the resource type <b>Patient</b>, a question mark character '<b>?</b>' and finished with the search parameters we wish to search with <b>family=Fhirman</b> in this case.</p>  
                         
@@ -347,7 +351,7 @@
                         
                         <p><code>https://sqlonfhir-dstu2.azurewebsites.net/fhir/Patient<b>?family=fhirman</b></code></p>
                 
-                        <p>Did you notice that you received a <b>Bundle</b> resource in return? When you perform a search you are more than likely to receive many resource matching your search. In FHIR search results are always returned as a <b>Bundle</b>. A <b>Bundle</b> is used in FHIR to gather a collection of resource into a single instance. The reason there are so many <b>Mr Sam Fhirman</b> Patient resources is due to every student taking part in the <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial uploaded their own instance of the same patient. <i>This may explain why our PAS team is so busy with duplicate patient merging.</i> Of course this should not be the case in the real world. <i>Although the PAS team may have another opinion.</i></p>
+                        <p>Did you notice that you received a <b>Bundle</b> resource in return? When you perform a search you are more than likely to receive many resource matching your search. In FHIR search results are always returned as a <b>Bundle</b>. A <b>Bundle</b> is used in FHIR to gather a collection of resource into a single instance. The reason there are so many <b>Mr Sam Fhirman</b> Patient resources is due to every student taking part in the <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial uploading their own instance of the same patient. <i>This may explain why our PAS team is so busy with duplicate patient merging.</i> Of course this should not be the case in the real world. <i>Although the PAS team may have another opinion.</i></p>
                         
                         <p>Now would be a good time to go to the FHIR specification to read about the <b><a href="http://hl7.org/fhir/bundle.html">bundle</a></b> resource. Do that now and come back when you’re done.</p>
                                                                         
