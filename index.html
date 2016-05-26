@@ -449,7 +449,8 @@
                         <p>Instead, it is the Encounter that has a reference to the Patient. That way, more Encounters can be added without having to update the Patient resource every time (which can become very time-consuming in a large system). In the next section, you'll see how you can find the Encounter that's associated with your Patient.</p>
                         
                         <h5 id="pr-search-resource-using-reference">Step 4: Search for a resource using a reference</h5>
-                        <p>The patient's server ID is <code class="patient-with-references-serverid" id="rf-patient"><i>(press Upload first)</i></code>, which can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field. To find which encounters our patient has, the query follows this format:</p> <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</span>/Encounter?patient=&lt;patient id&gt;</b></pre>
+                        <p>FHIR has a notion of Search Parameters, which allow you to locate resources given certain data you know about them. As a sample usecase, let's find the Encounter that's associated with our patient. Scrolling down to the <a href="http://hl7.org/fhir/2016May/encounter.html#search">Search Parameters</a> section of Encounter, we see that there's one named <a href="images/encounter-search-parameters.png" data-lightbox="encounter-search-parameters">patient</a> which allows us to search for the patient present in the encounter.</p>
+                        <p>Thus, given the patient's server ID of <code class="patient-with-references-serverid" id="rf-patient"><i>(press Upload first)</i></code> (this can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field), in order to find which encounters our patient has, the query follows this format:</p> <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</span>/Encounter?patient=&lt;patient id&gt;</b></pre>
                         <p>It essentially says - "give me all Encounters that have this patient ID as the subject patient". Try entering <code class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</code><code>/Encounter?patient=</code><code class="patient-with-references-serverid" id="rf-patient"></code> into Postman - you'll see a result like this:</p>
                         <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search-thumb.png" class="thumbnail"/></a>.
                         <p>Three things are of interest are:</p>
@@ -458,6 +459,7 @@
                             <li>our Bundle has 1 result in it, which is...</li>
                             <li>the expected Encounter resource, given how our Patient has just one recorded encounter.</li>
                         </ol>
+                        <p>We've now successfully located which encounters our patient has using a reference - congratulations!</p>
                     </div>
                 </section>
             </div>
