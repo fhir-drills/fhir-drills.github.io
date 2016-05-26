@@ -252,3 +252,9 @@ note {
 .mdl-progress {
     margin: 20px;
 }
+
+.thumbnail {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
