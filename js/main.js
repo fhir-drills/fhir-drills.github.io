@@ -5,7 +5,8 @@ var servers = {
     fhir3: "http://fhir3.healthintersections.com.au/open",
     hapi2: "http://fhirtest.uhn.ca/baseDstu2",
     hapi3: "http://fhirtest.uhn.ca/baseDstu3",
-    sqlonfhir2: "https://sqlonfhir-dstu2.azurewebsites.net/fhir"
+    sqlonfhir2: "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
+    nehta: "https://fhir1.ehrp.net.au/Spark/fhir"
 };
 
 uploaded = {
