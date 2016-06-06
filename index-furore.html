@@ -1,0 +1,2217 @@
+<!doctype html>
+<!--
+    Material Design Lite
+    Copyright 2015 Google Inc. All rights reserved.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License
+    -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>NEHTA FHIR® tutorials</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <!-- <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png"> -->
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <!--     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png"> -->
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <!--     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF"> -->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.deep_purple-pink.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+
+    </style>
+    <link href="css/lightbox.min.css" rel="stylesheet">
+</head>
+
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+            </div>
+            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+                <h3>NEHTA FHIR<sup>®</sup> tutorials</h3>
+            </div>
+            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+            </div>
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+                <a href="#overview" class="mdl-layout__tab is-active">Overview</a>
+                <a href="#simple-patient" id="simple-patient" class="mdl-layout__tab">Simple Patient</a>
+                <a href="#simple-search" id="simple-search" class="mdl-layout__tab">Simple Search</a>
+                <a href="#patient-with-references" class="mdl-layout__tab">Patient with References</a>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="mdl-layout__tab-panel is-active" id="overview">
+                <section class= "section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
+                    <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">                        
+                        <div class="mdl-card__supporting-text">
+                            <img src="images/fhir-logo-www.png" align="right" width="20%"> 
+                            <h3>FHIR Tutorials</h3> 
+                            <p>This page contains a series of FHIR tutorials for those just beginning to learn the new specification. The tutorials require no prior knowledge of FHIR or REST. At present these tutorials are in their alpha stage of development and participates at the NCTS connectathon in Melbourne, May 2016 will be the first students to try them out. We would appreciate any feedback you may have as we plan to build upon these in time to create a full set of tutorials from the very basic to the more complex.</p>
+                            
+                            <p>Please note these tutorials have been written against current officially released version of FHIR, which is <a href="http://hl7.org/fhir/index.html">DSTU 2</a>.</p>
+                            
+                            <p>To continue, use the tabs at the top of the page and work through the tutorials from left to right starting with <b>Simple Patient</b>.</p>
+                        </div>                             
+                    </div>
+                </section>
+<!--
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                    <div class="mdl-card mdl-cell mdl-cell--12-col">
+                        <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                            <h4 class="mdl-cell mdl-cell--12-col">Details</h4>
+                            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                                <div class="section__circle-container__circle mdl-color--primary"></div>
+                            </div>
+                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                                <h5>Lorem ipsum dolor sit amet</h5> Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
+                            </div>
+                            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                                <div class="section__circle-container__circle mdl-color--primary"></div>
+                            </div>
+                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                                <h5>Lorem ipsum dolor sit amet</h5> Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
+                            </div>
+                            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                                <div class="section__circle-container__circle mdl-color--primary"></div>
+                            </div>
+                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                                <h5>Lorem ipsum dolor sit amet</h5> Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <a href="#" class="mdl-button">Read our features</a>
+                        </div>
+                    </div>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
+                        <i class="material-icons">more_vert</i>
+                    </button>
+                    <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn2">
+                        <li class="mdl-menu__item">Lorem</li>
+                        <li class="mdl-menu__item" disabled>Ipsum</li>
+                        <li class="mdl-menu__item">Dolor</li>
+                    </ul>
+                </section>
+                
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                    <div class="mdl-card mdl-cell mdl-cell--12-col">
+                        <div class="mdl-card__supporting-text">
+                            <h4>Technology</h4> Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse. Pariatur occaecat nisi laboris tempor laboris eiusmod qui id Lorem esse commodo in. Exercitation aute dolore deserunt culpa consequat elit labore incididunt elit anim.
+                        </div>
+                        <div class="mdl-card__actions">
+                            <a href="#" class="mdl-button">Read our features</a>
+                        </div>
+                    </div>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn3">
+                        <i class="material-icons">more_vert</i>
+                    </button>
+                    <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn3">
+                        <li class="mdl-menu__item">Lorem</li>
+                        <li class="mdl-menu__item" disabled>Ipsum</li>
+                        <li class="mdl-menu__item">Dolor</li>
+                    </ul>
+                </section>
+                <section class="section--footer mdl-color--white mdl-grid">
+                    <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                        <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
+                    </div>
+                    <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                        <h5>Lorem ipsum dolor sit amet</h5> Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+                    </div>
+                    <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                        <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
+                    </div>
+                    <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                        <h5>Lorem ipsum dolor sit amet</h5> Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+                    </div>
+                </section>
+-->
+            </div>
+            <div class="mdl-layout__tab-panel" id="simple-patient">
+                <section class="section--center mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h4>Patient resource</h4>
+                        <p>This tutorial is designed for FHIR beginners wishing to become familiarised with the basics of FHIR. In this tutorial, we will walk through the basic CRUD operations. CRUD stands for Create, Read, Update &amp; Delete. These are the four main actions that you will use to interact with the FHIR resources within a FHIR server. Understanding these four operations is essential to working with any RESTful service which a FHIR server is an implementation of. REST stands for 'Representational state transfer' and RESTFul just means a system that conforms to the constraints of REST. You don't need to know any more about REST at this stage for the tutorial but if you want more on REST take a look at this page, <a href="https://en.wikipedia.org/wiki/Representational_state_transfer" rel="stylesheet">Representational state transfer (REST)</a></p>
+                        <ul class="toc">
+                            <h4>Contents</h4>
+                            <a href="#Step1">Step 1: Setup a Http post client</a>
+                            <a href="#Step2">Step 2: Getting your first resource from a FHIR server</a>
+                            <a href="#Step3">Step 3: Updating your resource in the FHIR server</a>
+                            <a href="#Step4">Step 4: Adding a new resource to the FHIR server</a>   
+                            <a href="#Step5">Step 5: Deleting a resource from the FHIR server</a>   
+                        </ul>
+
+                        <h5 id="Step1">Step 1: Setup a Http post client</h5>
+                        
+                        <p>The simplest way to retrieve and send FHIR resources to and from a FHIR server is to use a Http post client. This tutorial will use Postman. Postman can be installed as a Chrome browser extension or as a Mac App. You could use any of a number of post clients but the tutiorial will asume your using Postman.</p> 
+                        
+                        <p>What is a post client? It is a tool that allows you to talk to servers using Hypertext Transfer Protocol (HTTP), the protocol the internet works on. When you use a internet browser the browser is converting your clicks and text into HTTP to send to the web server and the server returns content, your web page, back via HTTP. The browser then interprits the content as a web page and displays it on screen. When we work with FHIR the content is not a web page but rather XML or JSON. Our web browser is not very good at displaying raw XML or JSON so we need a HTTP client so that we can talk in HTTP and view the XML or JSON returned.</p>
+                        
+                        <p>Head over to <a href="https://www.getpostman.com/" rel="stylesheet">POSTMAN</a> via the link and install Postman now if you have not already done so. You don't need an account to get Postman just download the application.</p>
+                        
+                        <p><a href="images/PostManBlank.JPG" data-lightbox="patient-in-postman">Once you are done you will have a Postman client that looks like this:</a></p>
+                        
+                        <p>There are other Http post clients that could be used like <a href="http://www.telerik.com/fiddler" rel="stylesheet">Fiddler</a> so don't feel you have to use Postman.</p>
+                        <br>
+                        
+                        <h5 id="Step2">Step 2: Getting your first resource from a FHIR server</h5>
+                        
+                        <p>So the first think we are going to cover is how you go about getting a FHIR resource from a FHIR server. Of course, before you can get a resource someone had to create one on the server. Luckily for you, this web page can do that for you. The button below will upload a FHIR Patient resource to a FHIR server for you and the tutorial will continue to explain how to retrieve that resource using the post client.</p>
+                        
+                        <p>So before we move on click the button below to upload a FHIR Patient resource to the FHIR server. This action will give you a resource to play with independent of the other participants.  To do this, all you need to do is hit the button below. Click the button now.</p>
+                        <p>
+                            <center>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="simple-patient-button">
+                                    Create my FHIR patient resource on the FHIR server</button>
+                                <div id="simple-patient-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
+                                
+                            </center>
+                        </p>
+                        
+                        <p>You FHIR patient resource is: <code class="simple-patient-location-full" id="simple-patient-resourcePatient1">....Click the button for this to refresh!</code></p>
+                        
+                        
+                        <p>So you have your own FHIR resource in the FHIR server and a post client to send and retrieve resources with. There are many publicly available FHIR servers for testing on the internet and a full list can be found <a href="http://wiki.hl7.org/index.php?title=Publicly_Available_FHIR_Servers_for_testing" rel="stylesheet">here</a>. For this tutorial we are going to be using the server found at the following address: </p>
+                        
+                        <p><code><b><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span></b></code></p>
+                        
+                        <p>The address above is called the 'Service Root URL' and it is from here that all further request to this server will begin. But of course, we need to further tell the server which resource type we are interested in. This is the next part of the URL. For this tutorial, we are dealing with Patient resources so we will extend the 'Service Root URL' by appending the resource type we are looking for. Take note that all resources begin with a capital letter: e.g. <b>Patient</b>.</p>
+                        
+                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient</b></code></p>                        
+                        
+                        <p>We also need to tell the server which particular Patient resource we want. Generally, you would want to use a Patient's Medicare record number, name or other identifiers and we will cover that later in searching. For now we are going to use the resource <b>id</b> to locate our patient. We will also cover more about resource <b>ids</b> a bit later. For now, let's just add the following resource <b>id</b> to our URL we are constructing:</p>
+                        
+                        <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
+                        
+                        <p>We're almost ready to get our resource from the FHIR server but there is one last part we need to cover. We need to understand a little bit about <a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">content negotiation</a>. Don't worry, there is not much to it. FHIR resources can be expressed in either JSON or XML, these are just two different ways that we can format a resource's data. Before we talk to our server we need to agree on which format we are going to talk in. To tell the server what format we want to be returned we pass it the <b>Accept</b> property and it needs to be equal to either <b>application/fhir+xml</b> or <b>application/fhir+json</b>. This is something we need to configure in our Http post client Postman. In Postman go to the Header tab and add the following property: <code>Accept application/fhir+xml</code>,  as seen in this <a href="images/Postman-AcceptHeader.PNG" data-lightbox="Postman-AcceptHeader">screenshot</a>.</p>
+                        
+                        <p>Ok, were done. All you need to do is paste the full URL we constructed into the Postman's URL box, ensure the call type is set to <b>GET</b> and hit the <b>Send</b> button. <a href="images/Postman-SimpleGetPatient.PNG" data-lightbox="Postman-SimpleGetPatient">See this screenshot if you need help</a>.</p>
+                        
+                        
+                        <p>You should have received your first FHIR Patient resource back from the server in an XML format. Well done!</p> 
+                        
+                        <p>Try changing the <b>Accept</b> property to <b>application/fhir+json</b> hit <b>Send</b> again. You will receive the same resource content although now in a JSON format. Make sure you set it back to <b>application/fhir+xml</b> when your done as the rest of this tutorial will be using the XML format.</p>
+                        
+                        <h5 id="Step3">Step 3: Updating your resource in the FHIR server</h5>
+                        
+                        <p>So now you know how to get a resource from the FHIR server. Next, we are going to update an existing resource on the FHIR server. Let's pretend the patient's name was entered incorretcly and it's your job to fix it up. We are just going to use the same resource you retrieved from <a href="#Step2">Step 2: Getting your first resource from a server</a>.</p> 
+                        
+                        <p>In Postman, you first need to set the call type to <b>PUT</b>, then click the <b>Body</b> tab. Make sure you are clicking the right <b>Body</b> tab as there are two. The <b>Body</b> tab at the bottom is where resources returned by the FHIR server are seen, as in Step 1. The <b>Body</b> tab at the top, just under the URL box, is where we place resources to send to the server. You will also need to click the radio button labelled <b>raw</b> to allow the <b>Body's</b> text box to be seen. <a href="images/Postman-SimplePutSetup.PNG" data-lightbox="Postman-SimplePutSetup">Take a look at this screenshot for help</a>.</p>
+                        
+                        <p>Now go ahead and copy the Patient resource we received from the server from the bottom <b>Body</b> section to the top <b>Body</b> section and then in the top section edit the patient's given name and surname to your name. <i>Don't worry, our PAS team is too busy with duplicate patient merging to notice.</i></p>
+                        
+                        <p>With your edits made, it's time to update. But before we do that, we need to cover the last part of '<a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">content negotiation</a>'. In the <b>GET</b> example, we used the <b>Accept</b> property to tell the server the format (XML or JSON) we wanted to be returned by the server. This time, it is us sending content to the server by way of our Patient resource. In this case, we need to tell the server what format the content we are sending is in. To do this we return to the <b>Header</b> tab and use the <b>Content-Type</b> property, and as before we need to set it as either <b>application/fhir+xml</b> or <b>application/fhir+json</b>. But of course, it needs to match the actual content we are sending. So if your Patient resources is in a XML format then use <b>application/fhir+xml</b> or if it is JSON use <b>application/fhir+json</b>. <a href="images/Postman-Content-Type.PNG" data-lightbox="Postman-Content-Type">Here is a screenshot of it being set to XML</a>.</p>
+                        
+                        <p>Notice that the <b>Accept</b> property is still set from the last <b>GET</b> calls we made. This is fine and actually desired, as long as it is still set to the content type you want to be returned. Now that these two properties are set Postman will remember them for our session, so no need to keep setting them; unless you want to change between XML and JSON. From here forward the exercise will just assume you have these two properties set and will not instruct you to set them again. Furthermore, our exercises will all be done in XML.</p>
+                        
+                        
+                        <table>                            
+                            <tr>
+                                <td><code><b>Accept:</b></code></td>
+                                <td><code>application/fhir+xml or application/fhir+json <i>{format to be returned from the server}</i></code></td>
+                            </tr>
+                            <tr>
+                                <td><code><b>Content-Type:</b></code></td>
+                                <td><code>application/fhir+xml or application/fhir+json <i>{format being given to the server}</i></code></td>
+                            </tr>
+                        </table>
+                        <br>
+                        
+                        <p>So now it's time to hit <b>Send</b> which will update the Patient resource on the FHIR server.</p> 
+                        
+                        <p>Once you have updated try doing a <b>GET</b>, as in <a href="#Step2">Step 3</a>, to see if your resource was updated. If you compare the <b>versionId</b> within the resource you will see it increased by one.</p>
+                        <img src="images/Resource-VersionID.PNG" width="50%"> 
+                        
+                        <h5 id="Step4">Step 4: Adding a new resource to the FHIR server</h5>
+                        
+                        <p>You should now know how to get a resource from a FHIR server and how to update that resource. Now we are going to look at adding a new resource to a FHIR server. Perhaps we have a brand new patient to enter into our system. In the previous '<a href="#Step3">Step 3: Updating your resource in the FHIR server</a>' we used the call type of <b>PUT</b> to update a resource. These call types are known as HTTP verbs. The most commonly used verbs for FHIR are:</p>
+                        
+                        <ul>
+                          <li><p><b>GET: </b>Used to retrieve known existing resources and requires a resource <b>id</b> or search parameters to identify the resource or resources required.</p>        
+                          <li><p><b>PUT: </b>Used to update existing resources and always requires a resource <b>id</b> identifying the resource being updated. It can also add a new resource if no resource is found for the <b>id</b> given. In this case, most servers will discard the <b>id</b> and assign their own new <b>id</b> when adding the new resource.</p>
+                          </li>
+                          <li><p><b>POST: </b>Used to add new resources, there must not be an <b>id</b> in the URL or the resource's content.</p></li>
+                          <li><p><b>DELETE: </b>Used to remove an existing resource from the server and always requires a resource <b>id</b> to identify the resource being removed. Most servers keep a history of the resource so you can still retrieve the removed resources using the history interaction, we will cover this later.</p></li>                                                    
+                        </ul>
+                                                
+                        <p>Let's take our same Patient resource as used in Steps 2 & 3, as our template for the new patient, change it a little, and submit it to the FHIR server as a brand new resource. The first thing to do is change the verb in Postman to be <b>POST</b> and then copy in your new Patient resource into the body section at the top of Postman.</p>
+                        
+                        <p>Now we need to edit both the resource and the URL to perform an add. For the URL we need only the 'Service Root' and the resource type, which for this example is Patient as seen below:</p>
+                        
+                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Pateint</b></code></p>    
+                        
+                        
+                        
+                        <p>That is the URL done, now for the resource itself. Near the very top of the resource, you will see an <b>id</b> element with an attribute of <b>value</b> which is equal to the <b>id</b> of the resource we copied. This is the resource id and as we are creating a brand new resource we need to remove this whole element. If we don't the server will return a <b>400 Bad Request</b> error. Feel free to hit <b>Send</b> before you remove it to see this error in action; don't worry, the server won't catch on fire.</p>
+                        
+                        <p><img src="images/Resource-id.PNG" width="40%"></p>
+                        
+                        <p> So after hitting <b>Send</b> with the <b>id</b> element removed you should be returned the entire resource and a status of <b>201 Created</b>. If you inspect the returned resource's <b>id</b> element you will find that the server has assigned a new <b>id</b> value, this is now the FHIR servers assigned <b>id</b> for your resource. It's also worth noting the <b>versionId</b> in the <b>meta</b> element, this should be set to '1' as this is the very first version of this resource.</p>
+                        
+                        <p>Now you know how to add new resources, the same process works for all resources you just need change the resource type on the end of the URL</p>
+                        <br>
+                        
+                        <h5 id="Step5">Step 5: Deleting a resource from the FHIR server</h5>
+                        
+                        <p>This one's easy, set the Http verb to <b>DELETE</b> and use the 'Service Root' appended with the resource type you wish to remove e.g. 'Patient' and append to that, the resource <b>id</b> of the resource you want to remove. So if you had a Patient resource with an <b>id</b> of '123456' then this URL would remove that resource</p>
+                        
+                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Pateint/123456</b></code></p> 
+                                                
+                        
+                        <p>But before you delete a resource lets think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update is marked as a deleted and you will no longer find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by it's <b>versionId</b>. So to explain this a bit better, consider the operations in order below:</p>
+                        
+                        <ol>
+                          <li> <b>Patient</b> resource, added via a <b>POST</b> <i>{this is versionId = 1}</i></li>                          
+                          <li> <b>Patient</b> resource, updated via a <b>PUT</b> <i>{this is versionId = 2}</i></li>
+                            <li> <b>Patient</b> resource, deleted via a <b>DELETE</b> <i>{this is versionId = 3}</i></li>
+                            <li> <b>Patient</b> resource, attempted to retrieve by resource <b>id</b> via a <b>GET</b> <i>{no resource will be found}</i></li>     <li> <b>Patient</b> resource, attempted to retrieve by resource <b>id</b> and <b>_history/2</b> via a <b>GET</b> <i>{resource will be found as updated in step 2}</i></li>            
+                            <li> <b>Patient</b> resource, as retrieve in step 5, added via a <b>POST</b> <i>{this is versionId = 4}</i></li>                  
+                        </ol>
+                        
+                        <p><i>The key point here is that deleting a resource is also considered a version update.</i></p>
+                        
+                        <p>So lets now go ahead and delete our orginal Patient resource. Using the URL below, setting the Http verb to <b>DELETE</b> and hitting <b>Send</b>.</p>
+                        
+                        <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
+                                                
+                        
+                        <p>You should receive back a <b>204 No Content</b> return code which indicates the resource was successfully removed.</p>
+                        
+                        <p>Following this you can then retrive the same resouce back again using the <b><code>_history/[version number you require]</code></b>. Lets try and retrive <b>versionId=1</b> using the URL as below, and the Http verb of <b>GET</b>.</p>
+              
+                        <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code><b><code>/_history/1</code></b></p>
+                        
+                        <p>Now you can delete resources and retrive historical versions of resources, well done!</p>
+                        
+                    </div>
+                </section>
+            </div>            
+            <div class="mdl-layout__tab-panel" id="simple-search">
+                <section class="section--center mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h4>Simple Search</h4>
+                        
+                        <p>This tutorial will build on the foundation laid out in the <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial to introduce searching against FHIR resources.</p>
+                        <ul class="toc">
+                            <h4>Contents</h4>
+                            <!-- pr prefix stands for 'patient references'-->
+                            <a href="#ss-step1">Step 1: Name Searching</a>  
+                            <a href="#ss-step2">Step 2: Extended Search</a>  
+                            <a href="#ss-step3">Step 3: Search Parameter Types</a>  
+                            
+                        </ul>
+
+                        <h5 id="ss-step1">Step 1: Name Searching</h5>
+                        <p>Let's start with the simplest of searches, a patient's family name search.</p> 
+                        
+                        <p>The <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial uploaded a Patient resource for a <b>Mr Sam Fhirman</b>. Let's try and find that Patient resource by searching on family name. To do this we need to construct a URL starting with the <b><code>[Service Root URL]</code></b> followed by the resource type <b>Patient</b>, a question mark character '<b>?</b>' and finished with the search parameters we wish to search with <b>family=Fhirman</b> in this case.</p>  
+                        
+                        <p>Perform this search in your Postman client using he Http verb <b>GET</b> now, take a few minutes to examine the result returned:</p>
+                        
+                        <p><code>https://sqlonfhir-dstu2.azurewebsites.net/fhir/Patient<b>?family=fhirman</b></code></p>
+                
+                        <p>Did you notice that you received a <b>Bundle</b> resource in return? When you perform a search you are more than likely to receive many resource matching your search. In FHIR search results are always returned as a <b>Bundle</b>. A <b>Bundle</b> is used in FHIR to gather a collection of resource into a single instance. The reason there are so many <b>Mr Sam Fhirman</b> Patient resources is due to every student taking part in the <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial uploading their own instance of the same patient. <i>This may explain why our PAS team is so busy with duplicate patient merging.</i> Of course this should not be the case in the real world. <i>Although the PAS team may have another opinion.</i></p>
+                        
+                        <p>Now would be a good time to go to the FHIR specification to read about the <b><a href="http://hl7.org/fhir/bundle.html">bundle</a></b> resource. Do that now and come back when you’re done.</p>
+                                                                        
+                        
+                        <br>
+                        <h5 id="ss-step2">Step 2: Extended Search</h5>
+                        
+                        <p>In the previous step we searched by the patient's family name, but what else can we search upon? The search parameters you can use are Resource type dependant. Each resource type defines the parameters which you can search upon it. Right click and open the <b><a href="http://hl7.org/fhir/patient.html">Patient</a></b> resource page in a second browser tab and scroll to the very bottom of the page. Here you will find the list of possible search parameters for the Patient resource. Take a look at some other resource types and the search parameters they define.</p>
+                        
+                        <p>In the previous tutorial, <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a>, you should have created a new patient resource with your own name as the patient's name. Try and find that resource using your own surname and first name. <i>Remember to reference the FHIR specification to work out which search parameters you will need.</i></p>
+                        
+                        <br>
+                        <br>
+                        <h5 id="ss-step3">Step 3: Search Parameter Types</h5>
+                        
+                        <p>The searches we have done so far, family &amp; given, were on simple string datatypes. FHIR defines eight different search datatypes as follows: </p>
+                        
+                        <p>
+                        <li><a href="http://hl7.org/fhir/search.html#number">Number</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#date">Date/DateTime</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#string">String</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#token">Token</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#reference">Reference</a></li>                        
+                        <li><a href="http://hl7.org/fhir/search.html#composite">Composite</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#quantity">Quantity</a></li>
+                        <li><a href="http://hl7.org/fhir/search.html#uri">URI</a></li>
+                        </p>
+                        
+                        <p>Each and every search parameter on each resource page also defines the search parameter data type it uses. The screenshot below is taken from the Patient resource page. Notice that <b>given</b> uses <b>string</b> in column two and that <b>identifier</b> uses datatype <b>token</b>.</p>
+                        <p><img src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
+                        
+                        <b><a href="http://hl7.org/fhir/search.html#number">FHIR specification Search page</a></b>
+                        
+                        <h6><b>Using the references above try and answer these questions:</b></h6>
+                        
+                        <li>What datatype does the search parameter <b>length</b> use on the <b>Encounter</b> resource?</li>
+                        <br>
+                        <li>Using the references above try and find the patient with an <b>old</b> address in the suburb of <b>'Erinsborough'</b>?</li>
+                        <br>
+                        <li>Try and find the patient name for the person with an IHI (Individual  Health Identifier) of '<b>8003601043886154</b>'?</li>
+                        <br>
+                        
+                        <p>These few questions have focused on the <b>token</b> search parameter datatype but I strongly encourage you to read then entire <a href="http://hl7.org/fhir/search.html#uri">Search</a> page in the FHIR specification at a later date.</p>                        
+                        
+                    </div>
+                </section>
+            </div>            
+            <div class="mdl-layout__tab-panel" id="patient-with-references">
+                <section class="section--center mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h4>Patient with References tutorial</h4>
+                        <note>This tutorial is still under construction, at this stage it is worth reading although you wll find it ends abruptly</note>
+                        <br>
+                        <p>This tutorial will build on the foundation laid out in the <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial to introduce resource linking in FHIR by the way of <a href="http://hl7.org/fhir/2016May/references.html">references</a>.</p>
+                        <ul class="toc">
+                            <h4>Contents</h4>
+                            <!-- pr prefix stands for 'patient references'-->
+                            <a href="#pr-setup">Step 1: Setup</a>
+                            <a href="#pr-find-patient">Step 2: Find your patient</a>
+                            <a href="#pr-observe-external-references">Step 3: Observe external references</a>
+                            <a href="#pr-search-resource-using-reference">Step 4: Search for a resource using a reference</a>
+                            <a href="#pr-observe-contained-references">Step 5: Observe contained resource references</a>
+                        </ul>
+
+                        <h5 id="pr-setup">Step1: Setup</h5>
+                        <p>Prior to doing the tutorial, a set of FHIR resources needs to be uploaded to the tutorial FHIR server so you can query them. Press the <code>Upload</code> button below to send your resources up:</p>
+
+                        <!-- fix this crime -->
+                        <p>
+                            <center>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="patient-with-references-button">
+                                    Upload</button>
+                                <br>
+                                <div id="patient-with-references-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
+                            </center>
+                        </p>
+
+
+                        <h5 id="pr-find-patient">Step 2: Find your patient</h5>
+                        <p>The patient you'll be working with is:</p>
+                        <note class="patient-with-references-location-full" id="rf-patient"><i>(press Upload to get a Patient)</i></note>
+                        <p>Open Postman and retrieve the resource, following <a href="#" onclick="document.getElementById('simple-patient').click(); document.getElementById('Step2').scrollIntoView(true);">instructions here</a>. You should see <a href="images/patient-in-postman.png" data-lightbox="patient-in-postman">this</a> in Postman when successful.</p>
+                        
+                        <p>Our sample patient today is Pieter van de Heuvel, who came into the hospital for his scheduled heart valve replacement, but fainted before the procedure could begin - for this reason, the medical staff decided to do some blood tests on the patient first.</p>
+                        
+                        <p>There are 6 resources we'll be working with in this use case - <a href="http://hl7.org/fhir/2016May/patient.html">Patient</a>, <a href="http://hl7.org/fhir/2016May/encounter.html">Encounter</a>, <a href="http://hl7.org/fhir/2016May/diagnosticorder.html">DiagnosticOrder</a>, <a href="http://hl7.org/fhir/2016May/diagnosticreport.html">DiagnosticReport</a>, and two <a href="http://hl7.org/fhir/2016May/observation.html">Observation</a>s.</p>
+
+                        <h5 id="pr-observe-external-references">Step 3: Observe external references</h5>
+                        <p>In FHIR resources are referenced, or linked, in one direction only. For example, if you have two resources - a Patient and an Observation - a Patient will not be linked to any of the Observations; instead all Observations will be linked to the Patient. This is an optimisation measure - it means that as you add more Observations, you do not have to keep updating your Patient resource with the new references. This means that the Patient doesn't have an explicit link to any of the Observations - but not to worry, there is a way to see all Observations that a Patient has, which we'll cover later.</p>
+                        
+                        <p>In order to see which resource links to which, open up the FHIR specification for a specific resource and observe the list of resources that reference it. In our example, you can find out if it is a Patient linking to an Observation or an Observation linking to a Patient by opening both the  <a href="http://hl7.org/fhir/2016May/patient.html">Patient</a> and <a href="http://hl7.org/fhir/2016May/observation.html">Observation</a> FHIR specification pages. You'll notice that <a href="images/observation-references-patient.png" data-lightbox="observation-references-patient">Patient mentions</a> that it's referenced by the Observation resource and Observation does not, instead it has a <code>subject</code> field which <a href="images/observations-patient-subject.png" data-lightbox="observations-patient-subject">references Patient</a>.</p>
+                        
+                        <p>In the same Postman window, press Ctrl/&#8984;+F and type in <code>reference</code> - you'll find that the Patient contains <a href="images/patient-references.png" data-lightbox="patient-references">just one reference</a>, which is the medical organisation that the Patient belongs to. Even though our patient had an encounter (when he came into the hospital for his procedure), it is not listed here.</p>
+                        
+                        <p>Instead, it is the Encounter that has a reference to the Patient. That way, more Encounters can be added without having to update the Patient resource every time (which can become very time-consuming in a large system). In the next section, you'll see how you can find the Encounter that's associated with your Patient.</p>
+                        
+                        <h5 id="pr-search-resource-using-reference">Step 4: Search for a resource using a reference</h5>
+                        <p>FHIR has a notion of Search Parameters, which allow you to locate resources given certain data you know about them. As a sample usecase, let's find the Encounter that's associated with our patient. Scrolling down to the <a href="http://hl7.org/fhir/2016May/encounter.html#search">Search Parameters</a> section of Encounter, we see that there's one named <a href="images/encounter-search-parameters.png" data-lightbox="encounter-search-parameters">patient</a> which allows us to search for the patient present in the encounter.</p>
+                        <p>Thus, given the patient's server ID of <code class="patient-with-references-serverid" id="rf-patient"><i>(press Upload first)</i></code> (this can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field), in order to find which encounters our patient has, the query follows this format:</p> 
+                        <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</span>/Encounter?patient=&lt;patient id&gt;</b></pre>
+                        <p>It essentially says - "give me all Encounters that have this patient ID as the subject patient". Try entering <code class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</code><code>/Encounter?patient=</code><code class="patient-with-references-serverid" id="rf-patient"></code> into Postman - you'll see a result like this:</p>
+                        <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search-thumb.png" class="thumbnail"/></a>.
+                        <p>Three things are of interest are:</p>
+                        <ol>
+                            <li>we get a <a href="http://hl7.org/fhir/2016May/bundle.html">Bundle</a> resource back. A Bundle is essentially a container for resources, used in many places including search results.</li>
+                            <li>our Bundle has 1 result in it, which is...</li>
+                            <li>the expected Encounter resource, given how our Patient has just one recorded encounter.</li>
+                        </ol>
+                        <p>We've now successfully located which encounters our patient has using a reference - congratulations!</p>
+                        
+                        <h5 id="pr-observe-contained-references">Step 5: Observe contained resource references</h5>
+                        <p>References don't always have to point to a resource located elsewhere, they can also point to resources that are contained in the resource (embedded). Load our DiagnosticOrder up in Postman:</p>
+                        <pre><b><span class="patient-with-references-location-full" id="rf-diagnosticorder">(press Upload first)</span></b></pre>
+                    </div>
+                </section>
+            </div>
+            <footer class="mdl-mega-footer">
+                <div class="mdl-mega-footer--middle-section">
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">NEHTA</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="https://www.nehta.gov.au/">nehta.gov.au</a></li>
+                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
+                        </ul>
+                    </div>
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">FHIR</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_12" title="Next FHIR get-together in Montreal in May 2016">Connectathon 12</a></li>
+                            <li><a href="http://hl7.org/fhir/2016May/" title="Latest snapshot of FHIR, for use in Connectathon 12">FHIR May 2016 snapshot</a></li>
+                            <li><a href="https://www.hl7.org/fhir/" title="Current stable version of FHIR">FHIR DSTU 2</a></li>
+                            <li><a href="https://hl7-fhir.github.io/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
+                        </ul>
+                    </div>
+                </div>
+<!--
+                <div class="mdl-mega-footer--bottom-section">
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy and Terms</a></li>
+                    </ul>
+                </div>
+-->
+            </footer>
+        </main>
+    </div>
+
+    <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <script src="js/lightbox-plus-jquery.min.js"></script>
+    <!-- lua.vm.js -->
+     <script src="js/lua.vm.js/dist/lua.vm.js"></script>   
+<!--     main javascript for this page-->
+    <script src="js/main-furore.js"></script>
+<!--    supprting code to upload resources. TODO - translate to pure Javascript -->
+    <script type="text/lua">
+package.preload['lunajson._str_lib'] = (function (...)
+local inf = math.huge
+local byte, char, sub = string.byte, string.char, string.sub
+local setmetatable = setmetatable
+local floor = math.floor
+
+local _ENV = nil
+
+local hextbl = {
+	0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, inf, inf, inf, inf, inf, inf,
+	inf, 0xA, 0xB, 0xC, 0xD, 0xE, 0xF, inf, inf, inf, inf, inf, inf, inf, inf, inf,
+	inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf, inf,
+	inf, 0xA, 0xB, 0xC, 0xD, 0xE, 0xF, inf, inf, inf, inf, inf, inf, inf, inf, inf,
+}
+hextbl.__index = function()
+	return inf
+end
+setmetatable(hextbl, hextbl)
+
+return function(myerror)
+	local escapetbl = {
+		['"']  = '"',
+		['\\'] = '\\',
+		['/']  = '/',
+		['b']  = '\b',
+		['f']  = '\f',
+		['n']  = '\n',
+		['r']  = '\r',
+		['t']  = '\t'
+	}
+	escapetbl.__index = function()
+		myerror("invalid escape sequence")
+	end
+	setmetatable(escapetbl, escapetbl)
+
+	local surrogateprev = 0
+
+	local function subst(ch, rest)
+		-- 0.000003814697265625 = 2^-18
+		-- 0.000244140625 = 2^-12
+		-- 0.015625 = 2^-6
+		local u8
+		if ch == 'u' then
+			local c1, c2, c3, c4 = byte(rest, 1, 4)
+			local ucode = hextbl[c1-47] * 0x1000 + hextbl[c2-47] * 0x100 + hextbl[c3-47] * 0x10 + hextbl[c4-47]
+			if ucode == inf then
+				myerror("invalid unicode charcode")
+			end
+			rest = sub(rest, 5)
+			if ucode < 0x80 then -- 1byte
+				u8 = char(ucode)
+			elseif ucode < 0x800 then -- 2byte
+				u8 = char(0xC0 + floor(ucode * 0.015625), 0x80 + ucode % 0x40)
+			elseif ucode < 0xD800 or 0xE000 <= ucode then -- 3byte
+				u8 = char(0xE0 + floor(ucode * 0.000244140625), 0x80 + floor(ucode * 0.015625) % 0x40, 0x80 + ucode % 0x40)
+			elseif 0xD800 <= ucode and ucode < 0xDC00 then -- surrogate pair 1st
+				if surrogateprev == 0 then
+					surrogateprev = ucode
+					if rest == '' then
+						return ''
+					end
+				end
+			else -- surrogate pair 2nd
+				if surrogateprev == 0 then
+					surrogateprev = 1
+				else
+					ucode = 0x10000 + (surrogateprev - 0xD800) * 0x400 + (ucode - 0xDC00)
+					surrogateprev = 0
+					u8 = char(0xF0 + floor(ucode * 0.000003814697265625), 0x80 + floor(ucode * 0.000244140625) % 0x40, 0x80 + floor(ucode * 0.015625) % 0x40, 0x80 + ucode % 0x40)
+				end
+			end
+		end
+		if surrogateprev ~= 0 then
+			myerror("invalid surrogate pair")
+		end
+		return (u8 or escapetbl[ch]) .. rest
+	end
+
+	local function surrogateok()
+		return surrogateprev == 0
+	end
+
+	return {
+		subst = subst,
+		surrogateok = surrogateok
+	}
+end
+ end)
+package.preload['lunajson.decoder'] = (function (...)
+local error = error
+local byte, char, find, gsub, match, sub = string.byte, string.char, string.find, string.gsub, string.match, string.sub
+local tonumber = tonumber
+local tostring, setmetatable = tostring, setmetatable
+
+-- The function that interprets JSON strings is separated into another file so as to
+-- use bitwise operation to speedup unicode codepoints processing on Lua 5.3.
+local genstrlib
+if _VERSION == "Lua 5.3" then
+	genstrlib = require 'lunajson._str_lib_lua53'
+else
+	genstrlib = require 'lunajson._str_lib'
+end
+
+local _ENV = nil
+
+local function newdecoder()
+	local json, pos, nullv, arraylen
+
+	-- `f` is the temporary for dispatcher[c] and
+	-- the dummy for the first return value of `find`
+	local dispatcher, f
+
+	--[[
+		Helper
+	--]]
+	local function decodeerror(errmsg)
+		error("parse error at " .. pos .. ": " .. errmsg)
+	end
+
+	--[[
+		Invalid
+	--]]
+	local function f_err()
+		decodeerror('invalid value')
+	end
+
+	--[[
+		Constants
+	--]]
+	-- null
+	local function f_nul()
+		if sub(json, pos, pos+2) == 'ull' then
+			pos = pos+3
+			return nullv
+		end
+		decodeerror('invalid value')
+	end
+
+	-- false
+	local function f_fls()
+		if sub(json, pos, pos+3) == 'alse' then
+			pos = pos+4
+			return false
+		end
+		decodeerror('invalid value')
+	end
+
+	-- true
+	local function f_tru()
+		if sub(json, pos, pos+2) == 'rue' then
+			pos = pos+3
+			return true
+		end
+		decodeerror('invalid value')
+	end
+
+	--[[
+		Numbers
+		Conceptually, the longest prefix that matches to `-?(0|[1-9][0-9]*)(\.[0-9]*)?([eE][+-]?[0-9]*)?`
+		(in regexp) is captured as a number and its conformance to the JSON spec is checked.
+	--]]
+	-- deal with non-standard locales
+	local radixmark = match(tostring(0.5), '[^0-9]')
+	local fixedtonumber = tonumber
+	if radixmark ~= '.' then
+		if find(radixmark, '%W') then
+			radixmark = '%' .. radixmark
+		end
+		fixedtonumber = function(s)
+			return tonumber(gsub(s, '.', radixmark))
+		end
+	end
+
+	local function error_number()
+		decodeerror('invalid number')
+	end
+
+	-- `0(\.[0-9]*)?([eE][+-]?[0-9]*)?`
+	local function f_zro(mns)
+		local postmp = pos
+		local num
+		local c = byte(json, postmp)
+		if not c then
+			return error_number()
+		end
+
+		if c == 0x2E then -- is this `.`?
+			num = match(json, '^.[0-9]*', pos) -- skipping 0
+			local numlen = #num
+			if numlen == 1 then
+				return error_number()
+			end
+			postmp = pos + numlen
+			c = byte(json, postmp)
+		end
+
+		if c == 0x45 or c == 0x65 then -- is this e or E?
+			local numexp = match(json, '^[^eE]*[eE][-+]?[0-9]+', pos)
+			if not numexp then
+				return error_number()
+			end
+			if num then -- since `0e.*` is always 0.0, ignore those
+				num = numexp
+			end
+			postmp = pos + #numexp
+		end
+
+		pos = postmp
+		if num then
+			num = fixedtonumber(num)
+		else
+			num = 0.0
+		end
+		if mns then
+			num = -num
+		end
+		return num
+	end
+
+	-- `[1-9][0-9]*(\.[0-9]*)?([eE][+-]?[0-9]*)?`
+	local function f_num(mns)
+		pos = pos-1
+		local num = match(json, '^.[0-9]*%.?[0-9]*', pos)
+		if byte(num, -1) == 0x2E then
+			return error_number()
+		end
+		local postmp = pos + #num
+		local c = byte(json, postmp)
+
+		if c == 0x45 or c == 0x65 then -- e or E?
+			num = match(json, '^[^eE]*[eE][-+]?[0-9]+', pos)
+			if not num then
+				return error_number()
+			end
+			postmp = pos + #num
+		end
+
+		pos = postmp
+		num = fixedtonumber(num)-0.0
+		if mns then
+			num = -num
+		end
+		return num
+	end
+
+	-- skip minus sign
+	local function f_mns()
+		local c = byte(json, pos)
+		if c then
+			pos = pos+1
+			if c > 0x30 then
+				if c < 0x3A then
+					return f_num(true)
+				end
+			else
+				if c > 0x2F then
+					return f_zro(true)
+				end
+			end
+		end
+		decodeerror('invalid number')
+	end
+
+	--[[
+		Strings
+	--]]
+	local f_str_lib = genstrlib(decodeerror)
+	local f_str_surrogateok = f_str_lib.surrogateok -- whether codepoints for surrogate pair are correctly paired
+	local f_str_subst = f_str_lib.subst -- the function passed to gsub that interprets escapes
+
+	-- caching interpreted keys for speed
+	local f_str_keycache = setmetatable({}, {__mode="v"})
+
+	local function f_str(iskey)
+		local newpos = pos-2
+		local pos2 = pos
+		local c1, c2
+		repeat
+			newpos = find(json, '"', pos2, true) -- search '"'
+			if not newpos then
+				decodeerror("unterminated string")
+			end
+			pos2 = newpos+1
+			while true do -- skip preceding '\\'s
+				c1, c2 = byte(json, newpos-2, newpos-1)
+				if c2 ~= 0x5C or c1 ~= 0x5C then
+					break
+				end
+				newpos = newpos-2
+			end
+		until c2 ~= 0x5C -- check '"' is not preceded by '\'
+
+		local str = sub(json, pos, pos2-2)
+		pos = pos2
+
+		if iskey then -- check key cache
+			local str2 = f_str_keycache[str]
+			if str2 then
+				return str2
+			end
+		end
+		local str2 = str
+		if find(str2, '\\', 1, true) then -- check if backslash occurs
+			str2 = gsub(str2, '\\(.)([^\\]*)', f_str_subst) -- interpret escapes
+			if not f_str_surrogateok() then
+				decodeerror("invalid surrogate pair")
+			end
+		end
+		if iskey then -- commit key cache
+			f_str_keycache[str] = str2
+		end
+		return str2
+	end
+
+	--[[
+		Arrays, Objects
+	--]]
+	-- array
+	local function f_ary()
+		local ary = {}
+
+		f, pos = find(json, '^[ \n\r\t]*', pos)
+		pos = pos+1
+
+		local i = 0
+		if byte(json, pos) ~= 0x5D then -- check closing bracket ']', that consists an empty array
+			local newpos = pos-1
+			repeat
+				i = i+1
+				f = dispatcher[byte(json,newpos+1)] -- parse value
+				pos = newpos+2
+				ary[i] = f()
+				f, newpos = find(json, '^[ \n\r\t]*,[ \n\r\t]*', pos) -- check comma
+			until not newpos
+
+			f, newpos = find(json, '^[ \n\r\t]*%]', pos) -- check closing bracket
+			if not newpos then
+				decodeerror("no closing bracket of an array")
+			end
+			pos = newpos
+		end
+
+		pos = pos+1
+		if arraylen then -- commit the length of the array if `arraylen` is set
+			ary[0] = i
+		end
+		return ary
+	end
+
+	-- objects
+	local function f_obj()
+		local obj = {}
+
+		f, pos = find(json, '^[ \n\r\t]*', pos)
+		pos = pos+1
+		if byte(json, pos) ~= 0x7D then -- check the closing bracket '}', that consists an empty object
+			local newpos = pos-1
+
+			repeat
+				pos = newpos+1
+				if byte(json, pos) ~= 0x22 then -- check '"'
+					decodeerror("not key")
+				end
+				pos = pos+1
+				local key = f_str(true) -- parse key
+
+				-- optimized for compact json
+				-- c1, c2 == ':', <the first char of the value> or
+				-- c1, c2, c3 == ':', ' ', <the first char of the value>
+				f = f_err
+				do
+					local c1, c2, c3  = byte(json, pos, pos+3)
+					if c1 == 0x3A then
+						newpos = pos
+						if c2 == 0x20 then
+							newpos = newpos+1
+							c2 = c3
+						end
+						f = dispatcher[c2]
+					end
+				end
+				if f == f_err then -- read a colon and arbitrary number of spaces
+					f, newpos = find(json, '^[ \n\r\t]*:[ \n\r\t]*', pos)
+					if not newpos then
+						decodeerror("no colon after a key")
+					end
+				end
+				f = dispatcher[byte(json, newpos+1)] -- parse value
+				pos = newpos+2
+				obj[key] = f()
+				f, newpos = find(json, '^[ \n\r\t]*,[ \n\r\t]*', pos)
+			until not newpos
+
+			f, newpos = find(json, '^[ \n\r\t]*}', pos)
+			if not newpos then
+				decodeerror("no closing bracket of an object")
+			end
+			pos = newpos
+		end
+
+		pos = pos+1
+		return obj
+	end
+
+	--[[
+		The jump table to dispatch a parser for a value, indexed by the code of the value's first char.
+		Nil key means the end of json.
+	--]]
+	dispatcher = {
+		       f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err,
+		f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err,
+		f_err, f_err, f_str, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_mns, f_err, f_err,
+		f_zro, f_num, f_num, f_num, f_num, f_num, f_num, f_num, f_num, f_num, f_err, f_err, f_err, f_err, f_err, f_err,
+		f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err,
+		f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_ary, f_err, f_err, f_err, f_err,
+		f_err, f_err, f_err, f_err, f_err, f_err, f_fls, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_nul, f_err,
+		f_err, f_err, f_err, f_err, f_tru, f_err, f_err, f_err, f_err, f_err, f_err, f_obj, f_err, f_err, f_err, f_err,
+	}
+	dispatcher[0] = f_err
+	dispatcher.__index = function()
+		decodeerror("unexpected termination")
+	end
+	setmetatable(dispatcher, dispatcher)
+
+	--[[
+		run decoder
+	--]]
+	local function decode(json_, pos_, nullv_, arraylen_)
+		json, pos, nullv, arraylen = json_, pos_, nullv_, arraylen_
+
+		pos = pos or 1
+		f, pos = find(json, '^[ \n\r\t]*', pos)
+		pos = pos+1
+
+		f = dispatcher[byte(json, pos)]
+		pos = pos+1
+		local v = f()
+
+		if pos_ then
+			return v, pos
+		else
+			f, pos = find(json, '^[ \n\r\t]*', pos)
+			if pos ~= #json then
+				error('json ended')
+			end
+			return v
+		end
+	end
+
+	return decode
+end
+
+return newdecoder
+ end)
+package.preload['lunajson.encoder'] = (function (...)
+local error = error
+local byte, find, format, gsub, match = string.byte, string.find, string.format,  string.gsub, string.match
+local concat = table.concat
+local tostring = tostring
+local pairs, type = pairs, type
+local setmetatable = setmetatable
+local huge, tiny = 1/0, -1/0
+
+local f_string_pat
+if _VERSION == "Lua 5.1" then
+	-- use the cluttered pattern because lua 5.1 does not handle \0 in a pattern correctly
+	f_string_pat = '[^ -!#-[%]^-\255]'
+else
+	f_string_pat = '[\0-\31"\\]'
+end
+
+local _ENV = nil
+
+local function newencoder()
+	local v, nullv
+	local i, builder, visited
+
+	local function f_tostring(v)
+		builder[i] = tostring(v)
+		i = i+1
+	end
+
+	local radixmark = match(tostring(0.5), '[^0-9]')
+	local delimmark = match(tostring(12345.12345), '[^0-9' .. radixmark .. ']')
+	if radixmark == '.' then
+		radixmark = nil
+	end
+
+	local radixordelim
+	if radixmark or delimmark then
+		radixordelim = true
+		if radixmark and find(radixmark, '%W') then
+			radixmark = '%' .. radixmark
+		end
+		if delimmark and find(delimmark, '%W') then
+			delimmark = '%' .. delimmark
+		end
+	end
+
+	local f_number = function(n)
+		if tiny < n and n < huge then
+			local s = format("%.17g", n)
+			if radixordelim then
+				if delimmark then
+					s = gsub(s, delimmark, '')
+				end
+				if radixmark then
+					s = gsub(s, radixmark, '.')
+				end
+			end
+			builder[i] = s
+			i = i+1
+			return
+		end
+		error('invalid number')
+	end
+
+	local doencode
+
+	local f_string_subst = {
+		['"'] = '\\"',
+		['\\'] = '\\\\',
+		['\b'] = '\\b',
+		['\f'] = '\\f',
+		['\n'] = '\\n',
+		['\r'] = '\\r',
+		['\t'] = '\\t',
+		__index = function(_, c)
+			return format('\\u00%02X', byte(c))
+		end
+	}
+	setmetatable(f_string_subst, f_string_subst)
+
+	local function f_string(s)
+		builder[i] = '"'
+		if find(s, f_string_pat) then
+			s = gsub(s, f_string_pat, f_string_subst)
+		end
+		builder[i+1] = s
+		builder[i+2] = '"'
+		i = i+3
+	end
+
+	local function f_table(o)
+		if visited[o] then
+			error("loop detected")
+		end
+		visited[o] = true
+
+		local tmp = o[0]
+		if type(tmp) == 'number' then -- arraylen available
+			builder[i] = '['
+			i = i+1
+			for j = 1, tmp do
+				doencode(o[j])
+				builder[i] = ','
+				i = i+1
+			end
+			if tmp > 0 then
+				i = i-1
+			end
+			builder[i] = ']'
+
+		else
+			tmp = o[1]
+			if tmp ~= nil then -- detected as array
+				builder[i] = '['
+				i = i+1
+				local j = 2
+				repeat
+					doencode(tmp)
+					tmp = o[j]
+					if tmp == nil then
+						break
+					end
+					j = j+1
+					builder[i] = ','
+					i = i+1
+				until false
+				builder[i] = ']'
+
+			else -- detected as object
+				builder[i] = '{'
+				i = i+1
+				local tmp = i
+				for k, v in pairs(o) do
+					if type(k) ~= 'string' then
+						error("non-string key")
+					end
+					f_string(k)
+					builder[i] = ':'
+					i = i+1
+					doencode(v)
+					builder[i] = ','
+					i = i+1
+				end
+				if i > tmp then
+					i = i-1
+				end
+				builder[i] = '}'
+			end
+		end
+
+		i = i+1
+		visited[o] = nil
+	end
+
+	local dispatcher = {
+		boolean = f_tostring,
+		number = f_number,
+		string = f_string,
+		table = f_table,
+		__index = function()
+			error("invalid type value")
+		end
+	}
+	setmetatable(dispatcher, dispatcher)
+
+	function doencode(v)
+		if v == nullv then
+			builder[i] = 'null'
+			i = i+1
+			return
+		end
+		return dispatcher[type(v)](v)
+	end
+
+	local function encode(v_, nullv_)
+		v, nullv = v_, nullv_
+		i, builder, visited = 1, {}, {}
+
+		doencode(v)
+		return concat(builder)
+	end
+
+	return encode
+end
+
+return newencoder
+ end)
+package.preload['lunajson.sax'] = (function (...)
+local error = error
+local byte, char, find, gsub, match, sub = string.byte, string.char, string.find, string.gsub, string.match, string.sub
+local tonumber = tonumber
+local tostring, type, unpack = tostring, type, table.unpack or unpack
+
+-- The function that interprets JSON strings is separated into another file so as to
+-- use bitwise operation to speedup unicode codepoints processing on Lua 5.3.
+local genstrlib
+if _VERSION == "Lua 5.3" then
+	genstrlib = require 'lunajson._str_lib_lua53'
+else
+	genstrlib = require 'lunajson._str_lib'
+end
+
+local _ENV = nil
+
+local function nop() end
+
+local function newparser(src, saxtbl)
+	local json, jsonnxt
+	local jsonlen, pos, acc = 0, 1, 0
+
+	-- `f` is the temporary for dispatcher[c] and
+	-- the dummy for the first return value of `find`
+	local dispatcher, f
+
+	-- initialize
+	if type(src) == 'string' then
+		json = src
+		jsonlen = #json
+		jsonnxt = function()
+			json = ''
+			jsonlen = 0
+			jsonnxt = nop
+		end
+	else
+		jsonnxt = function()
+			acc = acc + jsonlen
+			pos = 1
+			repeat
+				json = src()
+				if not json then
+					json = ''
+					jsonlen = 0
+					jsonnxt = nop
+					return
+				end
+				jsonlen = #json
+			until jsonlen > 0
+		end
+		jsonnxt()
+	end
+
+	local sax_startobject = saxtbl.startobject or nop
+	local sax_key = saxtbl.key or nop
+	local sax_endobject = saxtbl.endobject or nop
+	local sax_startarray = saxtbl.startarray or nop
+	local sax_endarray = saxtbl.endarray or nop
+	local sax_string = saxtbl.string or nop
+	local sax_number = saxtbl.number or nop
+	local sax_boolean = saxtbl.boolean or nop
+	local sax_null = saxtbl.null or nop
+
+	--[[
+		Helper
+	--]]
+	local function tryc()
+		local c = byte(json, pos)
+		if not c then
+			jsonnxt()
+			c = byte(json, pos)
+		end
+		return c
+	end
+
+	local function parseerror(errmsg)
+		error("parse error at " .. acc + pos .. ": " .. errmsg)
+	end
+
+	local function tellc()
+		return tryc() or parseerror("unexpected termination")
+	end
+
+	local function spaces() -- skip spaces and prepare the next char
+		while true do
+			f, pos = find(json, '^[ \n\r\t]*', pos)
+			if pos ~= jsonlen then
+				pos = pos+1
+				return
+			end
+			if jsonlen == 0 then
+				parseerror("unexpected termination")
+			end
+			jsonnxt()
+		end
+	end
+
+	--[[
+		Invalid
+	--]]
+	local function f_err()
+		parseerror('invalid value')
+	end
+
+	--[[
+		Constants
+	--]]
+	-- fallback slow constants parser
+	local function generic_constant(target, targetlen, ret, sax_f)
+		for i = 1, targetlen do
+			local c = tellc()
+			if byte(target, i) ~= c then
+				parseerror("invalid char")
+			end
+			pos = pos+1
+		end
+		return sax_f(ret)
+	end
+
+	-- null
+	local function f_nul()
+		if sub(json, pos, pos+2) == 'ull' then
+			pos = pos+3
+			return sax_null(nil)
+		end
+		return generic_constant('ull', 3, nil, sax_null)
+	end
+
+	-- false
+	local function f_fls()
+		if sub(json, pos, pos+3) == 'alse' then
+			pos = pos+4
+			return sax_boolean(false)
+		end
+		return generic_constant('alse', 4, false, sax_boolean)
+	end
+
+	-- true
+	local function f_tru()
+		if sub(json, pos, pos+2) == 'rue' then
+			pos = pos+3
+			return sax_boolean(true)
+		end
+		return generic_constant('rue', 3, true, sax_boolean)
+	end
+
+	--[[
+		Numbers
+		Conceptually, the longest prefix that matches to `(0|[1-9][0-9]*)(\.[0-9]*)?([eE][+-]?[0-9]*)?`
+		(in regexp) is captured as a number and its conformance to the JSON spec is checked.
+	--]]
+	-- deal with non-standard locales
+	local radixmark = match(tostring(0.5), '[^0-9]')
+	local fixedtonumber = tonumber
+	if radixmark ~= '.' then -- deals with non-standard locales
+		if find(radixmark, '%W') then
+			radixmark = '%' .. radixmark
+		end
+		fixedtonumber = function(s)
+			return tonumber(gsub(s, '.', radixmark))
+		end
+	end
+
+	-- fallback slow parser
+	local function generic_number(mns)
+		local buf = {}
+		local i = 1
+
+		local c = byte(json, pos)
+		pos = pos+1
+
+		local function nxt()
+			buf[i] = c
+			i = i+1
+			c = tryc()
+			pos = pos+1
+		end
+
+		if c == 0x30 then
+			nxt()
+		else
+			repeat nxt() until not (c and 0x30 <= c and c < 0x3A)
+		end
+		if c == 0x2E then
+			nxt()
+			if not (c and 0x30 <= c and c < 0x3A) then
+				parseerror('invalid number')
+			end
+			repeat nxt() until not (c and 0x30 <= c and c < 0x3A)
+		end
+		if c == 0x45 or c == 0x65 then
+			nxt()
+			if c == 0x2B or c == 0x2D then
+				nxt()
+			end
+			if not (c and 0x30 <= c and c < 0x3A) then
+				parseerror('invalid number')
+			end
+			repeat nxt() until not (c and 0x30 <= c and c < 0x3A)
+		end
+		pos = pos-1
+
+		local num = char(unpack(buf))
+		num = fixedtonumber(num)-0.0
+		if mns then
+			num = -num
+		end
+		return sax_number(num)
+	end
+
+	-- `0(\.[0-9]*)?([eE][+-]?[0-9]*)?`
+	local function f_zro(mns)
+		local postmp = pos
+		local num
+		local c = byte(json, postmp)
+
+		if c == 0x2E then -- is this `.`?
+			num = match(json, '^.[0-9]*', pos) -- skipping 0
+			local numlen = #num
+			if numlen == 1 then
+				pos = pos-1
+				return generic_number(mns)
+			end
+			postmp = pos + numlen
+			c = byte(json, postmp)
+		end
+
+		if c == 0x45 or c == 0x65 then -- is this e or E?
+			local numexp = match(json, '^[^eE]*[eE][-+]?[0-9]+', pos)
+			if not numexp then
+				pos = pos-1
+				return generic_number(mns)
+			end
+			if num then -- since `0e.*` is always 0.0, ignore those
+				num = numexp
+			end
+			postmp = pos + #numexp
+		end
+
+		if postmp > jsonlen then
+			pos = pos-1
+			return generic_number(mns)
+		end
+		pos = postmp
+		if num then
+			num = fixedtonumber(num)
+		else
+			num = 0.0
+		end
+		if mns then
+			num = -num
+		end
+		return sax_number(num)
+	end
+
+	-- `[1-9][0-9]*(\.[0-9]*)?([eE][+-]?[0-9]*)?`
+	local function f_num(mns)
+		pos = pos-1
+		local num = match(json, '^.[0-9]*%.?[0-9]*', pos)
+		if byte(num, -1) == 0x2E then
+			return generic_number(mns)
+		end
+		local postmp = pos + #num
+		local c = byte(json, postmp)
+
+		if c == 0x45 or c == 0x65 then -- e or E?
+			num = match(json, '^[^eE]*[eE][-+]?[0-9]+', pos)
+			if not num then
+				return generic_number(mns)
+			end
+			postmp = pos + #num
+		end
+
+		if postmp > jsonlen then
+			return generic_number(mns)
+		end
+		pos = postmp
+		num = fixedtonumber(num)-0.0
+		if mns then
+			num = -num
+		end
+		return sax_number(num)
+	end
+
+	-- skip minus sign
+	local function f_mns()
+		local c = byte(json, pos) or tellc()
+		if c then
+			pos = pos+1
+			if c > 0x30 then
+				if c < 0x3A then
+					return f_num(true)
+				end
+			else
+				if c > 0x2F then
+					return f_zro(true)
+				end
+			end
+		end
+		parseerror("invalid number")
+	end
+
+	--[[
+		Strings
+	--]]
+	local f_str_lib = genstrlib(parseerror)
+	local f_str_surrogateok = f_str_lib.surrogateok -- whether codepoints for surrogate pair are correctly paired
+	local f_str_subst = f_str_lib.subst -- the function passed to gsub that interprets escapes
+
+	local function f_str(iskey)
+		local pos2 = pos
+		local newpos
+		local str = ''
+		local bs
+		while true do
+			while true do -- search '\' or '"'
+				newpos = find(json, '[\\"]', pos2)
+				if newpos then
+					break
+				end
+				str = str .. sub(json, pos, jsonlen)
+				if pos2 == jsonlen+2 then
+					pos2 = 2
+				else
+					pos2 = 1
+				end
+				jsonnxt()
+			end
+			if byte(json, newpos) == 0x22 then -- break if '"'
+				break
+			end
+			pos2 = newpos+2 -- skip '\<char>'
+			bs = true -- remember that backslash occurs
+		end
+		str = str .. sub(json, pos, newpos-1)
+		pos = newpos+1
+
+		if bs then -- check if backslash occurs
+			str = gsub(str, '\\(.)([^\\]*)', f_str_subst) -- interpret escapes
+			if not f_str_surrogateok() then
+				parseerror("invalid surrogate pair")
+			end
+		end
+
+		if iskey then
+			return sax_key(str)
+		end
+		return sax_string(str)
+	end
+
+	--[[
+		Arrays, Objects
+	--]]
+	-- arrays
+	local function f_ary()
+		sax_startarray()
+		spaces()
+		if byte(json, pos) ~= 0x5D then -- check the closing bracket ']', that consists an empty array
+			local newpos
+			while true do
+				f = dispatcher[byte(json, pos)] -- parse value
+				pos = pos+1
+				f()
+				f, newpos = find(json, '^[ \n\r\t]*,[ \n\r\t]*', pos) -- check comma
+				if not newpos then
+					f, newpos = find(json, '^[ \n\r\t]*%]', pos) -- check closing bracket
+					if newpos then
+						pos = newpos
+						break
+					end
+					spaces() -- since the current chunk can be ended, skip spaces toward following chunks
+					local c = byte(json, pos)
+					if c == 0x2C then -- check comma again
+						pos = pos+1
+						spaces()
+						newpos = pos-1
+					elseif c == 0x5D then -- check closing bracket again
+						break
+					else
+						parseerror("no closing bracket of an array")
+					end
+				end
+				pos = newpos+1
+				if pos > jsonlen then
+					spaces()
+				end
+			end
+		end
+		pos = pos+1
+		return sax_endarray()
+	end
+
+	-- objects
+	local function f_obj()
+		sax_startobject()
+		spaces()
+		if byte(json, pos) ~= 0x7D then -- check the closing bracket `}`, that consists an empty object
+			local newpos
+			while true do
+				if byte(json, pos) ~= 0x22 then
+					parseerror("not key")
+				end
+				pos = pos+1
+				f_str(true)
+				f, newpos = find(json, '^[ \n\r\t]*:[ \n\r\t]*', pos) -- check colon
+				if not newpos then
+					spaces() -- since the current chunk can be ended, skip spaces toward following chunks
+					if byte(json, pos) ~= 0x3A then -- check colon again
+						parseerror("no colon after a key")
+					end
+					pos = pos+1
+					spaces()
+					newpos = pos-1
+				end
+				pos = newpos+1
+				if pos > jsonlen then
+					spaces()
+				end
+				f = dispatcher[byte(json, pos)] -- parse value
+				pos = pos+1
+				f()
+				f, newpos = find(json, '^[ \n\r\t]*,[ \n\r\t]*', pos) -- check comma
+				if not newpos then
+					f, newpos = find(json, '^[ \n\r\t]*}', pos) -- check closing bracket
+					if newpos then
+						pos = newpos
+						break
+					end
+					spaces() -- since the current chunk can be ended, skip spaces toward following chunks
+					local c = byte(json, pos)
+					if c == 0x2C then -- check comma again
+						pos = pos+1
+						spaces()
+						newpos = pos-1
+					elseif c == 0x7D then -- check closing bracket again
+						break
+					else
+						parseerror("no closing bracket of an object")
+					end
+				end
+				pos = newpos+1
+				if pos > jsonlen then
+					spaces()
+				end
+			end
+		end
+		pos = pos+1
+		return sax_endobject()
+	end
+
+	--[[
+		The jump table to dispatch a parser for a value, indexed by the code of the value's first char.
+		Key should be non-nil.
+	--]]
+	dispatcher = {
+		       f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err,
+		f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err,
+		f_err, f_err, f_str, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_mns, f_err, f_err,
+		f_zro, f_num, f_num, f_num, f_num, f_num, f_num, f_num, f_num, f_num, f_err, f_err, f_err, f_err, f_err, f_err,
+		f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err,
+		f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_ary, f_err, f_err, f_err, f_err,
+		f_err, f_err, f_err, f_err, f_err, f_err, f_fls, f_err, f_err, f_err, f_err, f_err, f_err, f_err, f_nul, f_err,
+		f_err, f_err, f_err, f_err, f_tru, f_err, f_err, f_err, f_err, f_err, f_err, f_obj, f_err, f_err, f_err, f_err,
+	}
+	dispatcher[0] = f_err
+
+	--[[
+		public funcitons
+	--]]
+	local function run()
+		spaces()
+		f = dispatcher[byte(json, pos)]
+		pos = pos+1
+		f()
+	end
+
+	local function read(n)
+		if n < 0 then
+			error("the argument must be non-negative")
+		end
+		local pos2 = (pos-1) + n
+		local str = sub(json, pos, pos2)
+		while pos2 > jsonlen and jsonlen ~= 0 do
+			jsonnxt()
+			pos2 = pos2 - (jsonlen - (pos-1))
+			str = str .. sub(json, pos, pos2)
+		end
+		if jsonlen ~= 0 then
+			pos = pos2+1
+		end
+		return str
+	end
+
+	local function tellpos()
+		return acc + pos
+	end
+
+	return {
+		run = run,
+		tryc = tryc,
+		read = read,
+		tellpos = tellpos,
+	}
+end
+
+local function newfileparser(fn, saxtbl)
+	local fp = io.open(fn)
+	local function gen()
+		local s
+		if fp then
+			s = fp:read(8192)
+			if not s then
+				fp:close()
+				fp = nil
+			end
+		end
+		return s
+	end
+	return newparser(gen, saxtbl)
+end
+
+return {
+	newparser = newparser,
+	newfileparser = newfileparser
+}
+ end)
+package.preload['lunajson'] = (function (...)
+local newdecoder = require 'lunajson.decoder'
+local newencoder = require 'lunajson.encoder'
+local sax = require 'lunajson.sax'
+-- If you need multiple contexts of decoder and/or encoder,
+-- you can require lunajson.decoder and/or lunajson.encoder directly.
+return {
+	decode = newdecoder(),
+	encode = newencoder(),
+	newparser = sax.newparser,
+	newfileparser = sax.newfileparser,
+}
+ end)
+package.preload['inspect'] = (function (...)
+local inspect ={
+  _VERSION = 'inspect.lua 3.0.3',
+  _URL     = 'http://github.com/kikito/inspect.lua',
+  _DESCRIPTION = 'human-readable representations of tables',
+  _LICENSE = [[
+    MIT LICENSE
+
+    Copyright (c) 2013 Enrique García Cota
+
+    Permission is hereby granted, free of charge, to any person obtaining a
+    copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  ]]
+}
+
+inspect.KEY       = setmetatable({}, {__tostring = function() return 'inspect.KEY' end})
+inspect.METATABLE = setmetatable({}, {__tostring = function() return 'inspect.METATABLE' end})
+
+-- Apostrophizes the string if it has quotes, but not aphostrophes
+-- Otherwise, it returns a regular quoted string
+local function smartQuote(str)
+  if str:match('"') and not str:match("'") then
+    return "'" .. str .. "'"
+  end
+  return '"' .. str:gsub('"', '\\"') .. '"'
+end
+
+local controlCharsTranslation = {
+  ["\a"] = "\\a",  ["\b"] = "\\b", ["\f"] = "\\f",  ["\n"] = "\\n",
+  ["\r"] = "\\r",  ["\t"] = "\\t", ["\v"] = "\\v"
+}
+
+local function escape(str)
+  local result = str:gsub("\\", "\\\\"):gsub("(%c)", controlCharsTranslation)
+  return result
+end
+
+local function isIdentifier(str)
+  return type(str) == 'string' and str:match( "^[_%a][_%a%d]*$" )
+end
+
+local function isSequenceKey(k, sequenceLength)
+  return type(k) == 'number'
+     and 1 <= k
+     and k <= sequenceLength
+     and math.floor(k) == k
+end
+
+local defaultTypeOrders = {
+  ['number']   = 1, ['boolean']  = 2, ['string'] = 3, ['table'] = 4,
+  ['function'] = 5, ['userdata'] = 6, ['thread'] = 7
+}
+
+local function sortKeys(a, b)
+  local ta, tb = type(a), type(b)
+
+  -- strings and numbers are sorted numerically/alphabetically
+  if ta == tb and (ta == 'string' or ta == 'number') then return a < b end
+
+  local dta, dtb = defaultTypeOrders[ta], defaultTypeOrders[tb]
+  -- Two default types are compared according to the defaultTypeOrders table
+  if dta and dtb then return defaultTypeOrders[ta] < defaultTypeOrders[tb]
+  elseif dta     then return true  -- default types before custom ones
+  elseif dtb     then return false -- custom types after default ones
+  end
+
+  -- custom types are sorted out alphabetically
+  return ta < tb
+end
+
+-- For implementation reasons, the behavior of rawlen & # is "undefined" when
+-- tables aren't pure sequences. So we implement our own # operator.
+local function getSequenceLength(t)
+  local len = 1
+  local v = rawget(t,len)
+  while v ~= nil do
+    len = len + 1
+    v = rawget(t,len)
+  end
+  return len - 1
+end
+
+local function getNonSequentialKeys(t)
+  local keys = {}
+  local sequenceLength = getSequenceLength(t)
+  for k,_ in pairs(t) do
+    if not isSequenceKey(k, sequenceLength) then table.insert(keys, k) end
+  end
+  table.sort(keys, sortKeys)
+  return keys, sequenceLength
+end
+
+local function getToStringResultSafely(t, mt)
+  local __tostring = type(mt) == 'table' and rawget(mt, '__tostring')
+  local str, ok
+  if type(__tostring) == 'function' then
+    ok, str = pcall(__tostring, t)
+    str = ok and str or 'error: ' .. tostring(str)
+  end
+  if type(str) == 'string' and #str > 0 then return str end
+end
+
+local maxIdsMetaTable = {
+  __index = function(self, typeName)
+    rawset(self, typeName, 0)
+    return 0
+  end
+}
+
+local idsMetaTable = {
+  __index = function (self, typeName)
+    local col = {}
+    rawset(self, typeName, col)
+    return col
+  end
+}
+
+local function countTableAppearances(t, tableAppearances)
+  tableAppearances = tableAppearances or {}
+
+  if type(t) == 'table' then
+    if not tableAppearances[t] then
+      tableAppearances[t] = 1
+      for k,v in pairs(t) do
+        countTableAppearances(k, tableAppearances)
+        countTableAppearances(v, tableAppearances)
+      end
+      countTableAppearances(getmetatable(t), tableAppearances)
+    else
+      tableAppearances[t] = tableAppearances[t] + 1
+    end
+  end
+
+  return tableAppearances
+end
+
+local copySequence = function(s)
+  local copy, len = {}, #s
+  for i=1, len do copy[i] = s[i] end
+  return copy, len
+end
+
+local function makePath(path, ...)
+  local keys = {...}
+  local newPath, len = copySequence(path)
+  for i=1, #keys do
+    newPath[len + i] = keys[i]
+  end
+  return newPath
+end
+
+local function processRecursive(process, item, path)
+  if item == nil then return nil end
+
+  local processed = process(item, path)
+  if type(processed) == 'table' then
+    local processedCopy = {}
+    local processedKey
+
+    for k,v in pairs(processed) do
+      processedKey = processRecursive(process, k, makePath(path, k, inspect.KEY))
+      if processedKey ~= nil then
+        processedCopy[processedKey] = processRecursive(process, v, makePath(path, processedKey))
+      end
+    end
+
+    local mt  = processRecursive(process, getmetatable(processed), makePath(path, inspect.METATABLE))
+    setmetatable(processedCopy, mt)
+    processed = processedCopy
+  end
+  return processed
+end
+
+
+-------------------------------------------------------------------
+
+local Inspector = {}
+local Inspector_mt = {__index = Inspector}
+
+function Inspector:puts(...)
+  local args   = {...}
+  local buffer = self.buffer
+  local len    = #buffer
+  for i=1, #args do
+    len = len + 1
+    buffer[len] = tostring(args[i])
+  end
+end
+
+function Inspector:down(f)
+  self.level = self.level + 1
+  f()
+  self.level = self.level - 1
+end
+
+function Inspector:tabify()
+  self:puts(self.newline, string.rep(self.indent, self.level))
+end
+
+function Inspector:alreadyVisited(v)
+  return self.ids[type(v)][v] ~= nil
+end
+
+function Inspector:getId(v)
+  local tv = type(v)
+  local id = self.ids[tv][v]
+  if not id then
+    id              = self.maxIds[tv] + 1
+    self.maxIds[tv] = id
+    self.ids[tv][v] = id
+  end
+  return id
+end
+
+function Inspector:putKey(k)
+  if isIdentifier(k) then return self:puts(k) end
+  self:puts("[")
+  self:putValue(k)
+  self:puts("]")
+end
+
+function Inspector:putTable(t)
+  if t == inspect.KEY or t == inspect.METATABLE then
+    self:puts(tostring(t))
+  elseif self:alreadyVisited(t) then
+    self:puts('<table ', self:getId(t), '>')
+  elseif self.level >= self.depth then
+    self:puts('{...}')
+  else
+    if self.tableAppearances[t] > 1 then self:puts('<', self:getId(t), '>') end
+
+    local nonSequentialKeys, sequenceLength = getNonSequentialKeys(t)
+    local mt                = getmetatable(t)
+    local toStringResult    = getToStringResultSafely(t, mt)
+
+    self:puts('{')
+    self:down(function()
+      if toStringResult then
+        self:puts(' -- ', escape(toStringResult))
+        if sequenceLength >= 1 then self:tabify() end
+      end
+
+      local count = 0
+      for i=1, sequenceLength do
+        if count > 0 then self:puts(',') end
+        self:puts(' ')
+        self:putValue(t[i])
+        count = count + 1
+      end
+
+      for _,k in ipairs(nonSequentialKeys) do
+        if count > 0 then self:puts(',') end
+        self:tabify()
+        self:putKey(k)
+        self:puts(' = ')
+        self:putValue(t[k])
+        count = count + 1
+      end
+
+      if mt then
+        if count > 0 then self:puts(',') end
+        self:tabify()
+        self:puts('<metatable> = ')
+        self:putValue(mt)
+      end
+    end)
+
+    if #nonSequentialKeys > 0 or mt then -- result is multi-lined. Justify closing }
+      self:tabify()
+    elseif sequenceLength > 0 then -- array tables have one extra space before closing }
+      self:puts(' ')
+    end
+
+    self:puts('}')
+  end
+end
+
+function Inspector:putValue(v)
+  local tv = type(v)
+
+  if tv == 'string' then
+    self:puts(smartQuote(escape(v)))
+  elseif tv == 'number' or tv == 'boolean' or tv == 'nil' then
+    self:puts(tostring(v))
+  elseif tv == 'table' then
+    self:putTable(v)
+  else
+    self:puts('<',tv,' ',self:getId(v),'>')
+  end
+end
+
+-------------------------------------------------------------------
+
+function inspect.inspect(root, options)
+  options       = options or {}
+
+  local depth   = options.depth   or math.huge
+  local newline = options.newline or '\n'
+  local indent  = options.indent  or '  '
+  local process = options.process
+
+  if process then
+    root = processRecursive(process, root, {})
+  end
+
+  local inspector = setmetatable({
+    depth            = depth,
+    buffer           = {},
+    level            = 0,
+    ids              = setmetatable({}, idsMetaTable),
+    maxIds           = setmetatable({}, maxIdsMetaTable),
+    newline          = newline,
+    indent           = indent,
+    tableAppearances = countTableAppearances(root)
+  }, Inspector_mt)
+
+  inspector:putValue(root)
+
+  return table.concat(inspector.buffer)
+end
+
+setmetatable(inspect, { __call = function(_, ...) return inspect.inspect(...) end })
+
+return inspect
+
+ end)
+local lunajson = require("lunajson")
+local inspect = require("inspect")
+
+local update_resource_references, get_resource_id, get_resource_type, do_upload, get_current_file
+  local server_url
+
+  null_value = function() end
+  local decode = function(data)
+    return lunajson.decode(data, nil, null_value)
+  end
+  local encode = function(data)
+    return lunajson.encode(data, null_value)
+  end
+
+
+  local files = {
+--    {"resource-examples/Patient-f001.json", 
+--      type = nil, -- resource type
+--      originalid = nil, -- original resource ID
+--      uploadedid = nil, -- server-assigned ID
+--      content = nil, -- decoded JSON content
+--      uploaded = nil, -- true is resource has been uplaoded
+--      jsid = nil, -- ID that's been assigned in for use in JS
+--    },
+--    {"resource-examples/Encounter-f001.json"},
+--    {"resource-examples/DiagnosticOrder-f001.json"}, 
+--    {"resource-examples/Observation-f001.json"},
+--    {"resource-examples/Observation-f002.json"},
+--    {"resource-examples/DiagnosticReport-f001.json"}, 
+  }
+
+-- keeps track of the resource's original ID and uploaded one
+  local id_map = {
+    -- ["Patient/nehta-f001"] = "Patient/spark2494"]
+  }
+
+-- finds given keys in a table and allows a function
+-- to do work on their data
+  local find_references
+  find_references = function(data, key, f)
+    for k,v in pairs(data) do
+      if k == key then
+        f(data,k,v)
+      end
+
+      if type(v) == "table" then
+        find_references(v, key, f)
+      end
+    end
+  end
+
+  get_resource_type = function(filecontent)
+    return filecontent.resourceType
+  end
+
+-- pull out the original ID of the resource and delete it from the resource as well
+  get_resource_id = function(filecontent)
+    local id = filecontent.id
+    filecontent.id = nil
+
+    return id
+  end
+
+  upload = function(file)
+    local filelocation = file[1]
+    local resourcetype = file.type
+
+    local jq = window.jQuery()
+    local jqxhr = window.jQuery:ajax(window:makeAjaxPost(string.format('%s/%s', server_url, resourcetype), encode(file.content)))
+    jqxhr:done(function() 
+        upload_done(decode(jqxhr.responseText))
+      end)
+
+    jqxhr:fail(function(_, err)
+        print("upload failed: "..(err.responseText and err.responseText or '(no reason available)'))
+        
+        js.global.failedUpload()
+      end)
+  end
+
+  upload_done = function(result)      
+    local resulttype = result.resourceType
+
+    local file = get_current_file()
+    local filename = file[1]
+
+    if resulttype == "OperationOutcome" then
+      print(string.format("%s: %s", tostring(filename), result.text.div))
+      return
+    end
+
+    local id = result.id
+    file.uploadedid = id
+    file.uploaded = true
+
+    id_map[string.format("%s/%s", file.type, file.originalid)] = string.format("%s/%s", file.type, file.uploadedid)
+    print(string.format("%s: %s/%s/%s", filename, server_url, file.type, id))
+
+    -- nil is to fix an off by one bug
+    js.global.uploadedResource(nil, file.jsid, file.uploadedid, file.type)
+
+    local uploading_next = do_upload()
+      if not uploading_next then 
+        print"All resources uploaded"
+        js.global.completeUpload()
+      end
+
+    end
+
+
+    load_file = function(file)
+      local filename = file[1]
+      local jqxhr = window.jQuery:ajax(filename)
+      jqxhr:done(function() 
+          file.content = decode(jqxhr.responseText)
+
+          file.content = update_resource_references(file.content)
+          file.originalid = get_resource_id(file.content)
+          file.type = get_resource_type(file.content)
+
+          upload(file)
+        end)
+    end
+
+    update_resource_references = function(content)
+
+      -- replace references in structured content of resource
+      find_references(content, "reference", function(data, key, value)
+          if id_map[value] then
+            data[key] = id_map[value]
+          end
+        end)
+
+      -- replace references in narrative
+      if content.text and content.text.div then
+        local narrative = content.text
+        for oldid, newid in pairs(id_map) do
+          -- escape characters
+          narrative.div = narrative.div:gsub(oldid:gsub("([^%w])", "%%%1"), newid)
+        end
+      end
+
+      return content
+    end
+
+    get_current_file = function()
+      for _, file in ipairs(files) do
+        if not file.uploaded then
+          return file
+        end
+      end
+    end
+
+    function upload_all()
+      server_url = js.global.uploadServer
+      files = {}
+
+      for _, resource_data in js.ipairs(js.global.uploadResources) do        
+        files[#files+1] = {resource_data[1], jsid = resource_data[0]}
+      end
+
+      do_upload()
+      end
+
+      js.global.upload_all = upload_all
+
+      do_upload = function()
+          for _, file in ipairs(files) do
+            if not file.uploaded then
+              -- load this resource's data in
+              local filename = file[1]
+              print("Uploading "..filename)
+
+              file.content = load_file(file)
+              return true
+            end
+          end
+
+          return false
+        end
+    </script>
+</body>
+
+</html>
