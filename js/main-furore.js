@@ -1,6 +1,6 @@
 var servers = {
     // all of these need to be made https, can't upload to http from an https page
-    spark: "https://spark.furore.com/fhir",
+    spark: "http://spark.furore.com/fhir",
     fhir2: "http://fhir2.healthintersections.com.au/open",
     fhir3: "http://fhir3.healthintersections.com.au/open",
     hapi2: "http://fhirtest.uhn.ca/baseDstu2",
