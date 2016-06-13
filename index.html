@@ -192,7 +192,7 @@
                         
                         <p><a href="images/PostManBlank.JPG" data-lightbox="patient-in-postman">Once you are done you will have a Postman client that looks like this:</a></p>
                         
-                        <p>There are other Http post clients that could be used like <a href="http://www.telerik.com/fiddler" rel="stylesheet">Fiddler</a> so don't feel you have to use Postman.</p>
+                        <p>There are other Http post clients that could be used like <a href="http://www.telerik.com/fiddler">Fiddler</a> so don't feel you have to use Postman.</p>
                         <br>
                         
                         <h5 id="Step2">Step 2: Getting your first resource from a FHIR server</h5>
@@ -444,13 +444,14 @@
                         
                         <p>In order to see which resource links to which, open up the FHIR specification for a specific resource and observe the list of resources that reference it. In our example, you can find out if it is a Patient linking to an Observation or an Observation linking to a Patient by opening both the  <a href="http://hl7.org/fhir/2016May/patient.html">Patient</a> and <a href="http://hl7.org/fhir/2016May/observation.html">Observation</a> FHIR specification pages. You'll notice that <a href="images/observation-references-patient.png" data-lightbox="observation-references-patient">Patient mentions</a> that it's referenced by the Observation resource and Observation does not, instead it has a <code>subject</code> field which <a href="images/observations-patient-subject.png" data-lightbox="observations-patient-subject">references Patient</a>.</p>
                         
-                        <p>In the same Postman window, press Ctrl/&#8984;+F and type in <code>reference</code> - you'll find that the Patient contains <a href="images/patient-references.png" data-lightbox="patient-references">just one reference</a>, which is the medical organisation that the Patient belongs to. Even though our patient had an encounter (when he came into the hospital for his procedure), it is not listed here.</p>
+                        <p>In the same Postman window, press Ctrl/&#8984;+F and copy/paste <code>reference</code> - you'll find that the Patient contains <a href="images/patient-references.png" data-lightbox="patient-references">just one reference</a>, which is the medical organisation that the Patient belongs to. Even though our patient had an encounter (when he came into the hospital for his procedure), it is not listed here.</p>
                         
                         <p>Instead, it is the Encounter that has a reference to the Patient. That way, more Encounters can be added without having to update the Patient resource every time (which can become very time-consuming in a large system). In the next section, you'll see how you can find the Encounter that's associated with your Patient.</p>
                         
                         <h5 id="pr-search-resource-using-reference">Step 4: Search for a resource using a reference</h5>
                         <p>FHIR has a notion of Search Parameters, which allow you to locate resources given certain data you know about them. As a sample usecase, let's find the Encounter that's associated with our patient. Scrolling down to the <a href="http://hl7.org/fhir/2016May/encounter.html#search">Search Parameters</a> section of Encounter, we see that there's one named <a href="images/encounter-search-parameters.png" data-lightbox="encounter-search-parameters">patient</a> which allows us to search for the patient present in the encounter.</p>
-                        <p>Thus, given the patient's server ID of <code class="patient-with-references-serverid" id="rf-patient"><i>(press Upload first)</i></code> (this can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field), in order to find which encounters our patient has, the query follows this format:</p> <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</span>/Encounter?patient=&lt;patient id&gt;</b></pre>
+                        <p>Thus, given the patient's server ID of <code class="patient-with-references-serverid" id="rf-patient"><i>(press Upload first)</i></code> (this can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field), in order to find which encounters our patient has, the query follows this format:</p> 
+                        <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</span>/Encounter?patient=&lt;patient id&gt;</b></pre>
                         <p>It essentially says - "give me all Encounters that have this patient ID as the subject patient". Try entering <code class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</code><code>/Encounter?patient=</code><code class="patient-with-references-serverid" id="rf-patient"></code> into Postman - you'll see a result like this:</p>
                         <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search-thumb.png" class="thumbnail"/></a>.
                         <p>Three things are of interest are:</p>
@@ -460,6 +461,14 @@
                             <li>the expected Encounter resource, given how our Patient has just one recorded encounter.</li>
                         </ol>
                         <p>We've now successfully located which encounters our patient has using a reference - congratulations!</p>
+                        
+                        <h5 id="pr-observe-contained-references">Step 5: Observe contained resource references</h5>
+                        <p>References don't always have to point to a resource located elsewhere, they can also point to resources that are <a href="http://hl7.org/fhir/2016May/references.html#contained">contained</a> (embedded) in the resource. Load up  our DiagnosticOrder in Postman:</p>
+                        <pre><b><span class="patient-with-references-location-full" id="rf-diagnosticorder">(press Upload first)</span></b></pre>
+                        
+                        <p>Press press Ctrl/&#8984;+F and copy/paste <code>practitionerid</code> - you'll find two references to it, one in <code>&lt;reference value="#practitionerid" /&gt;</code> and another in a <code>&lt;contained&gt;</code> field:</p>
+                        <img src="images/postman-contained-reference.png" class="centered"/>
+                        <p>Whenever you see an identifier start with the hash sign (#), you will see a corresponding resource within the &lt;contained&gt; field, embedded in the parent resource. Such embedding should only be done in the cases where the embedded resource can't exist on its own - for example it can't have an identifier to uniquely identify it or it only makes sense in a particular transaction scope.</p>
                     </div>
                 </section>
             </div>
