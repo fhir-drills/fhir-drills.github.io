@@ -137,6 +137,10 @@ function failedUpload() {
     uploaded[uploadingId] = null;
 }
 
+function switchTab(tabid) {
+    document.getElementById(tabid).click();
+}
+
 document.getElementById('patient-with-references-button').onclick = function () {
     uploadFiles("patient-with-references", servers.sqlonfhir2, [
     ["rf-patient", "resource-examples/Patient-f001.json"],
