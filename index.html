@@ -475,17 +475,17 @@
                         <ul class="toc">
                             <h4>Contents</h4>
                             <!-- pr prefix stands for 'patient references'-->
-                            <a href="#pr-setup">Step 1: Setup</a>
-                            <a href="#pr-find-patient">Step 2: Find your patient</a>
-                            <a href="#pr-observe-external-references">Step 3: Observe external references</a>
-                            <a href="#pr-search-resource-using-reference">Step 4: Search for a resource using a reference</a>
-                            <a href="#pr-observe-contained-references">Step 5: Observe contained resource references</a>
+                            <a href="#cm-about-conceptmap">Step 1: About ConceptMap</a>
+                            <a href="#cm-sample-data-mapping">Step 2: Sample data mapping</a>
                         </ul>
 
-                        <h5 id="pr-setup">Step 1: Setup</h5>
-                        <p>Prior to doing the tutorial, a set of FHIR resources needs to be uploaded to the tutorial FHIR server so you can query them. Press the <code>Upload</code> button below to send your resources up:</p>
-
- 
+                        <h5 id="cm-about-conceptmap">Step 1: About ConceptMap</h5>
+                        <p>The <a href="http://hl7.org/fhir/2016May/conceptmap.html">ConceptMap</a> resource in general has <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">four parts</a> to it: 1) metadata about the resource, 2) the source of the data, 3) target the data is mapped to, and 4) the individual mappings themselves:</p>
+                        <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview"><img src="images/conceptmap-overview-thumbnail.png" class="thumbnail"/></a>
+                        <p>Metadata about the resource describes general information about the mapping - who made it, what version is it at, copyright on the content and so on.</p>
+                        <p>Source of the data is a reference, or the entire definition inline of the dataset that you are mapping from. Remember that ConceptMap is a one-way mapping - so there's always a clear source and a target.</p>
+                        <p>Target of the data is similar to source - it is either a reference to the dataset or its inline definition.</p>
+                        <p>Finally comes the meat of the matter - the mappings themselves. Each <b>element</b> can have one or more <b>target</b> elements - this is where you specify a connection between a code from one valueset to code(s) in another valueset. The type of the connection is described by the mandatory <b>equivalence</b> property - the connection could say that the two elements are exactly the same, one concept encompasses more (or less) meaning than the other, or the two concepts aren't related at all even. The full list of equivalence values is available in the <a href="http://hl7.org/fhir/2016May/valueset-concept-map-equivalence.html">ConceptMap Equivalence</a> valueset.</p>
                     </div>
                 </section>
             </div>
