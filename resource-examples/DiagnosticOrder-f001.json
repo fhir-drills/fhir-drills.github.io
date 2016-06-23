@@ -1,53 +1,87 @@
-    {
-      "resourceType": "DiagnosticOrder",
-      "id": "nehta-f001",
-      "identifier": [
-        {
-          "use": "official",
-          "system": "http://www.bmc.nl/zorgportal/identifiers/labresults",
-          "value": "L2381"
-        }
+{  
+   "resourceType":"DiagnosticOrder",
+   "id":"nehta-f001",
+   "identifier":[  
+      {  
+         "use":"official",
+         "system":"http://www.bmc.nl/zorgportal/identifiers/labresults",
+         "value":"L2381"
+      }
+   ],
+   "subject":{  
+      "reference":"Patient/nehta-f001",
+      "display":"P. van den Heuvel"
+   },
+   "orderer":{  
+      "reference":"#practitionerid",
+      "display":"Dr. Adam Careful"
+   },
+   "contained":[  
+      {  
+         "resourceType":"Practitioner",
+         "id":"practitionerid",
+         "text":{  
+            "status":"generated",
+            "div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>Dr Adam Careful is a Referring Practitioner for Acme Hospital from 1-Jan 2012 to 31-Mar\n        2012</p>\n    </div>"
+         },
+         "identifier":[  
+            {  
+               "system":"http://www.acme.org/practitioners",
+               "value":"23"
+            }
+         ],
+         "active":true,
+         "name":[  
+            {  
+               "family":[  
+                  "Careful"
+               ],
+               "given":[  
+                  "Adam"
+               ],
+               "prefix":[  
+                  "Dr"
+               ]
+            }
+         ]
+      }
+   ],
+   "encounter":{  
+      "fhir_comments":[  
+         "   TODO Correcte verwijzing   "
       ],
-      "subject": {
-        "reference": "Patient/nehta-f001",
-        "display": "P. van den Heuvel"
-      },
-      "encounter": {
-        "fhir_comments": [
-          "   TODO Correcte verwijzing   "
-        ],
-        "reference": "Encounter/nehta-f001"
-      },
-      "reason": [
-        {
-          "text": "patient fainted before a procedure"
-        }
-      ],
-      "item": [
-        {
-          "code": {
-            "coding": [
-              {
-                "system": "http://loinc.org",
-                "code": "58410-2",
-                "_code": {
-                  "fhir_comments": [
-                    "     LOINC     "
-                  ]
-                },
-                "display": "Complete blood count (hemogram) panel - Blood by Automated count"
-              }
+      "reference":"Encounter/nehta-f001"
+   },
+   "reason":[  
+      {  
+         "text":"patient fainted before a procedure"
+      }
+   ],
+   "item":[  
+      {  
+         "code":{  
+            "coding":[  
+               {  
+                  "system":"http://loinc.org",
+                  "code":"58410-2",
+                  "_code":{  
+                     "fhir_comments":[  
+                        "     LOINC     "
+                     ]
+                  },
+                  "display":"Complete blood count (hemogram) panel - Blood by Automated count"
+               }
             ]
-          },
-          "bodySite": {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "14975008",
-                "display": "Forearm structure"
-              }
+         },
+         "bodySite":{  
+            "coding":[  
+               {  
+                  "system":"http://snomed.info/sct",
+                  "code":"14975008",
+                  "display":"Forearm structure"
+               }
             ]
-          }
-        }
-      ]
-    }
+         }
+      }
+   ]
+}

@@ -185,20 +185,20 @@
 
                         <h5 id="Step1">Step 1: Setup a Http post client</h5>
                         
-                        <p>The simplest way to retrieve and send FHIR resources to and from a FHIR server is to use a Http post client. This tutorial will use Postman. Postman can be installed as a Chrome browser extension or as a Mac App. You could use any of a number of post clients but the tutiorial will asume your using Postman.</p> 
+                        <p>The simplest way to retrieve and send FHIR resources to and from a FHIR server is to use a Http post client. This tutorial will use Postman. Postman can be installed as a Chrome browser extension or as a Mac App. You could use any of a number of post clients but the tutorial will assume you are using Postman.</p> 
                         
-                        <p>What is a post client? It is a tool that allows you to talk to servers using Hypertext Transfer Protocol (HTTP), the protocol the internet works on. When you use a internet browser the browser is converting your clicks and text into HTTP to send to the web server and the server returns content, your web page, back via HTTP. The browser then interprits the content as a web page and displays it on screen. When we work with FHIR the content is not a web page but rather XML or JSON. Our web browser is not very good at displaying raw XML or JSON so we need a HTTP client so that we can talk in HTTP and view the XML or JSON returned.</p>
+                        <p>What is a post client? It is a tool that allows you to talk to servers using Hypertext Transfer Protocol (HTTP), the protocol the internet works on. When you use a internet browser the browser is converting your clicks and text into HTTP to send to the web server and the server returns content, your web page, back via HTTP. The browser then interprets the content as a web page and displays it on screen. When we work with FHIR the content is not a web page but rather XML or JSON. Our web browser is not very good at displaying raw XML or JSON so we need a HTTP client so that we can talk in HTTP and view the XML or JSON returned.</p>
                         
                         <p>Head over to <a href="https://www.getpostman.com/" rel="stylesheet">POSTMAN</a> via the link and install Postman now if you have not already done so. You don't need an account to get Postman just download the application.</p>
                         
                         <p><a href="images/PostManBlank.JPG" data-lightbox="patient-in-postman">Once you are done you will have a Postman client that looks like this:</a></p>
                         
-                        <p>There are other Http post clients that could be used like <a href="http://www.telerik.com/fiddler" rel="stylesheet">Fiddler</a> so don't feel you have to use Postman.</p>
+                        <p>There are other Http post clients that could be used like <a href="http://www.telerik.com/fiddler">Fiddler</a> so don't feel you have to use Postman.</p>
                         <br>
                         
                         <h5 id="Step2">Step 2: Getting your first resource from a FHIR server</h5>
                         
-                        <p>So the first think we are going to cover is how you go about getting a FHIR resource from a FHIR server. Of course, before you can get a resource someone had to create one on the server. Luckily for you, this web page can do that for you. The button below will upload a FHIR Patient resource to a FHIR server for you and the tutorial will continue to explain how to retrieve that resource using the post client.</p>
+                        <p>So the first thing we are going to cover is how you go about getting a FHIR resource from a FHIR server. Of course, before you can get a resource someone had to create one on the server. Luckily for you, this web page can do that for you. The button below will upload a FHIR Patient resource to a FHIR server for you and the tutorial will continue to explain how to retrieve that resource using the post client.</p>
                         
                         <p>So before we move on click the button below to upload a FHIR Patient resource to the FHIR server. This action will give you a resource to play with independent of the other participants.  To do this, all you need to do is hit the button below. Click the button now.</p>
                         <p>
@@ -238,7 +238,7 @@
                         
                         <p>So now you know how to get a resource from the FHIR server. Next, we are going to update an existing resource on the FHIR server. Let's pretend the patient's name was entered incorretcly and it's your job to fix it up. We are just going to use the same resource you retrieved from <a href="#Step2">Step 2: Getting your first resource from a server</a>.</p> 
                         
-                        <p>In Postman, you first need to set the call type to <b>PUT</b>, then click the <b>Body</b> tab. Make sure you are clicking the right <b>Body</b> tab as there are two. The <b>Body</b> tab at the bottom is where resources returned by the FHIR server are seen, as in Step 1. The <b>Body</b> tab at the top, just under the URL box, is where we place resources to send to the server. You will also need to click the radio button labelled <b>raw</b> to allow the <b>Body's</b> text box to be seen. <a href="images/Postman-SimplePutSetup.PNG" data-lightbox="Postman-SimplePutSetup">Take a look at this screenshot for help</a>.</p>
+                        <p>In Postman, you first need to set the call type to <b>PUT</b>, then click the <b>Body</b> tab. Make sure you are clicking the right <b>Body</b> tab as there are two. The <b>Body</b> tab at the bottom is where resources returned by the FHIR server are seen, as in Step 1. The <b>Body</b> tab at the top, just under the URL box, is where we place resources to send to the server. You need to click the <b>Body</b> tab at the top. You will also need to click the radio button labelled <b>raw</b> to allow the <b>Body's</b> text box to be seen. <a href="images/Postman-SimplePutSetup.PNG" data-lightbox="Postman-SimplePutSetup">Take a look at this screenshot for help</a>.</p>
                         
                         <p>Now go ahead and copy the Patient resource we received from the server from the bottom <b>Body</b> section to the top <b>Body</b> section and then in the top section edit the patient's given name and surname to your name. <i>Don't worry, our PAS team is too busy with duplicate patient merging to notice.</i></p>
                         
@@ -280,7 +280,7 @@
                         
                         <p>Now we need to edit both the resource and the URL to perform an add. For the URL we need only the 'Service Root' and the resource type, which for this example is Patient as seen below:</p>
                         
-                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Pateint</b></code></p>    
+                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient</b></code></p>    
                         
                         
                         
@@ -297,7 +297,7 @@
                         
                         <p>This one's easy, set the Http verb to <b>DELETE</b> and use the 'Service Root' appended with the resource type you wish to remove e.g. 'Patient' and append to that, the resource <b>id</b> of the resource you want to remove. So if you had a Patient resource with an <b>id</b> of '123456' then this URL would remove that resource</p>
                         
-                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Pateint/123456</b></code></p> 
+                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient/123456</b></code></p> 
                                                 
                         
                         <p>But before you delete a resource lets think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update is marked as a deleted and you will no longer find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by it's <b>versionId</b>. So to explain this a bit better, consider the operations in order below:</p>
@@ -312,18 +312,18 @@
                         
                         <p><i>The key point here is that deleting a resource is also considered a version update.</i></p>
                         
-                        <p>So lets now go ahead and delete our orginal Patient resource. Using the URL below, setting the Http verb to <b>DELETE</b> and hitting <b>Send</b>.</p>
+                        <p>So lets now go ahead and delete our original Patient resource. Using the URL below, setting the Http verb to <b>DELETE</b> and hitting <b>Send</b>.</p>
                         
                         <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
                                                 
                         
                         <p>You should receive back a <b>204 No Content</b> return code which indicates the resource was successfully removed.</p>
                         
-                        <p>Following this you can then retrive the same resouce back again using the <b><code>_history/[version number you require]</code></b>. Lets try and retrive <b>versionId=1</b> using the URL as below, and the Http verb of <b>GET</b>.</p>
+                        <p>Following this you can then retrieve the same resource back again using the <b><code>_history/[version number you require]</code></b>. Let's try and retrieve <b>versionId=1</b> using the URL as below, and the Http verb of <b>GET</b>.</p>
               
                         <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code><b><code>/_history/1</code></b></p>
                         
-                        <p>Now you can delete resources and retrive historical versions of resources, well done!</p>
+                        <p>Now you can delete resources and retrieve historical versions of resources, well done!</p>
                         
                     </div>
                 </section>
@@ -404,8 +404,6 @@
                 <section class="section--center mdl-grid mdl-grid--no-spacing">
                     <div class="mdl-cell mdl-cell--12-col">
                         <h4>Patient with References tutorial</h4>
-                        <note>This tutorial is still under construction, at this stage it is worth reading although you wll find it ends abruptly</note>
-                        <br>
                         <p>This tutorial will build on the foundation laid out in the <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial to introduce resource linking in FHIR by the way of <a href="http://hl7.org/fhir/2016May/references.html">references</a>.</p>
                         <ul class="toc">
                             <h4>Contents</h4>
@@ -417,7 +415,7 @@
                             <a href="#pr-observe-contained-references">Step 5: Observe contained resource references</a>
                         </ul>
 
-                        <h5 id="pr-setup">Step1: Setup</h5>
+                        <h5 id="pr-setup">Step 1: Setup</h5>
                         <p>Prior to doing the tutorial, a set of FHIR resources needs to be uploaded to the tutorial FHIR server so you can query them. Press the <code>Upload</code> button below to send your resources up:</p>
 
                         <!-- fix this crime -->
@@ -445,13 +443,14 @@
                         
                         <p>In order to see which resource links to which, open up the FHIR specification for a specific resource and observe the list of resources that reference it. In our example, you can find out if it is a Patient linking to an Observation or an Observation linking to a Patient by opening both the  <a href="http://hl7.org/fhir/2016May/patient.html">Patient</a> and <a href="http://hl7.org/fhir/2016May/observation.html">Observation</a> FHIR specification pages. You'll notice that <a href="images/observation-references-patient.png" data-lightbox="observation-references-patient">Patient mentions</a> that it's referenced by the Observation resource and Observation does not, instead it has a <code>subject</code> field which <a href="images/observations-patient-subject.png" data-lightbox="observations-patient-subject">references Patient</a>.</p>
                         
-                        <p>In the same Postman window, press Ctrl/&#8984;+F and type in <code>reference</code> - you'll find that the Patient contains <a href="images/patient-references.png" data-lightbox="patient-references">just one reference</a>, which is the medical organisation that the Patient belongs to. Even though our patient had an encounter (when he came into the hospital for his procedure), it is not listed here.</p>
+                        <p>In the same Postman window, press Ctrl/&#8984;+F and copy/paste <code>reference</code> - you'll find that the Patient contains <a href="images/patient-references.png" data-lightbox="patient-references">just one reference</a>, which is the medical organisation that the Patient belongs to. Even though our patient had an encounter (when he came into the hospital for his procedure), it is not listed here.</p>
                         
                         <p>Instead, it is the Encounter that has a reference to the Patient. That way, more Encounters can be added without having to update the Patient resource every time (which can become very time-consuming in a large system). In the next section, you'll see how you can find the Encounter that's associated with your Patient.</p>
                         
                         <h5 id="pr-search-resource-using-reference">Step 4: Search for a resource using a reference</h5>
                         <p>FHIR has a notion of Search Parameters, which allow you to locate resources given certain data you know about them. As a sample usecase, let's find the Encounter that's associated with our patient. Scrolling down to the <a href="http://hl7.org/fhir/2016May/encounter.html#search">Search Parameters</a> section of Encounter, we see that there's one named <a href="images/encounter-search-parameters.png" data-lightbox="encounter-search-parameters">patient</a> which allows us to search for the patient present in the encounter.</p>
-                        <p>Thus, given the patient's server ID of <code class="patient-with-references-serverid" id="rf-patient"><i>(press Upload first)</i></code> (this can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field), in order to find which encounters our patient has, the query follows this format:</p> <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</span>/Encounter?patient=&lt;patient id&gt;</b></pre>
+                        <p>Thus, given the patient's server ID of <code class="patient-with-references-serverid" id="rf-patient"><i>(press Upload first)</i></code> (this can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field), in order to find which encounters our patient has, the query follows this format:</p> 
+                        <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</span>/Encounter?patient=&lt;patient id&gt;</b></pre>
                         <p>It essentially says - "give me all Encounters that have this patient ID as the subject patient". Try entering <code class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</code><code>/Encounter?patient=</code><code class="patient-with-references-serverid" id="rf-patient"></code> into Postman - you'll see a result like this:</p>
                         <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search-thumb.png" class="thumbnail"/></a>.
                         <p>Three things are of interest are:</p>
@@ -461,6 +460,14 @@
                             <li>the expected Encounter resource, given how our Patient has just one recorded encounter.</li>
                         </ol>
                         <p>We've now successfully located which encounters our patient has using a reference - congratulations!</p>
+                        
+                        <h5 id="pr-observe-contained-references">Step 5: Observe contained resource references</h5>
+                        <p>References don't always have to point to a resource located elsewhere, they can also point to resources that are <a href="http://hl7.org/fhir/2016May/references.html#contained">contained</a> (embedded) in the resource. Load up  our DiagnosticOrder in Postman:</p>
+                        <pre><b><span class="patient-with-references-location-full" id="rf-diagnosticorder">(press Upload first)</span></b></pre>
+                        
+                        <p>Press press Ctrl/&#8984;+F and copy/paste <code>practitionerid</code> - you'll find two references to it, one in <code>&lt;reference value="#practitionerid" /&gt;</code> and another in a <code>&lt;contained&gt;</code> field:</p>
+                        <img src="images/postman-contained-reference.png" class="centered"/>
+                        <p>Whenever you see an identifier start with the hash sign (#), you will see a corresponding resource within the &lt;contained&gt; field, embedded in the parent resource. Such embedding should only be done in the cases where the embedded resource can't exist on its own - for example it can't have an identifier to uniquely identify it or it only makes sense in a particular transaction scope.</p>
                     </div>
                 </section>
             </div>
