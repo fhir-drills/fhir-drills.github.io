@@ -300,7 +300,7 @@
                         <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient/123456</b></code></p> 
                                                 
                         
-                        <p>But before you delete a resource lets think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update is marked as a deleted and you will no longer find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by it's <b>versionId</b>. So to explain this a bit better, consider the operations in order below:</p>
+                        <p>But before you delete a resource let's think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update is marked as a deleted and you will no longer find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by it's <b>versionId</b>. So to explain this a bit better, consider the operations in order below:</p>
                         
                         <ol>
                           <li> <b>Patient</b> resource, added via a <b>POST</b> <i>{this is versionId = 1}</i></li>                          
@@ -312,7 +312,7 @@
                         
                         <p><i>The key point here is that deleting a resource is also considered a version update.</i></p>
                         
-                        <p>So lets now go ahead and delete our original Patient resource. Using the URL below, setting the Http verb to <b>DELETE</b> and hitting <b>Send</b>.</p>
+                        <p>So let's now go ahead and delete our original Patient resource. Using the URL below, setting the Http verb to <b>DELETE</b> and hitting <b>Send</b>.</p>
                         
                         <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
                                                 
@@ -489,13 +489,13 @@
                             
                         </ul>
 
-                        <h5 id="ss-step1">Step 1: Waht are ValueSets &amp; CodeSystems</h5>
+                        <h5 id="ss-step1">Step 1: What are ValueSets &amp; CodeSystems</h5>
                         
-                        <p>In healthcare, we use many codes from many different sets of codes. We have relatively simple ones like patient sex and more complex ones such as allergies and adverse reactions and more clerical ones like facility codes or billing codes. FHIR can not define all the required codes and codes sets that every healthcare system across the world requires. Instead, FHIR provides a mechanism to manage the codes and code sets and that mechanism is CodeSystem and ValueSet.  </p>
+                        <p>In healthcare, we use many codes from many different sets of codes. We have relatively simple ones like patient sex and more complex ones such as allergies and adverse reactions and more clerical ones like facility codes or billing codes. FHIR cannot define all the required codes and codes sets that every healthcare system across the world requires. Instead, FHIR provides a mechanism to manage the codes and code sets and that mechanism is CodeSystem and ValueSet.  </p>
                         
                         <p>FHIR's CodeSystems &amp; ValueSets work hand in hand to manage terminology in FHIR. The two are so closely tied that in the early versions of FHIR they were actually one resource. Yet since the STU3 version of FHIR, they have been separated. Here we will first explain the concepts behind CodeSystem &amp; ValueSet and later we will look at the FHIR resources that embody them.</p>
                             
-                        <p>It is best to start by explaining CodeSystem as it is the basis that ValueSets are then created from. You can think of a CodeSystem as being a master catalog of a particular set of codes. It is the totality of all the codes in a system. That system maybe SNOMED-CT or LOINC or even a system you create for your self. Let's use an analogy to help explain.</p>
+                        <p>It is best to start by explaining CodeSystem as it is the basis that ValueSets are then created from. You can think of a CodeSystem as being a master catalog of a particular set of codes. It is the totality of all the codes in a system. That system maybe SNOMED-CT or LOINC or even a system you create for yourself. Let's use an analogy to help explain.</p>
 
                         <p>I love Allen’s lollies. Let’s imagine that each different lolly is a code. We have RipeRaspberries, Pineapples, MilkBottles, Snakes and all the other Allen’s lollies. If we listed the entire catalogue of Allen’s lollies with a description for each, the date the list was put together, the list's publisher details and more then this would be the CodeSystem.</p>
                         
@@ -511,19 +511,19 @@
                         
                         <h5 id="ss-step2">Step 2: CodeSystem the FHIR Resources</h5>
                         
-                        <p>Lets take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
+                        <p>Let's take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
 
                         <ul>
                         <li><b><a href="http://hl7.org/fhir/2016May/codesystem.html" rel="stylesheet">Resource CodeSystem</a></b></li>
                         </ul>
-                        <p><b>Here is a very simple exampe of basic CodeSystem FHIR resource</b></p>
+                        <p><b>Here is a very simple example of basic CodeSystem FHIR resource</b></p>
                         <img src="images/SimpleCodeSystemImage.PNG" width="100%">
                             
                      
                         
                         <h5 id="ss-step3">Step 3: ValueSet the FHIR Resources</h5>
                         
-                        <p>Lets take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
+                        <p>Let's take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
                     
                         <ul>
                         <li><b><a href="http://hl7.org/fhir/2016May/valueset.html" rel="stylesheet">Resource ValueSet</a></b></li>
