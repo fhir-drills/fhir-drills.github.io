@@ -476,17 +476,62 @@
                     <div class="mdl-cell mdl-cell--12-col">
                         <h4>ValueSet and CodeSystem</h4>
                         
+                        <note>This tutorial is still under construction</note>
+                        
                         <p>This tutorial will will cover the basics of the ValueSet and CodeSystem resources which are two of the three key resources for working with terminology within FHIR</p>
                         <ul class="toc">
                             <h4>Contents</h4>
                             <!-- pr prefix stands for 'patient references'-->
-                            <a href="#ss-step1">Step 1: Name Searching</a>  
-                            <a href="#ss-step2">Step 2: Extended Search</a>  
-                            <a href="#ss-step3">Step 3: Search Parameter Types</a>  
+                            <a href="#ss-step1">Step 1: What are ValueSets &amp; CodeSystems</a>                            
+                            <a href="#ss-step2">Step 2: CodeSystem the FHIR Resources</a>  
+                            <a href="#ss-step3">Step 3: ValueSet the FHIR Resources</a>  
+                            
                             
                         </ul>
 
-                        <h5 id="ss-step1">Step 1: Name Searching</h5>
+                        <h5 id="ss-step1">Step 1: Waht are ValueSets &amp; CodeSystems</h5>
+                        
+                        <p>In healthcare, we use many codes from many different sets of codes. We have relatively simple ones like patient sex and more complex ones such as allergies and adverse reactions and more clerical ones like facility codes or billing codes. FHIR can not define all the required codes and codes sets that every healthcare system across the world requires. Instead, FHIR provides a mechanism to manage the codes and code sets and that mechanism is CodeSystem and ValueSet.  </p>
+                        
+                        <p>FHIR's CodeSystems &amp; ValueSets work hand in hand to manage terminology in FHIR. The two are so closely tied that in the early versions of FHIR they were actually one resource. Yet since the STU3 version of FHIR, they have been separated. Here we will first explain the concepts behind CodeSystem &amp; ValueSet and later we will look at the FHIR resources that embody them.</p>
+                            
+                        <p>It is best to start by explaining CodeSystem as it is the basis that ValueSets are then created from. You can think of a CodeSystem as being a master catalog of a particular set of codes. It is the totality of all the codes in a system. That system maybe SNOMED-CT or LOINC or even a system you create for your self. Let's use an analogy to help explain.</p>
+
+                        <p>I love Allen’s lollies. Let’s imagine that each different lolly is a code. We have RipeRaspberries, Pineapples, MilkBottles, Snakes and all the other Allen’s lollies. If we listed the entire catalogue of Allen’s lollies with a description for each, the date the list was put together, the list's publisher details and more then this would be the CodeSystem.</p>
+                        
+                        <img src="images/Lollies-Mix.jpg" width="30%"> 
+                        
+                        <p>The CodeSystem does not get used by the consumers, it is just the reference catalog about all Allen’s lollies, if you wanted to find out more about the RipeRaspberries code then you would go to the CodeSystem. What a consumer uses is a ValueSet, because a ValueSet adds value to the consumer. In our lolly analogy, the ValueSet is the packet of lollies you buy, like the Party Mix or the bag of lollies you choose because there your favourites. This is a ValueSet because it serves a purpose.  It is a selection of codes from the CodeSystem to be used for a purpose.</p>
+                        
+                        <img src="images/Lollies-BagOf.jpg" width="20%">
+                        
+                        <p>But a ValueSet is not limited to a single CodeSystem just as our bag of lollies is not limited to Allen's lollies. I'm also quite fond of Smarties, but only Red and Blue ones from the Smarties CodeSystem and also a few RedSkins from the Wonka CodeSystem. All of these can go into my same lolly bag which is a single ValueSet.</p>
+                        
+                        <p>Next we will look at the FHIR resources named CodeSystem &amp; ValueSet that support these concepts.</p>
+                        
+                        <h5 id="ss-step2">Step 2: CodeSystem the FHIR Resources</h5>
+                        
+                        <p>Lets take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
+
+                        <ul>
+                        <li><b><a href="http://hl7.org/fhir/2016May/codesystem.html" rel="stylesheet">Resource CodeSystem</a></b></li>
+                        </ul>
+                        <p><b>Here is a very simple exampe of basic CodeSystem FHIR resource</b></p>
+                        <img src="images/SimpleCodeSystemImage.PNG" width="100%">
+                            
+                     
+                        
+                        <h5 id="ss-step3">Step 3: ValueSet the FHIR Resources</h5>
+                        
+                        <p>Lets take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
+                    
+                        <ul>
+                        <li><b><a href="http://hl7.org/fhir/2016May/valueset.html" rel="stylesheet">Resource ValueSet</a></b></li>
+                        </ul>
+                        
+                        
+                        
+                        
                         
                     </div>
                 </section>
