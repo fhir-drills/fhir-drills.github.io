@@ -80,6 +80,7 @@
                 <a href="#simple-search" id="simple-search" class="mdl-layout__tab">Simple Search</a>
                 <a href="#patient-with-references" class="mdl-layout__tab">Patient with References</a>
                 <a href="#ValueSet-And-CodeSystem" class="mdl-layout__tab">ValueSet &amp; CodeSystem</a>
+                <a href="#conceptmap" class="mdl-layout__tab">ConceptMap</a>
             </div>
         </header>
         <main class="mdl-layout__content">
@@ -93,81 +94,10 @@
                             
                             <p>Please note these tutorials have been written against current officially released version of FHIR, which is <a href="http://hl7.org/fhir/index.html">DSTU 2</a>.</p>
                             
-                            <p>To continue, use the tabs at the top of the page and work through the tutorials from left to right starting with <b>Simple Patient</b>.</p>
+                            <p>To continue, use the tabs at the top of the page and work through the tutorials from left to right starting with the <a href="#" onclick="switchTab('simple-patient')">Simple Patient</a>.</p>
                         </div>                             
                     </div>
                 </section>
-<!--
-                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                    <div class="mdl-card mdl-cell mdl-cell--12-col">
-                        <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-                            <h4 class="mdl-cell mdl-cell--12-col">Details</h4>
-                            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                                <div class="section__circle-container__circle mdl-color--primary"></div>
-                            </div>
-                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                <h5>Lorem ipsum dolor sit amet</h5> Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
-                            </div>
-                            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                                <div class="section__circle-container__circle mdl-color--primary"></div>
-                            </div>
-                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                <h5>Lorem ipsum dolor sit amet</h5> Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
-                            </div>
-                            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                                <div class="section__circle-container__circle mdl-color--primary"></div>
-                            </div>
-                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                <h5>Lorem ipsum dolor sit amet</h5> Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Duis nulla tempor do aute et eiusmod velit exercitation nostrud quis <a href="#">proident minim</a>.
-                            </div>
-                        </div>
-                        <div class="mdl-card__actions">
-                            <a href="#" class="mdl-button">Read our features</a>
-                        </div>
-                    </div>
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
-                        <i class="material-icons">more_vert</i>
-                    </button>
-                    <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn2">
-                        <li class="mdl-menu__item">Lorem</li>
-                        <li class="mdl-menu__item" disabled>Ipsum</li>
-                        <li class="mdl-menu__item">Dolor</li>
-                    </ul>
-                </section>
-                
-                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                    <div class="mdl-card mdl-cell mdl-cell--12-col">
-                        <div class="mdl-card__supporting-text">
-                            <h4>Technology</h4> Dolore ex deserunt aute fugiat aute nulla ea sunt aliqua nisi cupidatat eu. Nostrud in laboris labore nisi amet do dolor eu fugiat consectetur elit cillum esse. Pariatur occaecat nisi laboris tempor laboris eiusmod qui id Lorem esse commodo in. Exercitation aute dolore deserunt culpa consequat elit labore incididunt elit anim.
-                        </div>
-                        <div class="mdl-card__actions">
-                            <a href="#" class="mdl-button">Read our features</a>
-                        </div>
-                    </div>
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn3">
-                        <i class="material-icons">more_vert</i>
-                    </button>
-                    <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn3">
-                        <li class="mdl-menu__item">Lorem</li>
-                        <li class="mdl-menu__item" disabled>Ipsum</li>
-                        <li class="mdl-menu__item">Dolor</li>
-                    </ul>
-                </section>
-                <section class="section--footer mdl-color--white mdl-grid">
-                    <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                        <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
-                    </div>
-                    <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                        <h5>Lorem ipsum dolor sit amet</h5> Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
-                    </div>
-                    <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                        <div class="section__circle-container__circle mdl-color--accent section__circle--big"></div>
-                    </div>
-                    <div class="section__text mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                        <h5>Lorem ipsum dolor sit amet</h5> Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
-                    </div>
-                </section>
--->
             </div>
             <div class="mdl-layout__tab-panel" id="simple-patient">
                 <section class="section--center mdl-grid mdl-grid--no-spacing">
@@ -300,7 +230,7 @@
                         <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient/123456</b></code></p> 
                                                 
                         
-                        <p>But before you delete a resource lets think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update is marked as a deleted and you will no longer find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by it's <b>versionId</b>. So to explain this a bit better, consider the operations in order below:</p>
+                        <p>But before you delete a resource let's think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update is marked as a deleted and you will no longer find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by it's <b>versionId</b>. So to explain this a bit better, consider the operations in order below:</p>
                         
                         <ol>
                           <li> <b>Patient</b> resource, added via a <b>POST</b> <i>{this is versionId = 1}</i></li>                          
@@ -312,7 +242,7 @@
                         
                         <p><i>The key point here is that deleting a resource is also considered a version update.</i></p>
                         
-                        <p>So lets now go ahead and delete our original Patient resource. Using the URL below, setting the Http verb to <b>DELETE</b> and hitting <b>Send</b>.</p>
+                        <p>So let's now go ahead and delete our original Patient resource. Using the URL below, setting the Http verb to <b>DELETE</b> and hitting <b>Send</b>.</p>
                         
                         <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
                                                 
@@ -333,7 +263,7 @@
                     <div class="mdl-cell mdl-cell--12-col">
                         <h4>Simple Search</h4>
                         
-                        <p>This tutorial will build on the foundation laid out in the <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial to introduce searching against FHIR resources.</p>
+                        <p>This tutorial will build on the foundation laid out in the <a href="#" onclick="switchTab('simple-patient')">Simple Patient</a> tutorial to introduce searching against FHIR resources.</p>
                         <ul class="toc">
                             <h4>Contents</h4>
                             <!-- pr prefix stands for 'patient references'-->
@@ -471,6 +401,7 @@
                     </div>
                 </section>
             </div>
+
             <div class="mdl-layout__tab-panel" id="ValueSet-And-CodeSystem">
                 <section class="section--center mdl-grid mdl-grid--no-spacing">
                     <div class="mdl-cell mdl-cell--12-col">
@@ -489,13 +420,13 @@
                             
                         </ul>
 
-                        <h5 id="ss-step1">Step 1: Waht are ValueSets &amp; CodeSystems</h5>
+                        <h5 id="ss-step1">Step 1: What are ValueSets &amp; CodeSystems</h5>
                         
-                        <p>In healthcare, we use many codes from many different sets of codes. We have relatively simple ones like patient sex and more complex ones such as allergies and adverse reactions and more clerical ones like facility codes or billing codes. FHIR can not define all the required codes and codes sets that every healthcare system across the world requires. Instead, FHIR provides a mechanism to manage the codes and code sets and that mechanism is CodeSystem and ValueSet.  </p>
+                        <p>In healthcare, we use many codes from many different sets of codes. We have relatively simple ones like patient sex and more complex ones such as allergies and adverse reactions and more clerical ones like facility codes or billing codes. FHIR cannot define all the required codes and codes sets that every healthcare system across the world requires. Instead, FHIR provides a mechanism to manage the codes and code sets and that mechanism is CodeSystem and ValueSet.  </p>
                         
                         <p>FHIR's CodeSystems &amp; ValueSets work hand in hand to manage terminology in FHIR. The two are so closely tied that in the early versions of FHIR they were actually one resource. Yet since the STU3 version of FHIR, they have been separated. Here we will first explain the concepts behind CodeSystem &amp; ValueSet and later we will look at the FHIR resources that embody them.</p>
                             
-                        <p>It is best to start by explaining CodeSystem as it is the basis that ValueSets are then created from. You can think of a CodeSystem as being a master catalog of a particular set of codes. It is the totality of all the codes in a system. That system maybe SNOMED-CT or LOINC or even a system you create for your self. Let's use an analogy to help explain.</p>
+                        <p>It is best to start by explaining CodeSystem as it is the basis that ValueSets are then created from. You can think of a CodeSystem as being a master catalog of a particular set of codes. It is the totality of all the codes in a system. That system maybe SNOMED-CT or LOINC or even a system you create for yourself. Let's use an analogy to help explain.</p>
 
                         <p>I love Allen’s lollies. Let’s imagine that each different lolly is a code. We have RipeRaspberries, Pineapples, MilkBottles, Snakes and all the other Allen’s lollies. If we listed the entire catalogue of Allen’s lollies with a description for each, the date the list was put together, the list's publisher details and more then this would be the CodeSystem.</p>
                         
@@ -511,28 +442,24 @@
                         
                         <h5 id="ss-step2">Step 2: CodeSystem the FHIR Resources</h5>
                         
-                        <p>Lets take a closer look at the CodeSystem FHIR resource. You will find the CodeSystem resource page in the FHIR specification here:</p>
+                        <p>Let's take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
 
                         <ul>
                         <li><b><a href="http://hl7.org/fhir/2016May/codesystem.html" rel="stylesheet">Resource CodeSystem</a></b></li>
                         </ul>
-                        <p><b>Here is a very simple exampe of basic CodeSystem FHIR resource</b></p>
-                        <p>This example below only contains two codes <b>'easy'</b> and <b>'hard'</b>. What is important for you at this stage is to grasp the basic structure of the resource. Notice that the top section (lines 8 to 20), like all FHIR resources, is a narrative HTML representation of the CodeSystem. The middle section (lines 21 to 37) is all the metadata about the CodeSystem, things like the version, a name and description for the CodeSystem, its status, whether it is experimental or not, who is the publisher and whether the codes are case sensitive. The last section (lines 38 to 45) are the actual codes each in there own <code>&lt;concept&gt;</code> element</p>
-                        <p><img src="images/SimpleCodeSystemImage.PNG" width="100%"></p>
+                        <p><b>Here is a very simple example of basic CodeSystem FHIR resource</b></p>
+                        <img src="images/SimpleCodeSystemImage.PNG" width="100%">
                             
                         <p>Remember this example does not show every property of a CodeSystem resource, ive only used the ones I though were key while also trying to keep the example nice and short.</p>
 
                         <p><b>Question:</b> Go to the FHIR specification and work out how you would expresss a synonym of <b>'simple'</b> for the code <b>'easy'</b>? <br><i>A clue is 'designation use'.</i></p>
                         <h5 id="ss-step3">Step 3: ValueSet the FHIR Resources</h5>
                         
-                        <p>Lets take a closer look at the ValueSet FHIR resource. You will find the ValueSet resource page in the FHIR specification here:</p>
+                        <p>Let's take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
                     
                         <ul>
                         <li><b><a href="http://hl7.org/fhir/2016May/valueset.html" rel="stylesheet">Resource ValueSet</a></b></li>
                         </ul>
-                        
-                        <p><b>Here is a very simple exampe of a basic ValueSet FHIR resource which uses our previouis <a href="#ss-step2">CodeSystem the FHIR Resource</a></b></p>
-                        
                         
                         
                         
@@ -541,6 +468,31 @@
                     </div>
                 </section>
             </div>            
+            <div class="mdl-layout__tab-panel" id="conceptmap">
+                <section class="section--center mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h4>ConceptMap tutorial</h4>
+                        <p><a href="http://hl7.org/fhir/2016May/conceptmap.html">ConceptMap</a> is a special type of a FHIR resource that allows you to establish a one-way relationship between any two things - classes in class models, data elements, or code systems. We'll use latter as an example in this tutorial to demonstrate how two concepts can be related (mapped) to each other and how their equivalence (or lack of) can be specified.</p>
+                        <ul class="toc">
+                            <h4>Contents</h4>
+                            <!-- pr prefix stands for 'patient references'-->
+                            <a href="#cm-about-conceptmap">Step 1: About ConceptMap</a>
+                            <a href="#cm-sample-data-mapping">Step 2: Sample data mapping</a>
+                        </ul>
+
+                        <h5 id="cm-about-conceptmap">Step 1: About ConceptMap</h5>
+                        <p>The <a href="http://hl7.org/fhir/2016May/conceptmap.html">ConceptMap</a> resource in general has <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">four parts</a> to it: 1) metadata about the resource, 2) the source of the data, 3) target the data is mapped to, and 4) the individual mappings themselves:</p>
+                        <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview"><img src="images/conceptmap-overview-thumbnail.png" class="thumbnail"/></a>
+                        <p><b>Metadata</b> about the resource describes general information about the mapping - who made it, what version is it at, copyright on the content and so on.</p>
+                        <p><b>Source</b> of the data is a reference, or the entire definition inline of the dataset that you are mapping from. Remember that ConceptMap is a one-way mapping - so there's always a clear source and a target.</p>
+                        <p><b>Target</b> of the data is similar to source - it is either a reference to the dataset or its inline definition.</p>
+                        <p>Finally comes the meat of the matter - the <b>mappings</b> themselves. Each mapping (called as 'element' in the data) can have one or more <b>target</b> elements, which specify a connection between a code from one valueset to code(s) in another valueset. The type of connection is described by the mandatory <b>equivalence</b> property - the connection could say that the two elements are exactly the same, one concept encompasses more (or less) meaning than the other, or the two concepts aren't related at all even. The full list of equivalence values is available in the <a href="http://hl7.org/fhir/2016May/valueset-concept-map-equivalence.html">ConceptMap Equivalence</a> valueset.</p>
+                        
+                        <h5 id="cm-sample-data-mapping">Step 2: Sample data mapping</h5>
+                        <p></p>
+                    </div>
+                </section>
+            </div>
             <footer class="mdl-mega-footer">
                 <div class="mdl-mega-footer--middle-section">
                     <div class="mdl-mega-footer--drop-down-section">
@@ -562,14 +514,6 @@
                         </ul>
                     </div>
                 </div>
-<!--
-                <div class="mdl-mega-footer--bottom-section">
-                    <ul class="mdl-mega-footer--link-list">
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Privacy and Terms</a></li>
-                    </ul>
-                </div>
--->
             </footer>
         </main>
     </div>
