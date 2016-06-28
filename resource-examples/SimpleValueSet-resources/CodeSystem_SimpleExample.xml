@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="1"/>
+  <meta>
+    <versionId value="1"/>
+    <lastUpdated value="2016-06-27T13:50:00Z"/>
+  </meta>
+  <text>
+    <status value="additional"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Code System for FHIR tutorial participants to rate the difficulty of understanding of the training material</p>
+      <p>Developed by: NEHTA NCTA Connectathon team (example)</p>
+      <p>Published for testing on 27-June 2016</p>      
+      <table>
+        <tr><td><b>Code</b></td><td><b>Display</b></td></tr>
+        <tr><td>easy</td><td>I found the material easy to understand</td></tr>
+        <tr><td>hard</td><td>I found the material hard to understand</td></tr>       
+      </table> 
+    </div>
+  </text>
+  <url value="urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1"/>  
+  <version value="20162726"/>
+  <name value="FHIR tutorial difficulty levels"/>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <publisher value="NEHTA"/>
+  <contact>
+    <name value="Angus Millar"/>
+    <telecom>
+      <system value="email"/>
+      <value value="angus.millar@nehta.gov.au"/>
+    </telecom>
+  </contact>
+  <date value="2016-06-27"/>
+  <description value="Code System for FHIR tutorial participants to rate the difficulty of understanding of the training material"/>
+  <caseSensitive value="true"/>
+  <content value="complete"/>
+  <concept>
+    <code value="easy"/>
+    <display value="I found the material easy to understand"/>   
+  </concept>
+  <concept>
+    <code value="hard"/>
+    <display value="I found the material hard to understand"/>   
+  </concept>  
+</CodeSystem>
+
+

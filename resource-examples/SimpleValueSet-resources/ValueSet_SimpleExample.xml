@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="1"/>
+  <meta>
+    <versionId value="1"/>
+    <lastUpdated value="2016-06-27T15:00:00Z"/>
+  </meta>
+  <text>
+    <status value="additional"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>ValueSet for FHIR tutorial participants to rate the difficulty of understanding of the training material</p>
+      <p>Developed by: NEHTA NCTA Connectathon team (example)</p>
+      <p>Published for testing on 27-June 2016</p>      
+      <table>
+        <tr><td><b>Code</b></td><td><b>Display</b></td></tr>
+        <tr><td>easy</td><td>I found the material easy to understand</td></tr>
+        <tr><td>hard</td><td>I found the material hard to understand</td></tr>       
+      </table> 
+    </div>      
+  </text>
+  <url value="urn:uuid:8ec3847e-789e-4994-a74b-7bbf55d88190"/>  
+  <version value="20160530"/>
+  <name value="FHIR tutorial difficulty levels"/>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <publisher value="NEHTA"/>
+  <contact>
+    <name value="Angus Millar"/>
+    <telecom>
+      <system value="email"/>
+      <value value="angus.millar@nehta.gov.au"/>
+    </telecom>
+  </contact>
+  <date value="2016-06-27"/>
+  <lockedDate value="2016-06-27"/>
+  <description value="Codes for FHIR tutorial participants to rate the difficulty of understanding of the training material"/>
+  <compose>
+    <include>
+      <system value="http://fhir3.healthintersections.com.au/open/CodeSystem/5"/>
+      <version value="20162726"/>
+      <concept>
+        <code value="easy"/>        
+      </concept>
+      <concept>
+        <code value="hard"/>        
+      </concept>     
+    </include>
+  </compose>
+</ValueSet>

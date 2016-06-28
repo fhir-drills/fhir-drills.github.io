@@ -511,23 +511,28 @@
                         
                         <h5 id="ss-step2">Step 2: CodeSystem the FHIR Resources</h5>
                         
-                        <p>Lets take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
+                        <p>Lets take a closer look at the CodeSystem FHIR resource. You will find the CodeSystem resource page in the FHIR specification here:</p>
 
                         <ul>
                         <li><b><a href="http://hl7.org/fhir/2016May/codesystem.html" rel="stylesheet">Resource CodeSystem</a></b></li>
                         </ul>
                         <p><b>Here is a very simple exampe of basic CodeSystem FHIR resource</b></p>
-                        <img src="images/SimpleCodeSystemImage.PNG" width="100%">
+                        <p>This example below only contains two codes <b>'easy'</b> and <b>'hard'</b>. What is important for you at this stage is to grasp the basic structure of the resource. Notice that the top section (lines 8 to 20), like all FHIR resources, is a narrative HTML representation of the CodeSystem. The middle section (lines 21 to 37) is all the metadata about the CodeSystem, things like the version, a name and description for the CodeSystem, its status, whether it is experimental or not, who is the publisher and whether the codes are case sensitive. The last section (lines 38 to 45) are the actual codes each in there own <code>&lt;concept&gt;</code> element</p>
+                        <p><img src="images/SimpleCodeSystemImage.PNG" width="100%"></p>
                             
-                     
-                        
+                        <p>Remember this example does not show every property of a CodeSystem resource, ive only used the ones I though were key while also trying to keep the example nice and short.</p>
+
+                        <p><b>Question:</b> Go to the FHIR specification and work out how you would expresss a synonym of <b>'simple'</b> for the code <b>'easy'</b>? <br><i>A clue is 'designation use'.</i></p>
                         <h5 id="ss-step3">Step 3: ValueSet the FHIR Resources</h5>
                         
-                        <p>Lets take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
+                        <p>Lets take a closer look at the ValueSet FHIR resource. You will find the ValueSet resource page in the FHIR specification here:</p>
                     
                         <ul>
                         <li><b><a href="http://hl7.org/fhir/2016May/valueset.html" rel="stylesheet">Resource ValueSet</a></b></li>
                         </ul>
+                        
+                        <p><b>Here is a very simple exampe of a basic ValueSet FHIR resource which uses our previouis <a href="#ss-step2">CodeSystem the FHIR Resource</a></b></p>
+                        
                         
                         
                         
