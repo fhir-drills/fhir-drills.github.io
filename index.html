@@ -413,58 +413,102 @@
                         <ul class="toc">
                             <h4>Contents</h4>
                             <!-- pr prefix stands for 'patient references'-->
-                            <a href="#ss-step1">Step 1: What are ValueSets &amp; CodeSystems</a>                            
-                            <a href="#ss-step2">Step 2: CodeSystem the FHIR Resources</a>  
-                            <a href="#ss-step3">Step 3: ValueSet the FHIR Resources</a>  
+                            <a href="#vac-step1">Step 1: What are ValueSets &amp; CodeSystems</a>                            
+                            <a href="#vac-step2">Step 2: CodeSystem the FHIR Resources</a>  
+                            <a href="#vac-step3">Step 3: ValueSet the FHIR Resources</a>  
+                            <a href="#vac-step4">Step 4: Understanding how ValueSet codes are used</a>  
+                            <a href="#vac-step4">Step 5: ValueSet Codes (Include, Exclude and Filter)</a>  
                             
                             
                         </ul>
 
-                        <h5 id="ss-step1">Step 1: What are ValueSets &amp; CodeSystems</h5>
+                        <h5 id="vac-step1">Step 1: What are ValueSets &amp; CodeSystems</h5>                        
                         
-                        <p>In healthcare, we use many codes from many different sets of codes. We have relatively simple ones like patient sex and more complex ones such as allergies and adverse reactions and more clerical ones like facility codes or billing codes. FHIR cannot define all the required codes and codes sets that every healthcare system across the world requires. Instead, FHIR provides a mechanism to manage the codes and code sets and that mechanism is CodeSystem and ValueSet.  </p>
+                        <p>In healthcare, we use many codes from many different sets of codes. We have relatively simple ones like patient sex and more complex ones such as allergies and adverse reactions and more clerical ones like facility codes or billing codes. FHIR cannot define every required code and code set for every healthcare system across the world. Instead, FHIR provides a mechanism to manage the codes and code sets and that mechanism is CodeSystem and ValueSet.  </p>
                         
                         <p>FHIR's CodeSystems &amp; ValueSets work hand in hand to manage terminology in FHIR. The two are so closely tied that in the early versions of FHIR they were actually one resource. Yet since the STU3 version of FHIR, they have been separated. Here we will first explain the concepts behind CodeSystem &amp; ValueSet and later we will look at the FHIR resources that embody them.</p>
                             
-                        <p>It is best to start by explaining CodeSystem as it is the basis that ValueSets are then created from. You can think of a CodeSystem as being a master catalog of a particular set of codes. It is the totality of all the codes in a system. That system maybe SNOMED-CT or LOINC or even a system you create for yourself. Let's use an analogy to help explain.</p>
+                        <p>It is best to start by explaining CodeSystem as it is the basis that ValueSets are then created from. You can think of a CodeSystem as being a master catalogue of a particular set of codes. It is the totality of all the codes in a system. That system may be SNOMED-CT or LOINC or even a system you create for yourself. Let's use an analogy to help explain.</p>
 
                         <p>I love Allen’s lollies. Let’s imagine that each different lolly is a code. We have RipeRaspberries, Pineapples, MilkBottles, Snakes and all the other Allen’s lollies. If we listed the entire catalogue of Allen’s lollies with a description for each, the date the list was put together, the list's publisher details and more then this would be the CodeSystem.</p>
                         
                         <img src="images/Lollies-Mix.jpg" width="30%"> 
                         
-                        <p>The CodeSystem does not get used by the consumers, it is just the reference catalog about all Allen’s lollies, if you wanted to find out more about the RipeRaspberries code then you would go to the CodeSystem. What a consumer uses is a ValueSet, because a ValueSet adds value to the consumer. In our lolly analogy, the ValueSet is the packet of lollies you buy, like the Party Mix or the bag of lollies you choose because there your favourites. This is a ValueSet because it serves a purpose.  It is a selection of codes from the CodeSystem to be used for a purpose.</p>
+                        <p>The CodeSystem does not get used by the consumers, it is just the reference catalogue for all Allen’s lollies, if you wanted to find out more about the code 'RipeRaspberrie' then you would go to the CodeSystem. What a consumer uses is a ValueSet, because a ValueSet adds value to the consumer. In our lolly analogy, the ValueSet is the packet of lollies you buy, like the Party Mix or the bag of lollies you choose because there your favourites. This is a ValueSet because it serves a purpose.  It is a selection of codes from the CodeSystem to be used for a purpose.</p>
                         
                         <img src="images/Lollies-BagOf.jpg" width="20%">
                         
-                        <p>But a ValueSet is not limited to a single CodeSystem just as our bag of lollies is not limited to Allen's lollies. I'm also quite fond of Smarties, but only Red and Blue ones from the Smarties CodeSystem and also a few RedSkins from the Wonka CodeSystem. All of these can go into my same lolly bag which is a single ValueSet.</p>
+                        <p>But a ValueSet is not limited to a single CodeSystem just as our bag of lollies is not limited to Allen's lollies. I'm also quite fond of Smarties, but only Red and Blue ones, from the Smarties CodeSystem, and also a few RedSkins from the Wonka CodeSystem. All of these can go into my same lolly bag which is a single ValueSet.</p>
                         
-                        <p>Next we will look at the FHIR resources named CodeSystem &amp; ValueSet that support these concepts.</p>
+                        <p>Next, we will look at the FHIR resources used for these concepts which are also named CodeSystem &amp; ValueSet.</p>
                         
-                        <h5 id="ss-step2">Step 2: CodeSystem the FHIR Resources</h5>
+                        <h5 id="vac-step2">Step 2: CodeSystem the FHIR Resources</h5>
                         
                         <p>Let's take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
 
                         <ul>
                         <li><b><a href="http://hl7.org/fhir/2016May/codesystem.html" rel="stylesheet">Resource CodeSystem</a></b></li>
                         </ul>
-                        <p><b>Here is a very simple example of basic CodeSystem FHIR resource</b></p>
-                        <img src="images/SimpleCodeSystemImage.PNG" width="100%">
-                            
-                        <p>Remember this example does not show every property of a CodeSystem resource, ive only used the ones I though were key while also trying to keep the example nice and short.</p>
-
-                        <p><b>Question:</b> Go to the FHIR specification and work out how you would expresss a synonym of <b>'simple'</b> for the code <b>'easy'</b>? <br><i>A clue is 'designation use'.</i></p>
-                        <h5 id="ss-step3">Step 3: ValueSet the FHIR Resources</h5>
+                        <p><b>Here is a simple example of a CodeSystem FHIR resource</b></p>
                         
-                        <p>Let's take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
+                        <p>The example below only contains two codes <b>'easy'</b> and <b>'hard'</b>. What is important for you at this stage is to grasp the basic structure of the resource. Notice that the top section (lines 8 to 20), like all FHIR resources, is a narrative HTML representation of the CodeSystem. The middle section (lines 21 to 37) is all the metadata about the CodeSystem, things like the version, a name and description for the CodeSystem, its status, whether it is experimental or not, who is the publisher and whether the codes are case sensitive. The last section (lines 38 to 45) are the actual codes each in their own <code>&lt;concept&gt;</code> element</p>
+                        
+                        <p>Don't forget, the CodeSystem is a catalogue of codes to be selected in ValueSets.</p>
+                        
+                        <p><img src="images/SimpleCodeSystemImage.PNG" width="100%"></p>
+                            
+                        <p>This example does not show every property of a CodeSystem resource. I've only used the ones I thought were key while also trying to keep the example nice and short. Take a look at <a href="http://hl7.org/fhir/2016May/codesystem.html" rel="stylesheet">CodeSystem</a>  in the FHIR specification to see all the properties available.</p>
+
+                        <p><b>Question:</b> Go to the FHIR specification and work out how you would express a synonym of <b>'simple'</b> for the code <b>'easy'</b> as seen in our CodeSystem example? <br><i>The clue is 'designation use'.</i></p>
+                        
+                        <h5 id="vac-step3">Step 3: ValueSet the FHIR Resources</h5>
+                        
+                        <p>Let's take a closer look at the FHIR resource named ValueSet, you will find the resource page in the FHIR specification here:</p>
                     
                         <ul>
                         <li><b><a href="http://hl7.org/fhir/2016May/valueset.html" rel="stylesheet">Resource ValueSet</a></b></li>
                         </ul>
+                        <p><b>Here is a simple example of a ValueSet FHIR resource</b></p>
+                        
+                        <p>This ValueSet selects codes from the CodeSystem example we looked at in <a href="#vac-step2">Step 2</a>. Notice that it selects both the <b>'easy'</b> and <b>'hard'</b> codes, although it could have selected only one if it choose to, or it could even select more codes from another CodeSystem if required.</p>
+                        
+                        <p><img src="images/SimpleValuseSetImage.PNG" width="100%"></p>
+                        
+                        <p>Remember, a ValueSet is a grouping of codes, codes are taken from CodeSystems, to be used for a purpose. It adds value to some use case like a clinical systems drop down box to select an allergy, for example.</p>
+                        
+                        <p>Once again you should go to the FHIR specification page for <a href="http://hl7.org/fhir/2016May/valueset.html" rel="stylesheet">ValueSet</a> to see the full list of properties available.</p>
+                        
+                        <p><b>Question:</b> If you had two copies of a ValueSet resource given to you, from different people, how would I determine that the two instances were actually the same ValueSet.</p>
+                        
+                        <h5 id="vac-step4">Step 4: Understanding how ValueSet codes are used</h5>
+                        
+                        <p>It is easy to fall into the trap of thinking that the code information you list in a ValueSet is the code information used when a ValueSet is call upon by a system. One of the primary uses of ValueSets is to provide a list of codes to a user somewhere. When this is done the system doing so calls a special operation on the FHIR Terminology Server called <b>'<code>$expand</code>'</b>. This is known as Value Set Expansion.</p>
+                        
+                        <p>We are not going to go into how to perform an expansion now, but you do need to know what happens in the FHIR Terminology Server when an expansion is performed as it is key to your understanding.</p>
+                        
+                        <p>As seen in this first diagram (you can click to enlarge) a developer calls the <b>'<code>$expand</code>'</b> operation on a given ValueSet because they want the list of codes and descriptions to display to a user. As we have seen the ValueSet knowns of a list of codes and it know the CodeSystems for each code.</p>
                         
                         
+                        <p><a href="images/ValueSetExpansionRequestDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img src="images/ValueSetExpansionRequestDiagram.png" width="50%" class="thumbnail"/></a></p>
                         
+                        <p>The FHIR terminology server does not just return the codes in the ValueSet, what it does is reference the CodeSystems as listed for each code in the ValueSet and retrieves the information about the code from the CodeSystem resource in real-time and returns this back to the developer as an expanded ValueSet.</p>
                         
+                        <p><a href="images/ValueSetExpansionResponseDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img src="images/ValueSetExpansionResponseDiagram.png" width="50%" class="thumbnail"/></a></p>
                         
+                        <p>What this means is that the ValueSet is only a reference to the codes in the CodeSystem. A key point here is that if the code's description was updated in the CodeSystem then a ValueSet expansion will pick up that new description even thought the ValueSet was never modified. You can control this using the <b>'lockedDate'</b> property of a ValueSet. If a <b>lockedDate</b> is given in the ValueSet then only the CodeSystems as of this date will be used, any later version of the same CodeSystem will not be used when ValueSet Expansion is performed. For more information about <b>lockedDate</b> I suggest your reference the FHIR specification here: <a href="http://hl7-fhir.github.io/valueset-definitions.html#ValueSet.lockedDate" rel="stylesheet"><b>lockedDate</b></a>.</p>
+                       
+                        
+                        <h5 id="vac-step5">Step 5: ValueSet Codes (Include, Exclude and Filter)</h5>
+                        <p>In the previous '<a href="#vac-step4">Step 4: Understanding how ValueSet codes are used</a>' we learnt that ValueSets only select codes from CodeSystems. In our simple ValueSet example we selected, or rather 'Included', our codes by stating the actual code value '<b>easy</b>' and '<b>hard</b>' as they were seen in our CodeSystem. Yet, there is another way to select codes for inclusion in the ValueSet which is by using a filter.</p>
+                        
+                        <p>We will avoid deep diving on filters but it is worth know they exists and can be used. Typically a filter would be used when the code system being used has a hierarchical structure, meaning each code can have a parent or children codes such as the LOINC code system or even poly-hierarchical where codes can have many parents and many children codes such and SNOMED-CT.</p>
+                        
+                        <p><a href="images/ValueSetToeNailSNOMEDCode.png" data-lightbox="ValueSetToeNailSNOMEDCode"><img src="images/ValueSetToeNailSNOMEDCode.png" width="80%" class="thumbnail"/></a></p>
+                        
+                        <p>With hierarchical code systems, we can use a filter to say <i>"include all code under this parent code"</i>. This way, as new codes are introduced under a parent code, in the code system, they will automatically be included in our ValueSet's selected codes.In the very same way, we can include codes we can also <b>exclude</b> codes either by stating the code to exclude or by using another filter.</p>
+                        
+                        <p>The image below is taken from the <a href="http://hl7.org/fhir/2016May/valueset.html#resource" rel="stylesheet"><b>ValueSet tree structure in the FHIR specification</b></a> and highlights the sections that deal with the topic discussed in this step (Include, Exclude &amp; Filter). </p>
+                        <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img src="images/ValueSetFilterTreeDiagram.png" width="80%" class="thumbnail"/></a></p>                        
                     </div>
                 </section>
             </div>            
