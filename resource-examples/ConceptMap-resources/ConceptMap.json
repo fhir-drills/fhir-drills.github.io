@@ -1,0 +1,109 @@
+{  
+   "resourceType":"ConceptMap",
+   "id":"nehta-conceptmap-f001",
+   "url":"https://nehta-au.github.io/fhir/ConceptMap/nehta-conceptmap-f001",
+   "identifier":{  
+      "system":"urn:ietf:rfc:3986",
+      "value":"urn:uuid:697038ac-d5f9-481d-b9b7-4e7a1f50a264"
+   },
+   "version":"20160625",
+   "name":"New system valueset to current valueset mapping",
+   "status":"draft",
+   "experimental":true,
+   "publisher":"National E-Health Transition Authority",
+   "contact":[  
+      {  
+         "name":" Vadim Peretokin",
+         "telecom":[  
+            {  
+               "system":"email",
+               "use":"work",
+               "value":"vadim.peretokin@nehta.gov.au"
+            }
+         ]
+      }
+   ],
+   "date":"2016-06-25",
+   "description":"A mapping between the example new system valueset to the current valueset",
+   "useContext":[  
+      {  
+         "text":"Created as an example only for https://nehta-au.github.io"
+      }
+   ],
+   "requirements":"Sample supporting material for the ConceptMap tutorial at https://nehta-au.github.io",
+   "copyright":"Creative Commons 0",
+   "sourceUri":"https://nehta-au.github.io/fhir/ValueSet/new-valueset",
+   "targetUri":"https://nehta-au.github.io/fhir/ValueSet/current-valueset",
+   "group":[  
+      {  
+         "source":"https://nehta-au.github.io/fhir/ValueSet/new-valueset",
+         "target":"https://nehta-au.github.io/fhir/ValueSet/current-valueset",
+         "element":[  
+            {  
+               "code":"in office",
+               "target":[  
+                  {  
+                     "code":"present",
+                     "equivalence":"equal"
+                  }
+               ]
+            },
+            {  
+               "code":"away travelling",
+               "target":[  
+                  {  
+                     "code":"not present",
+                     "equivalence":"narrower"
+                  }
+               ]
+            },
+            {  
+               "code":"working from home",
+               "target":[  
+                  {  
+                     "code":"not present",
+                     "equivalence":"narrower"
+                  }
+               ]
+            },
+            {  
+               "code":"annual leave",
+               "target":[  
+                  {  
+                     "code":"not present",
+                     "equivalence":"narrower"
+                  }
+               ]
+            },
+            {  
+               "code":"personal leave",
+               "target":[  
+                  {  
+                     "code":"sick",
+                     "equivalence":"equal"
+                  }
+               ]
+            },
+            {  
+               "code":"jury duty",
+               "target":[  
+                  {  
+                     "code":"not present",
+                     "equivalence":"narrower"
+                  }
+               ]
+            },
+            {  
+               "code":"away travelling",
+               "target":[  
+                  {  
+                     "code":"present",
+                     "equivalence":"disjoint",
+                     "comments":"An example mapping demonstrating how you can explicitly show that two concepts are not related"
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}
