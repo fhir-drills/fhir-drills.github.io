@@ -158,5 +158,5 @@ document.getElementById('simple-patient-button').onclick = function () {
 
 document.getElementById('conceptmap-button').onclick = function () {
     uploadFiles("conceptmap", servers.sqlonfhir2, [
-    ["cm-conceotmap", "resource-examples/ConceptMap-resources/ConceptMap.json"]]);
+    ["cm-conceptmap", "resource-examples/ConceptMap-resources/ConceptMap.json"]]);
 };
