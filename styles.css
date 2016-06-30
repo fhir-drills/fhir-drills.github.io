@@ -264,3 +264,19 @@ note {
     margin-left: auto;
     margin-right: auto
 }
+
+	.conceptmap-table {
+		width:75%;
+		border:1px solid;
+		border-collapse:collapse;
+		padding:5px;
+	}
+	.conceptmap-table th {
+		border:1px solid;
+		padding:5px;
+		background:#F0F0F0;
+	}
+	.conceptmap-table td {
+		border:1px solid;
+		padding:5px;
+	}
