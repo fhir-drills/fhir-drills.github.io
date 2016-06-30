@@ -34,74 +34,68 @@
    "copyright":"Creative Commons 0",
    "sourceUri":"https://nehta-au.github.io/fhir/ValueSet/new-valueset",
    "targetUri":"https://nehta-au.github.io/fhir/ValueSet/current-valueset",
-   "group":[  
+   "element":[  
       {  
-         "source":"https://nehta-au.github.io/fhir/ValueSet/new-valueset",
-         "target":"https://nehta-au.github.io/fhir/ValueSet/current-valueset",
-         "element":[  
+         "code":"in office",
+         "target":[  
             {  
-               "code":"in office",
-               "target":[  
-                  {  
-                     "code":"present",
-                     "equivalence":"equal"
-                  }
-               ]
-            },
+               "code":"present",
+               "equivalence":"equal"
+            }
+         ]
+      },
+      {  
+         "code":"away travelling",
+         "target":[  
             {  
-               "code":"away travelling",
-               "target":[  
-                  {  
-                     "code":"not present",
-                     "equivalence":"narrower"
-                  }
-               ]
-            },
+               "code":"not present",
+               "equivalence":"narrower"
+            }
+         ]
+      },
+      {  
+         "code":"working from home",
+         "target":[  
             {  
-               "code":"working from home",
-               "target":[  
-                  {  
-                     "code":"not present",
-                     "equivalence":"narrower"
-                  }
-               ]
-            },
+               "code":"not present",
+               "equivalence":"narrower"
+            }
+         ]
+      },
+      {  
+         "code":"annual leave",
+         "target":[  
             {  
-               "code":"annual leave",
-               "target":[  
-                  {  
-                     "code":"not present",
-                     "equivalence":"narrower"
-                  }
-               ]
-            },
+               "code":"not present",
+               "equivalence":"narrower"
+            }
+         ]
+      },
+      {  
+         "code":"personal leave",
+         "target":[  
             {  
-               "code":"personal leave",
-               "target":[  
-                  {  
-                     "code":"sick",
-                     "equivalence":"equal"
-                  }
-               ]
-            },
+               "code":"sick",
+               "equivalence":"equal"
+            }
+         ]
+      },
+      {  
+         "code":"jury duty",
+         "target":[  
             {  
-               "code":"jury duty",
-               "target":[  
-                  {  
-                     "code":"not present",
-                     "equivalence":"narrower"
-                  }
-               ]
-            },
+               "code":"not present",
+               "equivalence":"narrower"
+            }
+         ]
+      },
+      {  
+         "code":"away travelling",
+         "target":[  
             {  
-               "code":"away travelling",
-               "target":[  
-                  {  
-                     "code":"present",
-                     "equivalence":"disjoint",
-                     "comments":"An example mapping demonstrating how you can explicitly show that two concepts are not related"
-                  }
-               ]
+               "code":"present",
+               "equivalence":"disjoint",
+               "comments":"An example mapping demonstrating how you can explicitly show that two concepts are not related"
             }
          ]
       }
