@@ -128,5 +128,9 @@
       },
       "preferred": true
     }
-  ]
+  ],
+  "managingOrganization": {
+    "reference": "Organization/nehta-001",
+    "display": "Burgers University Medical Centre"
+  }
 }
