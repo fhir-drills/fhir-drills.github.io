@@ -576,7 +576,26 @@
 
                         <h5 id="op-step1">Step 1: What are Operations</h5>
                         
-                        <p>In the 'Simple Patient' tutorial we looked at interacting with the FHIR server using the basic CRUD actions (Create, Read, Update and Delete). Operations extend these basic action to provide unquie functinality where required. For instance the operation <b>$validate</b> can check a provided resource is acceptable to the server before you attempt to add it with the basic create method, <b>$translate</b> can be used to map one code to another using a ConceptMap. You can find a full list of the operatiosn defined by the FHIR specification here: <a href="http://hl7.org/fhir/2016May/operations.html#defined" rel="stylesheet">FHIR defined Operations</a>. </p>
+                        <p>In the 'Simple Patient' tutorial we looked at interacting with the FHIR server using the CRUD actions (Create, Read, Update and Delete). Operations extend these basic actions to provide unquie functinality where required. For instance the operation <b>&#36;validate</b> can check a provided resource is acceptable to the server before you attempt to add it using the basic create method, <b>&#36;translate</b> can map one code to another using a ConceptMap. You can find a full list of the operations defined by the FHIR specification here: <a href="http://hl7.org/fhir/2016May/operations.html#defined" rel="stylesheet">FHIR defined Operations</a>. </p>
+                        
+                        <p>The basic concept for operations is much like a function in a programming langague, excpet that the operation is run in one of three context, them being:</p>
+                        
+                        <p>Against the entire FHIR server:<br><b><code>&#91;Service Root URL&#93;/&#91;&#36;Operation Name&#93;</code></b></p> 
+                        
+                        
+                        <p>Against a type of resource:<br><b><code>&#91;Service Root URL&#93;/&#91;Resource Type&#93;/&#91;&#36;Operation Name&#93;</code></b></p> 
+                        
+                        
+                        <p>Against a single resource instance:<br><b><code>&#91;Service Root URL&#93;/&#91;Resource Type&#93;/&#91;Resource Id&#93;/&#91;&#36;Operation Name&#93;</code></b></p>
+                        
+                        <p>An operation has an 'Operation Name' which is always prefixed with a dollar sign '&#36;' and can have any number of input and output parameters. Depending on the operation the output might be a set of parameters or a resource.</p>
+                                                
+                        
+                        <b><code>&#91;Service Root URL&#93;/&#91;&#36;OperationName&#93;&#63;&#91;ParameterName1&#61;value&#93;&amp;&#91;ParameterName2&#61;value&#93;&amp;&#91;ParameterName3&#61;value&#93;..etc.</code></b>
+                        <br>
+                        <br>
+                        <i>Example of the $match operation on the Patient resource type:</i><br>
+                        <b><code>http://www.acmehealth/fhirapi/Patient/&#36;match&#63;family&#61;chalmers&amp;given&#61;peter&amp;birthdate&#61;1974-12-25</code></b>
 
                     </div>
                 </section>
@@ -594,9 +613,7 @@
                             <a href="#vac-step2">Step 2: CodeSystem the FHIR Resources</a>  
                             <a href="#vac-step3">Step 3: ValueSet the FHIR Resources</a>  
                             <a href="#vac-step4">Step 4: Understanding how ValueSet codes are used</a>  
-                            <a href="#vac-step4">Step 5: ValueSet Codes (Include, Exclude and Filter)</a>  
-                            
-                            
+                            <a href="#vac-step4">Step 5: ValueSet Codes (Include, Exclude and Filter)</a>                                                          
                         </ul>
 
                         <h5 id="vac-step1">Step 1: What are ValueSets and CodeSystems</h5>                        
@@ -666,11 +683,11 @@
                         
                         <p><h5 id="vac-step4">Step 4: Understanding how ValueSet codes are used</h5></p>
                         
-                        <p>It is easy to fall into the trap of thinking that the code information you list in a ValueSet is the code information used when a ValueSet is called upon by a system. One of the primary uses of ValueSets is to provide a list of codes to a user somewhere. When this is done the system doing so calls a special operation on the FHIR Terminology Server called <b>'<code>$expand</code>'</b>. This is known as Value Set Expansion.</p>
+                        <p>It is easy to fall into the trap of thinking that the code information you list in a ValueSet is the code information used when a ValueSet is called upon by a system. One of the primary uses of ValueSets is to provide a list of codes to a user somewhere. When this is done the system doing so calls a special operation on the FHIR Terminology Server called <b>'<code>&#36;expand</code>'</b>. This is known as Value Set Expansion.</p>
                         
                         <p>We are not going to go into how to perform an expansion now, but you do need to know what happens in the FHIR Terminology Server when an expansion is performed as it is key to your understanding.</p>
                         
-                        <p>As seen in this first diagram (you can click to enlarge) a developer calls the <b>'<code>$expand</code>'</b> operation on a given ValueSet because they want the list of codes and descriptions to display to a user. As we have seen, the ValueSet has a list of codes and it know the CodeSystems for each code.</p>
+                        <p>As seen in this first diagram (you can click to enlarge) a developer calls the <b>'<code>&#36;expand</code>'</b> operation on a given ValueSet because they want the list of codes and descriptions to display to a user. As we have seen, the ValueSet has a list of codes and it know the CodeSystems for each code.</p>
                         
                         
                         <p><a href="images/ValueSetExpansionRequestDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img src="images/ValueSetExpansionRequestDiagram.png" width="50%" class="thumbnail"/></a></p>
