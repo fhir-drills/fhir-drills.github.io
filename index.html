@@ -611,7 +611,7 @@
                         
                         <img src="images/Lollies-Mix.jpg" width="30%"> 
                         
-                        <p>The CodeSystem does not get used by the consumers, it is just the reference catalogue for all Allen’s lollies, if you want to find out more about the code 'RipeRaspberrie' then you would go to the CodeSystem. What a consumer uses is a ValueSet, because a ValueSet adds value to the consumer. In our lolly analogy, the ValueSet is the packet of lollies you buy, like the Party Mix or the bag of lollies you choose because their your favourites. This is a ValueSet because it serves a purpose.  It is a selection of codes from the CodeSystem to be used for a purpose.</p>
+                        <p>The CodeSystem does not get used by the consumers, it is just the reference catalogue for all Allen’s lollies, so if you want to find out more about the code 'RipeRaspberrie' then you would go to the CodeSystem. What a consumer uses is a ValueSet, because a ValueSet adds value to the consumer. In our lolly analogy, the ValueSet is the packet of lollies you buy, like the Party Mix or the bag of lollies you choose because they're your favourites. This is a ValueSet because it serves a purpose.  It is a selection of codes from the CodeSystem to be used for a purpose.</p>
                         
                         <img src="images/Lollies-BagOf.jpg" width="20%">
                         
@@ -628,7 +628,7 @@
                         </ul>
                         <p><b>Below is a simple example of a CodeSystem FHIR resource</b></p>
                         
-                        <p>The example below only contains two codes <b>'easy'</b> and <b>'hard'</b>. What is important for you at this stage is to grasp the basic structure of the resource. Notice that the top section (lines 8 to 20), like all FHIR resources, is a narrative HTML representation of the CodeSystem. The middle section (lines 21 to 37) is all the metadata about the CodeSystem, things like the version, a name and description for the CodeSystem, its status, whether it is experimental or not, who is the publisher and whether the codes are case sensitive. The last section (lines 38 to 45) are the actual codes each in their own <code>&lt;concept&gt;</code> element</p>
+                        <p>The example below only contains two codes <b>'easy'</b> and <b>'hard'</b>. What is important for you at this stage is to grasp the basic structure of the resource. Notice that the top section (lines 8 to 20), like all FHIR resources, is a narrative HTML representation of the CodeSystem. The middle section (lines 21 to 37) is all the metadata about the CodeSystem, things like the version, a name and description for the CodeSystem, its status, whether it is experimental or not, who is the publisher and whether the codes are case sensitive. The last section (lines 38 to 45) are the actual codes each in their own <code>&lt;concept&gt;</code> element.</p>
                         
                         <p>Don't forget, the CodeSystem is a catalogue of codes to be selected in ValueSets.</p>
                         
@@ -655,7 +655,7 @@
                         
                         <p>Once again you should go to the FHIR specification page for <a href="http://hl7.org/fhir/2016May/valueset.html" rel="stylesheet">ValueSet</a> to see the full list of properties available.</p>
                         
-                        <p><b>Question:</b> If you had two copies of a ValueSet resource given to you, from different people, how would you determine that the two instances were actually the same ValueSet.</p>
+                        <p><b>Question:</b> If you had two copies of a ValueSet resource given to you, from different people, how would you determine that the two instances were actually the same ValueSet?</p>
                         
                         <b>CSIRO's Snapper</b>
                         <p>Snapper is an online tool developed by the CSIRO team that created the ONTO FHIR Terminology server. The tool provides a friendly user interface for creating and editing FHIR CodeSystems, ValueSets and ConceptMaps rather than having you fiddle with XML or JSON. Your finished resource can then be downloaded locally or published directly into an FHIR server of you choosing. This free tool can be found here: <a href="http://ontoserver.csiro.au/snapper2-dev" rel="stylesheet">Snapper BETA</a></p>
@@ -670,7 +670,7 @@
                         
                         <p>We are not going to go into how to perform an expansion now, but you do need to know what happens in the FHIR Terminology Server when an expansion is performed as it is key to your understanding.</p>
                         
-                        <p>As seen in this first diagram (you can click to enlarge) a developer calls the <b>'<code>$expand</code>'</b> operation on a given ValueSet because they want the list of codes and descriptions to display to a user. As we have seen, the ValueSet has a list of codes and it know the CodeSystems for each code.</p>
+                        <p>As seen in this first diagram (you can click to enlarge) a developer calls the <b>'<code>$expand</code>'</b> operation on a given ValueSet because they want the list of codes and descriptions to display to a user. As we have seen, the ValueSet has a list of codes and it knows the CodeSystems for each code.</p>
                         
                         
                         <p><a href="images/ValueSetExpansionRequestDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img src="images/ValueSetExpansionRequestDiagram.png" width="50%" class="thumbnail"/></a></p>
@@ -679,7 +679,7 @@
                         
                         <p><a href="images/ValueSetExpansionResponseDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img src="images/ValueSetExpansionResponseDiagram.png" width="50%" class="thumbnail"/></a></p>
                         
-                        <p>What this means is that the ValueSet is only a reference to the codes in the CodeSystem. A key point here is that if the code description was updated in the CodeSystem then a ValueSet expansion will pick up the new description even thought the ValueSet was never modified. You can control this using the <b>'lockedDate'</b> property of a ValueSet. If a <b>lockedDate</b> is given in the ValueSet then only the CodeSystems as of this date will be used, any later version of the same CodeSystem will not be used when ValueSet Expansion is performed. For more information about <b>lockedDate</b> refer to the FHIR specification here: <a href="http://hl7-fhir.github.io/valueset-definitions.html#ValueSet.lockedDate" rel="stylesheet"><b>lockedDate</b></a>.</p>
+                        <p>What this means is that the ValueSet is only a reference to the codes in the CodeSystem. A key point here is that if the code description was updated in the CodeSystem then a ValueSet expansion will pick up the new description even though the ValueSet was never modified. You can control this using the <b>'lockedDate'</b> property of a ValueSet. If a <b>lockedDate</b> is given in the ValueSet then only the CodeSystems as of this date will be used, any later version of the same CodeSystem will not be used when ValueSet Expansion is performed. For more information about <b>lockedDate</b> refer to the FHIR specification here: <a href="http://hl7-fhir.github.io/valueset-definitions.html#ValueSet.lockedDate" rel="stylesheet"><b>lockedDate</b></a>.</p>
                        
                         
                         <h5 id="vac-step5">Step 5: ValueSet Codes (Include, Exclude and Filter)</h5>
@@ -689,7 +689,7 @@
                         
                         <p><a href="images/ValueSetToeNailSNOMEDCode.png" data-lightbox="ValueSetToeNailSNOMEDCode"><img src="images/ValueSetToeNailSNOMEDCode.png" width="80%" class="thumbnail"/></a></p>
                         
-                        <p>With hierarchical code systems, we can use a filter to say <i>"include all codes under this parent code"</i>. This way, as new codes are introduced under a parent code, in the code system, they will automatically be included in our ValueSet's selected codes.In the very same way, we can include codes we can also <b>exclude</b> codes either by stating the code to exclude or by using another filter.</p>
+                        <p>With hierarchical code systems, we can use a filter to say <i>"include all codes under this parent code"</i>. This way, as new codes are introduced under a parent code, in the code system, they will automatically be included in our ValueSet's selected codes. In the very same way we can include codes, we can also <b>exclude</b> codes either by stating the code to exclude or by using another filter.</p>
                         
                         <p>The image below is taken from the <a href="http://hl7.org/fhir/2016May/valueset.html#resource" rel="stylesheet"><b>ValueSet tree structure in the FHIR specification</b></a> and highlights the sections that deals with the topic discussed in this step (Include, Exclude &amp; Filter). </p>
                         <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img src="images/ValueSetFilterTreeDiagram.png" width="80%" class="thumbnail"/></a></p>                        
