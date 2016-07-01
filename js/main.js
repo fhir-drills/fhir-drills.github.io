@@ -160,3 +160,8 @@ document.getElementById('conceptmap-button').onclick = function () {
     uploadFiles("conceptmap", servers.sqlonfhir2, [
     ["cm-conceptmap", "resource-examples/ConceptMap-resources/ConceptMap.json"]]);
 };
+
+document.getElementById('expand-operation-button').onclick = function () {
+    uploadFiles("expand-operation", servers.sqlonfhir2, [
+    ["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
+};
