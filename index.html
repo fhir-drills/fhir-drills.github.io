@@ -517,11 +517,14 @@
                     <div class="mdl-cell mdl-cell--12-col">
                         <h4>ConceptMap tutorial</h4>
                         <p><a href="http://hl7.org/fhir/2016May/conceptmap.html">ConceptMap</a> is a special type of a FHIR resource that allows you to establish a one-way relationship between any two things - classes in class models, data elements, or code systems. We'll use latter as an example in this tutorial to demonstrate how two concepts can be related (mapped) to each other and how their equivalence (or lack of) can be specified.</p>
+                        <note>This describes ConceptMap as it is in the latest <a href="http://hl7.org/fhir/2016May/conceptmap.html">May 2016 snapshot</a>. The latest iteration of the resource has some structural changes, such as the introduction of the <b>group</b> element, which are likely to make it into the next FHIR snapshot.</note>
                         <ul class="toc">
                             <h4>Contents</h4>
                             <!-- pr prefix stands for 'patient references'-->
                             <a href="#cm-about-conceptmap">Step 1: About ConceptMap</a>
                             <a href="#cm-sample-data-mapping">Step 2: Sample data mapping</a>
+                            <a href="#cm-sample-resource">Step 3: Sample resource</a>
+                            <a href="#cm-advanced-features">Step 4: Advanced features</a>
                         </ul>
 
                         <h5 id="cm-about-conceptmap">Step 1: About ConceptMap</h5>
@@ -622,6 +625,15 @@
                         
                         <p>The resource will be available for viewing in Postman or your browser under this URL:</p>
                         <note class="conceptmap-location-full" id="cm-conceptmap"><i>(press Upload to get a ConceptMap)</i></note>
+                        <p>Once uploaded, it'll look something <a href="images/conceptmap-in-postman.png" data-lightbox="conceptmap-in-postman">like this</a>.</p>
+                        
+                        <h5 id="cm-advanced-features">Step 4: Advanced features</h5>
+                        <p>ConceptMap is actually pretty powerful, and besides the basic code-to-code mapping described above, it also supports the following usecases:</p>
+                        <ul>
+                            <li>Mapping one code to many codes at once given the same equivalence property (by utilising multiple <a href="http://hl7.org/fhir/2016May/conceptmap-definitions.html#ConceptMap.element.target">target</a> properties within one <a href="http://hl7.org/fhir/2016May/conceptmap-definitions.html#ConceptMap.element">element</a> property)</li>
+                            <li>Having a dependency for a mapping - a mapping could only be applicable if a selected element exists in the data and has the specified value (see <a href="http://hl7.org/fhir/2016May/conceptmap-definitions.html#ConceptMap.element.target.dependsOn">dependsOn</a>)</li>
+                        </ul>
+                        
                     </div>
                 </section>
             </div>
