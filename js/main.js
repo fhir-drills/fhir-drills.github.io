@@ -141,27 +141,39 @@ function switchTab(tabid) {
     document.getElementById(tabid).click();
 }
 
-document.getElementById('patient-with-references-button').onclick = function () {
-    uploadFiles("patient-with-references", servers.sqlonfhir2, [
-    ["rf-patient", "resource-examples/Patient-f001.json"],
-    ["rf-encounter", "resource-examples/Encounter-f001.json"],
-    ["rf-diagnosticorder", "resource-examples/DiagnosticOrder-f001.json"],
-    ["rf-observation1", "resource-examples/Observation-f001.json"],
-    ["rf-observation2", "resource-examples/Observation-f002.json"],
-    ["rf-diagnosticreport", "resource-examples/DiagnosticReport-f001.json"]]);
-};
+var patientWithReferencesButton = document.getElementById('patient-with-references-button');
+if (patientWithReferencesButton) {
+	patientWithReferencesButton.onclick = function () {
+		uploadFiles("patient-with-references", servers.sqlonfhir2, [
+		["rf-patient", "resource-examples/Patient-f001.json"],
+		["rf-encounter", "resource-examples/Encounter-f001.json"],
+		["rf-diagnosticorder", "resource-examples/DiagnosticOrder-f001.json"],
+		["rf-observation1", "resource-examples/Observation-f001.json"],
+		["rf-observation2", "resource-examples/Observation-f002.json"],
+		["rf-diagnosticreport", "resource-examples/DiagnosticReport-f001.json"]]);
+	};
+}
 
-document.getElementById('simple-patient-button').onclick = function () {
-    uploadFiles("simple-patient", servers.sqlonfhir2, [
-    ["simple-patient-resourcePatient1", "resource-examples/SimplePatient-resources/PatientResourceExample1.json"]]);
-};
+var simplePatientButton = document.getElementById('simple-patient-button');
+if (simplePatientButton) {
+	simplePatientButton.onclick = function () {
+		uploadFiles("simple-patient", servers.sqlonfhir2, [
+		["simple-patient-resourcePatient1", "resource-examples/SimplePatient-resources/PatientResourceExample1.json"]]);
+	};
+}
 
-document.getElementById('conceptmap-button').onclick = function () {
-    uploadFiles("conceptmap", servers.sqlonfhir2, [
-    ["cm-conceptmap", "resource-examples/ConceptMap-resources/ConceptMap.json"]]);
-};
+var conceptMapButton = document.getElementById('conceptmap-button');
+if (conceptMapButton) {
+	conceptMapButton.onclick = function () {
+		uploadFiles("conceptmap", servers.sqlonfhir2, [
+		["cm-conceptmap", "resource-examples/ConceptMap-resources/ConceptMap.json"]]);
+	};
+}
 
-document.getElementById('expand-operation-button').onclick = function () {
-    uploadFiles("expand-operation", servers.sqlonfhir2, [
-    ["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
-};
+var expandOperationButton = document.getElementById('expand-operation-button');
+if (expandOperationButton) {
+	expandOperationButton.onclick = function () {
+		uploadFiles("expand-operation", servers.sqlonfhir2, [
+		["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
+	};
+}

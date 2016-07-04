@@ -75,27 +75,51 @@
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-                <a href="./index.html" class="mdl-layout__tab is-active">Overview</a>
+                <a href="./index.html" class="mdl-layout__tab">Overview</a>
                 <a href="./simple-patient.html" id="simple-patient" class="mdl-layout__tab">Simple Patient</a>
                 <a href="./simple-search.html" id="simple-search" class="mdl-layout__tab">Simple Search</a>
                 <a href="./patient-with-references.html" id="patient-with-references" class="mdl-layout__tab">Patient with References</a>
-                <a href="./operations.html" id="operations" class="mdl-layout__tab">Operations</a>
+                <a href="./operations.html" id="operations" class="mdl-layout__tab is-active">Operations</a>
                 <a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-layout__tab">ValueSet &amp; CodeSystem</a>
                 <a href="./conceptmap.html" id="conceptmap" class="mdl-layout__tab">ConceptMap</a>
             </div>
         </header>
         <main class="mdl-layout__content">
-                <section class= "section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
-                    <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">                        
-                        <div class="mdl-card__supporting-text">
-                            <img src="images/fhir-logo-www.png" align="right" width="20%"> 
-                            <h3>FHIR Tutorials</h3> 
-                            <p>This page contains a series of FHIR tutorials for those just beginning to learn the new specification. The tutorials require no prior knowledge of FHIR or REST. At present these tutorials are in their alpha stage of development and participates at the NCTS connectathon in Melbourne, May 2016 will be the first students to try them out. We would appreciate any feedback you may have as we plan to build upon these in time to create a full set of tutorials from the very basic to the more complex.</p>
+                <section class="section--center mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h4>Operations</h4>
+                        
+                        <p>This tutorial will explain the use of <b>Operations</b> againt a FHIR server. A FHIR server can have many different types of operations yet this tutorial will focus on the concept of operation in general and not on any one operation.</p>
+                        <ul class="toc">
+                            <h4>Contents</h4>
+                            <!-- pr prefix stands for 'patient references'-->
+                            <a href="#op-step1">Step 1: What are Operations</a>  
                             
-                            <p>Please note these tutorials have been written against current officially released version of FHIR, which is <a href="http://hl7.org/fhir/index.html">DSTU 2</a>.</p>
-                            
-                            <p>To continue, use the tabs at the top of the page and work through the tutorials from left to right starting with the <a href="#" onclick="switchTab('simple-patient')">Simple Patient</a>.</p>
-                        </div>                             
+                        </ul>
+
+                        <h5 id="op-step1">Step 1: What are Operations</h5>
+                        
+                        <p>In the 'Simple Patient' tutorial we looked at interacting with the FHIR server using the CRUD actions (Create, Read, Update and Delete). Operations extend these basic actions to provide unquie functinality where required. For instance the operation <b>&#36;validate</b> can check a provided resource is acceptable to the server before you attempt to add it using the basic create method, <b>&#36;translate</b> can map one code to another using a ConceptMap. You can find a full list of the operations defined by the FHIR specification here: <a href="http://hl7.org/fhir/2016May/operations.html#defined" rel="stylesheet">FHIR defined Operations</a>. </p>
+                        
+                        <p>The basic concept for operations is much like a function in a programming langague, excpet that the operation is run in one of three context, them being:</p>
+                        
+                        <p>Against the entire FHIR server:<br><b><code>&#91;Service Root URL&#93;/&#91;&#36;Operation Name&#93;</code></b></p> 
+                        
+                        
+                        <p>Against a type of resource:<br><b><code>&#91;Service Root URL&#93;/&#91;Resource Type&#93;/&#91;&#36;Operation Name&#93;</code></b></p> 
+                        
+                        
+                        <p>Against a single resource instance:<br><b><code>&#91;Service Root URL&#93;/&#91;Resource Type&#93;/&#91;Resource Id&#93;/&#91;&#36;Operation Name&#93;</code></b></p>
+                        
+                        <p>An operation has an 'Operation Name' which is always prefixed with a dollar sign '&#36;' and can have any number of input and output parameters. Depending on the operation the output might be a set of parameters or a resource.</p>
+                                                
+                        
+                        <b><code>&#91;Service Root URL&#93;/&#91;&#36;OperationName&#93;&#63;&#91;ParameterName1&#61;value&#93;&amp;&#91;ParameterName2&#61;value&#93;&amp;&#91;ParameterName3&#61;value&#93;..etc.</code></b>
+                        <br>
+                        <br>
+                        <i>Example of the $match operation on the Patient resource type:</i><br>
+                        <b><code>http://www.acmehealth/fhirapi/Patient/&#36;match&#63;family&#61;chalmers&amp;given&#61;peter&amp;birthdate&#61;1974-12-25</code></b>
+
                     </div>
                 </section>
             <footer class="mdl-mega-footer">

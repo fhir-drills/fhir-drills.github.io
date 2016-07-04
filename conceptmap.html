@@ -75,27 +75,137 @@
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-                <a href="./index.html" class="mdl-layout__tab is-active">Overview</a>
+                <a href="./index.html" class="mdl-layout__tab">Overview</a>
                 <a href="./simple-patient.html" id="simple-patient" class="mdl-layout__tab">Simple Patient</a>
                 <a href="./simple-search.html" id="simple-search" class="mdl-layout__tab">Simple Search</a>
                 <a href="./patient-with-references.html" id="patient-with-references" class="mdl-layout__tab">Patient with References</a>
                 <a href="./operations.html" id="operations" class="mdl-layout__tab">Operations</a>
                 <a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-layout__tab">ValueSet &amp; CodeSystem</a>
-                <a href="./conceptmap.html" id="conceptmap" class="mdl-layout__tab">ConceptMap</a>
+                <a href="./conceptmap.html" id="conceptmap" class="mdl-layout__tab is-active">ConceptMap</a>
             </div>
         </header>
         <main class="mdl-layout__content">
-                <section class= "section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
-                    <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">                        
-                        <div class="mdl-card__supporting-text">
-                            <img src="images/fhir-logo-www.png" align="right" width="20%"> 
-                            <h3>FHIR Tutorials</h3> 
-                            <p>This page contains a series of FHIR tutorials for those just beginning to learn the new specification. The tutorials require no prior knowledge of FHIR or REST. At present these tutorials are in their alpha stage of development and participates at the NCTS connectathon in Melbourne, May 2016 will be the first students to try them out. We would appreciate any feedback you may have as we plan to build upon these in time to create a full set of tutorials from the very basic to the more complex.</p>
-                            
-                            <p>Please note these tutorials have been written against current officially released version of FHIR, which is <a href="http://hl7.org/fhir/index.html">DSTU 2</a>.</p>
-                            
-                            <p>To continue, use the tabs at the top of the page and work through the tutorials from left to right starting with the <a href="#" onclick="switchTab('simple-patient')">Simple Patient</a>.</p>
-                        </div>                             
+                <section class="section--center mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h4>ConceptMap tutorial</h4>
+                        <p><a href="http://hl7.org/fhir/2016May/conceptmap.html">ConceptMap</a> is a special type of a FHIR resource that allows you to establish a one-way relationship between any two things - classes in class models, data elements, or code systems. We'll use latter as an example in this tutorial to demonstrate how two concepts can be related (mapped) to each other and how their equivalence (or lack of) can be specified.</p>
+                        <note>This describes ConceptMap as it is in the latest <a href="http://hl7.org/fhir/2016May/conceptmap.html">May 2016 snapshot</a>. The latest iteration of the resource has some structural changes, such as the introduction of the <b>group</b> element, which are likely to make it into the next FHIR snapshot.</note>
+                        <ul class="toc">
+                            <h4>Contents</h4>
+                            <!-- pr prefix stands for 'patient references'-->
+                            <a href="#cm-about-conceptmap">Step 1: About ConceptMap</a>
+                            <a href="#cm-sample-data-mapping">Step 2: Sample data mapping</a>
+                            <a href="#cm-sample-resource">Step 3: Sample resource</a>
+                            <a href="#cm-advanced-features">Step 4: Advanced features</a>
+                        </ul>
+
+                        <h5 id="cm-about-conceptmap">Step 1: About ConceptMap</h5>
+                        <p>The <a href="http://hl7.org/fhir/2016May/conceptmap.html">ConceptMap</a> resource in general has <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">four parts</a> to it: 1) metadata about the resource, 2) the source of the data, 3) target the data is mapped to, and 4) the individual mappings themselves:</p>
+                        <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview"><img src="images/conceptmap-overview-thumbnail.png" class="thumbnail"/></a>
+                        <p><b>Metadata</b> about the resource describes general information about the mapping - who made it, what version is it at, copyright on the content and so on.</p>
+                        <p><b>Source</b> of the data is a reference, or the entire definition inline of the dataset that you are mapping from. Remember that ConceptMap is a one-way mapping - so there's always a clear source and a target.</p>
+                        <p><b>Target</b> of the data is similar to source - it is either a reference to the dataset or its inline definition.</p>
+                        <p>Finally comes the meat of the matter - the <b>mappings</b> themselves. Each mapping (called as 'element' in the data) can have one or more <b>target</b> elements, which specify a connection between a code from one valueset to code(s) in another valueset. The type of connection is described by the mandatory <b>equivalence</b> property - the connection could say that the two elements are exactly the same, one concept encompasses more (or less) meaning than the other, or the two concepts aren't related at all even. The full list of equivalence values is available in the <a href="http://hl7.org/fhir/2016May/valueset-concept-map-equivalence.html">ConceptMap Equivalence</a> valueset.</p>
+                        
+                        <h5 id="cm-sample-data-mapping">Step 2: Sample data mapping</h5>
+                        <p>As an example, let's say you have a (very poorly designed) valueset from the codesystem representing employee presence at work with just three codes: present, not present, and sick that is in use by your system. You start importing data from a new system which has finer granularity:</p>
+                        <table class="conceptmap-table">
+  <tr>
+    <th>Current valueset</th>
+    <th>New system's valueset</th>
+  </tr>
+  <tr>
+    <td>present</td>
+    <td>in office</td>
+  </tr>
+  <tr>
+    <td>not present</td>
+    <td>away travelling</td>
+  </tr>
+  <tr>
+    <td>sick</td>
+    <td>working from home</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>annual leave</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>personal leave</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>jury duty</td>
+  </tr>
+</table>
+                    <p>Thus, you need to create a FHIR map connecting new codes you're getting to ones you already have, making use of the available <a href="http://hl7.org/fhir/2016May/valueset-concept-map-equivalence.html">equivalence</a> values. You come up with this sample mapping that maps in the direction from the new system to the current valueset:</p>
+                        <table class="conceptmap-table">
+  <tr>
+    <th>New system's valueset</th>
+    <th>Current valueset</th>
+    <th>Equivalence code</th>
+  </tr>
+  <tr>
+    <td>in office</td>
+    <td>present</td>
+      <td>equal</td>
+  </tr>
+  <tr>
+    <td>away travelling</td>
+    <td>not present</td>
+      <td>narrower</td>
+  </tr>
+  <tr>
+    <td>working from home</td>
+    <td>not present</td>
+      <td>narrower</td>
+  </tr>
+  <tr>
+    <td>annual leave</td>
+    <td>not present</td>
+      <td>narrower</td>
+  </tr>
+  <tr>
+    <td>personal leave</td>
+    <td>sick</td>
+      <td>equal</td>
+  </tr>
+  <tr>
+    <td>jury duty</td>
+      <td>not present</td>
+    <td>narrower</td>
+  </tr>
+  <tr>                            
+    <td>away travelling</td>
+    <td>present</td>
+    <td>disjoint</td>
+  </tr>
+</table>
+                        <h5 id="cm-sample-resource">Step 3: Sample resource</h5>
+                        <p>A sample <a href="http://hl7.org/fhir/2016May/conceptmap.html">ConceptMap</a> resource containing these mappings is <a href="resource-examples/ConceptMap-resources/ConceptMap.json">available here</a>. Press the button below to upload it to the FHIR server!</p>
+                        
+                                                <!-- fix this crime -->
+                        <p>
+                            <center>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="conceptmap-button">
+                                    Upload</button>
+                                <br>
+                                <div id="conceptmap-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
+                            </center>
+                        </p>
+                        
+                        <p>The resource will be available for viewing in Postman or your browser under this URL:</p>
+                        <note class="conceptmap-location-full" id="cm-conceptmap"><i>(press Upload to get a ConceptMap)</i></note>
+                        <p>Once uploaded, it'll look something <a href="images/conceptmap-in-postman.png" data-lightbox="conceptmap-in-postman">like this</a>.</p>
+                        
+                        <h5 id="cm-advanced-features">Step 4: Advanced features</h5>
+                        <p>ConceptMap is actually pretty powerful, and besides the basic code-to-code mapping described above, it also supports the following usecases:</p>
+                        <ul>
+                            <li>Mapping one code to many codes at once given the same equivalence property (by utilising multiple <a href="http://hl7.org/fhir/2016May/conceptmap-definitions.html#ConceptMap.element.target">target</a> properties within one <a href="http://hl7.org/fhir/2016May/conceptmap-definitions.html#ConceptMap.element">element</a> property)</li>
+                            <li>Having a dependency for a mapping - a mapping could only be applicable if a selected element exists in the data and has the specified value (see <a href="http://hl7.org/fhir/2016May/conceptmap-definitions.html#ConceptMap.element.target.dependsOn">dependsOn</a>)</li>
+                        </ul>
+                        
                     </div>
                 </section>
             <footer class="mdl-mega-footer">
