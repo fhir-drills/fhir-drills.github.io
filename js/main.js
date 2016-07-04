@@ -137,10 +137,6 @@ function failedUpload() {
     uploaded[uploadingId] = null;
 }
 
-function switchTab(tabid) {
-    document.getElementById(tabid).click();
-}
-
 var patientWithReferencesButton = document.getElementById('patient-with-references-button');
 if (patientWithReferencesButton) {
 	patientWithReferencesButton.onclick = function () {

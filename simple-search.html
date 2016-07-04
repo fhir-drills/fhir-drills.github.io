@@ -89,7 +89,7 @@
                     <div class="mdl-cell mdl-cell--12-col">
                         <h4>Simple Search</h4>
                         
-                        <p>This tutorial will build on the foundation laid out in the <a href="#" onclick="switchTab('simple-patient')">Simple Patient</a> tutorial to introduce searching against FHIR resources.</p>
+                        <p>This tutorial will build on the foundation laid out in the <a href="./simple-patient.html">Simple Patient</a> tutorial to introduce searching against FHIR resources.</p>
                         <ul class="toc">
                             <h4>Contents</h4>
                             <!-- pr prefix stands for 'patient references'-->
@@ -102,13 +102,13 @@
                         <h5 id="ss-step1">Step 1: Name Searching</h5>
                         <p>Let's start with the simplest of searches, a patient's family name search.</p> 
                         
-                        <p>The <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial uploaded a Patient resource for a <b>Mr Sam Fhirman</b>. Let's try and find that Patient resource by searching on family name. To do this we need to construct a URL starting with the <b><code>[Service Root URL]</code></b> followed by the resource type <b>Patient</b>, a question mark character '<b>?</b>' and finished with the search parameters we wish to search with <b>family=Fhirman</b> in this case.</p>  
+                        <p>The <a href="./simple-patient.html">Simple Patient</a> tutorial uploaded a Patient resource for a <b>Mr Sam Fhirman</b>. Let's try and find that Patient resource by searching on family name. To do this we need to construct a URL starting with the <b><code>[Service Root URL]</code></b> followed by the resource type <b>Patient</b>, a question mark character '<b>?</b>' and finished with the search parameters we wish to search with <b>family=Fhirman</b> in this case.</p>  
                         
                         <p>Perform this search in your Postman client using he Http verb <b>GET</b> now, take a few minutes to examine the result returned:</p>
                         
                         <p><code>https://sqlonfhir-dstu2.azurewebsites.net/fhir/Patient<b>?family=fhirman</b></code></p>
                 
-                        <p>Did you notice that you received a <b>Bundle</b> resource in return? When you perform a search you are more than likely to receive many resource matching your search. In FHIR search results are always returned as a <b>Bundle</b>. A <b>Bundle</b> is used in FHIR to gather a collection of resource into a single instance. The reason there are so many <b>Mr Sam Fhirman</b> Patient resources is due to every student taking part in the <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a> tutorial uploading their own instance of the same patient. <i>This may explain why our PAS team is so busy with duplicate patient merging.</i> Of course this should not be the case in the real world. <i>Although the PAS team may have another opinion.</i></p>
+                        <p>Did you notice that you received a <b>Bundle</b> resource in return? When you perform a search you are more than likely to receive many resource matching your search. In FHIR search results are always returned as a <b>Bundle</b>. A <b>Bundle</b> is used in FHIR to gather a collection of resource into a single instance. The reason there are so many <b>Mr Sam Fhirman</b> Patient resources is due to every student taking part in the <a href="./simple-patient.html">Simple Patient</a> tutorial uploading their own instance of the same patient. <i>This may explain why our PAS team is so busy with duplicate patient merging.</i> Of course this should not be the case in the real world. <i>Although the PAS team may have another opinion.</i></p>
                         
                         <p>Now would be a good time to go to the FHIR specification to read about the <b><a href="http://hl7.org/fhir/bundle.html">bundle</a></b> resource. Do that now and come back when you’re done.</p>
                                                                         
@@ -118,7 +118,7 @@
                         
                         <p>In the previous step we searched by the patient's family name, but what else can we search upon? The search parameters you can use are Resource type dependant. Each resource type defines the parameters which you can search upon it. Right click and open the <b><a href="http://hl7.org/fhir/patient.html">Patient</a></b> resource page in a second browser tab and scroll to the very bottom of the page. Here you will find the list of possible search parameters for the Patient resource. Take a look at some other resource types and the search parameters they define.</p>
                         
-                        <p>In the previous tutorial, <a href="#" onclick="document.getElementById('simple-patient').click();">Simple Patient</a>, you should have created a new patient resource with your own name as the patient's name. Try and find that resource using your own surname and first name. <i>Remember to reference the FHIR specification to work out which search parameters you will need.</i></p>
+                        <p>In the previous tutorial, <a href="./simple-patient.html">Simple Patient</a>, you should have created a new patient resource with your own name as the patient's name. Try and find that resource using your own surname and first name. <i>Remember to reference the FHIR specification to work out which search parameters you will need.</i></p>
                         
                         <br>
                         <br>
