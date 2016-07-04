@@ -75,27 +75,104 @@
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-                <a href="./index.html" class="mdl-layout__tab is-active">Overview</a>
+                <a href="./index.html" class="mdl-layout__tab">Overview</a>
                 <a href="./simple-patient.html" id="simple-patient" class="mdl-layout__tab">Simple Patient</a>
                 <a href="./simple-search.html" id="simple-search" class="mdl-layout__tab">Simple Search</a>
                 <a href="./patient-with-references.html" id="patient-with-references" class="mdl-layout__tab">Patient with References</a>
-                <a href="./operations.html" id="operations" class="mdl-layout__tab">Operations</a>
+                <a href="./operations.html" id="operations" class="mdl-layout__tab is-active">Operations</a>
                 <a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-layout__tab">ValueSet &amp; CodeSystem</a>
                 <a href="./conceptmap.html" id="conceptmap" class="mdl-layout__tab">ConceptMap</a>
             </div>
         </header>
         <main class="mdl-layout__content">
-                <section class= "section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
-                    <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">                        
-                        <div class="mdl-card__supporting-text">
-                            <img src="images/fhir-logo-www.png" align="right" width="20%"> 
-                            <h3>FHIR Tutorials</h3> 
-                            <p>This page contains a series of FHIR tutorials for those just beginning to learn the new specification. The tutorials require no prior knowledge of FHIR or REST. At present these tutorials are in their alpha stage of development and participates at the NCTS connectathon in Melbourne, May 2016 will be the first students to try them out. We would appreciate any feedback you may have as we plan to build upon these in time to create a full set of tutorials from the very basic to the more complex.</p>
+                <section class="section--center mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h4>Operations</h4>
+                                                
+                        <p>This tutorial will give you an overview of <b>Operations</b> in the FHIR specification</p>
+                        <ul class="toc">
+                            <h4>Contents</h4>
+                            <!-- pr prefix stands for 'patient references'-->
+                            <a href="#op-step1">Step 1: What are Operations</a>  
+                            <a href="#op-step2">Step 2: Operations input parameters</a>  
+                            <a href="#op-step3">Step 3: Operations output parameters</a>  
+                            <a href="#op-step4">Step 4: Custom Operations</a>  
                             
-                            <p>Please note these tutorials have been written against current officially released version of FHIR, which is <a href="http://hl7.org/fhir/index.html">DSTU 2</a>.</p>
-                            
-                            <p>To continue, use the tabs at the top of the page and work through the tutorials from left to right starting with the <a href="./simple-patient.html">Simple Patient</a>.</p>
-                        </div>                             
+                        </ul>
+
+                        <h5 id="op-step1">Step 1: What are Operations</h5>
+                        
+                        <p>In the <a href="#" onclick="switchTab('simple-patient')">Simple Patient</a> tutorial, we looked at interacting with the FHIR server using the CRUD actions (Create, Read, Update and Delete). <b>Operations</b> extend on these basic actions to provide unique functionality where required. For instance, the operation <b>&#36;validate</b> can check a provided resource is acceptable to the server before you attempt to upload it. <b>&#36;translate</b> can map one code to another using a ConceptMap. You can find a full list of the operations defined by the FHIR specification here: <a href="http://hl7.org/fhir/2016May/operations.html#defined" rel="stylesheet">FHIR defined Operations</a> and for operations that are particular to a given FHIR resource, you will find an operation tab at the top of the given resource's page.</p>
+                        
+                        <p><b><a href="http://hl7.org/fhir/2016May/patient-operations.html" rel="stylesheet">Operation</a> tab as seen on the Patient resource page</b><img src="images/Operations-OperationTabFhirSpec.PNG" width="70%"></p>
+                        
+                        <p>Let's jump straight in and look at some operation syntax examples. The basic concept of operations is much like a function in programming. An operation has an 'Operation Name' (e.g. &#36;meta, &#36;everything) which are always prefixed with a dollar sign '&#36;' and operations are run in one of three context, them being:</p>
+                                          
+                        
+                        <p><b>Against the entire FHIR server:</b><br>
+                        <i>Given me the meta-data for the entire FHIR server</i><br>
+                        <i>Syntax:</i>
+                        <b><code>&#91;Service Root URL&#93;/&#91;&#36;Operation Name&#93;</code></b><br>
+                        <i>Example:</i>
+                        <b><code>http://www.acmehealth/fhirapi/$meta</code></b>
+                        </p> 
+                        
+                        
+                        <p><b>Against a type of resource:</b><br>
+                        <i>Given me the meta-data for a given resource type (Patient)</i><br>
+                        <i>Syntax:</i>
+                        <b><code>&#91;Service Root URL&#93;/&#91;Resource Type&#93;/&#91;&#36;Operation Name&#93;</code></b><br>
+                        <i>Example:</i>
+                        <b><code>http://www.acmehealth/fhirapi/Patient/$meta</code></b>
+                        </p>
+                        
+                        
+                        <p><b>Against a single resource instance:</b><br>
+                        <i>Given me all resources (everything) for the Patient resource with the given resource id of (123456)</i><br>
+                        <i>Syntax: </i>
+                        <b><code> &#91;Service Root URL&#93;/&#91;Resource Type&#93;/&#91;Resource Id&#93;/&#91;&#36;Operation Name&#93;</code></b><br>
+                        <i>Example:</i>
+                        <b><code> http://www.acmehealth/fhirapi/Patient/123456/$everything</code></b>
+                        </p>
+                        
+                        <p>Operations can also have any number of input and output parameters. We will look at input parameter next.</p>
+
+                        <h5 id="op-step2">Step 2: Operations input parameters</h5>
+                        
+                        <p>There are two different ways to pass input parameters to an operation on a FHIR server. Generally, the POST action is used and the parameters are given in the HTTP body as a <a href="http://hl7.org/fhir/2016May/parameters.html" rel="stylesheet">Parameters</a> resource. Take a look at the <a href="http://hl7.org/fhir/2016May/parameters.html" rel="stylesheet">Parameters</a> resource in the FHIR specification now to get a feel for its contents. In essence, it is a simple resource containing value pairs (key, value) where value may be a FHIR data type or a whole resource. The point to take home here is that the <a href="http://hl7.org/fhir/2016May/parameters.html" rel="stylesheet">Parameters</a> resource allows you to pass in complex data types and whole resources as parameters.</p>
+                        
+                        <p>The other way to pass input parameters into operations is by using an HTTP GET and putting the parameters in the GET URL string as seen in the following examples:</p>
+                        
+                        
+                        <p><i>Syntax:</i><b><code>&#91;Service Root URL&#93;/&#91;Resource Name&#93;/&#91;&#36;OperationName&#93;&#63;&#91;OpParameterName1&#61;value&#93;&amp;&#91;OpParameterName2&#61;value&#93;..etc.</code></b>
+                        <br>
+                        <br>
+                        The <b>&#36;match</b> operation can be given on a Patient resource type using a number of input parameters:<br>
+                        <i>Given me all the Patient resources that match on the patient demographic parameters (family, given, birthdate)</i><br>
+                        <i>Example:</i><b><code>http://www.acmehealth/fhirapi/Patient/&#36;match&#63;family&#61;chalmers&amp;given&#61;peter&amp;birthdate&#61;1974-12-25</code></b></p>
+
+                        <p><b>Activity:</b> Find in the FHIR specification documentation the <b>&#36;match</b> operation and answer; what other input parameters can this operation take and what is its output&#63;</p>
+
+                        
+                        <P>So when do you use each; Parameters in the URL string or parameters in the body using the <a href="http://hl7.org/fhir/2016May/parameters.html" rel="stylesheet">Parameters</a> resource.</P>
+                        
+                        <p>For some operations, you can use either option as long as the server supports both, for instance, the <b>$lookup</b> operation on a CodeSystem resource can be performed using both methods. Yet sometimes you must use the <a href="http://hl7.org/fhir/2016May/parameters.html" rel="stylesheet">Parameters</a> resource and HTTP POST rather than the parameters in the URL string and GET. One of the key reasons for this is due to the parameters you need to pass into the operation. If one of them is a whole Resource or a complex datatype then you must use the <a href="http://hl7.org/fhir/2016May/parameters.html" rel="stylesheet">Parameters</a> resource as you are unable to place a whole resource or complex data type in an URL string. The other reason is that an operation must be 'Idempotent' to use a GET action.</p>
+                        
+                        <p><i>What the; Idempotent?</i><br>
+                        <b>Idempotent: </b>An Idempotent operation can be applied multiple times without changing the result beyond the initial application. For example, if I make a call to delete a resource the action is said to be 'Idempotent' because if I repeat the very same call many times, no further changes occur, the resource just remains deleted as it did on the first call.</p>
+                        
+                        <h5 id="op-step3">Step 3: Operations output parameters</h5>                        
+                        
+                        <p>The output of an operation is somewhat the same as the input. If the operation was successful a HTTP status code of 200 OK will be returned along with either a <a href="http://hl7.org/fhir/2016May/parameters.html" rel="stylesheet">Parameters</a> resource or you may get a whole resource returned depending on the operation. If an error is encountered by the server you will receive an OperationOutcome resource and an HTTP status code of 4xx or 5xx. Not all operations are alike so browse the <a href="http://hl7.org/fhir/2016May/operations.html#defined" rel="stylesheet">full list</a> to get a feel for inputs and outputs of each.</p>
+                        
+                        <h5 id="op-step4">Step 4: Custom Operations</h5>
+                        <p>While the FHIR specification outlines a set of operations, there is no requirement that any given server support these operations. In order to work out which operations a server supports you will need to inspect the servers Conformance resource to see which OperationDefinition resources it lists as supported. The OperationDefinition resource is used to define an operation, what the opertaion does and the inputs and outputs it uses.</p>
+                        
+                        <p>Servers are also allowed to offer their own custom operations. Each of these should be defined in that servers Conformance resource by an OperationDefinition resource. A server can even extend onto an existing operation with new input and output parameters, once again all of these need to be stated in the appropriate OperationDefinition.</p>
+
+                         <p><b>Activity:</b> Using a post client GET your servers Conformance resource and identify the operations it supports?<br>
+                        <i><b>Tip</b> <code>GET: &#91;Service Root URL&#93;/Conformance</code></i></p>
+                        
                     </div>
                 </section>
             <footer class="mdl-mega-footer">

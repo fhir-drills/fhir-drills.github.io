@@ -75,27 +75,83 @@
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-                <a href="./index.html" class="mdl-layout__tab is-active">Overview</a>
+                <a href="./index.html" class="mdl-layout__tab">Overview</a>
                 <a href="./simple-patient.html" id="simple-patient" class="mdl-layout__tab">Simple Patient</a>
                 <a href="./simple-search.html" id="simple-search" class="mdl-layout__tab">Simple Search</a>
-                <a href="./patient-with-references.html" id="patient-with-references" class="mdl-layout__tab">Patient with References</a>
+                <a href="./patient-with-references.html" id="patient-with-references" class="mdl-layout__tab is-active">Patient with References</a>
                 <a href="./operations.html" id="operations" class="mdl-layout__tab">Operations</a>
                 <a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-layout__tab">ValueSet &amp; CodeSystem</a>
                 <a href="./conceptmap.html" id="conceptmap" class="mdl-layout__tab">ConceptMap</a>
             </div>
         </header>
         <main class="mdl-layout__content">
-                <section class= "section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
-                    <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">                        
-                        <div class="mdl-card__supporting-text">
-                            <img src="images/fhir-logo-www.png" align="right" width="20%"> 
-                            <h3>FHIR Tutorials</h3> 
-                            <p>This page contains a series of FHIR tutorials for those just beginning to learn the new specification. The tutorials require no prior knowledge of FHIR or REST. At present these tutorials are in their alpha stage of development and participates at the NCTS connectathon in Melbourne, May 2016 will be the first students to try them out. We would appreciate any feedback you may have as we plan to build upon these in time to create a full set of tutorials from the very basic to the more complex.</p>
-                            
-                            <p>Please note these tutorials have been written against current officially released version of FHIR, which is <a href="http://hl7.org/fhir/index.html">DSTU 2</a>.</p>
-                            
-                            <p>To continue, use the tabs at the top of the page and work through the tutorials from left to right starting with the <a href="./simple-patient.html">Simple Patient</a>.</p>
-                        </div>                             
+                <section class="section--center mdl-grid mdl-grid--no-spacing">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h4>Patient with References tutorial</h4>
+                        <p>This tutorial will build on the foundation laid out in the <a href="./simple-patient.html">Simple Patient</a> tutorial to introduce resource linking in FHIR by the way of <a href="http://hl7.org/fhir/2016May/references.html">references</a>.</p>
+                        <ul class="toc">
+                            <h4>Contents</h4>
+                            <!-- pr prefix stands for 'patient references'-->
+                            <a href="#pr-setup">Step 1: Setup</a>
+                            <a href="#pr-find-patient">Step 2: Find your patient</a>
+                            <a href="#pr-observe-external-references">Step 3: Observe external references</a>
+                            <a href="#pr-search-resource-using-reference">Step 4: Search for a resource using a reference</a>
+                            <a href="#pr-observe-contained-references">Step 5: Observe contained resource references</a>
+                        </ul>
+
+                        <h5 id="pr-setup">Step 1: Setup</h5>
+                        <p>Prior to doing the tutorial, a set of FHIR resources needs to be uploaded to the tutorial FHIR server so you can query them. Press the <code>Upload</code> button below to send your resources up:</p>
+
+                        <!-- fix this crime -->
+                        <p>
+                            <center>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="patient-with-references-button">
+                                    Upload</button>
+                                <br>
+                                <div id="patient-with-references-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
+                            </center>
+                        </p>
+
+
+                        <h5 id="pr-find-patient">Step 2: Find your patient</h5>
+                        <p>The patient you'll be working with is:</p>
+                        <note class="patient-with-references-location-full" id="rf-patient"><i>(press Upload to get a Patient)</i></note>
+                        <p>Open Postman and retrieve the resource, following <a href="./simple-patient.html#Step2">instructions here</a>. You should see <a href="images/patient-in-postman.png" data-lightbox="patient-in-postman">this</a> in Postman when successful.</p>
+                        
+                        <p>Our sample patient today is Pieter van de Heuvel, who came into the hospital for his scheduled heart valve replacement, but fainted before the procedure could begin - for this reason, the medical staff decided to do some blood tests on the patient first.</p>
+                        
+                        <p>There are 6 resources we'll be working with in this use case - <a href="http://hl7.org/fhir/2016May/patient.html">Patient</a>, <a href="http://hl7.org/fhir/2016May/encounter.html">Encounter</a>, <a href="http://hl7.org/fhir/2016May/diagnosticorder.html">DiagnosticOrder</a>, <a href="http://hl7.org/fhir/2016May/diagnosticreport.html">DiagnosticReport</a>, and two <a href="http://hl7.org/fhir/2016May/observation.html">Observation</a>s.</p>
+
+                        <h5 id="pr-observe-external-references">Step 3: Observe external references</h5>
+                        <p>In FHIR resources are referenced, or linked, in one direction only. For example, if you have two resources - a Patient and an Observation - a Patient will not be linked to any of the Observations; instead all Observations will be linked to the Patient. This is an optimisation measure - it means that as you add more Observations, you do not have to keep updating your Patient resource with the new references. This means that the Patient doesn't have an explicit link to any of the Observations - but not to worry, there is a way to see all Observations that a Patient has, which we'll cover later.</p>
+                        
+                        <p>In order to see which resource links to which, open up the FHIR specification for a specific resource and observe the list of resources that reference it. In our example, you can find out if it is a Patient linking to an Observation or an Observation linking to a Patient by opening both the  <a href="http://hl7.org/fhir/2016May/patient.html">Patient</a> and <a href="http://hl7.org/fhir/2016May/observation.html">Observation</a> FHIR specification pages. You'll notice that <a href="images/observation-references-patient.png" data-lightbox="observation-references-patient">Patient mentions</a> that it's referenced by the Observation resource and Observation does not, instead it has a <code>subject</code> field which <a href="images/observations-patient-subject.png" data-lightbox="observations-patient-subject">references Patient</a>.</p>
+                        
+                        <p>In the same Postman window, press Ctrl/&#8984;+F and copy/paste <code>reference</code> - you'll find that the Patient contains <a href="images/patient-references.png" data-lightbox="patient-references">just one reference</a>, which is the medical organisation that the Patient belongs to. Even though our patient had an encounter (when he came into the hospital for his procedure), it is not listed here.</p>
+                        
+                        <p>Instead, it is the Encounter that has a reference to the Patient. That way, more Encounters can be added without having to update the Patient resource every time (which can become very time-consuming in a large system). In the next section, you'll see how you can find the Encounter that's associated with your Patient.</p>
+                        
+                        <h5 id="pr-search-resource-using-reference">Step 4: Search for a resource using a reference</h5>
+                        <p>FHIR has a notion of Search Parameters, which allow you to locate resources given certain data you know about them. As a sample usecase, let's find the Encounter that's associated with our patient. Scrolling down to the <a href="http://hl7.org/fhir/2016May/encounter.html#search">Search Parameters</a> section of Encounter, we see that there's one named <a href="images/encounter-search-parameters.png" data-lightbox="encounter-search-parameters">patient</a> which allows us to search for the patient present in the encounter.</p>
+                        <p>Thus, given the patient's server ID of <code class="patient-with-references-serverid" id="rf-patient"><i>(press Upload first)</i></code> (this can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field), in order to find which encounters our patient has, the query follows this format:</p> 
+                        <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</span>/Encounter?patient=&lt;patient id&gt;</b></pre>
+                        <p>It essentially says - "give me all Encounters that have this patient ID as the subject patient". Try entering <code class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</code><code>/Encounter?patient=</code><code class="patient-with-references-serverid" id="rf-patient"></code> into Postman - you'll see a result like this:</p>
+                        <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search-thumb.png" class="thumbnail"/></a>.
+                        <p>Three things are of interest are:</p>
+                        <ol>
+                            <li>we get a <a href="http://hl7.org/fhir/2016May/bundle.html">Bundle</a> resource back. A Bundle is essentially a container for resources, used in many places including search results.</li>
+                            <li>our Bundle has 1 result in it, which is...</li>
+                            <li>the expected Encounter resource, given how our Patient has just one recorded encounter.</li>
+                        </ol>
+                        <p>We've now successfully located which encounters our patient has using a reference - congratulations!</p>
+                        
+                        <h5 id="pr-observe-contained-references">Step 5: Observe contained resource references</h5>
+                        <p>References don't always have to point to a resource located elsewhere, they can also point to resources that are <a href="http://hl7.org/fhir/2016May/references.html#contained">contained</a> (embedded) in the resource. Load up  our DiagnosticOrder in Postman:</p>
+                        <pre><b><span class="patient-with-references-location-full" id="rf-diagnosticorder">(press Upload first)</span></b></pre>
+                        
+                        <p>Press press Ctrl/&#8984;+F and copy/paste <code>practitionerid</code> - you'll find two references to it, one in <code>&lt;reference value="#practitionerid" /&gt;</code> and another in a <code>&lt;contained&gt;</code> field:</p>
+                        <img src="images/postman-contained-reference.png" class="centered"/>
+                        <p>Whenever you see an identifier start with the hash sign (#), you will see a corresponding resource within the &lt;contained&gt; field, embedded in the parent resource. Such embedding should only be done in the cases where the embedded resource can't exist on its own - for example it can't have an identifier to uniquely identify it or it only makes sense in a particular transaction scope.</p>
                     </div>
                 </section>
             <footer class="mdl-mega-footer">
