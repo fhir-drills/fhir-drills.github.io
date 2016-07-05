@@ -49,7 +49,7 @@
          "target":[  
             {  
                "code":"not present",
-               "equivalence":"narrower"
+               "equivalence":"wider"
             }
          ]
       },
@@ -58,7 +58,7 @@
          "target":[  
             {  
                "code":"not present",
-               "equivalence":"narrower"
+               "equivalence":"wider"
             }
          ]
       },
@@ -67,7 +67,7 @@
          "target":[  
             {  
                "code":"not present",
-               "equivalence":"narrower"
+               "equivalence":"wider"
             }
          ]
       },
@@ -85,7 +85,7 @@
          "target":[  
             {  
                "code":"not present",
-               "equivalence":"narrower"
+               "equivalence":"wider"
             }
          ]
       },
