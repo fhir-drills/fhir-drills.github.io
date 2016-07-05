@@ -15,6 +15,14 @@ To use the server ID only, use ``class="<exersize>-serverid" id="<html resource 
 ## Base server URL
 To use the base URL only, use ``class="<exersize>-baseurl" id="<html resource tag>"``.
 
+## Embedding XML resources
+To embed XML inside a page and get syntax highlighting, use these tags:
+
+```html
+<textarea class="fhir-resource-xml"> <my FHIR XML here>
+</textarea>
+```
+
 # Javascript
 
 To upload your resources, use the ``uploadFiles("<exersize>", servers.<pick a server>, [an array of arrays with the html resource tag and the file location])``. For example:
