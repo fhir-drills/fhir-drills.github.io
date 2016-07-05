@@ -185,8 +185,7 @@
     <code value="hard"/>
     <display value="I found the material hard to understand"/>   
   </concept>  
-</CodeSystem>
-						</textarea>
+</CodeSystem></textarea>
                         
                             
                         <p>This example does not show every property of a CodeSystem resource. I've only used the ones I thought were key while also trying to keep the example nice and short. Take a look at <a href="http://hl7.org/fhir/2016May/codesystem.html" rel="stylesheet">CodeSystem</a>  in the FHIR specification to see all the properties available.</p>
@@ -203,7 +202,55 @@
                         
                         <p>This ValueSet selects codes from the CodeSystem example we looked at in <a href="#vac-step2">Step 2</a>. Notice that this ValueSet selects both the <b>'easy'</b> and <b>'hard'</b> codes from the CodeSystem, although it is free to pick and choose which ever codes it requires from the CodeSystem, it could even select more codes from another CodeSystem if required.</p>
                         
-                        <p><img src="images/SimpleValuseSetImage.PNG" width="100%"></p>
+						<textarea id="valuesystem-1" class="fhir-resource-xml"><?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="1"/>
+  <meta>
+    <versionId value="1"/>
+    <lastUpdated value="2016-06-27T15:00:00Z"/>
+  </meta>
+  <text>
+    <status value="additional"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>ValueSet for FHIR tutorial participants to rate the difficulty of understanding of the training material</p>
+      <p>Developed by: NEHTA NCTA Connectathon team (example)</p>
+      <p>Published for testing on 28-June 2016</p>      
+      <table>
+        <tr><td><b>Code</b></td><td><b>Display</b></td></tr>
+        <tr><td>easy</td><td>I found the material easy to understand</td></tr>
+        <tr><td>hard</td><td>I found the material hard to understand</td></tr>       
+      </table> 
+    </div>      
+  </text>
+  <url value="urn:uuid:8ec3847e-789e-4994-a74b-7bbf55d88190"/>  
+  <version value="20160530"/>
+  <name value="FHIR tutorial difficulty levels"/>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <publisher value="NEHTA"/>
+  <contact>
+    <name value="Angus Millar"/>
+    <telecom>
+      <system value="email"/>
+      <value value="angus.millar@nehta.gov.au"/>
+    </telecom>
+  </contact>
+  <date value="2016-06-27"/>
+  <lockedDate value="2016-06-27"/>
+  <description value="Codes for FHIR tutorial participants to rate the difficulty of understanding of the training material"/>
+  <compose>
+    <include>
+      <system value="http://fhir3.healthintersections.com.au/open/CodeSystem/1"/>
+      <version value="20162726"/>
+      <concept>
+        <code value="easy"/>        
+      </concept>
+      <concept>
+        <code value="hard"/>        
+      </concept>     
+    </include>
+  </compose>
+</ValueSet></textarea>
                         
                         <p>Remember, a ValueSet is a grouping of codes, codes are taken from CodeSystems, to be used for a purpose. ValueSet codes adds value to some use case, for example: a clinical systems drop down box to select an allergy.</p>
                         
