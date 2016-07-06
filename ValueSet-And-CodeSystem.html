@@ -201,7 +201,7 @@
                         </ul>
                         <p><b>Here below a simple example of a ValueSet FHIR resource</b></p>
                         
-                        <p>This ValueSet selects codes from the CodeSystem example we looked at in <a href="#vac-step2">Step 2</a>. Notice that this ValueSet selects both the <b>'easy'</b> and <b>'hard'</b> codes from the CodeSystem, although it is free to pick and choose which ever codes it requires from the CodeSystem, it could even select more codes from another CodeSystem if required.</p>
+                        <p>This ValueSet selects codes from the CodeSystem example we looked at in <a href="#vac-step2">Step 2</a>. Notice that this ValueSet selects both the <b>'easy'</b> and <b>'hard'</b> codes from the CodeSystem. The CodeSystem is referenced using the '<b><code>compose/include/system@value</code></b>' which points to the GUID seen in the CodeSystem's '<b><code>url</code></b>' property. Remember the ValueSet is free to pick and choose whichever codes it requires from the CodeSystem, it could even select more codes from another CodeSystem if required.</p>
                         
 						<textarea id="valuesystem-1" class="fhir-resource-xml"><?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir">
@@ -241,7 +241,7 @@
   <description value="Codes for FHIR tutorial participants to rate the difficulty of understanding of the training material"/>
   <compose>
     <include>
-      <system value="http://fhir3.healthintersections.com.au/open/CodeSystem/1"/>
+      <system value="urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1"/>
       <version value="20162726"/>
       <concept>
         <code value="easy"/>        
