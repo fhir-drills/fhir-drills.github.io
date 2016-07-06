@@ -85,8 +85,9 @@
             </div>
         </header>
         <main class="mdl-layout__content">
-                <section class="section--center mdl-grid mdl-grid--no-spacing">
-                    <div class="mdl-cell mdl-cell--12-col">
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
+                    <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                        <div class="mdl-card__supporting-text">
                         <h4>ConceptMap tutorial</h4>
                         <p><a href="http://hl7.org/fhir/2016May/conceptmap.html">ConceptMap</a> is a special type of a FHIR resource that allows you to establish a one-way relationship between any two things - classes in class models, data elements, or code systems. We'll use latter as an example in this tutorial to demonstrate how two concepts can be related (mapped) to each other and how their equivalence (or lack of) can be specified.</p>
                         <note>This describes ConceptMap as it is in the latest <a href="http://hl7.org/fhir/2016May/conceptmap.html">May 2016 snapshot</a>. The latest iteration of the resource has some structural changes, such as the introduction of the <b>group</b> element, which are likely to make it into the next FHIR snapshot.</note>
