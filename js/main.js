@@ -173,3 +173,14 @@ if (expandOperationButton) {
 		["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
 	};
 }
+
+$(".fhir-resource-xml").each(function(index, element) {
+    // element is a node with the desired class name
+	this.element = element;
+  	var codemirror = this.codemirror = CodeMirror.fromTextArea(this.element, {
+		mode: "xml",
+		lineNumbers: true,
+		lineWrapping: true,
+		readOnly: true
+	  });
+});
