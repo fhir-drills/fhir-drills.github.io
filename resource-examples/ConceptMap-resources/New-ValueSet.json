@@ -1,0 +1,51 @@
+{
+  "url": "urn:uuid:5b2b9bb0-f459-4fcd-80f7-076969d0667d",
+  "publisher": "NEHTA",
+  "status": "draft",
+  "compose": {
+    "include": [
+      {
+        "concept": [
+          {
+            "code": "in-office"
+          },
+          {
+            "code": "away-travelling"
+          },
+          {
+            "code": "working-from-home"
+          },
+          {
+            "code": "annual-leave"
+          },
+          {
+            "code": "personal-leave"
+          },
+          {
+            "code": "jury-duty"
+          }
+        ],
+        "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
+		"version": "20162726"
+      }
+    ]
+  },
+  "date": "2016-06-27",
+  "name": "New, better valueset describing a persons work state",
+  "experimental": true,
+  "lockedDate": "2016-06-27",
+  "version": "2016-06-27",
+  "description": "This new and improved valueset allows to more accurately describe a persons work state",
+  "contact": [
+    {
+      "name": "Vadim Peretokin",
+      "telecom": [
+        {
+          "value": "vadim.peretokin@nehta.gov.au",
+          "system": "email"
+        }
+      ]
+    }
+  ],
+  "resourceType": "ValueSet"
+}

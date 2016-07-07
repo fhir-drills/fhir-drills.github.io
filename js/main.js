@@ -6,7 +6,8 @@ var servers = {
     hapi2: "http://fhirtest.uhn.ca/baseDstu2",
     hapi3: "http://fhirtest.uhn.ca/baseDstu3",
     sqlonfhir2: "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
-    nehta: "https://fhir1.ehrp.net.au/Spark/fhir"
+    nehta: "https://fhir1.ehrp.net.au/Spark/fhir",
+	ontoservercloud: "http://ontoserver.csiro.au/stu3"
 };
 
 uploaded = {
@@ -161,8 +162,11 @@ if (simplePatientButton) {
 var conceptMapButton = document.getElementById('conceptmap-button');
 if (conceptMapButton) {
 	conceptMapButton.onclick = function () {
-		uploadFiles("conceptmap", servers.sqlonfhir2, [
-		["cm-conceptmap", "resource-examples/ConceptMap-resources/ConceptMap.json"]]);
+		uploadFiles("conceptmap", servers.ontoservercloud, [
+			["cm-codesystem", "resource-examples/ConceptMap-resources/Codesystem.json"],
+			["cm-old-valueset", "resource-examples/ConceptMap-resources/Old-ValueSet.json"],
+			["cm-new-valueset", "resource-examples/ConceptMap-resources/New-ValueSet.json"],
+			["cm-conceptmap", "resource-examples/ConceptMap-resources/ConceptMap.json"]]);
 	};
 }
 

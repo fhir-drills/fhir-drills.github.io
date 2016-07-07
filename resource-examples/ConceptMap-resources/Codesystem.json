@@ -1,0 +1,62 @@
+{
+	"concept": [
+	  {
+		"code": "in-office",
+		"display": "the person is working and inoffice"
+	  },
+	  {
+		"code": "away-travelling",
+		"display": "the person is working but not in the office, they're away-travelling"
+	  },
+	  {
+		"code": "working-from-home",
+		"display": "the person is working-from-home and aren't in the office"
+	  },
+	  {
+		"code": "annual-leave",
+		"display": "the person is not working and is instead taking annual-leave"
+	  },
+	  {
+		"code": "personal-leave",
+		"display": "the person is not working and is currently sick"
+	  },
+	  {
+		"code": "jury-duty",
+		"display": "the person is not working as they've been called up for jury-duty"
+	  },
+	  {
+		"code": "present",
+		"display": "the person is at work"
+	  },
+	  {
+		"code": "not-present",
+		"display": "the person is not at work"
+	  },
+	  {
+		"code": "sick",
+		"display": "the person is not at work and is sick"
+	  }
+	],
+  "content": "complete",
+  "resourceType": "CodeSystem",
+  "caseSensitive": true,
+  "publisher": "NEHTA",
+  "experimental": true,
+  "url": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
+  "description": "Codesystem describing various codes for making people's work presence",
+  "version": "2016-06-27",
+  "name": "FHIR tutorial difficulty levels",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "value": "angus.millar@nehta.gov.au",
+          "system": "email"
+        }
+      ],
+      "name": "Angus Millar"
+    }
+  ],
+  "date": "2016-06-27",
+  "status": "draft"
+}

@@ -1,12 +1,7 @@
 {  
    "resourceType":"ConceptMap",
-   "id":"nehta-conceptmap-f001",
-   "url":"https://nehta-au.github.io/fhir/ConceptMap/nehta-conceptmap-f001",
-   "identifier":{  
-      "system":"urn:ietf:rfc:3986",
-      "value":"urn:uuid:697038ac-d5f9-481d-b9b7-4e7a1f50a264"
-   },
-   "version":"20160625",
+   "url":"urn:uuid:193bb9e9-f402-4ea6-95d0-47f8bdd51f68",
+   "version":"2016-06-27",
    "name":"New system valueset to current valueset mapping",
    "status":"draft",
    "experimental":true,
@@ -23,7 +18,7 @@
          ]
       }
    ],
-   "date":"2016-06-25",
+   "date":"2016-06-27",
    "description":"A mapping between the example new system valueset to the current valueset",
    "useContext":[  
       {  
@@ -32,11 +27,12 @@
    ],
    "requirements":"Sample supporting material for the ConceptMap tutorial at https://nehta-au.github.io",
    "copyright":"Creative Commons 0",
-   "sourceUri":"https://nehta-au.github.io/fhir/ValueSet/new-valueset",
-   "targetUri":"https://nehta-au.github.io/fhir/ValueSet/current-valueset",
+   "sourceUri":"urn:uuid:5b2b9bb0-f459-4fcd-80f7-076969d0667d",
+   "targetUri":"urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55",
    "element":[  
       {  
-         "code":"in office",
+         "code":"in-office",
+         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
          "target":[  
             {  
                "code":"present",
@@ -45,34 +41,38 @@
          ]
       },
       {  
-         "code":"away travelling",
+         "code":"away-travelling",
+         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
          "target":[  
             {  
-               "code":"not present",
+               "code":"not-present",
                "equivalence":"wider"
             }
          ]
       },
       {  
-         "code":"working from home",
+         "code":"working-from-home",
+         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
          "target":[  
             {  
-               "code":"not present",
+               "code":"not-present",
                "equivalence":"wider"
             }
          ]
       },
       {  
-         "code":"annual leave",
+         "code":"annual-leave",
+         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
          "target":[  
             {  
-               "code":"not present",
+               "code":"not-present",
                "equivalence":"wider"
             }
          ]
       },
       {  
-         "code":"personal leave",
+         "code":"personal-leave",
+         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
          "target":[  
             {  
                "code":"sick",
@@ -81,16 +81,18 @@
          ]
       },
       {  
-         "code":"jury duty",
+         "code":"jury-duty",
+         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
          "target":[  
             {  
-               "code":"not present",
+               "code":"not-present",
                "equivalence":"wider"
             }
          ]
       },
       {  
-         "code":"away travelling",
+         "code":"away-travelling",
+         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
          "target":[  
             {  
                "code":"present",

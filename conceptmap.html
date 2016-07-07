@@ -112,7 +112,7 @@
                         <p>Finally comes the meat of the matter - the <b>mappings</b> themselves. Each mapping (called as 'element' in the data) can have one or more <b>target</b> elements, which specify a connection between a code from one valueset to code(s) in another valueset. The type of connection is described by the mandatory <b>equivalence</b> property - the connection could say that the two elements are exactly the same, one concept encompasses more (or less) meaning than the other, or the two concepts aren't related at all even. The full list of equivalence values is available in the <a href="http://hl7.org/fhir/2016May/valueset-concept-map-equivalence.html">ConceptMap Equivalence</a> valueset.</p>
                         
                         <h5 id="cm-sample-data-mapping">Step 2: Sample data mapping</h5>
-                        <p>As an example, let's say you have a (very poorly designed) valueset from the codesystem representing employee presence at work with just three codes: present, not present, and sick that is in use by your system. You start importing data from a new system which has finer granularity:</p>
+                        <p>As an example, let's say you have a (very poorly designed) valueset from the codesystem representing employee presence at work with just three codes: present, not-present, and sick that is in use by your system. You start importing data from a new system which has finer granularity:</p>
                         <table class="conceptmap-table">
   <tr>
     <th>Current valueset</th>
@@ -120,27 +120,27 @@
   </tr>
   <tr>
     <td>present</td>
-    <td>in office</td>
+    <td>in-office</td>
   </tr>
   <tr>
-    <td>not present</td>
-    <td>away travelling</td>
+    <td>not-present</td>
+    <td>away-travelling</td>
   </tr>
   <tr>
     <td>sick</td>
-    <td>working from home</td>
+    <td>working-from-home</td>
   </tr>
   <tr>
     <td></td>
-    <td>annual leave</td>
+    <td>annual-leave</td>
   </tr>
   <tr>
     <td></td>
-    <td>personal leave</td>
+    <td>personal-leave</td>
   </tr>
   <tr>
     <td></td>
-    <td>jury duty</td>
+    <td>jury-duty</td>
   </tr>
 </table>
                     <p>Thus, you need to create a FHIR map connecting new codes you're getting to ones you already have, making use of the available <a href="http://hl7.org/fhir/2016May/valueset-concept-map-equivalence.html">equivalence</a> values. You come up with this sample mapping that maps in the direction from the new system to the current valueset:</p>
@@ -151,37 +151,37 @@
     <th>Equivalence code</th>
   </tr>
   <tr>
-    <td>in office</td>
+    <td>in-office</td>
     <td>present</td>
       <td>equal</td>
   </tr>
   <tr>
-    <td>away travelling</td>
-    <td>not present</td>
+    <td>away-travelling</td>
+    <td>not-present</td>
       <td>wider</td>
   </tr>
   <tr>
-    <td>working from home</td>
-    <td>not present</td>
+    <td>working-from-home</td>
+    <td>not-present</td>
       <td>wider</td>
   </tr>
   <tr>
-    <td>annual leave</td>
-    <td>not present</td>
+    <td>annual-leave</td>
+    <td>not-present</td>
       <td>wider</td>
   </tr>
   <tr>
-    <td>personal leave</td>
+    <td>personal-leave</td>
     <td>sick</td>
       <td>equal</td>
   </tr>
   <tr>
-    <td>jury duty</td>
-      <td>not present</td>
+    <td>jury-duty</td>
+      <td>not-present</td>
     <td>wider</td>
   </tr>
   <tr>                            
-    <td>away travelling</td>
+    <td>away-travelling</td>
     <td>present</td>
     <td>disjoint</td>
   </tr>
