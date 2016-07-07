@@ -309,7 +309,7 @@
                         <p>The resource will be available for viewing in Postman or your browser under this URL:</p>
                         <note class="expand-operation-location-full" id="vac-expand-valueset"><i>(press Upload to get a ValueSet)</i></note>
                         <p>As described in the <a href="./operations.html">Operations</a> tab, every resource has an 'Operations' tab, including <a href="http://hl7.org/fhir/2016May/valueset-operations.html">ValueSet</a>, which is where you'll find the <a href="http://hl7.org/fhir/2016May/valueset-operations.html#expand">$expand</a> operation. There are two ways you can use the operation - either on the ValueSet resource type:</p>
-                        <code class="expand-operation-baseurl" id="vac-expand-valueset">[Service Root URL]/[Resource Type]</code><code>/$expand</code>
+                        <code class="expand-operation-baseurl" id="vac-expand-valueset">[Service Root URL]</code><code>/ValueSet/$expand</code>
                         <p>in which case you'll need to provide the id of the valueset to expand as an 'identifier' parameter, or you can use the operation on a ValueSet instance, where the id of the resource is provided in the URL: </p>
                         <code class="expand-operation-location-full" id="vac-expand-valueset">[Service Root URL]/[Resource Type]/[Resource Id]</code><code>/$expand</code>
                         <p>Try entering <span class="expand-operation-location-full" id="vac-expand-valueset">[upload resource above first]</span><span>/$expand</span> into Postman - and you'll receive an expanded ValueSet resource:</p>
