@@ -36,7 +36,8 @@
          "target":[  
             {  
                "code":"present",
-               "equivalence":"equal"
+               "equivalence":"equal",
+               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
             }
          ]
       },
@@ -46,7 +47,8 @@
          "target":[  
             {  
                "code":"not-present",
-               "equivalence":"wider"
+               "equivalence":"wider",
+               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
             }
          ]
       },
@@ -56,7 +58,8 @@
          "target":[  
             {  
                "code":"not-present",
-               "equivalence":"wider"
+               "equivalence":"wider",
+               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
             }
          ]
       },
@@ -66,7 +69,8 @@
          "target":[  
             {  
                "code":"not-present",
-               "equivalence":"wider"
+               "equivalence":"wider",
+               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
             }
          ]
       },
@@ -76,7 +80,8 @@
          "target":[  
             {  
                "code":"sick",
-               "equivalence":"equal"
+               "equivalence":"equal",
+               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
             }
          ]
       },
@@ -86,7 +91,8 @@
          "target":[  
             {  
                "code":"not-present",
-               "equivalence":"wider"
+               "equivalence":"wider",
+               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
             }
          ]
       },
@@ -97,7 +103,8 @@
             {  
                "code":"present",
                "equivalence":"disjoint",
-               "comments":"An example mapping demonstrating how you can explicitly show that two concepts are not related"
+               "comments":"An example mapping demonstrating how you can explicitly show that two concepts are not related",
+               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
             }
          ]
       }
