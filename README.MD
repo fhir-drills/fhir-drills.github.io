@@ -20,7 +20,7 @@ To embed XML inside a page and get syntax highlighting, use these tags:
 
 ```html
 <textarea class="fhir-resource-xml"> <my FHIR XML here>
-</textarea>
+</textarea> 
 ```
 
 # Javascript
