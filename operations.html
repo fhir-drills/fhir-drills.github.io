@@ -68,26 +68,39 @@
 </head>
 
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-            </div>
-            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-                <h3>NEHTA FHIR<sup>®</sup> tutorials</h3>
-            </div>
-            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-            </div>
-            <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-                <a href="./index.html" class="mdl-layout__tab">Overview</a>
-                <a href="./simple-patient.html" id="simple-patient" class="mdl-layout__tab">Simple Patient</a>
-                <a href="./simple-search.html" id="simple-search" class="mdl-layout__tab">Simple Search</a>
-                <a href="./patient-with-references.html" id="patient-with-references" class="mdl-layout__tab">Patient with References</a>
-                <a href="./operations.html" id="operations" class="mdl-layout__tab is-active">Operations</a>
-                <a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-layout__tab">ValueSet &amp; CodeSystem</a>
-                <a href="./conceptmap.html" id="conceptmap" class="mdl-layout__tab">ConceptMap</a>
-            </div>
-        </header>
-        <main class="mdl-layout__content">
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+               for="fixed-header-drawer-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="sample"
+                 id="fixed-header-drawer-exp">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">FHIR<sup>®</sup> tutorials</span>
+    <nav class="mdl-navigation">
+		<a href="./index.html" class="mdl-navigation__link">Overview</a>
+		<a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">Simple Patient</a>
+		<a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">Simple Search</a>
+		<a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">Patient with References</a>
+		<a href="./operations.html" id="operations" class="mdl-navigation__link is-active-tab">Operations</a>
+		<a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">ValueSet &amp; CodeSystem</a>
+		<a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">ConceptMap</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
