@@ -8,7 +8,7 @@ var servers = {
     sqlonfhir2: "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
 	sqlonfhir3: "https://sqlonfhir-may.azurewebsites.net/fhir",
     nehta: "https://fhir1.ehrp.net.au/Spark/fhir",
-	ontoservercloud: "http://ontoserver.csiro.au/stu3"
+	ontoservercloud: "https://ontoserver.csiro.au/stu3"
 };
 
 uploaded = {
