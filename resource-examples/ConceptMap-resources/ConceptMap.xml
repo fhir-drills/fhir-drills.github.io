@@ -4,21 +4,21 @@
   <name value='New system valueset to current valueset mapping'/>
   <status value='draft'/>
   <experimental value='true'/>
-  <publisher value='National E-Health Transition Authority'/>
+  <publisher value='Australian Digital Health Agency'/>
   <contact>
     <name value=' Vadim Peretokin'/>
     <telecom>
       <system value='email'/>
-      <value value='vadim.peretokin@nehta.gov.au'/>
+      <value value='vadim.peretokin@digitalhealth.gov.au'/>
       <use value='work'/>
     </telecom>
   </contact>
   <date value='2016-06-27'/>
   <description value='A mapping between the example new system valueset to the current valueset'/>
   <useContext>
-    <text value='Created as an example only for https://nehta-au.github.io'/>
+    <text value='Created as an example only for https://fhir-drills.github.io'/>
   </useContext>
-  <requirements value='Sample supporting material for the ConceptMap tutorial at https://nehta-au.github.io'/>
+  <requirements value='Sample supporting material for the ConceptMap tutorial at https://fhir-drills.github.io'/>
   <copyright value='Creative Commons 0'/>
   <sourceUri value='urn:uuid:5b2b9bb0-f459-4fcd-80f7-076969d0667d'/>
   <targetUri value='urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55'/>

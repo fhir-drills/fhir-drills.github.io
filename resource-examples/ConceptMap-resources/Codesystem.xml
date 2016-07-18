@@ -5,12 +5,12 @@
     <name value="Old and new work statuses"/>
     <status value="draft"/>
     <experimental value="true"/>
-    <publisher value="NEHTA"/>
+    <publisher value="Australian Digital Health Agency"/>
     <contact>
         <name value="Vadim Peretokin"/>
         <telecom>
             <system value="email"/>
-            <value value="vadim.peretokin@nehta.gov.au"/>
+            <value value="vadim.peretokin@digitalhealth.gov.au"/>
         </telecom>
     </contact>
     <date value="2016-06-27"/>
