@@ -193,6 +193,6 @@ $(".fhir-resource-xml").each(function(index, element) {
 // makes the search top-right work
 $('#fixed-header-drawer-exp').keyup(function (e) {
     if (e.keyCode == 13) {
-        window.open("https://www.google.com.au/search?q=site%3Anehta-au.github.io+" + $('#fixed-header-drawer-exp').serialize().replace("sample=", ''), 'FHIR search results');
+        window.open("https://www.google.com.au/search?q=site%3Afhir-drills.github.io+" + $('#fixed-header-drawer-exp').serialize().replace("sample=", ''), 'FHIR search results');
     }
 });
