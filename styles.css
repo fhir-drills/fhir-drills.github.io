@@ -280,3 +280,7 @@ note {
 		border:1px solid;
 		padding:5px;
 	}
+
+.is-active-tab {
+	background-color: #e0e0e0;
+}
