@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeSystem xmlns="http://hl7.org/fhir">
+    <url value="urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"/>
+    <version value="2016-06-27"/>
+    <name value="Old and new work statuses"/>
+    <status value="draft"/>
+    <experimental value="true"/>
+    <publisher value="NEHTA"/>
+    <contact>
+        <name value="Vadim Peretokin"/>
+        <telecom>
+            <system value="email"/>
+            <value value="vadim.peretokin@nehta.gov.au"/>
+        </telecom>
+    </contact>
+    <date value="2016-06-27"/>
+    <description value="Codesystem describing various codes for making people's work presence"/>
+    <caseSensitive value="true"/>
+    <content value="complete"/>
+    <concept>
+        <code value="in-office"/>
+        <display value="the person is working and inoffice"/>
+    </concept>
+    <concept>
+        <code value="away-travelling"/>
+        <display value="the person is working but not in the office, they're away-travelling"/>
+    </concept>
+    <concept>
+        <code value="working-from-home"/>
+        <display value="the person is working-from-home and aren't in the office"/>
+    </concept>
+    <concept>
+        <code value="annual-leave"/>
+        <display value="the person is not working and is instead taking annual-leave"/>
+    </concept>
+    <concept>
+        <code value="personal-leave"/>
+        <display value="the person is not working and is currently sick"/>
+    </concept>
+    <concept>
+        <code value="jury-duty"/>
+        <display value="the person is not working as they've been called up for jury-duty"/>
+    </concept>
+    <concept>
+        <code value="present"/>
+        <display value="the person is at work"/>
+    </concept>
+    <concept>
+        <code value="not-present"/>
+        <display value="the person is not at work"/>
+    </concept>
+    <concept>
+        <code value="sick"/>
+        <display value="the person is not at work and is sick"/>
+    </concept>
+</CodeSystem>
