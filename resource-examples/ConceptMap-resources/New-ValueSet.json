@@ -1,6 +1,6 @@
 {
   "url": "urn:uuid:5b2b9bb0-f459-4fcd-80f7-076969d0667d",
-  "publisher": "NEHTA",
+  "publisher": "Australian Digital Health Agency",
   "status": "draft",
   "compose": {
     "include": [
@@ -41,7 +41,7 @@
       "name": "Vadim Peretokin",
       "telecom": [
         {
-          "value": "vadim.peretokin@nehta.gov.au",
+          "value": "vadim.peretokin@digitalhealth.gov.au",
           "system": "email"
         }
       ]
