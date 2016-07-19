@@ -7,7 +7,7 @@ var servers = {
     hapi3: "http://fhirtest.uhn.ca/baseDstu3",
     sqlonfhir2: "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
 	sqlonfhir3: "https://sqlonfhir-may.azurewebsites.net/fhir",
-    nehta: "https://fhir1.ehrp.net.au/Spark/fhir",
+    theagency: "https://fhir1.ehrp.net.au/Spark/fhir",
 	ontoservercloud: "https://ontoserver.csiro.au/stu3"
 };
 
