@@ -1,9 +1,9 @@
 {
   "resourceType": "DiagnosticReport",
-  "id": "nehta-f001",
+  "id": "digitalhealth-f001",
   "text": {
     "status": "generated",
-    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>contained</b>: </p><p><b>identifier</b>: nr1239044 (OFFICIAL)</p><p><b>status</b>: final</p><p><b>category</b>: Haematology test <span>(Details : {SNOMED CT code '252275004' = 'Hematology test (procedure)', given as 'Haematology test'}; {http://hl7.org/fhir/v2/0074 code 'HM' = 'Hematology)</span></p><p><b>code</b>: Complete blood count (hemogram) panel - Blood by Automated count <span>(Details : {LOINC code '58410-2' = 'Complete blood count (hemogram) panel - Blood by Automated count', given as 'Complete blood count (hemogram) panel - Blood by Automated count'})</span></p><p><b>subject</b>: <a>P. van den Heuvel</a></p><p><b>effective</b>: Apr 2, 2013</p><p><b>issued</b>: May 15, 2013 7:32:52 PM</p><p><b>performer</b>: <a>Burgers University Medical Centre</a></p><p><b>request</b>: id: req; L2381 (OFFICIAL); P. van den Heuvel; patient almost fainted during procedure <span>(Details )</span></p><p><b>result</b>: </p><ul><li><a>Observation/nehta-f001</a></li><li><a>Observation/nehta-f002</a></li></ul><p><b>conclusion</b>: Core lab</p></div>"
+    "div": "<div><p><b>Generated Narrative with Details</b></p><p><b>contained</b>: </p><p><b>identifier</b>: nr1239044 (OFFICIAL)</p><p><b>status</b>: final</p><p><b>category</b>: Haematology test <span>(Details : {SNOMED CT code '252275004' = 'Hematology test (procedure)', given as 'Haematology test'}; {http://hl7.org/fhir/v2/0074 code 'HM' = 'Hematology)</span></p><p><b>code</b>: Complete blood count (hemogram) panel - Blood by Automated count <span>(Details : {LOINC code '58410-2' = 'Complete blood count (hemogram) panel - Blood by Automated count', given as 'Complete blood count (hemogram) panel - Blood by Automated count'})</span></p><p><b>subject</b>: <a>P. van den Heuvel</a></p><p><b>effective</b>: Apr 2, 2013</p><p><b>issued</b>: May 15, 2013 7:32:52 PM</p><p><b>performer</b>: <a>Burgers University Medical Centre</a></p><p><b>request</b>: id: req; L2381 (OFFICIAL); P. van den Heuvel; patient almost fainted during procedure <span>(Details )</span></p><p><b>result</b>: </p><ul><li><a>Observation/digitalhealth-f001</a></li><li><a>Observation/digitalhealth-f002</a></li></ul><p><b>conclusion</b>: Core lab</p></div>"
   },
   "identifier": [
     {
@@ -39,7 +39,7 @@
     "fhir_comments": [
       "    ISO 8601    "
     ],
-    "reference": "Patient/nehta-f001",
+    "reference": "Patient/digitalhealth-f001",
     "display": "P. van den Heuvel"
   },
   "effectiveDateTime": "2013-04-02",
@@ -51,15 +51,15 @@
   },
   "request": [
     {
-      "reference": "DiagnosticOrder/nehta-f001"
+      "reference": "DiagnosticOrder/digitalhealth-f001"
     }
   ],
   "result": [
     {
-      "reference": "Observation/nehta-f001"
+      "reference": "Observation/digitalhealth-f001"
     },
     {
-      "reference": "Observation/nehta-f002"
+      "reference": "Observation/digitalhealth-f002"
     }
   ],
   "conclusion": "Core lab"

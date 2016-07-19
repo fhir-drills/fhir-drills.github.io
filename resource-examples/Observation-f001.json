@@ -1,6 +1,6 @@
 {
   "resourceType": "Observation",
-  "id": "nehta-f001",
+  "id": "digitalhealth-f001",
   "text": {
     "fhir_comments": [
       "    urn:oid:2.16.840.1.113883.4.642.1.7    ",
@@ -27,7 +27,7 @@
     ]
   },
   "subject": {
-    "reference": "Patient/nehta-f001",
+    "reference": "Patient/digitalhealth-f001",
     "display": "P. van de Heuvel"
   },
   "effectivePeriod": {

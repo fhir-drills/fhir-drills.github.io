@@ -1,6 +1,6 @@
 {
   "url": "urn:uuid:8ec3847e-789e-4994-a74b-7bbf55d88190",
-  "publisher": "NEHTA",
+  "publisher": "Australian Digital Health Agency",
   "status": "draft",
   "compose": {
     "include": [
@@ -34,7 +34,7 @@
       "name": "Angus Millar",
       "telecom": [
         {
-          "value": "angus.millar@nehta.gov.au",
+          "value": "angus.millar@digitalhealth.gov.au",
           "system": "email"
         }
       ]
@@ -42,7 +42,7 @@
   ],
   "resourceType": "ValueSet",
   "text": {
-    "div": "<div xmlns='http://www.w3.org/1999/xhtml'>\n  <p>ValueSet for FHIR tutorial participants to rate the difficulty of understanding of the training material</p>\n  <p>Developed by: NEHTA NCTA Connectathon team (example)</p>\n  <p>Published for testing on 27-June 2016</p>\n  <table>\n    <tr>\n      <td>\n        <b>Code</b>\n      </td>\n      <td>\n        <b>Display</b>\n      </td>\n    </tr>\n    <tr>\n      <td>easy</td>\n      <td>I found the material easy to understand</td>\n    </tr>\n    <tr>\n      <td>hard</td>\n      <td>I found the material hard to understand</td>\n    </tr>\n  </table>\n</div>",
+    "div": "<div xmlns='http://www.w3.org/1999/xhtml'>\n  <p>ValueSet for FHIR tutorial participants to rate the difficulty of understanding of the training material</p>\n  <p>Developed by: Australian Digital Health Agency Connectathon team (example)</p>\n  <p>Published for testing on 27-June 2016</p>\n  <table>\n    <tr>\n      <td>\n        <b>Code</b>\n      </td>\n      <td>\n        <b>Display</b>\n      </td>\n    </tr>\n    <tr>\n      <td>easy</td>\n      <td>I found the material easy to understand</td>\n    </tr>\n    <tr>\n      <td>hard</td>\n      <td>I found the material hard to understand</td>\n    </tr>\n  </table>\n</div>",
     "status": "additional"
   }
 }

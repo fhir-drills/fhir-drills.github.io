@@ -1,6 +1,6 @@
 {  
    "resourceType":"DiagnosticOrder",
-   "id":"nehta-f001",
+   "id":"digitalhealth-f001",
    "identifier":[  
       {  
          "use":"official",
@@ -9,7 +9,7 @@
       }
    ],
    "subject":{  
-      "reference":"Patient/nehta-f001",
+      "reference":"Patient/digitalhealth-f001",
       "display":"P. van den Heuvel"
    },
    "orderer":{  
@@ -50,7 +50,7 @@
       "fhir_comments":[  
          "   TODO Correcte verwijzing   "
       ],
-      "reference":"Encounter/nehta-f001"
+      "reference":"Encounter/digitalhealth-f001"
    },
    "reason":[  
       {  

@@ -10,7 +10,7 @@
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Value set "ACME codes for ordering Hepatitis B testing": This is an fictions example value set .</p>
-      <p>Developed by: NEHTA NCTA Connectathon team (example)</p>
+      <p>Developed by: Australian Digital Health Agency Connectathon team (example)</p>
       <p>Published for testing on 03-May 2016</p>
       <p>This value set includes ACME codes for ordering Hepatitis B testing:</p>
       <table class="grid">
@@ -72,12 +72,12 @@
   <name value="ACME Pathology ordering codes for Hepatitis B testing"/>
   <status value="draft"/>
   <experimental value="true"/>
-  <publisher value="NEHTA"/>
+  <publisher value="Australian Digital Health Agency"/>
   <contact>
     <name value="Angus Millar"/>
     <telecom>
       <system value="email"/>
-      <value value="angus.millar@nehta.gov.au"/>
+      <value value="angus.millar@digitalhealth.gov.au"/>
     </telecom>
   </contact>
   <date value="2016-05-30"/>

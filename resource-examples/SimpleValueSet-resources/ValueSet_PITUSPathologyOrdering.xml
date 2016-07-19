@@ -3940,12 +3940,12 @@
     <name value="PITUS Pathology ordering codes"/>
     <status value="draft"/>
     <experimental value="true"/>
-    <publisher value="NEHTA"/>
+    <publisher value="Australian Digital Health Agency"/>
     <contact>
         <name value="Angus Millar"/>
         <telecom>
             <system value="email"/>
-            <value value="angus.millar@nehta.gov.au"/>
+            <value value="angus.millar@digitalhealth.gov.au"/>
         </telecom>
     </contact>
     <date value="2016-05-30"/>
