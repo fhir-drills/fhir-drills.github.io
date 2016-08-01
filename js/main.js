@@ -65,7 +65,7 @@ function uploadFiles(id, server, data) {
 
     $('#' + id + '-progress').show("slow");
 
-    upload_all();
+    uploadAll();
 }
 
 function replaceAll(str, find, replace) {

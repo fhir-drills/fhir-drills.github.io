@@ -101,12 +101,12 @@ local update_resource_references, get_resource_id, get_resource_type, do_upload,
     js.global.uploadedResource(nil, file.jsid, file.uploadedid, file.type)
 
     local uploading_next = do_upload()
-      if not uploading_next then 
-        print"All resources uploaded"
-        js.global.completeUpload()
-      end
-
+    if not uploading_next then 
+      print"All resources uploaded"
+      js.global.completeUpload()
     end
+
+  end
 
 
     load_file = function(file)
