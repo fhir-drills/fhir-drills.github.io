@@ -136,7 +136,8 @@ function updateResourceReferences(content) {
 }
 
 function getCurrentFile() {
-	for (var file of files) {
+	for (var f in files) {
+		var file = files[f];
 		if (!file.uploaded) {
 			return file;
 		}
@@ -147,7 +148,8 @@ function uploadAll() {
 	serverUrl = uploadServer;
 	files = [];
 
-	for (var resourceData of uploadResources) {
+	for (var r in uploadResources) {
+		var resourceData = uploadResources[r];
 		files.push({localLocation: resourceData[1], jsId: resourceData[0]});
 	}
 
@@ -155,7 +157,8 @@ function uploadAll() {
 }
 
 function doUpload() {
-	for (var file of files) {
+	for (var f in files) {
+		var file = files[f];
 		if (!file.uploaded) {
 			// load this resource's data in
 			var fileName = file.localLocation;
