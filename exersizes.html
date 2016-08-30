@@ -1,0 +1,163 @@
+<!doctype html>
+<!--
+    FHIR Drills
+    Copyright 2016 Australian Digital Health Agency. All rights reserved.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License
+    -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="FHIR Tutorials by the Australian Digital Health Agency to help you understand FHIR and its spec! No technical experience required.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>FHIR® exersizes</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <!-- <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png"> -->
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <!--     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png"> -->
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <!--     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF"> -->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+	
+	<!-- CodeMirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.deep_purple-pink.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+
+    </style>
+    <link href="css/lightbox.min.css" rel="stylesheet">
+</head>
+
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+               for="fixed-header-drawer-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="sample"
+                 id="fixed-header-drawer-exp">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">FHIR<sup>®</sup> exersizes</span>
+    <nav class="mdl-navigation">
+		<a href="./exersizes.html" class="mdl-navigation__link is-active-tab">FHIR exersizes</a>
+		<a href="./terminology-exersize.html" class="mdl-navigation__link">Terminology exersize</a>
+		<a href="./index.html" class="mdl-navigation__link">FHIR tutorials</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
+                    <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                        <div class="mdl-card__supporting-text">
+							<img src="images/fhir-logo-www.png" align="right" width="20%">
+							<h3>Australian Digital Health Agency</h3>
+                            <h4>FHIR<sup>®</sup> group exersizes</h4> 
+                            <p>This set of pages is designed for a group connectathon setting to do together with other people. At present these group exersizes are in their beta stage of development and we would appreciate any feedback you may have.</p>
+                            
+                            <p>Please note these group exersizes have been written against upcoming version of FHIR, based on the <a href="http://hl7.org/fhir/2016May/">May 2016 snapshot</a>.</p>
+                            
+                            <p>To continue, use the tabs left of the page and work through the exersizes from top to bottom starting with the <a href="./simple-patient.html">Simple Patient</a>.</p>
+						</div>
+					</div>
+                </section>
+            <footer class="mdl-mega-footer">
+                <div class="mdl-mega-footer--middle-section">
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
+                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
+                        </ul>
+                    </div>
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">FHIR</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_12" title="Next FHIR get-together in Montreal in May 2016">Connectathon 12</a></li>
+                            <li><a href="http://hl7.org/fhir/2016May/" title="Latest snapshot of FHIR, for use in Connectathon 12">FHIR May 2016 snapshot</a></li>
+                            <li><a href="https://www.hl7.org/fhir/" title="Current stable version of FHIR">FHIR DSTU 2</a></li>
+                            <li><a href="https://hl7-fhir.github.io/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+	
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80290058-1', 'auto');
+  ga('send', 'pageview');
+	</script>	
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/javascript/javascript.min.js"></script>
+
+    <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <script src="js/lightbox-plus-jquery.min.js"></script>
+    <!-- lua.vm.js -->
+     <script src="js/lua.vm.js/dist/lua.vm.js"></script>   
+<!--     main javascript for this page-->
+    <script src="js/main.js"></script>
+<!-- supporting javascript to actually do the uploading -->	
+	<script src="js/post-resources.js"></script>
+</body>
+
+</html>
