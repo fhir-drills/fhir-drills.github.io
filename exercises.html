@@ -91,42 +91,26 @@
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">FHIR<sup>®</sup> exercises</span>
     <nav class="mdl-navigation">
-		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
-		<a href="./terminology-exercise.html" class="mdl-navigation__link is-active-tab">Terminology exercise</a>
+		<a href="./exercises.html" class="mdl-navigation__link  is-active-tab">FHIR exercises</a>
+		<a href="./terminology-exercise.html" class="mdl-navigation__link">Terminology exercise</a>
 		<a href="#" class="mdl-navigation__link"></a>
 		<a href="./index.html" class="mdl-navigation__link">FHIR tutorials</a>
     </nav>
   </div>
-   <main class="mdl-layout__content">
+  <main class="mdl-layout__content">
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
-							<h4>Terminology exercise</h4>
-
-							<p>This exercise will help you solidify your FHIR terminology knowledge by having you create a couple of resources and then working together with a connectathon partner to create a mapping between the said resources.</p>
-							<ul class="toc">
-								<h4>Contents</h4>
-								<a href="#step1">Step 1: Create a CodeSystem</a>                            
-								<a href="#step2">Step 2: Create a ValueSet</a>  
-								<a href="#step3">Step 3: Perform an $expand on your ValueSet</a>  
-								<a href="#step4">Step 4: Create a ConceptMap mapping</a>
-								<a href="#step5">Step 5: Perform a $translate on your ConceptMap</a>                            
-							</ul>
-
-							<h5 id="step1">Step 1: Create a CodeSystem</h5>
-							<p>Create a <a href="http://hl7.org/fhir/2016May/codesystem.html">CodeSystem</a> resource with various codes for the human emotional state (ie 'happy, 'sad', etc.) - try to choose an original list, as that'll help you later on. Feel free to refresh your CodeSystem knowledge with the <a href="ValueSet-And-CodeSystem.html">terminology tutorial</a> if need be, or just ask us should you get stuck. Once finished, upload your CodeSystem resource to the specified FHIR terminology server.</p>
-							<h5 id="step2">Step 2: Create a ValueSet</h5>
-							<p>Create a <a href="http://hl7.org/fhir/2016May/valueset.html">ValueSet</a> resource that contains some or all of the codes from your CodeSystem - include at minimum 3-4 codes so there's something to work with. Also try experimenting with overriding some descriptions of codes in the CodeSystem by supplying your own descriptions in the ValueSet, and upload the ValueSet once done.</p>
-							<h5 id="step3">Step 3: Perform an $expand on your ValueSet</h5>
-							<p>Run the <a href="http://hl7.org/fhir/2016May/valueset-operations.html#expand">$expand</a> operation on your ValueSet to see final rendering of your codes. Here you'll see the final descriptions of your codes - either from the CodeSystem, or if provided in the ValueSet, from the ValueSet.</p>
-							<p>Try out some parameters of $expand as well - use the 'filter' parameter to limit your expansion to a few select codes.</p>
-							<h5 id="step4">Step 4: Create a ConceptMap mapping</h5>
-							<p>Find a partner and create a ConceptMap mapping from your ValueSet to your buddy's ValueSet. Since the valuesets are built around the same theme, they'll likely be similar yet different enough to be able to create a mapping.</p>
-							<h5 id="step5">Step 5: Perform a $translate on your ConceptMap</h5>
-							<p>Once you've created and uploaded your ConceptMap, you can use the $translate operation to query the server with a code and obtain and equivalent code from the other CodeSystem.</p>
-							<p></p>
+							<img src="images/fhir-logo-www.png" align="right" width="20%">
+							<h3>Australian Digital Health Agency</h3>
+                            <h4>FHIR<sup>®</sup> group exercises</h4> 
+                            <p>This set of pages is designed for a group connectathon setting to do together with other people. At present these group exercises are in their beta stage of development and we would appreciate any feedback you may have.</p>
+                            
+                            <p>Please note these group exercises have been written against upcoming version of FHIR, based on the <a href="http://hl7.org/fhir/2016May/">May 2016 snapshot</a>.</p>
+                            
+                            <p>To continue, use the tabs left of the page and work through the exercises from top to bottom starting with the <a href="./simple-patient.html">Simple Patient</a>.</p>
 						</div>
-                    </div>
+					</div>
                 </section>
             <footer class="mdl-mega-footer">
                 <div class="mdl-mega-footer--middle-section">
@@ -161,7 +145,6 @@
 
   ga('create', 'UA-80290058-1', 'auto');
   ga('send', 'pageview');
-
 	</script>	
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
