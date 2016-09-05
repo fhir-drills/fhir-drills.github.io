@@ -159,9 +159,9 @@
                         
                         <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
                         
-                        <p>We're almost ready to get our resource from the FHIR server but there is one last part we need to cover. We need to understand a little bit about <a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">content negotiation</a>. Don't worry, there is not much to it. FHIR resources can be expressed in either JSON or XML, these are just two different ways that we can format a resource's data. Before we talk to our server we need to agree on which format we are going to talk in. To tell the server what format we want to be returned we pass it the <b>Accept</b> property and it needs to be equal to either <b>application/fhir+xml</b> or <b>application/fhir+json</b>. This is something we need to configure in our Http post client Postman. In Postman go to the Header tab and add the following property: <code>Accept application/fhir+xml</code>,  as seen in this <a href="images/Postman-AcceptHeader.PNG" data-lightbox="Postman-AcceptHeader">screenshot</a>.</p>
+                        <p>We're almost ready to get our resource from the FHIR server but there is one last part we need to cover. We need to understand a little bit about <a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">content negotiation</a>. Don't worry, there is not much to it. FHIR resources can be expressed in either JSON or XML, these are just two different ways that we can format a resource's data. Before we talk to our server we need to agree on which format we are going to talk in. To tell the server what format we want to be returned we pass it the <b>Accept</b> property and it needs to be equal to either <b>application/fhir+xml</b> or <b>application/fhir+json</b>. This is something we need to configure in our Http post client Postman. In Postman go to the Header tab and add the following property: <code>Accept application/fhir+xml</code>, as seen in this <a href="images/Postman-AcceptHeader.PNG" data-lightbox="Postman-AcceptHeader">screenshot</a>.</p>
                         
-                        <p>Ok, were done. All you need to do is paste the full URL we constructed into the Postman's URL box, ensure the call type is set to <b>GET</b> and hit the <b>Send</b> button. <a href="images/Postman-SimpleGetPatient.PNG" data-lightbox="Postman-SimpleGetPatient">See this screenshot if you need help</a>.</p>
+                        <p>Ok, we're done. All you need to do is paste the full URL we constructed into the Postman's URL box, ensure the call type is set to <b>GET</b> and hit the <b>Send</b> button. <a href="images/Postman-SimpleGetPatient.PNG" data-lightbox="Postman-SimpleGetPatient">See this screenshot if you need help</a>.</p>
                         
                         
                         <p>You should have received your first FHIR Patient resource back from the server in an XML format. Well done!</p> 
@@ -170,7 +170,7 @@
                         
                         <h5 id="Step3">Step 3: Updating your resource in the FHIR server</h5>
                         
-                        <p>So now you know how to get a resource from the FHIR server. Next, we are going to update an existing resource on the FHIR server. Let's pretend the patient's name was entered incorretcly and it's your job to fix it up. We are just going to use the same resource you retrieved from <a href="#Step2">Step 2: Getting your first resource from a server</a>.</p> 
+                        <p>So now you know how to get a resource from the FHIR server. Next, we are going to update an existing resource on the FHIR server. Let's pretend the patient's name was entered incorrectly and it's your job to fix it up. We are just going to use the same resource you retrieved from <a href="#Step2">Step 2: Getting your first resource from a server</a>.</p> 
                         
                         <p>In Postman, you first need to set the call type to <b>PUT</b>, then click the <b>Body</b> tab. Make sure you are clicking the right <b>Body</b> tab as there are two. The <b>Body</b> tab at the bottom is where resources returned by the FHIR server are seen, as in Step 1. The <b>Body</b> tab at the top, just under the URL box, is where we place resources to send to the server. You need to click the <b>Body</b> tab at the top. You will also need to click the radio button labelled <b>raw</b> to allow the <b>Body's</b> text box to be seen. <a href="images/Postman-SimplePutSetup.PNG" data-lightbox="Postman-SimplePutSetup">Take a look at this screenshot for help</a>.</p>
                         
@@ -195,7 +195,7 @@
                         
                         <p>So now it's time to hit <b>Send</b> which will update the Patient resource on the FHIR server.</p> 
                         
-                        <p>Once you have updated try doing a <b>GET</b>, as in <a href="#Step2">Step 3</a>, to see if your resource was updated. If you compare the <b>versionId</b> within the resource you will see it increased by one.</p>
+                        <p>Once you have updated, try doing a <b>GET</b>, as in <a href="#Step2">Step 3</a>, to see if your resource was updated. If you compare the <b>versionId</b> within the resource you will see it increased by one.</p>
                         <img src="images/Resource-VersionID.PNG" width="50%"> 
                         
                         <h5 id="Step4">Step 4: Adding a new resource to the FHIR server</h5>
@@ -218,23 +218,22 @@
                         
                         
                         
-                        <p>That is the URL done, now for the resource itself. Near the very top of the resource, you will see an <b>id</b> element with an attribute of <b>value</b> which is equal to the <b>id</b> of the resource we copied. This is the resource id and as we are creating a brand new resource we need to remove this whole element. If we don't the server will return a <b>400 Bad Request</b> error. Feel free to hit <b>Send</b> before you remove it to see this error in action; don't worry, the server won't catch on fire.</p>
+                        <p>That is the URL done, now for the resource itself. Near the very top of the resource, you will see an <b>id</b> element with an attribute of <b>value</b> which is equal to the <b>id</b> of the resource we copied. This is the resource id and as we are creating a brand new resource we need to remove this whole element. If we don't the server will return a <b>400 Bad Request</b> error. Feel free to hit <b>Send</b> before you remove it to see this error in action: don't worry, the server won't catch on fire.</p>
                         
                         <p><img src="images/Resource-id.PNG" width="40%"></p>
                         
                         <p> So after hitting <b>Send</b> with the <b>id</b> element removed you should be returned the entire resource and a status of <b>201 Created</b>. If you inspect the returned resource's <b>id</b> element you will find that the server has assigned a new <b>id</b> value, this is now the FHIR servers assigned <b>id</b> for your resource. It's also worth noting the <b>versionId</b> in the <b>meta</b> element, this should be set to '1' as this is the very first version of this resource.</p>
                         
-                        <p>Now you know how to add new resources, the same process works for all resources you just need change the resource type on the end of the URL</p>
-                        <br>
+                        <p>Now you know how to add new resources, the same process works for all resources: you just need change the resource type on the end of the URL.</p>
                         
                         <h5 id="Step5">Step 5: Deleting a resource from the FHIR server</h5>
                         
-                        <p>This one's easy, set the Http verb to <b>DELETE</b> and use the 'Service Root' appended with the resource type you wish to remove e.g. 'Patient' and append to that, the resource <b>id</b> of the resource you want to remove. So if you had a Patient resource with an <b>id</b> of '123456' then this URL would remove that resource</p>
+                        <p>This one's easy, set the Http verb to <b>DELETE</b> and use the 'Service Root' appended with the resource type you wish to remove e.g. 'Patient' and append to that the resource <b>id</b> of the resource you want to remove. So if you had a Patient resource with an <b>id</b> of '123456' then this URL would remove that resource is:</p>
                         
                         <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient/123456</b></code></p> 
                                                 
                         
-                        <p>But before you delete a resource let's think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update is marked as a deleted and you will no longer find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by it's <b>versionId</b>. So to explain this a bit better, consider the operations in order below:</p>
+                        <p>But before you delete a resource let's think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update marks the resource as deleted and you will no longer find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by its <b>versionId</b>. So to explain this a bit better, consider the operations in order below:</p>
                         
                         <ol>
                           <li> <b>Patient</b> resource, added via a <b>POST</b> <i>{this is versionId = 1}</i></li>                          
