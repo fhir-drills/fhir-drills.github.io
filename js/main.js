@@ -6,7 +6,7 @@ var servers = {
     hapi2: "http://fhirtest.uhn.ca/baseDstu2",
     hapi3: "http://fhirtest.uhn.ca/baseDstu3",
     sqlonfhir2: "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
-	sqlonfhir3: "https://sqlonfhir-may.azurewebsites.net/fhir",
+	sqlonfhir3: "https://sqlonfhir-stu3.azurewebsites.net/fhir",
     theagency: "https://fhir1.ehrp.net.au/Spark/fhir",
 	ontoservercloud: "https://ontoserver.csiro.au/stu3"
 };
@@ -145,7 +145,7 @@ if (patientWithReferencesButton) {
 		uploadFiles("patient-with-references", servers.sqlonfhir2, [
 		["rf-patient", "resource-examples/Patient-f001.json"],
 		["rf-encounter", "resource-examples/Encounter-f001.json"],
-		["rf-diagnosticorder", "resource-examples/DiagnosticOrder-f001.json"],
+		["rf-diagnosticrequest", "resource-examples/DiagnosticRequest-f001.json"],
 		["rf-observation1", "resource-examples/Observation-f001.json"],
 		["rf-observation2", "resource-examples/Observation-f002.json"],
 		["rf-diagnosticreport", "resource-examples/DiagnosticReport-f001.json"]]);

@@ -1,5 +1,5 @@
 {  
-   "resourceType":"DiagnosticOrder",
+   "resourceType":"DiagnosticRequest",
    "id":"digitalhealth-f001",
    "identifier":[  
       {  
