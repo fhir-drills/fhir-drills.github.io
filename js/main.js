@@ -142,7 +142,7 @@ function failedUpload() {
 var patientWithReferencesButton = document.getElementById('patient-with-references-button');
 if (patientWithReferencesButton) {
 	patientWithReferencesButton.onclick = function () {
-		uploadFiles("patient-with-references", servers.sqlonfhir2, [
+		uploadFiles("patient-with-references", servers.sqlonfhir3, [
 		["rf-patient", "resource-examples/Patient-f001.json"],
 		["rf-encounter", "resource-examples/Encounter-f001.json"],
 		["rf-diagnosticrequest", "resource-examples/DiagnosticRequest-f001.json"],
@@ -155,7 +155,7 @@ if (patientWithReferencesButton) {
 var simplePatientButton = document.getElementById('simple-patient-button');
 if (simplePatientButton) {
 	simplePatientButton.onclick = function () {
-		uploadFiles("simple-patient", servers.sqlonfhir2, [
+		uploadFiles("simple-patient", servers.sqlonfhir3, [
 		["simple-patient-resourcePatient1", "resource-examples/SimplePatient-resources/PatientResourceExample1.json"]]);
 	};
 }
@@ -175,7 +175,7 @@ if (conceptMapButton) {
 var expandOperationButton = document.getElementById('expand-operation-button');
 if (expandOperationButton) {
 	expandOperationButton.onclick = function () {
-		uploadFiles("expand-operation", servers.sqlonfhir2, [
+		uploadFiles("expand-operation", servers.sqlonfhir3, [
 		["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
 	};
 }
