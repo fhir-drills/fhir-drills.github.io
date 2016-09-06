@@ -173,7 +173,7 @@
                         <p><b>Activity:</b> Find in the FHIR specification documentation the <b>&#36;match</b> operation and answer; what other input parameters can this operation take and what is its output&#63;</p>
 
                         
-                        <P>So when do you use each; Parameters in the URL string or parameters in the body using the <a href="http://hl7.org/fhir/2016Sep/parameters.html">Parameters</a> resource.</P>
+                        <P>So when do you use each - Parameters in the URL string or parameters in the body using the <a href="http://hl7.org/fhir/2016Sep/parameters.html">Parameters</a> resource?</P>
                         
                         <p>For some operations, you can use either option as long as the server supports both, for instance, the <b>$lookup</b> operation on a CodeSystem resource can be performed using both methods. Yet sometimes you must use the <a href="http://hl7.org/fhir/2016Sep/parameters.html">Parameters</a> resource and HTTP POST rather than the parameters in the URL string and GET. One of the key reasons for this is due to the parameters you need to pass into the operation. If one of them is a whole Resource or a complex datatype then you must use the <a href="http://hl7.org/fhir/2016Sep/parameters.html">Parameters</a> resource as you are unable to place a whole resource or complex data type in an URL string. The other reason is that an operation must be 'Idempotent' to use a GET action.</p>
                         
