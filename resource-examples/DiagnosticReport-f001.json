@@ -51,7 +51,7 @@
   },
   "request": [
     {
-      "reference": "DiagnosticOrder/digitalhealth-f001"
+      "reference": "DiagnosticRequest/digitalhealth-f001"
     }
   ],
   "result": [

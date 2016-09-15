@@ -1,112 +1,98 @@
-{  
-   "resourceType":"ConceptMap",
-   "url":"urn:uuid:193bb9e9-f402-4ea6-95d0-47f8bdd51f68",
-   "version":"2016-06-27",
-   "name":"New system valueset to current valueset mapping",
-   "status":"draft",
-   "experimental":true,
-   "publisher":"Australian Digital Health Agency",
-   "contact":[  
-      {  
-         "name":" Vadim Peretokin",
-         "telecom":[  
-            {  
-               "system":"email",
-               "use":"work",
-               "value":"vadim.peretokin@digitalhealth.gov.au"
+{
+  "resourceType": "ConceptMap",
+  "url": "urn:uuid:193bb9e9-f402-4ea6-95d0-47f8bdd51f68",
+  "version": "2016-06-27",
+  "name": "New system valueset to current valueset mapping",
+  "status": "draft",
+  "experimental": true,
+  "publisher": "Australian Digital Health Agency",
+  "contact": [
+    {
+      "name": "Vadim Peretokin",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "vadim.peretokin@digitalhealth.gov.au",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "date": "2016-06-27",
+  "description": "A mapping between the example new system valueset to the current valueset",
+  "requirements": "Sample supporting material for the ConceptMap tutorial at https://fhir-drills.github.io",
+  "copyright": "Creative Commons 0",
+  "sourceUri": "urn:uuid:5b2b9bb0-f459-4fcd-80f7-076969d0667d",
+  "targetUri": "urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55",
+  "group": [
+    {
+      "source": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
+      "element": [
+        {
+          "code": "in-office",
+          "target": [
+            {
+              "code": "present",
+              "equivalence": "equal"
             }
-         ]
-      }
-   ],
-   "date":"2016-06-27",
-   "description":"A mapping between the example new system valueset to the current valueset",
-   "useContext":[  
-      {  
-         "text":"Created as an example only for https://fhir-drills.github.io"
-      }
-   ],
-   "requirements":"Sample supporting material for the ConceptMap tutorial at https://fhir-drills.github.io",
-   "copyright":"Creative Commons 0",
-   "sourceUri":"urn:uuid:5b2b9bb0-f459-4fcd-80f7-076969d0667d",
-   "targetUri":"urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55",
-   "element":[  
-      {  
-         "code":"in-office",
-         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
-         "target":[  
-            {  
-               "code":"present",
-               "equivalence":"equal",
-               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
+          ]
+        },
+        {
+          "code": "away-travelling",
+          "target": [
+            {
+              "code": "not-present",
+              "equivalence": "wider"
             }
-         ]
-      },
-      {  
-         "code":"away-travelling",
-         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
-         "target":[  
-            {  
-               "code":"not-present",
-               "equivalence":"wider",
-               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
+          ]
+        },
+        {
+          "code": "working-from-home",
+          "target": [
+            {
+              "code": "not-present",
+              "equivalence": "wider"
             }
-         ]
-      },
-      {  
-         "code":"working-from-home",
-         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
-         "target":[  
-            {  
-               "code":"not-present",
-               "equivalence":"wider",
-               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
+          ]
+        },
+        {
+          "code": "annual-leave",
+          "target": [
+            {
+              "code": "not-present",
+              "equivalence": "wider"
             }
-         ]
-      },
-      {  
-         "code":"annual-leave",
-         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
-         "target":[  
-            {  
-               "code":"not-present",
-               "equivalence":"wider",
-               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
+          ]
+        },
+        {
+          "code": "personal-leave",
+          "target": [
+            {
+              "code": "sick",
+              "equivalence": "equal"
             }
-         ]
-      },
-      {  
-         "code":"personal-leave",
-         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
-         "target":[  
-            {  
-               "code":"sick",
-               "equivalence":"equal",
-               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
+          ]
+        },
+        {
+          "code": "jury-duty",
+          "target": [
+            {
+              "code": "not-present",
+              "equivalence": "wider"
             }
-         ]
-      },
-      {  
-         "code":"jury-duty",
-         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
-         "target":[  
-            {  
-               "code":"not-present",
-               "equivalence":"wider",
-               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
+          ]
+        },
+        {
+          "code": "away-travelling",
+          "target": [
+            {
+              "code": "present",
+              "equivalence": "disjoint",
+              "comments": "An example mapping demonstrating how you can explicitly show that two concepts are not related"
             }
-         ]
-      },
-      {  
-         "code":"away-travelling",
-         "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
-         "target":[  
-            {  
-               "code":"present",
-               "equivalence":"disjoint",
-               "comments":"An example mapping demonstrating how you can explicitly show that two concepts are not related",
-               "system": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"
-            }
-         ]
-      }
-   ]
+          ]
+        }
+      ]
+    }
+  ]
 }

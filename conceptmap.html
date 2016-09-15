@@ -107,8 +107,8 @@
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
                         <h4>ConceptMap tutorial</h4>
-                        <p><a href="http://hl7.org/fhir/2016May/conceptmap.html">ConceptMap</a> is a special type of a FHIR resource that allows you to establish a one-way relationship between any two things - classes in class models, data elements, or code systems. We'll use latter as an example in this tutorial to demonstrate how two concepts can be related (mapped) to each other and how their equivalence (or lack of) can be specified.</p>
-                        <note>This describes ConceptMap as it is in the latest <a href="http://hl7.org/fhir/2016May/conceptmap.html">May 2016 snapshot</a>. The latest iteration of the resource has some structural changes, such as the introduction of the <b>group</b> element, which are likely to make it into the next FHIR snapshot.</note>
+                        <p><a href="http://hl7.org/fhir/2016Sep/conceptmap.html">ConceptMap</a> is a special type of a FHIR resource that allows you to establish a one-way relationship between any two things - classes in class models, data elements, or code systems. We'll use latter as an example in this tutorial to demonstrate how two concepts can be related (mapped) to each other and how their equivalence (or lack of) can be specified.</p>
+                        <note>This describes ConceptMap as it is in the latest <a href="http://hl7.org/fhir/2016Sep/conceptmap.html">September 2016 snapshot</a>, which you should note that is different from the previous May 2016 snapshot (such as the new <a href="http://hl7.org/fhir/2016Sep/conceptmap-definitions.html#ConceptMap.group">group</a> element).</note>
                         <ul class="toc">
                             <h4>Contents</h4>
                             <!-- pr prefix stands for 'patient references'-->
@@ -120,12 +120,12 @@
                         </ul>
 
                         <h5 id="cm-about-conceptmap">Step 1: About ConceptMap</h5>
-                        <p>The <a href="http://hl7.org/fhir/2016May/conceptmap.html">ConceptMap</a> resource in general has <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">four parts</a> to it: 1) metadata about the resource, 2) the source of the data, 3) target the data is mapped to, and 4) the individual mappings themselves:</p>
+                        <p>The <a href="http://hl7.org/fhir/2016Sep/conceptmap.html">ConceptMap</a> resource in general has <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">four parts</a> to it: 1) metadata about the resource, 2) the source of the data, 3) target the data is mapped to, and 4) the groups of mappings themselves:</p>
                         <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview"><img src="images/conceptmap-overview-thumbnail.png" class="thumbnail"/></a>
                         <p><b>Metadata</b> about the resource describes general information about the mapping - who made it, what version is it at, copyright on the content and so on.</p>
-                        <p><b>Source</b> of the data is a reference, or the entire definition inline of the dataset that you are mapping from. Remember that ConceptMap is a one-way mapping - so there's always a clear source and a target.</p>
-                        <p><b>Target</b> of the data is similar to source - it is either a reference to the dataset or its inline definition.</p>
-                        <p>Finally comes the meat of the matter - the <b>mappings</b> themselves. Each mapping (called as 'element' in the data) can have one or more <b>target</b> elements, which specify a connection between a code from one valueset to code(s) in another valueset. The type of connection is described by the mandatory <b>equivalence</b> property - the connection could say that the two elements are exactly the same, one concept encompasses more (or less) meaning than the other, or the two concepts aren't related at all even. The full list of equivalence values is available in the <a href="http://hl7.org/fhir/2016May/valueset-concept-map-equivalence.html">ConceptMap Equivalence</a> valueset.</p>
+                        <p><b>Source</b> of the data is a reference to the dataset that you are mapping from. Remember that ConceptMap is a one-way mapping - so there's always a clear source and a target.</p>
+                        <p><b>Target</b> of the data is similar to source - it is a reference to the dataset.</p>
+                        <p>Finally comes the meat of the matter - the <b>mappings</b> themselves, organised in groups. Each mapping (called as 'element' in the data) can have one or more <b>target</b> elements, which specify a connection between a code from one valueset to code(s) in another valueset. The type/strength of connection is described by the <b>equivalence</b> property - the connection could say that the two elements are exactly the same, one concept encompasses more (or less) meaning than the other, or the two concepts aren't related at all even. The full list of equivalence values is available in the <a href="http://hl7.org/fhir/2016Sep/valueset-concept-map-equivalence.html">ConceptMap Equivalence</a> valueset.</p>
                         
                         <h5 id="cm-sample-data-mapping">Step 2: Sample data mapping</h5>
                         <p>As an example, let's say you have a (very poorly designed) valueset from the codesystem representing employee presence at work with just three codes: present, not-present, and sick that is in use by your system. You start importing data from a new system which has finer granularity:</p>
@@ -159,7 +159,7 @@
     <td>jury-duty</td>
   </tr>
 </table>
-                    <p>Thus, you need to create a FHIR map connecting new codes you're getting to ones you already have, making use of the available <a href="http://hl7.org/fhir/2016May/valueset-concept-map-equivalence.html">equivalence</a> values. You come up with this sample mapping that maps in the direction from the new system to the current valueset:</p>
+                    <p>Thus, you need to create a FHIR map connecting new codes you're getting to ones you already have, making use of the available <a href="http://hl7.org/fhir/2016Sep/valueset-concept-map-equivalence.html">equivalence</a> values. You come up with this sample mapping that maps in the direction from the new system to the current valueset:</p>
                         <table class="conceptmap-table">
   <tr>
     <th>New system's valueset</th>
@@ -203,7 +203,7 @@
   </tr>
 </table>
                         <h5 id="cm-sample-resource">Step 3: Sample resources</h5>
-							<p>A sample <a href="http://hl7.org/fhir/2016May/conceptmap.html">ConceptMap</a> resource containing these mappings is <a href="resource-examples/ConceptMap-resources/ConceptMap.xml">available here</a>. The supporting  <a href="resource-examples/ConceptMap-resources/Codesystem.xml">CodeSystem</a>, <a href="resource-examples/ConceptMap-resources/Old-ValueSet.xml">old ValueSet</a> and  <a href="resource-examples/ConceptMap-resources/New-ValueSet.xml">new ValueSet</a> are available as well.</p>
+							<p>A sample <a href="resource-examples/ConceptMap-resources/ConceptMap.xml">ConceptMap</a> resource containing these mappings is available. The supporting  <a href="resource-examples/ConceptMap-resources/Codesystem.xml">CodeSystem</a>, <a href="resource-examples/ConceptMap-resources/Old-ValueSet.xml">old ValueSet</a> and  <a href="resource-examples/ConceptMap-resources/New-ValueSet.xml">new ValueSet</a> are available as well.</p>
 <!--
 
 							<p>Press the button below to upload it to the FHIR server!</p>
@@ -227,11 +227,11 @@
                         <h5 id="cm-advanced-features">Step 4: Advanced features</h5>
                         <p>ConceptMap is actually pretty powerful, and besides the basic code-to-code mapping described above, it also supports the following usecases:</p>
                         <ul>
-                            <li>Mapping one code to many codes at once given the same equivalence property (by utilising multiple <a href="http://hl7.org/fhir/2016May/conceptmap-definitions.html#ConceptMap.element.target">target</a> properties within one <a href="http://hl7.org/fhir/2016May/conceptmap-definitions.html#ConceptMap.element">element</a> property)</li>
-                            <li>Having a dependency for a mapping - a mapping could only be applicable if a selected element exists in the data and has the specified value (see <a href="http://hl7.org/fhir/2016May/conceptmap-definitions.html#ConceptMap.element.target.dependsOn">dependsOn</a>)</li>
+                            <li>Mapping one code to many codes at once given the same equivalence property (by utilising multiple <a href="http://hl7.org/fhir/2016Sep/conceptmap-definitions.html#ConceptMap.element.target">target</a> properties within one <a href="http://hl7.org/fhir/2016Sep/conceptmap-definitions.html#ConceptMap.element">element</a> property)</li>
+                            <li>Having a dependency for a mapping - a mapping could only be applicable if a selected element exists in the data and has the specified value (see <a href="http://hl7.org/fhir/2016Sep/conceptmap-definitions.html#ConceptMap.group.element.target.dependsOn">dependsOn</a>)</li>
                         </ul>
                         <h5 id="cm-translate-operation">Step 5: $translate operation</h5>
-							<p>The <a href="http://hl7.org/fhir/2016May/conceptmap-operations.html#translate">$translate</a> operation allows you to utilise a FHIR terminology server to get an equivalent code as specified by a ConceptMap mapping. To use it, you need to provide the conceptmap you'd like to use, the input code and its codesystem, and the valueset you'd like to get a translation from. Try uploading all four sample resources mentioned above (a codesystem, two valuesets, and a conceptmap) via Postman to a FHIR terminology server (e.g., <code>http://ontoserver.csiro.au/stu3/</code>) and use the translate operation with this template:</p>
+							<p>The <a href="http://hl7.org/fhir/2016Sep/conceptmap-operations.html#translate">$translate</a> operation allows you to utilise a FHIR terminology server to get an equivalent code as specified by a ConceptMap mapping. To use it, you need to provide the conceptmap you'd like to use, the input code and its codesystem, and the valueset you'd like to get a translation from. Try uploading all four sample resources mentioned above (a codesystem, two valuesets, and a conceptmap) via Postman to a FHIR terminology server (e.g., <code>http://ontoserver.csiro.au/stu3/</code>) and use the translate operation with this template:</p>
 							<code>http://my-terminology-server.org/fhir/ConceptMap/servers-conceptmap-id/$translate?code=my-code&system=codes-codesystem&target=target-valueset</code>
 							<p>Here's a sample code you could try, once you've uploaded your conceptmap to a terminology server of choice:</p>
 							<code>http://ontoserver.csiro.au/stu3/ConceptMap/servers-conceptmap-id/$translate?code=in-office&system=urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a&target=4a211242-088a-4c33-a189-77d71c7f81e2</code>
@@ -252,8 +252,8 @@
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
                         <h1 class="mdl-mega-footer--heading">FHIR</h1>
                         <ul class="mdl-mega-footer--link-list">
-                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_12" title="Next FHIR get-together in Montreal in May 2016">Connectathon 12</a></li>
-                            <li><a href="http://hl7.org/fhir/2016May/" title="Latest snapshot of FHIR, for use in Connectathon 12">FHIR May 2016 snapshot</a></li>
+                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_13" title="Next FHIR get-together in Baltimore in September 2016">Connectathon 13</a></li>
+                            <li><a href="http://hl7.org/fhir/2016Sep" title="Latest snapshot of FHIR, for use in Baltimore Connectathon">FHIR September 2016 snapshot</a></li>
                             <li><a href="https://www.hl7.org/fhir/" title="Current stable version of FHIR">FHIR DSTU 2</a></li>
                             <li><a href="https://hl7-fhir.github.io/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>

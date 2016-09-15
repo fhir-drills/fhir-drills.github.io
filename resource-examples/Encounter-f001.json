@@ -13,7 +13,11 @@
     }
   ],
   "status": "finished",
-  "class": "outpatient",
+  "class": {
+	  "code": "SS",
+	  "display": "short stay"
+	
+  },
   "type": [
     {
       "coding": [

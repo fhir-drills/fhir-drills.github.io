@@ -1,89 +1,75 @@
-<ConceptMap xmlns='http://hl7.org/fhir'>
-  <url value="urn:uuid:193bb9e9-f402-4ea6-95d0-47f8bdd51f68"/>
-  <version value='2016-06-27'/>
-  <name value='New system valueset to current valueset mapping'/>
-  <status value='draft'/>
-  <experimental value='true'/>
-  <publisher value='Australian Digital Health Agency'/>
-  <contact>
-    <name value=' Vadim Peretokin'/>
-    <telecom>
-      <system value='email'/>
-      <value value='vadim.peretokin@digitalhealth.gov.au'/>
-      <use value='work'/>
-    </telecom>
-  </contact>
-  <date value='2016-06-27'/>
-  <description value='A mapping between the example new system valueset to the current valueset'/>
-  <useContext>
-    <text value='Created as an example only for https://fhir-drills.github.io'/>
-  </useContext>
-  <requirements value='Sample supporting material for the ConceptMap tutorial at https://fhir-drills.github.io'/>
-  <copyright value='Creative Commons 0'/>
-  <sourceUri value='urn:uuid:5b2b9bb0-f459-4fcd-80f7-076969d0667d'/>
-  <targetUri value='urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55'/>
-  <element>
-    <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-    <code value='in-office'/>
-    <target>
-      <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-      <code value='present'/>
-      <equivalence value='equal'/>
-    </target>
-  </element>
-  <element>
-    <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-    <code value='away-travelling'/>
-    <target>
-      <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-      <code value='not-present'/>
-      <equivalence value='wider'/>
-    </target>
-  </element>
-  <element>
-    <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-    <code value='working-from-home'/>
-    <target>
-      <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-      <code value='not-present'/>
-      <equivalence value='wider'/>
-    </target>
-  </element>
-  <element>
-    <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-    <code value='annual-leave'/>
-    <target>
-      <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-      <code value='not-present'/>
-      <equivalence value='wider'/>
-    </target>
-  </element>
-  <element>
-    <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-    <code value='personal-leave'/>
-    <target>
-      <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-      <code value='sick'/>
-      <equivalence value='equal'/>
-    </target>
-  </element>
-  <element>
-    <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-    <code value='jury-duty'/>
-    <target>
-      <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-      <code value='not-present'/>
-      <equivalence value='wider'/>
-    </target>
-  </element>
-  <element>
-    <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-    <code value='away-travelling'/>
-    <target>
-      <system value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/>
-      <code value='present'/>
-      <equivalence value='disjoint'/>
-      <comments value='An example mapping demonstrating how you can explicitly show that two concepts are not related'/>
-    </target>
-  </element>
+<ConceptMap xmlns="http://hl7.org/fhir">
+    <url value="urn:uuid:193bb9e9-f402-4ea6-95d0-47f8bdd51f68" />
+    <version value="2016-06-27" />
+    <name value="New system valueset to current valueset mapping" />
+    <status value="draft" />
+    <experimental value="true" />
+    <publisher value="Australian Digital Health Agency" />
+    <contact>
+        <name value=" Vadim Peretokin" />
+        <telecom>
+            <system value="email" />
+            <value value="vadim.peretokin@digitalhealth.gov.au" />
+            <use value="work" />
+        </telecom>
+    </contact>
+    <date value="2016-06-27" />
+    <description value="A mapping between the example new system valueset to the current valueset" />
+    <requirements value="Sample supporting material for the ConceptMap tutorial at https://fhir-drills.github.io" />
+    <copyright value="Creative Commons 0" />
+    <sourceUri value="urn:uuid:5b2b9bb0-f459-4fcd-80f7-076969d0667d" />
+    <targetUri value="urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55" />
+    <group>
+    	<source value='urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a'/> 
+        <element>
+            <code value="in-office" />
+            <target>
+                <code value="present" />
+                <equivalence value="equal" />
+            </target>
+        </element>
+        <element>
+            <code value="away-travelling" />
+            <target>
+                <code value="not-present" />
+                <equivalence value="wider" />
+            </target>
+        </element>
+        <element>
+            <code value="working-from-home" />
+            <target>
+                <code value="not-present" />
+                <equivalence value="wider" />
+            </target>
+        </element>
+        <element>
+            <code value="annual-leave" />
+            <target>
+                <code value="not-present" />
+                <equivalence value="wider" />
+            </target>
+        </element>
+        <element>
+            <code value="personal-leave" />
+            <target>
+                <code value="sick" />
+                <equivalence value="equal" />
+            </target>
+        </element>
+        <element>
+            <code value="jury-duty" />
+            <target>
+                <code value="not-present" />
+                <equivalence value="wider" />
+            </target>
+        </element>
+        <element>
+            <code value="away-travelling" />
+            <target>
+                <code value="present" />
+                <equivalence value="disjoint" />
+                <comments value="An example mapping demonstrating how you can explicitly show that two concepts are not related" />
+            </target>
+        </element>
+    </group>
 </ConceptMap>
