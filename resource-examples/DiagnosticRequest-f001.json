@@ -12,7 +12,7 @@
       "reference":"Patient/digitalhealth-f001",
       "display":"P. van den Heuvel"
    },
-   "orderer":{  
+   "requester":{  
       "reference":"#practitionerid",
       "display":"Dr. Adam Careful"
    },
@@ -46,10 +46,7 @@
          ]
       }
    ],
-   "encounter":{  
-      "fhir_comments":[  
-         "   TODO Correcte verwijzing   "
-      ],
+   "context":{ 
       "reference":"Encounter/digitalhealth-f001"
    },
    "reason":[  
@@ -57,31 +54,18 @@
          "text":"patient fainted before a procedure"
       }
    ],
-   "item":[  
-      {  
-         "code":{  
-            "coding":[  
-               {  
-                  "system":"http://loinc.org",
-                  "code":"58410-2",
-                  "_code":{  
-                     "fhir_comments":[  
-                        "     LOINC     "
-                     ]
-                  },
-                  "display":"Complete blood count (hemogram) panel - Blood by Automated count"
-               }
-            ]
-         },
-         "bodySite":{  
-            "coding":[  
-               {  
-                  "system":"http://snomed.info/sct",
-                  "code":"14975008",
-                  "display":"Forearm structure"
-               }
-            ]
-         }
-      }
-   ]
+	 "code":{  
+		"coding":[  
+		   {  
+			  "system":"http://loinc.org",
+			  "code":"58410-2",
+			  "_code":{  
+				 "fhir_comments":[  
+					"     LOINC     "
+				 ]
+			  },
+			  "display":"Complete blood count (hemogram) panel - Blood by Automated count"
+		   }
+		]
+	 }
 }
