@@ -107,21 +107,31 @@
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
-                        <h4>Bundle tutorial</h4>
-                        <p><a href="http://hl7.org/fhir/2016Sep/bundle.html">Bundle</a>.</p>
-                        <ul class="toc">
-                            <h4>Contents</h4>
-                            <!-- pr prefix stands for 'patient references'-->
-                            <a href="#cm-about-conceptmap">Step 1: About ConceptMap</a>
-                            <a href="#cm-sample-data-mapping">Step 2: Sample data mapping</a>
-                            <a href="#cm-sample-resource">Step 3: Sample resources</a>
-                            <a href="#cm-advanced-features">Step 4: Advanced features</a>
-							<a href="#cm-translate-operation">Step 5: $translate operation</a>
-                        </ul>
+							<h4>Bundle tutorial</h4>
+							<p><a href="http://hl7.org/fhir/2016Sep/bundle.html">Bundle</a> is a constainer for resources, enabling you to group and transmit resources  altogether at once.</p>
+							<ul class="toc">
+								<h4>Contents</h4>
+								<!-- pr prefix stands for 'patient references'-->
+								<a href="#bn-about-bundle">Step 1: About Bundle</a>
+								<a href="#cm-sample-data-mapping">Step 2: Bundle processing</a>
+								<a href="#cm-sample-resource">Step 3: Reference resolution</a>
+								<a href="#cm-sample-resource">Step 3: Paging</a>
+							</ul>
 
-                        <h5 id="cm-about-conceptmap">Step 1: About ConceptMap</h5>
-                        <p>The <a href="http://hl7.org/fhir/2016Sep/conceptmap.html">ConceptMap</a> resource in general has <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">four parts</a> to it: 1) metadata about the resource, 2) the source of the data, 3) target the data is mapped to, and 4) the groups of mappings themselves:</p>
-                    </div>
+							<h5 id="bn-about-bundle">Step 1: About Bundle</h5>
+							<p>We've mentioned in the previous <a href="patient-with-references.html#pr-observe-contained-references">tutorial on resource references</a> that resources can "contain" other resources. So how are Bundles different? The FHIR spec is quite helpful in this regard:</p>
+								<note><ul><li>Contained resources are "in" the container resource - they can only ever be interpreted and/or changed in the context of the container</li>
+	<li>A bundle is a collection of resources that have an independent existence - for example, they can also be accessed directly using the RESTful API</li></ul></note>
+
+							<p>So, while resources inside a Bundle exist on the server individually and can be GET'd, PUT'd and DELETE'd separately, contained resources cannot be. They can't even be referenced individually from outside containing resource.</p>
+							<p>There are <a href="http://hl7.org/fhir/2016Sep/valueset-bundle-type.html#expansion">several types</a> of bundles defined by FHIR: document, message, transaction, transaction-response, batch, batch-response, history, searchset, and collection.
+							<p>Document, message, and collection are used in specific resource exchange paradigms. Loosely speaking, you can think of document-type bundles as those representing a CDA document, a message-type bundle representing a V2 message, and a collection as a general catch-all type.</p>
+							<p>Searchset is used in searching - an operation you're already familiar with - it's the bundle that collates search results into a single response. As some search results can return a large number of results, this is where the idea of paging comes in - something we'll cover shortly.</p>
+							<p>History is similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/2016Sep/http.html#history">_history</a> operation when you're looking at the history of a resource(s).</p>
+							<p>Lastly, batches and transactions allow you to condense multiple operations into one - say you'd like to upload 5 resources but don't want to upload do it using 5 times, you can gather all of the resources up into a Bundle and upload it all at once. The difference between a batch and a transaction is how things are handled when an issue happens. When one of the operations of a transaction fails, the entire transaction fails and no changes happen on the server (if some changes were made, they're reverted without a trace). If one of the operations of a batch fails, then the rest of the operations can still complete successfully. Batch and transaction responses notify you on what happened with each operation within your bundle.</p>
+							<h5 id="bn-bundle-processing">Step 2: Bundle Processing</h5>
+							<p></p>
+						</div>
 					</div>
                 </section>
             <footer class="mdl-mega-footer">
