@@ -108,13 +108,13 @@
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
 							<h4>Bundle tutorial</h4>
-							<p><a href="http://hl7.org/fhir/2016Sep/bundle.html">Bundle</a> is a constainer for resources, enabling you to group and transmit resources  altogether at once.</p>
+							<p>Bundle is a constainer for resources, enabling you to group and transmit resources  altogether at once. Guidance the resource is available on the <a href="http://hl7.org/fhir/2016Sep/bundle.html">Bundle</a> and on the <a href="http://hl7.org/fhir/2016Sep/http.html#transaction">RESTful API</a> pages.</p>
 							<ul class="toc">
 								<h4>Contents</h4>
 								<!-- pr prefix stands for 'patient references'-->
 								<a href="#bn-about-bundle">Step 1: About Bundle</a>
-								<a href="#cm-sample-data-mapping">Step 2: Bundle processing</a>
-								<a href="#cm-sample-resource">Step 3: Reference resolution</a>
+								<a href="#bn-upload-endpoints">Step 2: Upload endpoints</a>
+								<a href="#bn-reference-resolution">Step 3: Reference resolution</a>
 								<a href="#cm-sample-resource">Step 3: Paging</a>
 							</ul>
 
@@ -124,13 +124,77 @@
 	<li>A bundle is a collection of resources that have an independent existence - for example, they can also be accessed directly using the RESTful API</li></ul></note>
 
 							<p>So, while resources inside a Bundle exist on the server individually and can be GET'd, PUT'd and DELETE'd separately, contained resources cannot be. They can't even be referenced individually from outside containing resource.</p>
+							
 							<p>There are <a href="http://hl7.org/fhir/2016Sep/valueset-bundle-type.html#expansion">several types</a> of bundles defined by FHIR: document, message, transaction, transaction-response, batch, batch-response, history, searchset, and collection.
-							<p>Document, message, and collection are used in specific resource exchange paradigms. Loosely speaking, you can think of document-type bundles as those representing a CDA document, a message-type bundle representing a V2 message, and a collection as a general catch-all type.</p>
-							<p>Searchset is used in searching - an operation you're already familiar with - it's the bundle that collates search results into a single response. As some search results can return a large number of results, this is where the idea of paging comes in - something we'll cover shortly.</p>
-							<p>History is similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/2016Sep/http.html#history">_history</a> operation when you're looking at the history of a resource(s).</p>
-							<p>Lastly, batches and transactions allow you to condense multiple operations into one - say you'd like to upload 5 resources but don't want to upload do it using 5 times, you can gather all of the resources up into a Bundle and upload it all at once. The difference between a batch and a transaction is how things are handled when an issue happens. When one of the operations of a transaction fails, the entire transaction fails and no changes happen on the server (if some changes were made, they're reverted without a trace). If one of the operations of a batch fails, then the rest of the operations can still complete successfully. Batch and transaction responses notify you on what happened with each operation within your bundle.</p>
-							<h5 id="bn-bundle-processing">Step 2: Bundle Processing</h5>
-							<p></p>
+							<p><b>Document</b>, <b>message</b>, and <b>collection</b> are used in specific data exchange paradigms. Loosely speaking, you can think of document-type bundles as those representing a CDA document, a message-type bundle representing a V2 message, and a collection as a general catch-all type.</p>
+							<p><b>Searchset</b> is used in searching - an operation you're already familiar with - it's the bundle that collates search results into a single response. As some search results can return a large number of results, this is where the idea of paging comes in - something we'll cover shortly.</p>
+							<p><b>History</b> is similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/2016Sep/http.html#history">_history</a> operation when you're looking at the history of a resource(s).</p>
+							<p>Lastly, <b>batch</b> and <b>transaction</b> allow you to condense multiple operations into one - say you'd like to upload 5 resources but don't want to upload do it using 5 times, you can gather all of the resources up into a Bundle and upload it all at once. The difference between a batch and a transaction is how things are handled when an issue happens. When one of the operations of a transaction fails, the entire transaction fails and no changes happen on the server as a result of the operation. If one of the operations of a batch fails, then the rest of the operations can still complete successfully. <b>Batch-</b> and <b>transaction-response</b> notify you on what happened with each operation within your bundle.</p>
+							<h5 id="bn-upload-endpoints">Step 2: Upload endpoints</h5>
+							<p>If you upload a Bundle to <code><b>[Service Root URL]/Bundle</b></code>, your Bundle will be stored as-is, just like any other resource. Sometimes this is the desired behaviour, but in other times you'd like the server to actually process the bundle - for example, the transactions in your transaction bundle to actually be acted upon. In order to get the server to unpack and process your bundle, you need to upload to the <code><b>[Service Root URL]</b></code> directly - this most reliably works for transaction, batch, and document bundle types. How the server deals with other bundle types is up to it. Here is a complete list of endpoints that bundles may be uploaded to:</p>
+							<table>
+<tbody>
+<tr>
+<td>Endpoint</td>
+<td>Bundle type</td>
+<td>Effect on the bundle</td>
+</tr>
+<tr>
+<td><a href="http://hl7.org/fhir/2016Sep/http.html#transaction"><code>[Service Root URL]</code></a></td>
+<td>batch, transaction</td>
+<td>Bundle is processed by the server - individual operations/resources are unpacked and acted upon.</td>
+</tr>
+<tr>
+<td><a href="http://hl7.org/fhir/2016Sep/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
+<td>history</td>
+<td>Bundle may be be processed by the server as its structure is very similar to batch/history type.</td>
+</tr>
+<tr>
+<td><a href="http://hl7.org/fhir/2016Sep/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
+<td>document, message, transaction-response, batch-response, history, searchset, collection</td>
+<td>Bundle may be processed by the server as create/update operations.</td>
+</tr>    
+<tr>
+<td><a href="http://hl7.org/fhir/2016Sep/binary.html"><code>[Service Root URL]/Binary</code></a></td>
+<td>document</td>
+<td>Bundle is stored as-is by the server as binary content and not acted upon.</td>
+</tr>
+<tr>
+<td><code>[Service Root URL]/Bundle</code></td>
+<td>document, transaction, transaction-response, batch,&nbsp;batch-response,&nbsp;history,&nbsp;searchset, and&nbsp;collection</td>
+<td>Bundle is stored as-is by the server and not acted upon, same as if you uploaded a Patient resource.</td>
+</tr>
+<tr>
+<td><a title="Asynchronous Messaging using the RESTful API" href="http://hl7.org/fhir/2016Sep/messaging.html#rest"><code>[Service Root URL]/Bundle</code></a></td>
+<td>message</td>
+<td>Bundle is processed by the server - server will store the bundle as-is, index it on the MessageHeader, and act on the message. This is the RESTful endpoint for a message bundle</td>
+</tr>
+<tr>
+<td><a href="http://hl7.org/fhir/2016Sep/messaging.html#process"><code>[Service Root URL]/process-message</code></a></td>
+<td>message</td>
+<td>Bundle is processed by the server as if it is a message.</td>
+</tr>
+</tbody>
+</table>
+							
+							<h5 id="bn-reference-resolution">Step 3: Reference resolution</h5>
+							<p>Resources in a bundle can reference two types of resources - either those already existing on the server, outside the bundle, or resources inside the bundle that are yet to be created on the server. Referencing resources inside a bundle can be tricky - if you're uploading the resources inside a bundle, how can you reference them if they don't have IDs yet?</p>
+							
+							<p>An important point while working with bundles, unlike other resources, is that the context of use matters much more than usual - mainly, whenever it is the client uploading a bundle or downloading a bundle from the server. With this in mind, resolving references within a Bundle works differently depending on whenever you're an application uploading a Bundle or downloading a Bundle.</p>
+							
+							<!-- GG's response on server replacing IDs: https://chat.fhir.org/#narrow/stream/implementers/subject/Document.20references -->
+							<p>If you're uploading a <b>document</b> bundle, then you can create your own IDs for resources and use them as references for other resources within the bundle. A document bundle typically is stored as-is on the server, without it getting unpacked - although if you upload it to the <code><b>[Service Root URL]</b></code> instead of the <a href="http://hl7.org/fhir/2016Sep/documents.html#bundle">usual endpoints</a> then it will be up to the server to unpack the bundle and replace your assigned resource ID's with its own (though it doesn't have to).</p>
+							
+							<p>If you're uploading a <b>message</b> bundle, then it is similar to the document bundle - you create your own IDs and use those as references within the bundle. In the event that you upload a message bundle to the RESTful API on the <code><b>[Service Root URL]/Bundle</b></code> endpoint (instead of the usual <code>[Service Root URL]/Bundle/$process-message</code>), the bundle is not unpacked and only the MessageHeader is indexed.</p>
+							
+							<p>If you're uploading a <b>collection</b>, <b>searchset</b>, or <b>history</b> bundles, you can create your own IDs for resources and use them as references within the bundle - although the server will most likely store these resources as-is and not act on them, since these types of bundles are typically for servers to send to clients.</p>
+							
+							<p>If you're uploading a <b>batch</b> bundle, you cannot reference other resources inside the bundle - thus all resources inside a batch bundle must be completely independant, only reference resources already created on the server, or resources available on other servers.</p>
+							
+							<p>If you're uploading a <b>transaction</b> bundle, you can reference other resources inside the bundle, using their business identifiers in a simplified search query. It is then on the server to replace the search query with the resource ID's when processing the bundle. See Conditional References section of <a href="http://hl7.org/fhir/2016Sep/http.html#2.42.0.16.2">Transaction Processing Rules</a> for more.</p>
+
+							<p>If you're <b>downloading</b> any kind of bundle, then the same reference rules described in the <a href="patient-with-references.html">previous tutorial</a> apply (see the <a href="http://hl7.org/fhir/2016Sep/bundle.html#references">FHIR section</a> on this). The gist of it is that you should look for referenced resources within the bundle first, and if the reference is not an absolute one, to convert it following a series of rules.</p>
+							<h5>Paging</h5>
 						</div>
 					</div>
                 </section>
