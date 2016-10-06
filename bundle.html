@@ -115,7 +115,7 @@
 								<a href="#bn-about-bundle">Step 1: About Bundle</a>
 								<a href="#bn-upload-endpoints">Step 2: Upload endpoints</a>
 								<a href="#bn-reference-resolution">Step 3: Reference resolution</a>
-								<a href="#cm-sample-resource">Step 3: Paging</a>
+								<a href="#bn-paging">Step 3: Paging</a>
 							</ul>
 
 							<h5 id="bn-about-bundle">Step 1: About Bundle</h5>
@@ -196,7 +196,10 @@
 							<p>If you're uploading a <b>transaction</b> bundle, you can reference other resources inside the bundle, using their business identifiers in a simplified search query. It is then on the server to replace the search query with the resource ID's when processing the bundle. See Conditional References section of <a href="http://hl7.org/fhir/2016Sep/http.html#2.42.0.16.2">Transaction Processing Rules</a> for more.</p>
 
 							<p>If you're <b>downloading</b> any kind of bundle, then the same reference rules described in the <a href="patient-with-references.html">previous tutorial</a> apply (see the <a href="http://hl7.org/fhir/2016Sep/bundle.html#references">FHIR section</a> on this). The gist of it is that you should look for referenced resources within the bundle first, and if the reference is not an absolute one, to convert it following a series of rules.</p>
-							<h5>Paging</h5>
+							
+							
+							<h5 id="bn-paging">Paging</h5>							
+							<p>When the bundle is too big to send in one go, the server can choose to break it up into pieces (called "pages"). Since you can generally only get one response per HTTP request, transmitting the pieces becomes a problem. To solve this, the bundle provides links to the next page within it - so the client, after getting a page, can request the page and so on until the end. In addition to a link to the next page, links to the previous, first, and last pages are also provided. See <a href="http://hl7.org/fhir/2016Sep/http.html#paging">more information on paging</a>.</p>
 						</div>
 					</div>
                 </section>
