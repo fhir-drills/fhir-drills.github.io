@@ -285,6 +285,11 @@ note {
 	background-color: #e0e0e0;
 }
 
+/* makes images not be humongous on moble */
+img {
+  max-width: 100%
+}
+
 
 /* table css */
 table {
