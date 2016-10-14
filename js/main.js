@@ -6,9 +6,9 @@ var servers = {
     hapi2: "http://fhirtest.uhn.ca/baseDstu2",
     hapi3: "http://fhirtest.uhn.ca/baseDstu3",
     sqlonfhir2: "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
-	sqlonfhir3: "https://sqlonfhir-may.azurewebsites.net/fhir",
-    nehta: "https://fhir1.ehrp.net.au/Spark/fhir",
-	ontoservercloud: "http://ontoserver.csiro.au/stu3"
+	sqlonfhir3: "https://sqlonfhir-stu3.azurewebsites.net/fhir",
+    theagency: "https://fhir1.ehrp.net.au/Spark/fhir",
+	ontoservercloud: "https://ontoserver.csiro.au/stu3"
 };
 
 uploaded = {
@@ -65,7 +65,7 @@ function uploadFiles(id, server, data) {
 
     $('#' + id + '-progress').show("slow");
 
-    upload_all();
+    uploadAll();
 }
 
 function replaceAll(str, find, replace) {
@@ -86,7 +86,7 @@ function uploadedResource(jsid, serverId, type) {
     uploaded[window.uploading].resourceMap[jsid] = {
         serverId: serverId,
         type: type
-    }
+    };
 
     var total = window.uploadResources.length;
     var progress = Object.size(uploaded[window.uploading].resourceMap);
@@ -142,10 +142,10 @@ function failedUpload() {
 var patientWithReferencesButton = document.getElementById('patient-with-references-button');
 if (patientWithReferencesButton) {
 	patientWithReferencesButton.onclick = function () {
-		uploadFiles("patient-with-references", servers.sqlonfhir2, [
+		uploadFiles("patient-with-references", servers.sqlonfhir3, [
 		["rf-patient", "resource-examples/Patient-f001.json"],
 		["rf-encounter", "resource-examples/Encounter-f001.json"],
-		["rf-diagnosticorder", "resource-examples/DiagnosticOrder-f001.json"],
+		["rf-diagnosticrequest", "resource-examples/DiagnosticRequest-f001.json"],
 		["rf-observation1", "resource-examples/Observation-f001.json"],
 		["rf-observation2", "resource-examples/Observation-f002.json"],
 		["rf-diagnosticreport", "resource-examples/DiagnosticReport-f001.json"]]);
@@ -155,15 +155,16 @@ if (patientWithReferencesButton) {
 var simplePatientButton = document.getElementById('simple-patient-button');
 if (simplePatientButton) {
 	simplePatientButton.onclick = function () {
-		uploadFiles("simple-patient", servers.sqlonfhir2, [
+		uploadFiles("simple-patient", servers.sqlonfhir3, [
 		["simple-patient-resourcePatient1", "resource-examples/SimplePatient-resources/PatientResourceExample1.json"]]);
 	};
 }
 
+
 var conceptMapButton = document.getElementById('conceptmap-button');
 if (conceptMapButton) {
 	conceptMapButton.onclick = function () {
-		uploadFiles("conceptmap", servers.sqlonfhir3, [
+		uploadFiles("conceptmap", servers.ontoservercloud, [
 			["cm-codesystem", "resource-examples/ConceptMap-resources/Codesystem.json"],
 			["cm-old-valueset", "resource-examples/ConceptMap-resources/Old-ValueSet.json"],
 			["cm-new-valueset", "resource-examples/ConceptMap-resources/New-ValueSet.json"],
@@ -174,7 +175,7 @@ if (conceptMapButton) {
 var expandOperationButton = document.getElementById('expand-operation-button');
 if (expandOperationButton) {
 	expandOperationButton.onclick = function () {
-		uploadFiles("expand-operation", servers.sqlonfhir2, [
+		uploadFiles("expand-operation", servers.sqlonfhir3, [
 		["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
 	};
 }
@@ -188,4 +189,11 @@ $(".fhir-resource-xml").each(function(index, element) {
 		lineWrapping: true,
 		readOnly: true
 	  });
+});
+
+// makes the search top-right work
+$('#fixed-header-drawer-exp').keyup(function (e) {
+    if (e.keyCode == 13) {
+        window.open("https://www.google.com.au/search?q=site%3Afhir-drills.github.io+" + $('#fixed-header-drawer-exp').serialize().replace("sample=", ''), 'FHIR search results');
+    }
 });

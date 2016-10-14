@@ -1,0 +1,42 @@
+<ValueSet xmlns="http://hl7.org/fhir">
+    <url value="urn:uuid:5b2b9bb0-f459-4fcd-80f7-076969d0667d"/>
+    <version value="2016-06-27"/>
+    <name value="New, better valueset describing a persons work state"/>
+    <status value="draft"/>
+    <experimental value="true"/>
+    <publisher value="Australian Digital Health Agency"/>
+    <contact>
+        <name value="Vadim Peretokin"/>
+        <telecom>
+            <system value="email"/>
+            <value value="vadim.peretokin@digitalhealth.gov.au"/>
+        </telecom>
+    </contact>
+    <date value="2016-06-27"/>
+    <lockedDate value="2016-06-27"/>
+    <description value="This new and improved valueset allows to more accurately describe a persons work state"/>
+    <compose>
+        <include>
+            <system value="urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"/>
+            <version value="20162726"/>
+            <concept>
+                <code value="in-office"/>
+            </concept>
+            <concept>
+                <code value="away-travelling"/>
+            </concept>
+            <concept>
+                <code value="working-from-home"/>
+            </concept>
+            <concept>
+                <code value="annual-leave"/>
+            </concept>
+            <concept>
+                <code value="personal-leave"/>
+            </concept>
+            <concept>
+                <code value="jury-duty"/>
+            </concept>
+        </include>
+    </compose>
+</ValueSet>

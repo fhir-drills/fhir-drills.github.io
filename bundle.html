@@ -1,0 +1,283 @@
+<!doctype html>
+<!--
+    FHIR Drills
+    Copyright 2016 Australian Digital Health Agency. All rights reserved.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License
+    -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="FHIR Tutorials by the Australian Digital Health Agency to help you understand FHIR and its spec! No technical experience required.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>FHIR® tutorials</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <!-- <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png"> -->
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <!--     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png"> -->
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <!--     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF"> -->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+	
+	<!-- CodeMirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.deep_purple-pink.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+
+    </style>
+    <link href="css/lightbox.min.css" rel="stylesheet">
+</head>
+
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+               for="fixed-header-drawer-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="sample"
+                 id="fixed-header-drawer-exp">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">FHIR<sup>®</sup> tutorials</span>
+    <nav class="mdl-navigation">
+		<a href="./index.html" class="mdl-navigation__link">Overview</a>
+		<a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">Simple Patient</a>
+		<a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">Simple Search</a>
+		<a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">Patient with References</a>
+		<a href="./bundle.html" id="bundle" class="mdl-navigation__link is-active-tab">Bundle</a>
+		<a href="./operations.html" id="operations" class="mdl-navigation__link">Operations</a>
+		<a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">ValueSet &amp; CodeSystem</a>
+		<a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">ConceptMap</a>
+		<a href="#" class="mdl-navigation__link"></a>
+		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
+                    <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                        <div class="mdl-card__supporting-text">
+							<h4>Bundle tutorial</h4>
+							<p>Bundle is a constainer for resources, enabling you to group and transmit resources  altogether at once. Guidance on the resource in general is available on the <a href="http://hl7.org/fhir/2016Sep/bundle.html">Bundle</a> and on the <a href="http://hl7.org/fhir/2016Sep/http.html#transaction">RESTful API</a> pages, with specific bundle types like messaging and documents having their own.</p>
+							<ul class="toc">
+								<h4>Contents</h4>
+								<!-- pr prefix stands for 'patient references'-->
+								<a href="#bn-about-bundle">Step 1: About Bundle</a>
+								<a href="#bn-upload-endpoints">Step 2: Upload endpoints</a>
+								<a href="#bn-reference-resolution">Step 3: Reference resolution</a>
+								<a href="#bn-paging">Step 3: Paging</a>
+							</ul>
+
+							<h5 id="bn-about-bundle">Step 1: About Bundle</h5>
+							<p>We've mentioned in the previous <a href="patient-with-references.html#pr-observe-contained-references">tutorial on resource references</a> that resources can "contain" other resources. So how are Bundles different? The FHIR spec is quite helpful in this regard:</p>
+								<note><ul><li>Contained resources are "in" the container resource - they can only ever be interpreted and/or changed in the context of the container</li>
+	<li>A bundle is a collection of resources that have an independent existence - for example, they can also be accessed directly using the RESTful API</li></ul></note>
+
+							<p>So, contained resources cannot be GET'd, PUT'd and DELETE'd separately, or even referenced individually from outside the containing resource. Resources inside a bundle, depending on your Bundle type and how you've uploaded it, do get created individually on the server and thus can be acted on independently.</p>
+							
+<!--							<p>So, while resources inside a Bundle exist on the server individually and can be GET'd, PUT'd and DELETE'd separately, contained resources cannot be. They can't even be referenced individually from outside containing resource.</p>-->
+							
+							<p>There are <a href="http://hl7.org/fhir/2016Sep/valueset-bundle-type.html#expansion">several types</a> of bundles defined by FHIR: document, message, transaction, transaction-response, batch, batch-response, history, searchset, and collection.
+							<p><b>Document</b>, <b>message</b>, and <b>collection</b> are used in specific data exchange paradigms. Loosely speaking, you can think of document-type bundles as those representing a CDA document, a message-type bundle representing a V2 message, and a collection as a general catch-all type.</p>
+							<p><b>Searchset</b> is used in searching - an operation you're already familiar with - it's the bundle that collates search results into a single response. As some search results can return a large number of results, this is where the idea of <a href="#bn-paging">paging</a> comes in.</p>
+							<p><b>History</b> is similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/2016Sep/http.html#history">_history</a> operation when you're looking at the history of operations on and versions of a resource(s).</p>
+							<p>Lastly, <b>batch</b> and <b>transaction</b> allow you to condense multiple operations into one - say you'd like to upload 5 resources but don't want to upload do it using 5 times, you can gather all of the resources up into a Bundle and upload it all at once. The difference between a batch and a transaction is how things are handled when an issue happens. When one of the operations of a transaction fails, the entire transaction fails and no changes happen on the server as a result of the transaction. If one of the operations of a batch fails, then the rest of the operations can still complete successfully. <b>Batch-</b> and <b>transaction-response</b> is what the server will respond with where it tells you what happened with each operation within your bundle.</p>
+							<p>Here is how the general layout of a Bundle looks like:</p>
+							<a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
+							<h5 id="bn-upload-endpoints">Step 2: Upload endpoints</h5>
+							<p>If you upload a Bundle to <code><b>[Service Root URL]/Bundle</b></code>, your Bundle will be stored as-is, just like any other resource. Sometimes this is the desired behaviour, but in other times you'd like the server to actually process the bundle - for example, the transactions in your transaction bundle to actually be acted upon. In order to get the server to unpack and process your bundle, you need to upload to the <code><b>[Service Root URL]</b></code> directly - this most reliably works for transaction, batch, and document bundle types. How the server deals with other bundle types is up to it. Here is a complete list of endpoints that bundles may be uploaded to:</p>
+							<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Endpoint</th>
+<th class="text-left">Bundle type</th>
+<th class="text-left">Effect on the bundle</th>
+</tr>
+	</thead>
+<tbody class="table-hover">
+								<tr>
+<td class="text-left"><a href="http://hl7.org/fhir/2016Sep/http.html#transaction"><code>[Service Root URL]</code></a></td>
+<td class="text-left">batch, transaction</td>
+<td class="text-left">Bundle is processed by the server - individual operations/resources are unpacked and acted upon.</td>
+</tr>
+<tr>
+<td class="text-left"><a href="http://hl7.org/fhir/2016Sep/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
+<td class="text-left">history</td>
+<td class="text-left">Bundle may be be processed by the server as its structure is very similar to batch/history type.</td>
+</tr>
+<tr>
+<td class="text-left"><a href="http://hl7.org/fhir/2016Sep/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
+<td class="text-left">document, message, transaction-response, batch-response, history, searchset, collection</td>
+<td class="text-left">Bundle may be processed by the server as create/update operations.</td>
+</tr>    
+<tr>
+<td class="text-left"><a href="http://hl7.org/fhir/2016Sep/binary.html"><code>[Service Root URL]/Binary</code></a></td>
+<td class="text-left">document</td>
+<td class="text-left">Bundle is stored as-is by the server as binary content and not acted upon.</td>
+</tr>
+<tr>
+<td class="text-left"><code>[Service Root URL]/Bundle</code></td>
+<td class="text-left">document, transaction, transaction-response, batch,&nbsp;batch-response,&nbsp;history,&nbsp;searchset, and&nbsp;collection</td>
+<td class="text-left">Bundle is stored as-is by the server and not acted upon, same as if you uploaded a Patient resource.</td>
+</tr>
+<tr>
+<td class="text-left"><a title="Asynchronous Messaging using the RESTful API" href="http://hl7.org/fhir/2016Sep/messaging.html#rest"><code>[Service Root URL]/Bundle</code></a></td>
+<td class="text-left">message</td>
+<td class="text-left">Bundle is processed by the server - server will store the bundle as-is, index it on the MessageHeader, and act on the message. This is the RESTful endpoint for a message bundle</td>
+</tr>
+<tr>
+<td class="text-left"><a href="http://hl7.org/fhir/2016Sep/messaging.html#process"><code>[Service Root URL]/$process-message</code></a></td>
+<td class="text-left">message</td>
+<td class="text-left">Bundle is processed by the server as if it is a message.</td>
+</tr>
+</tbody>
+</table>
+							
+							<h5 id="bn-reference-resolution">Step 3: Reference resolution</h5>
+							<p>Resources in a bundle can reference two types of resources - either those already existing on the server, outside the bundle, or resources inside the bundle that are yet to be created on the server. Referencing resources inside a bundle can be tricky - if you're uploading the resources inside a bundle, how can you reference them if they don't have IDs yet?</p>
+							
+							<p>An important point while working with bundles, unlike other resources, is that the context of use matters much more than usual - mainly, whenever it is the client uploading a bundle or downloading a bundle from the server. With this in mind, resolving references within a Bundle works differently depending on whenever you're an application uploading a Bundle or downloading a Bundle.</p>
+							
+							<!-- GG's response on server replacing IDs: https://chat.fhir.org/#narrow/stream/implementers/subject/Document.20references -->
+							<p>If you're uploading a <b>document</b> bundle, then you can create your own IDs for resources and use them as references for other resources within the bundle. A document bundle typically is stored as-is on the server, without it getting unpacked - although if you upload it to the <code><b>[Service Root URL]</b></code> instead of the <a href="http://hl7.org/fhir/2016Sep/documents.html#bundle">usual endpoints</a> then it will be up to the server to unpack the bundle and replace your assigned resource ID's with its own (though it doesn't have to).</p>
+							
+							<p>If you're uploading a <b>message</b> bundle, then it is similar to the document bundle - you create your own IDs and use those as references within the bundle. In the event that you upload a message bundle to the RESTful API on the <code><b>[Service Root URL]/Bundle</b></code> endpoint (instead of the usual <code>[Service Root URL]/Bundle/$process-message</code>), the bundle is not unpacked and only the MessageHeader is indexed.</p>
+							
+							<p>If you're uploading a <b>collection</b>, <b>searchset</b>, or <b>history</b> bundles, you can create your own IDs for resources and use them as references within the bundle - although the server will most likely store these resources as-is and not act on them, since these types of bundles are typically for servers to send to clients.</p>
+							
+							<p>If you're uploading a <b>batch</b> bundle, you cannot reference other resources inside the bundle - thus all resources inside a batch bundle must be completely independant, only reference resources already created on the server, or resources available on other servers.</p>
+							
+							<p>If you're uploading a <b>transaction</b> bundle, you can reference other resources inside the bundle using their business identifiers in a simplified search query. It is then on the server to replace the search query with the resource ID's when processing the bundle. See Conditional References section of <a href="http://hl7.org/fhir/2016Sep/http.html#2.42.0.16.2">Transaction Processing Rules</a> for more.</p>
+
+							<p>If you're <b>downloading</b> any kind of bundle, then the same reference rules described in the <a href="patient-with-references.html">previous "patient with references" tutorial</a> apply (see the <a href="http://hl7.org/fhir/2016Sep/bundle.html#references">FHIR section</a> on this). The gist of it is that you should look for referenced resources within the bundle first, and if the reference is not an absolute one, to convert it following a series of rules.</p>
+							
+							
+							<h5 id="bn-paging">Paging</h5>							
+							<p>When the bundle is too big to send in one go, the server can choose to break it up into pieces (called "pages"). Since you can generally only get one response per HTTP request, transmitting the pieces becomes a problem. To solve this, the bundle provides links to the next page within it - so the client, after getting a page, can request the page and so on until the end. In addition to a link to the next page, links to the previous, first, and last pages are also provided (example from FHIR):</p>
+								
+							<textarea id="codesystem-1" class="fhir-resource-xml">
+<!-- ... snipped ... -->
+<link>
+  <relation value="first"/>
+  <url value="http://example.org/Patient?name=peter&stateid=23&page=1"/>
+</link>
+<link>
+  <relation value="previous"/>
+  <url value="http://example.org/Patient?name=peter&stateid=23&page=2"/>
+</link>
+<link>
+  <relation value="next"/>
+  <url value="http://example.org/Patient?name=peter&stateid=23&page=4"/>
+</link>
+<link>
+  <relation value="last"/>
+  <url value="http://example.org/Patient?name=peter&stateid=23&page=26"/>
+</link>	
+<!-- ... snipped ... -->
+							</textarea>
+							<p>See <a href="http://hl7.org/fhir/2016Sep/http.html#paging">more information on paging</a> on the FHIR spec.</p>
+							<p>That's about it for the difficult parts of a Bundle! Have a look at the <a href="http://hl7.org/fhir/2016Sep/bundle.html">FHIR page for Bundle</a> now for things like uniqueness rules and search parameters of a Bundle.</p>
+						</div>
+					</div>
+                </section>
+            <footer class="mdl-mega-footer">
+                <div class="mdl-mega-footer--middle-section">
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
+                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
+                        </ul>
+                    </div>
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">FHIR</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_13" title="Next FHIR get-together in Baltimore in September 2016">Connectathon 13</a></li>
+                            <li><a href="http://hl7.org/fhir/2016Sep" title="Latest snapshot of FHIR, for use in Baltimore Connectathon">FHIR September 2016 snapshot</a></li>
+                            <li><a href="https://www.hl7.org/fhir/" title="Current stable version of FHIR">FHIR DSTU 2</a></li>
+                            <li><a href="https://hl7-fhir.github.io/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+	
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80290058-1', 'auto');
+  ga('send', 'pageview');
+
+	</script>	
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/javascript/javascript.min.js"></script>
+
+    <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <script src="js/lightbox-plus-jquery.min.js"></script>
+    <!-- lua.vm.js -->
+     <script src="js/lua.vm.js/dist/lua.vm.js"></script>   
+<!--     main javascript for this page-->
+    <script src="js/main.js"></script>
+<!-- supporting javascript to actually do the uploading -->	
+	<script src="js/post-resources.js"></script>
+</body>
+
+</html>

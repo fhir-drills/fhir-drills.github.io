@@ -40,21 +40,21 @@
   "content": "complete",
   "resourceType": "CodeSystem",
   "caseSensitive": true,
-  "publisher": "NEHTA",
+  "publisher": "Australian Digital Health Agency",
   "experimental": true,
   "url": "urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a",
   "description": "Codesystem describing various codes for making people's work presence",
   "version": "2016-06-27",
-  "name": "FHIR tutorial difficulty levels",
+  "name": "Old and new work statuses",
   "contact": [
     {
       "telecom": [
         {
-          "value": "angus.millar@nehta.gov.au",
+          "value": "vadim.peretokin@digitalhealth.gov.au",
           "system": "email"
         }
       ],
-      "name": "Angus Millar"
+      "name": "Vadim Peretokin"
     }
   ],
   "date": "2016-06-27",

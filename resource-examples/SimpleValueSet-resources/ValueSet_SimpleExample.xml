@@ -9,7 +9,7 @@
     <status value="additional"/>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <p>ValueSet for FHIR tutorial participants to rate the difficulty of understanding of the training material</p>
-      <p>Developed by: NEHTA NCTA Connectathon team (example)</p>
+      <p>Developed by: Australian Digital Health Agency Connectathon team (example)</p>
       <p>Published for testing on 27-June 2016</p>      
       <table>
         <tr><td><b>Code</b></td><td><b>Display</b></td></tr>
@@ -23,12 +23,12 @@
   <name value="FHIR tutorial difficulty levels"/>
   <status value="draft"/>
   <experimental value="true"/>
-  <publisher value="NEHTA"/>
+  <publisher value="Australian Digital Health Agency"/>
   <contact>
     <name value="Angus Millar"/>
     <telecom>
       <system value="email"/>
-      <value value="angus.millar@nehta.gov.au"/>
+      <value value="angus.millar@digitalhealth.gov.au"/>
     </telecom>
   </contact>
   <date value="2016-06-27"/>
