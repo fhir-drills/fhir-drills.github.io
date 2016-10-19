@@ -113,6 +113,7 @@
 								<h4>Contents</h4>
 								<!-- pr prefix stands for 'patient references'-->
 								<a href="#bn-about-bundle">Step 1: About Bundle</a>
+								<a href="#bn-bundle-types">Step 1: Bundle types</a>
 								<a href="#bn-upload-endpoints">Step 2: Upload endpoints</a>
 								<a href="#bn-reference-resolution">Step 3: Reference resolution</a>
 								<a href="#bn-paging">Step 3: Paging</a>
@@ -125,15 +126,46 @@
 
 							<p>So, contained resources cannot be GET'd, PUT'd and DELETE'd separately, or even referenced individually from outside the containing resource. Resources inside a bundle, depending on your Bundle type and how you've uploaded it, do get created individually on the server and thus can be acted on independently.</p>
 							
-<!--							<p>So, while resources inside a Bundle exist on the server individually and can be GET'd, PUT'd and DELETE'd separately, contained resources cannot be. They can't even be referenced individually from outside containing resource.</p>-->
+							<p>Here is how the general layout of a Bundle looks like:</p>
+							<a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>							
+														
+							<h5 id="bn-paging">Paging</h5>							
+							<p>When the bundle is too big to send in one go, the server can choose to break it up into pieces (called "pages"). Since you can generally only get one response per HTTP request, transmitting the pieces becomes a problem. To solve this, the bundle provides links to the next page within it - so the client, after getting a page, can request the page and so on until the end. In addition to a link to the next page, links to the previous, first, and last pages are also provided (example from FHIR):</p>
+								
+							<textarea id="codesystem-1" class="fhir-resource-xml">
+<!-- ... snipped ... -->
+<link>
+  <relation value="first"/>
+  <url value="http://example.org/Patient?name=peter&stateid=23&page=1"/>
+</link>
+<link>
+  <relation value="previous"/>
+  <url value="http://example.org/Patient?name=peter&stateid=23&page=2"/>
+</link>
+<link>
+  <relation value="next"/>
+  <url value="http://example.org/Patient?name=peter&stateid=23&page=4"/>
+</link>
+<link>
+  <relation value="last"/>
+  <url value="http://example.org/Patient?name=peter&stateid=23&page=26"/>
+</link>	
+<!-- ... snipped ... -->
+							</textarea>
+							<p>See <a href="http://hl7.org/fhir/2016Sep/http.html#paging">more information on paging</a> on the FHIR spec.</p>		
+							
+							
+							<h5 id="bn-about-bundle">Step 1: Bundle Types</h5>
 							
 							<p>There are <a href="http://hl7.org/fhir/2016Sep/valueset-bundle-type.html#expansion">several types</a> of bundles defined by FHIR: document, message, transaction, transaction-response, batch, batch-response, history, searchset, and collection.
 							<p><b>Document</b>, <b>message</b>, and <b>collection</b> are used in specific data exchange paradigms. Loosely speaking, you can think of document-type bundles as those representing a CDA document, a message-type bundle representing a V2 message, and a collection as a general catch-all type.</p>
 							<p><b>Searchset</b> is used in searching - an operation you're already familiar with - it's the bundle that collates search results into a single response. As some search results can return a large number of results, this is where the idea of <a href="#bn-paging">paging</a> comes in.</p>
 							<p><b>History</b> is similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/2016Sep/http.html#history">_history</a> operation when you're looking at the history of operations on and versions of a resource(s).</p>
 							<p>Lastly, <b>batch</b> and <b>transaction</b> allow you to condense multiple operations into one - say you'd like to upload 5 resources but don't want to upload do it using 5 times, you can gather all of the resources up into a Bundle and upload it all at once. The difference between a batch and a transaction is how things are handled when an issue happens. When one of the operations of a transaction fails, the entire transaction fails and no changes happen on the server as a result of the transaction. If one of the operations of a batch fails, then the rest of the operations can still complete successfully. <b>Batch-</b> and <b>transaction-response</b> is what the server will respond with where it tells you what happened with each operation within your bundle.</p>
-							<p>Here is how the general layout of a Bundle looks like:</p>
-							<a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
+
+					
+							
+							
 							<h5 id="bn-upload-endpoints">Step 2: Upload endpoints</h5>
 							<p>If you upload a Bundle to <code><b>[Service Root URL]/Bundle</b></code>, your Bundle will be stored as-is, just like any other resource. Sometimes this is the desired behaviour, but in other times you'd like the server to actually process the bundle - for example, the transactions in your transaction bundle to actually be acted upon. In order to get the server to unpack and process your bundle, you need to upload to the <code><b>[Service Root URL]</b></code> directly - this most reliably works for transaction, batch, and document bundle types. How the server deals with other bundle types is up to it. Here is a complete list of endpoints that bundles may be uploaded to:</p>
 							<table class="table-fill">
@@ -183,6 +215,9 @@
 </tbody>
 </table>
 							
+													
+
+							
 							<h5 id="bn-reference-resolution">Step 3: Reference resolution</h5>
 							<p>Resources in a bundle can reference two types of resources - either those already existing on the server, outside the bundle, or resources inside the bundle that are yet to be created on the server. Referencing resources inside a bundle can be tricky - if you're uploading the resources inside a bundle, how can you reference them if they don't have IDs yet?</p>
 							
@@ -201,31 +236,6 @@
 
 							<p>If you're <b>downloading</b> any kind of bundle, then the same reference rules described in the <a href="patient-with-references.html">previous "patient with references" tutorial</a> apply (see the <a href="http://hl7.org/fhir/2016Sep/bundle.html#references">FHIR section</a> on this). The gist of it is that you should look for referenced resources within the bundle first, and if the reference is not an absolute one, to convert it following a series of rules.</p>
 							
-							
-							<h5 id="bn-paging">Paging</h5>							
-							<p>When the bundle is too big to send in one go, the server can choose to break it up into pieces (called "pages"). Since you can generally only get one response per HTTP request, transmitting the pieces becomes a problem. To solve this, the bundle provides links to the next page within it - so the client, after getting a page, can request the page and so on until the end. In addition to a link to the next page, links to the previous, first, and last pages are also provided (example from FHIR):</p>
-								
-							<textarea id="codesystem-1" class="fhir-resource-xml">
-<!-- ... snipped ... -->
-<link>
-  <relation value="first"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=1"/>
-</link>
-<link>
-  <relation value="previous"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=2"/>
-</link>
-<link>
-  <relation value="next"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=4"/>
-</link>
-<link>
-  <relation value="last"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=26"/>
-</link>	
-<!-- ... snipped ... -->
-							</textarea>
-							<p>See <a href="http://hl7.org/fhir/2016Sep/http.html#paging">more information on paging</a> on the FHIR spec.</p>
 							<p>That's about it for the difficult parts of a Bundle! Have a look at the <a href="http://hl7.org/fhir/2016Sep/bundle.html">FHIR page for Bundle</a> now for things like uniqueness rules and search parameters of a Bundle.</p>
 						</div>
 					</div>
