@@ -292,7 +292,7 @@ img {
 
 
 /* table css */
-table {
+table.fixed {
 	table-layout:fixed;
 }
 
