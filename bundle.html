@@ -137,7 +137,7 @@
 							</ol>
 														
 							<h5 id="bn-paging">Paging</h5>							
-							<p>When the Bundle is too big to send in one go, the server can choose to break it up into pieces (called "pages"). Since you can generally only get one response per HTTP request, transmitting the pieces becomes a problem. To solve this, the Bundle provides links to the next page within it - so the client, after getting a page, can request the page and so on until the end. In addition to a link to the next page, links to the previous, first, and last pages are also provided (example from FHIR):</p>
+							<p>When the Bundle is too big to send in one go, the server can choose to break it up into pieces (called "pages"). Since you can generally only get one response per HTTP request, transmitting the pieces becomes a problem. To solve this, the Bundle provides links to the next page within it - so the client, after getting a page, can request the next page and so on until the end. In addition to a link to the next page, links to the previous, first, and last pages are also provided (example from FHIR):</p>
 								
 							<textarea id="codesystem-1" class="fhir-resource-xml">
 <!-- ... snipped ... -->
@@ -185,7 +185,7 @@
 									</tr>
 									<tr>
 										<td class="text-left">history</td>
-										<td class="text-left">Similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/2016Sep/http.html#history">_history</a> operation when you're looking at the history of operations on and versions of a resource(s).</td>
+										<td class="text-left">Similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/2016Sep/http.html#history">_history</a> operation when you're looking at the history of operations and versions of a resource(s).</td>
 									</tr>
 									<tr>
 										<td class="text-left">batch, transaction</td>
@@ -200,7 +200,7 @@
 
 							
 							<h5 id="bn-upload-endpoints">Step 4: Upload endpoints</h5>
-							<p>If you upload a Bundle to <code><b>[Service Root URL]/Bundle</b></code>, your Bundle will be stored as-is, just like any other resource. Sometimes this is the desired behaviour, but in other times you'd like the server to actually process the Bundle - for example, the transactions in your transaction Bundle to actually be acted upon. In order to get the server to unpack and process your Bundle, you need to upload to the <code><b>[Service Root URL]</b></code> directly - this most reliably works for transaction, batch, and document Bundle types. How the server deals with other Bundle types is up to it. Here is a complete list of endpoints that Bundles may be uploaded to:</p>
+							<p>If you upload a Bundle to <code><b>[Service Root URL]/Bundle</b></code>, your Bundle will be stored as-is, just like any other resource. Sometimes this is the desired behaviour, but in other times you'd like the server to actually process the Bundle - for example, the transactions in your transaction Bundle to actually be acted upon. If you want to get the server to unpack and process your Bundle, you need to upload transaction or batch Bundle types to the <code><b>[Service Root URL]</b></code> directly. Here is a complete list of endpoints that Bundles may be uploaded to:</p>
 							<table class="table-fill fixed">
 								<thead>
 									<tr>
@@ -218,7 +218,7 @@
 									<tr>
 										<td class="text-left"><a href="http://hl7.org/fhir/2016Sep/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
 										<td class="text-left">history</td>
-										<td class="text-left">Bundle may be be processed by the server as its structure is very similar to batch/history type.</td>
+										<td class="text-left">Bundle may be be processed by the server as its structure is very similar to batch/transaction type.</td>
 									</tr>
 									<tr>
 										<td class="text-left"><a href="http://hl7.org/fhir/2016Sep/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
@@ -249,7 +249,7 @@
 							</table>
 							
 							<h5 id="bn-reference-resolution">Step 5: Reference resolution</h5>
-							<p>Resources in a Bundle can reference two types of resources - either those already existing on the server, outside the Bundle, or resources inside the Bundle that are yet to be created on the server. Referencing resources inside a Bundle can be tricky - if you're uploading the resources inside a Bundle, how can you reference them if they don't have IDs yet?</p>
+							<p>Resources in a Bundle can reference two types of resources - either those already exist on the server, outside the Bundle, or resources inside the Bundle that are yet to be created on the server. Referencing resources inside a Bundle can be tricky - if you're uploading the resources inside a Bundle, how can you reference them if they don't have IDs yet?</p>
 							
 							<p>An important point while working with Bundles, unlike other resources, is that the context of use matters much more than usual - mainly, whenever it is the client uploading a Bundle or downloading a Bundle from the server. With this in mind, resolving references within a Bundle works differently depending on whenever you're an application uploading a Bundle or downloading a Bundle.</p>
 	
