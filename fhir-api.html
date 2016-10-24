@@ -108,13 +108,27 @@
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
 						<div class="mdl-card__supporting-text">
+							<h4>Working with APIs for FHIR</h4>
+							<p>If you're a developer, or just someone interested in coding with FHIR, then this is the page for you to read! In this tutorial we'll walk you through creating a basic FHIR server and a client to interact with it.</p>
+
+							<div id="fhir-api-code-buttons">
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="switchCodeTabs('csharp')">
+									Show me C# code
+								</button>
+								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="switchCodeTabs('java')">
+									Show me Java code
+								</button>
+							</div>
+							<ul class="toc">
+								<h4>Contents</h4>
+								<!-- pr prefix stands for 'patient references'-->
+								<a href="#pr-setup">Step 1: Setup</a>
+								<a href="#pr-find-patient">Step 2: Find your patient</a>
+								<a href="#pr-observe-external-references">Step 3: Observe external references</a>
+								<a href="#pr-search-resource-using-reference">Step 4: Search for a resource using a reference</a>
+								<a href="#pr-observe-contained-references">Step 5: Observe contained resource references</a>
+							</ul>
 							<p>FHIR HAS CODE.</p>
-							<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="switchCodeTabs('csharp')">
-								C# Button
-							</button>
-							<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="switchCodeTabs('java')">
-								Java Button
-							</button>
 							<p>HERE IS SOME OF THAT CODE:</p>
 							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 								<div class="mdl-tabs__tab-bar">
@@ -123,7 +137,7 @@
 								</div>
 
 								<div class="mdl-tabs__panel is-active" id="csharp-panel">
-									<textarea id="valuesystem-1" class="csharp-code">
+									<textarea class="csharp-code">
 var client = new FhirClient("http://spark.furore.com/fhir");
 
 var pat = client.Read<Patient>("Patient/1");
@@ -134,7 +148,7 @@ client.Update<Patient>(pat);
 									</textarea>
 								</div>
 								<div class="mdl-tabs__panel" id="java-panel">
-									<textarea id="valuesystem-1" class="java-code">
+									<textarea class="java-code">
 // Create a context for DSTU1
 FhirContext ctx = FhirContext.forDstu1();
  
@@ -143,34 +157,23 @@ FhirContext ctxDstu2 = FhirContext.forDstu2();<Patient>(pat);
 									</textarea>
 								</div>
 							</div>
-							<p>A bunch of text...</p>
-							<p>more code!!!</p>
-							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-								<div class="mdl-tabs__tab-bar">
-									<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
-									<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
-								</div>
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+	<div class="mdl-tabs__tab-bar">
+		<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
+		<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
+	</div>
 
-								<div class="mdl-tabs__panel is-active" id="csharp-panel">
-									<ul>
-										<li>Eddard</li>
-										<li>Catelyn</li>
-										<li>Robb</li>
-										<li>Sansa</li>
-										<li>Brandon</li>
-										<li>Arya</li>
-										<li>Rickon</li>
-									</ul>
-								</div>
-								<div class="mdl-tabs__panel" id="java-panel">
-									<ul>
-										<li>Tywin</li>
-										<li>Cersei</li>
-										<li>Jamie</li>
-										<li>Tyrion</li>
-									</ul>
-								</div>
-							</div>
+	<div class="mdl-tabs__panel is-active" id="csharp-panel">
+		<textarea class="csharp-code">
+// C# code here		
+		</textarea>
+	</div>
+	<div class="mdl-tabs__panel" id="java-panel">
+		<textarea class="java-code">
+// Java code here	
+		</textarea>
+	</div>
+</div>
                         </div>                             
                     </div>
                 </section>
