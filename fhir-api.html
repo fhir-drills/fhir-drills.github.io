@@ -122,14 +122,19 @@
 							<ul class="toc">
 								<h4>Contents</h4>
 								<!-- pr prefix stands for 'patient references'-->
-								<a href="#pr-setup">Step 1: Setup</a>
-								<a href="#pr-find-patient">Step 2: Find your patient</a>
-								<a href="#pr-observe-external-references">Step 3: Observe external references</a>
-								<a href="#pr-search-resource-using-reference">Step 4: Search for a resource using a reference</a>
+								<a href="#api-setup">Step 1: Setup</a>
+								<a href="#api-find-patient">Step 2: Create a basic Patient</a>
+								<a href="#api-upload-patient">Step 3: Upload your basic Patient</a>
+								<a href="#api-search">Step 4: Search for a resource</a>
 								<a href="#pr-observe-contained-references">Step 5: Observe contained resource references</a>
 							</ul>
-							<p>FHIR HAS CODE.</p>
-							<p>HERE IS SOME OF THAT CODE:</p>
+							<h5 id="api-setup">Step 1: Setup</h5>
+							<p>FHIR provides official APIs that help you work with it. In case of of Java, this is the <a href="http://hapifhir.io">HAPI library</a>, and in case of C#, it is the <a href="https://github.com/ewoutkramer/fhir-net-api">.NET API</a>.</p>
+							
+							<p>To get started with HAPI, add the dependency <a href="http://hapifhir.io/download.html#Maven_Users">via Maven</a> or <a href="http://hapifhir.io/download.html#Gradle_Users">Gradle</a> - or just <a href="https://github.com/jamesagnew/hapi-fhir/releases/download/v2.0/hapi-fhir-2.0-standard-distribution.zip">download</a> the library locally. If you've done the latter, include all non-hapi jars in your classpath, and only <code>hapi-fhir-base-2.0.jar</code>, <code>hapi-fhir-structures-dstu3-2.0.jar</code>, <code>hapi-fhir-validation-resources-dstu3-2.0.jar</code> hapi ones if you're working with STU3.</p>
+							
+							<h5 id="api-find-patient">Step 2: Create a basic Patient</h5>
+							<p>Upon creating a new project, you'll see a new blank class not much different from this:</p>
 							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 								<div class="mdl-tabs__tab-bar">
 									<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
@@ -138,42 +143,144 @@
 
 								<div class="mdl-tabs__panel is-active" id="csharp-panel">
 									<textarea class="csharp-code">
-var client = new FhirClient("http://spark.furore.com/fhir");
-
-var pat = client.Read<Patient>("Patient/1");
-pat.Resource.Name.Add(HumanName.ForFamily("Kramer")
-     .WithGiven("Ewout"));
-
-client.Update<Patient>(pat);		
+							// C# code here		
 									</textarea>
 								</div>
 								<div class="mdl-tabs__panel" id="java-panel">
 									<textarea class="java-code">
-// Create a context for DSTU1
-FhirContext ctx = FhirContext.forDstu1();
- 
-// Alternately, create a context for DSTU2
-FhirContext ctxDstu2 = FhirContext.forDstu2();<Patient>(pat);		
+package com.myhotcompany;
+
+public class Main {
+
+    public static void main(String[] args) {
+	// write your code here
+    }
+}</textarea>
+								</div>
+							</div>							
+							
+							<p>Create a basic Patient resource and populate it with some information. Running this code will print the resource as XML for you:</p>
+
+							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+								<div class="mdl-tabs__tab-bar">
+									<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
+									<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
+								</div>
+
+								<div class="mdl-tabs__panel is-active" id="csharp-panel">
+									<textarea class="csharp-code">
+							// C# code here		
 									</textarea>
 								</div>
-							</div>
-<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-	<div class="mdl-tabs__tab-bar">
-		<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
-		<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
-	</div>
+								<div class="mdl-tabs__panel" id="java-panel">
+									<textarea class="java-code">
+package com.myhotcompany;
 
-	<div class="mdl-tabs__panel is-active" id="csharp-panel">
-		<textarea class="csharp-code">
-// C# code here		
-		</textarea>
-	</div>
-	<div class="mdl-tabs__panel" id="java-panel">
-		<textarea class="java-code">
-// Java code here	
-		</textarea>
-	</div>
-</div>
+import ca.uhn.fhir.context.FhirContext;
+import org.hl7.fhir.dstu3.model.HumanName;
+import org.hl7.fhir.dstu3.model.Patient;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // context - create this once, as it's an expensive operation
+        // see http://hapifhir.io/doc_intro.html
+        FhirContext ctx = FhirContext.forDstu3();
+
+        Patient patient = new Patient();
+										
+        // you can use the Fluent API to chain calls
+        // see http://hapifhir.io/doc_fhirobjects.html
+        patient.addName().setUse(HumanName.NameUse.OFFICIAL)
+				.addPrefix("Mr").addFamily("Fhirman").addGiven("Sam");
+        patient.addIdentifier()
+				.setSystem("http://ns.electronichealth.net.au/id/hi/ihi/1.0")
+				.setValue("8003608166690503");
+
+        // create a new XML parser and serialize our Patient object with it
+        String encoded = ctx.newXmlParser().setPrettyPrint(true)
+				.encodeResourceToString(patient);
+										
+        System.out.println(encoded);
+    }
+}</textarea>
+								</div>
+							</div>
+							<p>Once run, you should see something like this:</p>
+							<textarea class="fhir-resource-xml">
+<Patient xmlns="http://hl7.org/fhir">
+   <identifier>
+      <system value="http://ns.electronichealth.net.au/id/hi/ihi/1.0"/>
+      <value value="8003608166690503"/>
+   </identifier>
+   <name>
+      <use value="official"/>
+      <family value="Fhirman"/>
+      <given value="Sam"/>
+      <prefix value="Mr"/>
+   </name>
+</Patient></textarea>
+							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/2016Sep/patient.html">Patient</a> page to see what can you populate your resource with (<a href="http://hapifhir.io/apidocs-dstu3/org/hl7/fhir/dstu3/model/Patient.html">Javadoc</a> is also available).</p>
+							
+							<h5 id="api-upload-patient">Step 3: Upload your basic Patient</h5>
+							<p>Now that we can create a simple resource, let's get uploaded it to a FHIR server:</p>
+							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+								<div class="mdl-tabs__tab-bar">
+									<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
+									<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
+								</div>
+
+								<div class="mdl-tabs__panel is-active" id="csharp-panel">
+									<textarea class="csharp-code">
+							// C# code here
+									</textarea>
+								</div>
+								<div class="mdl-tabs__panel" id="java-panel">
+									<textarea class="java-code">
+package com.myhotcompany;
+
+import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.rest.api.MethodOutcome;
+import ca.uhn.fhir.rest.client.IGenericClient;
+import org.hl7.fhir.dstu3.model.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // context - create this once, as it's an expensive operation
+        // see http://hapifhir.io/doc_intro.html
+        FhirContext ctx = FhirContext.forDstu3();
+        String serverBaseUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";
+
+        Patient patient = new Patient();
+
+        // you can use the Fluent API to chain calls
+        // see http://hapifhir.io/doc_fhirobjects.html
+        patient.addName().setUse(HumanName.NameUse.OFFICIAL)
+                .addPrefix("Mr").addFamily("Fhirman").addGiven("Sam");
+        patient.addIdentifier()
+                .setSystem("http://ns.electronichealth.net.au/id/hi/ihi/1.0")
+                .setValue("8003608166690503");
+
+        // create the RESTful client to work with our FHIR server
+        // see http://hapifhir.io/doc_rest_client.html
+        IGenericClient client = ctx.newRestfulGenericClient(serverBaseUrl);
+
+        // send our resource up - result will be stored in 'outcome'
+        MethodOutcome outcome = client.create()
+                .resource(patient)
+                .prettyPrint()
+                .encodedXml()
+                .execute();
+
+        IdType id = (IdType) outcome.getId();
+        System.out.println("Resource is available at: " + id.getValue());
+    }
+}</textarea>
+									<h5 id="api-search">Step 4: Search for a resource</h5>
+									<p></p>
+								</div>
+							</div>							
                         </div>                             
                     </div>
                 </section>

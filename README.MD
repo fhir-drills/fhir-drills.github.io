@@ -50,12 +50,12 @@ Use this template to add C# and Java code examples:
 
 	<div class="mdl-tabs__panel is-active" id="csharp-panel">
 		<textarea class="csharp-code">
-// C# code here		
+// C# code here
 		</textarea>
 	</div>
 	<div class="mdl-tabs__panel" id="java-panel">
 		<textarea class="java-code">
-// Java code here	
+// Java code here
 		</textarea>
 	</div>
 </div>
