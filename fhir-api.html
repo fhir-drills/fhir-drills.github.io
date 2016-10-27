@@ -126,12 +126,16 @@
 								<a href="#api-find-patient">Step 2: Create a basic Patient</a>
 								<a href="#api-upload-patient">Step 3: Upload your basic Patient</a>
 								<a href="#api-search">Step 4: Search for a resource</a>
-								<a href="#pr-observe-contained-references">Step 5: Observe contained resource references</a>
+								<a href="#api-operations">Step 5: Run an operation</a>
 							</ul>
 							<h5 id="api-setup">Step 1: Setup</h5>
 							<p>FHIR provides official APIs that help you work with it. In case of of Java, this is the <a href="http://hapifhir.io">HAPI library</a>, and in case of C#, it is the <a href="https://github.com/ewoutkramer/fhir-net-api">.NET API</a>.</p>
 							
 							<p>To get started with HAPI, add the dependency <a href="http://hapifhir.io/download.html#Maven_Users">via Maven</a> or <a href="http://hapifhir.io/download.html#Gradle_Users">Gradle</a> - or just <a href="https://github.com/jamesagnew/hapi-fhir/releases/download/v2.0/hapi-fhir-2.0-standard-distribution.zip">download</a> the library locally. If you've done the latter, include all non-hapi jars in your classpath, and only <code>hapi-fhir-base-2.0.jar</code>, <code>hapi-fhir-structures-dstu3-2.0.jar</code>, <code>hapi-fhir-validation-resources-dstu3-2.0.jar</code> hapi ones if you're working with STU3.</p>
+							
+							<p>The Java examples listed in this tutorial require Java 8 SDK installed, however HAPI itself supports Java all the way back to 6.</p>
+							
+							<p>To get started with the .NET API, you do blah.</p>
 							
 							<h5 id="api-find-patient">Step 2: Create a basic Patient</h5>
 							<p>Upon creating a new project, you'll see a new blank class not much different from this:</p>
@@ -143,7 +147,7 @@
 
 								<div class="mdl-tabs__panel is-active" id="csharp-panel">
 									<textarea class="csharp-code">
-							// C# code here		
+// C# code here		
 									</textarea>
 								</div>
 								<div class="mdl-tabs__panel" id="java-panel">
@@ -169,7 +173,7 @@ public class Main {
 
 								<div class="mdl-tabs__panel is-active" id="csharp-panel">
 									<textarea class="csharp-code">
-							// C# code here		
+// C# code here		
 									</textarea>
 								</div>
 								<div class="mdl-tabs__panel" id="java-panel">
@@ -232,7 +236,7 @@ public class Main {
 
 								<div class="mdl-tabs__panel is-active" id="csharp-panel">
 									<textarea class="csharp-code">
-							// C# code here
+// C# code here
 									</textarea>
 								</div>
 								<div class="mdl-tabs__panel" id="java-panel">
@@ -240,6 +244,7 @@ public class Main {
 package com.myhotcompany;
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.rest.api.MethodOutcome;
 import ca.uhn.fhir.rest.client.IGenericClient;
 import org.hl7.fhir.dstu3.model.*;
@@ -252,36 +257,107 @@ public class Main {
         FhirContext ctx = FhirContext.forDstu3();
         String serverBaseUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";
 
-        Patient patient = new Patient();
+        Patient ourPatient = new Patient();
 
         // you can use the Fluent API to chain calls
         // see http://hapifhir.io/doc_fhirobjects.html
-        patient.addName().setUse(HumanName.NameUse.OFFICIAL)
+        ourPatient.addName().setUse(HumanName.NameUse.OFFICIAL)
                 .addPrefix("Mr").addFamily("Fhirman").addGiven("Sam");
-        patient.addIdentifier()
+        ourPatient.addIdentifier()
                 .setSystem("http://ns.electronichealth.net.au/id/hi/ihi/1.0")
                 .setValue("8003608166690503");
+
+        // increase timeouts since the server might be powered down
+        // see http://hapifhir.io/doc_rest_client_http_config.html
+        ctx.getRestfulClientFactory().setConnectTimeout(60 * 1000);
+        ctx.getRestfulClientFactory().setSocketTimeout(60 * 1000);
 
         // create the RESTful client to work with our FHIR server
         // see http://hapifhir.io/doc_rest_client.html
         IGenericClient client = ctx.newRestfulGenericClient(serverBaseUrl);
 
         // send our resource up - result will be stored in 'outcome'
+        // see http://hapifhir.io/doc_rest_client.html#Create_-_Type
         MethodOutcome outcome = client.create()
-                .resource(patient)
+                .resource(ourPatient)
                 .prettyPrint()
                 .encodedXml()
                 .execute();
 
         IdType id = (IdType) outcome.getId();
         System.out.println("Resource is available at: " + id.getValue());
+
+        IParser xmlParser = ctx.newXmlParser().setPrettyPrint(true);
+        Patient receivedPatient = (Patient) outcome.getResource();
+        System.out.println("This is what we sent up: \n"
+                + xmlParser.encodeResourceToString(ourPatient)
+                + "\n\nThis is what we received: \n"
+                + xmlParser.encodeResourceToString(receivedPatient));
     }
 }</textarea>
+										</div>
+									</div>
+									<p>Comparing the resource that we sent up to the resource we received back, you'll notice that the server generated a basic narrative for us from the data available and also added its <a href="http://hl7.org/fhir/2016Sep/resource.html#id">logical ID</a> in.</p>
 									<h5 id="api-search">Step 4: Search for a resource</h5>
-									<p></p>
+									<p>Now that you've uploaded a resource, try searching for it. Remember that you'll get <a href="bundle.html">a bundle</a> back with many entries, one resource per entry.</p>
+									<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+										<div class="mdl-tabs__tab-bar">
+											<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
+											<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
+										</div>
+
+										<div class="mdl-tabs__panel is-active" id="csharp-panel">
+											<textarea class="csharp-code">
+// C# code here
+											</textarea>
+										</div>
+										<div class="mdl-tabs__panel" id="java-panel">
+											<textarea class="java-code">
+package com.myhotcompany;
+
+import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.model.primitive.IdDt;
+import ca.uhn.fhir.rest.client.IGenericClient;
+import org.hl7.fhir.dstu3.model.*;
+
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // context - create this once, as it's an expensive operation
+        // see http://hapifhir.io/doc_intro.html
+        FhirContext ctx = FhirContext.forDstu3();
+        String serverBaseUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";
+
+        // increase timeouts since the server might be powered down
+        // see http://hapifhir.io/doc_rest_client_http_config.html
+        ctx.getRestfulClientFactory().setConnectTimeout(60 * 1000);
+        ctx.getRestfulClientFactory().setSocketTimeout(60 * 1000);
+
+        // create the RESTful client to work with our FHIR server
+        // see http://hapifhir.io/doc_rest_client.html
+        IGenericClient client = ctx.newRestfulGenericClient(serverBaseUrl);
+
+        // perform a search for Patients with last name 'Fhirman'
+        Bundle response = client.search()
+                .forResource(Patient.class)
+                .where(Patient.FAMILY.matches().values("Fhirman"))
+                .returnBundle(Bundle.class)
+                .execute();
+
+        System.out.println("Found " + response.getTotal() + " Fhirman patients. Their logical IDs are:");
+        response.getEntry().forEach((entry) -> {
+            // within each entry is a resource - print its logical ID
+            System.out.println(entry.getResource().getIdElement().getIdPart());
+        });
+    }
+}</textarea>
 								</div>
-							</div>							
-                        </div>                             
+							</div>	
+							<h5 id="api-operations">Step 5: Run an operation</h5>
+							<p>Lastly, </p>
+						</div>                     
                     </div>
                 </section>
             <footer class="mdl-mega-footer">
