@@ -109,7 +109,7 @@
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
 						<div class="mdl-card__supporting-text">
 							<h4>Working with APIs for FHIR</h4>
-							<p>If you're a developer, or just someone interested in coding with FHIR, then this is the page for you to read! In this tutorial we'll walk you through creating a basic FHIR server and a client to interact with it.</p>
+							<p>If you're a developer, or just someone interested in coding with FHIR, then this is the page for you to read! In this tutorial we'll walk you through doing all of the tutorials you've been doing with Postman programatically.</p>
 
 							<div id="fhir-api-code-buttons">
 								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="switchCodeTabs('csharp')">
@@ -340,13 +340,15 @@ public class Main {
         IGenericClient client = ctx.newRestfulGenericClient(serverBaseUrl);
 
         // perform a search for Patients with last name 'Fhirman'
+        // see http://hapifhir.io/doc_rest_client.html#SearchQuery_-_Type
         Bundle response = client.search()
                 .forResource(Patient.class)
                 .where(Patient.FAMILY.matches().values("Fhirman"))
                 .returnBundle(Bundle.class)
                 .execute();
 
-        System.out.println("Found " + response.getTotal() + " Fhirman patients. Their logical IDs are:");
+        System.out.println("Found " + response.getTotal() 
+			+ " Fhirman patients. Their logical IDs are:");
         response.getEntry().forEach((entry) -> {
             // within each entry is a resource - print its logical ID
             System.out.println(entry.getResource().getIdElement().getIdPart());
@@ -356,7 +358,92 @@ public class Main {
 								</div>
 							</div>	
 							<h5 id="api-operations">Step 5: Run an operation</h5>
-							<p>Lastly, </p>
+							<p>Lastly, let's execute an operation on the server. A simple operation we can do is the <a href="https://hl7-fhir.github.io/patient-operations.html#everything">Patient/$everything</a> - this'll fetch us the Patient resource and all related resources to it.</p>
+							<p>Firstly, lets upload the sample Patient we've explored before in the <a href="patient-with-references.html">Patient with References</a> tutorial:</p>
+							
+							<p>
+								<center>
+									<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="patient-with-references-button">
+										Upload</button>
+									<br>
+									<div id="patient-with-references-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
+								</center>
+							</p>
+
+							<p>Now we can run a query on the operation to get a Bundle with the Patient and associated resources. Here's how it looks like in code - make sure to update MY_PATIENT_ID with <span class="patient-with-references-serverid" id="rf-patient">(press Upload first)</span>.</p>
+							
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+	<div class="mdl-tabs__tab-bar">
+		<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
+		<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
+	</div>
+
+	<div class="mdl-tabs__panel is-active" id="csharp-panel">
+		<textarea class="csharp-code">
+// C# code here
+		</textarea>
+	</div>
+	<div class="mdl-tabs__panel" id="java-panel">
+		<textarea class="java-code">
+package com.myhotcompany;
+
+import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.rest.client.IGenericClient;
+import ca.uhn.fhir.rest.client.interceptor.LoggingInterceptor;
+import org.hl7.fhir.dstu3.model.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // context - create this once, as it's an expensive operation
+        // see http://hapifhir.io/doc_intro.html
+        FhirContext ctx = FhirContext.forDstu3();
+        String serverBaseUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";
+
+        // increase timeouts since the server might be powered down
+        // see http://hapifhir.io/doc_rest_client_http_config.html
+        ctx.getRestfulClientFactory().setConnectTimeout(60 * 1000);
+        ctx.getRestfulClientFactory().setSocketTimeout(60 * 1000);
+
+        // create the RESTful client to work with our FHIR server
+        // see http://hapifhir.io/doc_rest_client.html
+        IGenericClient client = ctx.newRestfulGenericClient(serverBaseUrl);
+
+        client.registerInterceptor(new LoggingInterceptor(true));
+
+        // Invoke $everything on our Patient
+		// See http://hapifhir.io/doc_rest_client.html#Extended_Operations
+        Parameters outParams = client
+                .operation()
+                .onInstance(new IdType("Patient", "MY_PATIENT_ID"))
+                .named("$everything")
+                .withNoParameters(Parameters.class) // No input parameters
+                .execute();
+
+        // FHIR normally returns a 'Parameters' resource to an operation, but
+		// in case of a single resource response, it just returns the resource
+		// itself. This is why it seems that we have to fish a Bundle out of the
+		// resulting Params result - HAPI needs to update for the FHIR shortcut
+        Bundle result = (Bundle) outParams.getParameterFirstRep().getResource();
+
+        System.out.println("Received " + result.getTotal()
+			+ " results. The resources are:");
+        result.getEntry().forEach((entry) -> {
+            Resource resource = entry.getResource();
+            System.out.println(resource.getResourceType() + "/" 
+				+ resource.getIdElement().getIdPart());
+        });
+    }
+}</textarea>
+	</div>
+</div>							
+							
+							<p>Try running the code and you should see the same IDs for related resources as on this page:</p>
+							<pre>Patient/<span class="patient-with-references-serverid" id="rf-patient">(press Upload first)</span></pre>
+							<pre>Encounter/<span class="patient-with-references-serverid" id="rf-encounter">(press Upload first)</span></pre>
+							<pre>Observation/<span class="patient-with-references-serverid" id="rf-observation1">(press Upload first)</span></pre>
+							<pre>Observation/<span class="patient-with-references-serverid" id="rf-observation2">(press Upload first)</span></pre>
+							<pre>DiagnosticReport/<span class="patient-with-references-serverid" id="rf-diagnosticreport">(press Upload first)</span></pre>
 						</div>                     
                     </div>
                 </section>
