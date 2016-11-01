@@ -112,6 +112,8 @@
 							<p>If you're a developer, or just someone interested in coding with FHIR, then this is the page for you to read! In this tutorial we'll walk you through doing all of the tutorials you've been doing with Postman programatically.</p>
 
 							<note>This tutorial requires technical knowledge to do! If you're not technically minded, you can still learn FHIR by doing other tutorials on this website.</note>
+                            
+                            <h6>Click the apropirate button below depending on which programming language you are intrested in. This will help this web site display the examples most relivant to your choice. </h6>
 							<div id="fhir-api-code-buttons">
 								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="switchCodeTabs('csharp')">
 									Show me C# code
@@ -130,13 +132,17 @@
 								<a href="#api-operations">Step 5: Run an operation</a>
 							</ul>
 							<h5 id="api-setup">Step 1: Setup</h5>
-							<p>FHIR provides official APIs that help you work with it. In case of of Java, this is the <a href="http://hapifhir.io">HAPI library</a>, and in case of C#, it is the <a href="https://github.com/ewoutkramer/fhir-net-api">.NET API</a>.</p>
+                            <p>FHIR provides some official API code libaraies in Java and .Net to help you work with the standard.</p> 
+                            <p>They are:</p> 
+                            <b>Java</b>
 							
-							<p>To get started with HAPI, add the dependency <a href="http://hapifhir.io/download.html#Maven_Users">via Maven</a> or <a href="http://hapifhir.io/download.html#Gradle_Users">Gradle</a> - or just <a href="https://github.com/jamesagnew/hapi-fhir/releases/download/v2.0/hapi-fhir-2.0-standard-distribution.zip">download</a> the library locally. If you've done the latter, include all non-hapi jars in your classpath, and only <code>hapi-fhir-base-2.0.jar</code>, <code>hapi-fhir-structures-dstu3-2.0.jar</code>, <code>hapi-fhir-validation-resources-dstu3-2.0.jar</code> hapi ones if you're working with STU3.</p>
+							<p><a href="http://hapifhir.io">HAPI FHIR library</a>: To get started with HAPI, add the dependency <a href="http://hapifhir.io/download.html#Maven_Users">via Maven</a> or <a href="http://hapifhir.io/download.html#Gradle_Users">Gradle</a> - or just <a href="https://github.com/jamesagnew/hapi-fhir/releases/download/v2.0/hapi-fhir-2.0-standard-distribution.zip">download</a> the library locally. If you've done the latter, include all non-hapi jars in your classpath, and only <code>hapi-fhir-base-2.0.jar</code>, <code>hapi-fhir-structures-dstu3-2.0.jar</code>, <code>hapi-fhir-validation-resources-dstu3-2.0.jar</code> hapi ones if you're working with STU3.</p>
 							
 							<p>The Java examples listed in this tutorial require Java 8 SDK installed, however HAPI itself supports Java all the way back to 6.</p>
 							
-							<p>To get started with the .NET API, you do blah.</p>
+                            <b>Microsoft .Net</b>
+                            <p><a href="https://github.com/ewoutkramer/fhir-net-api">FHIR .NET API</a>: The simplest way to get started with the .Net API is to search for it in the Nuget pacakge manager built into Visual Studio. Right click your Solution and select 'Manage Nuget Packages' and then search and install both 'Hl7.Fhir.STU3' and 'Hl7.FluentPath'. You may also need to select the 'Include prerelease' if you wish to have the latest STU3 release.</p>
+							
 							
 							<h5 id="api-find-patient">Step 2: Create a basic Patient</h5>
 							<p>Upon creating a new project, you'll see a new blank class not much different from this:</p>
@@ -148,8 +154,19 @@
 
 								<div class="mdl-tabs__panel is-active" id="csharp-panel">
 									<textarea class="csharp-code">
-// C# code here		
-									</textarea>
+using System;
+using System.Collections.Generic;
+
+namespace SimpleFhir
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+       // write your code here
+    }
+  }
+}</textarea>
 								</div>
 								<div class="mdl-tabs__panel" id="java-panel">
 									<textarea class="java-code">
@@ -174,8 +191,54 @@ public class Main {
 
 								<div class="mdl-tabs__panel is-active" id="csharp-panel">
 									<textarea class="csharp-code">
-// C# code here		
-									</textarea>
+using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
+namespace SimpleFhir
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      var MyPatient = new Hl7.Fhir.Model.Patient();
+          
+      //Patient's Name
+      var PatientName = new Hl7.Fhir.Model.HumanName();
+      PatientName.Use = Hl7.Fhir.Model.HumanName.NameUse.Official;
+      PatientName.Prefix = new string[] { "Mr" };
+      PatientName.Given = new string[] { "Sam" };
+      PatientName.Family = new string[] { "Fhirman" };
+      MyPatient.Name = new List<Hl7.Fhir.Model.HumanName>();
+      MyPatient.Name.Add(PatientName);
+
+      //Patient Identifier 
+      var PatientIdentifier = new Hl7.Fhir.Model.Identifier();      
+      PatientIdentifier.System = "http://ns.electronichealth.net.au/id/hi/ihi/1.0";
+      PatientIdentifier.Value = "8003608166690503";
+      MyPatient.Identifier = new List<Hl7.Fhir.Model.Identifier>();
+      MyPatient.Identifier.Add(PatientIdentifier);
+
+      Console.WriteLine("Press any key to serialise Resource to the console as XML.");
+      Console.ReadKey();
+      Console.WriteLine("");
+      try
+      {
+        //attempt to send the resource to the server endpoint
+        string xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(MyPatient);
+        XDocument xDoc = XDocument.Parse(xml);
+        Console.Write(xDoc.ToString());
+        Console.WriteLine("");
+        Console.WriteLine("");
+      }
+      catch(Exception Exec)
+      {
+        Console.Write("Error message: " + Exec.Message);
+      }
+      Console.Write("Press any key to end.");
+      Console.ReadKey();
+    }
+  }
+}</textarea>
 								</div>
 								<div class="mdl-tabs__panel" id="java-panel">
 									<textarea class="java-code">
@@ -237,8 +300,85 @@ public class Main {
 
 								<div class="mdl-tabs__panel is-active" id="csharp-panel">
 									<textarea class="csharp-code">
-// C# code here
-									</textarea>
+using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
+namespace SimpleFhir
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      //The fhir server end point address      
+      string ServiceRootUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";
+      
+      //Create a patient resource instance
+      var MyPatient = new Hl7.Fhir.Model.Patient();
+
+      //Patient's Name
+      var PatientName = new Hl7.Fhir.Model.HumanName();
+      PatientName.Use = Hl7.Fhir.Model.HumanName.NameUse.Official;
+      PatientName.Prefix = new string[] { "Mr" };
+      PatientName.Given = new string[] { "Sam" };
+      PatientName.Family = new string[] { "Fhirman" };
+      MyPatient.Name = new List<Hl7.Fhir.Model.HumanName>();
+      MyPatient.Name.Add(PatientName);
+
+      //Patient Identifier 
+      var PatientIdentifier = new Hl7.Fhir.Model.Identifier();
+      PatientIdentifier.System = "http://ns.electronichealth.net.au/id/hi/ihi/1.0";
+      PatientIdentifier.Value = "8003608166690503";
+      MyPatient.Identifier = new List<Hl7.Fhir.Model.Identifier>();
+      MyPatient.Identifier.Add(PatientIdentifier);
+      
+      //Create a client to send to the server at a given endpoint.
+      var FhirClient = new Hl7.Fhir.Rest.FhirClient(ServiceRootUrl);
+      
+      // increase timeouts since the server might be powered down
+      FhirClient.Timeout = (60 * 1000);
+      
+      Console.WriteLine("Press any key to send to server: " + ServiceRootUrl);
+      Console.ReadKey();
+      try
+      {
+        //Attempt to send the resource to the server endpoint
+        Hl7.Fhir.Model.Patient ReturnedPatient = FhirClient.Create<Hl7.Fhir.Model.Patient>(MyPatient);        
+        Console.WriteLine(string.Format("Resource is available at: {0}", ReturnedPatient.Id));
+        Console.WriteLine();
+        Console.WriteLine("This is what we sent up: ");
+        Console.WriteLine();
+        string xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(MyPatient);
+        XDocument xDoc = XDocument.Parse(xml);
+        Console.WriteLine(xDoc.ToString());
+        Console.WriteLine();
+        Console.WriteLine("This is what we received back: ");
+        Console.WriteLine();
+        xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(ReturnedPatient);
+        xDoc = XDocument.Parse(xml);
+        Console.WriteLine(xDoc.ToString());
+        Console.WriteLine();
+      }
+      catch (Hl7.Fhir.Rest.FhirOperationException FhirOpExec)
+      {
+        //Process any Fhir Errors returned as OperationOutcome resource
+        Console.WriteLine();
+        Console.WriteLine("An error message: " + FhirOpExec.Message);
+        Console.WriteLine();
+        string xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(FhirOpExec.Outcome);
+        XDocument xDoc = XDocument.Parse(xml);
+        Console.WriteLine(xDoc.ToString());
+      }
+      catch (Exception GeneralException)
+      {
+        Console.WriteLine();
+        Console.WriteLine("An error message: " + GeneralException.Message);
+        Console.WriteLine();
+      }
+      Console.WriteLine("Press any key to end.");
+      Console.ReadKey();
+    }
+  }
+}</textarea>
 								</div>
 								<div class="mdl-tabs__panel" id="java-panel">
 									<textarea class="java-code">
@@ -309,8 +449,58 @@ public class Main {
 
 										<div class="mdl-tabs__panel is-active" id="csharp-panel">
 											<textarea class="csharp-code">
-// C# code here
-											</textarea>
+using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
+namespace SimpleFhir
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      //The fhir server end point address      
+      string ServiceRootUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";      
+      //Create a client to send to the server at a given endpoint.
+      var FhirClient = new Hl7.Fhir.Rest.FhirClient(ServiceRootUrl);      
+      // increase timeouts since the server might be powered down
+      FhirClient.Timeout = (60 * 1000);
+
+      Console.WriteLine("Press any key to send to server: " + ServiceRootUrl);
+      Console.WriteLine();
+      Console.ReadKey();
+      try
+      {
+        //Attempt to send the resource to the server endpoint
+        Hl7.Fhir.Model.Bundle ReturnedSearchBundle = FhirClient.Search<Hl7.Fhir.Model.Patient>(new string[] { "family=Fhirman" });
+        Console.WriteLine(string.Format("Found: {0} Fhirman patients.", ReturnedSearchBundle.Total.ToString()));
+        Console.WriteLine("Their logical IDs are:");
+        foreach(var Entry in ReturnedSearchBundle.Entry)
+        {
+          Console.WriteLine("ID: " + Entry.Resource.Id);
+        }
+        Console.WriteLine();
+      }
+      catch (Hl7.Fhir.Rest.FhirOperationException FhirOpExec)
+      {
+        //Process any Fhir Errors returned as OperationOutcome resource
+        Console.WriteLine();
+        Console.WriteLine("An error message: " + FhirOpExec.Message);
+        Console.WriteLine();
+        string xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(FhirOpExec.Outcome);
+        XDocument xDoc = XDocument.Parse(xml);
+        Console.WriteLine(xDoc.ToString());
+      }
+      catch (Exception GeneralException)
+      {
+        Console.WriteLine();
+        Console.WriteLine("An error message: " + GeneralException.Message);
+        Console.WriteLine();
+      }
+      Console.WriteLine("Press any key to end.");
+      Console.ReadKey();
+    }
+  }
+}</textarea>
 										</div>
 										<div class="mdl-tabs__panel" id="java-panel">
 											<textarea class="java-code">
@@ -381,8 +571,69 @@ public class Main {
 
 	<div class="mdl-tabs__panel is-active" id="csharp-panel">
 		<textarea class="csharp-code">
-// C# code here
-		</textarea>
+        using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
+namespace SimpleFhir
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      //The fhir server end point address      
+      string ServiceRootUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";     
+      //Create a client to send to the server at a given endpoint.
+      var FhirClient = new Hl7.Fhir.Rest.FhirClient(ServiceRootUrl);      
+      // increase timeouts since the server might be powered down
+      FhirClient.Timeout = (60 * 1000);
+
+      Console.WriteLine("Press any key to send to server: " + ServiceRootUrl);
+      Console.WriteLine();
+      Console.ReadKey();
+      try
+      {
+        //Attempt to send the resource to the server endpoint                
+        UriBuilder UriBuilderx = new UriBuilder(ServiceRootUrl);
+        UriBuilderx.Path = "Patient/1";        
+        Hl7.Fhir.Model.Resource ReturnedResource = FhirClient.InstanceOperation(UriBuilderx.Uri, "everything");
+
+        if (ReturnedResource is Hl7.Fhir.Model.Bundle)
+        {
+          Hl7.Fhir.Model.Bundle ReturnedBundle = ReturnedResource as Hl7.Fhir.Model.Bundle;
+          Console.WriteLine("Received: " + ReturnedBundle.Total + " results, the resources are: ");          
+          foreach (var Entry in ReturnedBundle.Entry)
+          {
+            Console.WriteLine(string.Format("{0}/{1}",Entry.Resource.TypeName, Entry.Resource.Id));
+          }
+        }
+        else
+        {
+          throw new Exception("Operation call must return a bundle resource");
+        }
+        Console.WriteLine();
+
+      }
+      catch (Hl7.Fhir.Rest.FhirOperationException FhirOpExec)
+      {
+        //Process any Fhir Errors returned as OperationOutcome resource
+        Console.WriteLine();
+        Console.WriteLine("An error message: " + FhirOpExec.Message);
+        Console.WriteLine();
+        string xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(FhirOpExec.Outcome);
+        XDocument xDoc = XDocument.Parse(xml);
+        Console.WriteLine(xDoc.ToString());
+      }
+      catch (Exception GeneralException)
+      {
+        Console.WriteLine();
+        Console.WriteLine("An error message: " + GeneralException.Message);
+        Console.WriteLine();
+      }
+      Console.WriteLine("Press any key to end.");
+      Console.ReadKey();
+    }
+  }
+}</textarea>
 	</div>
 	<div class="mdl-tabs__panel" id="java-panel">
 		<textarea class="java-code">
