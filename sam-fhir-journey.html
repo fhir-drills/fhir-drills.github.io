@@ -1,0 +1,631 @@
+<!doctype html>
+<!--
+    FHIR Drills
+    Copyright 2016 Australian Digital Health Agency. All rights reserved.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License
+    -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="FHIR Tutorials by the Australian Digital Health Agency to help you understand FHIR and its spec! No technical experience required.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>FHIR® exercises</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <!-- <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png"> -->
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <!--     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png"> -->
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <!--     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF"> -->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+	<!-- CodeMirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.deep_purple-pink.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+
+    </style>
+    <link href="css/lightbox.min.css" rel="stylesheet">
+</head>
+
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+               for="fixed-header-drawer-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="sample"
+                 id="fixed-header-drawer-exp">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">FHIR<sup>®</sup> exercises</span>
+    <nav class="mdl-navigation">
+		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
+		<a href="./terminology-exercise.html" class="mdl-navigation__link">Terminology exercise</a>
+		<a href="./sam-fhir-journey.html" class="mdl-navigation__link is-active-tab">Sam's FHIR journey</a>
+		<a href="#" class="mdl-navigation__link"></a>
+		<a href="./index.html" class="mdl-navigation__link">FHIR tutorials</a>
+    </nav>
+  </div>
+   <main class="mdl-layout__content">
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                    <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                        <div class="mdl-card__supporting-text">
+							<h4>Sam's FHIR journey</h4>
+							<p>This exercise will help you practice your FHIR skills by having you create resources that follow our Sam Fhirman's small journey through the healthcare system.</p>
+							<ul class="toc">
+								<h4>Contents</h4>
+								<a href="#sam-description">Step 1: Exersize description</a>
+								<a href="#step2">Step 2: Create a ValueSet</a>
+								<a href="#step3">Step 3: Perform an $expand on your ValueSet</a>
+								<a href="#step4">Step 4: Create a ConceptMap mapping</a>
+								<a href="#step5">Step 5: Perform a $translate on your ConceptMap</a>
+							</ul>
+
+							<h5 id="sam-description">Step 1: Exersize description</h5>
+							<p>Sam, our <a href="http://hl7.org/fhir/2016Sep/patient.html">Patient</a> with a known allergy (<a href="http://hl7.org/fhir/2016Sep/patient.html">AllergyIntolerance</a>) has a regular <a href="http://hl7.org/fhir/2016Sep/appointment.html">Appointment</a> at a hospital (<a href="http://hl7.org/fhir/2016Sep/organization.html">Organization</a>) which results in an <a href="http://hl7.org/fhir/2016Sep/encounter.html">Encounter</a> when he goes in. The doctor (<a href="http://hl7.org/fhir/2016Sep/practitioner.html">Practitioner</a>), who previously recorded Sams allergy, examines Sam and notices [ANGUS FILL IN HERE], so he orders a test to be done (<a href="http://hl7.org/fhir/2016Sep/diagnosticrequest.html">DiagnosticRequest</a>) at the path lab (<a href="http://hl7.org/fhir/2016Sep/organization">Organization</a>). The hospitals system tracks this request using a <a href="http://hl7.org/fhir/2016Sep/task.html">Task</a>, so the doctor can check the task at any time to see if there's been any progress made. When the path lab performs its analysis, it records [ANGUS FILL IN HERE] as an <a href="http://hl7.org/fhir/2016Sep/observation.html">Observation</a> in its <a href="http://hl7.org/fhir/2016Sep/diagnosticreport.html">DiagnosticReport</a> and sends that off back to the hospital. The hospitals system updates the Task with the DiagnosticReport and notifies the doctor that results are available.</p>
+							<p>We need you to model this scenario as FHIR resources. You will need to create a Patient, AllergyIntolerance, Appointment, Encounter, Practitioner, DiagnosticRequest, Task, DiagnosticReport, Observation, and two Organization resources and have them reference each other appropriately. Try working as a group to split the load, or just through the resources one by one together!</p>
+							<p>See diagram below for how the resources could be setup:</p>
+							<a href="images/patient-fhir-journey-exersize.png" data-lightbox="patient-fhir-journey-exersize"><img src="images/patient-fhir-journey-exersize.png" class="thumbnail"/></a>
+							<h5 id="sam-answer">Exesize answer</h5>
+							<p>The answer with all resources included is <a href="resource-examples/sam-fhir-journey/Bundle.json">available here</a>. As this is proper FHIR transaction bundle, you can also just POST it to a FHIR servers endpoint and have all of the resources created for you on the server!</p>
+							<p>Answer is also available for viewing below:</p>
+<textarea class="fhir-resource-json">
+{
+   "resourceType": "Bundle",
+   "type": "transaction",
+   "entry": [
+      {
+         "fullUrl": "Encounter/encounter",
+         "request": {
+            "method": "PUT",
+            "url": "Encounter/encounter"
+         },
+         "resource": {
+            "resourceType": "Encounter",
+            "id": "encounter",
+            "status": "finished",
+            "class": {
+               "system": "http://hl7.org/fhir/ValueSet/v3-ActEncounterCode",
+               "code": "NONAC",
+               "display": "inpatient non-acute"
+            },
+            "priority": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/v3-ActPriority",
+                     "code": "R",
+                     "display": "routine"
+                  }
+               ]
+            },
+            "patient": {
+               "reference": "Patient/patient"
+            },
+            "participant": [
+               {
+                  "type": [
+                     {
+                        "coding": [
+                           {
+                              "system": "http://hl7.org/fhir/ValueSet/encounter-participant-type",
+                              "code": "PPRF",
+                              "display": "primary performer"
+                           }
+                        ]
+                     }
+                  ],
+                  "individual": {
+                     "reference": "Practitioner/practitioner"
+                  }
+               }
+            ],
+            "appointment": {
+               "reference": "Appointment/appointment"
+            },
+            "period": {
+               "start": "2016-10-31T08:07:00+10:00",
+               "end": "2016-10-31T08:28:00+10:00"
+            },
+            "reason": [
+               {
+                  "coding": [
+                     {
+                        "system": "http://hl7.org/fhir/ValueSet/encounter-reason",
+                        "code": "ANGUS-PICK-REASON-FOR-INITIAL-AND-ROUTINE-VISIT-HERE",
+                        "display": "ANGUS PICK REASON FOR THIS INITIAL, ROUTINE VISIT HERE"
+                     }
+                  ]
+               }
+            ],
+            "serviceProvider": {
+               "reference": "Organization/hospital-organization"
+            }
+         }
+      },
+      {
+         "fullUrl": "Patient/patient",
+         "request": {
+            "method": "PUT",
+            "url": "Patient/patient"
+         },
+         "resource": {
+            "resourceType": "Patient",
+            "id": "patient",
+            "text": {
+               "status": "generated",
+               "div": "<div xmlns='http://www.w3.org/1999/xhtml'>\n  <p>Patient: Fhirman, Sam</p>\n</div>"
+            },
+            "identifier": [
+               {
+                  "type": {
+                     "coding": [
+                        {
+                           "system": "http://hl7.org/fhir/v2/0203",
+                           "code": "NI",
+                           "display": "National unique individual identifier"
+                        }
+                     ],
+                     "text": "IHI"
+                  },
+                  "system": "http://ns.electronichealth.net.au/id/hi/ihi/1.0",
+                  "value": "8003608166690503"
+               },
+               {
+                  "use": "usual",
+                  "type": {
+                     "coding": [
+                        {
+                           "system": "http://hl7.org/fhir/v2/0203",
+                           "code": "MR"
+                        }
+                     ]
+                  },
+                  "system": "urn:oid:1.2.36.146.595.217.0.1",
+                  "value": "6666",
+                  "period": {
+                     "start": "2001-05-06"
+                  },
+                  "assigner": {
+                     "display": "Acme Healthcare"
+                  }
+               }
+            ],
+            "name": [
+               {
+                  "use": "official",
+                  "text": "Sam Fhirman",
+                  "family": [
+                     "Fhirman"
+                  ],
+                  "given": [
+                     "Sam"
+                  ],
+                  "prefix": [
+                     "Mr"
+                  ]
+               }
+            ],
+            "telecom": [
+               {
+                  "system": "phone",
+                  "value": "+61481059995",
+                  "use": "mobile"
+               }
+            ],
+            "gender": "male",
+            "birthDate": "1973-09-30",
+            "address": [
+               {
+                  "use": "work",
+                  "line": [
+                     "400 George Street"
+                  ],
+                  "city": "Brisbane",
+                  "state": "QLD",
+                  "postalCode": "4000",
+                  "country": "AUS"
+               }
+            ],
+            "maritalStatus": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/v3/MaritalStatus",
+                     "code": "M",
+                     "display": "Married"
+                  }
+               ]
+            }
+         }
+      },
+      {
+         "fullUrl": "Appointment/appointment",
+         "request": {
+            "method": "PUT",
+            "url": "Appointment/appointment"
+         },
+         "resource": {
+            "resourceType": "Appointment",
+            "id": "appointment",
+            "status": "fulfilled",
+            "reason": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/encounter-reason",
+                     "code": "ANGUS-PICK-REASON-FOR-INITIAL-VISIT-HERE",
+                     "display": "ANGUS PICK REASON FOR INITIAL VISIT HERE. KEEP IN MIND THE PATIENT HAS A HIGH RISK ALLERGY"
+                  }
+               ]
+            },
+            "description": "ANGUS WRITE REASON FOR INITIAL VISIT HERE AS A SHORT SENTENCE",
+            "start": "2016-10-31T08:00:00+10:00",
+            "end": "2016-10-31T08:30:00+10:00",
+            "participant": [
+               {
+                  "actor": {
+                     "reference": "Patient/patient"
+                  },
+                  "status": "accepted"
+               }
+            ]
+         }
+      },
+      {
+         "fullUrl": "AllergyIntolerance/allergyintolerance",
+         "request": {
+            "method": "PUT",
+            "url": "AllergyIntolerance/allergyintolerance"
+         },
+         "resource": {
+            "resourceType": "AllergyIntolerance",
+            "id": "allergyintolerance",
+            "recorder": {
+               "reference": "Practitioner/practitioner"
+            },
+            "patient": {
+               "reference": "Patient/patient"
+            },
+            "code": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/allergyintolerance-code",
+                     "code": "ANGUS-PICK-ALLERGY-CODE-HERE",
+                     "display": "ANGUS PICK CODE FROM http://hl7.org/fhir/2016Sep/valueset-allergyintolerance-code.html"
+                  }
+               ]
+            },
+            "status": "active",
+            "criticality": "high",
+            "type": "allergy"
+         }
+      },
+      {
+         "fullUrl": "Practitioner/practitioner",
+         "request": {
+            "method": "PUT",
+            "url": "Practitioner/practitioner"
+         },
+         "resource": {
+            "resourceType": "Practitioner",
+            "id": "practitioner",
+            "name": [{
+               "family": [
+                  "Junior"
+               ],
+               "given": [
+                  "Peter"
+               ],
+               "prefix": [
+                  "Dr."
+               ]
+            }],
+            "gender": "male",
+            "role": [
+               {
+                  "organization": {
+                     "reference": "Organization/hospital-organization"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "fullUrl": "Organization/hospital-organization",
+         "request": {
+            "method": "PUT",
+            "url": "Organization/hospital-organization"
+         },
+         "resource": {
+            "resourceType": "Organization",
+            "id": "hospital-organization",
+            "type": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/organization-type",
+                     "code": "dept",
+                     "display": "Hospital Department"
+                  }
+               ]
+            },
+            "name": "Sample Hospital",
+            "telecom": [
+               {
+                  "system": "email",
+                  "value": "os@hospital.com.au"
+               }
+            ],
+            "address": [
+               {
+                  "line": [
+                     "67 Hospital Drive"
+                  ],
+                  "city": "Agencyville",
+                  "state": "QLD",
+                  "postalCode": "5555",
+                  "country": "Australia"
+               }
+            ]
+         }
+      },
+      {
+         "fullUrl": "DiagnosticRequest/diagnosticrequest",
+         "request": {
+            "method": "PUT",
+            "url": "DiagnosticRequest/diagnosticrequest"
+         },
+         "resource": {
+            "resourceType": "DiagnosticRequest",
+            "id": "diagnosticrequest",
+            "subject": {
+               "reference": "Patient/patient"
+            },
+            "requester": {
+               "reference": "Practitioner/practitioner"
+            },
+            "context": {
+               "reference": "Encounter/encounter"
+            },
+            "performer": {
+               "reference": "Organization/pathlab"
+            },
+            "code": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/diagnostic-requests",
+                     "code": "ANGUS-ADD-CODE-HERE",
+                     "display": "ANGUS PICK 'A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested.' FROM LOINC"
+                  }
+               ]
+            },
+            "stage": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/diagnostic-request-stage",
+                     "code": "original-order",
+                     "display": "Original Order"
+                  }
+               ]
+            },
+            "status": "completed",
+            "authored": "2016-10-31T08:25:00+10:00"
+         }
+      },
+      {
+         "fullUrl": "DiagnosticReport/diagnosticreport",
+         "request": {
+            "method": "PUT",
+            "url": "DiagnosticReport/diagnosticreport"
+         },
+         "resource": {
+            "resourceType": "DiagnosticReport",
+            "id": "diagnosticreport",
+            "status": "final",
+            "code": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/report-codes",
+                     "code": "ANGUS-ADD-CODE-HERE",
+                     "display": "ANGUS ADD CODE HERE THAT IS \"A code or name that describes this diagnostic report.\""
+                  }
+               ]
+            },
+            "subject": {
+               "reference": "Patient/patient"
+            },
+            "effectiveDateTime": "2016-10-31T09:35:00+10:00",
+            "issued": "2016-10-31T09:45:00+10:00",
+            "performer": [{
+               "reference": "Organization/pathlab"
+            }],
+            "request": [
+               {
+                  "reference": "DiagnosticRequest/diagnosticrequest"
+               }
+            ],
+            "result": [
+               {
+                  "reference": "Observation/path-lab-observation"
+               }
+            ]
+         }
+      },
+      {
+         "fullUrl": "Organization/pathlab",
+         "request": {
+            "method": "PUT",
+            "url": "Organization/pathlab"
+         },
+         "resource": {
+            "resourceType": "Organization",
+            "id": "pathlab",
+            "type": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/organization-type",
+                     "code": "prov",
+                     "display": "Healthcare Provider"
+                  }
+               ]
+            },
+            "name": "Pathology Laboratory",
+            "telecom": [
+               {
+                  "system": "email",
+                  "value": "pathstuff@example.com"
+               }
+            ],
+            "address": [
+               {
+                  "line": [
+                     "67 Hospital Drive"
+                  ],
+                  "city": "Agencyville",
+                  "state": "QLD",
+                  "postalCode": "5555",
+                  "country": "Agencyville"
+               }
+            ]
+         }
+      },
+      {
+         "fullUrl": "Observation/path-lab-observation",
+         "request": {
+            "method": "PUT",
+            "url": "Observation/path-lab-observation"
+         },
+         "resource": {
+            "resourceType": "Observation",
+            "id": "path-lab-observation",
+            "status": "final",
+            "category": [{
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/observation-category",
+                     "code": "laboratory",
+                     "display": "Laboratory"
+                  }
+               ]
+            }],
+            "code": {
+               "coding": [
+                  {
+                     "system": "http://ANGUS_PICK_SYSTEM.com",
+                     "code": "ANGUS-PICK-CODE-HERE",
+                     "display": "ANGUS PICK CODE HERE"
+                  }
+               ]
+            },
+            "effectiveDateTime": "2016-10-31T09:35:00+10:00",
+            "subject": {
+               "reference": "Patient/patient"
+            }
+         }
+      }
+   ]
+}</textarea>
+							<p>That's it for this exercise!</p>
+						</div>
+                    </div>
+                </section>
+            <footer class="mdl-mega-footer">
+                <div class="mdl-mega-footer--middle-section">
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
+                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
+                        </ul>
+                    </div>
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">FHIR</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_13" title="Next FHIR get-together in Baltimore in September 2016">Connectathon 13</a></li>
+                            <li><a href="http://hl7.org/fhir/2016Sep" title="Latest snapshot of FHIR, for use in Baltimore Connectathon">FHIR September 2016 snapshot</a></li>
+                            <li><a href="https://www.hl7.org/fhir/" title="Current stable version of FHIR">FHIR DSTU 2</a></li>
+                            <li><a href="https://hl7-fhir.github.io/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80290058-1', 'auto');
+  ga('send', 'pageview');
+
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/javascript/javascript.min.js"></script>
+
+    <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <script src="js/lightbox-plus-jquery.min.js"></script>
+    <!-- lua.vm.js -->
+     <script src="js/lua.vm.js/dist/lua.vm.js"></script>
+<!--     main javascript for this page-->
+    <script src="js/main.js"></script>
+<!-- supporting javascript to actually do the uploading -->
+	<script src="js/post-resources.js"></script>
+</body>
+
+</html>

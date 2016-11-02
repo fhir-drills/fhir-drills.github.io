@@ -1,0 +1,452 @@
+{
+   "resourceType": "Bundle",
+   "type": "transaction",
+   "entry": [
+      {
+         "fullUrl": "Encounter/encounter",
+         "request": {
+            "method": "PUT",
+            "url": "Encounter/encounter"
+         },
+         "resource": {
+            "resourceType": "Encounter",
+            "id": "encounter",
+            "status": "finished",
+            "class": {
+               "system": "http://hl7.org/fhir/ValueSet/v3-ActEncounterCode",
+               "code": "NONAC",
+               "display": "inpatient non-acute"
+            },
+            "priority": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/v3-ActPriority",
+                     "code": "R",
+                     "display": "routine"
+                  }
+               ]
+            },
+            "patient": {
+               "reference": "Patient/patient"
+            },
+            "participant": [
+               {
+                  "type": [
+                     {
+                        "coding": [
+                           {
+                              "system": "http://hl7.org/fhir/ValueSet/encounter-participant-type",
+                              "code": "PPRF",
+                              "display": "primary performer"
+                           }
+                        ]
+                     }
+                  ],
+                  "individual": {
+                     "reference": "Practitioner/practitioner"
+                  }
+               }
+            ],
+            "appointment": {
+               "reference": "Appointment/appointment"
+            },
+            "period": {
+               "start": "2016-10-31T08:07:00+10:00",
+               "end": "2016-10-31T08:28:00+10:00"
+            },
+            "reason": [
+               {
+                  "coding": [
+                     {
+                        "system": "http://hl7.org/fhir/ValueSet/encounter-reason",
+                        "code": "ANGUS-PICK-REASON-FOR-INITIAL-AND-ROUTINE-VISIT-HERE",
+                        "display": "ANGUS PICK REASON FOR THIS INITIAL, ROUTINE VISIT HERE"
+                     }
+                  ]
+               }
+            ],
+            "serviceProvider": {
+               "reference": "Organization/hospital-organization"
+            }
+         }
+      },
+      {
+         "fullUrl": "Patient/patient",
+         "request": {
+            "method": "PUT",
+            "url": "Patient/patient"
+         },
+         "resource": {
+            "resourceType": "Patient",
+            "id": "patient",
+            "text": {
+               "status": "generated",
+               "div": "<div xmlns='http://www.w3.org/1999/xhtml'>\n  <p>Patient: Fhirman, Sam</p>\n</div>"
+            },
+            "identifier": [
+               {
+                  "type": {
+                     "coding": [
+                        {
+                           "system": "http://hl7.org/fhir/v2/0203",
+                           "code": "NI",
+                           "display": "National unique individual identifier"
+                        }
+                     ],
+                     "text": "IHI"
+                  },
+                  "system": "http://ns.electronichealth.net.au/id/hi/ihi/1.0",
+                  "value": "8003608166690503"
+               },
+               {
+                  "use": "usual",
+                  "type": {
+                     "coding": [
+                        {
+                           "system": "http://hl7.org/fhir/v2/0203",
+                           "code": "MR"
+                        }
+                     ]
+                  },
+                  "system": "urn:oid:1.2.36.146.595.217.0.1",
+                  "value": "6666",
+                  "period": {
+                     "start": "2001-05-06"
+                  },
+                  "assigner": {
+                     "display": "Acme Healthcare"
+                  }
+               }
+            ],
+            "name": [
+               {
+                  "use": "official",
+                  "text": "Sam Fhirman",
+                  "family": [
+                     "Fhirman"
+                  ],
+                  "given": [
+                     "Sam"
+                  ],
+                  "prefix": [
+                     "Mr"
+                  ]
+               }
+            ],
+            "telecom": [
+               {
+                  "system": "phone",
+                  "value": "+61481059995",
+                  "use": "mobile"
+               }
+            ],
+            "gender": "male",
+            "birthDate": "1973-09-30",
+            "address": [
+               {
+                  "use": "work",
+                  "line": [
+                     "400 George Street"
+                  ],
+                  "city": "Brisbane",
+                  "state": "QLD",
+                  "postalCode": "4000",
+                  "country": "AUS"
+               }
+            ],
+            "maritalStatus": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/v3/MaritalStatus",
+                     "code": "M",
+                     "display": "Married"
+                  }
+               ]
+            }
+         }
+      },
+      {
+         "fullUrl": "Appointment/appointment",
+         "request": {
+            "method": "PUT",
+            "url": "Appointment/appointment"
+         },
+         "resource": {
+            "resourceType": "Appointment",
+            "id": "appointment",
+            "status": "fulfilled",
+            "reason": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/encounter-reason",
+                     "code": "ANGUS-PICK-REASON-FOR-INITIAL-VISIT-HERE",
+                     "display": "ANGUS PICK REASON FOR INITIAL VISIT HERE. KEEP IN MIND THE PATIENT HAS A HIGH RISK ALLERGY"
+                  }
+               ]
+            },
+            "description": "ANGUS WRITE REASON FOR INITIAL VISIT HERE AS A SHORT SENTENCE",
+            "start": "2016-10-31T08:00:00+10:00",
+            "end": "2016-10-31T08:30:00+10:00",
+            "participant": [
+               {
+                  "actor": {
+                     "reference": "Patient/patient"
+                  },
+                  "status": "accepted"
+               }
+            ]
+         }
+      },
+      {
+         "fullUrl": "AllergyIntolerance/allergyintolerance",
+         "request": {
+            "method": "PUT",
+            "url": "AllergyIntolerance/allergyintolerance"
+         },
+         "resource": {
+            "resourceType": "AllergyIntolerance",
+            "id": "allergyintolerance",
+            "recorder": {
+               "reference": "Practitioner/practitioner"
+            },
+            "patient": {
+               "reference": "Patient/patient"
+            },
+            "code": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/allergyintolerance-code",
+                     "code": "ANGUS-PICK-ALLERGY-CODE-HERE",
+                     "display": "ANGUS PICK CODE FROM http://hl7.org/fhir/2016Sep/valueset-allergyintolerance-code.html"
+                  }
+               ]
+            },
+            "status": "active",
+            "criticality": "high",
+            "type": "allergy"
+         }
+      },
+      {
+         "fullUrl": "Practitioner/practitioner",
+         "request": {
+            "method": "PUT",
+            "url": "Practitioner/practitioner"
+         },
+         "resource": {
+            "resourceType": "Practitioner",
+            "id": "practitioner",
+            "name": [{
+               "family": [
+                  "Junior"
+               ],
+               "given": [
+                  "Peter"
+               ],
+               "prefix": [
+                  "Dr."
+               ]
+            }],
+            "gender": "male",
+            "role": [
+               {
+                  "organization": {
+                     "reference": "Organization/hospital-organization"
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "fullUrl": "Organization/hospital-organization",
+         "request": {
+            "method": "PUT",
+            "url": "Organization/hospital-organization"
+         },
+         "resource": {
+            "resourceType": "Organization",
+            "id": "hospital-organization",
+            "type": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/organization-type",
+                     "code": "dept",
+                     "display": "Hospital Department"
+                  }
+               ]
+            },
+            "name": "Sample Hospital",
+            "telecom": [
+               {
+                  "system": "email",
+                  "value": "os@hospital.com.au"
+               }
+            ],
+            "address": [
+               {
+                  "line": [
+                     "67 Hospital Drive"
+                  ],
+                  "city": "Agencyville",
+                  "state": "QLD",
+                  "postalCode": "5555",
+                  "country": "Australia"
+               }
+            ]
+         }
+      },
+      {
+         "fullUrl": "DiagnosticRequest/diagnosticrequest",
+         "request": {
+            "method": "PUT",
+            "url": "DiagnosticRequest/diagnosticrequest"
+         },
+         "resource": {
+            "resourceType": "DiagnosticRequest",
+            "id": "diagnosticrequest",
+            "subject": {
+               "reference": "Patient/patient"
+            },
+            "requester": {
+               "reference": "Practitioner/practitioner"
+            },
+            "context": {
+               "reference": "Encounter/encounter"
+            },
+            "performer": {
+               "reference": "Organization/pathlab"
+            },
+            "code": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/diagnostic-requests",
+                     "code": "ANGUS-ADD-CODE-HERE",
+                     "display": "ANGUS PICK 'A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested.' FROM LOINC"
+                  }
+               ]
+            },
+            "stage": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/diagnostic-request-stage",
+                     "code": "original-order",
+                     "display": "Original Order"
+                  }
+               ]
+            },
+            "status": "completed",
+            "authored": "2016-10-31T08:25:00+10:00"
+         }
+      },
+      {
+         "fullUrl": "DiagnosticReport/diagnosticreport",
+         "request": {
+            "method": "PUT",
+            "url": "DiagnosticReport/diagnosticreport"
+         },
+         "resource": {
+            "resourceType": "DiagnosticReport",
+            "id": "diagnosticreport",
+            "status": "final",
+            "code": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/report-codes",
+                     "code": "ANGUS-ADD-CODE-HERE",
+                     "display": "ANGUS ADD CODE HERE THAT IS \"A code or name that describes this diagnostic report.\""
+                  }
+               ]
+            },
+            "subject": {
+               "reference": "Patient/patient"
+            },
+            "effectiveDateTime": "2016-10-31T09:35:00+10:00",
+            "issued": "2016-10-31T09:45:00+10:00",
+            "performer": [{
+               "reference": "Organization/pathlab"
+            }],
+            "request": [
+               {
+                  "reference": "DiagnosticRequest/diagnosticrequest"
+               }
+            ],
+            "result": [
+               {
+                  "reference": "Observation/path-lab-observation"
+               }
+            ]
+         }
+      },
+      {
+         "fullUrl": "Organization/pathlab",
+         "request": {
+            "method": "PUT",
+            "url": "Organization/pathlab"
+         },
+         "resource": {
+            "resourceType": "Organization",
+            "id": "pathlab",
+            "type": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/organization-type",
+                     "code": "prov",
+                     "display": "Healthcare Provider"
+                  }
+               ]
+            },
+            "name": "Pathology Laboratory",
+            "telecom": [
+               {
+                  "system": "email",
+                  "value": "pathstuff@example.com"
+               }
+            ],
+            "address": [
+               {
+                  "line": [
+                     "67 Hospital Drive"
+                  ],
+                  "city": "Agencyville",
+                  "state": "QLD",
+                  "postalCode": "5555",
+                  "country": "Agencyville"
+               }
+            ]
+         }
+      },
+      {
+         "fullUrl": "Observation/path-lab-observation",
+         "request": {
+            "method": "PUT",
+            "url": "Observation/path-lab-observation"
+         },
+         "resource": {
+            "resourceType": "Observation",
+            "id": "path-lab-observation",
+            "status": "final",
+            "category": [{
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/observation-category",
+                     "code": "laboratory",
+                     "display": "Laboratory"
+                  }
+               ]
+            }],
+            "code": {
+               "coding": [
+                  {
+                     "system": "http://ANGUS_PICK_SYSTEM.com",
+                     "code": "ANGUS-PICK-CODE-HERE",
+                     "display": "ANGUS PICK CODE HERE"
+                  }
+               ]
+            },
+            "effectiveDateTime": "2016-10-31T09:35:00+10:00",
+            "subject": {
+               "reference": "Patient/patient"
+            }
+         }
+      }
+   ]
+}
