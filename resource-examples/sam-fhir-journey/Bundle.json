@@ -3,74 +3,6 @@
    "type": "transaction",
    "entry": [
       {
-         "fullUrl": "Encounter/encounter",
-         "request": {
-            "method": "PUT",
-            "url": "Encounter/encounter"
-         },
-         "resource": {
-            "resourceType": "Encounter",
-            "id": "encounter",
-            "status": "finished",
-            "class": {
-               "system": "http://hl7.org/fhir/ValueSet/v3-ActEncounterCode",
-               "code": "NONAC",
-               "display": "inpatient non-acute"
-            },
-            "priority": {
-               "coding": [
-                  {
-                     "system": "http://hl7.org/fhir/ValueSet/v3-ActPriority",
-                     "code": "R",
-                     "display": "routine"
-                  }
-               ]
-            },
-            "patient": {
-               "reference": "Patient/patient"
-            },
-            "participant": [
-               {
-                  "type": [
-                     {
-                        "coding": [
-                           {
-                              "system": "http://hl7.org/fhir/ValueSet/encounter-participant-type",
-                              "code": "PPRF",
-                              "display": "primary performer"
-                           }
-                        ]
-                     }
-                  ],
-                  "individual": {
-                     "reference": "Practitioner/practitioner"
-                  }
-               }
-            ],
-            "appointment": {
-               "reference": "Appointment/appointment"
-            },
-            "period": {
-               "start": "2016-10-31T08:07:00+10:00",
-               "end": "2016-10-31T08:28:00+10:00"
-            },
-            "reason": [
-               {
-                  "coding": [
-                     {
-                        "system": "http://hl7.org/fhir/ValueSet/encounter-reason",
-                        "code": "ANGUS-PICK-REASON-FOR-INITIAL-AND-ROUTINE-VISIT-HERE",
-                        "display": "ANGUS PICK REASON FOR THIS INITIAL, ROUTINE VISIT HERE"
-                     }
-                  ]
-               }
-            ],
-            "serviceProvider": {
-               "reference": "Organization/hospital-organization"
-            }
-         }
-      },
-      {
          "fullUrl": "Patient/patient",
          "request": {
             "method": "PUT",
@@ -166,6 +98,35 @@
          }
       },
       {
+         "fullUrl": "AllergyIntolerance/allergyintolerance",
+         "request": {
+            "method": "PUT",
+            "url": "AllergyIntolerance/allergyintolerance"
+         },
+         "resource": {
+            "resourceType": "AllergyIntolerance",
+            "id": "allergyintolerance",
+            "recorder": {
+               "reference": "Practitioner/practitioner"
+            },
+            "patient": {
+               "reference": "Patient/patient"
+            },
+            "code": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/allergyintolerance-code",
+                     "code": "ANGUS-PICK-ALLERGY-CODE-HERE",
+                     "display": "ANGUS PICK CODE FROM http://hl7.org/fhir/2016Sep/valueset-allergyintolerance-code.html"
+                  }
+               ]
+            },
+            "status": "active",
+            "criticality": "high",
+            "type": "allergy"
+         }
+      },
+      {
          "fullUrl": "Appointment/appointment",
          "request": {
             "method": "PUT",
@@ -198,32 +159,71 @@
          }
       },
       {
-         "fullUrl": "AllergyIntolerance/allergyintolerance",
+         "fullUrl": "Encounter/encounter",
          "request": {
             "method": "PUT",
-            "url": "AllergyIntolerance/allergyintolerance"
+            "url": "Encounter/encounter"
          },
          "resource": {
-            "resourceType": "AllergyIntolerance",
-            "id": "allergyintolerance",
-            "recorder": {
-               "reference": "Practitioner/practitioner"
+            "resourceType": "Encounter",
+            "id": "encounter",
+            "status": "finished",
+            "class": {
+               "system": "http://hl7.org/fhir/ValueSet/v3-ActEncounterCode",
+               "code": "NONAC",
+               "display": "inpatient non-acute"
+            },
+            "priority": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/v3-ActPriority",
+                     "code": "R",
+                     "display": "routine"
+                  }
+               ]
             },
             "patient": {
                "reference": "Patient/patient"
             },
-            "code": {
-               "coding": [
-                  {
-                     "system": "http://hl7.org/fhir/ValueSet/allergyintolerance-code",
-                     "code": "ANGUS-PICK-ALLERGY-CODE-HERE",
-                     "display": "ANGUS PICK CODE FROM http://hl7.org/fhir/2016Sep/valueset-allergyintolerance-code.html"
+            "participant": [
+               {
+                  "type": [
+                     {
+                        "coding": [
+                           {
+                              "system": "http://hl7.org/fhir/ValueSet/encounter-participant-type",
+                              "code": "PPRF",
+                              "display": "primary performer"
+                           }
+                        ]
+                     }
+                  ],
+                  "individual": {
+                     "reference": "Practitioner/practitioner"
                   }
-               ]
+               }
+            ],
+            "appointment": {
+               "reference": "Appointment/appointment"
             },
-            "status": "active",
-            "criticality": "high",
-            "type": "allergy"
+            "period": {
+               "start": "2016-10-31T08:07:00+10:00",
+               "end": "2016-10-31T08:28:00+10:00"
+            },
+            "reason": [
+               {
+                  "coding": [
+                     {
+                        "system": "http://hl7.org/fhir/ValueSet/encounter-reason",
+                        "code": "ANGUS-PICK-REASON-FOR-INITIAL-AND-ROUTINE-VISIT-HERE",
+                        "display": "ANGUS PICK REASON FOR THIS INITIAL, ROUTINE VISIT HERE"
+                     }
+                  ]
+               }
+            ],
+            "serviceProvider": {
+               "reference": "Organization/hospital-organization"
+            }
          }
       },
       {
@@ -252,44 +252,6 @@
                   "organization": {
                      "reference": "Organization/hospital-organization"
                   }
-               }
-            ]
-         }
-      },
-      {
-         "fullUrl": "Organization/hospital-organization",
-         "request": {
-            "method": "PUT",
-            "url": "Organization/hospital-organization"
-         },
-         "resource": {
-            "resourceType": "Organization",
-            "id": "hospital-organization",
-            "type": {
-               "coding": [
-                  {
-                     "system": "http://hl7.org/fhir/ValueSet/organization-type",
-                     "code": "dept",
-                     "display": "Hospital Department"
-                  }
-               ]
-            },
-            "name": "Sample Hospital",
-            "telecom": [
-               {
-                  "system": "email",
-                  "value": "os@hospital.com.au"
-               }
-            ],
-            "address": [
-               {
-                  "line": [
-                     "67 Hospital Drive"
-                  ],
-                  "city": "Agencyville",
-                  "state": "QLD",
-                  "postalCode": "5555",
-                  "country": "Australia"
                }
             ]
          }
@@ -338,6 +300,64 @@
          }
       },
       {
+         "fullUrl": "Task/task",
+         "request": {
+            "method": "PUT",
+            "url": "Task/task"
+         },
+         "resource": {
+            "resourceType": "Task",
+            "id": "task",
+            "identifier": {
+               "system": "urn:ietf:rfc:3986",
+               "value": "http://example.com/fhir/Task/163412",
+               "use": "official"
+            },
+            "priority": "normal",
+            "stage": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/task-stage",
+                     "code": "actionable",
+                     "display": "actionable"
+                  }
+               ]
+            },
+            "status": "completed",
+            "created": "2016-10-31T08:25:05+10:00",
+            "lastModified": "2016-10-31T09:45:05+10:00",
+            "requester": {
+               "reference": "Practitioner/practitioner"
+            },
+            "input": [{
+			   "type": {
+			     "coding": [
+                  {
+                     "system": "http://example.com/fhir/Task/progress-status-tracker",
+                     "code": "input",
+                     "display": "Input"
+                  }]
+			   },
+			   "valueReference": {
+                 "reference": "DiagnosticRequest/diagnosticrequest"
+			   }
+            }],
+            "output": [{
+			   "type": {
+			     "coding": [
+                  {
+                     "system": "http://example.com/fhir/Task/progress-status-tracker",
+                     "code": "output",
+                     "display": "Output"
+                  }]
+			   },
+			   "valueReference": {
+                 "reference": "DiagnosticReport/diagnosticreport"
+			   }
+            }]
+         }
+      },
+      {
          "fullUrl": "DiagnosticReport/diagnosticreport",
          "request": {
             "method": "PUT",
@@ -372,6 +392,78 @@
             "result": [
                {
                   "reference": "Observation/path-lab-observation"
+               }
+            ]
+         }
+      },
+      {
+         "fullUrl": "Observation/path-lab-observation",
+         "request": {
+            "method": "PUT",
+            "url": "Observation/path-lab-observation"
+         },
+         "resource": {
+            "resourceType": "Observation",
+            "id": "path-lab-observation",
+            "status": "final",
+            "category": [{
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/observation-category",
+                     "code": "laboratory",
+                     "display": "Laboratory"
+                  }
+               ]
+            }],
+            "code": {
+               "coding": [
+                  {
+                     "system": "http://ANGUS_PICK_SYSTEM.com",
+                     "code": "ANGUS-PICK-CODE-HERE",
+                     "display": "ANGUS PICK CODE HERE"
+                  }
+               ]
+            },
+            "effectiveDateTime": "2016-10-31T09:35:00+10:00",
+            "subject": {
+               "reference": "Patient/patient"
+            }
+         }
+      },
+      {
+         "fullUrl": "Organization/hospital-organization",
+         "request": {
+            "method": "PUT",
+            "url": "Organization/hospital-organization"
+         },
+         "resource": {
+            "resourceType": "Organization",
+            "id": "hospital-organization",
+            "type": {
+               "coding": [
+                  {
+                     "system": "http://hl7.org/fhir/ValueSet/organization-type",
+                     "code": "dept",
+                     "display": "Hospital Department"
+                  }
+               ]
+            },
+            "name": "Sample Hospital",
+            "telecom": [
+               {
+                  "system": "email",
+                  "value": "os@hospital.com.au"
+               }
+            ],
+            "address": [
+               {
+                  "line": [
+                     "67 Hospital Drive"
+                  ],
+                  "city": "Agencyville",
+                  "state": "QLD",
+                  "postalCode": "5555",
+                  "country": "Australia"
                }
             ]
          }
@@ -412,40 +504,6 @@
                   "country": "Agencyville"
                }
             ]
-         }
-      },
-      {
-         "fullUrl": "Observation/path-lab-observation",
-         "request": {
-            "method": "PUT",
-            "url": "Observation/path-lab-observation"
-         },
-         "resource": {
-            "resourceType": "Observation",
-            "id": "path-lab-observation",
-            "status": "final",
-            "category": [{
-               "coding": [
-                  {
-                     "system": "http://hl7.org/fhir/ValueSet/observation-category",
-                     "code": "laboratory",
-                     "display": "Laboratory"
-                  }
-               ]
-            }],
-            "code": {
-               "coding": [
-                  {
-                     "system": "http://ANGUS_PICK_SYSTEM.com",
-                     "code": "ANGUS-PICK-CODE-HERE",
-                     "display": "ANGUS PICK CODE HERE"
-                  }
-               ]
-            },
-            "effectiveDateTime": "2016-10-31T09:35:00+10:00",
-            "subject": {
-               "reference": "Patient/patient"
-            }
          }
       }
    ]
