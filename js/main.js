@@ -198,6 +198,17 @@ $(".fhir-resource-xml").each(function(index, element) {
 	  });
 });
 
+$(".fhir-resource-json").each(function(index, element) {
+    // element is a node with the desired class name
+	this.element = element;
+  	var codemirror = this.codemirror = CodeMirror.fromTextArea(this.element, {
+		mode: {name: "javascript", json: true},
+		lineNumbers: true,
+		lineWrapping: true,
+		readOnly: true
+	  });
+});
+
 $(".csharp-code").each(function(index, element) {
     // element is a node with the desired class name
 	this.element = element;

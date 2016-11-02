@@ -19,7 +19,17 @@ To use the base URL only, use ``class="<exercise>-baseurl" id="<html resource ta
 To embed XML inside a page and get syntax highlighting, use these tags:
 
 ```html
-<textarea class="fhir-resource-xml"> <my FHIR XML here>
+<textarea class="fhir-resource-xml">
+//my FHIR XML here
+</textarea> 
+```
+
+## Embedding JSON resources
+To embed JSON inside a page and get syntax highlighting, use these tags:
+
+```html
+<textarea class="fhir-resource-json">
+// my FHIR JSON here
 </textarea> 
 ```
 
