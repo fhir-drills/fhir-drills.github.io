@@ -115,9 +115,9 @@
             "code": {
                "coding": [
                   {
-                     "system": "http://hl7.org/fhir/ValueSet/allergyintolerance-code",
-                     "code": "ANGUS-PICK-ALLERGY-CODE-HERE",
-                     "display": "ANGUS PICK CODE FROM http://hl7.org/fhir/2016Sep/valueset-allergyintolerance-code.html"
+                    "system": "http://snomed.info/sct",
+                    "code": "227037002",
+                    "display": "Fish - dietary (substance)"
                   }
                ]
             },
@@ -139,13 +139,13 @@
             "reason": {
                "coding": [
                   {
-                     "system": "http://hl7.org/fhir/ValueSet/encounter-reason",
-                     "code": "ANGUS-PICK-REASON-FOR-INITIAL-VISIT-HERE",
-                     "display": "ANGUS PICK REASON FOR INITIAL VISIT HERE. KEEP IN MIND THE PATIENT HAS A HIGH RISK ALLERGY"
+                    "system": "http://hl7.org/fhir/ValueSet/encounter-reason",
+                    "code": "274640006",
+                    "display": "Fever with chills (finding)"
                   }
                ]
             },
-            "description": "ANGUS WRITE REASON FOR INITIAL VISIT HERE AS A SHORT SENTENCE",
+            "description": "Mr Fhirman has been experiencing an very high temperature for two days and his wife insisted that he make an appointment.",
             "start": "2016-10-31T08:00:00+10:00",
             "end": "2016-10-31T08:30:00+10:00",
             "participant": [
@@ -214,9 +214,9 @@
                {
                   "coding": [
                      {
-                        "system": "http://hl7.org/fhir/ValueSet/encounter-reason",
-                        "code": "ANGUS-PICK-REASON-FOR-INITIAL-AND-ROUTINE-VISIT-HERE",
-                        "display": "ANGUS PICK REASON FOR THIS INITIAL, ROUTINE VISIT HERE"
+                       "system": "http://hl7.org/fhir/ValueSet/encounter-reason",
+                       "code": "274640006",
+                       "display": "Fever with chills (finding)"
                      }
                   ]
                }
@@ -280,9 +280,9 @@
             "code": {
                "coding": [
                   {
-                     "system": "http://hl7.org/fhir/ValueSet/diagnostic-requests",
-                     "code": "ANGUS-ADD-CODE-HERE",
-                     "display": "ANGUS PICK 'A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested.' FROM LOINC"
+                     "system": "http://snomed.info/sct",
+                     "code": "26604007",
+                     "display": "Complete blood count"
                   }
                ]
             },
@@ -370,9 +370,9 @@
             "code": {
                "coding": [
                   {
-                     "system": "http://hl7.org/fhir/ValueSet/report-codes",
-                     "code": "ANGUS-ADD-CODE-HERE",
-                     "display": "ANGUS ADD CODE HERE THAT IS \"A code or name that describes this diagnostic report.\""
+                     "system": "http://snomed.info/sct",
+                     "code": "26604007",
+                     "display": "Complete blood count"
                   }
                ]
             },
