@@ -223,7 +223,7 @@ namespace SimpleFhir
       Console.WriteLine("");
       try
       {
-        //attempt to send the resource to the server endpoint
+        //attempt to serialize the resource
         string xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(MyPatient);
         XDocument xDoc = XDocument.Parse(xml);
         Console.Write(xDoc.ToString());
@@ -248,28 +248,36 @@ import ca.uhn.fhir.context.FhirContext;
 import org.hl7.fhir.dstu3.model.HumanName;
 import org.hl7.fhir.dstu3.model.Patient;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // context - create this once, as it's an expensive operation
         // see http://hapifhir.io/doc_intro.html
         FhirContext ctx = FhirContext.forDstu3();
 
         Patient patient = new Patient();
-										
+
         // you can use the Fluent API to chain calls
         // see http://hapifhir.io/doc_fhirobjects.html
         patient.addName().setUse(HumanName.NameUse.OFFICIAL)
-				.addPrefix("Mr").addFamily("Fhirman").addGiven("Sam");
+                .addPrefix("Mr").addFamily("Fhirman").addGiven("Sam");
         patient.addIdentifier()
-				.setSystem("http://ns.electronichealth.net.au/id/hi/ihi/1.0")
-				.setValue("8003608166690503");
+                .setSystem("http://ns.electronichealth.net.au/id/hi/ihi/1.0")
+                .setValue("8003608166690503");
+
+        System.out.println("Press Enter to serialise Resource to the console as XML.");
+        System.in.read();
 
         // create a new XML parser and serialize our Patient object with it
         String encoded = ctx.newXmlParser().setPrettyPrint(true)
-				.encodeResourceToString(patient);
-										
+                .encodeResourceToString(patient);
+
         System.out.println(encoded);
+
+        System.out.println("Press Enter to end.");
+        System.in.read();
     }
 }</textarea>
 								</div>
@@ -385,14 +393,17 @@ namespace SimpleFhir
 package com.myhotcompany;
 
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.parser.DataFormatException;
 import ca.uhn.fhir.parser.IParser;
 import ca.uhn.fhir.rest.api.MethodOutcome;
 import ca.uhn.fhir.rest.client.IGenericClient;
 import org.hl7.fhir.dstu3.model.*;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // context - create this once, as it's an expensive operation
         // see http://hapifhir.io/doc_intro.html
         FhirContext ctx = FhirContext.forDstu3();
@@ -417,23 +428,34 @@ public class Main {
         // see http://hapifhir.io/doc_rest_client.html
         IGenericClient client = ctx.newRestfulGenericClient(serverBaseUrl);
 
-        // send our resource up - result will be stored in 'outcome'
-        // see http://hapifhir.io/doc_rest_client.html#Create_-_Type
-        MethodOutcome outcome = client.create()
-                .resource(ourPatient)
-                .prettyPrint()
-                .encodedXml()
-                .execute();
+        System.out.println("Press Enter to send to server: " + serverBaseUrl);
+        System.in.read();
 
-        IdType id = (IdType) outcome.getId();
-        System.out.println("Resource is available at: " + id.getValue());
+        try {
+            // send our resource up - result will be stored in 'outcome'
+            // see http://hapifhir.io/doc_rest_client.html#Create_-_Type
+            MethodOutcome outcome = client.create()
+                    .resource(ourPatient)
+                    .prettyPrint()
+                    .encodedXml()
+                    .execute();
 
-        IParser xmlParser = ctx.newXmlParser().setPrettyPrint(true);
-        Patient receivedPatient = (Patient) outcome.getResource();
-        System.out.println("This is what we sent up: \n"
-                + xmlParser.encodeResourceToString(ourPatient)
-                + "\n\nThis is what we received: \n"
-                + xmlParser.encodeResourceToString(receivedPatient));
+            IdType id = (IdType) outcome.getId();
+            System.out.println("Resource is available at: " + id.getValue());
+
+            IParser xmlParser = ctx.newXmlParser().setPrettyPrint(true);
+            Patient receivedPatient = (Patient) outcome.getResource();
+            System.out.println("This is what we sent up: \n"
+                    + xmlParser.encodeResourceToString(ourPatient)
+                    + "\n\nThis is what we received: \n"
+                    + xmlParser.encodeResourceToString(receivedPatient));
+        } catch (DataFormatException e) {
+            System.out.println("An error occurred trying to upload:");
+            e.printStackTrace();
+        }
+
+        System.out.println("Press Enter to end.");
+        System.in.read();
     }
 }</textarea>
 										</div>
@@ -511,11 +533,12 @@ import ca.uhn.fhir.model.primitive.IdDt;
 import ca.uhn.fhir.rest.client.IGenericClient;
 import org.hl7.fhir.dstu3.model.*;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // context - create this once, as it's an expensive operation
         // see http://hapifhir.io/doc_intro.html
         FhirContext ctx = FhirContext.forDstu3();
@@ -530,20 +553,31 @@ public class Main {
         // see http://hapifhir.io/doc_rest_client.html
         IGenericClient client = ctx.newRestfulGenericClient(serverBaseUrl);
 
-        // perform a search for Patients with last name 'Fhirman'
-        // see http://hapifhir.io/doc_rest_client.html#SearchQuery_-_Type
-        Bundle response = client.search()
-                .forResource(Patient.class)
-                .where(Patient.FAMILY.matches().values("Fhirman"))
-                .returnBundle(Bundle.class)
-                .execute();
+        System.out.println("Press Enter to send to server: " + serverBaseUrl);
+        System.in.read();
 
-        System.out.println("Found " + response.getTotal() 
-			+ " Fhirman patients. Their logical IDs are:");
-        response.getEntry().forEach((entry) -> {
-            // within each entry is a resource - print its logical ID
-            System.out.println(entry.getResource().getIdElement().getIdPart());
-        });
+        try {
+            // perform a search for Patients with last name 'Fhirman'
+            // see http://hapifhir.io/doc_rest_client.html#SearchQuery_-_Type
+            Bundle response = client.search()
+                    .forResource(Patient.class)
+                    .where(Patient.FAMILY.matches().values("Fhirman"))
+                    .returnBundle(Bundle.class)
+                    .execute();
+
+            System.out.println("Found " + response.getTotal()
+                    + " Fhirman patients. Their logical IDs are:");
+            response.getEntry().forEach((entry) -> {
+                // within each entry is a resource - print its logical ID
+                System.out.println(entry.getResource().getIdElement().getIdPart());
+            });
+        } catch (Exception e) {
+            System.out.println("An error occurred trying to search:");
+            e.printStackTrace();
+        }
+
+        System.out.println("Press Enter to end.");
+        System.in.read();
     }
 }</textarea>
 								</div>
@@ -594,7 +628,7 @@ namespace SimpleFhir
       {
         //Attempt to send the resource to the server endpoint                
         UriBuilder UriBuilderx = new UriBuilder(ServiceRootUrl);
-        UriBuilderx.Path = "Patient/1";        
+        UriBuilderx.Path = "Patient/MY_PATIENT_ID";
         Hl7.Fhir.Model.Resource ReturnedResource = FhirClient.InstanceOperation(UriBuilderx.Uri, "everything");
 
         if (ReturnedResource is Hl7.Fhir.Model.Bundle)
@@ -644,9 +678,11 @@ import ca.uhn.fhir.rest.client.IGenericClient;
 import ca.uhn.fhir.rest.client.interceptor.LoggingInterceptor;
 import org.hl7.fhir.dstu3.model.*;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // context - create this once, as it's an expensive operation
         // see http://hapifhir.io/doc_intro.html
         FhirContext ctx = FhirContext.forDstu3();
@@ -663,28 +699,39 @@ public class Main {
 
         client.registerInterceptor(new LoggingInterceptor(true));
 
-        // Invoke $everything on our Patient
-		// See http://hapifhir.io/doc_rest_client.html#Extended_Operations
-        Parameters outParams = client
-                .operation()
-                .onInstance(new IdType("Patient", "MY_PATIENT_ID"))
-                .named("$everything")
-                .withNoParameters(Parameters.class) // No input parameters
-                .execute();
+        System.out.println("Press Enter to send to server: " + serverBaseUrl);
+        System.in.read();
 
-        // FHIR normally returns a 'Parameters' resource to an operation, but
-		// in case of a single resource response, it just returns the resource
-		// itself. This is why it seems that we have to fish a Bundle out of the
-		// resulting Params result - HAPI needs to update for the FHIR shortcut
-        Bundle result = (Bundle) outParams.getParameterFirstRep().getResource();
+        try {
+            // Invoke $everything on our Patient
+            // See http://hapifhir.io/doc_rest_client.html#Extended_Operations
+            Parameters outParams = client
+                    .operation()
+                    .onInstance(new IdType("Patient", "MY_PATIENT_ID"))
+                    .named("$everything")
+                    .withNoParameters(Parameters.class) // No input parameters
+                    .execute();
 
-        System.out.println("Received " + result.getTotal()
-			+ " results. The resources are:");
-        result.getEntry().forEach((entry) -> {
-            Resource resource = entry.getResource();
-            System.out.println(resource.getResourceType() + "/" 
-				+ resource.getIdElement().getIdPart());
-        });
+            // FHIR normally returns a 'Parameters' resource to an operation, but
+            // in case of a single resource response, it just returns the resource
+            // itself. This is why it seems that we have to fish a Bundle out of the
+            // resulting Params result - HAPI needs to update for the FHIR shortcut
+            Bundle result = (Bundle) outParams.getParameterFirstRep().getResource();
+
+            System.out.println("Received " + result.getTotal()
+                    + " results. The resources are:");
+            result.getEntry().forEach((entry) -> {
+                Resource resource = entry.getResource();
+                System.out.println(resource.getResourceType() + "/"
+                        + resource.getIdElement().getIdPart());
+            });
+        } catch (Exception e) {
+            System.out.println("An error occurred trying to run the operation:");
+            e.printStackTrace();
+        }
+
+        System.out.println("Press Enter to end.");
+        System.in.read();
     }
 }</textarea>
 	</div>
