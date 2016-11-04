@@ -131,8 +131,8 @@
 							<a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
 							
 							<ol>
-							<li>Metadata describing the Bundle type, total amount of entries (some which may not be visible because of paging), and a link if you need to retrieve this Bundle later.</li>
-							<li>The meat of the resource, so to speak - this is where the resources that the Bundle has are stored. Included with resources are URLs which you can use to retrieve the resource invididually.</li>
+							<li>Metadata describing the Bundle type, the total amount of entries (some which may not be visible because of paging), and a link if you need to retrieve this Bundle later.</li>
+							<li>The meat of the resource, so to speak - this is where the resources that the Bundle has are stored. Included with resources are URLs which you can use to retrieve the resource individually.</li>
 							<li>Used when you're uploading Bundles - this is where you specify to the server what to do with each resource.</li>
 							<li>Used by the server when it's responding to your upload request - this is where it says how each operation went.</li>
 							</ol>
@@ -321,7 +321,7 @@
     </entry>
 </Bundle></textarea>
 							<h5 id="bn-paging">Paging</h5>
-							<p>When the Bundle is too big to send in one go, because it has many resources with in it, the server can choose to break it up into pieces (called "pages"). To allow you to easy navigate from one page to the next the Bundle provides links to the next page within it. So the client, after getting a page, can request the next page and so on until the end. In addition, there are also links to the previous, first, and last pages provided in each Bundle (see the example below):</p>
+							<p>When the Bundle is too big to send in one go, because it has many resources within it, the server can choose to break it up into pieces (called "pages"). To allow you to easy navigate from one page to the next the Bundle provides links to the next page within it. So the client, after getting a page, can request the next page and so on until the end. In addition, there are also links to the previous, first, and last pages provided in each Bundle (see the example below):</p>
 								
 							<textarea id="codesystem-1" class="fhir-resource-xml">
 <!-- ... snipped ... -->
@@ -384,7 +384,7 @@
 
 							
 							<h5 id="bn-upload-endpoints">Step 4: Upload endpoints</h5>
-							<p>If you upload a Bundle to <code><b>[Service Root URL]/Bundle</b></code>, your Bundle will be stored as-is, just like any other resource. Sometimes this is the desired behaviour, alternatively you may like the server to actually process the Bundle. For example, the transactions in your transaction Bundle to actually be acted upon. In order to get the server to unpack and process your Bundle, you need to upload to the <code><b>[Service Root URL]</b></code> directly. This most reliably works for transaction, batch, and document Bundle types. How the server deals with other Bundle types is up to it. Here is a complete list of endpoints that Bundles may be uploaded to:</p>
+							<p>If you upload a Bundle to <code><b>[Service Root URL]/Bundle</b></code>, your Bundle will be stored as-is, just like any other resource. Sometimes this is the desired behaviour, alternatively, you may like the server to actually process the Bundle. For example, the transactions in your transaction Bundle to actually be acted upon. In order to get the server to unpack and process your Bundle, you need to upload to the <code><b>[Service Root URL]</b></code> directly. This most reliably works for transaction, batch, and document Bundle types. How the server deals with other Bundle types is up to it. Here is a complete list of endpoints that Bundles may be uploaded to:</p>
 
 							<table class="table-fill fixed">
 								<thead>
@@ -435,20 +435,19 @@
 							
 							<h5 id="bn-reference-resolution">Step 5: Reference resolution</h5>
 					
-                            <p>References between resources within a Bundle can come in two types. Either, references to resources where each resource is within the Bundle but not as yet on the server.</p> 
+                            <p>References between resources within a Bundle can come in two types. Either references to resources where each resource is within the Bundle but not as yet on the server.</p> 
                             <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleOutOfServer.PNG" width="50%"/></a>
 
                             <p>Or references from resources in the bundle to resources that are on the server but not found in the bundle.</p> 
                             <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleInOfServer.PNG" width="50%"/></a>
 
-                            <p>When uploading a bundle of resources to a server, as in the first case, it can be a little confusing to understand how to form the referances between the resources. How can you reference a resource if the server has not as yet assigned an ID to it?</p>
+                            <p>When uploading a bundle of resources to a server, as in the first case, it can be a little confusing to understand how to form the reference between the resources. How can you reference a resource if the server has not as yet assigned an ID to it?</p>
+                            
+                            <p>The simple answer is that the bundle creator can assign temporary resource IDs to resources in order to create the references between each resource. Then depending on the way you upload the Bundle to the server the server can use your IDs to understand the linkage between resources and will assign its own server IDs and update all the existing references with the new IDs. In these cases, the server will then reply with a return Bundle that informs the sender of these updated IDs. If you refer back the Bundle layout image at the beginning of this page you can see the '<code>Bundle/entry/response/location</code>' element where these new IDs would be returned as a URI.   Whether the server performs this identification or not is dependant on the Bundle type you are uploading and the endpoint you are uploading it to. The table below talks more to this point.</p>
 
-							<p>An important point while working with Bundles, unlike other resources, is that the context of use matters much more than usual, mainly, whether  it is the client uploading a Bundle or downloading a Bundle from the server. With this in mind, resolving references within a Bundle works differently depending on whenever you're an application uploading a Bundle or downloading a Bundle.</p>
+                            <p>Unlike general resources you need to take care when resolving references between resources in Bundles, you can not just assume the reference is to a resource on a server, it may be a reference to a resource within the same Bundle and you should assume this first. For more on this topic refer to the FHIR specification here:<a href="http://hl7.org/fhir/2016Sep/bundle.html#references">Resolving references in Bundles</a> </p>
 	
-							<p>If you're <b>downloading</b> any kind of Bundle, then the same reference rules described in the <a href="patient-with-references.html">previous "patient with references" tutorial</a> apply (see the <a href="http://hl7.org/fhir/2016Sep/bundle.html#references">FHIR section</a> on this). The gist of it is that you should look for referenced resources within the Bundle first, and if the reference is not an absolute one, to convert it following a series of rules.</p>
-	
-							<p>If you're <b>uploading</b> any kind of Bundle, consult the table below:</p>
-	
+                            <p>The table below describes the effect Bundle type can have on uploading Bundles:</p>							
 							<table class="table-fill">
 								<thead>
 									<tr>
