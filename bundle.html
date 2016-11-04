@@ -109,7 +109,7 @@
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
 							<h4>Bundle tutorial</h4>
-							<p>Bundle is a constainer for resources, enabling you to group and transmit resources  altogether at once. Guidance on the resource in general is available on the <a href="http://hl7.org/fhir/2016Sep/bundle.html">Bundle</a> and on the <a href="http://hl7.org/fhir/2016Sep/http.html#transaction">RESTful API</a> pages, with specific bundle types like messaging and documents having their own.</p>
+							<p>Bundle is a constainer for resources, enabling you to group and transmit resources  altogether at once. Guidance on the resource in general is available on the <a href="http://hl7.org/fhir/2016Sep/bundle.html">Bundle</a> and on the <a href="http://hl7.org/fhir/2016Sep/http.html#transaction">RESTful API</a> pages of the FHIR specification, with specific bundle types like messaging and documents having their own documentation.</p>
 							<ul class="toc">
 								<h4>Contents</h4>
 								<!-- pr prefix stands for 'patient references'-->
@@ -125,14 +125,14 @@
 								<note><ul><li>Contained resources are "in" the container resource - they can only ever be interpreted and/or changed in the context of the container</li>
 	<li>A bundle is a collection of resources that have an independent existence - for example, they can also be accessed directly using the RESTful API</li></ul></note>
 
-							<p>So, contained resources cannot be GET'd, PUT'd and DELETE'd separately, or even referenced individually from outside the containing resource. Resources inside a bundle, depending on your Bundle type and how you've uploaded it, do get created individually on the server and thus can be acted on independently.</p>
+							<p>So, contained resources cannot be GET'd, PUT'd and DELETE'd separately, or even referenced individually from outside the containing resource. Resources inside a bundle, depending on your bundle type and how you've uploaded it, do get created individually on the server and thus can be acted on independently.</p>
 							
-							<p>Here is how the general layout of a Bundle looks like:</p>
+							<p>Here is how the general layout of a bundle looks like:</p>
 							<a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
 							
 							<ol>
-							<li>Metadata describing the bundle type, total amount of entries (some which may not be visible because of paging), and a link if you need to retrieve this bundle later.</li>
-							<li>The meat of the resource, so to speak - this is where the resources that the bundle has are stored. Included with resources are URLs which you can use to retrieve the resource invididually.</li>
+							<li>Metadata describing the bundle type, total number of entries (some which of which may not be included due to paging), and a link if you need to retrieve this bundle later.</li>
+							<li>The meat of the bundel resource, so to speak, is where the resources of the bundle are stored. Each resource in the bundle has a URLs which you can use to retrieve the resource invididually.</li>
 							<li>Used when you're uploading bundles - this is where you specify to the server what to do with each resource.</li>
 							<li>Used by the server when it's responding to your upload request - this is where it says how each operation went.</li>
 							</ol>
@@ -321,7 +321,7 @@
     </entry>
 </Bundle></textarea>
 							<h5 id="bn-paging">Paging</h5>							
-							<p>When the bundle is too big to send in one go, the server can choose to break it up into pieces (called "pages"). Since you can generally only get one response per HTTP request, transmitting the pieces becomes a problem. To solve this, the bundle provides links to the next page within it - so the client, after getting a page, can request the page and so on until the end. In addition to a link to the next page, links to the previous, first, and last pages are also provided (example from FHIR):</p>
+							<p>When the bundle is too big to send in one go, because it has many resources with in it, the server can choose to break it up into pieces (called "pages"). To allow you to easy navigate from one page to the next the bundle provides links to the next page within it. So the client, after getting a page, can request the next page and so on until the end. In addition, there are also links to the previous, first, and last pages provided in each bundle (see the example below):</p>
 								
 							<textarea id="codesystem-1" class="fhir-resource-xml">
 <!-- ... snipped ... -->
@@ -369,11 +369,11 @@
 									</tr>
 									<tr>
 										<td class="text-left">history</td>
-										<td class="text-left">Similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/2016Sep/http.html#history">_history</a> operation when you're looking at the history of operations on and versions of a resource(s).</td>
+										<td class="text-left">Similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/2016Sep/http.html#history">_history</a> operations when you're looking at the history of operations on single instance of a resource. For example, looking at all the edits made to a single Patient resource.</td>
 									</tr>
 									<tr>
 										<td class="text-left">batch, transaction</td>
-										<td class="text-left">Allows you to condense multiple operations into one - say you'd like to upload 5 resources but don't want to do it 5 times, you can gather all of the resources up into a Bundle and upload it all at once. The difference between a batch and a transaction is how things are handled when an issue happens. When one of the operations of a <i>transaction</i> fails, the entire transaction fails and no changes happen on the server as a result of the transaction. If one of the operations of a <i>batch</i> fails, then the rest of the operations can still complete successfully.</td>
+										<td class="text-left">Allows you to condense multiple operations into one - say you'd like to upload 5 resources but don't want to do it 5 times. You can gather all of the resources up into a bundle and upload it all at once. The difference between a batch and a transaction is how things are handled when an issue happens. When one of the operations of a <i>transaction</i> fails, the entire transaction fails and no changes happen on the server as a result of the transaction. If one of the operations of a <i>batch</i> fails, then the rest of the operations can still complete successfully.</td>
 									</tr>
 									<tr>
 										<td class="text-left">batch-response, transaction-response</td>
@@ -384,7 +384,7 @@
 
 							
 							<h5 id="bn-upload-endpoints">Step 4: Upload endpoints</h5>
-							<p>If you upload a Bundle to <code><b>[Service Root URL]/Bundle</b></code>, your Bundle will be stored as-is, just like any other resource. Sometimes this is the desired behaviour, but in other times you'd like the server to actually process the bundle - for example, the transactions in your transaction bundle to actually be acted upon. In order to get the server to unpack and process your bundle, you need to upload to the <code><b>[Service Root URL]</b></code> directly - this most reliably works for transaction, batch, and document bundle types. How the server deals with other bundle types is up to it. Here is a complete list of endpoints that bundles may be uploaded to:</p>
+							<p>If you upload a bundle to <code><b>[Service Root URL]/Bundle</b></code>, your bundle will be stored as-is, just like any other resource. Sometimes this is the desired behaviour, alternatively you may like the server to actually process the bundle. For example, the transactions in your transaction bundle to actually be acted upon. In order to get the server to unpack and process your bundle, you need to upload to the <code><b>[Service Root URL]</b></code> directly. This most reliably works for transaction, batch, and document bundle types. How the server deals with other bundle types is up to it. Here is a complete list of endpoints that bundles may be uploaded to:</p>
 							<table class="table-fill fixed">
 								<thead>
 									<tr>
@@ -415,7 +415,7 @@
 										<td class="text-left">Bundle is stored as-is by the server as binary content and not acted upon.</td>
 									</tr>
 									<tr>
-										<td class="text-left"><code>[Service Root URL]/Bundle</code></td>
+										<td class="text-left"><a href="http://hl7.org/fhir/2016Sep/bundle.html"><code>[Service Root URL]/Bundle</code></a></td>
 										<td class="text-left">document, transaction, transaction-response, batch,&nbsp;batch-response,&nbsp;history,&nbsp;searchset, and&nbsp;collection</td>
 										<td class="text-left">Bundle is stored as-is by the server and not acted upon, same as if you uploaded a Patient resource.</td>
 									</tr>
