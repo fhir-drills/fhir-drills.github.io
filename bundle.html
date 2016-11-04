@@ -434,9 +434,16 @@
 							</table>
 							
 							<h5 id="bn-reference-resolution">Step 5: Reference resolution</h5>
-							<p>Resources in a Bundle can reference two types of resources - either those already exist on the server, outside the Bundle, or resources inside the Bundle that are yet to be created on the server. Referencing resources inside a Bundle can be tricky - if you're uploading the resources inside a Bundle, how can you reference them if they don't have IDs yet?</p>
-							
-							<p>An important point while working with Bundles, unlike other resources, is that the context of use matters much more than usual - mainly, whenever it is the client uploading a Bundle or downloading a Bundle from the server. With this in mind, resolving references within a Bundle works differently depending on whenever you're an application uploading a Bundle or downloading a Bundle.</p>
+					
+                            <p>References between resources within a Bundle can come in two types. Either, references to resources where each resource is within the Bundle but not as yet on the server.</p> 
+                            <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleOutOfServer.PNG" width="50%"/></a>
+
+                            <p>Or references from resources in the bundle to resources that are on the server but not found in the bundle.</p> 
+                            <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleInOfServer.PNG" width="50%"/></a>
+
+                            <p>When uploading a bundle of resources to a server, as in the first case, it can be a little confusing to understand how to form the referances between the resources. How can you reference a resource if the server has not as yet assigned an ID to it?</p>
+
+							<p>An important point while working with Bundles, unlike other resources, is that the context of use matters much more than usual, mainly, whether  it is the client uploading a Bundle or downloading a Bundle from the server. With this in mind, resolving references within a Bundle works differently depending on whenever you're an application uploading a Bundle or downloading a Bundle.</p>
 	
 							<p>If you're <b>downloading</b> any kind of Bundle, then the same reference rules described in the <a href="patient-with-references.html">previous "patient with references" tutorial</a> apply (see the <a href="http://hl7.org/fhir/2016Sep/bundle.html#references">FHIR section</a> on this). The gist of it is that you should look for referenced resources within the Bundle first, and if the reference is not an absolute one, to convert it following a series of rules.</p>
 	
