@@ -357,9 +357,9 @@
         </category>
         <code>
           <coding>
-            <system value='http://ANGUS_PICK_SYSTEM.com'/>
-            <code value='ANGUS-PICK-CODE-HERE'/>
-            <display value='ANGUS PICK CODE HERE'/>
+            <system value='http://snomed.info/sct'/>
+            <code value='26604007'/>
+            <display value='Complete blood count'/>
           </coding>
         </code>
         <subject>
