@@ -136,7 +136,190 @@
 							<li>Used when you're uploading bundles - this is where you specify to the server what to do with each resource.</li>
 							<li>Used by the server when it's responding to your upload request - this is where it says how each operation went.</li>
 							</ol>
-														
+
+							<p>Here's an annoted example Bundle you'd receive from the server when searching:</p>
+<textarea class="fhir-resource-xml">
+<Bundle xmlns="http://hl7.org/fhir">
+    <id value="fdcc9869-0bd6-4422-876b-1d0b53a2db"/>
+    <meta>
+        <lastUpdated value="2016-11-04T01:35:48Z"/>
+    </meta>
+
+    <!-- bundle type: this is from as a search result. See below on other
+         bundle types -->
+    <type value="searchset"/>
+
+    <!-- if this is a search or history type, it'll also report how many
+         resources matched in total. note that not all of them might
+         fit into one bundle -->
+    <total value="253"/>
+    <link>
+
+        <!-- a link to retrieve this exact bundle again later -->
+        <relation value="self"/>
+        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id"/>
+    </link>
+    <link>
+
+        <!-- a link to the first 'page' of the bundle to get more resources
+             that didn't fit in this bundle - see below for how
+             pagination works -->
+        <relation value="first"/>
+        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=0&amp;_count=3"/>
+    </link>
+    <link>
+
+        <!-- a link to the next page to get more search results -->
+        <relation value="next"/>
+        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=3&amp;_count=3"/>
+    </link>
+    <link>
+
+        <!-- a link to the last page of search results -->
+        <relation value="last"/>
+        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=252&amp;_count=3"/>
+    </link>
+
+    <!-- the bundle will have many entries, each entry containing a found
+         resource and some other data related to it -->
+    <entry>
+
+        <!-- a direct link to access this resource on its own, outside
+             of the bundle -->
+        <fullUrl value="http://fhir3.healthintersections.com.au/open/Patient/1"/>
+
+        <!-- resource itself in full - nothing is different about being
+             in a bundle compared to just retrieving it directly -->
+        <resource>
+            <Patient xmlns="http://hl7.org/fhir">
+                <id value="1"/>
+                <meta>
+                    <versionId value="1"/>
+                    <lastUpdated value="2016-11-03T06:01:40Z"/>
+                </meta>
+                <text>
+                    <status value="generated"/>
+                    <div xmlns="http://www.w3.org/1999/xhtml">
+                        <h1>Eve Everywoman</h1>
+                    </div>
+                </text>
+                <active value="true"/>
+                <name>
+                    <text value="Eve Everywoman"/>
+                    <family value="Everywoman1"/>
+                    <given value="Eve"/>
+                </name>
+                <telecom>
+                    <system value="phone"/>
+                    <value value="555-555-2003"/>
+                    <use value="work"/>
+                </telecom>
+                <gender value="female"/>
+                <birthDate value="1955-01-06"/>
+                <address>
+                    <use value="home"/>
+                    <line value="2222 Home Street"/>
+                </address>
+            </Patient>
+        </resource>
+
+        <!-- reason why this resource is included in search results. In this
+             case, because it matched the search query. Resources can also be
+             included because they were included by a matching resource -->
+        <search>
+            <mode value="match"/>
+        </search>
+    </entry>
+    <!-- similar layout as above entry -->
+    <entry>
+        <fullUrl value="http://fhir3.healthintersections.com.au/open/Patient/10"/>
+        <resource>
+            <Patient xmlns="http://hl7.org/fhir">
+                <id value="10"/>
+                <meta>
+                    <versionId value="1"/>
+                    <lastUpdated value="2016-11-03T06:15:27Z"/>
+                </meta>
+                <text>
+                    <status value="generated"/>
+                    <div xmlns="http://www.w3.org/1999/xhtml">Betterhalf, Boris. SSN: 444888888</div>
+                </text>
+                <identifier>
+                    <type>
+                        <coding>
+                            <system value="http://hl7.org/fhir/v2/0203"/>
+                            <code value="SS"/>
+                        </coding>
+                    </type>
+                    <system value="http://hl7.org/fhir/sid/us-ssn"/>
+                    <value value="444888888"/>
+                </identifier>
+                <active value="true"/>
+                <name>
+                    <use value="official"/>
+                    <family value="Betterhalf"/>
+                    <given value="Boris"/>
+                </name>
+                <telecom>
+                    <system value="phone"/>
+                    <value value="555-555-2008"/>
+                    <use value="work"/>
+                </telecom>
+                <gender value="male"/>
+                <address>
+                    <use value="home"/>
+                    <line value="2222 Home Street"/>
+                </address>
+                <managingOrganization>
+                    <reference value="Organization/hl7"/>
+                </managingOrganization>
+            </Patient>
+        </resource>
+        <search>
+            <mode value="match"/>
+        </search>
+    </entry>
+    <entry>
+        <fullUrl value="http://fhir3.healthintersections.com.au/open/Patient/100"/>
+        <resource>
+            <Patient xmlns="http://hl7.org/fhir">
+                <id value="100"/>
+                <meta>
+                    <versionId value="1"/>
+                    <lastUpdated value="2016-11-03T06:14:41Z"/>
+                </meta>
+                <text>
+                    <status value="generated"/>
+                    <div xmlns="http://www.w3.org/1999/xhtml">Garrett, Gordon. MRN: 577419</div>
+                </text>
+                <identifier>
+                    <type>
+                        <coding>
+                            <system value="http://hl7.org/fhir/v2/0203"/>
+                            <code value="SS"/>
+                        </coding>
+                    </type>
+                    <system value="https://github.com/projectcypress/cypress/patient"/>
+                    <value value="577419"/>
+                </identifier>
+                <active value="true"/>
+                <name>
+                    <use value="official"/>
+                    <family value="Garrett"/>
+                    <given value="Gordon"/>
+                </name>
+                <gender value="male"/>
+                <birthDate value="1935-05-08"/>
+                <managingOrganization>
+                    <reference value="Organization/1"/>
+                </managingOrganization>
+            </Patient>
+        </resource>
+        <search>
+            <mode value="match"/>
+        </search>
+    </entry>
+</Bundle></textarea>
 							<h5 id="bn-paging">Paging</h5>							
 							<p>When the bundle is too big to send in one go, the server can choose to break it up into pieces (called "pages"). Since you can generally only get one response per HTTP request, transmitting the pieces becomes a problem. To solve this, the bundle provides links to the next page within it - so the client, after getting a page, can request the page and so on until the end. In addition to a link to the next page, links to the previous, first, and last pages are also provided (example from FHIR):</p>
 								
