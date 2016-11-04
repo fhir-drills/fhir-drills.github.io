@@ -299,7 +299,7 @@ public class Main {
 							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/2016Sep/patient.html">Patient</a> page to see what can you populate your resource with (<a href="http://hapifhir.io/apidocs-dstu3/org/hl7/fhir/dstu3/model/Patient.html">Javadoc</a> is also available).</p>
 							
 							<h5 id="api-upload-patient">Step 3: Upload your basic Patient</h5>
-							<p>Now that we can create a simple resource, let's get uploaded it to a FHIR server:</p>
+							<p>Now that we can create a simple resource, let's upload it to a FHIR server:</p>
 							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 								<div class="mdl-tabs__tab-bar">
 									<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
@@ -460,7 +460,7 @@ public class Main {
 }</textarea>
 										</div>
 									</div>
-									<p>Comparing the resource that we sent up to the resource we received back, you'll notice that the server generated a basic narrative for us from the data available and also added its <a href="http://hl7.org/fhir/2016Sep/resource.html#id">logical ID</a> in.</p>
+									<p>Comparing the resource that we sent up to the resource we received back, you'll notice that the server generated a basic narrative for us from the data available and also added its <a href="http://hl7.org/fhir/2016Sep/resource.html#id">logical ID</a></p>
 									<h5 id="api-search">Step 4: Search for a resource</h5>
 									<p>Now that you've uploaded a resource, try searching for it. Remember that you'll get <a href="bundle.html">a bundle</a> back with many entries, one resource per entry.</p>
 									<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
@@ -595,7 +595,7 @@ public class Main {
 								</center>
 							</p>
 
-							<p>Now we can run a query on the operation to get a Bundle with the Patient and associated resources. Here's how it looks like in code - make sure to update MY_PATIENT_ID with <span class="patient-with-references-serverid" id="rf-patient">(press Upload first)</span>.</p>
+							<p>Now we can run a query on the operation to get a Bundle with the Patient and associated resources. Here's how it looks in code. Make sure to update MY_PATIENT_ID with <span class="patient-with-references-serverid" id="rf-patient">(press Upload first)</span>.</p>
 							
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 	<div class="mdl-tabs__tab-bar">
