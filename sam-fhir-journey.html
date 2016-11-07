@@ -106,14 +106,14 @@
 							<p>This exercise will help you practice your FHIR skills by having you create resources that follow our Sam Fhirman's small journey through the healthcare system.</p>
 							<ul class="toc">
 								<h4>Contents</h4>
-								<a href="#sam-description">Step 1: Exersize description</a>
+								<a href="#sam-description">Step 1: Exercise description</a>
 								<a href="#step2">Step 2: Create a ValueSet</a>
 								<a href="#step3">Step 3: Perform an $expand on your ValueSet</a>
 								<a href="#step4">Step 4: Create a ConceptMap mapping</a>
 								<a href="#step5">Step 5: Perform a $translate on your ConceptMap</a>
 							</ul>
 
-							<h5 id="sam-description">Step 1: Exersize description</h5>
+							<h5 id="sam-description">Step 1: Exercise description</h5>
 							<p>Sam, our <a href="http://hl7.org/fhir/2016Sep/patient.html">Patient</a> with a known allergy (<a href="http://hl7.org/fhir/2016Sep/patient.html">AllergyIntolerance</a>) has an <a href="http://hl7.org/fhir/2016Sep/appointment.html">Appointment</a> at a hospital (<a href="http://hl7.org/fhir/2016Sep/organization.html">Organization</a>) which results in a hospital <a href="http://hl7.org/fhir/2016Sep/encounter.html">Encounter</a>. The doctor (<a href="http://hl7.org/fhir/2016Sep/practitioner.html">Practitioner</a>), who previously recorded Sams allergy, examines Sam and notices an allergy to fish, so he orders a test to be done (<a href="http://hl7.org/fhir/2016Sep/diagnosticrequest.html">DiagnosticRequest</a>) at the pathology lab (<a href="http://hl7.org/fhir/2016Sep/organization">Organization</a>). The hospitals system tracks this request using a <a href="http://hl7.org/fhir/2016Sep/task.html">Task</a>, so the doctor can check the task at any time to see if there's been any progress made. When the pathology lab performs its analysis, it records 'Hemoglobin' result as an <a href="http://hl7.org/fhir/2016Sep/observation.html">Observation</a> in its 'Complete blood count' <a href="http://hl7.org/fhir/2016Sep/diagnosticreport.html">DiagnosticReport</a> which is send to the FHIR server of the hospital. The pathology lab system updates the Task with the DiagnosticReport and notifies the doctor that results are available.</p>
                             
                             <p>Ok, so maybe this doctor and pathology lab have no idea about healthcare, a 'Complete blood count' with only a single 'Hemoglobin' result for a Fish allergy. Sounds very fishy to me!</p>
