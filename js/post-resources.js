@@ -59,10 +59,10 @@ function upload(file) {
 		url: serverUrl + '/' + resourceType,
 		method: "POST",
 		type: "POST",
-		contentType: "application/fhir+json",
+		contentType: "application/json",
 		data: encode(file.content),
 		headers: {
-        	Accept: "application/fhir+json; charset=utf-8",
+        	Accept: "application/json; charset=utf-8",
         	Prefer: "return=representation"
     	}
 	}).done(function() {
