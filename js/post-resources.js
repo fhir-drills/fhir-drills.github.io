@@ -59,13 +59,14 @@ function upload(file) {
 		url: serverUrl + '/' + resourceType,
 		method: "POST",
 		type: "POST",
-		contentType: "application/json+fhir",
+		contentType: "application/json",
 		data: encode(file.content),
 		headers: {
-        	Accept: "application/json+fhir; charset=utf-8",
+        	Accept: "application/json; charset=utf-8",
         	Prefer: "return=representation"
     	}
 	}).done(function() {
+		console.log("Response json: " + jqxhr.responseText);
 		uploadDone(decode(jqxhr.responseText));
 	}).fail(function(err) {
 		console.log("upload failed: " + err.responseText);

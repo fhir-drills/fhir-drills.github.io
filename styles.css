@@ -388,5 +388,16 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
-
 /* end of table css */
+
+#fhir-api-code-buttons {	
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.CodeMirror {
+	margin-bottom: 20px;
+}

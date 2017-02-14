@@ -1,0 +1,620 @@
+<!doctype html>
+<!--
+    FHIR Drills
+    Copyright 2016 Australian Digital Health Agency. All rights reserved.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License
+    -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="FHIR Tutorials by the Australian Digital Health Agency to help you understand FHIR and its spec! No technical experience required.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Sam's FHIR journey | FHIR® exercises</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <!-- <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png"> -->
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <!--     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png"> -->
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <!--     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF"> -->
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+	<!-- CodeMirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.deep_purple-pink.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+
+    </style>
+    <link href="css/lightbox.min.css" rel="stylesheet">
+</head>
+
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+        <label class="mdl-button mdl-js-button mdl-button--icon"
+               for="fixed-header-drawer-exp">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="sample"
+                 id="fixed-header-drawer-exp">
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">FHIR<sup>®</sup> exercises</span>
+    <nav class="mdl-navigation">
+		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
+		<a href="./terminology-exercise.html" class="mdl-navigation__link">Terminology exercise</a>
+		<a href="./sam-fhir-journey.html" class="mdl-navigation__link is-active-tab">Sam's FHIR journey</a>
+		<a href="#" class="mdl-navigation__link"></a>
+		<a href="./index.html" class="mdl-navigation__link">FHIR tutorials</a>
+    </nav>
+  </div>
+   <main class="mdl-layout__content">
+                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                    <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                        <div class="mdl-card__supporting-text">
+							<h4>Sam's FHIR journey</h4>
+							<p>This exercise will help you practice your FHIR skills by having you create resources that follow our Sam Fhirman's small journey through the healthcare system.</p>
+							<ul class="toc">
+								<h4>Contents</h4>
+								<a href="#sam-description">Step 1: Exercise description</a>
+								<a href="#step2">Step 2: Create a ValueSet</a>
+								<a href="#step3">Step 3: Perform an $expand on your ValueSet</a>
+								<a href="#step4">Step 4: Create a ConceptMap mapping</a>
+								<a href="#step5">Step 5: Perform a $translate on your ConceptMap</a>
+							</ul>
+
+							<h5 id="sam-description">Step 1: Exercise description</h5>
+							<p>Sam, our <a href="http://hl7.org/fhir/2016Sep/patient.html">Patient</a> with a known allergy (<a href="http://hl7.org/fhir/2016Sep/patient.html">AllergyIntolerance</a>) has an <a href="http://hl7.org/fhir/2016Sep/appointment.html">Appointment</a> at a hospital (<a href="http://hl7.org/fhir/2016Sep/organization.html">Organization</a>) which results in a hospital <a href="http://hl7.org/fhir/2016Sep/encounter.html">Encounter</a>. The doctor (<a href="http://hl7.org/fhir/2016Sep/practitioner.html">Practitioner</a>), who previously recorded Sams allergy, examines Sam and notices an allergy to fish, so he orders a test to be done (<a href="http://hl7.org/fhir/2016Sep/diagnosticrequest.html">DiagnosticRequest</a>) at the pathology lab (<a href="http://hl7.org/fhir/2016Sep/organization">Organization</a>). The hospitals system tracks this request using a <a href="http://hl7.org/fhir/2016Sep/task.html">Task</a>, so the doctor can check the task at any time to see if there's been any progress made. When the pathology lab performs its analysis, it records 'Hemoglobin' result as an <a href="http://hl7.org/fhir/2016Sep/observation.html">Observation</a> in its 'Complete blood count' <a href="http://hl7.org/fhir/2016Sep/diagnosticreport.html">DiagnosticReport</a> which is send to the FHIR server of the hospital. The pathology lab system updates the Task with the DiagnosticReport and notifies the doctor that results are available.</p>
+                            
+                            <p>Ok, so maybe this doctor and pathology lab have no idea about healthcare, a 'Complete blood count' with only a single 'Hemoglobin' result for a Fish allergy. Sounds very fishy to me!</p>
+							
+                            <p>We need you to model this scenario as FHIR resources. You will need to create a Patient, AllergyIntolerance, Appointment, Encounter, Practitioner, DiagnosticRequest, Task, DiagnosticReport, Observation, and two Organization resources and have them reference each other appropriately. Try working as a group to split the load, or just work through the resources one by one together!</p>
+							<p>See diagram below for how the resources could be setup:</p>
+							<a href="images/patient-fhir-journey-exersize.png" data-lightbox="patient-fhir-journey-exersize"><img src="images/patient-fhir-journey-exersize.png" class="thumbnail"/></a>
+							<h5 id="sam-answer">Exercise answer</h5>
+							<p>The answer with all resources included is <a href="resource-examples/sam-fhir-journey/Bundle.xml">available here</a> (right-click and use 'Save as'). As this example is a FHIR transaction bundle, you can also just POST it to a FHIR servers endpoint and have all of the resources created for you on the server. But that would be cheating!</p>
+							<p>Answer is also available for viewing below:</p>
+<textarea class="fhir-resource-xml">
+<Bundle xmlns='http://hl7.org/fhir'>
+  <type value='transaction'/>
+  <entry>
+    <fullUrl value='Patient/patient'/>
+    <resource>
+      <Patient xmlns='http://hl7.org/fhir'>
+        <id value='patient'/>
+        <text>
+          <status value='generated'/>
+          <div xmlns='http://www.w3.org/1999/xhtml'>
+            <p>Patient: Fhirman, Sam</p>
+          </div>
+        </text>
+        <identifier>
+          <type>
+            <coding>
+              <system value='http://hl7.org/fhir/v2/0203'/>
+              <code value='NI'/>
+              <display value='National unique individual identifier'/>
+            </coding>
+            <text value='IHI'/>
+          </type>
+          <system value='http://ns.electronichealth.net.au/id/hi/ihi/1.0'/>
+          <value value='8003608166690503'/>
+        </identifier>
+        <identifier>
+          <use value='usual'/>
+          <type>
+            <coding>
+              <system value='http://hl7.org/fhir/v2/0203'/>
+              <code value='MR'/>
+            </coding>
+          </type>
+          <system value='urn:oid:1.2.36.146.595.217.0.1'/>
+          <value value='6666'/>
+          <period>
+            <start value='2001-05-06'/>
+          </period>
+          <assigner>
+            <display value='Acme Healthcare'/>
+          </assigner>
+        </identifier>
+        <name>
+          <use value='official'/>
+          <text value='Sam Fhirman'/>
+          <family value='Fhirman'/>
+          <given value='Sam'/>
+          <prefix value='Mr'/>
+        </name>
+        <telecom>
+          <system value='phone'/>
+          <value value='+61481059995'/>
+          <use value='mobile'/>
+        </telecom>
+        <gender value='male'/>
+        <birthDate value='1973-09-30'/>
+        <address>
+          <use value='work'/>
+          <line value='400 George Street'/>
+          <city value='Brisbane'/>
+          <state value='QLD'/>
+          <postalCode value='4000'/>
+          <country value='AUS'/>
+        </address>
+        <maritalStatus>
+          <coding>
+            <system value='http://hl7.org/fhir/v3/MaritalStatus'/>
+            <code value='M'/>
+            <display value='Married'/>
+          </coding>
+        </maritalStatus>
+      </Patient>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Patient/patient'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='AllergyIntolerance/allergyintolerance'/>
+    <resource>
+      <AllergyIntolerance xmlns='http://hl7.org/fhir'>
+        <id value='allergyintolerance'/>
+        <status value='active'/>
+        <type value='allergy'/>
+        <criticality value='high'/>
+        <code>
+          <coding>
+            <system value='http://snomed.info/sct'/>
+            <code value='227037002'/>
+            <display value='Fish - dietary (substance)'/>
+          </coding>
+        </code>
+        <patient>
+          <reference value='Patient/patient'/>
+        </patient>
+        <recorder>
+          <reference value='Practitioner/practitioner'/>
+        </recorder>
+      </AllergyIntolerance>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='AllergyIntolerance/allergyintolerance'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Appointment/appointment'/>
+    <resource>
+      <Appointment xmlns='http://hl7.org/fhir'>
+        <id value='appointment'/>
+        <status value='fulfilled'/>
+        <reason>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/encounter-reason'/>
+            <code value='274640006'/>
+            <display value='Fever with chills (finding)'/>
+          </coding>
+        </reason>
+        <description value='Mr Fhirman has been experiencing an very high temperature for two days and his wife insisted that he make an appointment.'/>
+        <start value='2016-10-31T08:00:00+10:00'/>
+        <end value='2016-10-31T08:30:00+10:00'/>
+        <participant>
+          <actor>
+            <reference value='Patient/patient'/>
+          </actor>
+          <status value='accepted'/>
+        </participant>
+      </Appointment>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Appointment/appointment'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Encounter/encounter'/>
+    <resource>
+      <Encounter xmlns='http://hl7.org/fhir'>
+        <id value='encounter'/>
+        <status value='finished'/>
+        <class>
+          <system value='http://hl7.org/fhir/ValueSet/v3-ActEncounterCode'/>
+          <code value='NONAC'/>
+          <display value='inpatient non-acute'/>
+        </class>
+        <priority>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/v3-ActPriority'/>
+            <code value='R'/>
+            <display value='routine'/>
+          </coding>
+        </priority>
+        <patient>
+          <reference value='Patient/patient'/>
+        </patient>
+        <participant>
+          <type>
+            <coding>
+              <system value='http://hl7.org/fhir/ValueSet/encounter-participant-type'/>
+              <code value='PPRF'/>
+              <display value='primary performer'/>
+            </coding>
+          </type>
+          <individual>
+            <reference value='Practitioner/practitioner'/>
+          </individual>
+        </participant>
+        <appointment>
+          <reference value='Appointment/appointment'/>
+        </appointment>
+        <period>
+          <start value='2016-10-31T08:07:00+10:00'/>
+          <end value='2016-10-31T08:28:00+10:00'/>
+        </period>
+        <reason>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/encounter-reason'/>
+            <code value='274640006'/>
+            <display value='Fever with chills (finding)'/>
+          </coding>
+        </reason>
+        <serviceProvider>
+          <reference value='Organization/hospital-organization'/>
+        </serviceProvider>
+      </Encounter>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Encounter/encounter'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Practitioner/practitioner'/>
+    <resource>
+      <Practitioner xmlns='http://hl7.org/fhir'>
+        <id value='practitioner'/>
+        <name>
+          <family value='Junior'/>
+          <given value='Peter'/>
+          <prefix value='Dr.'/>
+        </name>
+        <gender value='male'/>
+        <role>
+          <organization>
+            <reference value='Organization/hospital-organization'/>
+          </organization>
+        </role>
+      </Practitioner>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Practitioner/practitioner'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='DiagnosticRequest/diagnosticrequest'/>
+    <resource>
+      <DiagnosticRequest xmlns='http://hl7.org/fhir'>
+        <id value='diagnosticrequest'/>
+        <status value='completed'/>
+        <stage>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/diagnostic-request-stage'/>
+            <code value='original-order'/>
+            <display value='Original Order'/>
+          </coding>
+        </stage>
+        <code>
+          <coding>
+            <system value='http://snomed.info/sct'/>
+            <code value='26604007'/>
+            <display value='Complete blood count'/>
+          </coding>
+        </code>
+        <subject>
+          <reference value='Patient/patient'/>
+        </subject>
+        <context>
+          <reference value='Encounter/encounter'/>
+        </context>
+        <authored value='2016-10-31T08:25:00+10:00'/>
+        <requester>
+          <reference value='Practitioner/practitioner'/>
+        </requester>
+        <performer>
+          <reference value='Organization/pathlab'/>
+        </performer>
+      </DiagnosticRequest>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='DiagnosticRequest/diagnosticrequest'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Task/task'/>
+    <resource>
+      <Task xmlns='http://hl7.org/fhir'>
+        <id value='task'/>
+        <identifier>
+          <use value='official'/>
+          <system value='urn:ietf:rfc:3986'/>
+          <value value='http://example.com/fhir/Task/163412'/>
+        </identifier>
+        <status value='completed'/>
+        <stage>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/task-stage'/>
+            <code value='actionable'/>
+            <display value='actionable'/>
+          </coding>
+        </stage>
+        <priority value='normal'/>
+        <created value='2016-10-31T08:25:05+10:00'/>
+        <lastModified value='2016-10-31T09:45:05+10:00'/>
+        <requester>
+          <reference value='Practitioner/practitioner'/>
+        </requester>
+        <input>
+          <type>
+            <coding>
+              <system value='http://example.com/fhir/Task/progress-status-tracker'/>
+              <code value='input'/>
+              <display value='Input'/>
+            </coding>
+          </type>
+          <valueReference>
+            <reference value='DiagnosticRequest/diagnosticrequest'/>
+          </valueReference>
+        </input>
+        <output>
+          <type>
+            <coding>
+              <system value='http://example.com/fhir/Task/progress-status-tracker'/>
+              <code value='output'/>
+              <display value='Output'/>
+            </coding>
+          </type>
+          <valueReference>
+            <reference value='DiagnosticReport/diagnosticreport'/>
+          </valueReference>
+        </output>
+      </Task>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Task/task'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='DiagnosticReport/diagnosticreport'/>
+    <resource>
+      <DiagnosticReport xmlns='http://hl7.org/fhir'>
+        <id value='diagnosticreport'/>
+        <status value='final'/>
+        <code>
+          <coding>
+            <system value='http://snomed.info/sct'/>
+            <code value='26604007'/>
+            <display value='Complete blood count'/>
+          </coding>
+        </code>
+        <subject>
+          <reference value='Patient/patient'/>
+        </subject>
+        <effectiveDateTime value='2016-10-31T09:35:00+10:00'/>
+        <issued value='2016-10-31T09:45:00+10:00'/>
+        <performer>
+          <reference value='Organization/pathlab'/>
+        </performer>
+        <request>
+          <reference value='DiagnosticRequest/diagnosticrequest'/>
+        </request>
+        <result>
+          <reference value='Observation/path-lab-observation'/>
+        </result>
+      </DiagnosticReport>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='DiagnosticReport/diagnosticreport'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Observation/path-lab-observation'/>
+    <resource>
+      <Observation xmlns='http://hl7.org/fhir'>
+        <id value='path-lab-observation'/>
+        <status value='final'/>
+        <category>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/observation-category'/>
+            <code value='laboratory'/>
+            <display value='Laboratory'/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value='http://snomed.info/sct'/>
+            <code value='26604007'/>
+            <display value='Complete blood count'/>
+          </coding>
+        </code>
+        <subject>
+          <reference value='Patient/patient'/>
+        </subject>
+        <effectiveDateTime value='2016-10-31T09:35:00+10:00'/>
+      </Observation>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Observation/path-lab-observation'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Organization/hospital-organization'/>
+    <resource>
+      <Organization xmlns='http://hl7.org/fhir'>
+        <id value='hospital-organization'/>
+        <type>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/organization-type'/>
+            <code value='dept'/>
+            <display value='Hospital Department'/>
+          </coding>
+        </type>
+        <name value='Sample Hospital'/>
+        <telecom>
+          <system value='email'/>
+          <value value='os@hospital.com.au'/>
+        </telecom>
+        <address>
+          <line value='67 Hospital Drive'/>
+          <city value='Agencyville'/>
+          <state value='QLD'/>
+          <postalCode value='5555'/>
+          <country value='Australia'/>
+        </address>
+      </Organization>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Organization/hospital-organization'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Organization/pathlab'/>
+    <resource>
+      <Organization xmlns='http://hl7.org/fhir'>
+        <id value='pathlab'/>
+        <type>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/organization-type'/>
+            <code value='prov'/>
+            <display value='Healthcare Provider'/>
+          </coding>
+        </type>
+        <name value='Pathology Laboratory'/>
+        <telecom>
+          <system value='email'/>
+          <value value='pathstuff@example.com'/>
+        </telecom>
+        <address>
+          <line value='67 Hospital Drive'/>
+          <city value='Agencyville'/>
+          <state value='QLD'/>
+          <postalCode value='5555'/>
+          <country value='Agencyville'/>
+        </address>
+      </Organization>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Organization/pathlab'/>
+    </request>
+  </entry>
+</Bundle></textarea>
+							<p>That's it for this exercise!</p>
+						</div>
+                    </div>
+                </section>
+            <footer class="mdl-mega-footer">
+                <div class="mdl-mega-footer--middle-section">
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
+                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
+                        </ul>
+                    </div>
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">FHIR</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_14" title="Next FHIR get-together in San Antonio in January 2017">Connectathon 14</a></li>
+                            <li><a href="http://hl7.org/fhir/2016Sep" title="Latest snapshot of FHIR, for use in Baltimore Connectathon">FHIR September 2016 snapshot</a></li>
+                            <li><a href="https://www.hl7.org/fhir/" title="Current stable version of FHIR">FHIR DSTU 2</a></li>
+                            <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80290058-1', 'auto');
+  ga('send', 'pageview');
+
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/javascript/javascript.min.js"></script>
+
+    <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <script src="js/lightbox-plus-jquery.min.js"></script>
+    <!-- lua.vm.js -->
+     <script src="js/lua.vm.js/dist/lua.vm.js"></script>
+<!--     main javascript for this page-->
+    <script src="js/main.js"></script>
+<!-- supporting javascript to actually do the uploading -->
+	<script src="js/post-resources.js"></script>
+</body>
+
+</html>

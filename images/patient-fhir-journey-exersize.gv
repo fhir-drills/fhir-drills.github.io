@@ -1,0 +1,29 @@
+digraph g {
+  rankdir = TB
+  ordering = "in"
+  size="10,10"
+  ratio = "auto"
+  "Appointment"
+  "Appointment" -> "Patient" [label="participant.actor"]
+  "Encounter" -> "Patient" [label="patient"]
+  "Encounter" -> "Practitioner" [label="participant.individual"]
+  "Encounter" -> "Appointment" [label="appointment"]
+  "Encounter" -> "Organization (hospital)" [label="serviceProvider"]
+  "Patient" [style="filled"]
+  "AllergyIntolerance" -> "Practitioner" [label="recorder"]
+  "AllergyIntolerance" -> "Patient" [label="patient"]  
+  "Organization (hospital)"
+  "DiagnosticRequest" -> "Patient" [label="subject"]
+  "DiagnosticRequest" -> "Practitioner" [label="requester"]
+  "DiagnosticRequest" -> "Encounter" [label="context"]
+  "DiagnosticRequest" -> "Organization (pathlab)" [label="performer"]
+  "DiagnosticReport" -> "Patient" [label="subject"]
+  "DiagnosticReport" -> "Organization (pathlab)" [label="performer"]
+  "DiagnosticReport" -> "DiagnosticRequest" [label="request"]
+  "DiagnosticReport" -> "Observation" [label="result"]
+  "Organization (pathlab)"
+  "Observation" -> "Patient" [label="subject"]
+  "Practitioner" -> "Organization (hospital)" [label="role.organization"]
+  "Task" -> "DiagnosticRequest" [label="input"]
+  "Task" -> "DiagnosticReport" [label="output"]
+}

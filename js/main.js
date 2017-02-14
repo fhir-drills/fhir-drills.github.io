@@ -44,6 +44,13 @@ function makeAjaxPost(url, data) {
     return ob;
 }
 
+function switchCodeTabs(tabid) {
+	var tabs = document.getElementsByClassName(tabid);
+	for (var tab = 0, l = tabs.length; tab < l; tab++) {
+		tabs[tab].click();
+	}	
+}
+
 //uploads an array of resource files
 //array must be sorted in proper order of uploading, that is if resource A 
 // has a reference to resource B, resource A must come after B
@@ -185,6 +192,39 @@ $(".fhir-resource-xml").each(function(index, element) {
 	this.element = element;
   	var codemirror = this.codemirror = CodeMirror.fromTextArea(this.element, {
 		mode: "xml",
+		lineNumbers: true,
+		lineWrapping: true,
+		readOnly: true
+	  });
+});
+
+$(".fhir-resource-json").each(function(index, element) {
+    // element is a node with the desired class name
+	this.element = element;
+  	var codemirror = this.codemirror = CodeMirror.fromTextArea(this.element, {
+		mode: {name: "javascript", json: true},
+		lineNumbers: true,
+		lineWrapping: true,
+		readOnly: true
+	  });
+});
+
+$(".csharp-code").each(function(index, element) {
+    // element is a node with the desired class name
+	this.element = element;
+  	var codemirror = this.codemirror = CodeMirror.fromTextArea(this.element, {
+		mode: "text/x-csharp",
+		lineNumbers: true,
+		lineWrapping: true,
+		readOnly: true
+	  });
+});
+
+$(".java-code").each(function(index, element) {
+    // element is a node with the desired class name
+	this.element = element;
+  	var codemirror = this.codemirror = CodeMirror.fromTextArea(this.element, {
+		mode: "text/x-java",
 		lineNumbers: true,
 		lineWrapping: true,
 		readOnly: true

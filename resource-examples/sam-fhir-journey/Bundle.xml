@@ -1,0 +1,438 @@
+<Bundle xmlns='http://hl7.org/fhir'>
+  <type value='transaction'/>
+  <entry>
+    <fullUrl value='Patient/patient'/>
+    <resource>
+      <Patient xmlns='http://hl7.org/fhir'>
+        <id value='patient'/>
+        <text>
+          <status value='generated'/>
+          <div xmlns='http://www.w3.org/1999/xhtml'>
+            <p>Patient: Fhirman, Sam</p>
+          </div>
+        </text>
+        <identifier>
+          <type>
+            <coding>
+              <system value='http://hl7.org/fhir/v2/0203'/>
+              <code value='NI'/>
+              <display value='National unique individual identifier'/>
+            </coding>
+            <text value='IHI'/>
+          </type>
+          <system value='http://ns.electronichealth.net.au/id/hi/ihi/1.0'/>
+          <value value='8003608166690503'/>
+        </identifier>
+        <identifier>
+          <use value='usual'/>
+          <type>
+            <coding>
+              <system value='http://hl7.org/fhir/v2/0203'/>
+              <code value='MR'/>
+            </coding>
+          </type>
+          <system value='urn:oid:1.2.36.146.595.217.0.1'/>
+          <value value='6666'/>
+          <period>
+            <start value='2001-05-06'/>
+          </period>
+          <assigner>
+            <display value='Acme Healthcare'/>
+          </assigner>
+        </identifier>
+        <name>
+          <use value='official'/>
+          <text value='Sam Fhirman'/>
+          <family value='Fhirman'/>
+          <given value='Sam'/>
+          <prefix value='Mr'/>
+        </name>
+        <telecom>
+          <system value='phone'/>
+          <value value='+61481059995'/>
+          <use value='mobile'/>
+        </telecom>
+        <gender value='male'/>
+        <birthDate value='1973-09-30'/>
+        <address>
+          <use value='work'/>
+          <line value='400 George Street'/>
+          <city value='Brisbane'/>
+          <state value='QLD'/>
+          <postalCode value='4000'/>
+          <country value='AUS'/>
+        </address>
+        <maritalStatus>
+          <coding>
+            <system value='http://hl7.org/fhir/v3/MaritalStatus'/>
+            <code value='M'/>
+            <display value='Married'/>
+          </coding>
+        </maritalStatus>
+      </Patient>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Patient/patient'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='AllergyIntolerance/allergyintolerance'/>
+    <resource>
+      <AllergyIntolerance xmlns='http://hl7.org/fhir'>
+        <id value='allergyintolerance'/>
+        <status value='active'/>
+        <type value='allergy'/>
+        <criticality value='high'/>
+        <code>
+          <coding>
+            <system value='http://snomed.info/sct'/>
+            <code value='227037002'/>
+            <display value='Fish - dietary (substance)'/>
+          </coding>
+        </code>
+        <patient>
+          <reference value='Patient/patient'/>
+        </patient>
+        <recorder>
+          <reference value='Practitioner/practitioner'/>
+        </recorder>
+      </AllergyIntolerance>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='AllergyIntolerance/allergyintolerance'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Appointment/appointment'/>
+    <resource>
+      <Appointment xmlns='http://hl7.org/fhir'>
+        <id value='appointment'/>
+        <status value='fulfilled'/>
+        <reason>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/encounter-reason'/>
+            <code value='274640006'/>
+            <display value='Fever with chills (finding)'/>
+          </coding>
+        </reason>
+        <description value='Mr Fhirman has been experiencing an very high temperature for two days and his wife insisted that he make an appointment.'/>
+        <start value='2016-10-31T08:00:00+10:00'/>
+        <end value='2016-10-31T08:30:00+10:00'/>
+        <participant>
+          <actor>
+            <reference value='Patient/patient'/>
+          </actor>
+          <status value='accepted'/>
+        </participant>
+      </Appointment>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Appointment/appointment'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Encounter/encounter'/>
+    <resource>
+      <Encounter xmlns='http://hl7.org/fhir'>
+        <id value='encounter'/>
+        <status value='finished'/>
+        <class>
+          <system value='http://hl7.org/fhir/ValueSet/v3-ActEncounterCode'/>
+          <code value='NONAC'/>
+          <display value='inpatient non-acute'/>
+        </class>
+        <priority>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/v3-ActPriority'/>
+            <code value='R'/>
+            <display value='routine'/>
+          </coding>
+        </priority>
+        <patient>
+          <reference value='Patient/patient'/>
+        </patient>
+        <participant>
+          <type>
+            <coding>
+              <system value='http://hl7.org/fhir/ValueSet/encounter-participant-type'/>
+              <code value='PPRF'/>
+              <display value='primary performer'/>
+            </coding>
+          </type>
+          <individual>
+            <reference value='Practitioner/practitioner'/>
+          </individual>
+        </participant>
+        <appointment>
+          <reference value='Appointment/appointment'/>
+        </appointment>
+        <period>
+          <start value='2016-10-31T08:07:00+10:00'/>
+          <end value='2016-10-31T08:28:00+10:00'/>
+        </period>
+        <reason>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/encounter-reason'/>
+            <code value='274640006'/>
+            <display value='Fever with chills (finding)'/>
+          </coding>
+        </reason>
+        <serviceProvider>
+          <reference value='Organization/hospital-organization'/>
+        </serviceProvider>
+      </Encounter>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Encounter/encounter'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Practitioner/practitioner'/>
+    <resource>
+      <Practitioner xmlns='http://hl7.org/fhir'>
+        <id value='practitioner'/>
+        <name>
+          <family value='Junior'/>
+          <given value='Peter'/>
+          <prefix value='Dr.'/>
+        </name>
+        <gender value='male'/>
+        <role>
+          <organization>
+            <reference value='Organization/hospital-organization'/>
+          </organization>
+        </role>
+      </Practitioner>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Practitioner/practitioner'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='DiagnosticRequest/diagnosticrequest'/>
+    <resource>
+      <DiagnosticRequest xmlns='http://hl7.org/fhir'>
+        <id value='diagnosticrequest'/>
+        <status value='completed'/>
+        <stage>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/diagnostic-request-stage'/>
+            <code value='original-order'/>
+            <display value='Original Order'/>
+          </coding>
+        </stage>
+        <code>
+          <coding>
+            <system value='http://snomed.info/sct'/>
+            <code value='26604007'/>
+            <display value='Complete blood count'/>
+          </coding>
+        </code>
+        <subject>
+          <reference value='Patient/patient'/>
+        </subject>
+        <context>
+          <reference value='Encounter/encounter'/>
+        </context>
+        <authored value='2016-10-31T08:25:00+10:00'/>
+        <requester>
+          <reference value='Practitioner/practitioner'/>
+        </requester>
+        <performer>
+          <reference value='Organization/pathlab'/>
+        </performer>
+      </DiagnosticRequest>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='DiagnosticRequest/diagnosticrequest'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Task/task'/>
+    <resource>
+      <Task xmlns='http://hl7.org/fhir'>
+        <id value='task'/>
+        <identifier>
+          <use value='official'/>
+          <system value='urn:ietf:rfc:3986'/>
+          <value value='http://example.com/fhir/Task/163412'/>
+        </identifier>
+        <status value='completed'/>
+        <stage>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/task-stage'/>
+            <code value='actionable'/>
+            <display value='actionable'/>
+          </coding>
+        </stage>
+        <priority value='normal'/>
+        <created value='2016-10-31T08:25:05+10:00'/>
+        <lastModified value='2016-10-31T09:45:05+10:00'/>
+        <requester>
+          <reference value='Practitioner/practitioner'/>
+        </requester>
+        <input>
+          <type>
+            <coding>
+              <system value='http://example.com/fhir/Task/progress-status-tracker'/>
+              <code value='input'/>
+              <display value='Input'/>
+            </coding>
+          </type>
+          <valueReference>
+            <reference value='DiagnosticRequest/diagnosticrequest'/>
+          </valueReference>
+        </input>
+        <output>
+          <type>
+            <coding>
+              <system value='http://example.com/fhir/Task/progress-status-tracker'/>
+              <code value='output'/>
+              <display value='Output'/>
+            </coding>
+          </type>
+          <valueReference>
+            <reference value='DiagnosticReport/diagnosticreport'/>
+          </valueReference>
+        </output>
+      </Task>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Task/task'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='DiagnosticReport/diagnosticreport'/>
+    <resource>
+      <DiagnosticReport xmlns='http://hl7.org/fhir'>
+        <id value='diagnosticreport'/>
+        <status value='final'/>
+        <code>
+          <coding>
+            <system value='http://snomed.info/sct'/>
+            <code value='26604007'/>
+            <display value='Complete blood count'/>
+          </coding>
+        </code>
+        <subject>
+          <reference value='Patient/patient'/>
+        </subject>
+        <effectiveDateTime value='2016-10-31T09:35:00+10:00'/>
+        <issued value='2016-10-31T09:45:00+10:00'/>
+        <performer>
+          <reference value='Organization/pathlab'/>
+        </performer>
+        <request>
+          <reference value='DiagnosticRequest/diagnosticrequest'/>
+        </request>
+        <result>
+          <reference value='Observation/path-lab-observation'/>
+        </result>
+      </DiagnosticReport>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='DiagnosticReport/diagnosticreport'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Observation/path-lab-observation'/>
+    <resource>
+      <Observation xmlns='http://hl7.org/fhir'>
+        <id value='path-lab-observation'/>
+        <status value='final'/>
+        <category>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/observation-category'/>
+            <code value='laboratory'/>
+            <display value='Laboratory'/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value='http://snomed.info/sct'/>
+            <code value='26604007'/>
+            <display value='Complete blood count'/>
+          </coding>
+        </code>
+        <subject>
+          <reference value='Patient/patient'/>
+        </subject>
+        <effectiveDateTime value='2016-10-31T09:35:00+10:00'/>
+      </Observation>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Observation/path-lab-observation'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Organization/hospital-organization'/>
+    <resource>
+      <Organization xmlns='http://hl7.org/fhir'>
+        <id value='hospital-organization'/>
+        <type>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/organization-type'/>
+            <code value='dept'/>
+            <display value='Hospital Department'/>
+          </coding>
+        </type>
+        <name value='Sample Hospital'/>
+        <telecom>
+          <system value='email'/>
+          <value value='os@hospital.com.au'/>
+        </telecom>
+        <address>
+          <line value='67 Hospital Drive'/>
+          <city value='Agencyville'/>
+          <state value='QLD'/>
+          <postalCode value='5555'/>
+          <country value='Australia'/>
+        </address>
+      </Organization>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Organization/hospital-organization'/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value='Organization/pathlab'/>
+    <resource>
+      <Organization xmlns='http://hl7.org/fhir'>
+        <id value='pathlab'/>
+        <type>
+          <coding>
+            <system value='http://hl7.org/fhir/ValueSet/organization-type'/>
+            <code value='prov'/>
+            <display value='Healthcare Provider'/>
+          </coding>
+        </type>
+        <name value='Pathology Laboratory'/>
+        <telecom>
+          <system value='email'/>
+          <value value='pathstuff@example.com'/>
+        </telecom>
+        <address>
+          <line value='67 Hospital Drive'/>
+          <city value='Agencyville'/>
+          <state value='QLD'/>
+          <postalCode value='5555'/>
+          <country value='Agencyville'/>
+        </address>
+      </Organization>
+    </resource>
+    <request>
+      <method value='PUT'/>
+      <url value='Organization/pathlab'/>
+    </request>
+  </entry>
+</Bundle>

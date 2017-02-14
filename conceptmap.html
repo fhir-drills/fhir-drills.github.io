@@ -22,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="FHIR Tutorials by the Australian Digital Health Agency to help you understand FHIR and its spec! No technical experience required.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>FHIR® tutorials</title>
+    <title>ConceptMap | FHIR® tutorials</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <!-- <meta name="mobile-web-app-capable" content="yes">
@@ -99,6 +99,7 @@
 		<a href="./operations.html" id="operations" class="mdl-navigation__link">Operations</a>
 		<a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">ValueSet &amp; CodeSystem</a>
 		<a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link is-active-tab">ConceptMap</a>
+		<a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">FHIR APIs</a>
 		<a href="#" class="mdl-navigation__link"></a>
 		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
     </nav>
@@ -130,7 +131,7 @@
                         
                         <h5 id="cm-sample-data-mapping">Step 2: Sample data mapping</h5>
                         <p>As an example, let's say you have a (very poorly designed) valueset from the codesystem representing employee presence at work with just three codes: present, not-present, and sick that is in use by your system. You start importing data from a new system which has finer granularity:</p>
-                        <table class="conceptmap-table">
+                        <table class="table-fill">
   <tr>
     <th>Current valueset</th>
     <th>New system's valueset</th>
@@ -161,7 +162,7 @@
   </tr>
 </table>
                     <p>Thus, you need to create a FHIR map connecting new codes you're getting to ones you already have, making use of the available <a href="http://hl7.org/fhir/2016Sep/valueset-concept-map-equivalence.html">equivalence</a> values. You come up with this sample mapping that maps in the direction from the new system to the current valueset:</p>
-                        <table class="conceptmap-table">
+                        <table class="table-fill">
   <tr>
     <th>New system's valueset</th>
     <th>Current valueset</th>
@@ -205,8 +206,8 @@
 </table>
                         <h5 id="cm-sample-resource">Step 3: Sample resources</h5>
 							<p>A sample <a href="resource-examples/ConceptMap-resources/ConceptMap.xml">ConceptMap</a> resource containing these mappings is available. The supporting  <a href="resource-examples/ConceptMap-resources/Codesystem.xml">CodeSystem</a>, <a href="resource-examples/ConceptMap-resources/Old-ValueSet.xml">old ValueSet</a> and  <a href="resource-examples/ConceptMap-resources/New-ValueSet.xml">new ValueSet</a> are available as well.</p>
-<!--
 
+<!--
 							<p>Press the button below to upload it to the FHIR server!</p>
                         
                                                  fix this crime 
@@ -218,12 +219,12 @@
                                 <div id="conceptmap-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
                             </center>
                         </p>
+-->
                         
                         <p>The resource will be available for viewing in Postman or your browser under this URL:</p>
                         <note class="conceptmap-location-full" id="cm-conceptmap"><i>(press Upload to get a ConceptMap)</i></note>
                         <p>Once uploaded, it'll look something <a href="images/conceptmap-in-postman.png" data-lightbox="conceptmap-in-postman">like this</a>.</p>
-                        
--->
+
 
                         <h5 id="cm-advanced-features">Step 4: Advanced features</h5>
                         <p>ConceptMap is actually pretty powerful, and besides the basic code-to-code mapping described above, it also supports the following usecases:</p>
@@ -253,10 +254,10 @@
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
                         <h1 class="mdl-mega-footer--heading">FHIR</h1>
                         <ul class="mdl-mega-footer--link-list">
-                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_13" title="Next FHIR get-together in Baltimore in September 2016">Connectathon 13</a></li>
+                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_14" title="Next FHIR get-together in San Antonio in January 2017">Connectathon 14</a></li>
                             <li><a href="http://hl7.org/fhir/2016Sep" title="Latest snapshot of FHIR, for use in Baltimore Connectathon">FHIR September 2016 snapshot</a></li>
                             <li><a href="https://www.hl7.org/fhir/" title="Current stable version of FHIR">FHIR DSTU 2</a></li>
-                            <li><a href="https://hl7-fhir.github.io/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
+                            <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
                     </div>
                 </div>
