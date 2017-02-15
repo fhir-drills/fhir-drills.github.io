@@ -149,7 +149,7 @@
                         <p>Let's take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
 
                         <ul>
-                        <li><b><a href="http://hl7.org/fhir/2016Sep/codesystem.html" rel="stylesheet">Resource CodeSystem</a></b></li>
+                        <li><b><a href="http://hl7.org/fhir/2017Jan/codesystem.html" rel="stylesheet">Resource CodeSystem</a></b></li>
                         </ul>
                         <p><b>Below is a simple example of a CodeSystem FHIR resource</b></p>
                         
@@ -206,7 +206,7 @@
 </CodeSystem></textarea>
                         
                             
-                        <p>This example does not show every property of a CodeSystem resource. I've only used the ones I thought were key while also trying to keep the example nice and short. Take a look at <a href="http://hl7.org/fhir/2016Sep/codesystem.html" rel="stylesheet">CodeSystem</a>  in the FHIR specification to see all the properties available.</p>
+                        <p>This example does not show every property of a CodeSystem resource. I've only used the ones I thought were key while also trying to keep the example nice and short. Take a look at <a href="http://hl7.org/fhir/2017Jan/codesystem.html" rel="stylesheet">CodeSystem</a>  in the FHIR specification to see all the properties available.</p>
 
                     
                         <h5 id="vac-step3">Step 3: ValueSet the FHIR Resources</h5>
@@ -214,7 +214,7 @@
                         <p>Let's take a closer look at the FHIR resource named ValueSet, you will find the resource page in the FHIR specification here:</p>
                     
                         <ul>
-                        <li><b><a href="http://hl7.org/fhir/2016Sep/valueset.html" rel="stylesheet">Resource ValueSet</a></b></li>
+                        <li><b><a href="http://hl7.org/fhir/2017Jan/valueset.html" rel="stylesheet">Resource ValueSet</a></b></li>
                         </ul>
                         <p><b>Here is a simple example of a ValueSet FHIR resource</b></p>
                         
@@ -272,7 +272,7 @@
                         
                         <p>Remember, a ValueSet is a grouping of codes, codes are taken from CodeSystems, to be used for a purpose. ValueSet codes adds value to some use case, for example: a clinical systems drop down box to select an allergy.</p>
                         
-                        <p>Once again you should go to the FHIR specification page for <a href="http://hl7.org/fhir/2016Sep/valueset.html" rel="stylesheet">ValueSet</a> to see the full list of properties available.</p>
+                        <p>Once again you should go to the FHIR specification page for <a href="http://hl7.org/fhir/2017Jan/valueset.html" rel="stylesheet">ValueSet</a> to see the full list of properties available.</p>
                         
                         <p><b>Question:</b> If you had two copies of a ValueSet resource given to you, from different people, how would you determine that the two instances were actually the same ValueSet?</p>
                         
@@ -309,7 +309,7 @@
                         
                         <p>With hierarchical code systems, we can use a filter to say <i>"include all codes under this parent code"</i>. This way, as new codes are introduced under a parent code, in the code system, they will automatically be included in our ValueSet's selected codes. In the very same way we can include codes, we can also <b>exclude</b> codes either by stating the code to exclude or by using another filter.</p>
                         
-                        <p>The image below is taken from the <a href="http://hl7.org/fhir/2016Sep/valueset.html#resource" rel="stylesheet"><b>ValueSet tree structure in the FHIR specification</b></a> and highlights the sections that deals with the topic discussed in this step (Include, Exclude &amp; Filter). </p>
+                        <p>The image below is taken from the <a href="http://hl7.org/fhir/2017Jan/valueset.html#resource" rel="stylesheet"><b>ValueSet tree structure in the FHIR specification</b></a> and highlights the sections that deals with the topic discussed in this step (Include, Exclude &amp; Filter). </p>
                         <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img src="images/ValueSetFilterTreeDiagram.png" width="100%" class="thumbnail"/></a></p>     
                         <h5 id="vac-step6">Step 6: Using the $expand operation</h5>
                     <p>As introduced in <a href="#vac-step4">step 4</a>, the $expand operation allows you to retrieve the full listing of codes available in a valueset, which makes sense if you consider the possible dynamic nature of valuesets given the filters introduced above in <a href="vac-step5">step 5</a>. Following on from the <a href="./operations.html">introduction to Operations</a>, upload the valueset with the 'easy' and 'hard' codes to a FHIR server:</p>
@@ -325,7 +325,7 @@
                         
                         <p>The resource will be available for viewing in Postman or your browser under this URL:</p>
                         <note class="expand-operation-location-full" id="vac-expand-valueset"><i>(press Upload to get a ValueSet)</i></note>
-                        <p>As described in the <a href="./operations.html">Operations</a> tab, every resource has an 'Operations' tab, including <a href="http://hl7.org/fhir/2016Sep/valueset-operations.html">ValueSet</a>, which is where you'll find the <a href="http://hl7.org/fhir/2016Sep/valueset-operations.html#expand">$expand</a> operation. There are two ways you can use the operation - either on the ValueSet resource type:</p>
+                        <p>As described in the <a href="./operations.html">Operations</a> tab, every resource has an 'Operations' tab, including <a href="http://hl7.org/fhir/2017Jan/valueset-operations.html">ValueSet</a>, which is where you'll find the <a href="http://hl7.org/fhir/2017Jan/valueset-operations.html#expand">$expand</a> operation. There are two ways you can use the operation - either on the ValueSet resource type:</p>
                         <code class="expand-operation-baseurl" id="vac-expand-valueset">[Service Root URL]</code><code>/ValueSet/$expand</code>
                         <p>in which case you'll need to provide the id of the valueset to expand as an 'identifier' parameter, or you can use the operation on a ValueSet instance, where the id of the resource is provided in the URL: </p>
                         <code class="expand-operation-location-full" id="vac-expand-valueset">[Service Root URL]/[Resource Type]/[Resource Id]</code><code>/$expand</code>
@@ -351,7 +351,7 @@
                         <h1 class="mdl-mega-footer--heading">FHIR</h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_14" title="Next FHIR get-together in San Antonio in January 2017">Connectathon 14</a></li>
-                            <li><a href="http://hl7.org/fhir/2016Sep" title="Latest snapshot of FHIR, for use in Baltimore Connectathon">FHIR September 2016 snapshot</a></li>
+                            <li><a href="http://hl7.org/fhir/2017Jan" title="Latest snapshot of FHIR, for use in Baltimore Connectathon">FHIR January 2017 snapshot</a></li>
                             <li><a href="https://www.hl7.org/fhir/" title="Current stable version of FHIR">FHIR DSTU 2</a></li>
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
