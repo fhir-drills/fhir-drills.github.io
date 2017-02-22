@@ -13,9 +13,9 @@
         </telecom>
     </contact>
     <date value="2016-06-27"/>
-    <lockedDate value="2016-06-27"/>
     <description value="This new and improved valueset allows to more accurately describe a persons work state"/>
     <compose>
+        <lockedDate value="2016-06-27"/>
         <include>
             <system value="urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a"/>
             <version value="20162726"/>

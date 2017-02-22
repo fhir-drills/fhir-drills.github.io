@@ -3949,9 +3949,9 @@
         </telecom>
     </contact>
     <date value="2016-05-30"/>
-    <lockedDate value="2016-05-30"/>
     <description value="This is an example value set of PITUS pathology ordering codes"/>
     <compose>
+        <lockedDate value="2016-05-30"/>
         <include>
             <system value="http://snomed.info/sct"/>
             <version value="http://snomed.info/sct/32506021000036107/version/20160229"/>
