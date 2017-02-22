@@ -181,6 +181,7 @@
   <url value="urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1"/>  
   <version value="20162726"/>
   <name value="FHIR tutorial difficulty levels"/>
+  <title value="FHIR tutorial difficulty levels"/>
   <status value="draft"/>
   <experimental value="true"/>
   <publisher value="Australian Digital Health Agency"/>
@@ -243,6 +244,7 @@
   <url value="urn:uuid:8ec3847e-789e-4994-a74b-7bbf55d88190"/>  
   <version value="20160530"/>
   <name value="FHIR tutorial difficulty levels"/>
+  <title value="FHIR tutorial difficulty levels"/>
   <status value="draft"/>
   <experimental value="true"/>
   <publisher value="Australian Digital Health Agency"/>
@@ -254,9 +256,9 @@
     </telecom>
   </contact>
   <date value="2016-06-27"/>
-  <lockedDate value="2016-06-27"/>
   <description value="Codes for FHIR tutorial participants to rate the difficulty of understanding of the training material"/>
   <compose>
+    <lockedDate value="2016-06-27"/>
     <include>
       <system value="urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1"/>
       <version value="20162726"/>
@@ -298,7 +300,7 @@
                         
                         <p><a href="images/ValueSetExpansionResponseDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img src="images/ValueSetExpansionResponseDiagram.png" width="50%" class="thumbnail"/></a></p>
                         
-                        <p>What this means is that the ValueSet is only a reference to the codes in the CodeSystem. A key point here is that if the code description was updated in the CodeSystem then a ValueSet expansion will pick up the new description even though the ValueSet was never modified. You can control this using the <b>'lockedDate'</b> property of a ValueSet. If a <b>lockedDate</b> is given in the ValueSet then only the CodeSystems as of this date will be used, any later version of the same CodeSystem will not be used when ValueSet Expansion is performed. For more information about <b>lockedDate</b> refer to the FHIR specification here: <a href="http://hl7-fhir.github.io/valueset-definitions.html#ValueSet.lockedDate" rel="stylesheet"><b>lockedDate</b></a>.</p>                       
+                        <p>What this means is that the ValueSet is only a reference to the codes in the CodeSystem. A key point here is that if the code description was updated in the CodeSystem then a ValueSet expansion will pick up the new description even though the ValueSet was never modified. You can control this using the <b>'lockedDate'</b> property of a ValueSet. If a <b>lockedDate</b> is given in the ValueSet then only the CodeSystems as of this date will be used, any later version of the same CodeSystem will not be used when ValueSet Expansion is performed. For more information about <b>lockedDate</b> refer to the FHIR specification here: <a href="http://hl7.org/fhir/2017Jan/valueset-definitions.html#ValueSet.compose.lockedDate" rel="stylesheet"><b>lockedDate</b></a>.</p>                       
                         
                         <h5 id="vac-step5">Step 5: Creating ValueSets using filters (Include, Exclude and Filter)</h5>
                         <p>In the previous '<a href="#vac-step4">Step 4: Understanding how ValueSet codes are used</a>' we learnt that ValueSets only select codes from CodeSystems. In our simple ValueSet example we selected, or rather 'Included', our codes by stating the actual code values '<b>easy</b>' and '<b>hard</b>' as they were seen in our CodeSystem. Yet, there is another way to select codes for inclusion in the ValueSet which is by using a filter.</p>

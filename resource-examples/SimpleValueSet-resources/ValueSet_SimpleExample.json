@@ -3,6 +3,7 @@
   "publisher": "Australian Digital Health Agency",
   "status": "draft",
   "compose": {
+    "lockedDate": "2016-06-27",
     "include": [
       {
         "version": "20162726",
