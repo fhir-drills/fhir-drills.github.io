@@ -32,9 +32,9 @@
     </telecom>
   </contact>
   <date value="2016-06-27"/>
-  <lockedDate value="2016-06-27"/>
   <description value="Codes for FHIR tutorial participants to rate the difficulty of understanding of the training material"/>
   <compose>
+    <lockedDate value="2016-06-27"/>
     <include>
       <system value="http://fhir3.healthintersections.com.au/open/CodeSystem/5"/>
       <version value="20162726"/>

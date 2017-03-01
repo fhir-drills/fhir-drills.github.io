@@ -81,9 +81,9 @@
     </telecom>
   </contact>
   <date value="2016-05-30"/>
-  <lockedDate value="2016-05-30"/>
   <description value="This is an example value set of ACME pathology ordering codes for Hepatitis B"/>
   <compose>
+    <lockedDate value="2016-05-30"/>
     <include>
       <system value="http://fhir3.healthintersections.com.au/open/CodeSystem/5"/>
       <version value="20160429"/>

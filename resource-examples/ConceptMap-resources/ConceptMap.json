@@ -20,7 +20,7 @@
   ],
   "date": "2016-06-27",
   "description": "A mapping between the example new system valueset to the current valueset",
-  "requirements": "Sample supporting material for the ConceptMap tutorial at https://fhir-drills.github.io",
+  "purpose": "Sample supporting material for the ConceptMap tutorial at https://fhir-drills.github.io",
   "copyright": "Creative Commons 0",
   "sourceUri": "urn:uuid:5b2b9bb0-f459-4fcd-80f7-076969d0667d",
   "targetUri": "urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55",

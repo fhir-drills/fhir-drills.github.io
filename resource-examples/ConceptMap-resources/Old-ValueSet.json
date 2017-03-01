@@ -3,6 +3,7 @@
   "publisher": "Australian Digital Health Agency",
   "status": "draft",
   "compose": {
+    "lockedDate": "2016-06-27",
     "include": [
       {
         "concept": [
@@ -24,7 +25,6 @@
   "date": "2016-06-27",
   "name": "Old valueset describing a persons work state",
   "experimental": true,
-  "lockedDate": "2016-06-27",
   "version": "2016-06-27",
   "description": "Very simple valueset for recording a persons work state",
   "contact": [
