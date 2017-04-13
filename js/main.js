@@ -152,7 +152,7 @@ if (patientWithReferencesButton) {
 		uploadFiles("patient-with-references", servers.sqlonfhir3, [
 		["rf-patient", "resource-examples/Patient-f001.json"],
 		["rf-encounter", "resource-examples/Encounter-f001.json"],
-		["rf-diagnosticrequest", "resource-examples/DiagnosticRequest-f001.json"],
+		["rf-procedurerequest", "resource-examples/ProcedureRequest-f001.json"],
 		["rf-observation1", "resource-examples/Observation-f001.json"],
 		["rf-observation2", "resource-examples/Observation-f002.json"],
 		["rf-diagnosticreport", "resource-examples/DiagnosticReport-f001.json"]]);
