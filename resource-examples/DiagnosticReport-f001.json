@@ -49,9 +49,9 @@
       "    OID: 2.16.840.1.113883.4.642.1.7    "
     ]
   },
-  "request": [
+  "basedOn": [
     {
-      "reference": "DiagnosticRequest/digitalhealth-f001"
+      "reference": "ProcedureRequest/digitalhealth-f001"
     }
   ],
   "result": [

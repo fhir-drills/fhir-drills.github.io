@@ -15,8 +15,8 @@
    "requester":[  
       {
           "agent":{
-          "reference":"#practitionerid",
-          "display":"Dr. Adam Careful"
+                "reference":"#practitionerid",
+                "display":"Dr. Adam Careful"
           }
       }
    ],
