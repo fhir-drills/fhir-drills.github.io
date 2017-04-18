@@ -151,9 +151,9 @@
             <display value='routine'/>
           </coding>
         </priority>
-        <patient>
+        <subject>
           <reference value='Patient/patient'/>
-        </patient>
+        </subject>
         <participant>
           <type>
             <coding>
@@ -214,18 +214,11 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value='DiagnosticRequest/diagnosticrequest'/>
+    <fullUrl value='ProcedureRequest/procedurecrequest'/>
     <resource>
-      <DiagnosticRequest xmlns='http://hl7.org/fhir'>
-        <id value='diagnosticrequest'/>
+      <ProcedureRequest xmlns='http://hl7.org/fhir'>
+        <id value='procedurerequest'/>
         <status value='completed'/>
-        <stage>
-          <coding>
-            <system value='http://hl7.org/fhir/ValueSet/diagnostic-request-stage'/>
-            <code value='original-order'/>
-            <display value='Original Order'/>
-          </coding>
-        </stage>
         <code>
           <coding>
             <system value='http://snomed.info/sct'/>
@@ -239,18 +232,20 @@
         <context>
           <reference value='Encounter/encounter'/>
         </context>
-        <authored value='2016-10-31T08:25:00+10:00'/>
+        <authoredOn value='2016-10-31T08:25:00+10:00'/>
         <requester>
-          <reference value='Practitioner/practitioner'/>
+            <agent>
+                <reference value='Practitioner/practitioner'/>
+            </agent>
         </requester>
         <performer>
           <reference value='Organization/pathlab'/>
         </performer>
-      </DiagnosticRequest>
+      </ProcedureRequest>
     </resource>
     <request>
       <method value='PUT'/>
-      <url value='DiagnosticRequest/diagnosticrequest'/>
+      <url value='ProcedureRequest/procedurerequest'/>
     </request>
   </entry>
   <entry>
@@ -286,7 +281,7 @@
             </coding>
           </type>
           <valueReference>
-            <reference value='DiagnosticRequest/diagnosticrequest'/>
+            <reference value='ProcedureRequest/procedurerequest'/>
           </valueReference>
         </input>
         <output>
@@ -330,7 +325,7 @@
           <reference value='Organization/pathlab'/>
         </performer>
         <request>
-          <reference value='DiagnosticRequest/diagnosticrequest'/>
+          <reference value='ProcedureRequest/procedurerequest'/>
         </request>
         <result>
           <reference value='Observation/path-lab-observation'/>

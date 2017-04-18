@@ -118,7 +118,7 @@
                             
                             <p>Ok, so maybe this doctor and pathology lab have no idea about healthcare, a 'Complete blood count' with only a single 'Hemoglobin' result for a Fish allergy. Sounds very fishy to me!</p>
 							
-                            <p>We need you to model this scenario as FHIR resources. You will need to create a Patient, AllergyIntolerance, Appointment, Encounter, Practitioner, DiagnosticRequest, Task, DiagnosticReport, Observation, and two Organization resources and have them reference each other appropriately. Try working as a group to split the load, or just work through the resources one by one together!</p>
+                            <p>We need you to model this scenario as FHIR resources. You will need to create a Patient, AllergyIntolerance, Appointment, Encounter, Practitioner, ProcedureRequest, Task, DiagnosticReport, Observation, and two Organization resources and have them reference each other appropriately. Try working as a group to split the load, or just work through the resources one by one together!</p>
 							<p>See diagram below for how the resources could be setup:</p>
 							<a href="images/patient-fhir-journey-exersize.png" data-lightbox="patient-fhir-journey-exersize"><img src="images/patient-fhir-journey-exersize.png" class="thumbnail"/></a>
 							<h5 id="sam-answer">Exercise answer</h5>
@@ -278,9 +278,9 @@
             <display value='routine'/>
           </coding>
         </priority>
-        <patient>
+        <subject>
           <reference value='Patient/patient'/>
-        </patient>
+        </subject>
         <participant>
           <type>
             <coding>
@@ -341,18 +341,11 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value='DiagnosticRequest/diagnosticrequest'/>
+    <fullUrl value='ProcedureRequest/procedurecrequest'/>
     <resource>
-      <DiagnosticRequest xmlns='http://hl7.org/fhir'>
-        <id value='diagnosticrequest'/>
+      <ProcedureRequest xmlns='http://hl7.org/fhir'>
+        <id value='procedurerequest'/>
         <status value='completed'/>
-        <stage>
-          <coding>
-            <system value='http://hl7.org/fhir/ValueSet/diagnostic-request-stage'/>
-            <code value='original-order'/>
-            <display value='Original Order'/>
-          </coding>
-        </stage>
         <code>
           <coding>
             <system value='http://snomed.info/sct'/>
@@ -366,18 +359,20 @@
         <context>
           <reference value='Encounter/encounter'/>
         </context>
-        <authored value='2016-10-31T08:25:00+10:00'/>
+        <authoredOn value='2016-10-31T08:25:00+10:00'/>
         <requester>
-          <reference value='Practitioner/practitioner'/>
+            <agent>
+                <reference value='Practitioner/practitioner'/>
+            </agent>
         </requester>
         <performer>
           <reference value='Organization/pathlab'/>
         </performer>
-      </DiagnosticRequest>
+      </ProcedureRequest>
     </resource>
     <request>
       <method value='PUT'/>
-      <url value='DiagnosticRequest/diagnosticrequest'/>
+      <url value='ProcedureRequest/procedurerequest'/>
     </request>
   </entry>
   <entry>
@@ -413,7 +408,7 @@
             </coding>
           </type>
           <valueReference>
-            <reference value='DiagnosticRequest/diagnosticrequest'/>
+            <reference value='ProcedureRequest/procedurerequest'/>
           </valueReference>
         </input>
         <output>
@@ -457,7 +452,7 @@
           <reference value='Organization/pathlab'/>
         </performer>
         <request>
-          <reference value='DiagnosticRequest/diagnosticrequest'/>
+          <reference value='ProcedureRequest/procedurerequest'/>
         </request>
         <result>
           <reference value='Observation/path-lab-observation'/>
