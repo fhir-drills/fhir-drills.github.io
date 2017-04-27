@@ -38,10 +38,10 @@ To embed JSON inside a page and get syntax highlighting, use these tags:
 To upload your resources, use the ``uploadFiles("<exercise>", servers.<pick a server>, [an array of arrays with the html resource tag and the file location])``. For example:
 
 ```javascript
-uploadFiles("patient-with-references", servers.sqlonfhir2, [
+uploadFiles("patient-with-references", servers.sqlonfhir3, [
     ["rf-patient", "resource-examples/Patient-f001.json"],
     ["rf-encounter", "resource-examples/Encounter-f001.json"],
-    ["rf-diagnosticrequest", "resource-examples/DiagnosticRequest-f001.json"],
+    ["rf-procedurerequest", "resource-examples/ProcedureRequest-f001.json"],
     ["rf-observation1", "resource-examples/Observation-f001.json"],
     ["rf-observation2", "resource-examples/Observation-f002.json"],
     ["rf-diagnosticreport", "resource-examples/DiagnosticReport-f001.json"]]);
