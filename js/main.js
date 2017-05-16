@@ -8,7 +8,9 @@ var servers = {
     sqlonfhir2: "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
 	sqlonfhir3: "https://sqlonfhir-stu3.azurewebsites.net/fhir",
     theagency: "https://fhir1.ehrp.net.au/Spark/fhir",
-	ontoservercloud: "https://ontoserver.csiro.au/stu3-latest"
+	ontoservercloud: "https://ontoserver.csiro.au/stu3-latest",
+    PyroLocal: "http://localhost:8888/test/stu3/fhir",
+    PyroWeb: "http://pyrohealth.net/test/stu3/fhir"
 };
 
 uploaded = {
@@ -149,7 +151,7 @@ function failedUpload() {
 var patientWithReferencesButton = document.getElementById('patient-with-references-button');
 if (patientWithReferencesButton) {
 	patientWithReferencesButton.onclick = function () {
-		uploadFiles("patient-with-references", servers.sqlonfhir3, [
+		uploadFiles("patient-with-references", servers.PyroWeb, [
 		["rf-patient", "resource-examples/Patient-f001.json"],
 		["rf-encounter", "resource-examples/Encounter-f001.json"],
 		["rf-procedurerequest", "resource-examples/ProcedureRequest-f001.json"],
@@ -162,7 +164,7 @@ if (patientWithReferencesButton) {
 var simplePatientButton = document.getElementById('simple-patient-button');
 if (simplePatientButton) {
 	simplePatientButton.onclick = function () {
-		uploadFiles("simple-patient", servers.sqlonfhir3, [
+		uploadFiles("simple-patient", servers.PyroWeb, [
 		["simple-patient-resourcePatient1", "resource-examples/SimplePatient-resources/PatientResourceExample1.json"]]);
 	};
 }
