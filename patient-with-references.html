@@ -137,7 +137,7 @@
                         <h5 id="pr-find-patient">Step 2: Find your patient</h5>
                         <p>The patient you'll be working with is:</p>
                         <note class="patient-with-references-location-full" id="rf-patient"><i>(press Upload to get a Patient)</i></note>
-                        <p>Open Postman and retrieve the resource, following <a href="./simple-patient.html#Step2">instructions here</a>. You should see <a href="images/patient-in-postman.png" data-lightbox="patient-in-postman">this</a> in Postman when successful.</p>
+                        <p>Open Postman and retrieve the resource, if you have forgotten how then revisit the <a href="./simple-patient.html#Step2">Simple Patient tutorial</a>. You should see <a href="images/patient-in-postman.png" data-lightbox="patient-in-postman">this</a> in Postman when successful.</p>
                         
                         <p>Our sample patient today is Pieter van de Heuvel, who came into the hospital for his scheduled heart valve replacement, but fainted before the procedure could begin - for this reason, the medical staff decided to do some blood tests on the patient first.</p>
                         
@@ -160,9 +160,9 @@
                         <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search-thumb.png" class="thumbnail"/></a>.
                         <p>Three things are of interest are:</p>
                         <ol>
-                            <li>we get a <a href="http://hl7.org/fhir/STU3/bundle.html">Bundle</a> resource back. A Bundle is essentially a container for resources, used in many places including search results.</li>
-                            <li>our Bundle has 1 result in it, which is...</li>
-                            <li>the expected Encounter resource, given how our Patient has just one recorded encounter.</li>
+                            <li>We get a <a href="http://hl7.org/fhir/STU3/bundle.html">Bundle</a> resource back. A Bundle is essentially a container for resources, used in many places including search results.</li>
+                            <li>Our Bundle has 1 result in it, which is...</li>
+                            <li>The expected Encounter resource, given our Patient has just one recorded encounter.</li>
                         </ol>
                         <p>We've now successfully located which encounters our patient has using a reference - congratulations!</p>
                         
