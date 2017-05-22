@@ -157,7 +157,7 @@
                         
                         <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient</b></code></p>                        
                         
-                        <p>We also need to tell the server which particular Patient resource we want. Generally, you would want to use a Patient's Medicare record number, name or other identifiers and we will cover that later in searching. For now we are going to use the resource <b>id</b> to locate our patient. We will also cover more about resource <b>ids</b> a bit later. For now, let's just add the following resource <b>id</b> to our URL we are constructing:</p>
+                        <p>We also need to tell the server which particular Patient resource we want. Generally, you would want to use a Patient's Medical Record Number (MRN), name or other identifiers and we will cover that later in searching. For now we are going to use the resource <b>id</b> to locate our patient. We will also cover more about resource <b>ids</b> a bit later. For now, let's just add the following resource <b>id</b> to our URL we are constructing:</p>
                         
                         <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
                         
@@ -206,9 +206,9 @@
                         
                         <ul>
                           <li><p><b>GET: </b>Used to retrieve known existing resources and requires a resource <b>id</b> or search parameters to identify the resource or resources required.</p>        
-                          <li><p><b>PUT: </b>Used to update existing resources and always requires a resource <b>id</b> identifying the resource being updated. It can also add a new resource if no resource is found for the <b>id</b> given. In this case, most servers will discard the <b>id</b> and assign their own new <b>id</b> when adding the new resource.</p>
+                          <li><p><b>PUT: </b>Used to update existing resources and always requires a resource <b>id</b> identifying the resource being updated. It can also add a new resource if no resource is found for the <b>id</b> given. In this case, some servers may discard the <b>id</b> and assign their own new <b>id</b> when adding the new resource.</p>
                           </li>
-                          <li><p><b>POST: </b>Used to add new resources, there must not be an <b>id</b> in the URL or the resource's content.</p></li>
+                          <li><p><b>POST: </b>Used to add new resources, there must not be an <b>id</b> in the URL or the resource's content. The server will assign its own <b>id</b> to the resource</p></li>
                           <li><p><b>DELETE: </b>Used to remove an existing resource from the server and always requires a resource <b>id</b> to identify the resource being removed. Most servers keep a history of the resource so you can still retrieve the removed resources using the history interaction, we will cover this later.</p></li>                                                    
                         </ul>
                                                 
