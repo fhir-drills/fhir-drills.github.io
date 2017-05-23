@@ -201,18 +201,18 @@ namespace SimpleFhir
     static void Main(string[] args)
     {
       var MyPatient = new Hl7.Fhir.Model.Patient();
-          
+
       //Patient's Name
       var PatientName = new Hl7.Fhir.Model.HumanName();
       PatientName.Use = Hl7.Fhir.Model.HumanName.NameUse.Official;
       PatientName.Prefix = new string[] { "Mr" };
       PatientName.Given = new string[] { "Sam" };
-      PatientName.Family = new string[] { "Fhirman" };
+      PatientName.Family = "Fhirman";
       MyPatient.Name = new List<Hl7.Fhir.Model.HumanName>();
       MyPatient.Name.Add(PatientName);
 
       //Patient Identifier 
-      var PatientIdentifier = new Hl7.Fhir.Model.Identifier();      
+      var PatientIdentifier = new Hl7.Fhir.Model.Identifier();
       PatientIdentifier.System = "http://ns.electronichealth.net.au/id/hi/ihi/1.0";
       PatientIdentifier.Value = "8003608166690503";
       MyPatient.Identifier = new List<Hl7.Fhir.Model.Identifier>();
@@ -230,7 +230,7 @@ namespace SimpleFhir
         Console.WriteLine("");
         Console.WriteLine("");
       }
-      catch(Exception Exec)
+      catch (Exception Exec)
       {
         Console.Write("Error message: " + Exec.Message);
       }
@@ -318,8 +318,8 @@ namespace SimpleFhir
     static void Main(string[] args)
     {
       //The fhir server end point address      
-      string ServiceRootUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";
-      
+      string ServiceRootUrl = "http://pyrohealth.net/test/stu3/fhir";
+
       //Create a patient resource instance
       var MyPatient = new Hl7.Fhir.Model.Patient();
 
@@ -328,7 +328,7 @@ namespace SimpleFhir
       PatientName.Use = Hl7.Fhir.Model.HumanName.NameUse.Official;
       PatientName.Prefix = new string[] { "Mr" };
       PatientName.Given = new string[] { "Sam" };
-      PatientName.Family = new string[] { "Fhirman" };
+      PatientName.Family = "Fhirman" ;
       MyPatient.Name = new List<Hl7.Fhir.Model.HumanName>();
       MyPatient.Name.Add(PatientName);
 
@@ -338,19 +338,19 @@ namespace SimpleFhir
       PatientIdentifier.Value = "8003608166690503";
       MyPatient.Identifier = new List<Hl7.Fhir.Model.Identifier>();
       MyPatient.Identifier.Add(PatientIdentifier);
-      
+
       //Create a client to send to the server at a given endpoint.
       var FhirClient = new Hl7.Fhir.Rest.FhirClient(ServiceRootUrl);
-      
+
       // increase timeouts since the server might be powered down
       FhirClient.Timeout = (60 * 1000);
-      
+
       Console.WriteLine("Press any key to send to server: " + ServiceRootUrl);
       Console.ReadKey();
       try
       {
         //Attempt to send the resource to the server endpoint
-        Hl7.Fhir.Model.Patient ReturnedPatient = FhirClient.Create<Hl7.Fhir.Model.Patient>(MyPatient);        
+        Hl7.Fhir.Model.Patient ReturnedPatient = FhirClient.Create<Hl7.Fhir.Model.Patient>(MyPatient);
         Console.WriteLine(string.Format("Resource is available at: {0}", ReturnedPatient.Id));
         Console.WriteLine();
         Console.WriteLine("This is what we sent up: ");
@@ -481,9 +481,9 @@ namespace SimpleFhir
     static void Main(string[] args)
     {
       //The fhir server end point address      
-      string ServiceRootUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";      
+      string ServiceRootUrl = "http://PyroHealth.net/test/stu3/fhir";
       //Create a client to send to the server at a given endpoint.
-      var FhirClient = new Hl7.Fhir.Rest.FhirClient(ServiceRootUrl);      
+      var FhirClient = new Hl7.Fhir.Rest.FhirClient(ServiceRootUrl);
       // increase timeouts since the server might be powered down
       FhirClient.Timeout = (60 * 1000);
 
@@ -496,7 +496,7 @@ namespace SimpleFhir
         Hl7.Fhir.Model.Bundle ReturnedSearchBundle = FhirClient.Search<Hl7.Fhir.Model.Patient>(new string[] { "family=Fhirman" });
         Console.WriteLine(string.Format("Found: {0} Fhirman patients.", ReturnedSearchBundle.Total.ToString()));
         Console.WriteLine("Their logical IDs are:");
-        foreach(var Entry in ReturnedSearchBundle.Entry)
+        foreach (var Entry in ReturnedSearchBundle.Entry)
         {
           Console.WriteLine("ID: " + Entry.Resource.Id);
         }
