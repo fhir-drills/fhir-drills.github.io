@@ -68,7 +68,7 @@
             <target>
                 <code value="present" />
                 <equivalence value="disjoint" />
-                <comments value="An example mapping demonstrating how you can explicitly show that two concepts are not related" />
+                <comment value="An example mapping demonstrating how you can explicitly show that two concepts are not related" />
             </target>
         </element>
     </group>

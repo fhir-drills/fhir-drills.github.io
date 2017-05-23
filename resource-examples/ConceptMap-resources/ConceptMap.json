@@ -88,7 +88,7 @@
             {
               "code": "present",
               "equivalence": "disjoint",
-              "comments": "An example mapping demonstrating how you can explicitly show that two concepts are not related"
+              "comment": "An example mapping demonstrating how you can explicitly show that two concepts are not related"
             }
           ]
         }
