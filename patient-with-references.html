@@ -170,7 +170,7 @@
                         <p>References don't always have to point to a resource located elsewhere, they can also point to resources that are <a href="http://hl7.org/fhir/STU3/references.html#contained">contained</a> (embedded) in the resource. Load up  our ProcedureRequest in Postman:</p>
                         <pre><b><span class="patient-with-references-location-full" id="rf-procedurerequest">(press Upload first)</span></b></pre>
                         
-                        <p>Press press Ctrl/&#8984;+F and copy/paste <code>practitionerid</code> - you'll find two references to it, one in <code>&lt;reference value="#practitionerid" /&gt;</code> and another in a <code>&lt;contained&gt;</code> field:</p>
+                        <p>Press Ctrl/&#8984;+F and copy/paste <code>practitionerid</code> - you'll find two references to it, one in <code>&lt;reference value="#practitionerid" /&gt;</code> and another in a <code>&lt;contained&gt;</code> field:</p>
                         <img src="images/postman-contained-reference.png" class="centered"/>
                         <p>Whenever you see an identifier start with the hash sign (#), you will see a corresponding resource within the &lt;contained&gt; field, embedded in the parent resource. Such embedding should only be done in the cases where the embedded resource can't exist on its own - for example it can't have an identifier to uniquely identify it or it only makes sense in a particular transaction scope.</p>
                     </div>
