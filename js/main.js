@@ -10,7 +10,7 @@ var servers = {
     theagency: "https://fhir1.ehrp.net.au/Spark/fhir",
 	ontoservercloud: "https://ontoserver.csiro.au/stu3-latest",
     PyroLocal: "http://localhost:8888/test/stu3/fhir",
-    PyroWeb: "http://pyrohealth.net/test/stu3/fhir"
+    PyroWeb: "https://pyrohealth.net/test/stu3/fhir"
 };
 
 uploaded = {
