@@ -153,7 +153,7 @@
                         
                         <p>Next, we will look at the FHIR resources used for these concepts which are also named CodeSystem and ValueSet.</p>
                         
-                        <h5 id="vac-step2">Step 2: CodeSystem the FHIR Resources</h5>
+                        <h5 id="vac-step2">Step 2: CodeSystem the FHIR Resource</h5>
                         
                         <p>Let's take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
 
@@ -228,7 +228,11 @@
                         </ul>
                         <p><b>Here is a simple example of a ValueSet FHIR resource</b></p>
                         
-                        <p>This ValueSet selects codes from the CodeSystem example we looked at in <a href="#vac-step2">Step 2</a>. Notice that this ValueSet selects both the <b>'easy'</b> and <b>'hard'</b> codes from the CodeSystem. The CodeSystem is referenced using the '<b><code>compose/include/system/@value</code></b>' which points to the GUID seen in the CodeSystem's '<b><code>url</code></b>' property. Remember the ValueSet is free to pick and choose whichever codes it requires from the CodeSystem, it could even select more codes from another CodeSystem if required.</p>
+                        <p>This ValueSet resource below selects codes from the CodeSystem example we looked at in <a href="#vac-step2">Step 2</a>. Notice that this ValueSet selects both the <b>'easy'</b> and <b>'hard'</b> codes from the CodeSystem. 
+                        
+                        <p>Please notice how the the CodeSystem is referenced in the ValueSet using the '<b><code>compose/include/system/@value</code></b>' which points to the GUID seen in the CodeSystem's '<b><code>url</code></b>' property. Take special note of this '<b><code>url</code></b>' property as it is not the resource id or the URL to the FHIR resource in the server. Rather, it is a property of the CodeSystem resource. This '<b><code>url</code></b>' is intended to be globally unique, so the same CodeSystem can be in any number of servers and can always be found by this '<b><code>url</code></b>', not by the resource id.</p> 
+                        
+                        <p>Remember the ValueSet is free to pick and choose whichever codes it requires from the CodeSystem, it could even select more codes from another CodeSystem if required.</p>
                         
 						<textarea id="valuesystem-1" class="fhir-resource-xml"><?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir">
@@ -296,11 +300,11 @@
                         
                         <p><h5 id="vac-step4">Step 4: Understanding how ValueSet codes are stored</h5></p>
                         
-                        <p>It is easy to fall into the trap of thinking that the code information you list in a ValueSet will be exactly the same code information used when a ValueSet is called upon by a system. This isn't the case, however, as the codes stored in a ValueSet actually belong to a CodeSystem - a valueset instance only contains the 'links' to the actual codes in a codesystem. Thus when a codesystem's codes are updated, the valuesets containing updated codes will contain the updated codes automatically. This is demonstrated well by one of the primary uses of a ValueSet: getting a list of codes to present to a user as specified by the links in the valueset, this is done with a special operation on the FHIR Terminology Server called <b>'<code>$expand</code>'</b>. This is known as ValueSet Expansion or ValueSet enumeration.</p>
+                        <p>It is easy to fall into the trap of thinking that the code information you list in a ValueSet will be exactly the same code information used when a ValueSet is called upon by a system. This isn't the case, however, as the codes stored in a ValueSet actually belong to a CodeSystem - a valueset instance only contains the 'links' to the actual codes in a codesystem. Thus when a codesystem's codes are updated, the valuesets containing these codes will contain the updated codes automatically. This is demonstrated well by one of the primary uses of a ValueSet: getting a list of codes to present to a user as specified by the links in the valueset, this is done with a special operation on the FHIR Terminology Server called <b>'<code>$expand</code>'</b>. This is known as ValueSet Expansion or ValueSet enumeration.</p>
                         
                         <p>We are not going to go into how to perform an expansion now (see <a href="#vac-step6">step 6</a> for that), but you do need to know what happens in the FHIR Terminology Server when an expansion is performed as it is key to your understanding.</p>
                         
-                        <p>As seen in this first diagram (you can click to enlarge) a developer calls the <b>'<code>&#36;expand</code>'</b> operation on a given ValueSet because they want the list of codes and descriptions to display to a user. As we have seen, the ValueSet has a list of codes and it know the CodeSystems for each code.</p>
+                        <p>As seen in this first diagram (you can click to enlarge) a developer calls the <b>'<code>&#36;expand</code>'</b> operation on a given ValueSet because they want the list of codes and descriptions to display to a user. As we have seen, the ValueSet has a list of codes and it knows the CodeSystems for each code.</p>
                         
                         
                         <p><a href="images/ValueSetExpansionRequestDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img src="images/ValueSetExpansionRequestDiagram.png" width="50%" class="thumbnail"/></a></p>
@@ -314,7 +318,7 @@
                         <h5 id="vac-step5">Step 5: Creating ValueSets using filters (Include, Exclude and Filter)</h5>
                         <p>In the previous '<a href="#vac-step4">Step 4: Understanding how ValueSet codes are used</a>' we learnt that ValueSets only select codes from CodeSystems. In our simple ValueSet example we selected, or rather 'Included', our codes by stating the actual code values '<b>easy</b>' and '<b>hard</b>' as they were seen in our CodeSystem. Yet, there is another way to select codes for inclusion in the ValueSet which is by using a filter.</p>
                         
-                        <p>We will avoid deep diving on filters but it is worth noting they exist and can be used. Typically a filter would be used when the code system being used has a hierarchical structure, meaning each code can have a parent or children codes such as the LOINC code system or even poly-hierarchical where codes can have many parents and many children codes such as SNOMED-CT.</p>
+                        <p>We will avoid deep diving on filters but it is worth noting they exist and can be used. Typically a filter would be used when the code system being used has a hierarchical structure, meaning each code can have a parent or children codes such as the LOINC code system or even a poly-hierarchical system where codes can have many parents and many children codes such as SNOMED-CT.</p>
                         
                         <p><a href="images/ValueSetToeNailSNOMEDCode.png" data-lightbox="ValueSetToeNailSNOMEDCode"><img src="images/ValueSetToeNailSNOMEDCode.png" width="80%" class="thumbnail"/></a></p>
                         
@@ -342,7 +346,9 @@
                         <code class="expand-operation-location-full" id="vac-expand-valueset">[Service Root URL]/[Resource Type]/[Resource Id]</code><code>/$expand</code>
                         <p>Try entering <span class="expand-operation-location-full" id="vac-expand-valueset">[upload resource above first]</span><span>/$expand</span> into Postman - and you'll receive an expanded ValueSet resource:</p>
                         <a href="images/valueset-expantion.png" data-lightbox="valueset-expansion"><img src="images/valueset-expantion-thumbnail.png" class="thumbnail"/></a>
-                        <p>There are two things of interest here: 1) the narrative of the resource, where you can clearly see that this is an expansion of a valueset, and 2) the expansion of codes itself, where you can see that all the codes are listed under the 'expansion' element instead of the 'compose' element as you would when you're creating your valueset. While the 'compose' element can list both the filters or full list of codes that compose the valueset, the 'expansion' element will always list the full set of codes in the valueset.</p>
+                        <p>There are two things of interest here:</p> 
+                        <p><li>The narrative of the resource, where you can clearly see that this is an expansion of a valueset, and</li> <li>The expansion of codes itself, where you can see that all the codes are listed under the 'expansion' element instead of the 'compose' element as you would when you're creating your valueset. </li> </p>
+                        <p>While the 'compose' element can list both the filters or full list of codes that compose the valueset, the 'expansion' element will always list the full set of codes in the valueset.</p>
                         <p>The 'expansion' element in the spec allows for containment of the parameters that controlled the expansion, the expanded codes themselves, and some metadata such as the timestamp of the expansion and the offset where the expansion should start.</p>
                         <p>You can also control the expansion by applying parameters to it. The filter parameter, for example, allows you to filter the codes by text - if you try entering <span class="expand-operation-location-full" id="vac-expand-valueset">[upload resource above first]</span><span>/$expand?filter=easy</span> into Postman, you'll see that just one code is returned then, and that is the 'easy' one.</p>
                     </div>
