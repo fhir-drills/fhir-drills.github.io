@@ -151,7 +151,7 @@ function failedUpload() {
 var patientWithReferencesButton = document.getElementById('patient-with-references-button');
 if (patientWithReferencesButton) {
 	patientWithReferencesButton.onclick = function () {
-		uploadFiles("patient-with-references", servers.sqlonfhir3, [
+		uploadFiles("patient-with-references", servers.PyroWeb, [
 		["rf-patient", "resource-examples/Patient-f001.json"],
 		["rf-encounter", "resource-examples/Encounter-f001.json"],
 		["rf-procedurerequest", "resource-examples/ProcedureRequest-f001.json"],
