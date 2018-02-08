@@ -9,17 +9,9 @@
     {
       "use": "usual",
       "system": "urn:oid:2.16.840.1.113883.2.4.6.3",
-      "value": "738472983",
-      "_value": {
-        "fhir_comments": [
-          "    BSN identification system    "
-        ]
-      }
+      "value": "738472983"      
     },
-    {
-      "fhir_comments": [
-        "    BSN identification system    "
-      ],
+    {      
       "use": "usual",
       "system": "urn:oid:2.16.840.1.113883.2.4.6.3"
     }
@@ -55,10 +47,7 @@
   "birthDate": "1944-11-17",
   "deceasedBoolean": false,
   "address": [
-    {
-      "fhir_comments": [
-        "    ISO 3166 Codes (Countries)    "
-      ],
+    {      
       "use": "home",
       "line": [
         "Van Egmondkade 23"
@@ -115,12 +104,7 @@
         "coding": [
           {
             "system": "urn:ietf:bcp:47",
-            "code": "nl",
-            "_code": {
-              "fhir_comments": [
-                "    IETF language tag    "
-              ]
-            },
+            "code": "nl",            
             "display": "Dutch"
           }
         ],

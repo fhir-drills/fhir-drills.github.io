@@ -58,12 +58,7 @@
 		"coding":[  
 		   {  
 			  "system":"http://loinc.org",
-			  "code":"58410-2",
-			  "_code":{  
-				 "fhir_comments":[  
-					"     LOINC     "
-				 ]
-			  },
+			  "code":"58410-2",			  
 			  "display":"Complete blood count (hemogram) panel - Blood by Automated count"
 		   }
 		]

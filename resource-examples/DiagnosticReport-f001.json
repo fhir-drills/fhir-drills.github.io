@@ -36,19 +36,11 @@
     ]
   },
   "subject": {
-    "fhir_comments": [
-      "    ISO 8601    "
-    ],
     "reference": "Patient/digitalhealth-f001",
     "display": "P. van den Heuvel"
   },
   "effectiveDateTime": "2013-04-02",
-  "issued": "2013-05-15T19:32:52+01:00",
-  "_issued": {
-    "fhir_comments": [
-      "    OID: 2.16.840.1.113883.4.642.1.7    "
-    ]
-  },
+  "issued": "2013-05-15T19:32:52+01:00",  
   "basedOn": [
     {
       "reference": "ProcedureRequest/digitalhealth-f001"

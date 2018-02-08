@@ -65,10 +65,7 @@
       "system": "http://www.amc.nl/zorgportal/identifiers/pre-admissions",
       "value": "93042"
     },
-    "admitSource": {
-      "fhir_comments": [
-        "        <preAdmissionTest>\n            <coding>\n                <system value=\"http://snomed.info/sct\"/>\n                <code value=\"164847006\"/>\n                <display value=\"Standard ECG\"/>\n            </coding>\n            <coding>\n                <system value=\"http://snomed.info/sct\"/>\n                <code value=\"396550006\"/>\n                <display value=\"Blood test\"/>\n            </coding>\n        </preAdmissionTest>   "
-      ],
+    "admitSource": {      
       "coding": [
         {
           "system": "http://snomed.info/sct",
