@@ -3,7 +3,7 @@
 Decide on an exercise name - in this example, the exercise name is ``patient-with-references``.
 
 ## Full URL
-To use the full server URL of a resource, use ``class="<exercise>-location-full" id="<html resource tag>"`` - you can use this on any HTML element. For example,,,
+To use the full server URL of a resource, use ``class="<exercise>-location-full" id="<html resource tag>"`` - you can use this on any HTML element. For example,
 
 ```html
 <note class="patient-with-references-location-full" id="rf-patient"><i>press Upload to get a Patient</i></note>
@@ -38,7 +38,7 @@ To embed JSON inside a page and get syntax highlighting, use these tags:
 To upload your resources, use the ``uploadFiles("<exercise>", servers.<pick a server>, [an array of arrays with the html resource tag and the file location])``. For example:
 
 ```javascript
-uploadFiles("patient-with-references", servers.sqlonfhir3, [
+uploadFiles("patient-with-references", servers.PyroWeb, [
     ["rf-patient", "resource-examples/Patient-f001.json"],
     ["rf-encounter", "resource-examples/Encounter-f001.json"],
     ["rf-procedurerequest", "resource-examples/ProcedureRequest-f001.json"],
