@@ -3,7 +3,7 @@
 Decide on an exercise name - in this example, the exercise name is ``patient-with-references``.
 
 ## Full URL
-To use the full server URL of a resource, use ``class="<exercise>-location-full" id="<html resource tag>"`` - you can use this on any HTML element. For example,
+To use the full server URL of a resource, use ``class="<exercise>-location-full" id="<html resource tag>"`` - you can use this on any HTML element. For example,,,
 
 ```html
 <note class="patient-with-references-location-full" id="rf-patient"><i>press Upload to get a Patient</i></note>
