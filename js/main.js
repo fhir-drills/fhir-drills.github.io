@@ -1,17 +1,9 @@
 var servers = {
     // all of these need to be made https, can't upload to http from an https page
-    spark: "http://spark.furore.com/fhir",
-    fhir2: "http://fhir2.healthintersections.com.au/open",
-    fhir3: "http://fhir3.healthintersections.com.au/open",
-    hapi2: "http://fhirtest.uhn.ca/baseDstu2",
-    hapi3: "http://fhirtest.uhn.ca/baseDstu3",
-    sqlonfhir2: "https://sqlonfhir-dstu2.azurewebsites.net/fhir",
-	sqlonfhir3: "https://sqlonfhir-stu3.azurewebsites.net/fhir",
-    theagency: "https://fhir1.ehrp.net.au/Spark/fhir",
-	ontoservercloud: "https://ontoserver.csiro.au/stu3-latest",
-    PyroLocal: "http://localhost:8888/test/stu3/fhir",
-    PyroWeb: "https://stu3.test.pyrohealth.net/fhir"
-};
+    ontoserverr4: "https://r4.ontoserver.csiro.au/fhir",
+    hapi4: "http://hapi.fhir.org/baseR4",
+    hapiHL7AU: "https://hapi-hl7-au-training-server.australiaeast.cloudapp.azure.com/fhir"
+}
 
 uploaded = {
     //    object structure:
@@ -151,7 +143,7 @@ function failedUpload() {
 var patientWithReferencesButton = document.getElementById('patient-with-references-button');
 if (patientWithReferencesButton) {
 	patientWithReferencesButton.onclick = function () {
-		uploadFiles("patient-with-references", servers.PyroWeb, [
+		uploadFiles("patient-with-references", servers.hapi4, [
 		["rf-patient", "resource-examples/Patient-f001.json"],
 		["rf-encounter", "resource-examples/Encounter-f001.json"],
 		["rf-procedurerequest", "resource-examples/ProcedureRequest-f001.json"],
@@ -164,7 +156,7 @@ if (patientWithReferencesButton) {
 var simplePatientButton = document.getElementById('simple-patient-button');
 if (simplePatientButton) {
 	simplePatientButton.onclick = function () {
-		uploadFiles("simple-patient", servers.PyroWeb, [
+		uploadFiles("simple-patient", servers.hapi4, [
 		["simple-patient-resourcePatient1", "resource-examples/SimplePatient-resources/PatientResourceExample1.json"]]);
 	};
 }
@@ -173,7 +165,7 @@ if (simplePatientButton) {
 var conceptMapButton = document.getElementById('conceptmap-button');
 if (conceptMapButton) {
 	conceptMapButton.onclick = function () {
-		uploadFiles("conceptmap", servers.sqlonfhir3, [
+		uploadFiles("conceptmap", servers.hapi4, [
 			["cm-codesystem", "resource-examples/ConceptMap-resources/Codesystem.json"],
 			["cm-old-valueset", "resource-examples/ConceptMap-resources/Old-ValueSet.json"],
 			["cm-new-valueset", "resource-examples/ConceptMap-resources/New-ValueSet.json"],
@@ -184,7 +176,7 @@ if (conceptMapButton) {
 var expandOperationButton = document.getElementById('expand-operation-button');
 if (expandOperationButton) {
 	expandOperationButton.onclick = function () {
-		uploadFiles("expand-operation", servers.sqlonfhir3, [
+		uploadFiles("expand-operation", servers.hapi4, [
 		["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
 	};
 }
