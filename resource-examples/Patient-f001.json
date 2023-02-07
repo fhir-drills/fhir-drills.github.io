@@ -112,9 +112,5 @@
       },
       "preferred": true
     }
-  ],
-  "managingOrganization": {
-    "reference": "Organization/digitalhealth-f001",
-    "display": "Burgers University Medical Centre"
-  }
+  ]
 }

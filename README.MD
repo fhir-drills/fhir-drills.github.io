@@ -38,7 +38,7 @@ To embed JSON inside a page and get syntax highlighting, use these tags:
 To upload your resources, use the ``uploadFiles("<exercise>", servers.<pick a server>, [an array of arrays with the html resource tag and the file location])``. For example:
 
 ```javascript
-uploadFiles("patient-with-references", servers.hapi4, [
+uploadFiles("patient-with-references", servers.hapi3, [
     ["rf-patient", "resource-examples/Patient-f001.json"],
     ["rf-encounter", "resource-examples/Encounter-f001.json"],
     ["rf-procedurerequest", "resource-examples/ProcedureRequest-f001.json"],
