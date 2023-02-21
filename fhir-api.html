@@ -327,7 +327,7 @@ namespace SimpleFhir
     static void Main(string[] args)
     {
       //The fhir server end point address      
-      string ServiceRootUrl = "http://hapi.fhir.org/baseDstu3";
+      string ServiceRootUrl = "https://hapi.fhir.org/baseDstu3";
 
       //Create a patient resource instance
       var MyPatient = new Hl7.Fhir.Model.Patient();
@@ -490,7 +490,7 @@ namespace SimpleFhir
     static void Main(string[] args)
     {
       //The fhir server end point address      
-      string ServiceRootUrl = "http://hapi.fhir.org/baseDstu3";
+      string ServiceRootUrl = "https://hapi.fhir.org/baseDstu3";
       //Create a client to send to the server at a given endpoint.
       var FhirClient = new Hl7.Fhir.Rest.FhirClient(ServiceRootUrl);
       // increase timeouts since the server might be powered down

@@ -1,7 +1,7 @@
 var servers = {
     // all of these need to be made https, can't upload to http from an https page
     ontoserverr4: "https://r4.ontoserver.csiro.au/fhir",
-    hapi3: "http://hapi.fhir.org/baseDstu3",
+    hapi3: "https://hapi.fhir.org/baseDstu3",
     hapiHL7AU: "https://hapi-hl7-au-training-server.australiaeast.cloudapp.azure.com/fhir"
 }
 
