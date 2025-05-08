@@ -1,6 +1,8 @@
 {  
    "resourceType":"ProcedureRequest",
    "id":"digitalhealth-f001",
+   "status":"active",
+   "intent":"order",
    "identifier":[  
       {  
          "use":"official",
@@ -12,14 +14,12 @@
       "reference":"Patient/digitalhealth-f001",
       "display":"P. van den Heuvel"
    },
-   "requester":[  
-      {
-          "agent":{
-                "reference":"#practitionerid",
-                "display":"Dr. Adam Careful"
-          }
+   "requester":{
+      "agent":{
+         "reference":"#practitionerid",
+         "display":"Dr. Adam Careful"
       }
-   ],
+   },
    "contained":[  
       {  
          "resourceType":"Practitioner",
@@ -33,9 +33,7 @@
          "active":true,
          "name":[  
             {  
-               "family":[  
-                  "Careful"
-               ],
+               "family":"Careful",
                "given":[  
                   "Adam"
                ],
@@ -54,13 +52,13 @@
          "text":"patient fainted before a procedure"
       }
    ],
-	 "code":{  
-		"coding":[  
-		   {  
-			  "system":"http://loinc.org",
-			  "code":"58410-2",			  
-			  "display":"Complete blood count (hemogram) panel - Blood by Automated count"
-		   }
-		]
-	 }
+   "code":{  
+      "coding":[  
+         {  
+            "system":"http://loinc.org",
+            "code":"58410-2",            
+            "display":"CBC panel - Blood by Automated count"
+         }
+      ]
+   }
 }
