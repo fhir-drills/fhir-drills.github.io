@@ -63,6 +63,52 @@
             z-index: 900;
         }
 
+        /* Language switching CSS */
+        .lang-content {
+            display: none;
+        }
+        
+        body.lang-en .lang-en {
+            display: block;
+        }
+        
+        body.lang-en .lang-en.inline {
+            display: inline;
+        }
+        
+        body.lang-ru .lang-ru {
+            display: block;
+        }
+        
+        body.lang-ru .lang-ru.inline {
+            display: inline;
+        }
+        
+        /* Language selector styling */
+        .language-selector {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .lang-btn {
+            background: #673ab7;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .lang-btn:hover {
+            background: #5e35b1;
+        }
+        
+        .lang-btn.active {
+            background: #e91e63;
+        }
+
     </style>
     <link href="css/lightbox.min.css" rel="stylesheet">
   <script>
@@ -76,7 +122,7 @@
   </script>	
 </head>
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base lang-en">
 <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -98,176 +144,405 @@
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">FHIR<sup>®</sup> tutorials</span>
+    <span class="mdl-layout-title">
+        <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
+        <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
+    </span>
     <nav class="mdl-navigation">
-		<a href="./index.html" class="mdl-navigation__link">Overview</a>
-		<a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link is-active-tab">Simple Patient</a>
-		<a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">Simple Search</a>
-		<a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">Patient with References</a>
-		<a href="./bundle.html" id="bundle" class="mdl-navigation__link">Bundle</a>
-		<a href="./operations.html" id="operations" class="mdl-navigation__link">Operations</a>
-		<a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">ValueSet &amp; CodeSystem</a>
-		<a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">ConceptMap</a>
-		<a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">FHIR APIs</a>
-		<a href="#" class="mdl-navigation__link"></a>
-		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
+        <a href="./index.html" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Overview</span>
+            <span class="lang-content lang-ru">Обзор</span>
+        </a>
+        <a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link is-active-tab">
+            <span class="lang-content lang-en">Simple Patient</span>
+            <span class="lang-content lang-ru">Простой пациент</span>
+        </a>
+        <a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Simple Search</span>
+            <span class="lang-content lang-ru">Простой поиск</span>
+        </a>
+        <a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Patient with References</span>
+            <span class="lang-content lang-ru">Пациент со ссылками</span>
+        </a>
+        <a href="./bundle.html" id="bundle" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Bundle</span>
+            <span class="lang-content lang-ru">Пакет</span>
+        </a>
+        <a href="./operations.html" id="operations" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Operations</span>
+            <span class="lang-content lang-ru">Операции</span>
+        </a>
+        <a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">
+            <span class="lang-content lang-en">ValueSet &amp; CodeSystem</span>
+            <span class="lang-content lang-ru">ValueSet и CodeSystem</span>
+        </a>
+        <a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">
+            <span class="lang-content lang-en">ConceptMap</span>
+            <span class="lang-content lang-ru">ConceptMap</span>
+        </a>
+        <a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">
+            <span class="lang-content lang-en">FHIR APIs</span>
+            <span class="lang-content lang-ru">FHIR API</span>
+        </a>
+        <a href="#" class="mdl-navigation__link"></a>
+        <a href="./exercises.html" class="mdl-navigation__link">
+            <span class="lang-content lang-en">FHIR exercises</span>
+            <span class="lang-content lang-ru">FHIR упражнения</span>
+        </a>
     </nav>
   </div>
   <main class="mdl-layout__content">
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
-                        <h4>Patient resource</h4>
-                        <p>This tutorial is designed for FHIR beginners wishing to become familiarised with the basics of FHIR. In this tutorial, we will walk through the basic CRUD operations. CRUD stands for Create, Read, Update &amp; Delete. These are the four main actions that you will use to interact with the FHIR resources within a FHIR server. Understanding these four operations is essential to working with any RESTful service which a FHIR server is an implementation of. REST stands for 'Representational state transfer' and RESTFul just means a system that conforms to the constraints of REST. You don't need to know any more about REST at this stage for the tutorial but if you want more on REST take a look at this page, <a href="https://en.wikipedia.org/wiki/Representational_state_transfer" rel="stylesheet">Representational state transfer (REST)</a>.</p>
-                        <ul class="toc">
-                            <h4>Contents</h4>
-                            <a href="#Step1">Step 1: Setup a Http post client</a>
-                            <a href="#Step2">Step 2: Getting your first resource from a FHIR server</a>
-                            <a href="#Step3">Step 3: Updating your resource in the FHIR server</a>
-                            <a href="#Step4">Step 4: Adding a new resource to the FHIR server</a>   
-                            <a href="#Step5">Step 5: Deleting a resource from the FHIR server</a>   
-                        </ul>
+                        
+                        <div class="lang-content lang-en">
+                            <h4>Patient resource</h4>
+                            <p>This tutorial is designed for FHIR beginners wishing to become familiarised with the basics of FHIR. In this tutorial, we will walk through the basic CRUD operations. CRUD stands for Create, Read, Update &amp; Delete. These are the four main actions that you will use to interact with the FHIR resources within a FHIR server. Understanding these four operations is essential to working with any RESTful service which a FHIR server is an implementation of. REST stands for 'Representational state transfer' and RESTFul just means a system that conforms to the constraints of REST. You don't need to know any more about REST at this stage for the tutorial but if you want more on REST take a look at this page, <a href="https://ru.wikipedia.org/wiki/REST" rel="stylesheet">Representational state transfer (REST)</a>.</p>
+                            <ul class="toc">
+                                <h4>Contents</h4>
+                                <a href="#Step1">Step 1: Setup a Http post client</a>
+                                <a href="#Step2">Step 2: Getting your first resource from a FHIR server</a>
+                                <a href="#Step3">Step 3: Updating your resource in the FHIR server</a>
+                                <a href="#Step4">Step 4: Adding a new resource to the FHIR server</a>   
+                                <a href="#Step5">Step 5: Deleting a resource from the FHIR server</a>   
+                            </ul>
+                        </div>
+                        
+                        <div class="lang-content lang-ru">
+                            <h4>Ресурс пациента</h4>
+                            <p>Этот урок предназначен для начинающих изучать FHIR, желающих ознакомиться с основами FHIR. В этом уроке мы рассмотрим основные операции CRUD. CRUD означает Create (Создать), Read (Прочитать), Update (Обновить) и Delete (Удалить). Это четыре основных действия, которые вы будете использовать для взаимодействия с ресурсами FHIR на сервере FHIR. Понимание этих четырех операций необходимо для работы с любым RESTful сервисом, реализацией которого является сервер FHIR. REST означает 'Representational state transfer' (передача состояния представления), а RESTful просто означает систему, которая соответствует ограничениям REST. На данном этапе урока вам не нужно знать больше о REST, но если вы хотите узнать больше о REST, посмотрите эту страницу: <a href="https://en.wikipedia.org/wiki/Representational_state_transfer" rel="stylesheet">Representational state transfer (REST)</a>.</p>
+                            <ul class="toc">
+                                <h4>Содержание</h4>
+                                <a href="#Step1">Шаг 1: Настройка HTTP-клиента</a>
+                                <a href="#Step2">Шаг 2: Получение первого ресурса с сервера FHIR</a>
+                                <a href="#Step3">Шаг 3: Обновление ресурса на сервере FHIR</a>
+                                <a href="#Step4">Шаг 4: Добавление нового ресурса на сервер FHIR</a>   
+                                <a href="#Step5">Шаг 5: Удаление ресурса с сервера FHIR</a>   
+                            </ul>
+                        </div>
 
-                        <h5 id="Step1">Step 1: Setup a Http post client</h5>
+                        <h5 id="Step1">
+                            <span class="lang-content lang-en">Step 1: Setup a Http post client</span>
+                            <span class="lang-content lang-ru">Шаг 1: Настройка HTTP-клиента</span>
+                        </h5>
                         
-                        <p>The simplest way to retrieve and send FHIR resources to and from a FHIR server is to use a Http post client. This tutorial will use Postman. Postman can be installed as a Chrome browser extension or as a Mac App. You could use any of a number of post clients but the tutorial will assume you are using Postman.</p> 
+                        <div class="lang-content lang-en">
+                            <p>The simplest way to retrieve and send FHIR resources to and from a FHIR server is to use a Http post client. This tutorial will use Postman. Postman can be installed as a Chrome browser extension or as a Mac App. You could use any of a number of post clients but the tutorial will assume you are using Postman.</p> 
+                            
+                            <p>What is a post client? It is a tool that allows you to talk to servers using Hypertext Transfer Protocol (HTTP), the protocol the internet works on. When you use an internet browser the browser is converting your clicks and text into HTTP to send to the web server and the server returns content, your web page, back via HTTP. The browser then interprets the content as a web page and displays it on screen. When we work with FHIR the content is not a web page but rather XML or JSON. Our web browser is not very good at displaying raw XML or JSON so we need a HTTP client so that we can talk in HTTP and view the XML or JSON returned.</p>
+                            
+                            <p>Head over to <a href="https://www.getpostman.com/" rel="stylesheet">POSTMAN</a> via the link and install Postman now if you have not already done so. You don't need an account to get Postman just download the application.</p>
+                            
+                            <p><a href="images/PostManBlank.JPG" data-lightbox="patient-in-postman">Once you are done you will have a Postman client that looks like this:</a></p>
+                            
+                            <p>There are other Http post clients that could be used like <a href="http://www.telerik.com/fiddler">Fiddler</a> so don't feel you have to use Postman.</p>
+                        </div>
                         
-                        <p>What is a post client? It is a tool that allows you to talk to servers using Hypertext Transfer Protocol (HTTP), the protocol the internet works on. When you use an internet browser the browser is converting your clicks and text into HTTP to send to the web server and the server returns content, your web page, back via HTTP. The browser then interprets the content as a web page and displays it on screen. When we work with FHIR the content is not a web page but rather XML or JSON. Our web browser is not very good at displaying raw XML or JSON so we need a HTTP client so that we can talk in HTTP and view the XML or JSON returned.</p>
-                        
-                        <p>Head over to <a href="https://www.getpostman.com/" rel="stylesheet">POSTMAN</a> via the link and install Postman now if you have not already done so. You don't need an account to get Postman just download the application.</p>
-                        
-                        <p><a href="images/PostManBlank.JPG" data-lightbox="patient-in-postman">Once you are done you will have a Postman client that looks like this:</a></p>
-                        
-                        <p>There are other Http post clients that could be used like <a href="http://www.telerik.com/fiddler">Fiddler</a> so don't feel you have to use Postman.</p>
+                        <div class="lang-content lang-ru">
+                            <p>Самый простой способ получать и отправлять ресурсы FHIR на сервер FHIR и с него - использовать HTTP-клиент. В этом уроке будет использоваться Postman. Postman можно установить как расширение браузера Chrome или как приложение для Mac. Вы можете использовать любой из множества HTTP-клиентов, но урок предполагает, что вы используете Postman.</p>
+                            
+                            <p>Что такое HTTP-клиент? Это инструмент, который позволяет вам общаться с серверами, используя протокол передачи гипертекста (HTTP) - протокол, на котором работает интернет. Когда вы используете интернет-браузер, браузер преобразует ваши клики и текст в HTTP для отправки на веб-сервер, а сервер возвращает содержимое, вашу веб-страницу, обратно через HTTP. Затем браузер интерпретирует содержимое как веб-страницу и отображает её на экране. Когда мы работаем с FHIR, содержимое - это не веб-страница, а XML или JSON. Наш веб-браузер не очень хорошо отображает сырой XML или JSON, поэтому нам нужен HTTP-клиент, чтобы мы могли общаться по HTTP и просматривать возвращаемые XML или JSON.</p>
+                            
+                            <p>Перейдите по ссылке на <a href="https://www.getpostman.com/" rel="stylesheet">POSTMAN</a> и установите Postman сейчас, если вы ещё этого не сделали. Вам не нужна учётная запись для получения Postman, просто скачайте приложение.</p>
+                            
+                            <p><a href="images/PostManBlank.JPG" data-lightbox="patient-in-postman">После завершения у вас будет клиент Postman, который выглядит так:</a></p>
+                            
+                            <p>Есть другие HTTP-клиенты, которые можно использовать, например <a href="http://www.telerik.com/fiddler">Fiddler</a>, так что не чувствуйте себя обязанными использовать Postman.</p>
+                        </div>
                         <br>
                         
-                        <h5 id="Step2">Step 2: Getting your first resource from a FHIR server</h5>
+                        <h5 id="Step2">
+                            <span class="lang-content lang-en">Step 2: Getting your first resource from a FHIR server</span>
+                            <span class="lang-content lang-ru">Шаг 2: Получение первого ресурса с сервера FHIR</span>
+                        </h5>
                         
-                        <p>So the first thing we are going to cover is how you go about getting a FHIR resource from a FHIR server. Of course, before you can get a resource someone had to create one on the server. Luckily for you, this web page can do that for you. The button below will upload a FHIR Patient resource to a FHIR server for you and the tutorial will continue to explain how to retrieve that resource using the post client.</p>
+                        <div class="lang-content lang-en">
+                            <p>So the first thing we are going to cover is how you go about getting a FHIR resource from a FHIR server. Of course, before you can get a resource someone had to create one on the server. Luckily for you, this web page can do that for you. The button below will upload a FHIR Patient resource to a FHIR server for you and the tutorial will continue to explain how to retrieve that resource using the post client.</p>
+                            
+                            <p>So before we move on click the button below to upload a FHIR Patient resource to the FHIR server. This action will give you a resource to play with independent of the other participants.  To do this, all you need to do is hit the button below. Click the button now.</p>
+                        </div>
                         
-                        <p>So before we move on click the button below to upload a FHIR Patient resource to the FHIR server. This action will give you a resource to play with independent of the other participants.  To do this, all you need to do is hit the button below. Click the button now.</p>
+                        <div class="lang-content lang-ru">
+                            <p>Итак, первое, что мы рассмотрим, - это как получить ресурс FHIR с сервера FHIR. Конечно, прежде чем вы сможете получить ресурс, кто-то должен был создать его на сервере. К счастью для вас, эта веб-страница может сделать это за вас. Кнопка ниже загрузит ресурс FHIR Patient на сервер FHIR для вас, и урок продолжит объяснять, как получить этот ресурс с помощью HTTP-клиента.</p>
+                            
+                            <p>Итак, прежде чем мы продолжим, нажмите кнопку ниже, чтобы загрузить ресурс FHIR Patient на сервер FHIR. Это действие даст вам ресурс для работы независимо от других участников. Для этого всё, что вам нужно сделать, - это нажать кнопку ниже. Нажмите кнопку сейчас.</p>
+                        </div>
+                        
                         <p>
                             <center>
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="simple-patient-button">
-                                    Create my FHIR patient resource on the FHIR server</button>
+                                    <span class="lang-content lang-en">Create my FHIR patient resource on the FHIR server</span>
+                                    <span class="lang-content lang-ru">Создать мой ресурс пациента FHIR на сервере FHIR</span>
+                                </button>
                                 <div id="simple-patient-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
                                 
                             </center>
                         </p>
                         
-                        <p>You FHIR patient resource is: <code class="simple-patient-location-full" id="simple-patient-resourcePatient1">....Click the button for this to refresh!</code></p>
+                        <p>
+                            <span class="lang-content lang-en">Your FHIR patient resource is: </span>
+                            <span class="lang-content lang-ru">Ваш ресурс пациента FHIR: </span>
+                            <code class="simple-patient-location-full" id="simple-patient-resourcePatient1">
+                                <span class="lang-content lang-en">....Click the button for this to refresh!</span>
+                                <span class="lang-content lang-ru">....Нажмите кнопку для обновления!</span>
+                            </code>
+                        </p>
                         
+                        <div class="lang-content lang-en">
+                            <p>So you have your own FHIR resource in the FHIR server and a post client to send and retrieve resources with. There are many publicly available FHIR servers for testing on the internet and a full list can be found <a href="https://confluence.hl7.org/spaces/FHIR/pages/35718859/Public+Test+Servers" rel="stylesheet">here</a>. For this tutorial we are going to be using the server found at the following address: </p>
+                            
+                            <p><code><b><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span></b></code></p>
+                            
+                            <p>The address above is called the 'Service Root URL' and it is from here that all further request to this server will begin. But of course, we need to further tell the server which resource type we are interested in. This is the next part of the URL. For this tutorial, we are dealing with Patient resources so we will extend the 'Service Root URL' by appending the resource type we are looking for. Take note that all resources begin with a capital letter: e.g. <b>Patient</b>.</p>
+                            
+                            <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient</b></code></p>                        
+                            
+                            <p>We also need to tell the server which particular Patient resource we want. Generally, you would want to use a Patient's Medical Record Number (MRN), name or other identifiers and we will cover that later in searching. For now we are going to use the resource <b>id</b> to locate our patient. We will also cover more about resource <b>ids</b> a bit later. For now, let's just add the following resource <b>id</b> to our URL we are constructing:</p>
+                            
+                            <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
+                            
+                            <p>We're almost ready to get our resource from the FHIR server but there is one last part we need to cover. We need to understand a little bit about <a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">content negotiation</a>. Don't worry, there is not much to it. FHIR resources can be expressed in either JSON or XML, these are just two different ways that we can format a resource's data. Before we talk to our server we need to agree on which format we are going to talk in. To tell the server what format we want to be returned we pass it the <b>Accept</b> property and it needs to be equal to either <b>application/fhir+xml</b> or <b>application/fhir+json</b>. This is something we need to configure in our Http post client Postman. In Postman go to the Header tab and add the following property: <code>Accept application/fhir+xml</code>, as seen in this <a href="images/Postman-AcceptHeader.PNG" data-lightbox="Postman-AcceptHeader">screenshot</a>.</p>
+                            
+                            <p>Ok, we're done. All you need to do is paste the full URL we constructed into the Postman's URL box, ensure the call type is set to <b>GET</b> and hit the <b>Send</b> button. <a href="images/Postman-SimpleGetPatient.PNG" data-lightbox="Postman-SimpleGetPatient">See this screenshot if you need help</a>.</p>
+                            
+                            <p>You should have received your first FHIR Patient resource back from the server in an XML format. Well done!</p> 
+                            
+                            <p>Try changing the <b>Accept</b> property to <b>application/fhir+json</b> hit <b>Send</b> again. You will receive the same resource content although now in a JSON format. Make sure you set it back to <b>application/fhir+xml</b> when your done as the rest of this tutorial will be using the XML format.</p>
+                        </div>
                         
-                        <p>So you have your own FHIR resource in the FHIR server and a post client to send and retrieve resources with. There are many publicly available FHIR servers for testing on the internet and a full list can be found <a href="http://wiki.hl7.org/index.php?title=Publicly_Available_FHIR_Servers_for_testing" rel="stylesheet">here</a>. For this tutorial we are going to be using the server found at the following address: </p>
+                        <div class="lang-content lang-ru">
+                            <p>Итак, у вас есть собственный ресурс FHIR на сервере FHIR и HTTP-клиент для отправки и получения ресурсов. В интернете есть много общедоступных серверов FHIR для тестирования, и полный список можно найти <a href="https://confluence.hl7.org/spaces/FHIR/pages/35718859/Public+Test+Servers" rel="stylesheet">здесь</a>. Для этого урока мы будем использовать сервер, расположенный по следующему адресу: </p>
+                            
+                            <p><code><b><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span></b></code></p>
+                            
+                            <p>Адрес выше называется 'Service Root URL' (корневой URL сервиса), и именно отсюда будут начинаться все дальнейшие запросы к этому серверу. Но, конечно, нам нужно дополнительно сообщить серверу, какой тип ресурса нас интересует. Это следующая часть URL. Для этого урока мы имеем дело с ресурсами Patient, поэтому мы расширим 'Service Root URL', добавив тип ресурса, который мы ищем. Обратите внимание, что все ресурсы начинаются с заглавной буквы: например, <b>Patient</b>.</p>
+                            
+                            <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient</b></code></p>                        
+                            
+                            <p>Нам также нужно сообщить серверу, какой именно ресурс Patient мы хотим. Обычно вы хотели бы использовать номер медицинской карты пациента (MRN), имя или другие идентификаторы, и мы рассмотрим это позже при поиске. Сейчас мы будем использовать <b>id</b> ресурса для поиска нашего пациента. Мы также рассмотрим больше о <b>id</b> ресурсов немного позже. Пока давайте просто добавим следующий <b>id</b> ресурса к URL, который мы конструируем:</p>
+                            
+                            <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
+                            
+                            <p>Мы почти готовы получить наш ресурс с сервера FHIR, но есть ещё одна последняя часть, которую нам нужно рассмотреть. Нам нужно немного понять <a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">согласование содержимого</a>. Не волнуйтесь, в этом нет ничего сложного. Ресурсы FHIR могут быть выражены в JSON или XML - это просто два разных способа форматирования данных ресурса. Прежде чем мы поговорим с нашим сервером, нам нужно договориться о том, в каком формате мы будем общаться. Чтобы сообщить серверу, какой формат мы хотим получить в ответ, мы передаём ему свойство <b>Accept</b>, которое должно быть равно либо <b>application/fhir+xml</b>, либо <b>application/fhir+json</b>. Это то, что нам нужно настроить в нашем HTTP-клиенте Postman. В Postman перейдите на вкладку Header и добавьте следующее свойство: <code>Accept application/fhir+xml</code>, как показано на этом <a href="images/Postman-AcceptHeader.PNG" data-lightbox="Postman-AcceptHeader">скриншоте</a>.</p>
+                            
+                            <p>Хорошо, мы закончили. Всё, что вам нужно сделать, - это вставить полный URL, который мы построили, в поле URL Postman, убедиться, что тип вызова установлен на <b>GET</b>, и нажать кнопку <b>Send</b>. <a href="images/Postman-SimpleGetPatient.PNG" data-lightbox="Postman-SimpleGetPatient">Посмотрите этот скриншот, если вам нужна помощь</a>.</p>
+                            
+                            <p>Вы должны были получить свой первый ресурс FHIR Patient обратно с сервера в формате XML. Отлично!</p> 
+                            
+                            <p>Попробуйте изменить свойство <b>Accept</b> на <b>application/fhir+json</b> и снова нажать <b>Send</b>. Вы получите то же содержимое ресурса, хотя теперь в формате JSON. Убедитесь, что вы установили его обратно на <b>application/fhir+xml</b>, когда закончите, поскольку остальная часть этого урока будет использовать формат XML.</p>
+                        </div>
                         
-                        <p><code><b><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span></b></code></p>
+                        <h5 id="Step3">
+                            <span class="lang-content lang-en">Step 3: Updating your resource in the FHIR server</span>
+                            <span class="lang-content lang-ru">Шаг 3: Обновление ресурса на сервере FHIR</span>
+                        </h5>
                         
-                        <p>The address above is called the 'Service Root URL' and it is from here that all further request to this server will begin. But of course, we need to further tell the server which resource type we are interested in. This is the next part of the URL. For this tutorial, we are dealing with Patient resources so we will extend the 'Service Root URL' by appending the resource type we are looking for. Take note that all resources begin with a capital letter: e.g. <b>Patient</b>.</p>
+                        <div class="lang-content lang-en">
+                            <p>So now you know how to get a resource from the FHIR server. Next, we are going to update an existing resource on the FHIR server. Let's pretend the patient's name was entered incorrectly and it's your job to fix it up. We are just going to use the same resource you retrieved from <a href="#Step2">Step 2: Getting your first resource from a server</a>.</p> 
+                            
+                            <p>In Postman, you first need to set the call type to <b>PUT</b>, then click the <b>Body</b> tab. Make sure you are clicking the right <b>Body</b> tab as there are two. The <b>Body</b> tab at the bottom is where resources returned by the FHIR server are seen, as in Step 1. The <b>Body</b> tab at the top, just under the URL box, is where we place resources to send to the server. You need to click the <b>Body</b> tab at the top. You will also need to click the radio button labelled <b>raw</b> to allow the <b>Body's</b> text box to be seen. <a href="images/Postman-SimplePutSetup.PNG" data-lightbox="Postman-SimplePutSetup">Take a look at this screenshot for help</a>.</p>
+                            
+                            <p>Now go ahead and copy the Patient resource we received from the server from the bottom <b>Body</b> section to the top <b>Body</b> section and then in the top section edit the patient's given name and surname to your name. <i>Don't worry, our PAS team is too busy with duplicate patient merging to notice.</i></p>
+                            
+                            <p>With your edits made, it's time to update. But before we do that, we need to cover the last part of '<a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">content negotiation</a>'. In the <b>GET</b> example, we used the <b>Accept</b> property to tell the server the format (XML or JSON) we wanted to be returned by the server. This time, it is us sending content to the server by way of our Patient resource. In this case, we need to tell the server what format the content we are sending is in. To do this we return to the <b>Header</b> tab and use the <b>Content-Type</b> property, and as before we need to set it as either <b>application/fhir+xml</b> or <b>application/fhir+json</b>. But of course, it needs to match the actual content we are sending. So if your Patient resources is in a XML format then use <b>application/fhir+xml</b> or if it is JSON use <b>application/fhir+json</b>. <a href="images/Postman-Content-Type.PNG" data-lightbox="Postman-Content-Type">Here is a screenshot of it being set to XML</a>.</p>
+                            
+                            <p>Notice that the <b>Accept</b> property is still set from the last <b>GET</b> calls we made. This is fine and actually desired, as long as it is still set to the content type you want to be returned. Now that these two properties are set Postman will remember them for our session, so no need to keep setting them; unless you want to change between XML and JSON. From here forward the exercise will just assume you have these two properties set and will not instruct you to set them again. Furthermore, our exercises will all be done in XML.</p>
+                        </div>
                         
-                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient</b></code></p>                        
-                        
-                        <p>We also need to tell the server which particular Patient resource we want. Generally, you would want to use a Patient's Medical Record Number (MRN), name or other identifiers and we will cover that later in searching. For now we are going to use the resource <b>id</b> to locate our patient. We will also cover more about resource <b>ids</b> a bit later. For now, let's just add the following resource <b>id</b> to our URL we are constructing:</p>
-                        
-                        <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
-                        
-                        <p>We're almost ready to get our resource from the FHIR server but there is one last part we need to cover. We need to understand a little bit about <a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">content negotiation</a>. Don't worry, there is not much to it. FHIR resources can be expressed in either JSON or XML, these are just two different ways that we can format a resource's data. Before we talk to our server we need to agree on which format we are going to talk in. To tell the server what format we want to be returned we pass it the <b>Accept</b> property and it needs to be equal to either <b>application/fhir+xml</b> or <b>application/fhir+json</b>. This is something we need to configure in our Http post client Postman. In Postman go to the Header tab and add the following property: <code>Accept application/fhir+xml</code>, as seen in this <a href="images/Postman-AcceptHeader.PNG" data-lightbox="Postman-AcceptHeader">screenshot</a>.</p>
-                        
-                        <p>Ok, we're done. All you need to do is paste the full URL we constructed into the Postman's URL box, ensure the call type is set to <b>GET</b> and hit the <b>Send</b> button. <a href="images/Postman-SimpleGetPatient.PNG" data-lightbox="Postman-SimpleGetPatient">See this screenshot if you need help</a>.</p>
-                        
-                        
-                        <p>You should have received your first FHIR Patient resource back from the server in an XML format. Well done!</p> 
-                        
-                        <p>Try changing the <b>Accept</b> property to <b>application/fhir+json</b> hit <b>Send</b> again. You will receive the same resource content although now in a JSON format. Make sure you set it back to <b>application/fhir+xml</b> when your done as the rest of this tutorial will be using the XML format.</p>
-                        
-                        <h5 id="Step3">Step 3: Updating your resource in the FHIR server</h5>
-                        
-                        <p>So now you know how to get a resource from the FHIR server. Next, we are going to update an existing resource on the FHIR server. Let's pretend the patient's name was entered incorrectly and it's your job to fix it up. We are just going to use the same resource you retrieved from <a href="#Step2">Step 2: Getting your first resource from a server</a>.</p> 
-                        
-                        <p>In Postman, you first need to set the call type to <b>PUT</b>, then click the <b>Body</b> tab. Make sure you are clicking the right <b>Body</b> tab as there are two. The <b>Body</b> tab at the bottom is where resources returned by the FHIR server are seen, as in Step 1. The <b>Body</b> tab at the top, just under the URL box, is where we place resources to send to the server. You need to click the <b>Body</b> tab at the top. You will also need to click the radio button labelled <b>raw</b> to allow the <b>Body's</b> text box to be seen. <a href="images/Postman-SimplePutSetup.PNG" data-lightbox="Postman-SimplePutSetup">Take a look at this screenshot for help</a>.</p>
-                        
-                        <p>Now go ahead and copy the Patient resource we received from the server from the bottom <b>Body</b> section to the top <b>Body</b> section and then in the top section edit the patient's given name and surname to your name. <i>Don't worry, our PAS team is too busy with duplicate patient merging to notice.</i></p>
-                        
-                        <p>With your edits made, it's time to update. But before we do that, we need to cover the last part of '<a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">content negotiation</a>'. In the <b>GET</b> example, we used the <b>Accept</b> property to tell the server the format (XML or JSON) we wanted to be returned by the server. This time, it is us sending content to the server by way of our Patient resource. In this case, we need to tell the server what format the content we are sending is in. To do this we return to the <b>Header</b> tab and use the <b>Content-Type</b> property, and as before we need to set it as either <b>application/fhir+xml</b> or <b>application/fhir+json</b>. But of course, it needs to match the actual content we are sending. So if your Patient resources is in a XML format then use <b>application/fhir+xml</b> or if it is JSON use <b>application/fhir+json</b>. <a href="images/Postman-Content-Type.PNG" data-lightbox="Postman-Content-Type">Here is a screenshot of it being set to XML</a>.</p>
-                        
-                        <p>Notice that the <b>Accept</b> property is still set from the last <b>GET</b> calls we made. This is fine and actually desired, as long as it is still set to the content type you want to be returned. Now that these two properties are set Postman will remember them for our session, so no need to keep setting them; unless you want to change between XML and JSON. From here forward the exercise will just assume you have these two properties set and will not instruct you to set them again. Furthermore, our exercises will all be done in XML.</p>
-                        
+                        <div class="lang-content lang-ru">
+                            <p>Итак, теперь вы знаете, как получить ресурс с сервера FHIR. Далее мы собираемся обновить существующий ресурс на сервере FHIR. Давайте представим, что имя пациента было введено неправильно, и ваша задача - исправить это. Мы просто будем использовать тот же ресурс, который вы получили из <a href="#Step2">Шага 2: Получение первого ресурса с сервера</a>.</p> 
+                            
+                            <p>В Postman сначала нужно установить тип вызова на <b>PUT</b>, затем нажать вкладку <b>Body</b>. Убедитесь, что вы нажимаете правильную вкладку <b>Body</b>, поскольку их две. Вкладка <b>Body</b> внизу - это место, где видны ресурсы, возвращённые сервером FHIR, как в Шаге 1. Вкладка <b>Body</b> вверху, прямо под полем URL, - это место, где мы размещаем ресурсы для отправки на сервер. Вам нужно нажать вкладку <b>Body</b> вверху. Вам также нужно будет нажать радиокнопку с надписью <b>raw</b>, чтобы увидеть текстовое поле <b>Body</b>. <a href="images/Postman-SimplePutSetup.PNG" data-lightbox="Postman-SimplePutSetup">Посмотрите на этот скриншот для помощи</a>.</p>
+                            
+                            <p>Теперь скопируйте ресурс Patient, который мы получили с сервера, из нижней секции <b>Body</b> в верхнюю секцию <b>Body</b>, а затем в верхней секции отредактируйте имя и фамилию пациента на ваше имя. <i>Не волнуйтесь, наша команда PAS слишком занята объединением дублирующих пациентов, чтобы это заметить.</i></p>
+                            
+                            <p>После внесения изменений пришло время обновить. Но прежде чем мы это сделаем, нам нужно рассмотреть последнюю часть '<a href="https://en.wikipedia.org/wiki/Content_negotiation" rel="stylesheet">согласования содержимого</a>'. В примере с <b>GET</b> мы использовали свойство <b>Accept</b>, чтобы сообщить серверу формат (XML или JSON), который мы хотели получить от сервера. На этот раз мы отправляем содержимое на сервер посредством нашего ресурса Patient. В этом случае нам нужно сообщить серверу, в каком формате находится содержимое, которое мы отправляем. Для этого мы возвращаемся к вкладке <b>Header</b> и используем свойство <b>Content-Type</b>, и, как и раньше, нам нужно установить его как <b>application/fhir+xml</b> или <b>application/fhir+json</b>. Но, конечно, оно должно соответствовать фактическому содержимому, которое мы отправляем. Итак, если ваш ресурс Patient в формате XML, то используйте <b>application/fhir+xml</b>, или если это JSON, используйте <b>application/fhir+json</b>. <a href="images/Postman-Content-Type.PNG" data-lightbox="Postman-Content-Type">Вот скриншот его установки в XML</a>.</p>
+                            
+                            <p>Обратите внимание, что свойство <b>Accept</b> всё ещё установлено с последних вызовов <b>GET</b>, которые мы делали. Это нормально и фактически желательно, пока оно всё ещё установлено на тип содержимого, который вы хотите получить в ответ. Теперь, когда эти два свойства установлены, Postman запомнит их для нашей сессии, поэтому нет необходимости продолжать их устанавливать; если только вы не хотите переключаться между XML и JSON. Отныне упражнение будет просто предполагать, что у вас установлены эти два свойства, и не будет инструктировать вас устанавливать их снова. Кроме того, все наши упражнения будут выполняться в XML.</p>
+                        </div>
                         
                         <table>                            
                             <tr>
                                 <td><code><b>Accept:</b></code></td>
-                                <td><code>application/fhir+xml or application/fhir+json <i>{format to be returned from the server}</i></code></td>
+                                <td><code>application/fhir+xml or application/fhir+json <i>
+                                    <span class="lang-content lang-en">{format to be returned from the server}</span>
+                                    <span class="lang-content lang-ru">{формат для возврата с сервера}</span>
+                                </i></code></td>
                             </tr>
                             <tr>
                                 <td><code><b>Content-Type:</b></code></td>
-                                <td><code>application/fhir+xml or application/fhir+json <i>{format being given to the server}</i></code></td>
+                                <td><code>application/fhir+xml or application/fhir+json <i>
+                                    <span class="lang-content lang-en">{format being given to the server}</span>
+                                    <span class="lang-content lang-ru">{формат, передаваемый серверу}</span>
+                                </i></code></td>
                             </tr>
                         </table>
                         <br>
                         
-                        <p>So now it's time to hit <b>Send</b> which will update the Patient resource on the FHIR server.</p> 
+                        <div class="lang-content lang-en">
+                            <p>So now it's time to hit <b>Send</b> which will update the Patient resource on the FHIR server.</p> 
+                            
+                            <p>Once you have updated, try doing a <b>GET</b>, as in <a href="#Step2">Step 3</a>, to see if your resource was updated. If you compare the <b>versionId</b> within the resource you will see it increased by one.</p>
+                        </div>
                         
-                        <p>Once you have updated, try doing a <b>GET</b>, as in <a href="#Step2">Step 3</a>, to see if your resource was updated. If you compare the <b>versionId</b> within the resource you will see it increased by one.</p>
+                        <div class="lang-content lang-ru">
+                            <p>Итак, теперь пришло время нажать <b>Send</b>, что обновит ресурс Patient на сервере FHIR.</p> 
+                            
+                            <p>После обновления попробуйте выполнить <b>GET</b>, как в <a href="#Step2">Шаге 2</a>, чтобы увидеть, был ли обновлён ваш ресурс. Если вы сравните <b>versionId</b> внутри ресурса, вы увидите, что он увеличился на единицу.</p>
+                        </div>
+                        
                         <img src="images/Resource-VersionID.PNG" width="50%"> 
                         
-                        <h5 id="Step4">Step 4: Adding a new resource to the FHIR server</h5>
+                        <h5 id="Step4">
+                            <span class="lang-content lang-en">Step 4: Adding a new resource to the FHIR server</span>
+                            <span class="lang-content lang-ru">Шаг 4: Добавление нового ресурса на сервер FHIR</span>
+                        </h5>
                         
-                        <p>You should now know how to get a resource from a FHIR server and how to update that resource. Now we are going to look at adding a new resource to a FHIR server. Perhaps we have a brand new patient to enter into our system. In the previous '<a href="#Step3">Step 3: Updating your resource in the FHIR server</a>' we used the call type of <b>PUT</b> to update a resource. These call types are known as HTTP verbs. The most commonly used verbs for FHIR are:</p>
+                        <div class="lang-content lang-en">
+                            <p>You should now know how to get a resource from a FHIR server and how to update that resource. Now we are going to look at adding a new resource to a FHIR server. Perhaps we have a brand new patient to enter into our system. In the previous '<a href="#Step3">Step 3: Updating your resource in the FHIR server</a>' we used the call type of <b>PUT</b> to update a resource. These call types are known as HTTP verbs. The most commonly used verbs for FHIR are:</p>
+                            
+                            <ul>
+                              <li><p><b>GET: </b>
+                                <span class="lang-content lang-en">Used to retrieve known existing resources and requires a resource <b>id</b> or search parameters to identify the resource or resources required.</span>
+                                <span class="lang-content lang-ru">Используется для получения известных существующих ресурсов и требует <b>id</b> ресурса или параметров поиска для идентификации требуемого ресурса или ресурсов.</span>
+                              </p></li>        
+                              <li><p><b>PUT: </b>
+                                <span class="lang-content lang-en">Used to update existing resources and always requires a resource <b>id</b> identifying the resource being updated. It can also add a new resource if no resource is found for the <b>id</b> given. In this case, some servers may discard the <b>id</b> and assign their own new <b>id</b> when adding the new resource.</span>
+                                <span class="lang-content lang-ru">Используется для обновления существующих ресурсов и всегда требует <b>id</b> ресурса, идентифицирующего обновляемый ресурс. Он также может добавить новый ресурс, если для данного <b>id</b> не найден ресурс. В этом случае некоторые серверы могут отбросить <b>id</b> и назначить свой собственный новый <b>id</b> при добавлении нового ресурса.</span>
+                              </p></li>
+                              <li><p><b>POST: </b>
+                                <span class="lang-content lang-en">Used to add new resources, there must not be an <b>id</b> in the URL or the resource's content. The server will assign its own <b>id</b> to the resource</span>
+                                <span class="lang-content lang-ru">Используется для добавления новых ресурсов, в URL или содержимом ресурса не должно быть <b>id</b>. Сервер назначит свой собственный <b>id</b> ресурсу</span>
+                              </p></li>
+                              <li><p><b>DELETE: </b>
+                                <span class="lang-content lang-en">Used to remove an existing resource from the server and always requires a resource <b>id</b> to identify the resource being removed. Most servers keep a history of the resource so you can still retrieve the removed resources using the history interaction, we will cover this later.</span>
+                                <span class="lang-content lang-ru">Используется для удаления существующего ресурса с сервера и всегда требует <b>id</b> ресурса для идентификации удаляемого ресурса. Большинство серверов ведут историю ресурса, поэтому вы всё ещё можете получить удалённые ресурсы, используя взаимодействие с историей, мы рассмотрим это позже.</span>
+                              </p></li>                                                    
+                            </ul>
+                        </div>
                         
-                        <ul>
-                          <li><p><b>GET: </b>Used to retrieve known existing resources and requires a resource <b>id</b> or search parameters to identify the resource or resources required.</p>        
-                          <li><p><b>PUT: </b>Used to update existing resources and always requires a resource <b>id</b> identifying the resource being updated. It can also add a new resource if no resource is found for the <b>id</b> given. In this case, some servers may discard the <b>id</b> and assign their own new <b>id</b> when adding the new resource.</p>
-                          </li>
-                          <li><p><b>POST: </b>Used to add new resources, there must not be an <b>id</b> in the URL or the resource's content. The server will assign its own <b>id</b> to the resource</p></li>
-                          <li><p><b>DELETE: </b>Used to remove an existing resource from the server and always requires a resource <b>id</b> to identify the resource being removed. Most servers keep a history of the resource so you can still retrieve the removed resources using the history interaction, we will cover this later.</p></li>                                                    
-                        </ul>
+                        <div class="lang-content lang-ru">
+                            <p>Теперь вы должны знать, как получить ресурс с сервера FHIR и как обновить этот ресурс. Теперь мы собираемся рассмотреть добавление нового ресурса на сервер FHIR. Возможно, у нас есть совершенно новый пациент для ввода в нашу систему. В предыдущем '<a href="#Step3">Шаге 3: Обновление ресурса на сервере FHIR</a>' мы использовали тип вызова <b>PUT</b> для обновления ресурса. Эти типы вызовов известны как HTTP-глаголы. Наиболее часто используемые глаголы для FHIR:</p>
+
+                                                        <ul>
+                              <li><p><b>GET: </b>
+                                <span class="lang-content lang-en">Used to retrieve known existing resources and requires a resource <b>id</b> or search parameters to identify the resource or resources required.</span>
+                                <span class="lang-content lang-ru">Используется для получения известных существующих ресурсов и требует <b>id</b> ресурса или параметров поиска для идентификации требуемого ресурса или ресурсов.</span>
+                              </p></li>        
+                              <li><p><b>PUT: </b>
+                                <span class="lang-content lang-en">Used to update existing resources and always requires a resource <b>id</b> identifying the resource being updated. It can also add a new resource if no resource is found for the <b>id</b> given. In this case, some servers may discard the <b>id</b> and assign their own new <b>id</b> when adding the new resource.</span>
+                                <span class="lang-content lang-ru">Используется для обновления существующих ресурсов и всегда требует <b>id</b> ресурса, идентифицирующего обновляемый ресурс. Он также может добавить новый ресурс, если для данного <b>id</b> не найден ресурс. В этом случае некоторые серверы могут отбросить <b>id</b> и назначить свой собственный новый <b>id</b> при добавлении нового ресурса.</span>
+                              </p></li>
+                              <li><p><b>POST: </b>
+                                <span class="lang-content lang-en">Used to add new resources, there must not be an <b>id</b> in the URL or the resource's content. The server will assign its own <b>id</b> to the resource</span>
+                                <span class="lang-content lang-ru">Используется для добавления новых ресурсов, в URL или содержимом ресурса не должно быть <b>id</b>. Сервер назначит свой собственный <b>id</b> ресурсу</span>
+                              </p></li>
+                              <li><p><b>DELETE: </b>
+                                <span class="lang-content lang-en">Used to remove an existing resource from the server and always requires a resource <b>id</b> to identify the resource being removed. Most servers keep a history of the resource so you can still retrieve the removed resources using the history interaction, we will cover this later.</span>
+                                <span class="lang-content lang-ru">Используется для удаления существующего ресурса с сервера и всегда требует <b>id</b> ресурса для идентификации удаляемого ресурса. Большинство серверов ведут историю ресурса, поэтому вы всё ещё можете получить удалённые ресурсы, используя взаимодействие с историей, мы рассмотрим это позже.</span>
+                              </p></li>                                                    
+                            </ul>
+                        </div>
                                                 
-                        <p>Let's take our same Patient resource as used in Steps 2 & 3, as our template for the new patient, change it a little, and submit it to the FHIR server as a brand new resource. The first thing to do is change the verb in Postman to be <b>POST</b> and then copy in your new Patient resource into the body section at the top of Postman.</p>
+                        <div class="lang-content lang-en">
+                            <p>Let's take our same Patient resource as used in Steps 2 & 3, as our template for the new patient, change it a little, and submit it to the FHIR server as a brand new resource. The first thing to do is change the verb in Postman to be <b>POST</b> and then copy in your new Patient resource into the body section at the top of Postman.</p>
+                            
+                            <p>Now we need to edit both the resource and the URL to perform an add. For the URL we need only the 'Service Root' and the resource type, which for this example is Patient as seen below:</p>
+                            
+                            <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient</b></code></p>    
+                            
+                            <p>That is the URL done, now for the resource itself. Near the very top of the resource, you will see an <b>id</b> element with an attribute of <b>value</b> which is equal to the <b>id</b> of the resource we copied. This is the resource id and as we are creating a brand new resource we need to remove this whole element. If we don't the server could return a <b>400 Bad Request</b> error. Feel free to hit <b>Send</b> before you remove it to see this error in action: don't worry, the server won't catch on fire.</p>
+                            
+                            <p><img src="images/Resource-id.PNG" width="40%"></p>
+                            
+                            <p> So after hitting <b>Send</b> with the <b>id</b> element removed you should be returned the entire resource and a status of <b>201 Created</b>. If you inspect the returned resource's <b>id</b> element you will find that the server has assigned a new <b>id</b> value, this is now the FHIR servers assigned <b>id</b> for your resource. It's also worth noting the <b>versionId</b> in the <b>meta</b> element, this should be set to '1' as this is the very first version of this resource.</p>
+                            
+                            <p>Now you know how to add new resources, the same process works for all resources: you just need change the resource type on the end of the URL.</p>
+                        </div>
                         
-                        <p>Now we need to edit both the resource and the URL to perform an add. For the URL we need only the 'Service Root' and the resource type, which for this example is Patient as seen below:</p>
+                        <div class="lang-content lang-ru">
+                            <p>Давайте возьмём тот же ресурс Patient, который использовался в Шагах 2 и 3, в качестве шаблона для нового пациента, немного изменим его и отправим на сервер FHIR как совершенно новый ресурс. Первое, что нужно сделать, - это изменить глагол в Postman на <b>POST</b>, а затем скопировать ваш новый ресурс Patient в секцию body вверху Postman.</p>
+                            
+                            <p>Теперь нам нужно отредактировать как ресурс, так и URL для выполнения добавления. Для URL нам нужны только 'Service Root' и тип ресурса, который для этого примера - Patient, как показано ниже:</p>
+                            
+                            <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient</b></code></p>    
+                            
+                            <p>Это URL готов, теперь для самого ресурса. В самом верху ресурса вы увидите элемент <b>id</b> с атрибутом <b>value</b>, который равен <b>id</b> ресурса, который мы скопировали. Это id ресурса, и поскольку мы создаём совершенно новый ресурс, нам нужно удалить весь этот элемент. Если мы этого не сделаем, сервер может вернуть ошибку <b>400 Bad Request</b>. Не стесняйтесь нажать <b>Send</b> перед тем, как удалить его, чтобы увидеть эту ошибку в действии: не волнуйтесь, сервер не загорится.</p>
+                            
+                            <p><img src="images/Resource-id.PNG" width="40%"></p>
+                            
+                            <p>Итак, после нажатия <b>Send</b> с удалённым элементом <b>id</b> вы должны получить весь ресурс и статус <b>201 Created</b>. Если вы проверите элемент <b>id</b> возвращённого ресурса, вы обнаружите, что сервер назначил новое значение <b>id</b> - это теперь назначенный сервером FHIR <b>id</b> для вашего ресурса. Также стоит отметить <b>versionId</b> в элементе <b>meta</b> - он должен быть установлен в '1', поскольку это самая первая версия этого ресурса.</p>
+                            
+                            <p>Теперь вы знаете, как добавлять новые ресурсы, тот же процесс работает для всех ресурсов: вам просто нужно изменить тип ресурса в конце URL.</p>
+                        </div>
                         
-                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient</b></code></p>    
+                        <h5 id="Step5">
+                            <span class="lang-content lang-en">Step 5: Deleting a resource from the FHIR server</span>
+                            <span class="lang-content lang-ru">Шаг 5: Удаление ресурса с сервера FHIR</span>
+                        </h5>
                         
+                        <div class="lang-content lang-en">
+                            <p>This one's easy, set the Http verb to <b>DELETE</b> and use the 'Service Root' appended with the resource type you wish to remove e.g. 'Patient' and append to that the resource <b>id</b> of the resource you want to remove. So if you had a Patient resource with an <b>id</b> of '123456' then this URL would remove that resource is:</p>
+                            
+                            <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient/123456</b></code></p> 
+                                                    
+                            <p>But before you delete a resource let's think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update marks the resource as deleted and you will no longer find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by its <b>versionId</b>. So to explain this a bit better, consider the operations in order below:</p>
+                            
+                            <ol>
+                              <li> <b>Patient</b> resource, added via a <b>POST</b> <i>{this is versionId = 1}</i></li>                          
+                              <li> <b>Patient</b> resource, updated via a <b>PUT</b> <i>{this is versionId = 2}</i></li>
+                                <li> <b>Patient</b> resource, deleted via a <b>DELETE</b> <i>{this is versionId = 3}</i></li>
+                                <li> <b>Patient</b> resource, attempted to retrieve by resource <b>id</b> via a <b>GET</b> <i>{no resource will be found}</i></li>     <li> <b>Patient</b> resource, attempted to retrieve by resource <b>id</b> and <b>_history/2</b> via a <b>GET</b> <i>{resource will be found as updated in step 2}</i></li>            
+                                <li> <b>Patient</b> resource, as retrieve in step 5, added via a <b>PUT</b> <i>{this is versionId = 4}</i></li>                  
+                            </ol>
+                            
+                            <p><i>The key point here is that deleting a resource is also considered a version update.</i></p>
+                            
+                            <p>So let's now go ahead and delete our original Patient resource. Using the URL below, setting the Http verb to <b>DELETE</b> and hitting <b>Send</b>.</p>
+                            
+                            <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
+                                                    
+                            <p>You should receive back a <b>204 No Content</b> return code which indicates the resource was successfully removed.</p>
+                            
+                            <p>Following this you can then retrieve the same resource back again using the <b><code>_history/[version number you require]</code></b>. Let's try and retrieve <b>versionId=1</b> using the URL as below, and the Http verb of <b>GET</b>.</p>
+                  
+                            <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code><b><code>/_history/1</code></b></p>
+                            
+                            <p>Now you can delete resources and retrieve historical versions of resources, well done!</p>
+                        </div>
                         
-                        
-                        <p>That is the URL done, now for the resource itself. Near the very top of the resource, you will see an <b>id</b> element with an attribute of <b>value</b> which is equal to the <b>id</b> of the resource we copied. This is the resource id and as we are creating a brand new resource we need to remove this whole element. If we don't the server will return a <b>400 Bad Request</b> error. Feel free to hit <b>Send</b> before you remove it to see this error in action: don't worry, the server won't catch on fire.</p>
-                        
-                        <p><img src="images/Resource-id.PNG" width="40%"></p>
-                        
-                        <p> So after hitting <b>Send</b> with the <b>id</b> element removed you should be returned the entire resource and a status of <b>201 Created</b>. If you inspect the returned resource's <b>id</b> element you will find that the server has assigned a new <b>id</b> value, this is now the FHIR servers assigned <b>id</b> for your resource. It's also worth noting the <b>versionId</b> in the <b>meta</b> element, this should be set to '1' as this is the very first version of this resource.</p>
-                        
-                        <p>Now you know how to add new resources, the same process works for all resources: you just need change the resource type on the end of the URL.</p>
-                        
-                        <h5 id="Step5">Step 5: Deleting a resource from the FHIR server</h5>
-                        
-                        <p>This one's easy, set the Http verb to <b>DELETE</b> and use the 'Service Root' appended with the resource type you wish to remove e.g. 'Patient' and append to that the resource <b>id</b> of the resource you want to remove. So if you had a Patient resource with an <b>id</b> of '123456' then this URL would remove that resource is:</p>
-                        
-                        <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient/123456</b></code></p> 
-                                                
-                        
-                        <p>But before you delete a resource let's think about what happens on the server. Most, but not all FHIR servers support resource history. This means that every update you make to a resource is kept on the server and each update increments a version number. This version number is known as the <b>versionId</b>. When you delete a resource the server treats this action as just another update, yet this update marks the resource as deleted and you will no longer find the resource when doing a normal <b>GET</b> call. But you can retrieve the deleted resource by its <b>versionId</b>. So to explain this a bit better, consider the operations in order below:</p>
-                        
-                        <ol>
-                          <li> <b>Patient</b> resource, added via a <b>POST</b> <i>{this is versionId = 1}</i></li>                          
-                          <li> <b>Patient</b> resource, updated via a <b>PUT</b> <i>{this is versionId = 2}</i></li>
-                            <li> <b>Patient</b> resource, deleted via a <b>DELETE</b> <i>{this is versionId = 3}</i></li>
-                            <li> <b>Patient</b> resource, attempted to retrieve by resource <b>id</b> via a <b>GET</b> <i>{no resource will be found}</i></li>     <li> <b>Patient</b> resource, attempted to retrieve by resource <b>id</b> and <b>_history/2</b> via a <b>GET</b> <i>{resource will be found as updated in step 2}</i></li>            
-                            <li> <b>Patient</b> resource, as retrieve in step 5, added via a <b>PUT</b> <i>{this is versionId = 4}</i></li>                  
-                        </ol>
-                        
-                        <p><i>The key point here is that deleting a resource is also considered a version update.</i></p>
-                        
-                        <p>So let's now go ahead and delete our original Patient resource. Using the URL below, setting the Http verb to <b>DELETE</b> and hitting <b>Send</b>.</p>
-                        
-                        <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
-                                                
-                        
-                        <p>You should receive back a <b>204 No Content</b> return code which indicates the resource was successfully removed.</p>
-                        
-                        <p>Following this you can then retrieve the same resource back again using the <b><code>_history/[version number you require]</code></b>. Let's try and retrieve <b>versionId=1</b> using the URL as below, and the Http verb of <b>GET</b>.</p>
-              
-                        <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code><b><code>/_history/1</code></b></p>
-                        
-                        <p>Now you can delete resources and retrieve historical versions of resources, well done!</p>
+                        <div class="lang-content lang-ru">
+                            <p>Это легко: установите HTTP-глагол на <b>DELETE</b> и используйте 'Service Root', добавив к нему тип ресурса, который вы хотите удалить, например 'Patient', и добавьте к этому <b>id</b> ресурса, который вы хотите удалить. Итак, если у вас есть ресурс Patient с <b>id</b> '123456', то этот URL удалит этот ресурс:</p>
+                            
+                            <p><code><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span><b>/Patient/123456</b></code></p> 
+                                                    
+                            <p>Но прежде чем удалить ресурс, давайте подумаем о том, что происходит на сервере. Большинство, но не все серверы FHIR поддерживают историю ресурсов. Это означает, что каждое обновление, которое вы делаете с ресурсом, сохраняется на сервере, и каждое обновление увеличивает номер версии. Этот номер версии известен как <b>versionId</b>. Когда вы удаляете ресурс, сервер рассматривает это действие как просто ещё одно обновление, но это обновление помечает ресурс как удалённый, и вы больше не найдёте ресурс при выполнении обычного вызова <b>GET</b>. Но вы можете получить удалённый ресурс по его <b>versionId</b>. Чтобы объяснить это немного лучше, рассмотрите операции в порядке ниже:</p>
+                            
+                            <ol>
+                              <li>Ресурс <b>Patient</b>, добавленный через <b>POST</b> <i>{это versionId = 1}</i></li>                          
+                              <li>Ресурс <b>Patient</b>, обновлённый через <b>PUT</b> <i>{это versionId = 2}</i></li>
+                                <li>Ресурс <b>Patient</b>, удалённый через <b>DELETE</b> <i>{это versionId = 3}</i></li>
+                                <li>Ресурс <b>Patient</b>, попытка получить по <b>id</b> ресурса через <b>GET</b> <i>{ресурс не будет найден}</i></li>     
+                                <li>Ресурс <b>Patient</b>, попытка получить по <b>id</b> ресурса и <b>_history/2</b> через <b>GET</b> <i>{ресурс будет найден как обновлённый в шаге 2}</i></li>            
+                                <li>Ресурс <b>Patient</b>, как получен в шаге 5, добавлен через <b>PUT</b> <i>{это versionId = 4}</i></li>                  
+                            </ol>
+                            
+                            <p><i>Ключевой момент здесь в том, что удаление ресурса также считается обновлением версии.</i></p>
+                            
+                            <p>Итак, давайте теперь удалим наш оригинальный ресурс Patient. Используя URL ниже, установив HTTP-глагол на <b>DELETE</b> и нажав <b>Send</b>.</p>
+                            
+                            <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code></p>
+                                                    
+                            <p>Вы должны получить обратно код возврата <b>204 No Content</b>, который указывает, что ресурс был успешно удалён.</p>
+                            
+                            <p>После этого вы можете снова получить тот же ресурс, используя <b><code>_history/[номер версии, который вам нужен]</code></b>. Давайте попробуем получить <b>versionId=1</b>, используя URL, как показано ниже, и HTTP-глагол <b>GET</b>.</p>
+                  
+                            <p><code><b><span class="simple-patient-location-full" id="simple-patient-resourcePatient1">[Service Root URL]/Patient/[id]</span></b></code><b><code>/_history/1</code></b></p>
+                            
+                            <p>Теперь вы можете удалять ресурсы и получать исторические версии ресурсов, отлично!</p>
+                        </div>
                         
                     </div>
 					</div>
@@ -276,10 +551,16 @@
                 <div class="mdl-mega-footer--middle-section">
                     <div class="mdl-mega-footer--drop-down-section">
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">The Agency</span>
+                            <span class="lang-content lang-ru">Агентство</span>
+                        </h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
-                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
+                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">
+                                <span class="lang-content lang-en">My Health Record</span>
+                                <span class="lang-content lang-ru">Моя медицинская карта</span>
+                            </a></li>
                         </ul>
                     </div>
                     <div class="mdl-mega-footer--drop-down-section">
@@ -290,6 +571,19 @@
                             <li><a href="http://hl7.org/fhir/STU3" title="Latest release of FHIR, for use in Madrid Connectathon">FHIR STU3 Release</a></li>
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
+                    </div>
+                    
+                    <!-- Language Selector -->
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">Language</span>
+                            <span class="lang-content lang-ru">Язык</span>
+                        </h1>
+                        <div class="language-selector">
+                            <button onclick="switchLanguage('en')" class="lang-btn" id="lang-en-btn">English</button>
+                            <button onclick="switchLanguage('ru')" class="lang-btn" id="lang-ru-btn">Русский</button>
+                        </div>
                     </div>
                 </div>
             </footer>
@@ -308,6 +602,62 @@
     <script src="js/main.js"></script>
 <!-- supporting javascript to actually do the uploading -->	
 	<script src="js/post-resources.js"></script>
+    
+    <!-- Language switching script -->
+    <script>
+        // Language switching functionality
+        function switchLanguage(lang) {
+            // Remove existing language classes
+            document.body.classList.remove('lang-en', 'lang-ru');
+            
+            // Add new language class
+            document.body.classList.add('lang-' + lang);
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('lang-' + lang + '-btn').classList.add('active');
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferred-language', lang);
+            
+            // Update HTML lang attribute for accessibility
+            document.documentElement.lang = lang;
+            
+            // Update URL parameter
+            updateUrlWithLanguage(lang);
+        }
+        
+        // Initialize language on page load
+        function initializeLanguage() {
+            // Check URL parameter first
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            
+            // Then check localStorage
+            const savedLang = localStorage.getItem('preferred-language');
+            
+            // Default to English
+            const defaultLang = 'en';
+            
+            // Determine which language to use
+            const currentLang = urlLang || savedLang || defaultLang;
+            
+            // Apply the language
+            switchLanguage(currentLang);
+        }
+        
+        // Update URLs when language changes to maintain consistency
+        function updateUrlWithLanguage(lang) {
+            const url = new URL(window.location);
+            url.searchParams.set('lang', lang);
+            window.history.replaceState({}, '', url);
+        }
+        
+        // Run initialization when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeLanguage);
+    </script>
 </body>
 
 </html>
