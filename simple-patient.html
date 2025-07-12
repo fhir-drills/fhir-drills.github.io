@@ -39,11 +39,6 @@
     <meta name="msapplication-TileColor" content="#3372DF"> -->
 
     <link rel="shortcut icon" href="images/favicon.ico">
-
-    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-    <!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
 	
 	<!-- CodeMirror -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
@@ -134,18 +129,18 @@
                         
                         <p>What is a post client? It is a tool that allows you to talk to servers using Hypertext Transfer Protocol (HTTP), the protocol the internet works on. When you use an internet browser the browser is converting your clicks and text into HTTP to send to the web server and the server returns content, your web page, back via HTTP. The browser then interprets the content as a web page and displays it on screen. When we work with FHIR the content is not a web page but rather XML or JSON. Our web browser is not very good at displaying raw XML or JSON so we need a HTTP client so that we can talk in HTTP and view the XML or JSON returned.</p>
                         
-                        <p>Head over to <a href="https://www.getpostman.com/" rel="stylesheet">POSTMAN</a> via the link and install Postman now if you have not already done so. You don't need an account to get Postman just download the application.</p>
+                        <p>Head over to <a href="https://www.postman.com/downloads">POSTMAN</a> via the link and install Postman now if you have not already done so. You don't need an account to get Postman just download the application.</p>
                         
-                        <p><a href="images/PostManBlank.JPG" data-lightbox="patient-in-postman">Once you are done you will have a Postman client that looks like this:</a></p>
+                        <p><a href="images/PostManBlank.JPG" data-lightbox="patient-in-postman">Once you are done you will have a Postman client that looks like this</a>.</p>
                         
-                        <p>There are other Http post clients that could be used like <a href="http://www.telerik.com/fiddler">Fiddler</a> so don't feel you have to use Postman.</p>
+                        <p>There are other http clients that could be used, such as <a href="http://www.telerik.com/fiddler">Fiddler</a>, so don't feel you have to use Postman.</p>
                         <br>
                         
                         <h5 id="Step2">Step 2: Getting your first resource from a FHIR server</h5>
                         
-                        <p>So the first thing we are going to cover is how you go about getting a FHIR resource from a FHIR server. Of course, before you can get a resource someone had to create one on the server. Luckily for you, this web page can do that for you. The button below will upload a FHIR Patient resource to a FHIR server for you and the tutorial will continue to explain how to retrieve that resource using the post client.</p>
+                        <p>The first thing we are going to cover is how you go about getting a FHIR resource from a FHIR server. Of course, before you can get a resource someone had to create one on the server. Luckily for you, this web page can do that for you. The button below will upload a FHIR Patient resource to a FHIR server for you and the tutorial will continue to explain how to retrieve that resource using the post client.</p>
                         
-                        <p>So before we move on click the button below to upload a FHIR Patient resource to the FHIR server. This action will give you a resource to play with independent of the other participants.  To do this, all you need to do is hit the button below. Click the button now.</p>
+                        <p>So before we move on, click the button below to upload a FHIR Patient resource to the FHIR server. This action will give you a resource to play with independent of the other participants.  To do this, all you need to do is hit the button below. Click the button now.</p>
                         <p>
                             <center>
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="simple-patient-button">
@@ -158,7 +153,7 @@
                         <p>You FHIR patient resource is: <code class="simple-patient-location-full" id="simple-patient-resourcePatient1">....Click the button for this to refresh!</code></p>
                         
                         
-                        <p>So you have your own FHIR resource in the FHIR server and a post client to send and retrieve resources with. There are many publicly available FHIR servers for testing on the internet and a full list can be found <a href="http://wiki.hl7.org/index.php?title=Publicly_Available_FHIR_Servers_for_testing" rel="stylesheet">here</a>. For this tutorial we are going to be using the server found at the following address: </p>
+                        <p>So you have your own FHIR resource in the FHIR server and a post client to send and retrieve resources with. There are many publicly available FHIR servers for testing on the internet and a full list can be found <a href="https://confluence.hl7.org/display/FHIR/Public+Test+Servers">here</a>. For this tutorial we are going to be using the server found at the following address: </p>
                         
                         <p><code><b><span class="simple-patient-baseurl" id="simple-patient-resourcePatient1">[Service Root URL]</span></b></code></p>
                         
