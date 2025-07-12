@@ -63,6 +63,53 @@
             z-index: 900;
         }
 
+        /* Language switching CSS */
+        .lang-content {
+            display: none;
+        }
+        
+        body.lang-en .lang-en {
+            display: block;
+        }
+        
+        body.lang-en .lang-en.inline {
+            display: inline;
+        }
+        
+        body.lang-ru .lang-ru {
+            display: block;
+        }
+        
+        body.lang-ru .lang-ru.inline {
+            display: inline;
+        }
+        
+        /* Language selector styling */
+        .language-selector {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .lang-btn {
+            background: #673ab7;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background: #5e35b1;
+        }
+        
+        .lang-btn.active {
+            background: #e91e63;
+        }
+
     </style>
     <link href="css/lightbox.min.css" rel="stylesheet">
   <script>
@@ -76,7 +123,7 @@
   </script>	
 </head>
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base lang-en">
 <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -98,88 +145,185 @@
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">FHIR<sup>®</sup> tutorials</span>
+    <span class="mdl-layout-title">
+        <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
+        <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
+    </span>
     <nav class="mdl-navigation">
-		<a href="./index.html" class="mdl-navigation__link">Overview</a>
-		<a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">Simple Patient</a>
-		<a href="./simple-search.html" id="simple-search" class="mdl-navigation__link is-active-tab">Simple Search</a>
-		<a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">Patient with References</a>
-		<a href="./bundle.html" id="bundle" class="mdl-navigation__link">Bundle</a>
-		<a href="./operations.html" id="operations" class="mdl-navigation__link">Operations</a>
-		<a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">ValueSet &amp; CodeSystem</a>
-		<a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">ConceptMap</a>
-		<a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">FHIR APIs</a>
-		<a href="#" class="mdl-navigation__link"></a>
-		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
+        <a href="./index.html" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Overview</span>
+            <span class="lang-content lang-ru">Обзор</span>
+        </a>
+        <a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Simple Patient</span>
+            <span class="lang-content lang-ru">Простой пациент</span>
+        </a>
+        <a href="./simple-search.html" id="simple-search" class="mdl-navigation__link is-active-tab">
+            <span class="lang-content lang-en">Simple Search</span>
+            <span class="lang-content lang-ru">Простой поиск</span>
+        </a>
+        <a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Patient with References</span>
+            <span class="lang-content lang-ru">Пациент со ссылками</span>
+        </a>
+        <a href="./bundle.html" id="bundle" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Bundle</span>
+            <span class="lang-content lang-ru">Пакет</span>
+        </a>
+        <a href="./operations.html" id="operations" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Operations</span>
+            <span class="lang-content lang-ru">Операции</span>
+        </a>
+        <a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">
+            <span class="lang-content lang-en">ValueSet &amp; CodeSystem</span>
+            <span class="lang-content lang-ru">ValueSet и CodeSystem</span>
+        </a>
+        <a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">
+            <span class="lang-content lang-en">ConceptMap</span>
+            <span class="lang-content lang-ru">ConceptMap</span>
+        </a>
+        <a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">
+            <span class="lang-content lang-en">FHIR APIs</span>
+            <span class="lang-content lang-ru">FHIR API</span>
+        </a>
+        <a href="#" class="mdl-navigation__link"></a>
+        <a href="./exercises.html" class="mdl-navigation__link">
+            <span class="lang-content lang-en">FHIR exercises</span>
+            <span class="lang-content lang-ru">FHIR упражнения</span>
+        </a>
     </nav>
   </div>
   <main class="mdl-layout__content">
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
-                        <h4>Simple Search</h4>
                         
-                        <p>This tutorial will build on the foundation laid out in the <a href="./simple-patient.html">Simple Patient</a> tutorial to introduce searching against FHIR resources.</p>
-                        <ul class="toc">
-                            <h4>Contents</h4>
-                            <!-- pr prefix stands for 'patient references'-->
-                            <a href="#ss-step1">Step 1: Name Searching</a>  
-                            <a href="#ss-step2">Step 2: Extended Search</a>  
-                            <a href="#ss-step3">Step 3: Search Parameter Types</a>  
+                        <!-- English Content -->
+                        <div class="lang-content lang-en">
+                            <h4>Simple Search</h4>
                             
-                        </ul>
+                            <p>This tutorial will build on the foundation laid out in the <a href="./simple-patient.html">Simple Patient</a> tutorial to introduce searching against FHIR resources.</p>
+                            <ul class="toc">
+                                <h4>Contents</h4>
+                                <!-- pr prefix stands for 'patient references'-->
+                                <a href="#ss-step1">Step 1: Name Searching</a>  
+                                <a href="#ss-step2">Step 2: Extended Search</a>  
+                                <a href="#ss-step3">Step 3: Search Parameter Types</a>  
+                            </ul>
 
-                        <h5 id="ss-step1">Step 1: Name Searching</h5>
-                        <p>Let's start with the simplest of searches, a patient's family name search.</p> 
-                        
-                        <p>The <a href="./simple-patient.html">Simple Patient</a> tutorial uploaded a Patient resource for a <b>Mr Sam Fhirman</b>. Let's try and find that Patient resource by searching on family name. To do this we need to construct a URL starting with the <b><code>[Service Root URL]</code></b> followed by the resource type <b>Patient</b>, a question mark character '<b>?</b>' and finished with the search parameters we wish to search with <b>family=Fhirman</b> in this case.</p>  
-                        
-                        <p>Perform this search in your Postman client using he Http verb <b>GET</b> now, take a few minutes to examine the result returned:</p>
+                            <h5 id="ss-step1">Step 1: Name Searching</h5>
+                            <p>Let's start with the simplest of searches, a patient's family name search.</p> 
+                            
+                            <p>The <a href="./simple-patient.html">Simple Patient</a> tutorial uploaded a Patient resource for a <b>Mr Sam Fhirman</b>. Let's try and find that Patient resource by searching on family name. To do this we need to construct a URL starting with the <b><code>[Service Root URL]</code></b> followed by the resource type <b>Patient</b>, a question mark character '<b>?</b>' and finished with the search parameters we wish to search with <b>family=Fhirman</b> in this case.</p>  
+                            
+                            <p>Perform this search in your Postman client using he Http verb <b>GET</b>. Now, take a few minutes to examine the result returned:</p>
 
+                            <p><code id="fhir-server"></code><code>/Patient<b>?family=fhirman</b></code></p>
 
-                        <p><code id="fhir-server"></code><code>/Patient<b>?family=fhirman</b></code></p>
+                            <p>Did you notice that you received a <b>Bundle</b> resource in return? When you perform a search you are more than likely to receive many resource matching your search. In FHIR, search results are always returned as a <b>Bundle</b>. A <b>Bundle</b> is used in FHIR to gather a collection of resource into a single instance. The reason there are so many <b>Mr Sam Fhirman</b> Patient resources is due to every student taking part in the <a href="./simple-patient.html">Simple Patient</a> tutorial uploading their own instance of the same patient. <i>This may explain why our PAS team is so busy with duplicate patient merging.</i> Of course this should not be the case in the real world. <i>Although the PAS team may have another opinion.</i></p>
 
-                        <p>Did you notice that you received a <b>Bundle</b> resource in return? When you perform a search you are more than likely to receive many resource matching your search. In FHIR, search results are always returned as a <b>Bundle</b>. A <b>Bundle</b> is used in FHIR to gather a collection of resource into a single instance. The reason there are so many <b>Mr Sam Fhirman</b> Patient resources is due to every student taking part in the <a href="./simple-patient.html">Simple Patient</a> tutorial uploading their own instance of the same patient. <i>This may explain why our PAS team is so busy with duplicate patient merging.</i> Of course this should not be the case in the real world. <i>Although the PAS team may have another opinion.</i></p>
+                            <p>Don't worry about knowing the structure of the Bundle resource extensively - we'll go over Bundles shortly in our <a href="bundle.html">Bundle</a> tutorial.</p>
+                            
+                            <h5 id="ss-step2">Step 2: Extended Search</h5>
+                            
+                            <p>In the previous step we searched by the patient's family name, but what else can we search upon? The search parameters you can use are Resource type dependant. Each resource type defines the parameters which you can search upon it. Right click and open the <b><a href="http://hl7.org/fhir/STU3/patient.html">Patient</a></b> resource page in a second browser tab and scroll to the very bottom of the page. Here you will find the list of possible search parameters for the Patient resource. Take a look at some other resource types and the search parameters they define.</p>
+                            
+                            <p>In the previous tutorial, <a href="./simple-patient.html">Simple Patient</a>, you should have created a new patient resource with your own name as the patient's name. Try and find that resource using your own surname and first name. <i>Remember to reference the FHIR specification to work out which search parameters you will need.</i></p>
+                            
+                            <h5 id="ss-step3">Step 3: Search Parameter Types</h5>
+                            
+                            <p>The searches we have done so far, family &amp; given, were on simple string datatypes. FHIR defines eight different search datatypes as follows: </p>
+                            
+                            <p>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#number">Number</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#date">Date/DateTime</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#string">String</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#token">Token</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#reference">Reference</a></li>                        
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#composite">Composite</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#quantity">Quantity</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#uri">URI</a></li>
+                            </p>
+                            
+                            <p>Each and every search parameter on each resource page also defines the search parameter data type it uses. The screenshot below is taken from the Patient resource page. Notice that <b>given</b> uses <b>string</b> in column two and that <b>identifier</b> uses datatype <b>token</b>.</p>
+                            <p><img src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
+                            
+                            <b><a href="http://hl7.org/fhir/STU3/search.html#number">FHIR specification Search page</a></b>
+                            
+                            <h6><b>Using the references above try and answer these questions:</b></h6>
+                            
+                            <li>What datatype does the search parameter <b>length</b> use on the <b>Encounter</b> resource?</li>
+                            <br>
+                            <li>Using the references above try and find the patient with an <b>old</b> address in the suburb of <b>'Erinsborough'</b>?</li>
+                            <br>
+                            <li>Try and find the patient name for the person with an IHI (Individual  Health Identifier) of '<b>8003601043886154</b>'?</li>
+                            <br>
+                            
+                            <p>These few questions have focused on the <b>token</b> search parameter datatype but I strongly encourage you to read then entire <a href="http://hl7.org/fhir/STU3/search.html#uri">Search</a> page in the FHIR specification at a later date.</p>
+                        </div>
+                        
+                        <!-- Russian Content -->
+                        <div class="lang-content lang-ru">
+                            <h4>Простой поиск</h4>
+                            
+                            <p>Этот урок будет основываться на фундаменте, заложенном в уроке <a href="./simple-patient.html">Простой пациент</a>, чтобы представить поиск по ресурсам FHIR.</p>
+                            <ul class="toc">
+                                <h4>Содержание</h4>
+                                <a href="#ss-step1">Шаг 1: Поиск по имени</a>  
+                                <a href="#ss-step2">Шаг 2: Расширенный поиск</a>  
+                                <a href="#ss-step3">Шаг 3: Типы параметров поиска</a>  
+                            </ul>
 
-                        
-						<p>Don't worry about knowing the structure of the Bundle resource extensively - we'll go over Bundles shortly in our <a href="bundle.html">Bundle</a> tutorial.</p>
-                        
-                        <h5 id="ss-step2">Step 2: Extended Search</h5>
-                        
-                        <p>In the previous step we searched by the patient's family name, but what else can we search upon? The search parameters you can use are Resource type dependant. Each resource type defines the parameters which you can search upon it. Right click and open the <b><a href="http://hl7.org/fhir/STU3/patient.html">Patient</a></b> resource page in a second browser tab and scroll to the very bottom of the page. Here you will find the list of possible search parameters for the Patient resource. Take a look at some other resource types and the search parameters they define.</p>
-                        
-                        <p>In the previous tutorial, <a href="./simple-patient.html">Simple Patient</a>, you should have created a new patient resource with your own name as the patient's name. Try and find that resource using your own surname and first name. <i>Remember to reference the FHIR specification to work out which search parameters you will need.</i></p>
-                        
-                        <h5 id="ss-step3">Step 3: Search Parameter Types</h5>
-                        
-                        <p>The searches we have done so far, family &amp; given, were on simple string datatypes. FHIR defines eight different search datatypes as follows: </p>
-                        
-                        <p>
-                        <li><a href="http://hl7.org/fhir/STU3/search.html#number">Number</a></li>
-                        <li><a href="http://hl7.org/fhir/STU3/search.html#date">Date/DateTime</a></li>
-                        <li><a href="http://hl7.org/fhir/STU3/search.html#string">String</a></li>
-                        <li><a href="http://hl7.org/fhir/STU3/search.html#token">Token</a></li>
-                        <li><a href="http://hl7.org/fhir/STU3/search.html#reference">Reference</a></li>                        
-                        <li><a href="http://hl7.org/fhir/STU3/search.html#composite">Composite</a></li>
-                        <li><a href="http://hl7.org/fhir/STU3/search.html#quantity">Quantity</a></li>
-                        <li><a href="http://hl7.org/fhir/STU3/search.html#uri">URI</a></li>
-                        </p>
-                        
-                        <p>Each and every search parameter on each resource page also defines the search parameter data type it uses. The screenshot below is taken from the Patient resource page. Notice that <b>given</b> uses <b>string</b> in column two and that <b>identifier</b> uses datatype <b>token</b>.</p>
-                        <p><img src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
-                        
-                        <b><a href="http://hl7.org/fhir/STU3/search.html#number">FHIR specification Search page</a></b>
-                        
-                        <h6><b>Using the references above try and answer these questions:</b></h6>
-                        
-                        <li>What datatype does the search parameter <b>length</b> use on the <b>Encounter</b> resource?</li>
-                        <br>
-                        <li>Using the references above try and find the patient with an <b>old</b> address in the suburb of <b>'Erinsborough'</b>?</li>
-                        <br>
-                        <li>Try and find the patient name for the person with an IHI (Individual  Health Identifier) of '<b>8003601043886154</b>'?</li>
-                        <br>
-                        
-                        <p>These few questions have focused on the <b>token</b> search parameter datatype but I strongly encourage you to read then entire <a href="http://hl7.org/fhir/STU3/search.html#uri">Search</a> page in the FHIR specification at a later date.</p>                        
+                            <h5 id="ss-step1">Шаг 1: Поиск по имени</h5>
+                            <p>Начнем с самого простого поиска - поиска по фамилии пациента.</p> 
+                            
+                            <p>В уроке <a href="./simple-patient.html">Простой пациент</a> был загружен ресурс Patient для <b>г-на Сэма Файрмэна</b>. Давайте попробуем найти этот ресурс Patient, выполнив поиск по фамилии. Для этого нам нужно построить URL, начинающийся с <b><code>[Service Root URL]</code></b>, за которым следует тип ресурса <b>Patient</b>, символ вопроса '<b>?</b>' и заканчивающийся параметрами поиска, с которыми мы хотим искать <b>family=Fhirman</b> в данном случае.</p>  
+                            
+                            <p>Выполните этот поиск в вашем клиенте Postman, используя HTTP-глагол <b>GET</b>. Сейчас, потратьте несколько минут на изучение возвращенного результата:</p>
+
+                            <p><code id="fhir-server-ru"></code><code>/Patient<b>?family=fhirman</b></code></p>
+
+                            <p>Заметили ли вы, что в ответ получили ресурс <b>Bundle</b>? Когда вы выполняете поиск, вы, скорее всего, получите много ресурсов, соответствующих вашему поиску. В FHIR результаты поиска всегда возвращаются как <b>Bundle</b>. <b>Bundle</b> используется в FHIR для сбора коллекции ресурсов в один экземпляр. Причина, по которой существует так много ресурсов Patient <b>г-на Сэма Файрмэна</b>, заключается в том, что каждый студент, участвующий в уроке <a href="./simple-patient.html">Простой пациент</a>, загружает свой собственный экземпляр того же пациента. <i>Это может объяснить, почему наша команда PAS так занята объединением дублирующихся пациентов.</i> Конечно, этого не должно быть в реальном мире. <i>Хотя команда PAS может иметь другое мнение.</i></p>
+
+                            <p>Не беспокойтесь о том, чтобы обширно знать структуру ресурса Bundle - мы вскоре рассмотрим Bundle в нашем уроке <a href="bundle.html">Bundle</a>.</p>
+                            
+                            <h5 id="ss-step2">Шаг 2: Расширенный поиск</h5>
+                            
+                            <p>На предыдущем шаге мы искали по фамилии пациента, но по чему еще мы можем искать? Параметры поиска, которые вы можете использовать, зависят от типа ресурса. Каждый тип ресурса определяет параметры, по которым вы можете искать в нем. Щелкните правой кнопкой мыши и откройте страницу ресурса <b><a href="http://hl7.org/fhir/STU3/patient.html">Patient</a></b> во второй вкладке браузера и прокрутите до самого низа страницы. Здесь вы найдете список возможных параметров поиска для ресурса Patient. Посмотрите на некоторые другие типы ресурсов и параметры поиска, которые они определяют.</p>
+                            
+                            <p>В предыдущем уроке <a href="./simple-patient.html">Простой пациент</a> вы должны были создать новый ресурс пациента с вашим собственным именем в качестве имени пациента. Попробуйте найти этот ресурс, используя вашу собственную фамилию и имя. <i>Не забудьте обратиться к спецификации FHIR, чтобы выяснить, какие параметры поиска вам понадобятся.</i></p>
+                            
+                            <h5 id="ss-step3">Шаг 3: Типы параметров поиска</h5>
+                            
+                            <p>Поиски, которые мы делали до сих пор, family и given, были по простым строковым типам данных. FHIR определяет восемь различных типов данных поиска следующим образом: </p>
+                            
+                            <p>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#number">Число</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#date">Дата/Время</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#string">Строка</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#token">Токен</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#reference">Ссылка</a></li>                        
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#composite">Составной</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#quantity">Количество</a></li>
+                            <li><a href="http://hl7.org/fhir/STU3/search.html#uri">URI</a></li>
+                            </p>
+                            
+                            <p>Каждый параметр поиска на каждой странице ресурса также определяет тип данных параметра поиска, который он использует. Скриншот ниже взят со страницы ресурса Patient. Обратите внимание, что <b>given</b> использует <b>string</b> во втором столбце, а <b>identifier</b> использует тип данных <b>token</b>.</p>
+                            <p><img src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
+                            
+                            <b><a href="http://hl7.org/fhir/STU3/search.html#number">Страница поиска спецификации FHIR</a></b>
+                            
+                            <h6><b>Используя приведенные выше ссылки, попробуйте ответить на эти вопросы:</b></h6>
+                            
+                            <li>Какой тип данных использует параметр поиска <b>length</b> в ресурсе <b>Encounter</b>?</li>
+                            <br>
+                            <li>Используя приведенные выше ссылки, попробуйте найти пациента со <b>старым</b> адресом в пригороде <b>'Erinsborough'</b>?</li>
+                            <br>
+                            <li>Попробуйте найти имя пациента для человека с IHI (Individual Health Identifier) '<b>8003601043886154</b>'?</li>
+                            <br>
+                            
+                            <p>Эти несколько вопросов были сосредоточены на типе данных параметра поиска <b>token</b>, но я настоятельно рекомендую вам прочитать всю страницу <a href="http://hl7.org/fhir/STU3/search.html#uri">Поиск</a> в спецификации FHIR позже.</p>
+                        </div>
                         
                     </div>
                 </section>
@@ -187,10 +331,16 @@
                 <div class="mdl-mega-footer--middle-section">
                     <div class="mdl-mega-footer--drop-down-section">
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">The Agency</span>
+                            <span class="lang-content lang-ru">Агентство</span>
+                        </h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
-                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
+                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">
+                                <span class="lang-content lang-en">My Health Record</span>
+                                <span class="lang-content lang-ru">Моя медицинская карта</span>
+                            </a></li>
                         </ul>
                     </div>
                     <div class="mdl-mega-footer--drop-down-section">
@@ -201,6 +351,19 @@
                             <li><a href="http://hl7.org/fhir/STU3" title="Latest release of FHIR, for use in Madrid Connectathon">FHIR STU3 Release</a></li>
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
+                    </div>
+                    
+                    <!-- Language Selector -->
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">Language</span>
+                            <span class="lang-content lang-ru">Язык</span>
+                        </h1>
+                        <div class="language-selector">
+                            <button onclick="switchLanguage('en')" class="lang-btn" id="lang-en-btn">English</button>
+                            <button onclick="switchLanguage('ru')" class="lang-btn" id="lang-ru-btn">Русский</button>
+                        </div>
                     </div>
                 </div>
             </footer>
@@ -221,9 +384,66 @@
     <script>
       $( document ).ready((document) => {
         $("#fhir-server").html("<span> " + servers.wildfhir3 + "</<span>");
+        $("#fhir-server-ru").html("<span> " + servers.wildfhir3 + "</<span>");
       });
-
     </script>
+    
+    <!-- Language switching script -->
+    <script>
+        // Language switching functionality
+        function switchLanguage(lang) {
+            // Remove existing language classes
+            document.body.classList.remove('lang-en', 'lang-ru');
+            
+            // Add new language class
+            document.body.classList.add('lang-' + lang);
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('lang-' + lang + '-btn').classList.add('active');
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferred-language', lang);
+            
+            // Update HTML lang attribute for accessibility
+            document.documentElement.lang = lang;
+            
+            // Update URL parameter
+            updateUrlWithLanguage(lang);
+        }
+        
+        // Initialize language on page load
+        function initializeLanguage() {
+            // Check URL parameter first
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            
+            // Then check localStorage
+            const savedLang = localStorage.getItem('preferred-language');
+            
+            // Default to English
+            const defaultLang = 'en';
+            
+            // Determine which language to use
+            const currentLang = urlLang || savedLang || defaultLang;
+            
+            // Apply the language
+            switchLanguage(currentLang);
+        }
+        
+        // Update URLs when language changes to maintain consistency
+        function updateUrlWithLanguage(lang) {
+            const url = new URL(window.location);
+            url.searchParams.set('lang', lang);
+            window.history.replaceState({}, '', url);
+        }
+        
+        // Run initialization when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeLanguage);
+    </script>
+    
 <!-- supporting javascript to actually do the uploading -->
 	<script src="js/post-resources.js"></script>
 </body>
