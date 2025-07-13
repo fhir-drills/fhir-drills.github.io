@@ -1,0 +1,91 @@
+                        <!-- Step 6 - English. Disabled for now as WildFHIR doesn't seem to support expand -->
+                        <div class="lang-content lang-en">
+                            <h5 id="vac-step6">Step 6: Using the $expand operation</h5>
+                            <p>As introduced in <a href="#vac-step4">step 4</a>, the $expand operation allows you to retrieve the full listing of codes available in a valueset, which makes sense if you consider the possible dynamic nature of valuesets given the filters introduced above in <a href="vac-step5">step 5</a>. Following on from the <a href="./operations.html">introduction to Operations</a>, upload the valueset with the 'easy' and 'hard' codes to a FHIR server:</p>
+                        </div>
+                        
+                        <!-- Step 6 - Russian.  -->
+                        <div class="lang-content lang-ru">
+                            <h5 id="vac-step6">Шаг 6: Использование операции $expand</h5>
+                            <p>Как было представлено в <a href="#vac-step4">шаге 4</a>, операция $expand позволяет получить полный список кодов, доступных в valueset, что имеет смысл, если учесть возможную динамическую природу valuesets с учетом фильтров, представленных выше в <a href="vac-step5">шаге 5</a>. Продолжая <a href="./operations.html">введение в операции</a>, загрузите valueset с кодами 'easy' и 'hard' на FHIR-сервер:</p>
+                        </div>
+                        
+                        <p>
+                            <center>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="expand-operation-button">
+                                    <span class="lang-content lang-en">Upload</span>
+                                    <span class="lang-content lang-ru">Загрузить</span>
+                                </button>
+                                <br>
+                                <div id="expand-operation-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
+                            </center>
+                        </p>
+                        
+                        <!-- English continuation -->
+                        <div class="lang-content lang-en">
+                            <p>The resource will be available for viewing in Postman or your browser under this URL:</p>
+                        </div>
+                        
+                        <!-- Russian continuation -->
+                        <div class="lang-content lang-ru">
+                            <p>Ресурс будет доступен для просмотра в Postman или вашем браузере по этому URL:</p>
+                        </div>
+                        
+                        <note class="expand-operation-location-full" id="vac-expand-valueset">
+                            <span class="lang-content lang-en"><i>(press Upload to get a ValueSet)</i></span>
+                            <span class="lang-content lang-ru"><i>(нажмите Загрузить, чтобы получить ValueSet)</i></span>
+                        </note>
+                        
+                        <!-- English continuation -->
+                        <div class="lang-content lang-en">
+                            <p>As described in the <a href="./operations.html">Operations</a> tab, every resource has an 'Operations' tab, including <a href="http://hl7.org/fhir/STU3/valueset-operations.html">ValueSet</a>, which is where you'll find the <a href="http://hl7.org/fhir/STU3/valueset-operations.html#expand">$expand</a> operation. There are two ways you can use the operation - either on the ValueSet resource type:</p>
+                        </div>
+                        
+                        <!-- Russian continuation -->
+                        <div class="lang-content lang-ru">
+                            <p>Как описано на вкладке <a href="./operations.html">Операции</a>, каждый ресурс имеет вкладку 'Операции', включая <a href="http://hl7.org/fhir/STU3/valueset-operations.html">ValueSet</a>, где вы найдете операцию <a href="http://hl7.org/fhir/STU3/valueset-operations.html#expand">$expand</a>. Есть два способа использования операции - либо на типе ресурса ValueSet:</p>
+                        </div>
+                        
+                        <code class="expand-operation-baseurl" id="vac-expand-valueset">[Service Root URL]</code><code>/ValueSet/$expand</code>
+                        
+                        <!-- English continuation -->
+                        <div class="lang-content lang-en">
+                            <p>in which case you'll need to provide the id of the valueset to expand as an 'identifier' parameter, or you can use the operation on a ValueSet instance, where the id of the resource is provided in the URL:</p>
+                        </div>
+                        
+                        <!-- Russian continuation -->
+                        <div class="lang-content lang-ru">
+                            <p>в этом случае вам нужно будет предоставить id valueset для расширения как параметр 'identifier', или вы можете использовать операцию на экземпляре ValueSet, где id ресурса предоставляется в URL:</p>
+                        </div>
+                        
+                        <code class="expand-operation-location-full" id="vac-expand-valueset">[Service Root URL]/[Resource Type]/[Resource Id]</code><code>/$expand</code>
+                        
+                        <!-- English continuation -->
+                        <div class="lang-content lang-en">
+                            <p>Try entering <span class="expand-operation-location-full" id="vac-expand-valueset">[upload resource above first]</span><span>/$expand</span> into Postman - and you'll receive an expanded ValueSet resource:</p>
+                        </div>
+                        
+                        <!-- Russian continuation -->
+                        <div class="lang-content lang-ru">
+                            <p>Попробуйте ввести <span class="expand-operation-location-full" id="vac-expand-valueset">[сначала загрузите ресурс выше]</span><span>/$expand</span> в Postman - и вы получите расширенный ресурс ValueSet:</p>
+                        </div>
+                        
+                        <a href="images/valueset-expantion.png" data-lightbox="valueset-expansion"><img src="images/valueset-expantion-thumbnail.png" class="thumbnail"/></a>
+                        
+                        <!-- English continuation -->
+                        <div class="lang-content lang-en">
+                            <p>There are two things of interest here:</p> 
+                            <p><li>The narrative of the resource, where you can clearly see that this is an expansion of a valueset, and</li> <li>The expansion of codes itself, where you can see that all the codes are listed under the 'expansion' element instead of the 'compose' element as you would when you're creating your valueset.</li></p>
+                            <p>While the 'compose' element can list both the filters or full list of codes that compose the valueset, the 'expansion' element will always list the full set of codes in the valueset.</p>
+                            <p>The 'expansion' element in the spec allows for containment of the parameters that controlled the expansion, the expanded codes themselves, and some metadata such as the timestamp of the expansion and the offset where the expansion should start.</p>
+                            <p>You can also control the expansion by applying parameters to it. The filter parameter, for example, allows you to filter the codes by text - if you try entering <span class="expand-operation-location-full" id="vac-expand-valueset">[upload resource above first]</span><span>/$expand?filter=easy</span> into Postman, you'll see that just one code is returned then, and that is the 'easy' one.</p>
+                        </div>
+                        
+                        <!-- Russian continuation -->
+                        <div class="lang-content lang-ru">
+                            <p>Здесь есть две интересные вещи:</p> 
+                            <p><li>Нарратив ресурса, где вы можете ясно видеть, что это расширение valueset, и</li> <li>Само расширение кодов, где вы можете видеть, что все коды перечислены под элементом 'expansion' вместо элемента 'compose', как это было бы при создании вашего valueset.</li></p>
+                            <p>В то время как элемент 'compose' может перечислять как фильтры, так и полный список кодов, составляющих valueset, элемент 'expansion' всегда будет перечислять полный набор кодов в valueset.</p>
+                            <p>Элемент 'expansion' в спецификации позволяет содержать параметры, которые контролировали расширение, сами расширенные коды и некоторые метаданные, такие как временная метка расширения и смещение, с которого должно начинаться расширение.</p>
+                            <p>Вы также можете контролировать расширение, применяя к нему параметры. Параметр filter, например, позволяет фильтровать коды по тексту - если вы попробуете ввести <span class="expand-operation-location-full" id="vac-expand-valueset">[сначала загрузите ресурс выше]</span><span>/$expand?filter=easy</span> в Postman, вы увидите, что возвращается только один код, и это код 'easy'.</p>
+                        </div>
