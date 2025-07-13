@@ -63,6 +63,52 @@
             z-index: 900;
         }
 
+        /* Language switching CSS */
+        .lang-content {
+            display: none;
+        }
+        
+        body.lang-en .lang-en {
+            display: block;
+        }
+        
+        body.lang-en .lang-en.inline {
+            display: inline;
+        }
+        
+        body.lang-ru .lang-ru {
+            display: block;
+        }
+        
+        body.lang-ru .lang-ru.inline {
+            display: inline;
+        }
+        
+        /* Language selector styling */
+        .language-selector {
+            margin: 20px 0;
+        }
+        
+        .lang-btn {
+            background: #673ab7;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background: #5e35b1;
+        }
+        
+        .lang-btn.active {
+            background: #e91e63;
+        }
+
     </style>
     <link href="css/lightbox.min.css" rel="stylesheet">
   <script>
@@ -76,7 +122,7 @@
   </script>	
 </head>
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base lang-en">
 <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -98,55 +144,125 @@
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">FHIR<sup>®</sup> tutorials</span>
+    <span class="mdl-layout-title">
+        <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
+        <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
+    </span>
     <nav class="mdl-navigation">
-		<a href="./index.html" class="mdl-navigation__link">Overview</a>
-		<a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">Simple Patient</a>
-		<a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">Simple Search</a>
-		<a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">Patient with References</a>
-		<a href="./bundle.html" id="bundle" class="mdl-navigation__link is-active-tab">Bundle</a>
-		<a href="./operations.html" id="operations" class="mdl-navigation__link">Operations</a>
-		<a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">ValueSet &amp; CodeSystem</a>
-		<a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">ConceptMap</a>
-		<a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">FHIR APIs</a>
-		<a href="#" class="mdl-navigation__link"></a>
-		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
+        <a href="./index.html" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Overview</span>
+            <span class="lang-content lang-ru">Обзор</span>
+        </a>
+        <a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Simple Patient</span>
+            <span class="lang-content lang-ru">Пациент </span>
+        </a>
+        <a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Simple Search</span>
+            <span class="lang-content lang-ru">Поиск</span>
+        </a>
+        <a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Patient with References</span>
+            <span class="lang-content lang-ru">Пациент со ссылками</span>
+        </a>
+        <a href="./bundle.html" id="bundle" class="mdl-navigation__link is-active-tab">
+            <span class="lang-content lang-en">Bundle</span>
+            <span class="lang-content lang-ru">Пакет</span>
+        </a>
+        <a href="./operations.html" id="operations" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Operations</span>
+            <span class="lang-content lang-ru">Операции</span>
+        </a>
+        <a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">
+            <span class="lang-content lang-en">ValueSet &amp; CodeSystem</span>
+            <span class="lang-content lang-ru">ValueSet и CodeSystem</span>
+        </a>
+        <a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">
+            <span class="lang-content lang-en">ConceptMap</span>
+            <span class="lang-content lang-ru">ConceptMap</span>
+        </a>
+        <a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">
+            <span class="lang-content lang-en">FHIR APIs</span>
+            <span class="lang-content lang-ru">FHIR API</span>
+        </a>
+        <a href="#" class="mdl-navigation__link"></a>
+        <a href="./exercises.html" class="mdl-navigation__link">
+            <span class="lang-content lang-en">FHIR exercises</span>
+            <span class="lang-content lang-ru">FHIR упражнения</span>
+        </a>
     </nav>
   </div>
   <main class="mdl-layout__content">
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
-							<h4>Bundle tutorial</h4>
-							<p>Bundle is a container for resources, enabling you to group and transmit resources  altogether at once. Guidance on the resource in general is available on the <a href="http://hl7.org/fhir/STU3/bundle.html">Bundle</a> page, and on the <a href="http://hl7.org/fhir/STU3/http.html#transaction">RESTful API</a> pages of the FHIR specification, with specific bundle types like transations, messaging and documents having their own documentation.</p>
-							<ul class="toc">
-								<h4>Contents</h4>
-								<!-- pr prefix stands for 'patient references'-->
-								<a href="#bn-about-bundle">Step 1: About Bundle</a>
-								<a href="#bn-paging">Step 2: Paging</a>
-								<a href="#bn-bundle-types">Step 3: Bundle types</a>
-								<a href="#bn-upload-endpoints">Step 4: Upload endpoints</a>
-								<a href="#bn-reference-resolution">Step 5: Reference resolution</a>
-							</ul>
+                            <!-- English Content -->
+                            <div class="lang-content lang-en">
+                                <h4>Bundle tutorial</h4>
+                                <p>Bundle is a container for resources, enabling you to group and transmit resources altogether at once. Guidance on the resource in general is available on the <a href="http://hl7.org/fhir/STU3/bundle.html">Bundle</a> page, and on the <a href="http://hl7.org/fhir/STU3/http.html#transaction">RESTful API</a> pages of the FHIR specification, with specific bundle types like transactions, messaging and documents having their own documentation.</p>
+                                <ul class="toc">
+                                    <h4>Contents</h4>
+                                    <!-- pr prefix stands for 'patient references'-->
+                                    <a href="#bn-about-bundle">Step 1: About Bundle</a>
+                                    <a href="#bn-paging">Step 2: Paging</a>
+                                    <a href="#bn-bundle-types">Step 3: Bundle types</a>
+                                    <a href="#bn-upload-endpoints">Step 4: Upload endpoints</a>
+                                    <a href="#bn-reference-resolution">Step 5: Reference resolution</a>
+                                </ul>
 
-							<h5 id="bn-about-bundle">Step 1: About Bundle</h5>
-							<p>We've mentioned in the previous <a href="patient-with-references.html#pr-observe-contained-references">tutorial on resource references</a> that resources can "contain" other resources. So how are Bundles different? The FHIR spec is quite helpful in this regard:</p>
-								<note><ul><li>Contained resources are "in" the container resource - they can only ever be interpreted and/or changed in the context of the container</li>
-	<li>A Bundle is a collection of resources that have an independent existence - for example, they can also be accessed directly using the RESTful API</li></ul></note>
+                                <h5 id="bn-about-bundle">Step 1: About Bundle</h5>
+                                <p>We've mentioned in the previous <a href="patient-with-references.html#pr-observe-contained-references">tutorial on resource references</a> that resources can "contain" other resources. So how are Bundles different? The FHIR spec is quite helpful in this regard:</p>
+                                <note><ul><li>Contained resources are "in" the container resource - they can only ever be interpreted and/or changed in the context of the container</li>
+                                <li>A Bundle is a collection of resources that have an independent existence - for example, they can also be accessed directly using the RESTful API</li></ul></note>
 
-							<p>So, contained resources cannot be GET'd, PUT'd and DELETE'd separately, or even referenced individually from outside the containing resource. Resources inside a Bundle, depending on your Bundle type and how you've uploaded it, do get created individually on the server and thus can be acted on independently.</p>
-							
-							<p>Here is how the general layout of a bundle looks like:</p>
-							<a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
-							
-							<ol>
-							<li>Metadata describing the Bundle type, the total amount of entries (some which may not be visible because of paging), and a link if you need to retrieve this Bundle later.</li>
-							<li>The meat of the resource, so to speak - this is where the resources that the Bundle has are stored. Included with resources are URLs which you can use to retrieve the resource individually.</li>
-							<li>Used when you're uploading Bundles - this is where you specify to the server what to do with each resource.</li>
-							<li>Used by the server when it's responding to your upload request - this is where it says how each operation went.</li>
-							</ol>
+                                <p>So, contained resources cannot be GET'd, PUT'd and DELETE'd separately, or even referenced individually from outside the containing resource. Resources inside a Bundle, depending on your Bundle type and how you've uploaded it, do get created individually on the server and thus can be acted on independently.</p>
+                                
+                                <p>Here is how the general layout of a bundle looks like:</p>
+                                <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
+                                
+                                <ol>
+                                <li>Metadata describing the Bundle type, the total amount of entries (some which may not be visible because of paging), and a link if you need to retrieve this Bundle later.</li>
+                                <li>The meat of the resource, so to speak - this is where the resources that the Bundle has are stored. Included with resources are URLs which you can use to retrieve the resource individually.</li>
+                                <li>Used when you're uploading Bundles - this is where you specify to the server what to do with each resource.</li>
+                                <li>Used by the server when it's responding to your upload request - this is where it says how each operation went.</li>
+                                </ol>
 
-							<p>Here's an annoted example Bundle you'd receive from the server when searching:</p>
+                                <p>Here's an annotated example Bundle you'd receive from the server when searching:</p>
+                            </div>
+
+                            <!-- Russian Content -->
+                            <div class="lang-content lang-ru">
+                                <h4>Урок по Bundle (Пакетам)</h4>
+                                <p>Bundle - это контейнер для ресурсов, позволяющий группировать и передавать ресурсы все сразу. Руководство по ресурсу в целом доступно на странице <a href="http://hl7.org/fhir/STU3/bundle.html">Bundle</a>, а также на страницах <a href="http://hl7.org/fhir/STU3/http.html#transaction">RESTful API</a> спецификации FHIR, при этом конкретные типы пакетов, такие как транзакции, сообщения и документы, имеют свою собственную документацию.</p>
+                                <ul class="toc">
+                                    <h4>Содержание</h4>
+                                    <a href="#bn-about-bundle">Шаг 1: О Bundle</a>
+                                    <a href="#bn-paging">Шаг 2: Пагинация</a>
+                                    <a href="#bn-bundle-types">Шаг 3: Типы Bundle</a>
+                                    <a href="#bn-upload-endpoints">Шаг 4: Конечные точки загрузки</a>
+                                    <a href="#bn-reference-resolution">Шаг 5: Разрешение ссылок</a>
+                                </ul>
+
+                                <h5 id="bn-about-bundle">Шаг 1: О Bundle</h5>
+                                <p>Мы упоминали в предыдущем <a href="patient-with-references.html#pr-observe-contained-references">уроке по ссылкам на ресурсы</a>, что ресурсы могут "содержать" другие ресурсы. Так чем же отличаются Bundle? Спецификация FHIR довольно полезна в этом отношении:</p>
+                                <note><ul><li>Содержащиеся ресурсы находятся "внутри" контейнерного ресурса - они могут интерпретироваться и/или изменяться только в контексте контейнера</li>
+                                <li>Bundle - это коллекция ресурсов, которые имеют независимое существование - например, к ним также можно получить прямой доступ с помощью RESTful API</li></ul></note>
+
+                                <p>Таким образом, содержащиеся ресурсы нельзя получить, обновить или удалить отдельно с помощью GET, PUT и DELETE, или даже ссылаться на них индивидуально извне содержащего ресурса. Ресурсы внутри Bundle, в зависимости от типа Bundle и способа загрузки, создаются индивидуально на сервере и, таким образом, могут обрабатываться независимо.</p>
+                                
+                                <p>Вот как выглядит общая структура bundle:</p>
+                                <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
+                                
+                                <ol>
+                                <li>Метаданные, описывающие тип Bundle, общее количество записей (некоторые из которых могут быть не видны из-за пагинации), и ссылка, если вам нужно получить этот Bundle позже.</li>
+                                <li>Суть ресурса, так сказать - здесь хранятся ресурсы, которые содержит Bundle. Вместе с ресурсами включены URL-адреса, которые можно использовать для получения ресурса индивидуально.</li>
+                                <li>Используется при загрузке Bundle - здесь вы указываете серверу, что делать с каждым ресурсом.</li>
+                                <li>Используется сервером при ответе на ваш запрос загрузки - здесь он сообщает, как прошла каждая операция.</li>
+                                </ol>
+
+                                <p>Вот аннотированный пример Bundle, который вы получили бы от сервера при поиске:</p>
+                            </div>
+
 <textarea class="fhir-resource-xml">
 <Bundle xmlns="http://hl7.org/fhir">
     <id value="fdcc9869-0bd6-4422-876b-1d0b53a2db"/>
@@ -156,49 +272,59 @@
 
     <!-- bundle type: this is from as a search result. See below on other
          bundle types -->
+    <!-- тип пакета: это результат поиска. См. ниже для других типов пакетов.-->
     <type value="searchset"/>
 
     <!-- if this is a search or history type, it'll also report how many
-         resources matched in total. note that not all of them might
-         fit into one bundle -->
+         resources matched in total.  -->
+    <!-- если это тип поиска или истории, также будет указано, сколько
+         всего найдено ресурсов.-->
     <total value="253"/>
     <link>
 
-        <!-- a link to retrieve this exact bundle again later -->
+        <!-- a link to retrieve this bundle again later -->
+        <!-- ссылка, чтобы получить этот пакет снова позже -->
         <relation value="self"/>
         <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id"/>
     </link>
     <link>
 
         <!-- a link to the first 'page' of the bundle to get more resources
-             that didn't fit in this bundle - see below for how
-             pagination works -->
+             that didn't fit in this bundle - see below for how pagination works -->
+        <!-- ссылка на первую страницу комплекта, где можно найти дополнительные ресурсы,
+             которые не вошли в пакет. Подробнее о том, как работает пагинация, см. ниже.-->
         <relation value="first"/>
         <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=0&amp;_count=3"/>
     </link>
     <link>
 
         <!-- a link to the next page to get more search results -->
+        <!-- ссылка на следующую страницу для получения дополнительных результатов поиска -->
         <relation value="next"/>
         <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=3&amp;_count=3"/>
     </link>
     <link>
 
         <!-- a link to the last page of search results -->
+        <!-- ссылка на последнюю страницу результатов поиска -->
         <relation value="last"/>
         <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=252&amp;_count=3"/>
     </link>
 
     <!-- the bundle will have many entries, each entry containing a found
          resource and some other data related to it -->
+    <!-- в пакете будет много записей, каждая из которых содержит найденный
+         ресурс и некоторые другие данные, связанные с ним.-->
     <entry>
 
         <!-- a direct link to access this resource on its own, outside
              of the bundle -->
+        <!-- прямая ссылка для доступа к этому ресурсу отдельно, вне пакета -->
         <fullUrl value="http://fhir3.healthintersections.com.au/open/Patient/1"/>
 
         <!-- resource itself in full - nothing is different about being
              in a bundle compared to just retrieving it directly -->
+        <!-- сам ресурс в полном объёме – ничем не отличается от его прямого извлечения по ссылке -->
         <resource>
             <Patient xmlns="http://hl7.org/fhir">
                 <id value="1"/>
@@ -235,11 +361,16 @@
         <!-- reason why this resource is included in search results. In this
              case, because it matched the search query. Resources can also be
              included because they were included by a matching resource -->
+        <!-- Причина, по которой этот ресурс включен в результаты поиска. В
+             данном случае, потому что он соответствует поисковому запросу. 
+             Ресурсы также могут быть включены, потому что они были включены 
+             соответствующим ресурсом. -->
         <search>
             <mode value="match"/>
         </search>
     </entry>
     <!-- similar layout as above entry -->
+    <!-- аналогично как в записи выше -->
     <entry>
         <fullUrl value="http://fhir3.healthintersections.com.au/open/Patient/10"/>
         <resource>
@@ -329,8 +460,18 @@
         </search>
     </entry>
 </Bundle></textarea>
-							<h5 id="bn-paging">Paging</h5>
-							<p>When the Bundle is too big to send in one go, because it has many resources within it, the server can choose to break it up into pieces (called "pages"). To allow you to easy navigate from one page to the next the Bundle provides links to the next page within it. So the client, after getting a page, can request the next page and so on until the end. In addition, there are also links to the previous, first, and last pages provided in each Bundle (see the example below):</p>
+
+                            <!-- English Content Continues -->
+                            <div class="lang-content lang-en">
+                                <h5 id="bn-paging">Paging</h5>
+                                <p>When the Bundle is too big to send in one go, because it has many resources within it, the server can choose to break it up into pieces (called "pages"). To allow you to easy navigate from one page to the next the Bundle provides links to the next page within it. So the client, after getting a page, can request the next page and so on until the end. In addition, there are also links to the previous, first, and last pages provided in each Bundle (see the example below):</p>
+                            </div>
+
+                            <!-- Russian Content Continues -->
+                            <div class="lang-content lang-ru">
+                                <h5 id="bn-paging">Пагинация</h5>
+                                <p>Когда Bundle слишком большой для отправки за один раз, поскольку он содержит много ресурсов, сервер может разбить его на части (называемые "страницами"). Чтобы позволить вам легко переходить от одной страницы к следующей, Bundle предоставляет ссылки на следующую страницу внутри себя. Таким образом, клиент, получив страницу, может запросить следующую страницу и так далее до конца. Кроме того, в каждом Bundle также предоставляются ссылки на предыдущую, первую и последнюю страницы (см. пример ниже):</p>
+                            </div>
 								
 							<textarea id="codesystem-1" class="fhir-resource-xml">
 <!-- ... snipped ... -->
@@ -353,144 +494,258 @@
 <!-- ... snipped ... -->
 							</textarea>
 	<br>
-							<p>See <a href="http://hl7.org/fhir/STU3/http.html#paging">more information on paging</a> on the FHIR spec.</p>		
+                            <div class="lang-content lang-en">
+                                <p>See <a href="http://hl7.org/fhir/STU3/http.html#paging">more information on paging</a> on the FHIR spec.</p>
+                            </div>
+                            
+                            <div class="lang-content lang-ru">
+                                <p>См. <a href="http://hl7.org/fhir/STU3/http.html#paging">больше информации о пагинации</a> в спецификации FHIR.</p>
+                            </div>
 							
-							
-							<h5 id="bn-bundle-types">Step 3: Bundle Types</h5>
-							
-							<p>There are <a href="http://hl7.org/fhir/STU3/valueset-bundle-type.html#expansion">several types</a> of Bundles defined by FHIR: document, message, transaction, transaction-response, batch, batch-response, history, searchset, and collection.
+                            <div class="lang-content lang-en">
+                                <h5 id="bn-bundle-types">Step 3: Bundle Types</h5>
+                                <p>There are <a href="http://hl7.org/fhir/STU3/valueset-bundle-type.html#expansion">several types</a> of Bundles defined by FHIR: document, message, transaction, transaction-response, batch, batch-response, history, searchset, and collection.</p>
+                            </div>
+                            
+                            <div class="lang-content lang-ru">
+                                <h5 id="bn-bundle-types">Шаг 3: Типы Bundle</h5>
+                                <p>FHIR определяет <a href="http://hl7.org/fhir/STU3/valueset-bundle-type.html#expansion">несколько типов</a> Bundle: document, message, transaction, transaction-response, batch, batch-response, history, searchset и collection.</p>
+                            </div>
 
 							<table class="table-fill">
 								<thead>
 									<tr>
-										<th class="text-left">Bundle type</th>
-										<th class="text-left">Bundle description</th>
+										<th class="text-left">
+                                            <span class="lang-content lang-en">Bundle type</span>
+                                            <span class="lang-content lang-ru">Тип Bundle</span>
+                                        </th>
+										<th class="text-left">
+                                            <span class="lang-content lang-en">Bundle description</span>
+                                            <span class="lang-content lang-ru">Описание Bundle</span>
+                                        </th>
 									</tr>
 								</thead>
 								<tbody class="table-hover">
 									<tr>
 										<td class="text-left">searchset</td>
-										<td class="text-left">Used in searching - an operation you're already familiar with - it's the Bundle that collates search results into a single response. As some search results can return a large number of results, this is where the idea of <a href="#bn-paging">paging</a> comes in.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Used in searching - an operation you're already familiar with - it's the Bundle that collates search results into a single response. As some search results can return a large number of results, this is where the idea of <a href="#bn-paging">paging</a> comes in.</span>
+                                            <span class="lang-content lang-ru">Используется при поиске - операция, с которой вы уже знакомы - это Bundle, который объединяет результаты поиска в один ответ. Поскольку некоторые результаты поиска могут возвращать большое количество результатов, здесь появляется идея пагинации.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left">document, message, collection</td>
-										<td class="text-left">Used in specific data exchange paradigms. Loosely speaking, you can think of <i>document</i>-type Bundles as those representing a CDA document, a <i>message</i>-type Bundle representing a V2 message, and a <i>collection</i> as a general catch-all type.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Used in specific data exchange paradigms. Loosely speaking, you can think of <i>document</i>-type Bundles as those representing a CDA document, a <i>message</i>-type Bundle representing a V2 message, and a <i>collection</i> as a general catch-all type.</span>
+                                            <span class="lang-content lang-ru">Используются в специфических парадигмах обмена данными. Грубо говоря, можно думать о Bundle типа <i>document</i> как о представляющих CDA документ, Bundle типа <i>message</i> как о представляющих V2 сообщение, а <i>collection</i> как об общем универсальном типе.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left">history</td>
-										<td class="text-left">Similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/STU3/http.html#history">_history</a> operations when you're looking at the history of operations on single instance of a resource. For example, looking at all the edits made to a single Patient resource.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/STU3/http.html#history">_history</a> operations when you're looking at the history of operations on single instance of a resource. For example, looking at all the edits made to a single Patient resource.</span>
+                                            <span class="lang-content lang-ru">Похож на searchset, но специализирован для операций <a href="http://hl7.org/fhir/STU3/http.html#history">_history</a>, когда вы просматриваете историю операций над одним экземпляром ресурса. Например, просмотр всех изменений, внесенных в один ресурс Patient.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left">batch, transaction</td>
-										<td class="text-left">Allows you to condense multiple operations into one - say you'd like to upload 5 resources but don't want to do it 5 times. You can gather all of the resources up into a bundle and upload it all at once. The difference between a batch and a transaction is how things are handled when an issue happens. When one of the operations of a <i>transaction</i> fails, the entire transaction fails and no changes happen on the server as a result of the transaction. If one of the operations of a <i>batch</i> fails, then the rest of the operations can still complete successfully.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Allows you to condense multiple operations into one - say you'd like to upload 5 resources but don't want to do it 5 times. You can gather all of the resources up into a bundle and upload it all at once. The difference between a batch and a transaction is how things are handled when an issue happens. When one of the operations of a <i>transaction</i> fails, the entire transaction fails and no changes happen on the server as a result of the transaction. If one of the operations of a <i>batch</i> fails, then the rest of the operations can still complete successfully.</span>
+                                            <span class="lang-content lang-ru">Позволяет объединить несколько операций в одну - скажем, вы хотите загрузить 5 ресурсов, но не хотите делать это 5 раз. Вы можете собрать все ресурсы в bundle и загрузить все сразу. Разница между batch и transaction заключается в том, как обрабатываются ситуации при возникновении проблем. Когда одна из операций <i>transaction</i> терпит неудачу, вся транзакция терпит неудачу и никаких изменений на сервере в результате транзакции не происходит. Если одна из операций <i>batch</i> терпит неудачу, то остальные операции все еще могут завершиться успешно.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left">batch-response, transaction-response</td>
-										<td class="text-left">What the server will respond with where it tells you what happened with each operation within your <i>batch</i> or <i>transaction</i> Bundle.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">What the server will respond with where it tells you what happened with each operation within your <i>batch</i> or <i>transaction</i> Bundle.</span>
+                                            <span class="lang-content lang-ru">То, чем сервер ответит, где он сообщает вам, что произошло с каждой операцией в вашем Bundle типа <i>batch</i> или <i>transaction</i>.</span>
+                                        </td>
 									</tr>
 								</tbody>
 							</table>
 
-							
-							<h5 id="bn-upload-endpoints">Step 4: Upload endpoints</h5>
-							<p>If you upload a Bundle to <code><b>[Service Root URL]/Bundle</b></code>, your Bundle will be stored as-is, just like any other resource. Sometimes this is the desired behaviour, alternatively, you may like the server to actually process the Bundle. For example, the transactions in your transaction Bundle to actually be acted upon. In order to get the server to unpack and process your Bundle, you need to upload to the <code><b>[Service Root URL]</b></code> directly. This most reliably works for transaction, batch, and document Bundle types. How the server deals with other Bundle types is up to it. Here is a complete list of endpoints that Bundles may be uploaded to:</p>
+                            <div class="lang-content lang-en">
+                                <h5 id="bn-upload-endpoints">Step 4: Upload endpoints</h5>
+                                <p>If you upload a Bundle to <code><b>[Service Root URL]/Bundle</b></code>, your Bundle will be stored as-is, just like any other resource. Sometimes this is the desired behaviour, alternatively, you may like the server to actually process the Bundle. For example, the transactions in your transaction Bundle to actually be acted upon. In order to get the server to unpack and process your Bundle, you need to upload to the <code><b>[Service Root URL]</b></code> directly. This most reliably works for transaction, batch, and document Bundle types. How the server deals with other Bundle types is up to it. Here is a complete list of endpoints that Bundles may be uploaded to:</p>
+                            </div>
+                            
+                            <div class="lang-content lang-ru">
+                                <h5 id="bn-upload-endpoints">Шаг 4: Эндпоинты для загрузки</h5>
+                                <p>Если вы загружаете Bundle в <code><b>[Service Root URL]/Bundle</b></code>, ваш Bundle будет сохранен как есть, как и любой другой ресурс. Иногда это желаемое поведение - но обычно вы хотите, чтобы сервер обработал Bundle. Например, чтобы транзакции в вашем transaction Bundle были выполнены. Чтобы заставить сервер распаковать и обработать ваш Bundle, вам нужно загрузить его непосредственно в <code><b>[Service Root URL]</b></code>. Это наиболее надежно работает для типов Bundle: transaction, batch и document. То, как сервер обрабатывает другие типы Bundle, зависит от него. Вот полный список конечных точек, в которые могут быть загружены Bundle:</p>
+                            </div>
 
 							<table class="table-fill fixed">
 								<thead>
 									<tr>
-										<th class="text-left">Endpoint</th>
-										<th class="text-left">Bundle type</th>
-										<th class="text-left">Effect on the Bundle</th>
+										<th class="text-left">
+                                            <span class="lang-content lang-en">Endpoint</span>
+                                            <span class="lang-content lang-ru">Конечная точка</span>
+                                        </th>
+										<th class="text-left">
+                                            <span class="lang-content lang-en">Bundle type</span>
+                                            <span class="lang-content lang-ru">Тип Bundle</span>
+                                        </th>
+										<th class="text-left">
+                                            <span class="lang-content lang-en">Effect on the Bundle</span>
+                                            <span class="lang-content lang-ru">Влияние на Bundle</span>
+                                        </th>
 									</tr>
 								</thead>
 								<tbody class="table-hover">
 									<tr>
 										<td class="text-left"><a href="http://hl7.org/fhir/STU3/http.html#transaction"><code>[Service Root URL]</code></a></td>
 										<td class="text-left">batch, transaction</td>
-										<td class="text-left">Bundle is processed by the server - individual operations/resources are unpacked and acted upon.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Bundle is processed by the server - individual operations/resources are unpacked and acted upon.</span>
+                                            <span class="lang-content lang-ru">Bundle обрабатывается сервером - отдельные операции/ресурсы распаковываются и обрабатываются.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left"><a href="http://hl7.org/fhir/STU3/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
 										<td class="text-left">history</td>
-										<td class="text-left">Bundle may be be processed by the server as its structure is very similar to batch/transaction type.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Bundle may be be processed by the server as its structure is very similar to batch/transaction type.</span>
+                                            <span class="lang-content lang-ru">Bundle может быть обработан сервером, поскольку его структура очень похожа на тип batch/transaction.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left"><a href="http://hl7.org/fhir/STU3/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
 										<td class="text-left">document, message, transaction-response, batch-response, history, searchset, collection</td>
-										<td class="text-left">Bundle may be processed by the server as create/update operations.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Bundle may be processed by the server as create/update operations.</span>
+                                            <span class="lang-content lang-ru">Bundle может быть обработан сервером как операции создания/обновления.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left"><a href="http://hl7.org/fhir/STU3/binary.html"><code>[Service Root URL]/Binary</code></a></td>
 										<td class="text-left">document</td>
-										<td class="text-left">Bundle is stored as-is by the server as binary content and not acted upon.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Bundle is stored as-is by the server as binary content and not acted upon.</span>
+                                            <span class="lang-content lang-ru">Bundle сохраняется сервером как есть в виде двоичного содержимого и не обрабатывается.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left"><a href="http://hl7.org/fhir/STU3/bundle.html"><code>[Service Root URL]/Bundle</code></a></td>
 										<td class="text-left">document, transaction, transaction-response, batch,&nbsp;batch-response,&nbsp;history,&nbsp;searchset, and&nbsp;collection</td>
-										<td class="text-left">Bundle is stored as-is by the server and not acted upon, same as if you uploaded a Patient resource.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Bundle is stored as-is by the server and not acted upon, same as if you uploaded a Patient resource.</span>
+                                            <span class="lang-content lang-ru">Bundle сохраняется сервером как есть и не обрабатывается, так же как если бы вы загрузили ресурс Patient.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left"><a title="Asynchronous Messaging using the RESTful API" href="http://hl7.org/fhir/STU3/messaging.html#rest"><code>[Service Root URL]/Bundle</code></a></td>
 										<td class="text-left">message</td>
-										<td class="text-left">Bundle is processed by the server - server will store the Bundle as-is, index it on the MessageHeader, and act on the message. This is the RESTful endpoint for a message Bundle</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Bundle is processed by the server - server will store the Bundle as-is, index it on the MessageHeader, and act on the message. This is the RESTful endpoint for a message Bundle</span>
+                                            <span class="lang-content lang-ru">Bundle обрабатывается сервером - сервер сохранит Bundle как есть, проиндексирует его по MessageHeader и обработает сообщение. Это RESTful конечная точка для message Bundle</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left"><a href="http://hl7.org/fhir/STU3/messaging.html#process"><code>[Service Root URL]/$process-message</code></a></td>
 										<td class="text-left">message</td>
-										<td class="text-left">Bundle is processed by the server as if it is a message.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Bundle is processed by the server as if it is a message.</span>
+                                            <span class="lang-content lang-ru">Bundle обрабатывается сервером как сообщение.</span>
+                                        </td>
 									</tr>
 								</tbody>
 							</table>
 							
-							<h5 id="bn-reference-resolution">Step 5: Reference resolution</h5>
-					
-                            <p>References between resources within a Bundle can come in two types. Either references to resources where each resource is within the Bundle but not as yet on the server.</p> 
-                            <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleOutOfServer.PNG" width="50%"/></a>
+                            <div class="lang-content lang-en">
+                                <h5 id="bn-reference-resolution">Step 5: Reference resolution</h5>
+                                <p>References between resources within a Bundle can come in two types. Either references to resources where each resource is within the Bundle but not as yet on the server.</p> 
+                                <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleOutOfServer.PNG" width="50%"/></a>
 
-                            <p>Or references from resources in the bundle to resources that are on the server but not found in the bundle.</p> 
-                            <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleInOfServer.PNG" width="50%"/></a>
+                                <p>Or references from resources in the bundle to resources that are on the server but not found in the bundle.</p> 
+                                <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleInOfServer.PNG" width="50%"/></a>
 
-                            <p>When uploading a bundle of resources to a server, as in the first case, it can be a little confusing to understand how to form the reference between the resources. How can you reference a resource if the server has not as yet assigned an ID to it?</p>
+                                <p>When uploading a bundle of resources to a server, as in the first case, it can be a little confusing to understand how to form the reference between the resources. How can you reference a resource if the server has not as yet assigned an ID to it?</p>
+                                
+                                <p>The simple answer is that the bundle creator can assign temporary resource IDs to resources in order to create the references between each resource. Then depending on the way you upload the Bundle to the server the server can use your IDs to understand the linkage between resources and will assign its own server IDs and update all the existing references with the new IDs. In these cases, the server will then reply with a return Bundle that informs the sender of these updated IDs. If you refer back the Bundle layout image at the beginning of this page you can see the '<code>Bundle/entry/response/location</code>' element where these new IDs would be returned as a URI.   Whether the server performs this identification or not is dependant on the Bundle type you are uploading and the endpoint you are uploading it to. The table below talks more to this point.</p>
+
+                                <p>Unlike general resources you need to take care when resolving references between resources in Bundles, you can not just assume the reference is to a resource on a server, it may be a reference to a resource within the same Bundle and you should assume this first. For more on this topic refer to the FHIR specification here:<a href="http://hl7.org/fhir/STU3/bundle.html#references">Resolving references in Bundles</a> </p>
+        
+                                <p>The table below describes the effect Bundle type can have on uploading Bundles:</p>
+                            </div>
                             
-                            <p>The simple answer is that the bundle creator can assign temporary resource IDs to resources in order to create the references between each resource. Then depending on the way you upload the Bundle to the server the server can use your IDs to understand the linkage between resources and will assign its own server IDs and update all the existing references with the new IDs. In these cases, the server will then reply with a return Bundle that informs the sender of these updated IDs. If you refer back the Bundle layout image at the beginning of this page you can see the '<code>Bundle/entry/response/location</code>' element where these new IDs would be returned as a URI.   Whether the server performs this identification or not is dependant on the Bundle type you are uploading and the endpoint you are uploading it to. The table below talks more to this point.</p>
+                            <div class="lang-content lang-ru">
+                                <h5 id="bn-reference-resolution">Шаг 5: Разрешение ссылок</h5>
+                                <p>Ссылки между ресурсами внутри Bundle могут быть двух типов. Либо ссылки на ресурсы, где каждый ресурс находится внутри Bundle, но еще не на сервере.</p> 
+                                <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleOutOfServer.PNG" width="50%"/></a>
 
-                            <p>Unlike general resources you need to take care when resolving references between resources in Bundles, you can not just assume the reference is to a resource on a server, it may be a reference to a resource within the same Bundle and you should assume this first. For more on this topic refer to the FHIR specification here:<a href="http://hl7.org/fhir/STU3/bundle.html#references">Resolving references in Bundles</a> </p>
-	
-                            <p>The table below describes the effect Bundle type can have on uploading Bundles:</p>							
+                                <p>Или ссылки от ресурсов в bundle на ресурсы, которые находятся на сервере, но не найдены в bundle.</p> 
+                                <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleInOfServer.PNG" width="50%"/></a>
+
+                                <p>При загрузке bundle ресурсов на сервер, как в первом случае, может быть не совсем понятно, как формировать ссылку между ресурсами. Как можно ссылаться на ресурс, если сервер еще не назначил ему ID?</p>
+                                
+                                <p>Ответ заключается в том, что создатель bundle может назначить временные ID ресурсов для создания ссылок между каждым ресурсом. Затем, в зависимости от способа загрузки Bundle на сервер, сервер может использовать ваши ID для понимания связи между ресурсами и назначит свои собственные серверные ID и обновит все существующие ссылки новыми ID. В этих случаях сервер затем ответит возвращаемым Bundle, который информирует отправителя об этих обновленных ID. Если вы вернетесь к изображению структуры Bundle в начале этой страницы, вы можете увидеть элемент '<code>Bundle/entry/response/location</code>', где эти новые ID будут возвращены как URI. Выполняет ли сервер эту идентификацию или нет, зависит от типа Bundle, который вы загружаете, и конечной точки, в которую вы его загружаете. Таблица ниже более подробно рассматривает этот момент.</p>
+
+                                <p>В отличие от общих ресурсов, вам нужно быть осторожным при разрешении ссылок между ресурсами в Bundle, вы не можете просто предполагать, что ссылка указывает на ресурс на сервере, это может быть ссылка на ресурс внутри того же Bundle, и вы должны предполагать это в первую очередь. Для получения дополнительной информации по этой теме обратитесь к спецификации FHIR здесь: <a href="http://hl7.org/fhir/STU3/bundle.html#references">Разрешение ссылок в Bundle</a></p>
+        
+                                <p>Таблица ниже описывает влияние, которое тип Bundle может оказать на загрузку Bundle:</p>
+                            </div>
+							
 							<table class="table-fill">
 								<thead>
 									<tr>
-										<th class="text-left">Bundle type</th>
-										<th class="text-left">Effect on Bundle upload</th>
+										<th class="text-left">
+                                            <span class="lang-content lang-en">Bundle type</span>
+                                            <span class="lang-content lang-ru">Тип Bundle</span>
+                                        </th>
+										<th class="text-left">
+                                            <span class="lang-content lang-en">Effect on Bundle upload</span>
+                                            <span class="lang-content lang-ru">Влияние на загрузку Bundle</span>
+                                        </th>
 									</tr>
 								</thead>
 								<tbody class="table-hover">
 									<tr>
 										<td class="text-left">document</td>
 										<!-- GG's response on server replacing IDs: https://chat.fhir.org/#narrow/stream/implementers/subject/Document.20references -->
-										<td class="text-left">You can create your own IDs for resources and use them as references for other resources within the Bundle. A document Bundle typically is stored as-is on the server, without it getting unpacked - although if you upload it to the <code><b>[Service Root URL]</b></code> instead of the <a href="http://hl7.org/fhir/STU3/documents.html#bundle">usual endpoints</a> then it will be up to the server to unpack the Bundle and replace your assigned resource ID's with its own (though it doesn't have to).</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">You can create your own IDs for resources and use them as references for other resources within the Bundle. A document Bundle typically is stored as-is on the server, without it getting unpacked - although if you upload it to the <code><b>[Service Root URL]</b></code> instead of the <a href="http://hl7.org/fhir/STU3/documents.html#bundle">usual endpoints</a> then it will be up to the server to unpack the Bundle and replace your assigned resource ID's with its own (though it doesn't have to).</span>
+                                            <span class="lang-content lang-ru">Вы можете создать свои собственные ID для ресурсов и использовать их как ссылки для других ресурсов внутри Bundle. Document Bundle обычно сохраняется как есть на сервере, без распаковки - хотя если вы загружаете его в <code><b>[Service Root URL]</b></code> вместо <a href="http://hl7.org/fhir/STU3/documents.html#bundle">обычных конечных точек</a>, то сервер может распаковать Bundle и заменить ваши назначенные ID ресурсов своими собственными (хотя он не обязан это делать).</span>
+                                        </td>
 									</tr>	
 									<tr>
 										<td class="text-left">batch</td>
-										<td class="text-left">You cannot reference other resources inside the Bundle - thus all resources inside a batch Bundle must be completely independant, only reference resources already created on the server, or resources available on other servers.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">You cannot reference other resources inside the Bundle - thus all resources inside a batch Bundle must be completely independent, only reference resources already created on the server, or resources available on other servers.</span>
+                                            <span class="lang-content lang-ru">Вы не можете ссылаться на другие ресурсы внутри Bundle - таким образом, все ресурсы внутри batch Bundle должны быть полностью независимыми, ссылаться только на ресурсы, уже созданные на сервере, или ресурсы, доступные на других серверах.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left">transaction</td>
-										<td class="text-left">You can reference other resources inside the Bundle using their business identifiers in a simplified search query. It is then on the server to replace the search query with the resource ID's when processing the Bundle. See Conditional References section of <a href="http://hl7.org/fhir/STU3/http.html#2.42.0.16.2">Transaction Processing Rules</a> for more.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">You can reference other resources inside the Bundle using their business identifiers in a simplified search query. It is then on the server to replace the search query with the resource ID's when processing the Bundle. See Conditional References section of <a href="http://hl7.org/fhir/STU3/http.html#2.42.0.16.2">Transaction Processing Rules</a> for more.</span>
+                                            <span class="lang-content lang-ru">Вы можете ссылаться на другие ресурсы внутри Bundle, используя их бизнес-идентификаторы в упрощенном поисковом запросе. Затем сервер должен заменить поисковый запрос на ID ресурсов при обработке Bundle. См. раздел Условные ссылки в <a href="http://hl7.org/fhir/STU3/http.html#2.42.0.16.2">Правилах обработки транзакций</a> для получения дополнительной информации.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left">message</td>
-										<td class="text-left">Similar to document - you create your own IDs and use those as references within the Bundle. In the event that you upload a message Bundle to the RESTful API on the <code><b>[Service Root URL]/Bundle</b></code> endpoint (instead of the usual <code>[Service Root URL]/Bundle/$process-message</code>), the Bundle is not unpacked and only the MessageHeader is indexed.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">Similar to document - you create your own IDs and use those as references within the Bundle. In the event that you upload a message Bundle to the RESTful API on the <code><b>[Service Root URL]/Bundle</b></code> endpoint (instead of the usual <code>[Service Root URL]/Bundle/$process-message</code>), the Bundle is not unpacked and only the MessageHeader is indexed.</span>
+                                            <span class="lang-content lang-ru">Похоже на document - вы создаете свои собственные ID и используете их как ссылки внутри Bundle. В случае, если вы загружаете message Bundle в RESTful API на конечную точку <code><b>[Service Root URL]/Bundle</b></code> (вместо обычной <code>[Service Root URL]/Bundle/$process-message</code>), Bundle не распаковывается и индексируется только MessageHeader.</span>
+                                        </td>
 									</tr>
 									<tr>
 										<td class="text-left">collection, searchset, history</td>
-										<td class="text-left">You can create your own IDs for resources and use them as references within the Bundle - although the server will most likely store these resources as-is and not act on them, since these types of Bundles are typically for servers to send to clients.</td>
+										<td class="text-left">
+                                            <span class="lang-content lang-en">You can create your own IDs for resources and use them as references within the Bundle - although the server will most likely store these resources as-is and not act on them, since these types of Bundles are typically for servers to send to clients.</span>
+                                            <span class="lang-content lang-ru">Вы можете создать свои собственные ID для ресурсов и использовать их как ссылки внутри Bundle - хотя сервер, скорее всего, сохранит эти ресурсы как есть и не будет действовать на них, поскольку эти типы Bundle обычно предназначены для отправки серверами клиентам.</span>
+                                        </td>
 									</tr>
 								</tbody>
 							</table>
 							
 							<br>
-							<p>That's about it for the difficult parts of a Bundle! Have a look at the <a href="http://hl7.org/fhir/STU3/bundle.html">FHIR page for Bundle</a> now for things like uniqueness rules and search parameters of a Bundle.</p>
+                            <div class="lang-content lang-en">
+                                <p>That's about it for the difficult parts of a Bundle! Have a look at the <a href="http://hl7.org/fhir/STU3/bundle.html">FHIR page for Bundle</a> now for things like uniqueness rules and search parameters of a Bundle.</p>
+                            </div>
+                            
+                            <div class="lang-content lang-ru">
+                                <p>Это все о сложных частях Bundle! Теперь взгляните на <a href="http://hl7.org/fhir/STU3/bundle.html">страницу FHIR для Bundle</a> для изучения таких вещей, как правила уникальности и параметры поиска Bundle.</p>
+                            </div>
 						
 	
 						</div>
@@ -500,10 +755,16 @@
                 <div class="mdl-mega-footer--middle-section">
                     <div class="mdl-mega-footer--drop-down-section">
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">The Agency</span>
+                            <span class="lang-content lang-ru">Агентство</span>
+                        </h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
-                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
+                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">
+                                <span class="lang-content lang-en">My Health Record</span>
+                                <span class="lang-content lang-ru">Моя медицинская карта</span>
+                            </a></li>
                         </ul>
                     </div>
                     <div class="mdl-mega-footer--drop-down-section">
@@ -514,6 +775,19 @@
                             <li><a href="http://hl7.org/fhir/STU3" title="Latest release of FHIR, for use in Madrid Connectathon">FHIR STU3 Release</a></li>
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
+                    </div>
+                    
+                    <!-- Language Selector -->
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">Language</span>
+                            <span class="lang-content lang-ru">Язык</span>
+                        </h1>
+                        <div class="language-selector">
+                            <button onclick="switchLanguage('en')" class="lang-btn" id="lang-en-btn">English</button>
+                            <button onclick="switchLanguage('ru')" class="lang-btn" id="lang-ru-btn">Русский</button>
+                        </div>
                     </div>
                 </div>
             </footer>
@@ -532,6 +806,83 @@
     <script src="js/main.js"></script>
 <!-- supporting javascript to actually do the uploading -->	
 	<script src="js/post-resources.js"></script>
+    
+    <!-- Language switching script -->
+    <script>
+        // Language switching functionality
+        function switchLanguage(lang) {
+            // Remove existing language classes
+            document.body.classList.remove('lang-en', 'lang-ru');
+            
+            // Add new language class
+            document.body.classList.add('lang-' + lang);
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('lang-' + lang + '-btn').classList.add('active');
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferred-language', lang);
+            
+            // Update HTML lang attribute for accessibility
+            document.documentElement.lang = lang;
+        }
+        
+        // Initialize language on page load
+        function initializeLanguage() {
+            // Check URL parameter first
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            
+            // Then check localStorage
+            const savedLang = localStorage.getItem('preferred-language');
+            
+            // Default to English
+            const defaultLang = 'en';
+            
+            // Determine which language to use
+            const currentLang = urlLang || savedLang || defaultLang;
+            
+            // Apply the language
+            switchLanguage(currentLang);
+        }
+        
+        // Run initialization when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeLanguage);
+        
+        // Optional: Update URLs when language changes to maintain consistency
+        function updateUrlWithLanguage(lang) {
+            const url = new URL(window.location);
+            url.searchParams.set('lang', lang);
+            window.history.replaceState({}, '', url);
+        }
+        
+        // Enhanced switchLanguage function with URL update
+        function switchLanguage(lang) {
+            // Remove existing language classes
+            document.body.classList.remove('lang-en', 'lang-ru');
+            
+            // Add new language class
+            document.body.classList.add('lang-' + lang);
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('lang-' + lang + '-btn').classList.add('active');
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferred-language', lang);
+            
+            // Update HTML lang attribute for accessibility
+            document.documentElement.lang = lang;
+            
+            // Update URL parameter
+            updateUrlWithLanguage(lang);
+        }
+    </script>
 </body>
 
 </html>

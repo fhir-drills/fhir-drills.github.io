@@ -63,6 +63,52 @@
             z-index: 900;
         }
 
+        /* Language switching CSS */
+        .lang-content {
+            display: none;
+        }
+        
+        body.lang-en .lang-en {
+            display: block;
+        }
+        
+        body.lang-en .lang-en.inline {
+            display: inline;
+        }
+        
+        body.lang-ru .lang-ru {
+            display: block;
+        }
+        
+        body.lang-ru .lang-ru.inline {
+            display: inline;
+        }
+        
+        /* Language selector styling */
+        .language-selector {
+            margin: 20px 0;
+        }
+        
+        .lang-btn {
+            background: #673ab7;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background: #5e35b1;
+        }
+        
+        .lang-btn.active {
+            background: #e91e63;
+        }
+
     </style>
     <link href="css/lightbox.min.css" rel="stylesheet">
   <script>
@@ -76,7 +122,7 @@
   </script>	
 </head>
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base lang-en">
 <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -98,73 +144,163 @@
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">FHIR<sup>®</sup> tutorials</span>
+    <span class="mdl-layout-title">
+        <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
+        <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
+    </span>
     <nav class="mdl-navigation">
-		<a href="./index.html" class="mdl-navigation__link">Overview</a>
-		<a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">Simple Patient</a>
-		<a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">Simple Search</a>
-		<a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">Patient with References</a>
-		<a href="./bundle.html" id="bundle" class="mdl-navigation__link">Bundle</a>
-		<a href="./operations.html" id="operations" class="mdl-navigation__link">Operations</a>
-		<a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link is-active-tab">ValueSet &amp; CodeSystem</a>
-		<a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">ConceptMap</a>
-		<a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">FHIR APIs</a>
-		<a href="#" class="mdl-navigation__link"></a>
-		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
+        <a href="./index.html" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Overview</span>
+            <span class="lang-content lang-ru">Обзор</span>
+        </a>
+        <a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Simple Patient</span>
+            <span class="lang-content lang-ru">пациент</span>
+        </a>
+        <a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Simple Search</span>
+            <span class="lang-content lang-ru">поиск</span>
+        </a>
+        <a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Patient with References</span>
+            <span class="lang-content lang-ru">Пациент со ссылками</span>
+        </a>
+        <a href="./bundle.html" id="bundle" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Bundle</span>
+            <span class="lang-content lang-ru">Пакет</span>
+        </a>
+        <a href="./operations.html" id="operations" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Operations</span>
+            <span class="lang-content lang-ru">Операции</span>
+        </a>
+        <a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link is-active-tab">
+            <span class="lang-content lang-en">ValueSet &amp; CodeSystem</span>
+            <span class="lang-content lang-ru">ValueSet и CodeSystem</span>
+        </a>
+        <a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">
+            <span class="lang-content lang-en">ConceptMap</span>
+            <span class="lang-content lang-ru">ConceptMap</span>
+        </a>
+        <a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">
+            <span class="lang-content lang-en">FHIR APIs</span>
+            <span class="lang-content lang-ru">FHIR API</span>
+        </a>
+        <a href="#" class="mdl-navigation__link"></a>
+        <a href="./exercises.html" class="mdl-navigation__link">
+            <span class="lang-content lang-en">FHIR exercises</span>
+            <span class="lang-content lang-ru">FHIR упражнения</span>
+        </a>
     </nav>
   </div>
   <main class="mdl-layout__content">
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
-                        <h4>ValueSet and CodeSystem</h4>
                         
-                        <p>This tutorial will cover the basics of the ValueSet and CodeSystem resources which are two of the three key resources for working with terminology within FHIR, with the other one being <a href="./conceptmap.html">ConceptMap</a>.</p>
-                        <ul class="toc">
-                            <h4>Contents</h4>
-                            <!-- pr prefix stands for 'patient references'-->
-                            <a href="#vac-step1">Step 1: What are ValueSets and CodeSystems</a>                            
-                            <a href="#vac-step2">Step 2: CodeSystem the FHIR Resources</a>  
-                            <a href="#vac-step3">Step 3: ValueSet the FHIR Resources</a>  
-                            <a href="#vac-step4">Step 4: Understanding how ValueSet codes are used</a>
-                            <a href="#vac-step5">Step 5: Creating ValueSets using filters (Include, Exclude and Filter)</a>
-                            <a href="#vac-step6">Step 6: Using the $expand operation</a>
+                        <!-- English Content -->
+                        <div class="lang-content lang-en">
+                            <h4>ValueSet and CodeSystem</h4>
                             
+                            <p>This tutorial will cover the basics of the ValueSet and CodeSystem resources which are two of the three key resources for working with terminology within FHIR, with the other one being <a href="./conceptmap.html">ConceptMap</a>.</p>
+                            <ul class="toc">
+                                <h4>Contents</h4>
+                                <!-- pr prefix stands for 'patient references'-->
+                                <a href="#vac-step1">Step 1: What are ValueSets and CodeSystems</a>                            
+                                <a href="#vac-step2">Step 2: CodeSystem the FHIR Resources</a>  
+                                <a href="#vac-step3">Step 3: ValueSet the FHIR Resources</a>  
+                                <a href="#vac-step4">Step 4: Understanding how ValueSet codes are used</a>
+                                <a href="#vac-step5">Step 5: Creating ValueSets using filters (Include, Exclude and Filter)</a>
+                                <a href="#vac-step6">Step 6: Using the $expand operation</a>
+                            </ul>
+
+                            <h5 id="vac-step1">Step 1: What are ValueSets and CodeSystems</h5>                        
                             
-                        </ul>
-
-                        <h5 id="vac-step1">Step 1: What are ValueSets and CodeSystems</h5>                        
-                        
-                        <p>In Healthcare, we use many codes from many different sets of codes. We have relatively simple ones like patient gender and more complex ones such as allergies and adverse reactions and more clerical ones like facility codes or billing codes. FHIR cannot define every required code and code set for every Healthcare system across the world. Instead, FHIR provides a mechanism to manage the codes and code sets and that mechanism is a CodeSystem and ValueSet resources.  </p>
-                        
-                        <p>FHIR's CodeSystems and ValueSets work hand in hand to manage terminology in FHIR. The two are so closely tied that in the early versions of FHIR they were actually one resource. Yet since the STU3 version of FHIR, they have been separated. Here we will first explain the concepts behind CodeSystem and ValueSet and later we will look at the FHIR resources that embody them.</p>
+                            <p>In Healthcare, we use many codes from many different sets of codes. We have relatively simple ones like patient gender and more complex ones such as allergies and adverse reactions and more clerical ones like facility codes or billing codes. FHIR cannot define every required code and code set for every Healthcare system across the world. Instead, FHIR provides a mechanism to manage the codes and code sets and that mechanism is a CodeSystem and ValueSet resources.</p>
                             
-                        <p>It is best to start by explaining CodeSystem as it is the basis that ValueSets are then created from. You can think of a CodeSystem as being a master catalogue of a particular set of codes. It is the totality of all the codes in a system. That system may be SNOMED-CT or LOINC or even a system you create for yourself. Let's use an analogy to help explain.</p>
+                            <p>FHIR's CodeSystems and ValueSets work hand in hand to manage terminology in FHIR. The two are so closely tied that in the early versions of FHIR they were actually one resource. Yet since the STU3 version of FHIR, they have been separated. Here we will first explain the concepts behind CodeSystem and ValueSet and later we will look at the FHIR resources that embody them.</p>
+                                
+                            <p>It is best to start by explaining CodeSystem as it is the basis that ValueSets are then created from. You can think of a CodeSystem as being a master catalogue of a particular set of codes. It is the totality of all the codes in a system. That system may be SNOMED-CT or LOINC or even a system you create for yourself. Let's use an analogy to help explain.</p>
 
-                        <p>I love Allen’s lollies. Let’s imagine that each different lolly is a code. We have RipeRaspberries, Pineapples, MilkBottles, Snakes and all of the other Allen’s lollies. If we listed the entire catalogue of Allen’s lollies with a description for each, the date the list was put together, the lists publisher details and more then this would be the CodeSystem.</p>
+                            <p>I love Allen's lollies. Let's imagine that each different lolly is a code. We have RipeRaspberries, Pineapples, MilkBottles, Snakes and all of the other Allen's lollies. If we listed the entire catalogue of Allen's lollies with a description for each, the date the list was put together, the lists publisher details and more then this would be the CodeSystem.</p>
+                            
+                            <img src="images/Lollies-Mix.jpg" width="30%"> 
+                            
+                            <p>The CodeSystem does not get used by the consumers, it is just the reference catalogue for all Allen's lollies, so if you want to find out more about the code 'RipeRaspberrie' then you would go to the CodeSystem. What a consumer uses is a ValueSet, because a ValueSet adds value to the consumer. In our lolly analogy, the ValueSet is the packet of lollies you buy, like the Party Mix or the bag of lollies you choose because they're your favourites. This is a ValueSet because it serves a purpose. It is a selection of codes from the CodeSystem to be used for a purpose.</p>
+                            
+                            <img src="images/Lollies-BagOf.jpg" width="20%">
+                            
+                            <p>A ValueSet is not limited to a single CodeSystem just as our bag of lollies is not limited to Allen's lollies. I'm also quite fond of Smarties, but only Red and Blue ones, from the Smarties CodeSystem, and also a few RedSkins from the Wonka CodeSystem. All of these can go into my same lolly bag which is a single ValueSet.</p>
+                            
+                            <p>Next, we will look at the FHIR resources used for these concepts which are also named CodeSystem and ValueSet.</p>
+                        </div>
                         
-                        <img src="images/Lollies-Mix.jpg" width="30%"> 
-                        
-                        <p>The CodeSystem does not get used by the consumers, it is just the reference catalogue for all Allen’s lollies, so if you want to find out more about the code 'RipeRaspberrie' then you would go to the CodeSystem. What a consumer uses is a ValueSet, because a ValueSet adds value to the consumer. In our lolly analogy, the ValueSet is the packet of lollies you buy, like the Party Mix or the bag of lollies you choose because they're your favourites. This is a ValueSet because it serves a purpose.  It is a selection of codes from the CodeSystem to be used for a purpose.</p>
-                        
-                        <img src="images/Lollies-BagOf.jpg" width="20%">
-                        
-                        <p>A ValueSet is not limited to a single CodeSystem just as our bag of lollies is not limited to Allen's lollies. I'm also quite fond of Smarties, but only Red and Blue ones, from the Smarties CodeSystem, and also a few RedSkins from the Wonka CodeSystem. All of these can go into my same lolly bag which is a single ValueSet.</p>
-                        
-                        <p>Next, we will look at the FHIR resources used for these concepts which are also named CodeSystem and ValueSet.</p>
-                        
-                        <h5 id="vac-step2">Step 2: CodeSystem the FHIR Resource</h5>
-                        
-                        <p>Let's take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
+                        <!-- Russian Content -->
+                        <div class="lang-content lang-ru">
+                            <h4>ValueSet и CodeSystem</h4>
+                            
+                            <p>Этот урок охватывает основы ресурсов ValueSet и CodeSystem, которые являются двумя из трех ключевых ресурсов для работы с терминологией в FHIR; третьим является <a href="./conceptmap.html">ConceptMap</a>.</p>
+                            <ul class="toc">
+                                <h4>Содержание</h4>
+                                <a href="#vac-step1">Шаг 1: Что такое ValueSet и CodeSystem</a>                            
+                                <a href="#vac-step2">Шаг 2: CodeSystem - ресурс FHIR</a>  
+                                <a href="#vac-step3">Шаг 3: ValueSet - ресурс FHIR</a>  
+                                <a href="#vac-step4">Шаг 4: Понимание того, как используются коды ValueSet</a>
+                                <a href="#vac-step5">Шаг 5: Создание ValueSet с использованием фильтров (Include, Exclude и Filter)</a>
+                                <a href="#vac-step6">Шаг 6: Использование операции $expand</a>
+                            </ul>
 
-                        <ul>
-                        <li><b><a href="http://hl7.org/fhir/STU3/codesystem.html" rel="stylesheet">Resource CodeSystem</a></b></li>
-                        </ul>
-                        <p><b>Below is a simple example of a CodeSystem FHIR resource</b></p>
+                            <h5 id="vac-step1">Шаг 1: Что такое ValueSet и CodeSystem</h5>                        
+                            
+                            <p>В здравоохранении мы используем множество кодов из различных наборов кодов. У нас есть относительно простые, такие как пол пациента, и более сложные, такие как аллергии и побочные реакции, а также более административные, такие как коды учреждений или коды выставления счетов. FHIR не может определить каждый необходимый код и набор кодов для каждой системы здравоохранения по всему миру. Вместо этого FHIR предоставляет механизм для управления кодами и наборами кодов, и этим механизмом являются ресурсы CodeSystem и ValueSet.</p>
+                            
+                            <p>CodeSystem и ValueSet в FHIR работают рука об руку для управления терминологией в FHIR. Эти два ресурса настолько тесно связаны, что в ранних версиях FHIR они фактически были одним ресурсом. Однако с версии STU3 FHIR они были разделены. Здесь мы сначала объясним концепции, лежащие в основе CodeSystem и ValueSet, а затем рассмотрим ресурсы FHIR, которые их воплощают.</p>
+                                
+                            <p>Лучше всего начать с объяснения CodeSystem, поскольку это основа, на которой затем создаются ValueSet. Вы можете думать о CodeSystem как о главном каталоге определенного набора кодов. Это совокупность всех кодов в системе. Эта система может быть SNOMED-CT или LOINC, или даже система, которую вы создаете для себя. Давайте используем аналогию для объяснения.</p>
+
+                            <p>Я люблю конфеты Allen's. Давайте представим, что каждая разная конфета - это код. У нас есть RipeRaspberries, Pineapples, MilkBottles, Snakes и все остальные конфеты Allen's. Если бы мы перечислили весь каталог конфет Allen's с описанием для каждой, датой составления списка, деталями издателя списка и многим другим, то это был бы CodeSystem.</p>
+                            
+                            <img src="images/Lollies-Mix.jpg" width="30%"> 
+                            
+                            <p>CodeSystem не используется потребителями напрямую, это просто справочный каталог всех конфет Allen's, поэтому если вы хотите узнать больше о коде 'RipeRaspberries', то вы обратитесь к CodeSystem. То, что использует потребитель, это ValueSet, потому что ValueSet добавляет ценность для потребителя. В нашей аналогии с конфетами ValueSet - это пакет конфет, который вы покупаете, например Party Mix или пакет конфет, который вы выбираете, потому что они ваши любимые. Это ValueSet, потому что он служит цели. Это выборка кодов из CodeSystem для использования в определенных целях.</p>
+                            
+                            <img src="images/Lollies-BagOf.jpg" width="20%">
+                            
+                            <p>ValueSet не ограничен одним CodeSystem, так же как наш пакет конфет не ограничен конфетами Allen's. Я также довольно люблю Smarties, но только красные и синие, из CodeSystem Smarties, а также несколько RedSkins из CodeSystem Wonka. Все это может попасть в мой же пакет конфет, который является единым ValueSet.</p>
+                            
+                            <p>Далее мы рассмотрим ресурсы FHIR, используемые для этих концепций, которые также называются CodeSystem и ValueSet.</p>
+                        </div>
                         
-                        <p>The example below only contains two codes <b>'easy'</b> and <b>'hard'</b>. What is important for you at this stage is to grasp the basic structure of the resource. Notice that the top section (lines 8 to 20), like all FHIR resources, is a narrative HTML representation of the CodeSystem. The middle section (lines 21 to 37) is all the metadata about the CodeSystem, things like the version, a name and description for the CodeSystem, its status, whether it is experimental or not, who is the publisher and whether the codes are case sensitive. The last section (lines 38 to 45) are the actual codes each in their own <code>&lt;concept&gt;</code> element.</p>
+                        <!-- Step 2 - English -->
+                        <div class="lang-content lang-en">
+                            <h5 id="vac-step2">Step 2: CodeSystem the FHIR Resource</h5>
+                            
+                            <p>Let's take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
+
+                            <ul>
+                            <li><b><a href="http://hl7.org/fhir/STU3/codesystem.html" rel="stylesheet">Resource CodeSystem</a></b></li>
+                            </ul>
+                            <p><b>Below is a simple example of a CodeSystem FHIR resource</b></p>
+                            
+                            <p>The example below only contains two codes <b>'easy'</b> and <b>'hard'</b>. What is important for you at this stage is to grasp the basic structure of the resource. Notice that the top section (lines 8 to 20), like all FHIR resources, is a narrative HTML representation of the CodeSystem. The middle section (lines 21 to 37) is all the metadata about the CodeSystem, things like the version, a name and description for the CodeSystem, its status, whether it is experimental or not, who is the publisher and whether the codes are case sensitive. The last section (lines 38 to 45) are the actual codes each in their own <code>&lt;concept&gt;</code> element.</p>
+                            
+                            <p>Don't forget, the CodeSystem is a catalogue of codes to be selected in ValueSets.</p>
+                        </div>
                         
-                        <p>Don't forget, the CodeSystem is a catalogue of codes to be selected in ValueSets.</p>
+                        <!-- Step 2 - Russian -->
+                        <div class="lang-content lang-ru">
+                            <h5 id="vac-step2">Шаг 2: CodeSystem - ресурс FHIR</h5>
+                            
+                            <p>Давайте внимательнее рассмотрим ресурс FHIR под названием CodeSystem, страницу ресурса в спецификации FHIR вы найдете здесь:</p>
+
+                            <ul>
+                            <li><b><a href="http://hl7.org/fhir/STU3/codesystem.html" rel="stylesheet">Ресурс CodeSystem</a></b></li>
+                            </ul>
+                            <p><b>Ниже приведен простой пример ресурса CodeSystem FHIR</b></p>
+                            
+                            <p>Пример ниже содержит только два кода <b>'easy'</b> и <b>'hard'</b>. Важно для вас на этом этапе понять базовую структуру ресурса. Обратите внимание, что верхняя секция (строки 8-20), как и все ресурсы FHIR, является нарративным HTML-представлением CodeSystem. Средняя секция (строки 21-37) содержит все метаданные о CodeSystem, такие как версия, имя и описание CodeSystem, его статус, является ли он экспериментальным или нет, кто является издателем и чувствительны ли коды к регистру. Последняя секция (строки 38-45) содержит фактические коды, каждый в своем элементе <code>&lt;concept&gt;</code>.</p>
+                            
+                            <p>Не забывайте, CodeSystem - это каталог кодов для выбора в ValueSet.</p>
+                        </div>
 						
 						<textarea id="codesystem-1" class="fhir-resource-xml">
 <?xml version="1.0" encoding="UTF-8"?>
@@ -215,24 +351,51 @@
   </concept>  
 </CodeSystem></textarea>
                         
-                            
-                        <p>This example does not show every property of a CodeSystem resource. I've only used the ones I thought were key while also trying to keep the example nice and short. Take a look at <a href="http://hl7.org/fhir/STU3/codesystem.html" rel="stylesheet">CodeSystem</a>  in the FHIR specification to see all the properties available.</p>
+                        <!-- English continuation -->
+                        <div class="lang-content lang-en">
+                            <p>This example does not show every property of a CodeSystem resource. I've only used the ones I thought were key while also trying to keep the example nice and short. Take a look at <a href="http://hl7.org/fhir/STU3/codesystem.html" rel="stylesheet">CodeSystem</a> in the FHIR specification to see all the properties available.</p>
+                        </div>
+                        
+                        <!-- Russian continuation -->
+                        <div class="lang-content lang-ru">
+                            <p>Этот пример не показывает все свойства ресурса CodeSystem. Я использовал только те, которые считал ключевыми, стараясь при этом сохранить пример коротким и понятным. Посмотрите на <a href="http://hl7.org/fhir/STU3/codesystem.html" rel="stylesheet">CodeSystem</a> в спецификации FHIR, чтобы увидеть все доступные свойства.</p>
+                        </div>
 
-                    
-                        <h5 id="vac-step3">Step 3: ValueSet the FHIR Resources</h5>
+                        <!-- Step 3 - English -->
+                        <div class="lang-content lang-en">
+                            <h5 id="vac-step3">Step 3: ValueSet the FHIR Resources</h5>
+                            
+                            <p>Let's take a closer look at the FHIR resource named ValueSet, you will find the resource page in the FHIR specification here:</p>
                         
-                        <p>Let's take a closer look at the FHIR resource named ValueSet, you will find the resource page in the FHIR specification here:</p>
-                    
-                        <ul>
-                        <li><b><a href="http://hl7.org/fhir/STU3/valueset.html" rel="stylesheet">Resource ValueSet</a></b></li>
-                        </ul>
-                        <p><b>Here is a simple example of a ValueSet FHIR resource</b></p>
+                            <ul>
+                            <li><b><a href="http://hl7.org/fhir/STU3/valueset.html" rel="stylesheet">Resource ValueSet</a></b></li>
+                            </ul>
+                            <p><b>Here is a simple example of a ValueSet FHIR resource</b></p>
+                            
+                            <p>This ValueSet resource below selects codes from the CodeSystem example we looked at in <a href="#vac-step2">Step 2</a>. Notice that this ValueSet selects both the <b>'easy'</b> and <b>'hard'</b> codes from the CodeSystem.</p>
+                            
+                            <p>Please notice how the the CodeSystem is referenced in the ValueSet using the '<b><code>compose/include/system/@value</code></b>' which points to the GUID seen in the CodeSystem's '<b><code>url</code></b>' property. Take special note of this '<b><code>url</code></b>' property as it is not the resource id or the URL to the FHIR resource in the server. Rather, it is a property of the CodeSystem resource. This '<b><code>url</code></b>' is intended to be globally unique, so the same CodeSystem can be in any number of servers and can always be found by this '<b><code>url</code></b>', not by the resource id.</p> 
+                            
+                            <p>Remember the ValueSet is free to pick and choose whichever codes it requires from the CodeSystem, it could even select more codes from another CodeSystem if required.</p>
+                        </div>
                         
-                        <p>This ValueSet resource below selects codes from the CodeSystem example we looked at in <a href="#vac-step2">Step 2</a>. Notice that this ValueSet selects both the <b>'easy'</b> and <b>'hard'</b> codes from the CodeSystem. 
+                        <!-- Step 3 - Russian -->
+                        <div class="lang-content lang-ru">
+                            <h5 id="vac-step3">Шаг 3: ValueSet - ресурс FHIR</h5>
+                            
+                            <p>Давайте внимательнее рассмотрим ресурс FHIR под названием ValueSet, страницу ресурса в спецификации FHIR вы найдете здесь:</p>
                         
-                        <p>Please notice how the the CodeSystem is referenced in the ValueSet using the '<b><code>compose/include/system/@value</code></b>' which points to the GUID seen in the CodeSystem's '<b><code>url</code></b>' property. Take special note of this '<b><code>url</code></b>' property as it is not the resource id or the URL to the FHIR resource in the server. Rather, it is a property of the CodeSystem resource. This '<b><code>url</code></b>' is intended to be globally unique, so the same CodeSystem can be in any number of servers and can always be found by this '<b><code>url</code></b>', not by the resource id.</p> 
-                        
-                        <p>Remember the ValueSet is free to pick and choose whichever codes it requires from the CodeSystem, it could even select more codes from another CodeSystem if required.</p>
+                            <ul>
+                            <li><b><a href="http://hl7.org/fhir/STU3/valueset.html" rel="stylesheet">Ресурс ValueSet</a></b></li>
+                            </ul>
+                            <p><b>Вот простой пример ресурса ValueSet FHIR</b></p>
+                            
+                            <p>Этот ресурс ValueSet ниже выбирает коды из примера CodeSystem, который мы рассмотрели в <a href="#vac-step2">Шаге 2</a>. Обратите внимание, что этот ValueSet выбирает оба кода <b>'easy'</b> и <b>'hard'</b> из CodeSystem.</p>
+                            
+                            <p>Пожалуйста, обратите внимание на то, как CodeSystem ссылается в ValueSet с использованием '<b><code>compose/include/system/@value</code></b>', который указывает на GUID, видимый в свойстве '<b><code>url</code></b>' CodeSystem. Обратите особое внимание на это свойство '<b><code>url</code></b>', поскольку это не идентификатор ресурса и не URL к ресурсу FHIR на сервере. Скорее, это свойство ресурса CodeSystem. Этот '<b><code>url</code></b>' предназначен для глобальной уникальности, поэтому один и тот же CodeSystem может находиться на любом количестве серверов и всегда может быть найден по этому '<b><code>url</code></b>', а не по идентификатору ресурса.</p> 
+                            
+                            <p>Помните, что ValueSet свободен выбирать любые коды, которые ему требуются из CodeSystem, он может даже выбрать больше кодов из другого CodeSystem, если это необходимо.</p>
+                        </div>
                         
 						<textarea id="valuesystem-1" class="fhir-resource-xml"><?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir">
@@ -285,92 +448,158 @@
   </compose>
 </ValueSet></textarea>
                         
-                        <p>Remember, a ValueSet is a grouping of codes, codes are taken from CodeSystems, to be used for a purpose. ValueSet codes adds value to some use case, for example: a clinical systems drop down box to select an allergy.</p>
+                        <!-- English continuation -->
+                        <div class="lang-content lang-en">
+                            <p>Remember, a ValueSet is a grouping of codes, codes are taken from CodeSystems, to be used for a purpose. ValueSet codes adds value to some use case, for example: a clinical systems drop down box to select an allergy.</p>
+                            
+                            <p>Once again you should go to the FHIR specification page for <a href="http://hl7.org/fhir/STU3/valueset.html" rel="stylesheet">ValueSet</a> to see the full list of properties available.</p>
+                            
+                            <p><b>Question:</b> If you had two copies of a ValueSet resource given to you, from different people, how would you determine that the two instances were actually the same ValueSet?</p>
+                            
+                            <b>CSIRO's Snapper</b>
+                            <p>Snapper is an online tool developed by the CSIRO team that created the ONTO FHIR Terminology server. The tool provides a friendly user interface for creating and editing FHIR CodeSystems, ValueSets and ConceptMaps rather than having you fiddle with XML or JSON. Your finished resource can then be downloaded locally or published directly into an FHIR server of you choosing. This free tool can be found here: <a href="http://ontoserver.csiro.au/snapper" rel="stylesheet">Snapper</a></p>
+                        </div>
                         
-                        <p>Once again you should go to the FHIR specification page for <a href="http://hl7.org/fhir/STU3/valueset.html" rel="stylesheet">ValueSet</a> to see the full list of properties available.</p>
-                        
-                        <p><b>Question:</b> If you had two copies of a ValueSet resource given to you, from different people, how would you determine that the two instances were actually the same ValueSet?</p>
-                        
-                        <b>CSIRO's Snapper</b>
-                        <p>Snapper is an online tool developed by the CSIRO team that created the ONTO FHIR Terminology server. The tool provides a friendly user interface for creating and editing FHIR CodeSystems, ValueSets and ConceptMaps rather than having you fiddle with XML or JSON. Your finished resource can then be downloaded locally or published directly into an FHIR server of you choosing. This free tool can be found here: <a href="http://ontoserver.csiro.au/snapper2-dev" rel="stylesheet">Snapper BETA</a></p>
-                        
-                        
+                        <!-- Russian continuation -->
+                        <div class="lang-content lang-ru">
+                            <p>Помните, ValueSet - это группировка кодов, коды берутся из CodeSystems для использования в определенных целях. Коды ValueSet добавляют ценность для некоторого случая использования, например: выпадающий список клинической системы для выбора аллергии.</p>
+                            
+                            <p>Еще раз вам следует перейти на страницу спецификации FHIR для <a href="http://hl7.org/fhir/STU3/valueset.html" rel="stylesheet">ValueSet</a>, чтобы увидеть полный список доступных свойств.</p>
+                            
+                            <p><b>Вопрос:</b> Если бы вам дали две копии ресурса ValueSet от разных людей, как бы вы определили, что эти два экземпляра на самом деле являются одним и тем же ValueSet?</p>
+                            
+                            <b>Snapper от CSIRO</b>
+                            <p>Snapper - это онлайн-инструмент, разработанный командой CSIRO, которая создала терминологический сервер ONTO FHIR. Инструмент предоставляет дружественный пользовательский интерфейс для создания и редактирования FHIR CodeSystems, ValueSets и ConceptMaps, вместо того чтобы заставлять вас возиться с XML или JSON. Ваш готовый ресурс затем может быть загружен локально или опубликован непосредственно на FHIR-сервере по вашему выбору. Этот бесплатный инструмент можно найти здесь: <a href="http://ontoserver.csiro.au/snapper" rel="stylesheet">Snapper</a></p>
+                        </div>
                         
                         <p><a href="images/ValueSetSnapperScreenshot.png" data-lightbox="ValueSetSnapperScreenshot"><img src="images/ValueSetSnapperScreenshot.png" width="60%" class="thumbnail"/></a></p>                                                                           
                         
-                        <p><h5 id="vac-step4">Step 4: Understanding how ValueSet codes are stored</h5></p>
+                        <!-- Step 4 - English -->
+                        <div class="lang-content lang-en">
+                            <h5 id="vac-step4">Step 4: Understanding how ValueSet codes are stored</h5>
+                            
+                            <p>It is easy to fall into the trap of thinking that the code information you list in a ValueSet will be exactly the same code information used when a ValueSet is called upon by a system. This isn't the case, however, as the codes stored in a ValueSet actually belong to a CodeSystem - a valueset instance only contains the 'links' to the actual codes in a codesystem. Thus when a codesystem's codes are updated, the valuesets containing these codes will contain the updated codes automatically. This is demonstrated well by one of the primary uses of a ValueSet: getting a list of codes to present to a user as specified by the links in the valueset, this is done with a special operation on the FHIR Terminology Server called <b>'<code>$expand</code>'</b>. This is known as ValueSet Expansion or ValueSet enumeration.</p>
+                            
+                            <p>We are not going to go into how to perform an expansion now (see <a href="#vac-step6">step 6</a> for that), but you do need to know what happens in the FHIR Terminology Server when an expansion is performed as it is key to your understanding.</p>
+                            
+                            <p>As seen in this first diagram (you can click to enlarge) a developer calls the <b>'<code>&#36;expand</code>'</b> operation on a given ValueSet because they want the list of codes and descriptions to display to a user. As we have seen, the ValueSet has a list of codes and it knows the CodeSystems for each code.</p>
+                        </div>
                         
-                        <p>It is easy to fall into the trap of thinking that the code information you list in a ValueSet will be exactly the same code information used when a ValueSet is called upon by a system. This isn't the case, however, as the codes stored in a ValueSet actually belong to a CodeSystem - a valueset instance only contains the 'links' to the actual codes in a codesystem. Thus when a codesystem's codes are updated, the valuesets containing these codes will contain the updated codes automatically. This is demonstrated well by one of the primary uses of a ValueSet: getting a list of codes to present to a user as specified by the links in the valueset, this is done with a special operation on the FHIR Terminology Server called <b>'<code>$expand</code>'</b>. This is known as ValueSet Expansion or ValueSet enumeration.</p>
-                        
-                        <p>We are not going to go into how to perform an expansion now (see <a href="#vac-step6">step 6</a> for that), but you do need to know what happens in the FHIR Terminology Server when an expansion is performed as it is key to your understanding.</p>
-                        
-                        <p>As seen in this first diagram (you can click to enlarge) a developer calls the <b>'<code>&#36;expand</code>'</b> operation on a given ValueSet because they want the list of codes and descriptions to display to a user. As we have seen, the ValueSet has a list of codes and it knows the CodeSystems for each code.</p>
-                        
+                        <!-- Step 4 - Russian -->
+                        <div class="lang-content lang-ru">
+                            <h5 id="vac-step4">Шаг 4: Понимание того, как хранятся коды ValueSet</h5>
+                            
+                            <p>Легко попасть в ловушку, думая, что информация о кодах, которую вы перечисляете в ValueSet, будет точно такой же информацией о кодах, используемой, когда ValueSet вызывается системой. Однако это не так, поскольку коды, хранящиеся в ValueSet, фактически принадлежат CodeSystem - экземпляр valueset содержит только 'ссылки' на фактические коды в codesystem. Таким образом, когда коды codesystem обновляются, valuesets, содержащие эти коды, будут автоматически содержать обновленные коды. Это хорошо демонстрируется одним из основных применений ValueSet: получение списка кодов для представления пользователю, как указано ссылками в valueset, это делается с помощью специальной операции на FHIR Terminology Server, называемой <b>'<code>$expand</code>'</b>. Это известно как ValueSet Expansion или ValueSet enumeration.</p>
+                            
+                            <p>Мы не будем сейчас углубляться в то, как выполнить расширение (см. <a href="#vac-step6">шаг 6</a> для этого), но вам нужно знать, что происходит в FHIR Terminology Server при выполнении расширения, поскольку это ключ к вашему пониманию.</p>
+                            
+                            <p>Как видно на этой первой диаграмме (вы можете нажать для увеличения), разработчик вызывает операцию <b>'<code>&#36;expand</code>'</b> на данном ValueSet, потому что он хочет получить список кодов и описаний для отображения пользователю. Как мы видели, ValueSet имеет список кодов и знает CodeSystems для каждого кода.</p>
+                        </div>
                         
                         <p><a href="images/ValueSetExpansionRequestDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img src="images/ValueSetExpansionRequestDiagram.png" width="50%" class="thumbnail"/></a></p>
                         
-                        <p>The FHIR terminology server does not just return the codes in the ValueSet, what it does is reference the CodeSystems as listed for each code in the ValueSet and retrieves the information about the code from the CodeSystem resource in real-time and returns this back to the developer as an expanded ValueSet.</p>
+                        <!-- English continuation -->
+                        <div class="lang-content lang-en">
+                            <p>The FHIR terminology server does not just return the codes in the ValueSet, what it does is reference the CodeSystems as listed for each code in the ValueSet and retrieves the information about the code from the CodeSystem resource in real-time and returns this back to the developer as an expanded ValueSet.</p>
+                        </div>
+                        
+                        <!-- Russian continuation -->
+                        <div class="lang-content lang-ru">
+                            <p>FHIR terminology server не просто возвращает коды в ValueSet, он ссылается на CodeSystems, как указано для каждого кода в ValueSet, и получает информацию о коде из ресурса CodeSystem в реальном времени и возвращает это разработчику как расширенный ValueSet.</p>
+                        </div>
                         
                         <p><a href="images/ValueSetExpansionResponseDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img src="images/ValueSetExpansionResponseDiagram.png" width="50%" class="thumbnail"/></a></p>
                         
-                        <p>What this means is that the ValueSet is only a reference to the codes in the CodeSystem. A key point here is that if the code description was updated in the CodeSystem then a ValueSet expansion will pick up the new description even though the ValueSet was never modified. You can control this using the <b>'lockedDate'</b> property of a ValueSet. If a <b>lockedDate</b> is given in the ValueSet then only the CodeSystems as of this date will be used, any later version of the same CodeSystem will not be used when ValueSet Expansion is performed. For more information about <b>lockedDate</b> refer to the FHIR specification here: <a href="http://hl7.org/fhir/STU3/valueset-definitions.html#ValueSet.compose.lockedDate" rel="stylesheet"><b>lockedDate</b></a>.</p>                       
+                        <!-- English continuation -->
+                        <div class="lang-content lang-en">
+                            <p>What this means is that the ValueSet is only a reference to the codes in the CodeSystem. A key point here is that if the code description was updated in the CodeSystem then a ValueSet expansion will pick up the new description even though the ValueSet was never modified. You can control this by supplying version element alongside the codesystem's canonical URL.</p>
+                        </div>
                         
-                        <h5 id="vac-step5">Step 5: Creating ValueSets using filters (Include, Exclude and Filter)</h5>
-                        <p>In the previous '<a href="#vac-step4">Step 4: Understanding how ValueSet codes are used</a>' we learnt that ValueSets only select codes from CodeSystems. In our simple ValueSet example we selected, or rather 'Included', our codes by stating the actual code values '<b>easy</b>' and '<b>hard</b>' as they were seen in our CodeSystem. Yet, there is another way to select codes for inclusion in the ValueSet which is by using a filter.</p>
+                        <!-- Russian continuation -->
+                        <div class="lang-content lang-ru">
+                            <p>Это означает, что ValueSet является только ссылкой на коды в CodeSystem. Ключевой момент здесь заключается в том, что если описание кода было обновлено в CodeSystem, то расширение ValueSet подхватит новое описание, даже если ValueSet никогда не изменялся. Вы можете контролировать это, давая версию CodeSystem вместе с canonical URL.</p>
+                        </div>
                         
-                        <p>We will avoid deep diving on filters but it is worth noting they exist and can be used. Typically a filter would be used when the code system being used has a hierarchical structure, meaning each code can have a parent or children codes such as the LOINC code system or even a poly-hierarchical system where codes can have many parents and many children codes such as SNOMED-CT.</p>
+                        <!-- Step 5 - English -->
+                        <div class="lang-content lang-en">
+                            <h5 id="vac-step5">Step 5: Creating ValueSets using filters (Include, Exclude and Filter)</h5>
+                            <p>In the previous '<a href="#vac-step4">Step 4: Understanding how ValueSet codes are used</a>' we learnt that ValueSets only select codes from CodeSystems. In our simple ValueSet example we selected, or rather 'Included', our codes by stating the actual code values '<b>easy</b>' and '<b>hard</b>' as they were seen in our CodeSystem. Yet, there is another way to select codes for inclusion in the ValueSet which is by using a filter.</p>
+                            
+                            <p>We will avoid deep diving on filters but it is worth noting they exist and can be used. Typically a filter would be used when the code system being used has a hierarchical structure, meaning each code can have a parent or children codes such as the LOINC code system or even a poly-hierarchical system where codes can have many parents and many children codes such as SNOMED-CT.</p>
+                            
+                            <p><a href="images/ValueSetToeNailSNOMEDCode.png" data-lightbox="ValueSetToeNailSNOMEDCode"><img src="images/ValueSetToeNailSNOMEDCode.png" width="80%" class="thumbnail"/></a></p>
+                            
+                            <p>With hierarchical code systems, we can use a filter to say <i>"include all codes under this parent code"</i>. This way, as new codes are introduced under a parent code, in the code system, they will automatically be included in our ValueSet's selected codes. In the very same way we can include codes, we can also <b>exclude</b> codes either by stating the code to exclude or by using another filter.</p>
+                            
+                            <p>The image below is taken from the <a href="http://hl7.org/fhir/STU3/valueset.html#resource" rel="stylesheet"><b>ValueSet tree structure in the FHIR specification</b></a> and highlights the sections that deals with the topic discussed in this step (Include, Exclude &amp; Filter).</p>
+                            <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img src="images/ValueSetFilterTreeDiagram.png" width="100%" class="thumbnail"/></a></p>
+                        </div>
                         
-                        <p><a href="images/ValueSetToeNailSNOMEDCode.png" data-lightbox="ValueSetToeNailSNOMEDCode"><img src="images/ValueSetToeNailSNOMEDCode.png" width="80%" class="thumbnail"/></a></p>
+                        <!-- Step 5 - Russian -->
+                        <div class="lang-content lang-ru">
+                            <h5 id="vac-step5">Шаг 5: Создание ValueSet с использованием фильтров (Include, Exclude и Filter)</h5>
+                            <p>В предыдущем '<a href="#vac-step4">Шаге 4: Понимание того, как используются коды ValueSet</a>' мы узнали, что ValueSet только выбирают коды из CodeSystems. В нашем простом примере ValueSet мы выбрали, или скорее 'Включили', наши коды, указав фактические значения кодов '<b>easy</b>' и '<b>hard</b>', как они были видны в нашем CodeSystem. Однако есть другой способ выбрать коды для включения в ValueSet - это использование фильтра.</p>
+                            
+                            <p>Мы избежим глубокого погружения в фильтры, но стоит отметить, что они существуют и могут быть использованы. Обычно фильтр используется, когда используемая система кодов имеет иерархическую структуру, что означает, что каждый код может иметь родительский или дочерние коды, такие как система кодов LOINC, или даже поли-иерархическую систему, где коды могут иметь много родителей и много дочерних кодов, такую как SNOMED-CT.</p>
+                            
+                            <p><a href="images/ValueSetToeNailSNOMEDCode.png" data-lightbox="ValueSetToeNailSNOMEDCode"><img src="images/ValueSetToeNailSNOMEDCode.png" width="80%" class="thumbnail"/></a></p>
+                            
+                            <p>С иерархическими системами кодов мы можем использовать фильтр, чтобы сказать <i>"включить все коды под этим родительским кодом"</i>. Таким образом, когда новые коды вводятся под родительским кодом в системе кодов, они автоматически будут включены в выбранные коды нашего ValueSet. Точно так же, как мы можем включать коды, мы также можем <b>исключать</b> коды, либо указав код для исключения, либо используя другой фильтр.</p>
+                            
+                            <p>Изображение ниже взято из <a href="http://hl7.org/fhir/STU3/valueset.html#resource" rel="stylesheet"><b>древовидной структуры ValueSet в спецификации FHIR</b></a> и выделяет разделы, которые касаются темы, обсуждаемой в этом шаге (Include, Exclude и Filter).</p>
+                            <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img src="images/ValueSetFilterTreeDiagram.png" width="100%" class="thumbnail"/></a></p>
+                        </div>
                         
-                        <p>With hierarchical code systems, we can use a filter to say <i>"include all codes under this parent code"</i>. This way, as new codes are introduced under a parent code, in the code system, they will automatically be included in our ValueSet's selected codes. In the very same way we can include codes, we can also <b>exclude</b> codes either by stating the code to exclude or by using another filter.</p>
                         
-                        <p>The image below is taken from the <a href="http://hl7.org/fhir/STU3/valueset.html#resource" rel="stylesheet"><b>ValueSet tree structure in the FHIR specification</b></a> and highlights the sections that deals with the topic discussed in this step (Include, Exclude &amp; Filter). </p>
-                        <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img src="images/ValueSetFilterTreeDiagram.png" width="100%" class="thumbnail"/></a></p>     
-                        <h5 id="vac-step6">Step 6: Using the $expand operation</h5>
-                    <p>As introduced in <a href="#vac-step4">step 4</a>, the $expand operation allows you to retrieve the full listing of codes available in a valueset, which makes sense if you consider the possible dynamic nature of valuesets given the filters introduced above in <a href="vac-step5">step 5</a>. Following on from the <a href="./operations.html">introduction to Operations</a>, upload the valueset with the 'easy' and 'hard' codes to a FHIR server:</p>
-                    
-                                            <p>
-                            <center>
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="expand-operation-button">
-                                    Upload</button>
-                                <br>
-                                <div id="expand-operation-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
-                            </center>
-                        </p>
-                        
-                        <p>The resource will be available for viewing in Postman or your browser under this URL:</p>
-                        <note class="expand-operation-location-full" id="vac-expand-valueset"><i>(press Upload to get a ValueSet)</i></note>
-                        <p>As described in the <a href="./operations.html">Operations</a> tab, every resource has an 'Operations' tab, including <a href="http://hl7.org/fhir/STU3/valueset-operations.html">ValueSet</a>, which is where you'll find the <a href="http://hl7.org/fhir/STU3/valueset-operations.html#expand">$expand</a> operation. There are two ways you can use the operation - either on the ValueSet resource type:</p>
-                        <code class="expand-operation-baseurl" id="vac-expand-valueset">[Service Root URL]</code><code>/ValueSet/$expand</code>
-                        <p>in which case you'll need to provide the id of the valueset to expand as an 'identifier' parameter, or you can use the operation on a ValueSet instance, where the id of the resource is provided in the URL: </p>
-                        <code class="expand-operation-location-full" id="vac-expand-valueset">[Service Root URL]/[Resource Type]/[Resource Id]</code><code>/$expand</code>
-                        <p>Try entering <span class="expand-operation-location-full" id="vac-expand-valueset">[upload resource above first]</span><span>/$expand</span> into Postman - and you'll receive an expanded ValueSet resource:</p>
-                        <a href="images/valueset-expantion.png" data-lightbox="valueset-expansion"><img src="images/valueset-expantion-thumbnail.png" class="thumbnail"/></a>
-                        <p>There are two things of interest here:</p> 
-                        <p><li>The narrative of the resource, where you can clearly see that this is an expansion of a valueset, and</li> <li>The expansion of codes itself, where you can see that all the codes are listed under the 'expansion' element instead of the 'compose' element as you would when you're creating your valueset. </li> </p>
-                        <p>While the 'compose' element can list both the filters or full list of codes that compose the valueset, the 'expansion' element will always list the full set of codes in the valueset.</p>
-                        <p>The 'expansion' element in the spec allows for containment of the parameters that controlled the expansion, the expanded codes themselves, and some metadata such as the timestamp of the expansion and the offset where the expansion should start.</p>
-                        <p>You can also control the expansion by applying parameters to it. The filter parameter, for example, allows you to filter the codes by text - if you try entering <span class="expand-operation-location-full" id="vac-expand-valueset">[upload resource above first]</span><span>/$expand?filter=easy</span> into Postman, you'll see that just one code is returned then, and that is the 'easy' one.</p>
+                        </div>
                     </div>
                 </section>
             <footer class="mdl-mega-footer">
                 <div class="mdl-mega-footer--middle-section">
                     <div class="mdl-mega-footer--drop-down-section">
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">The Agency</span>
+                            <span class="lang-content lang-ru">Агентство</span>
+                        </h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
-                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
+                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">
+                                <span class="lang-content lang-en">My Health Record</span>
+                                <span class="lang-content lang-ru">Моя медицинская карта</span>
+                            </a></li>
                         </ul>
                     </div>
                     <div class="mdl-mega-footer--drop-down-section">
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
                         <h1 class="mdl-mega-footer--heading">FHIR</h1>
                         <ul class="mdl-mega-footer--link-list">
-                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_15" title="Next FHIR get-together in Madrid in May 2017">Connectathon 15</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3" title="Latest release of FHIR, for use in Madrid Connectathon">FHIR STU3 Release</a></li>
-                            <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
+                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_15" title="Next FHIR get-together in Madrid in May 2017">
+                                <span class="lang-content lang-en">Connectathon 15</span>
+                                <span class="lang-content lang-ru">Connectathon 15</span>
+                            </a></li>
+                            <li><a href="http://hl7.org/fhir/STU3" title="Latest release of FHIR, for use in Madrid Connectathon">
+                                <span class="lang-content lang-en">FHIR STU3 Release</span>
+                                <span class="lang-content lang-ru">Релиз FHIR STU3</span>
+                            </a></li>
+                            <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">
+                                <span class="lang-content lang-en">FHIR Continuous Integration Build</span>
+                                <span class="lang-content lang-ru">FHIR Continuous Integration Build</span>
+                            </a></li>
                         </ul>
+                    </div>
+
+                    <!-- Language Selector -->
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">Language</span>
+                            <span class="lang-content lang-ru">Язык</span>
+                        </h1>
+                        <div class="language-selector">
+                            <button onclick="switchLanguage('en')" class="lang-btn" id="lang-en-btn">English</button>
+                            <button onclick="switchLanguage('ru')" class="lang-btn" id="lang-ru-btn">Русский</button>
+                        </div>
                     </div>
                 </div>
             </footer>
@@ -389,6 +618,83 @@
     <script src="js/main.js"></script>
 <!-- supporting javascript to actually do the uploading -->	
 	<script src="js/post-resources.js"></script>
+
+    <!-- Language switching script -->
+    <script>
+        // Language switching functionality
+        function switchLanguage(lang) {
+            // Remove existing language classes
+            document.body.classList.remove('lang-en', 'lang-ru');
+            
+            // Add new language class
+            document.body.classList.add('lang-' + lang);
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('lang-' + lang + '-btn').classList.add('active');
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferred-language', lang);
+            
+            // Update HTML lang attribute for accessibility
+            document.documentElement.lang = lang;
+        }
+        
+        // Initialize language on page load
+        function initializeLanguage() {
+            // Check URL parameter first
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            
+            // Then check localStorage
+            const savedLang = localStorage.getItem('preferred-language');
+            
+            // Default to English
+            const defaultLang = 'en';
+            
+            // Determine which language to use
+            const currentLang = urlLang || savedLang || defaultLang;
+            
+            // Apply the language
+            switchLanguage(currentLang);
+        }
+        
+        // Run initialization when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeLanguage);
+        
+        // Optional: Update URLs when language changes to maintain consistency
+        function updateUrlWithLanguage(lang) {
+            const url = new URL(window.location);
+            url.searchParams.set('lang', lang);
+            window.history.replaceState({}, '', url);
+        }
+        
+        // Enhanced switchLanguage function with URL update
+        function switchLanguage(lang) {
+            // Remove existing language classes
+            document.body.classList.remove('lang-en', 'lang-ru');
+            
+            // Add new language class
+            document.body.classList.add('lang-' + lang);
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('lang-' + lang + '-btn').classList.add('active');
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferred-language', lang);
+            
+            // Update HTML lang attribute for accessibility
+            document.documentElement.lang = lang;
+            
+            // Update URL parameter
+            updateUrlWithLanguage(lang);
+        }
+    </script>
 </body>
 
 </html>

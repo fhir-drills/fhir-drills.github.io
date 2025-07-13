@@ -63,6 +63,51 @@
             z-index: 900;
         }
 
+        /* Language switching CSS */
+        .lang-content {
+            display: none;
+        }
+        
+        body.lang-en .lang-en {
+            display: block;
+        }
+        
+        body.lang-en .lang-en.inline {
+            display: inline;
+        }
+        
+        body.lang-ru .lang-ru {
+            display: block;
+        }
+        
+        body.lang-ru .lang-ru.inline {
+            display: inline;
+        }
+        
+        /* Language selector styling */
+        .language-selector {
+            margin: 20px 0;
+        }
+        
+        .lang-btn {
+            background: #673ab7;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .lang-btn:hover {
+            background: #5e35b1;
+        }
+        
+        .lang-btn.active {
+            background: #e91e63;
+        }
+
     </style>
     <link href="css/lightbox.min.css" rel="stylesheet">
   <script>
@@ -76,7 +121,7 @@
   </script>	
 </head>
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base lang-en">
 <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -98,170 +143,351 @@
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">FHIR<sup>®</sup> tutorials</span>
+    <span class="mdl-layout-title">
+        <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
+        <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
+    </span>
     <nav class="mdl-navigation">
-		<a href="./index.html" class="mdl-navigation__link">Overview</a>
-		<a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">Simple Patient</a>
-		<a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">Simple Search</a>
-		<a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">Patient with References</a>
-		<a href="./bundle.html" id="bundle" class="mdl-navigation__link">Bundle</a>
-		<a href="./operations.html" id="operations" class="mdl-navigation__link">Operations</a>
-		<a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">ValueSet &amp; CodeSystem</a>
-		<a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link is-active-tab">ConceptMap</a>
-		<a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">FHIR APIs</a>
-		<a href="#" class="mdl-navigation__link"></a>
-		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
+        <a href="./index.html" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Overview</span>
+            <span class="lang-content lang-ru">Обзор</span>
+        </a>
+        <a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Simple Patient</span>
+            <span class="lang-content lang-ru">Пациент</span>
+        </a>
+        <a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Simple Search</span>
+            <span class="lang-content lang-ru">Поиск</span>
+        </a>
+        <a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Patient with References</span>
+            <span class="lang-content lang-ru">Пациент со ссылками</span>
+        </a>
+        <a href="./bundle.html" id="bundle" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Bundle</span>
+            <span class="lang-content lang-ru">Пакет</span>
+        </a>
+        <a href="./operations.html" id="operations" class="mdl-navigation__link">
+            <span class="lang-content lang-en">Operations</span>
+            <span class="lang-content lang-ru">Операции</span>
+        </a>
+        <a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">
+            <span class="lang-content lang-en">ValueSet &amp; CodeSystem</span>
+            <span class="lang-content lang-ru">ValueSet и CodeSystem</span>
+        </a>
+        <a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link is-active-tab">
+            <span class="lang-content lang-en">ConceptMap</span>
+            <span class="lang-content lang-ru">ConceptMap</span>
+        </a>
+        <a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">
+            <span class="lang-content lang-en">FHIR APIs</span>
+            <span class="lang-content lang-ru">FHIR API</span>
+        </a>
+        <a href="#" class="mdl-navigation__link"></a>
+        <a href="./exercises.html" class="mdl-navigation__link">
+            <span class="lang-content lang-en">FHIR exercises</span>
+            <span class="lang-content lang-ru">FHIR упражнения</span>
+        </a>
     </nav>
   </div>
   <main class="mdl-layout__content">
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
-                        <h4>ConceptMap tutorial</h4>
-                        <p><a href="http://hl7.org/fhir/STU3/conceptmap.html">ConceptMap</a> is a FHIR resource that allows you to establish a one-way map between codes. We'll use latter as an example in this tutorial to demonstrate how two concepts can be related (mapped) to each other and how their equivalence (or lack of) can be specified.</p>
-                        <note>This describes ConceptMap as it is in the <a href="http://hl7.org/fhir/STU3/conceptmap.html">FHIR STU3</a></note>
+                        
+                        <div class="lang-content lang-en">
+                            <h4>ConceptMap tutorial</h4>
+                            <p><a href="http://hl7.org/fhir/STU3/conceptmap.html">ConceptMap</a> is a FHIR resource that allows you to establish a one-way map between codes. We'll use latter as an example in this tutorial to demonstrate how two concepts can be related (mapped) to each other and how their equivalence (or lack of) can be specified.</p>
+                            <note>This describes ConceptMap as it is in the <a href="http://hl7.org/fhir/STU3/conceptmap.html">FHIR STU3</a></note>
+                        </div>
+                        
+                        <div class="lang-content lang-ru">
+                            <h4>Урок по ConceptMap</h4>
+                            <p><a href="http://hl7.org/fhir/STU3/conceptmap.html">ConceptMap</a> - это ресурс FHIR, который позволяет установить одностороннее сопоставление между кодами. Мы будем использовать его в качестве примера в этом уроке, чтобы продемонстрировать, как два понятия могут быть связаны (сопоставлены) друг с другом и как может быть указана их эквивалентность (или её отсутствие).</p>
+                            <note>Тут описан ConceptMap как он представлен в <a href="http://hl7.org/fhir/STU3/conceptmap.html">FHIR STU3</a></note>
+                        </div>
+                        
                         <ul class="toc">
-                            <h4>Contents</h4>
+                            <h4>
+                                <span class="lang-content lang-en inline">Contents</span>
+                                <span class="lang-content lang-ru inline">Содержание</span>
+                            </h4>
                             <!-- pr prefix stands for 'patient references'-->
-                            <a href="#cm-about-conceptmap">Step 1: About ConceptMap</a>
-                            <a href="#cm-sample-data-mapping">Step 2: Sample data mapping</a>
-                            <a href="#cm-sample-resource">Step 3: Sample resources</a>
-                            <a href="#cm-advanced-features">Step 4: Advanced features</a>
-							<a href="#cm-translate-operation">Step 5: $translate operation</a>
+                            <a href="#cm-about-conceptmap">
+                                <span class="lang-content lang-en inline">Step 1: About ConceptMap</span>
+                                <span class="lang-content lang-ru inline">Шаг 1: О ConceptMap</span>
+                            </a>
+                            <a href="#cm-sample-data-mapping">
+                                <span class="lang-content lang-en inline">Step 2: Sample data mapping</span>
+                                <span class="lang-content lang-ru inline">Шаг 2: Пример сопоставления данных</span>
+                            </a>
+                            <a href="#cm-sample-resource">
+                                <span class="lang-content lang-en inline">Step 3: Sample resources</span>
+                                <span class="lang-content lang-ru inline">Шаг 3: Примеры ресурсов</span>
+                            </a>
+                            <a href="#cm-advanced-features">
+                                <span class="lang-content lang-en inline">Step 4: Advanced features</span>
+                                <span class="lang-content lang-ru inline">Шаг 4: Расширенные возможности</span>
+                            </a>
+							<a href="#cm-translate-operation">
+                                <span class="lang-content lang-en inline">Step 5: $translate operation</span>
+                                <span class="lang-content lang-ru inline">Шаг 5: Операция $translate</span>
+                            </a>
                         </ul>
 
-                        <h5 id="cm-about-conceptmap">Step 1: About ConceptMap</h5>
-                        <p>The <a href="http://hl7.org/fhir/STU3/conceptmap.html">ConceptMap</a> resource in general has <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">four parts</a> to it: 
-                          <p>
-                          <li>Metadata about the resource</li> 
-                          <li>The source of the data</li> 
-                          <li>The target the data is mapped to, and </li>
-                          <li>The groups of mappings themselves:</li>
-                          </p>
-                        <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview"><img src="images/conceptmap-overview-thumbnail.png" class="thumbnail"/></a>
-                        <p><b>Metadata</b> describes general information about the mapping - who made it, what version it is, copyright...etc.</p>
-                        <p><b>Source</b> is a reference to the ValueSet that you are mapping from. Remember that ConceptMap is a one-way mapping so there's always a clear source and a target.</p>
-                        <p><b>Target</b> is similar to source - it is a reference to the ValueSet you are mapping to.</p>
-                        <p><b>Mappings</b> are the translations themselves, organised in groups. Each mapping (called an 'element' in the data) can have one or more <b>target</b> elements, which specify a connection between a code from one ValueSet to code(s) in another ValueSet. The type/strength of connection is described by the <b>equivalence</b> property. The equivalence expresses that the two elements are exactly the same, wider than, narrower than or the two concepts aren't related at all. The full list of equivalence values is available in the <a href="http://hl7.org/fhir/STU3/valueset-concept-map-equivalence.html">ConceptMap Equivalence</a> ValueSet.</p>
+                        <h5 id="cm-about-conceptmap">
+                            <span class="lang-content lang-en inline">Step 1: About ConceptMap</span>
+                            <span class="lang-content lang-ru inline">Шаг 1: О ConceptMap</span>
+                        </h5>
                         
-                        <h5 id="cm-sample-data-mapping">Step 2: Sample data mapping</h5>
-                        <p>As an example, let's say you have a (very poorly designed) ValueSet based on a CodeSystem representing employee presence at work with just three codes: present, not-present, and sick which is in use by your system. You start importing data from a new system which has finer granularity:</p>
+                        <div class="lang-content lang-en">
+                            <p>The <a href="http://hl7.org/fhir/STU3/conceptmap.html">ConceptMap</a> resource in general has <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">four parts</a> to it: 
+                              <p>
+                              <li>Metadata about the resource</li> 
+                              <li>The source of the data</li> 
+                              <li>The target the data is mapped to, and </li>
+                              <li>The groups of mappings themselves:</li>
+                              </p>
+                            <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview"><img src="images/conceptmap-overview-thumbnail.png" class="thumbnail"/></a>
+                            <p><b>Metadata</b> describes general information about the mapping - who made it, what version it is, copyright...etc.</p>
+                            <p><b>Source</b> is a reference to the ValueSet that you are mapping from. Remember that ConceptMap is a one-way mapping so there's always a clear source and a target.</p>
+                            <p><b>Target</b> is similar to source - it is a reference to the ValueSet you are mapping to.</p>
+                            <p><b>Mappings</b> are the translations themselves, organised in groups. Each mapping (called an 'element' in the data) can have one or more <b>target</b> elements, which specify a connection between a code from one ValueSet to code(s) in another ValueSet. The type/strength of connection is described by the <b>equivalence</b> property. The equivalence expresses that the two elements are exactly the same, wider than, narrower than or the two concepts aren't related at all. The full list of equivalence values is available in the <a href="http://hl7.org/fhir/STU3/valueset-concept-map-equivalence.html">ConceptMap Equivalence</a> ValueSet.</p>
+                        </div>
+                        
+                        <div class="lang-content lang-ru">
+                            <p>Ресурс <a href="http://hl7.org/fhir/STU3/conceptmap.html">ConceptMap</a> в по сути имеет <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">четыре части</a>: 
+                              <p>
+                              <li>Метаданные о ресурсе</li> 
+                              <li>Источник данных</li> 
+                              <li>Цель, к которой сопоставляются данные, и </li>
+                              <li>Группы самих сопоставлений:</li>
+                              </p>
+                            <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview"><img src="images/conceptmap-overview-thumbnail.png" class="thumbnail"/></a>
+                            <p><b>Метаданные</b> описывают общую информацию о сопоставлении - кто его создал, какая версия, авторские права и т.д.</p>
+                            <p><b>Источник</b> - это ссылка на ValueSet, из которого вы выполняете сопоставление. Помните, что ConceptMap - это одностороннее сопоставление, поэтому всегда есть четкий источник и цель.</p>
+                            <p><b>Цель</b> похожа на источник - это ссылка на ValueSet, к которому вы выполняете сопоставление.</p>
+                            <p><b>Сопоставления</b> - это сами переводы, организованные в группы. Каждое сопоставление (называемое 'элементом' в данных) может иметь один или несколько <b>целевых</b> элементов, которые определяют связь между кодом из одного ValueSet с кодом(ами) в другом ValueSet. Тип/сила связи описывается свойством <b>эквивалентности</b>. Эквивалентность выражает, что два элемента точно одинаковы, шире, уже или два понятия вообще не связаны. Полный список значений эквивалентности доступен в <a href="http://hl7.org/fhir/STU3/valueset-concept-map-equivalence.html">ValueSet эквивалентности ConceptMap</a>.</p>
+                        </div>
+                        
+                        <h5 id="cm-sample-data-mapping">
+                            <span class="lang-content lang-en inline">Step 2: Sample data mapping</span>
+                            <span class="lang-content lang-ru inline">Шаг 2: Пример сопоставления данных</span>
+                        </h5>
+                        
+                        <div class="lang-content lang-en">
+                            <p>As an example, let's say you have a (very poorly designed) ValueSet based on a CodeSystem representing employee presence at work with just three codes: present, not-present, and sick which is in use by your system. You start importing data from a new system which has finer granularity:</p>
+                        </div>
+                        
+                        <div class="lang-content lang-ru">
+                            <p>В качестве примера, предположим, у вас есть (очень плохо спроектированный) ValueSet, основанный на CodeSystem, представляющем присутствие сотрудников на работе всего с тремя кодами: present, not-present и sick, который используется вашей системой. Вы начинаете импортировать данные из новой системы, которая имеет более детальную градацию:</p>
+                        </div>
+                        
                         <table class="table-fill">
-  <tr>
-    <th>Current valueset</th>
-    <th>New system's valueset</th>
-  </tr>
-  <tr>
-    <td>present</td>
-    <td>in-office</td>
-  </tr>
-  <tr>
-    <td>not-present</td>
-    <td>away-travelling</td>
-  </tr>
-  <tr>
-    <td>sick</td>
-    <td>working-from-home</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>annual-leave</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>personal-leave</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>jury-duty</td>
-  </tr>
-</table>
-                    <p>Your task is to create a FHIR ConceptMap translating the codes your receive to codes you already have, making use of the available <a href="http://hl7.org/fhir/STU3/valueset-concept-map-equivalence.html">equivalence</a> values. You come up with this sample mapping that maps in the direction from the new system to your system's ValueSet:</p>
+                          <tr>
+                            <th>
+                                <span class="lang-content lang-en inline">Current valueset</span>
+                                <span class="lang-content lang-ru inline">Текущий valueset</span>
+                            </th>
+                            <th>
+                                <span class="lang-content lang-en inline">New system's valueset</span>
+                                <span class="lang-content lang-ru inline">Valueset новой системы</span>
+                            </th>
+                          </tr>
+                          <tr>
+                            <td>present</td>
+                            <td>in-office</td>
+                          </tr>
+                          <tr>
+                            <td>not-present</td>
+                            <td>away-travelling</td>
+                          </tr>
+                          <tr>
+                            <td>sick</td>
+                            <td>working-from-home</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>annual-leave</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>personal-leave</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>jury-duty</td>
+                          </tr>
+                        </table>
+                        
+                        <div class="lang-content lang-en">
+                            <p>Your task is to create a FHIR ConceptMap translating the codes your receive to codes you already have, making use of the available <a href="http://hl7.org/fhir/STU3/valueset-concept-map-equivalence.html">equivalence</a> values. You come up with this sample mapping that maps in the direction from the new system to your system's ValueSet:</p>
+                        </div>
+                        
+                        <div class="lang-content lang-ru">
+                            <p>Ваша задача - создать FHIR ConceptMap, переводящий коды, которые вы получаете, в коды, которые у вас уже есть, используя доступные значения <a href="http://hl7.org/fhir/STU3/valueset-concept-map-equivalence.html">эквивалентности</a>. Вы создаете этот пример сопоставления, который сопоставляет в направлении от новой системы к ValueSet вашей системы:</p>
+                        </div>
 
                         <table class="table-fill">
-  <tr>
-    <th>New system's valueset</th>
-    <th>Current valueset</th>
-    <th>Equivalence code</th>
-  </tr>
-  <tr>
-    <td>in-office</td>
-    <td>present</td>
-      <td>equal</td>
-  </tr>
-  <tr>
-    <td>away-travelling</td>
-    <td>not-present</td>
-      <td>wider</td>
-  </tr>
-  <tr>
-    <td>working-from-home</td>
-    <td>not-present</td>
-      <td>wider</td>
-  </tr>
-  <tr>
-    <td>annual-leave</td>
-    <td>not-present</td>
-      <td>wider</td>
-  </tr>
-  <tr>
-    <td>personal-leave</td>
-    <td>sick</td>
-      <td>equal</td>
-  </tr>
-  <tr>
-    <td>jury-duty</td>
-      <td>not-present</td>
-    <td>wider</td>
-  </tr>
-  <tr>                            
-    <td>away-travelling</td>
-    <td>present</td>
-    <td>disjoint</td>
-  </tr>
-</table>
-                        <h5 id="cm-sample-resource">Step 3: Sample resources</h5>
-							<p>A sample <a href="resource-examples/ConceptMap-resources/ConceptMap.xml">ConceptMap</a> resource containing these mappings is available. The supporting  <a href="resource-examples/ConceptMap-resources/Codesystem.xml">CodeSystem</a>, <a href="resource-examples/ConceptMap-resources/Old-ValueSet.xml">old ValueSet</a> and  <a href="resource-examples/ConceptMap-resources/New-ValueSet.xml">new ValueSet</a> are available as well.</p>
+                          <tr>
+                            <th>
+                                <span class="lang-content lang-en inline">New system's valueset</span>
+                                <span class="lang-content lang-ru inline">Valueset новой системы</span>
+                            </th>
+                            <th>
+                                <span class="lang-content lang-en inline">Current valueset</span>
+                                <span class="lang-content lang-ru inline">Текущий valueset</span>
+                            </th>
+                            <th>
+                                <span class="lang-content lang-en inline">Equivalence code</span>
+                                <span class="lang-content lang-ru inline">Код эквивалентности</span>
+                            </th>
+                          </tr>
+                          <tr>
+                            <td>in-office</td>
+                            <td>present</td>
+                              <td>equal</td>
+                          </tr>
+                          <tr>
+                            <td>away-travelling</td>
+                            <td>not-present</td>
+                              <td>wider</td>
+                          </tr>
+                          <tr>
+                            <td>working-from-home</td>
+                            <td>not-present</td>
+                              <td>wider</td>
+                          </tr>
+                          <tr>
+                            <td>annual-leave</td>
+                            <td>not-present</td>
+                              <td>wider</td>
+                          </tr>
+                          <tr>
+                            <td>personal-leave</td>
+                            <td>sick</td>
+                              <td>equal</td>
+                          </tr>
+                          <tr>
+                            <td>jury-duty</td>
+                              <td>not-present</td>
+                            <td>wider</td>
+                          </tr>
+                          <tr>                            
+                            <td>away-travelling</td>
+                            <td>present</td>
+                            <td>disjoint</td>
+                          </tr>
+                        </table>
+                        
+                        <h5 id="cm-sample-resource">
+                            <span class="lang-content lang-en inline">Step 3: Sample resources</span>
+                            <span class="lang-content lang-ru inline">Шаг 3: Примеры ресурсов</span>
+                        </h5>
+                        
+                        <div class="lang-content lang-en">
+                            <p>A sample <a href="resource-examples/ConceptMap-resources/ConceptMap.xml">ConceptMap</a> resource containing these mappings is available. The supporting  <a href="resource-examples/ConceptMap-resources/Codesystem.xml">CodeSystem</a>, <a href="resource-examples/ConceptMap-resources/Old-ValueSet.xml">old ValueSet</a> and  <a href="resource-examples/ConceptMap-resources/New-ValueSet.xml">new ValueSet</a> are available as well.</p>
 
+                            <p>Press the button below to upload these resources to the FHIR server!</p>
+                        </div>
+                        
+                        <div class="lang-content lang-ru">
+                            <p>Доступен пример ресурса <a href="resource-examples/ConceptMap-resources/ConceptMap.xml">ConceptMap</a>, содержащий эти сопоставления. Также доступны поддерживающие <a href="resource-examples/ConceptMap-resources/Codesystem.xml">CodeSystem</a>, <a href="resource-examples/ConceptMap-resources/Old-ValueSet.xml">старый ValueSet</a> и <a href="resource-examples/ConceptMap-resources/New-ValueSet.xml">новый ValueSet</a>.</p>
 
-							<p>Press the button below to upload these resources to the FHIR server!</p>
+                            <p>Нажмите кнопку ниже, чтобы загрузить эти ресурсы на FHIR сервер!</p>
+                        </div>
+                        
                         <p>
                             <center>
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="conceptmap-button">
-                                    Upload</button>
+                                    <span class="lang-content lang-en inline">Upload</span>
+                                    <span class="lang-content lang-ru inline">Загрузить</span>
+                                </button>
                                 <br>
                                 <div id="conceptmap-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
                             </center>
                         </p>
 
+                        <div class="lang-content lang-en">
+                            <p>The ConceptMap resource will be available at this URL:</p>
+                        </div>
                         
-                        <p>The ConceptMap resource will be available at this URL:</p>
-                        <note class="conceptmap-location-full" id="cm-conceptmap"><i>(press Upload to get a ConceptMap)</i></note>
-                        <p>Once uploaded, it'll look something <a href="images/conceptmap-in-postman.png" data-lightbox="conceptmap-in-postman">like this</a>when you GET the ConceptMap via Postman.</p>
+                        <div class="lang-content lang-ru">
+                            <p>Ресурс ConceptMap будет доступен по этому URL:</p>
+                        </div>
+                        
+                        <note class="conceptmap-location-full" id="cm-conceptmap">
+                            <span class="lang-content lang-en inline"><i>(press Upload to get a ConceptMap)</i></span>
+                            <span class="lang-content lang-ru inline"><i>(нажмите Загрузить, чтобы получить ConceptMap)</i></span>
+                        </note>
+                        
+                        <div class="lang-content lang-en">
+                            <p>Once uploaded, it'll look something <a href="images/conceptmap-in-postman.png" data-lightbox="conceptmap-in-postman">like this</a> when you GET the ConceptMap via Postman.</p>
+                        </div>
+                        
+                        <div class="lang-content lang-ru">
+                            <p>После загрузки он будет выглядеть примерно <a href="images/conceptmap-in-postman.png" data-lightbox="conceptmap-in-postman">вот так</a>, когда вы получите ConceptMap через Postman.</p>
+                        </div>
 
-
-                        <h5 id="cm-advanced-features">Step 4: Advanced features</h5>
-                        <p>ConceptMap is actually pretty powerful, and besides the basic code-to-code mapping described above, it also supports the following usecases:</p>
-                        <ul>
-                            <li>Mapping one code to many codes at once given the same equivalence property (by utilising multiple <a href="http://hl7.org/fhir/STU3/conceptmap-definitions.html#ConceptMap.group.element.target">target</a> properties within one <a href="http://hl7.org/fhir/STU3/conceptmap-definitions.html#ConceptMap.group.element">element</a> property)</li>
-                            <li>Having a dependency for a mapping, a mapping could only be applicable if a selected element exists in the data and has the specified value (see <a href="http://hl7.org/fhir/STU3/conceptmap-definitions.html#ConceptMap.group.element.target.dependsOn">dependsOn</a>)</li>
-                        </ul>
-                        <h5 id="cm-translate-operation">Step 5: $translate operation</h5>
-							<p>The <a href="http://hl7.org/fhir/STU3/conceptmap-operations.html#translate">$translate</a> operation allows you to utilise a FHIR terminology server to get an equivalent code as specified by a ConceptMap mapping. To use it, you need to provide the ConceptMap you'd like to use, the input code and its CodeSystem, and the valueset you'd like to get a translation from. Try the <a href="http://hl7.org/fhir/STU3/conceptmap-operations.html#translate">$translate</a> operation on the four sample resources uploaded above (a CodeSystem, two ValueSets, and a ConceptMap) via Postman using this template:</p>
-                            <p><code>https://ontoserver.csiro.au/stu3-latest/ConceptMap/ConceptMap/servers-conceptmap-id/$translate?code=my-code&system=codes-codesystem&target=target-valueset</code></p>
-							<p>Here's a sample code you could try, once you've uploaded your conceptmap to a terminology server of choice:</p>
-                            <p><code>https://ontoserver.csiro.au/stu3-latest/ConceptMap/a912ee54-30e8-4a1a-8f2a-1a4337aaf69c/$translate?code=in-office&system=urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a&target=urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55</code></p>
-							<p>That's it! You're done for now.</p>
+                        <h5 id="cm-advanced-features">
+                            <span class="lang-content lang-en inline">Step 4: Advanced features</span>
+                            <span class="lang-content lang-ru inline">Шаг 4: Расширенные возможности</span>
+                        </h5>
+                        
+                        <div class="lang-content lang-en">
+                            <p>ConceptMap is actually pretty powerful, and besides the basic code-to-code mapping described above, it also supports the following usecases:</p>
+                            <ul>
+                                <li>Mapping one code to many codes at once given the same equivalence property (by utilising multiple <a href="http://hl7.org/fhir/STU3/conceptmap-definitions.html#ConceptMap.group.element.target">target</a> properties within one <a href="http://hl7.org/fhir/STU3/conceptmap-definitions.html#ConceptMap.group.element">element</a> property)</li>
+                                <li>Having a dependency for a mapping, a mapping could only be applicable if a selected element exists in the data and has the specified value (see <a href="http://hl7.org/fhir/STU3/conceptmap-definitions.html#ConceptMap.group.element.target.dependsOn">dependsOn</a>)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="lang-content lang-ru">
+                            <p>ConceptMap на самом деле довольно мощный, и помимо базового сопоставления код-к-коду, описанного выше, он также поддерживает следующие случаи использования:</p>
+                            <ul>
+                                <li>Сопоставление одного кода с несколькими кодами одновременно при одинаковом свойстве эквивалентности (путем использования нескольких свойств <a href="http://hl7.org/fhir/STU3/conceptmap-definitions.html#ConceptMap.group.element.target">target</a> в рамках одного свойства <a href="http://hl7.org/fhir/STU3/conceptmap-definitions.html#ConceptMap.group.element">element</a>)</li>
+                                <li>Наличие зависимости для сопоставления, сопоставление может быть применимо только если выбранный элемент существует в данных и имеет указанное значение (см. <a href="http://hl7.org/fhir/STU3/conceptmap-definitions.html#ConceptMap.group.element.target.dependsOn">dependsOn</a>)</li>
+                            </ul>
+                        </div>
+                        
+                        <h5 id="cm-translate-operation">
+                            <span class="lang-content lang-en inline">Step 5: $translate operation</span>
+                            <span class="lang-content lang-ru inline">Шаг 5: Операция $translate</span>
+                        </h5>
+                        
+                        <div class="lang-content lang-en">
+                            <p>The <a href="http://hl7.org/fhir/STU3/conceptmap-operations.html#translate">$translate</a> operation allows you to utilise a FHIR terminology server to get an equivalent code as specified by a ConceptMap mapping. To use it, you need to provide the ConceptMap you'd like to use, the input code and its CodeSystem, and the valueset you'd like to get a translation from. Try the <a href="http://hl7.org/fhir/STU3/conceptmap-operations.html#translate">$translate</a> operation on the four sample resources uploaded above (a CodeSystem, two ValueSets, and a ConceptMap) via Postman using this template:</p>
+                            <p><code>https://r4.ontoserver.csiro.au/fhir/ConceptMap/servers-conceptmap-id/$translate?code=my-code&system=codes-codesystem&target=target-valueset</code></p>
+                            <p>Here's a sample code you could try, once you've uploaded your conceptmap to a terminology server of choice:</p>
+                            <p><code>https://r4.ontoserver.csiro.au/fhir/ConceptMap/a912ee54-30e8-4a1a-8f2a-1a4337aaf69c/$translate?code=in-office&system=urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a&target=urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55</code></p>
+                            <p>That's it! You're done for now.</p>
+                        </div>
+                        
+                        <div class="lang-content lang-ru">
+                            <p>Операция <a href="http://hl7.org/fhir/STU3/conceptmap-operations.html#translate">$translate</a> позволяет использовать терминологический сервер FHIR для получения эквивалентного кода, как указано в сопоставлении ConceptMap. Для её использования вам нужно предоставить ConceptMap, который вы хотите использовать, входной код и его CodeSystem, а также valueset, из которого вы хотите получить перевод. Попробуйте операцию <a href="http://hl7.org/fhir/STU3/conceptmap-operations.html#translate">$translate</a> на четырех примерах ресурсов, загруженных выше (CodeSystem, два ValueSet и ConceptMap) через Postman, используя этот шаблон:</p>
+                            <p><code>https://r4.ontoserver.csiro.au/fhir//ConceptMap/servers-conceptmap-id/$translate?code=my-code&system=codes-codesystem&target=target-valueset</code></p>
+                            <p>Вот пример кода, который вы можете попробовать, после того как загрузите свой conceptmap на выбранный терминологический сервер:</p>
+                            <p><code>https://r4.ontoserver.csiro.au/fhir//ConceptMap/a912ee54-30e8-4a1a-8f2a-1a4337aaf69c/$translate?code=in-office&system=urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a&target=urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55</code></p>
+                            <p>Вот и всё! На данный момент вы закончили.</p>
+                        </div>
+                        
                     </div>
                 </section>
             <footer class="mdl-mega-footer">
                 <div class="mdl-mega-footer--middle-section">
                     <div class="mdl-mega-footer--drop-down-section">
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">The Agency</span>
+                            <span class="lang-content lang-ru">Агентство</span>
+                        </h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
-                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
+                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">
+                                <span class="lang-content lang-en">My Health Record</span>
+                                <span class="lang-content lang-ru">Моя медицинская карта</span>
+                            </a></li>
                         </ul>
                     </div>
                     <div class="mdl-mega-footer--drop-down-section">
@@ -272,6 +498,19 @@
                             <li><a href="http://hl7.org/fhir/STU3" title="Latest release of FHIR, for use in Madrid Connectathon">FHIR STU3 Release</a></li>
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
+                    </div>
+                    
+                    <!-- Language Selector -->
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">Language</span>
+                            <span class="lang-content lang-ru">Язык</span>
+                        </h1>
+                        <div class="language-selector">
+                            <button onclick="switchLanguage('en')" class="lang-btn" id="lang-en-btn">English</button>
+                            <button onclick="switchLanguage('ru')" class="lang-btn" id="lang-ru-btn">Русский</button>
+                        </div>
                     </div>
                 </div>
             </footer>
@@ -290,6 +529,83 @@
     <script src="js/main.js"></script>
 <!-- supporting javascript to actually do the uploading -->	
 	<script src="js/post-resources.js"></script>
+    
+    <!-- Language switching script -->
+    <script>
+        // Language switching functionality
+        function switchLanguage(lang) {
+            // Remove existing language classes
+            document.body.classList.remove('lang-en', 'lang-ru');
+            
+            // Add new language class
+            document.body.classList.add('lang-' + lang);
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('lang-' + lang + '-btn').classList.add('active');
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferred-language', lang);
+            
+            // Update HTML lang attribute for accessibility
+            document.documentElement.lang = lang;
+        }
+        
+        // Initialize language on page load
+        function initializeLanguage() {
+            // Check URL parameter first
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            
+            // Then check localStorage
+            const savedLang = localStorage.getItem('preferred-language');
+            
+            // Default to English
+            const defaultLang = 'en';
+            
+            // Determine which language to use
+            const currentLang = urlLang || savedLang || defaultLang;
+            
+            // Apply the language
+            switchLanguage(currentLang);
+        }
+        
+        // Run initialization when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeLanguage);
+        
+        // Optional: Update URLs when language changes to maintain consistency
+        function updateUrlWithLanguage(lang) {
+            const url = new URL(window.location);
+            url.searchParams.set('lang', lang);
+            window.history.replaceState({}, '', url);
+        }
+        
+        // Enhanced switchLanguage function with URL update
+        function switchLanguage(lang) {
+            // Remove existing language classes
+            document.body.classList.remove('lang-en', 'lang-ru');
+            
+            // Add new language class
+            document.body.classList.add('lang-' + lang);
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('lang-' + lang + '-btn').classList.add('active');
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferred-language', lang);
+            
+            // Update HTML lang attribute for accessibility
+            document.documentElement.lang = lang;
+            
+            // Update URL parameter
+            updateUrlWithLanguage(lang);
+        }
+    </script>
 </body>
 
 </html>
