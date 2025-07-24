@@ -1,0 +1,45 @@
+/* Language switching CSS */
+.lang-content {
+    display: none;
+}
+
+body.lang-en .lang-en {
+    display: block;
+}
+
+body.lang-en .lang-en.inline {
+    display: inline;
+}
+
+body.lang-ru .lang-ru {
+    display: block;
+}
+
+body.lang-ru .lang-ru.inline {
+    display: inline;
+}
+
+/* Language selector styling */
+.language-selector {
+    margin: 20px 0;
+}
+
+.lang-btn {
+    background: #673ab7;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: #5e35b1;
+}
+
+.lang-btn.active {
+    background: #e91e63;
+}
