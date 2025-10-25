@@ -1,6 +1,6 @@
 var servers = {
     // all of these need to be made https, can't upload to http from an https page
-    ontoserverr4: "https://r4.ontoserver.csiro.au/fhir",
+    hapiFhirR4: "https://hapi.fhir.org/baseR4",
     hapiHL7AU: "https://hapi-hl7-au-training-server.australiaeast.cloudapp.azure.com/fhir"
 }
 
@@ -142,7 +142,7 @@ function failedUpload() {
 var patientWithReferencesButton = document.getElementById('patient-with-references-button');
 if (patientWithReferencesButton) {
 	patientWithReferencesButton.onclick = function () {
-		uploadFiles("patient-with-references", servers.ontoserverr4, [
+		uploadFiles("patient-with-references", servers.hapiFhirR4, [
 		["rf-patient", "resource-examples/Patient-f001.json"],
 		["rf-encounter", "resource-examples/Encounter-f001.json"],
 		["rf-servicerequest", "resource-examples/ServiceRequest-f001.json"],
@@ -155,7 +155,7 @@ if (patientWithReferencesButton) {
 var simplePatientButton = document.getElementById('simple-patient-button');
 if (simplePatientButton) {
 	simplePatientButton.onclick = function () {
-		uploadFiles("simple-patient", servers.ontoserverr4, [
+		uploadFiles("simple-patient", servers.hapiFhirR4, [
 		["simple-patient-resourcePatient1", "resource-examples/SimplePatient-resources/PatientResourceExample1.json"]]);
 	};
 }
@@ -164,7 +164,7 @@ if (simplePatientButton) {
 var conceptMapButton = document.getElementById('conceptmap-button');
 if (conceptMapButton) {
 	conceptMapButton.onclick = function () {
-		uploadFiles("conceptmap", servers.ontoserverr4, [
+		uploadFiles("conceptmap", servers.hapiFhirR4, [
 			["cm-codesystem", "resource-examples/ConceptMap-resources/Codesystem.json"],
 			["cm-old-valueset", "resource-examples/ConceptMap-resources/Old-ValueSet.json"],
 			["cm-new-valueset", "resource-examples/ConceptMap-resources/New-ValueSet.json"],
@@ -175,7 +175,7 @@ if (conceptMapButton) {
 var expandOperationButton = document.getElementById('expand-operation-button');
 if (expandOperationButton) {
 	expandOperationButton.onclick = function () {
-		uploadFiles("expand-operation", servers.ontoserverr4, [
+		uploadFiles("expand-operation", servers.hapiFhirR4, [
 		["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
 	};
 }
