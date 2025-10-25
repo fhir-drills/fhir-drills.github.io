@@ -76,9 +76,7 @@
       "prefix": [
         "Mr"
       ],
-      "family": [
-        "Fhirman"
-      ],
+      "family": "Fhirman",
       "given": [
         "Sam"
       ]

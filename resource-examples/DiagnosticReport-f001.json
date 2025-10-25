@@ -13,19 +13,21 @@
     }
   ],
   "status": "final",
-  "category": {
-    "coding": [
-      {
-        "system": "http://snomed.info/sct",
-        "code": "252275004",
-        "display": "Haematology test"
-      },
-      {
-        "system": "http://hl7.org/fhir/v2/0074",
-        "code": "HM"
-      }
-    ]
-  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "252275004",
+          "display": "Haematology test"
+        },
+        {
+          "system": "http://hl7.org/fhir/v2/0074",
+          "code": "HM"
+        }
+      ]
+    }
+  ],
   "code": {
     "coding": [
       {
@@ -43,7 +45,7 @@
   "issued": "2013-05-15T19:32:52+01:00",  
   "basedOn": [
     {
-      "reference": "ProcedureRequest/digitalhealth-f001"
+      "reference": "ServiceRequest/digitalhealth-f001"
     }
   ],
   "result": [

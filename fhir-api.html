@@ -146,12 +146,12 @@
                             <p>They are:</p> 
                             <b>Java</b>
 							
-							<p><a href="http://hapifhir.io">HAPI FHIR library</a>: To get started with HAPI, add the dependency <a href="http://hapifhir.io/download.html#Maven_Users">via Maven</a> or <a href="http://hapifhir.io/download.html#Gradle_Users">Gradle</a> - or just <a href="https://github.com/jamesagnew/hapi-fhir/releases/download/v2.3/hapi-fhir-2.3-standard-distribution.zip">download</a> the library locally. If you've done the latter, include all non-hapi jars in your classpath, and only <code>hapi-fhir-base-2.3.jar</code>, <code>hapi-fhir-structures-dstu3-2.3.jar</code>, <code>hapi-fhir-validation-resources-dstu3-2.3.jar</code> hapi ones if you're working with STU3.</p>
+							<p><a href="http://hapifhir.io">HAPI FHIR library</a>: To get started with HAPI, add the dependency <a href="http://hapifhir.io/download.html#Maven_Users">via Maven</a> or <a href="http://hapifhir.io/download.html#Gradle_Users">Gradle</a> - or download the library from the <a href="https://github.com/hapifhir/hapi-fhir/releases">releases page</a>. For R4, include all non-hapi jars in your classpath, and the following HAPI jars: <code>hapi-fhir-base</code>, <code>hapi-fhir-structures-r4</code>, <code>hapi-fhir-validation-resources-r4</code>.</p>
 							
 							<p>The Java examples listed in this tutorial require Java 8 SDK installed, however HAPI itself supports Java all the way back to 6.</p>
 							
                             <b>Microsoft .Net</b>
-                            <p><a href="https://github.com/ewoutkramer/fhir-net-api">FHIR .NET API</a>: The simplest way to get started with the .Net API is to search for it in the Nuget pacakge manager built into Visual Studio. Right click your Solution and select 'Manage Nuget Packages' and then search and install both 'Hl7.Fhir.STU3' and 'Hl7.FluentPath'. You may also need to select the 'Include prerelease' if you wish to have the latest STU3 release. You can find a C# project <a href="https://github.com/angusmillar/SimpleFhir">here</a> on GitHub that contans all the C# examples seen below.</p>
+                            <p><a href="https://github.com/FirelyTeam/firely-net-sdk">FHIR .NET SDK</a>: The simplest way to get started with the .NET SDK is to search for it in the NuGet package manager built into Visual Studio. Right click your Solution and select 'Manage NuGet Packages' and then search and install both 'Hl7.Fhir.R4' and 'Hl7.Fhir.Support.Poco'. You can find a C# project <a href="https://github.com/angusmillar/SimpleFhir">here</a> on GitHub that contains C# examples.</p>
 							
 							
 							<h5 id="api-find-patient">Step 2: Create a basic Patient</h5>
@@ -306,7 +306,7 @@ public class Main {
       <prefix value="Mr"/>
    </name>
 </Patient></textarea>
-							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/STU3/patient.html">Patient</a> page to see what can you populate your resource with (<a href="http://hapifhir.io/apidocs-dstu3/org/hl7/fhir/dstu3/model/Patient.html">Javadoc</a> is also available).</p>
+							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/R4/patient.html">Patient</a> page to see what can you populate your resource with (<a href="http://hapifhir.io/apidocs-dstu3/org/hl7/fhir/dstu3/model/Patient.html">Javadoc</a> is also available).</p>
 							
 							<h5 id="api-upload-patient">Step 3: Upload your basic Patient</h5>
 							<p>Now that we can create a simple resource, let's upload it to a FHIR server:</p>
@@ -470,7 +470,7 @@ public class Main {
 }</textarea>
 										</div>
 									</div>
-									<p>Comparing the resource that we sent up to the resource we received back, you'll notice that the server generated a basic narrative for us from the data available and also added its <a href="http://hl7.org/fhir/STU3/resource.html#id">logical ID</a></p>
+									<p>Comparing the resource that we sent up to the resource we received back, you'll notice that the server generated a basic narrative for us from the data available and also added its <a href="http://hl7.org/fhir/R4/resource.html#id">logical ID</a></p>
 									<h5 id="api-search">Step 4: Search for a resource</h5>
 									<p>Now that you've uploaded a resource, try searching for it. Remember that you'll get <a href="bundle.html">a bundle</a> back with many entries, one resource per entry.</p>
 									<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
@@ -773,7 +773,7 @@ public class Main {
                         <h1 class="mdl-mega-footer--heading">FHIR</h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_15" title="Next FHIR get-together in Madrid in May 2017">Connectathon 15</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3" title="Latest release of FHIR, for use in Madrid Connectathon">FHIR STU3 Release</a></li>
+                            <li><a href="http://hl7.org/fhir/R4" title="Latest release of FHIR, for use in Madrid Connectathon">FHIR R4 Release</a></li>
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
                     </div>

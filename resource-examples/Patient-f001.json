@@ -20,9 +20,7 @@
   "name": [
     {
       "use": "usual",
-      "family": [
-        "van de Heuvel"
-      ],
+      "family": "van de Heuvel",
       "given": [
         "Pieter"
       ],
@@ -82,9 +80,7 @@
       ],
       "name": {
         "use": "usual",
-        "family": [
-          "Abels"
-        ],
+        "family": "Abels",
         "given": [
           "Sarah"
         ]
