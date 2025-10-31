@@ -112,7 +112,7 @@
         <status value='fulfilled'/>
         <reason>
           <coding>
-            <system value='http://hl7.org/fhir/ValueSet/encounter-reason'/>
+            <system value='http://snomed.info/sct'/>
             <code value='274640006'/>
             <display value='Fever with chills (finding)'/>
           </coding>
@@ -140,13 +140,13 @@
         <id value='encounter'/>
         <status value='finished'/>
         <class>
-          <system value='http://hl7.org/fhir/ValueSet/v3-ActEncounterCode'/>
+          <system value='http://terminology.hl7.org/CodeSystem/v3-ActCode'/>
           <code value='NONAC'/>
           <display value='inpatient non-acute'/>
         </class>
         <priority>
           <coding>
-            <system value='http://hl7.org/fhir/ValueSet/v3-ActPriority'/>
+            <system value='http://terminology.hl7.org/CodeSystem/v3-ActPriority'/>
             <code value='R'/>
             <display value='routine'/>
           </coding>
@@ -157,7 +157,7 @@
         <participant>
           <type>
             <coding>
-              <system value='http://hl7.org/fhir/ValueSet/encounter-participant-type'/>
+              <system value='http://terminology.hl7.org/CodeSystem/v3-ParticipationType'/>
               <code value='PPRF'/>
               <display value='primary performer'/>
             </coding>
@@ -175,7 +175,7 @@
         </period>
         <reason>
           <coding>
-            <system value='http://hl7.org/fhir/ValueSet/encounter-reason'/>
+            <system value='http://snomed.info/sct'/>
             <code value='274640006'/>
             <display value='Fever with chills (finding)'/>
           </coding>
@@ -261,7 +261,7 @@
         <status value='completed'/>
         <stage>
           <coding>
-            <system value='http://hl7.org/fhir/ValueSet/task-stage'/>
+            <system value='http://hl7.org/fhir/codesystem-task-code'/>
             <code value='actionable'/>
             <display value='actionable'/>
           </coding>
@@ -345,7 +345,7 @@
         <status value='final'/>
         <category>
           <coding>
-            <system value='http://hl7.org/fhir/ValueSet/observation-category'/>
+            <system value='http://terminology.hl7.org/CodeSystem/observation-category'/>
             <code value='laboratory'/>
             <display value='Laboratory'/>
           </coding>
@@ -375,7 +375,7 @@
         <id value='hospital-organization'/>
         <type>
           <coding>
-            <system value='http://hl7.org/fhir/ValueSet/organization-type'/>
+            <system value='http://terminology.hl7.org/CodeSystem/organization-type'/>
             <code value='dept'/>
             <display value='Hospital Department'/>
           </coding>
@@ -406,7 +406,7 @@
         <id value='pathlab'/>
         <type>
           <coding>
-            <system value='http://hl7.org/fhir/ValueSet/organization-type'/>
+            <system value='http://terminology.hl7.org/CodeSystem/organization-type'/>
             <code value='prov'/>
             <display value='Healthcare Provider'/>
           </coding>
