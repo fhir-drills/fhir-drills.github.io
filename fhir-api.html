@@ -191,7 +191,7 @@ public class Main {
 								</div>
 							</div>							
 							
-							<p>Create a basic Patient resource and populate it with some information. Running this code will print the resource as XML for you:</p>
+							<p>Create a basic Patient resource and populate it with some information. Running this code will print the resource as JSON for you:</p>
 
 							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 								<div class="mdl-tabs__tab-bar">
@@ -203,7 +203,7 @@ public class Main {
 									<textarea class="csharp-code">
 using System;
 using System.Collections.Generic;
-using System.Xml.Linq;
+
 namespace SimpleFhir
 {
   class Program
@@ -221,22 +221,21 @@ namespace SimpleFhir
       MyPatient.Name = new List<Hl7.Fhir.Model.HumanName>();
       MyPatient.Name.Add(PatientName);
 
-      //Patient Identifier 
+      //Patient Identifier
       var PatientIdentifier = new Hl7.Fhir.Model.Identifier();
       PatientIdentifier.System = "http://ns.electronichealth.net.au/id/hi/ihi/1.0";
       PatientIdentifier.Value = "8003608166690503";
       MyPatient.Identifier = new List<Hl7.Fhir.Model.Identifier>();
       MyPatient.Identifier.Add(PatientIdentifier);
 
-      Console.WriteLine("Press any key to serialise Resource to the console as XML.");
+      Console.WriteLine("Press any key to serialise Resource to the console as JSON.");
       Console.ReadKey();
       Console.WriteLine("");
       try
       {
         //attempt to serialize the resource
-        string xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(MyPatient);
-        XDocument xDoc = XDocument.Parse(xml);
-        Console.Write(xDoc.ToString());
+        string json = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToJson(MyPatient);
+        Console.Write(json);
         Console.WriteLine("");
         Console.WriteLine("");
       }
@@ -277,11 +276,11 @@ public class Main {
                 .setSystem("http://ns.electronichealth.net.au/id/hi/ihi/1.0")
                 .setValue("8003608166690503");
 
-        System.out.println("Press Enter to serialise Resource to the console as XML.");
+        System.out.println("Press Enter to serialise Resource to the console as JSON.");
         System.in.read();
 
-        // create a new XML parser and serialize our Patient object with it
-        String encoded = ctx.newXmlParser().setPrettyPrint(true)
+        // create a new JSON parser and serialize our Patient object with it
+        String encoded = ctx.newJsonParser().setPrettyPrint(true)
                 .encodeResourceToString(patient);
 
         System.out.println(encoded);
@@ -325,14 +324,14 @@ public class Main {
 									<textarea class="csharp-code">
 using System;
 using System.Collections.Generic;
-using System.Xml.Linq;
+
 namespace SimpleFhir
 {
   class Program
   {
     static void Main(string[] args)
     {
-      //The fhir server end point address      
+      //The fhir server end point address
       string ServiceRootUrl = "https://hapi.fhir.org/baseDstu3";
 
       //Create a patient resource instance
@@ -347,7 +346,7 @@ namespace SimpleFhir
       MyPatient.Name = new List<Hl7.Fhir.Model.HumanName>();
       MyPatient.Name.Add(PatientName);
 
-      //Patient Identifier 
+      //Patient Identifier
       var PatientIdentifier = new Hl7.Fhir.Model.Identifier();
       PatientIdentifier.System = "http://ns.electronichealth.net.au/id/hi/ihi/1.0";
       PatientIdentifier.Value = "8003608166690503";
@@ -370,15 +369,13 @@ namespace SimpleFhir
         Console.WriteLine();
         Console.WriteLine("This is what we sent up: ");
         Console.WriteLine();
-        string xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(MyPatient);
-        XDocument xDoc = XDocument.Parse(xml);
-        Console.WriteLine(xDoc.ToString());
+        string json = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToJson(MyPatient);
+        Console.WriteLine(json);
         Console.WriteLine();
         Console.WriteLine("This is what we received back: ");
         Console.WriteLine();
-        xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(ReturnedPatient);
-        xDoc = XDocument.Parse(xml);
-        Console.WriteLine(xDoc.ToString());
+        json = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToJson(ReturnedPatient);
+        Console.WriteLine(json);
         Console.WriteLine();
       }
       catch (Hl7.Fhir.Rest.FhirOperationException FhirOpExec)
@@ -387,9 +384,8 @@ namespace SimpleFhir
         Console.WriteLine();
         Console.WriteLine("An error message: " + FhirOpExec.Message);
         Console.WriteLine();
-        string xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(FhirOpExec.Outcome);
-        XDocument xDoc = XDocument.Parse(xml);
-        Console.WriteLine(xDoc.ToString());
+        string json = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToJson(FhirOpExec.Outcome);
+        Console.WriteLine(json);
       }
       catch (Exception GeneralException)
       {
@@ -452,18 +448,18 @@ public class Main {
             MethodOutcome outcome = client.create()
                     .resource(ourPatient)
                     .prettyPrint()
-                    .encodedXml()
+                    .encodedJson()
                     .execute();
 
             IdType id = (IdType) outcome.getId();
             System.out.println("Resource is available at: " + id.getValue());
 
-            IParser xmlParser = ctx.newXmlParser().setPrettyPrint(true);
+            IParser jsonParser = ctx.newJsonParser().setPrettyPrint(true);
             Patient receivedPatient = (Patient) outcome.getResource();
             System.out.println("This is what we sent up: \n"
-                    + xmlParser.encodeResourceToString(ourPatient)
+                    + jsonParser.encodeResourceToString(ourPatient)
                     + "\n\nThis is what we received: \n"
-                    + xmlParser.encodeResourceToString(receivedPatient));
+                    + jsonParser.encodeResourceToString(receivedPatient));
         } catch (DataFormatException e) {
             System.out.println("An error occurred trying to upload:");
             e.printStackTrace();
@@ -488,14 +484,14 @@ public class Main {
 											<textarea class="csharp-code">
 using System;
 using System.Collections.Generic;
-using System.Xml.Linq;
+
 namespace SimpleFhir
 {
   class Program
   {
     static void Main(string[] args)
     {
-      //The fhir server end point address      
+      //The fhir server end point address
       string ServiceRootUrl = "https://hapi.fhir.org/baseDstu3";
       //Create a client to send to the server at a given endpoint.
       var FhirClient = new Hl7.Fhir.Rest.FhirClient(ServiceRootUrl);
@@ -523,9 +519,8 @@ namespace SimpleFhir
         Console.WriteLine();
         Console.WriteLine("An error message: " + FhirOpExec.Message);
         Console.WriteLine();
-        string xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(FhirOpExec.Outcome);
-        XDocument xDoc = XDocument.Parse(xml);
-        Console.WriteLine(xDoc.ToString());
+        string json = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToJson(FhirOpExec.Outcome);
+        Console.WriteLine(json);
       }
       catch (Exception GeneralException)
       {
@@ -622,17 +617,17 @@ public class Main {
 		<textarea class="csharp-code">
 using System;
 using System.Collections.Generic;
-using System.Xml.Linq;
+
 namespace SimpleFhir
 {
   class Program
   {
     static void Main(string[] args)
     {
-      //The fhir server end point address      
-      string ServiceRootUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";     
+      //The fhir server end point address
+      string ServiceRootUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";
       //Create a client to send to the server at a given endpoint.
-      var FhirClient = new Hl7.Fhir.Rest.FhirClient(ServiceRootUrl);      
+      var FhirClient = new Hl7.Fhir.Rest.FhirClient(ServiceRootUrl);
       // increase timeouts since the server might be powered down
       FhirClient.Timeout = (60 * 1000);
 
@@ -641,7 +636,7 @@ namespace SimpleFhir
       Console.ReadKey();
       try
       {
-        //Attempt to send the resource to the server endpoint                
+        //Attempt to send the resource to the server endpoint
         UriBuilder UriBuilderx = new UriBuilder(ServiceRootUrl);
         UriBuilderx.Path = "Patient/MY_PATIENT_ID";
         Hl7.Fhir.Model.Resource ReturnedResource = FhirClient.InstanceOperation(UriBuilderx.Uri, "everything");
@@ -649,7 +644,7 @@ namespace SimpleFhir
         if (ReturnedResource is Hl7.Fhir.Model.Bundle)
         {
           Hl7.Fhir.Model.Bundle ReturnedBundle = ReturnedResource as Hl7.Fhir.Model.Bundle;
-          Console.WriteLine("Received: " + ReturnedBundle.Total + " results, the resources are: ");          
+          Console.WriteLine("Received: " + ReturnedBundle.Total + " results, the resources are: ");
           foreach (var Entry in ReturnedBundle.Entry)
           {
             Console.WriteLine(string.Format("{0}/{1}",Entry.Resource.TypeName, Entry.Resource.Id));
@@ -668,9 +663,8 @@ namespace SimpleFhir
         Console.WriteLine();
         Console.WriteLine("An error message: " + FhirOpExec.Message);
         Console.WriteLine();
-        string xml = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToXml(FhirOpExec.Outcome);
-        XDocument xDoc = XDocument.Parse(xml);
-        Console.WriteLine(xDoc.ToString());
+        string json = Hl7.Fhir.Serialization.FhirSerializer.SerializeResourceToJson(FhirOpExec.Outcome);
+        Console.WriteLine(json);
       }
       catch (Exception GeneralException)
       {
