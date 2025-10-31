@@ -45,38 +45,51 @@ function generateUUID() {
 
 // Replace hardcoded UUIDs with ephemeral ones for ConceptMap resources
 function generateEphemeralUUIDs(content) {
-	var oldUUID = "bb6efb79-2b93-4569-a51e-6fcf103b6e9a";
+	// List of all hardcoded UUIDs that need to be replaced
+	var uuidsToReplace = {
+		"bb6efb79-2b93-4569-a51e-6fcf103b6e9a": null, // CodeSystem
+		"a5f94e22-ddba-474e-80e3-b067d9c27a55": null, // Old-ValueSet
+		"5b2b9bb0-f459-4fcd-80f7-076969d0667d": null, // New-ValueSet
+		"193bb9e9-f402-4ea6-95d0-47f8bdd51f68": null  // ConceptMap
+	};
 
-	// Generate new UUID if not already generated for this upload session
-	if (!uuidMap[oldUUID]) {
-		uuidMap[oldUUID] = generateUUID();
-		console.log("Generated ephemeral UUID: " + oldUUID + " → " + uuidMap[oldUUID]);
+	// Generate new UUIDs for any we haven't seen yet in this session
+	for (var oldUUID in uuidsToReplace) {
+		if (!uuidMap[oldUUID]) {
+			uuidMap[oldUUID] = generateUUID();
+			console.log("Generated ephemeral UUID: " + oldUUID + " → " + uuidMap[oldUUID]);
+		}
 	}
-	var newUUID = uuidMap[oldUUID];
 
-	// Replace in URL field (CodeSystem)
-	if (content.url && content.url.indexOf(oldUUID) !== -1) {
-		content.url = content.url.replace(oldUUID, newUUID);
-		console.log("Replaced UUID in CodeSystem.url");
+	var codeSystemUUID = "bb6efb79-2b93-4569-a51e-6fcf103b6e9a";
+
+	// Replace resource's own URL field with a new UUID
+	if (content.url && content.url.indexOf("urn:uuid:") !== -1) {
+		// Extract the UUID from the URL
+		var urlMatch = content.url.match(/urn:uuid:([a-f0-9-]+)/);
+		if (urlMatch && uuidMap[urlMatch[1]]) {
+			content.url = content.url.replace(urlMatch[1], uuidMap[urlMatch[1]]);
+			console.log("Replaced UUID in " + content.resourceType + ".url");
+		}
 	}
 
-	// Replace in compose.include[].system (ValueSets)
+	// Replace in compose.include[].system (ValueSets referencing CodeSystem)
 	if (content.compose && content.compose.include) {
 		for (var i = 0; i < content.compose.include.length; i++) {
 			var include = content.compose.include[i];
-			if (include.system && include.system.indexOf(oldUUID) !== -1) {
-				include.system = include.system.replace(oldUUID, newUUID);
+			if (include.system && include.system.indexOf(codeSystemUUID) !== -1) {
+				include.system = include.system.replace(codeSystemUUID, uuidMap[codeSystemUUID]);
 				console.log("Replaced UUID in ValueSet.compose.include[" + i + "].system");
 			}
 		}
 	}
 
-	// Replace in group[].source (ConceptMap)
+	// Replace in group[].source (ConceptMap referencing CodeSystem)
 	if (content.group) {
 		for (var i = 0; i < content.group.length; i++) {
 			var group = content.group[i];
-			if (group.source && group.source.indexOf(oldUUID) !== -1) {
-				group.source = group.source.replace(oldUUID, newUUID);
+			if (group.source && group.source.indexOf(codeSystemUUID) !== -1) {
+				group.source = group.source.replace(codeSystemUUID, uuidMap[codeSystemUUID]);
 				console.log("Replaced UUID in ConceptMap.group[" + i + "].source");
 			}
 		}
