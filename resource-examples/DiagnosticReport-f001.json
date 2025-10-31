@@ -22,7 +22,7 @@
           "display": "Haematology test"
         },
         {
-          "system": "http://hl7.org/fhir/v2/0074",
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
           "code": "HM"
         }
       ]

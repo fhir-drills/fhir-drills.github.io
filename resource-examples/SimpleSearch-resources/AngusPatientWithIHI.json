@@ -4,7 +4,7 @@
   "maritalStatus": {
     "coding": [
       {
-        "system": "http://hl7.org/fhir/v3/MaritalStatus",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
         "display": "Married",
         "code": "M"
       }
