@@ -1,7 +1,7 @@
 <Bundle xmlns='http://hl7.org/fhir'>
   <type value='transaction'/>
   <entry>
-    <fullUrl value='Patient/patient'/>
+    <fullUrl value='urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f0a'/>
     <resource>
       <Patient xmlns='http://hl7.org/fhir'>
         <id value='patient'/>
@@ -77,11 +77,22 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value='AllergyIntolerance/allergyintolerance'/>
+    <fullUrl value='urn:uuid:47600e0f-b6b5-4308-84b5-5dec157f7637'/>
     <resource>
       <AllergyIntolerance xmlns='http://hl7.org/fhir'>
         <id value='allergyintolerance'/>
-        <status value='active'/>
+        <clinicalStatus>
+          <coding>
+            <system value='http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical'/>
+            <code value='active'/>
+          </coding>
+        </clinicalStatus>
+        <verificationStatus>
+          <coding>
+            <system value='http://terminology.hl7.org/CodeSystem/allergyintolerance-verification'/>
+            <code value='confirmed'/>
+          </coding>
+        </verificationStatus>
         <type value='allergy'/>
         <criticality value='high'/>
         <code>
@@ -92,10 +103,10 @@
           </coding>
         </code>
         <patient>
-          <reference value='Patient/patient'/>
+          <reference value='urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f0a'/>
         </patient>
         <recorder>
-          <reference value='Practitioner/practitioner'/>
+          <reference value='urn:uuid:0c3151bd-1cbf-4d64-b04d-cd9187a4c6e0'/>
         </recorder>
       </AllergyIntolerance>
     </resource>
@@ -105,24 +116,31 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value='Appointment/appointment'/>
+    <fullUrl value='urn:uuid:27593fea-83ad-41d4-aa13-37b4c7bdcb86'/>
     <resource>
       <Appointment xmlns='http://hl7.org/fhir'>
         <id value='appointment'/>
         <status value='fulfilled'/>
-        <reason>
+        <serviceCategory>
+          <coding>
+            <system value='http://terminology.hl7.org/CodeSystem/service-category'/>
+            <code value='17'/>
+            <display value='General Practice'/>
+          </coding>
+        </serviceCategory>
+        <reasonCode>
           <coding>
             <system value='http://snomed.info/sct'/>
-            <code value='274640006'/>
-            <display value='Fever with chills (finding)'/>
+            <code value='50417007'/>
+            <display value='Lower respiratory tract infection'/>
           </coding>
-        </reason>
+        </reasonCode>
         <description value='Mr Fhirman has been experiencing an very high temperature for two days and his wife insisted that he make an appointment.'/>
         <start value='2016-10-31T08:00:00+10:00'/>
         <end value='2016-10-31T08:30:00+10:00'/>
         <participant>
           <actor>
-            <reference value='Patient/patient'/>
+            <reference value='urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f0a'/>
           </actor>
           <status value='accepted'/>
         </participant>
@@ -134,7 +152,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value='Encounter/encounter'/>
+    <fullUrl value='urn:uuid:8220e4f0-7dc6-41cc-a904-52d4b4c6e6e6'/>
     <resource>
       <Encounter xmlns='http://hl7.org/fhir'>
         <id value='encounter'/>
@@ -152,7 +170,7 @@
           </coding>
         </priority>
         <subject>
-          <reference value='Patient/patient'/>
+          <reference value='urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f0a'/>
         </subject>
         <participant>
           <type>
@@ -163,25 +181,25 @@
             </coding>
           </type>
           <individual>
-            <reference value='Practitioner/practitioner'/>
+            <reference value='urn:uuid:0c3151bd-1cbf-4d64-b04d-cd9187a4c6e0'/>
           </individual>
         </participant>
         <appointment>
-          <reference value='Appointment/appointment'/>
+          <reference value='urn:uuid:27593fea-83ad-41d4-aa13-37b4c7bdcb86'/>
         </appointment>
         <period>
           <start value='2016-10-31T08:07:00+10:00'/>
           <end value='2016-10-31T08:28:00+10:00'/>
         </period>
-        <reason>
+        <reasonCode>
           <coding>
             <system value='http://snomed.info/sct'/>
-            <code value='274640006'/>
-            <display value='Fever with chills (finding)'/>
+            <code value='50417007'/>
+            <display value='Lower respiratory tract infection'/>
           </coding>
-        </reason>
+        </reasonCode>
         <serviceProvider>
-          <reference value='Organization/hospital-organization'/>
+          <reference value='urn:uuid:d9b0b7f0-b3d4-4e9c-9c0e-7b6c5e8f9e8a'/>
         </serviceProvider>
       </Encounter>
     </resource>
@@ -191,7 +209,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value='Practitioner/practitioner'/>
+    <fullUrl value='urn:uuid:0c3151bd-1cbf-4d64-b04d-cd9187a4c6e0'/>
     <resource>
       <Practitioner xmlns='http://hl7.org/fhir'>
         <id value='practitioner'/>
@@ -201,11 +219,6 @@
           <prefix value='Dr.'/>
         </name>
         <gender value='male'/>
-        <role>
-          <organization>
-            <reference value='Organization/hospital-organization'/>
-          </organization>
-        </role>
       </Practitioner>
     </resource>
     <request>
@@ -214,11 +227,12 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value='ProcedureRequest/procedurecrequest'/>
+    <fullUrl value='urn:uuid:c69c97f3-0e38-4c72-a3a7-b8b6c3c0e8e9'/>
     <resource>
-      <ProcedureRequest xmlns='http://hl7.org/fhir'>
-        <id value='procedurerequest'/>
+      <ServiceRequest xmlns='http://hl7.org/fhir'>
+        <id value='servicerequest'/>
         <status value='completed'/>
+        <intent value='order'/>
         <code>
           <coding>
             <system value='http://snomed.info/sct'/>
@@ -227,29 +241,27 @@
           </coding>
         </code>
         <subject>
-          <reference value='Patient/patient'/>
+          <reference value='urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f0a'/>
         </subject>
-        <context>
-          <reference value='Encounter/encounter'/>
-        </context>
+        <encounter>
+          <reference value='urn:uuid:8220e4f0-7dc6-41cc-a904-52d4b4c6e6e6'/>
+        </encounter>
         <authoredOn value='2016-10-31T08:25:00+10:00'/>
         <requester>
-            <agent>
-                <reference value='Practitioner/practitioner'/>
-            </agent>
+          <reference value='urn:uuid:0c3151bd-1cbf-4d64-b04d-cd9187a4c6e0'/>
         </requester>
         <performer>
-          <reference value='Organization/pathlab'/>
+          <reference value='urn:uuid:3f5b9b7c-4e8c-4b9d-9e7c-8b6c5e8f9e8b'/>
         </performer>
-      </ProcedureRequest>
+      </ServiceRequest>
     </resource>
     <request>
       <method value='PUT'/>
-      <url value='ProcedureRequest/procedurerequest'/>
+      <url value='ServiceRequest/servicerequest'/>
     </request>
   </entry>
   <entry>
-    <fullUrl value='Task/task'/>
+    <fullUrl value='urn:uuid:5e0e3e7c-5a9c-4b8d-9e7c-8b6c5e8f9e8c'/>
     <resource>
       <Task xmlns='http://hl7.org/fhir'>
         <id value='task'/>
@@ -259,18 +271,12 @@
           <value value='http://example.com/fhir/Task/163412'/>
         </identifier>
         <status value='completed'/>
-        <stage>
-          <coding>
-            <system value='http://hl7.org/fhir/codesystem-task-code'/>
-            <code value='actionable'/>
-            <display value='actionable'/>
-          </coding>
-        </stage>
-        <priority value='normal'/>
-        <created value='2016-10-31T08:25:05+10:00'/>
+        <intent value='order'/>
+        <priority value='routine'/>
+        <authoredOn value='2016-10-31T08:25:05+10:00'/>
         <lastModified value='2016-10-31T09:45:05+10:00'/>
         <requester>
-          <reference value='Practitioner/practitioner'/>
+          <reference value='urn:uuid:0c3151bd-1cbf-4d64-b04d-cd9187a4c6e0'/>
         </requester>
         <input>
           <type>
@@ -281,7 +287,7 @@
             </coding>
           </type>
           <valueReference>
-            <reference value='ProcedureRequest/procedurerequest'/>
+            <reference value='urn:uuid:c69c97f3-0e38-4c72-a3a7-b8b6c3c0e8e9'/>
           </valueReference>
         </input>
         <output>
@@ -293,7 +299,7 @@
             </coding>
           </type>
           <valueReference>
-            <reference value='DiagnosticReport/diagnosticreport'/>
+            <reference value='urn:uuid:6e1e4e8c-6a9c-4b8d-9e7c-8b6c5e8f9e8d'/>
           </valueReference>
         </output>
       </Task>
@@ -304,7 +310,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value='DiagnosticReport/diagnosticreport'/>
+    <fullUrl value='urn:uuid:6e1e4e8c-6a9c-4b8d-9e7c-8b6c5e8f9e8d'/>
     <resource>
       <DiagnosticReport xmlns='http://hl7.org/fhir'>
         <id value='diagnosticreport'/>
@@ -317,18 +323,18 @@
           </coding>
         </code>
         <subject>
-          <reference value='Patient/patient'/>
+          <reference value='urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f0a'/>
         </subject>
         <effectiveDateTime value='2016-10-31T09:35:00+10:00'/>
         <issued value='2016-10-31T09:45:00+10:00'/>
         <performer>
-          <reference value='Organization/pathlab'/>
+          <reference value='urn:uuid:3f5b9b7c-4e8c-4b9d-9e7c-8b6c5e8f9e8b'/>
         </performer>
-        <request>
-          <reference value='ProcedureRequest/procedurerequest'/>
-        </request>
+        <basedOn>
+          <reference value='urn:uuid:c69c97f3-0e38-4c72-a3a7-b8b6c3c0e8e9'/>
+        </basedOn>
         <result>
-          <reference value='Observation/path-lab-observation'/>
+          <reference value='urn:uuid:7e2e5e9c-7a9c-4b8d-9e7c-8b6c5e8f9e8e'/>
         </result>
       </DiagnosticReport>
     </resource>
@@ -338,7 +344,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value='Observation/path-lab-observation'/>
+    <fullUrl value='urn:uuid:7e2e5e9c-7a9c-4b8d-9e7c-8b6c5e8f9e8e'/>
     <resource>
       <Observation xmlns='http://hl7.org/fhir'>
         <id value='path-lab-observation'/>
@@ -358,9 +364,12 @@
           </coding>
         </code>
         <subject>
-          <reference value='Patient/patient'/>
+          <reference value='urn:uuid:61ebe359-bfdc-4613-8bf2-c5e300945f0a'/>
         </subject>
         <effectiveDateTime value='2016-10-31T09:35:00+10:00'/>
+        <performer>
+          <reference value='urn:uuid:3f5b9b7c-4e8c-4b9d-9e7c-8b6c5e8f9e8b'/>
+        </performer>
       </Observation>
     </resource>
     <request>
@@ -369,7 +378,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value='Organization/hospital-organization'/>
+    <fullUrl value='urn:uuid:d9b0b7f0-b3d4-4e9c-9c0e-7b6c5e8f9e8a'/>
     <resource>
       <Organization xmlns='http://hl7.org/fhir'>
         <id value='hospital-organization'/>
@@ -400,7 +409,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value='Organization/pathlab'/>
+    <fullUrl value='urn:uuid:3f5b9b7c-4e8c-4b9d-9e7c-8b6c5e8f9e8b'/>
     <resource>
       <Organization xmlns='http://hl7.org/fhir'>
         <id value='pathlab'/>
