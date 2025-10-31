@@ -257,54 +257,51 @@
                             <p>Не забывайте, CodeSystem - это каталог кодов для выбора в ValueSet.</p>
                         </div>
 						
-						<textarea id="codesystem-1" class="fhir-resource-xml">
-<?xml version="1.0" encoding="UTF-8"?>
-<CodeSystem xmlns="http://hl7.org/fhir">
-  <id value="1"/>
-  <meta>
-    <versionId value="1"/>
-    <lastUpdated value="2016-06-27T13:50:00Z"/>
-  </meta>
-  <text>
-    <status value="additional"/>
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Code System for FHIR tutorial participants to rate the difficulty of understanding of the training material</p>
-      <p>Developed by: Australian Digital Health Agency Connectathon team (example)</p>
-      <p>Published for testing on 27-June 2016</p>      
-      <table>
-        <tr><td><b>Code</b></td><td><b>Display</b></td></tr>
-        <tr><td>easy</td><td>I found the material easy to understand</td></tr>
-        <tr><td>hard</td><td>I found the material hard to understand</td></tr>       
-      </table> 
-    </div>
-  </text>
-  <url value="urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1"/>  
-  <version value="20162726"/>
-  <name value="FHIR tutorial difficulty levels"/>
-  <title value="FHIR tutorial difficulty levels"/>
-  <status value="draft"/>
-  <experimental value="true"/>
-  <publisher value="Australian Digital Health Agency"/>
-  <contact>
-    <name value="Angus Millar"/>
-    <telecom>
-      <system value="email"/>
-      <value value="angus.millar@digitalhealth.gov.au"/>
-    </telecom>
-  </contact>
-  <date value="2016-06-27"/>
-  <description value="Code System for FHIR tutorial participants to rate the difficulty of understanding of the training material"/>
-  <caseSensitive value="true"/>
-  <content value="complete"/>
-  <concept>
-    <code value="easy"/>
-    <display value="I found the material easy to understand"/>   
-  </concept>
-  <concept>
-    <code value="hard"/>
-    <display value="I found the material hard to understand"/>   
-  </concept>  
-</CodeSystem></textarea>
+						<textarea id="codesystem-1" class="fhir-resource-json">
+{
+  "resourceType": "CodeSystem",
+  "id": "1",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2016-06-27T13:50:00Z"
+  },
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Code System for FHIR tutorial participants to rate the difficulty of understanding of the training material</p><p>Developed by: Australian Digital Health Agency Connectathon team (example)</p><p>Published for testing on 27-June 2016</p><table><tr><td><b>Code</b></td><td><b>Display</b></td></tr><tr><td>easy</td><td>I found the material easy to understand</td></tr><tr><td>hard</td><td>I found the material hard to understand</td></tr></table></div>"
+  },
+  "url": "urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1",
+  "version": "20162726",
+  "name": "FHIR tutorial difficulty levels",
+  "title": "FHIR tutorial difficulty levels",
+  "status": "draft",
+  "experimental": true,
+  "publisher": "Australian Digital Health Agency",
+  "contact": [
+    {
+      "name": "Angus Millar",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "angus.millar@digitalhealth.gov.au"
+        }
+      ]
+    }
+  ],
+  "date": "2016-06-27",
+  "description": "Code System for FHIR tutorial participants to rate the difficulty of understanding of the training material",
+  "caseSensitive": true,
+  "content": "complete",
+  "concept": [
+    {
+      "code": "easy",
+      "display": "I found the material easy to understand"
+    },
+    {
+      "code": "hard",
+      "display": "I found the material hard to understand"
+    }
+  ]
+}</textarea>
                         
                         <!-- English continuation -->
                         <div class="lang-content lang-en">
@@ -352,56 +349,56 @@
                             <p>Помните, что ValueSet свободен выбирать любые коды, которые ему требуются из CodeSystem, он может даже выбрать больше кодов из другого CodeSystem, если это необходимо.</p>
                         </div>
                         
-						<textarea id="valuesystem-1" class="fhir-resource-xml"><?xml version="1.0" encoding="UTF-8"?>
-<ValueSet xmlns="http://hl7.org/fhir">
-  <id value="1"/>
-  <meta>
-    <versionId value="1"/>
-    <lastUpdated value="2016-06-27T15:00:00Z"/>
-  </meta>
-  <text>
-    <status value="additional"/>
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>ValueSet for FHIR tutorial participants to rate the difficulty of understanding of the training material</p>
-      <p>Developed by: Australian Digital Health Agency Connectathon team (example)</p>
-      <p>Published for testing on 28-June 2016</p>      
-      <table>
-        <tr><td><b>Code</b></td><td><b>Display</b></td></tr>
-        <tr><td>easy</td><td>I found the material easy to understand</td></tr>
-        <tr><td>hard</td><td>I found the material hard to understand</td></tr>       
-      </table> 
-    </div>      
-  </text>
-  <url value="urn:uuid:8ec3847e-789e-4994-a74b-7bbf55d88190"/>  
-  <version value="20160530"/>
-  <name value="FHIR tutorial difficulty levels"/>
-  <title value="FHIR tutorial difficulty levels"/>
-  <status value="draft"/>
-  <experimental value="true"/>
-  <publisher value="Australian Digital Health Agency"/>
-  <contact>
-    <name value="Angus Millar"/>
-    <telecom>
-      <system value="email"/>
-      <value value="angus.millar@digitalhealth.gov.au"/>
-    </telecom>
-  </contact>
-  <date value="2016-06-27"/>
-  <description value="Codes for FHIR tutorial participants to rate the difficulty of understanding of the training material"/>
-  <compose>
-    <lockedDate value="2016-06-27"/>
-    <include>
-      <system value="urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1"/>
-      <version value="20162726"/>
-      <concept>
-        <code value="easy"/>        
-      </concept>
-      <concept>
-        <code value="hard"/>        
-      </concept>     
-    </include>
-  </compose>
-</ValueSet></textarea>
+						<textarea id="valuesystem-1" class="fhir-resource-json">
+{
+  "resourceType": "ValueSet",
+  "id": "1",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2016-06-27T15:00:00Z"
+  },
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>ValueSet for FHIR tutorial participants to rate the difficulty of understanding of the training material</p><p>Developed by: Australian Digital Health Agency Connectathon team (example)</p><p>Published for testing on 28-June 2016</p><table><tr><td><b>Code</b></td><td><b>Display</b></td></tr><tr><td>easy</td><td>I found the material easy to understand</td></tr><tr><td>hard</td><td>I found the material hard to understand</td></tr></table></div>"
+  },
+  "url": "urn:uuid:8ec3847e-789e-4994-a74b-7bbf55d88190",
+  "version": "20160530",
+  "name": "FHIR tutorial difficulty levels",
+  "title": "FHIR tutorial difficulty levels",
+  "status": "draft",
+  "experimental": true,
+  "publisher": "Australian Digital Health Agency",
+  "contact": [
+    {
+      "name": "Angus Millar",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "angus.millar@digitalhealth.gov.au"
+        }
+      ]
+    }
+  ],
+  "date": "2016-06-27",
+  "description": "Codes for FHIR tutorial participants to rate the difficulty of understanding of the training material",
+  "compose": {
+    "lockedDate": "2016-06-27",
+    "include": [
+      {
+        "system": "urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1",
+        "version": "20162726",
+        "concept": [
+          {
+            "code": "easy"
+          },
+          {
+            "code": "hard"
+          }
+        ]
+      }
+    ]
+  }
+}</textarea>
                         
                         <!-- English continuation -->
                         <div class="lang-content lang-en">
