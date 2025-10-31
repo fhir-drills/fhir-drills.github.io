@@ -217,203 +217,206 @@
                                 <p>Вот аннотированный пример Bundle, который вы получили бы от сервера при поиске:</p>
                             </div>
 
-<textarea class="fhir-resource-xml">
-<Bundle xmlns="http://hl7.org/fhir">
-    <id value="fdcc9869-0bd6-4422-876b-1d0b53a2db"/>
-    <meta>
-        <lastUpdated value="2016-11-04T01:35:48Z"/>
-    </meta>
-
-    <!-- bundle type: this is from as a search result. See below on other
-         bundle types -->
-    <!-- тип пакета: это результат поиска. См. ниже для других типов пакетов.-->
-    <type value="searchset"/>
-
-    <!-- if this is a search or history type, it'll also report how many
-         resources matched in total.  -->
-    <!-- если это тип поиска или истории, также будет указано, сколько
-         всего найдено ресурсов.-->
-    <total value="253"/>
-    <link>
-
-        <!-- a link to retrieve this bundle again later -->
-        <!-- ссылка, чтобы получить этот пакет снова позже -->
-        <relation value="self"/>
-        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id"/>
-    </link>
-    <link>
-
-        <!-- a link to the first 'page' of the bundle to get more resources
-             that didn't fit in this bundle - see below for how pagination works -->
-        <!-- ссылка на первую страницу комплекта, где можно найти дополнительные ресурсы,
-             которые не вошли в пакет. Подробнее о том, как работает пагинация, см. ниже.-->
-        <relation value="first"/>
-        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=0&amp;_count=3"/>
-    </link>
-    <link>
-
-        <!-- a link to the next page to get more search results -->
-        <!-- ссылка на следующую страницу для получения дополнительных результатов поиска -->
-        <relation value="next"/>
-        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=3&amp;_count=3"/>
-    </link>
-    <link>
-
-        <!-- a link to the last page of search results -->
-        <!-- ссылка на последнюю страницу результатов поиска -->
-        <relation value="last"/>
-        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=252&amp;_count=3"/>
-    </link>
-
-    <!-- the bundle will have many entries, each entry containing a found
-         resource and some other data related to it -->
-    <!-- в пакете будет много записей, каждая из которых содержит найденный
-         ресурс и некоторые другие данные, связанные с ним.-->
-    <entry>
-
-        <!-- a direct link to access this resource on its own, outside
-             of the bundle -->
-        <!-- прямая ссылка для доступа к этому ресурсу отдельно, вне пакета -->
-        <fullUrl value="http://fhir3.healthintersections.com.au/open/Patient/1"/>
-
-        <!-- resource itself in full - nothing is different about being
-             in a bundle compared to just retrieving it directly -->
-        <!-- сам ресурс в полном объёме – ничем не отличается от его прямого извлечения по ссылке -->
-        <resource>
-            <Patient xmlns="http://hl7.org/fhir">
-                <id value="1"/>
-                <meta>
-                    <versionId value="1"/>
-                    <lastUpdated value="2016-11-03T06:01:40Z"/>
-                </meta>
-                <text>
-                    <status value="generated"/>
-                    <div xmlns="http://www.w3.org/1999/xhtml">
-                        <h1>Eve Everywoman</h1>
-                    </div>
-                </text>
-                <active value="true"/>
-                <name>
-                    <text value="Eve Everywoman"/>
-                    <family value="Everywoman1"/>
-                    <given value="Eve"/>
-                </name>
-                <telecom>
-                    <system value="phone"/>
-                    <value value="555-555-2003"/>
-                    <use value="work"/>
-                </telecom>
-                <gender value="female"/>
-                <birthDate value="1955-01-06"/>
-                <address>
-                    <use value="home"/>
-                    <line value="2222 Home Street"/>
-                </address>
-            </Patient>
-        </resource>
-
-        <!-- reason why this resource is included in search results. In this
-             case, because it matched the search query. Resources can also be
-             included because they were included by a matching resource -->
-        <!-- Причина, по которой этот ресурс включен в результаты поиска. В
-             данном случае, потому что он соответствует поисковому запросу. 
-             Ресурсы также могут быть включены, потому что они были включены 
-             соответствующим ресурсом. -->
-        <search>
-            <mode value="match"/>
-        </search>
-    </entry>
-    <!-- similar layout as above entry -->
-    <!-- аналогично как в записи выше -->
-    <entry>
-        <fullUrl value="http://fhir3.healthintersections.com.au/open/Patient/10"/>
-        <resource>
-            <Patient xmlns="http://hl7.org/fhir">
-                <id value="10"/>
-                <meta>
-                    <versionId value="1"/>
-                    <lastUpdated value="2016-11-03T06:15:27Z"/>
-                </meta>
-                <text>
-                    <status value="generated"/>
-                    <div xmlns="http://www.w3.org/1999/xhtml">Betterhalf, Boris. SSN: 444888888</div>
-                </text>
-                <identifier>
-                    <type>
-                        <coding>
-                            <system value="http://hl7.org/fhir/v2/0203"/>
-                            <code value="SS"/>
-                        </coding>
-                    </type>
-                    <system value="http://hl7.org/fhir/sid/us-ssn"/>
-                    <value value="444888888"/>
-                </identifier>
-                <active value="true"/>
-                <name>
-                    <use value="official"/>
-                    <family value="Betterhalf"/>
-                    <given value="Boris"/>
-                </name>
-                <telecom>
-                    <system value="phone"/>
-                    <value value="555-555-2008"/>
-                    <use value="work"/>
-                </telecom>
-                <gender value="male"/>
-                <address>
-                    <use value="home"/>
-                    <line value="2222 Home Street"/>
-                </address>
-                <managingOrganization>
-                    <reference value="Organization/hl7"/>
-                </managingOrganization>
-            </Patient>
-        </resource>
-        <search>
-            <mode value="match"/>
-        </search>
-    </entry>
-    <entry>
-        <fullUrl value="http://fhir3.healthintersections.com.au/open/Patient/100"/>
-        <resource>
-            <Patient xmlns="http://hl7.org/fhir">
-                <id value="100"/>
-                <meta>
-                    <versionId value="1"/>
-                    <lastUpdated value="2016-11-03T06:14:41Z"/>
-                </meta>
-                <text>
-                    <status value="generated"/>
-                    <div xmlns="http://www.w3.org/1999/xhtml">Garrett, Gordon. MRN: 577419</div>
-                </text>
-                <identifier>
-                    <type>
-                        <coding>
-                            <system value="http://hl7.org/fhir/v2/0203"/>
-                            <code value="SS"/>
-                        </coding>
-                    </type>
-                    <system value="https://github.com/projectcypress/cypress/patient"/>
-                    <value value="577419"/>
-                </identifier>
-                <active value="true"/>
-                <name>
-                    <use value="official"/>
-                    <family value="Garrett"/>
-                    <given value="Gordon"/>
-                </name>
-                <gender value="male"/>
-                <birthDate value="1935-05-08"/>
-                <managingOrganization>
-                    <reference value="Organization/1"/>
-                </managingOrganization>
-            </Patient>
-        </resource>
-        <search>
-            <mode value="match"/>
-        </search>
-    </entry>
-</Bundle></textarea>
+<textarea class="fhir-resource-json">
+{
+  "resourceType": "Bundle",
+  "id": "fdcc9869-0bd6-4422-876b-1d0b53a2db",
+  "meta": {
+    "lastUpdated": "2016-11-04T01:35:48Z"
+  },
+  // bundle type: this is from as a search result. See below on other bundle types
+  // тип пакета: это результат поиска. См. ниже для других типов пакетов.
+  "type": "searchset",
+  // if this is a search or history type, it'll also report how many resources matched in total.
+  // если это тип поиска или истории, также будет указано, сколько всего найдено ресурсов.
+  "total": 253,
+  "link": [
+    {
+      // a link to retrieve this bundle again later
+      // ссылка, чтобы получить этот пакет снова позже
+      "relation": "self",
+      "url": "http://fhir3.healthintersections.com.au/open/Patient?_format=application/fhir+json&search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&&_sort=_id"
+    },
+    {
+      // a link to the first 'page' of the bundle to get more resources that didn't fit in this bundle
+      // see below for how pagination works
+      // ссылка на первую страницу комплекта, где можно найти дополнительные ресурсы,
+      // которые не вошли в пакет. Подробнее о том, как работает пагинация, см. ниже.
+      "relation": "first",
+      "url": "http://fhir3.healthintersections.com.au/open/Patient?_format=application/fhir+json&search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&&_sort=_id&search-offset=0&_count=3"
+    },
+    {
+      // a link to the next page to get more search results
+      // ссылка на следующую страницу для получения дополнительных результатов поиска
+      "relation": "next",
+      "url": "http://fhir3.healthintersections.com.au/open/Patient?_format=application/fhir+json&search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&&_sort=_id&search-offset=3&_count=3"
+    },
+    {
+      // a link to the last page of search results
+      // ссылка на последнюю страницу результатов поиска
+      "relation": "last",
+      "url": "http://fhir3.healthintersections.com.au/open/Patient?_format=application/fhir+json&search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&&_sort=_id&search-offset=252&_count=3"
+    }
+  ],
+  // the bundle will have many entries, each entry containing a found resource and some other data related to it
+  // в пакете будет много записей, каждая из которых содержит найденный ресурс и некоторые другие данные, связанные с ним.
+  "entry": [
+    {
+      // a direct link to access this resource on its own, outside of the bundle
+      // прямая ссылка для доступа к этому ресурсу отдельно, вне пакета
+      "fullUrl": "http://fhir3.healthintersections.com.au/open/Patient/1",
+      // resource itself in full - nothing is different about being in a bundle compared to just retrieving it directly
+      // сам ресурс в полном объёме – ничем не отличается от его прямого извлечения по ссылке
+      "resource": {
+        "resourceType": "Patient",
+        "id": "1",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2016-11-03T06:01:40Z"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h1>Eve Everywoman</h1></div>"
+        },
+        "active": true,
+        "name": [
+          {
+            "text": "Eve Everywoman",
+            "family": "Everywoman1",
+            "given": ["Eve"]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-555-2003",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1955-01-06",
+        "address": [
+          {
+            "use": "home",
+            "line": ["2222 Home Street"]
+          }
+        ]
+      },
+      // reason why this resource is included in search results. In this case, because it matched the search query.
+      // Resources can also be included because they were included by a matching resource
+      // Причина, по которой этот ресурс включен в результаты поиска. В данном случае, потому что он соответствует поисковому запросу.
+      // Ресурсы также могут быть включены, потому что они были включены соответствующим ресурсом.
+      "search": {
+        "mode": "match"
+      }
+    },
+    // similar layout as above entry
+    // аналогично как в записи выше
+    {
+      "fullUrl": "http://fhir3.healthintersections.com.au/open/Patient/10",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "10",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2016-11-03T06:15:27Z"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Betterhalf, Boris. SSN: 444888888</div>"
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v2/0203",
+                  "code": "SS"
+                }
+              ]
+            },
+            "system": "http://hl7.org/fhir/sid/us-ssn",
+            "value": "444888888"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Betterhalf",
+            "given": ["Boris"]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-555-2008",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "address": [
+          {
+            "use": "home",
+            "line": ["2222 Home Street"]
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/hl7"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://fhir3.healthintersections.com.au/open/Patient/100",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "100",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2016-11-03T06:14:41Z"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Garrett, Gordon. MRN: 577419</div>"
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v2/0203",
+                  "code": "SS"
+                }
+              ]
+            },
+            "system": "https://github.com/projectcypress/cypress/patient",
+            "value": "577419"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Garrett",
+            "given": ["Gordon"]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1935-05-08",
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}
+</textarea>
 
                             <!-- English Content Continues -->
                             <div class="lang-content lang-en">
@@ -427,25 +430,27 @@
                                 <p>Когда Bundle слишком большой для отправки за один раз, поскольку он содержит много ресурсов, сервер может разбить его на части (называемые "страницами"). Чтобы позволить вам легко переходить от одной страницы к следующей, Bundle предоставляет ссылки на следующую страницу внутри себя. Таким образом, клиент, получив страницу, может запросить следующую страницу и так далее до конца. Кроме того, в каждом Bundle также предоставляются ссылки на предыдущую, первую и последнюю страницы (см. пример ниже):</p>
                             </div>
 								
-							<textarea id="codesystem-1" class="fhir-resource-xml">
-<!-- ... snipped ... -->
-<link>
-  <relation value="first"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=1"/>
-</link>
-<link>
-  <relation value="previous"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=2"/>
-</link>
-<link>
-  <relation value="next"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=4"/>
-</link>
-<link>
-  <relation value="last"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=26"/>
-</link>	
-<!-- ... snipped ... -->
+							<textarea id="codesystem-1" class="fhir-resource-json">
+// ... snipped ...
+"link": [
+  {
+    "relation": "first",
+    "url": "http://example.org/Patient?name=peter&stateid=23&page=1"
+  },
+  {
+    "relation": "previous",
+    "url": "http://example.org/Patient?name=peter&stateid=23&page=2"
+  },
+  {
+    "relation": "next",
+    "url": "http://example.org/Patient?name=peter&stateid=23&page=4"
+  },
+  {
+    "relation": "last",
+    "url": "http://example.org/Patient?name=peter&stateid=23&page=26"
+  }
+]
+// ... snipped ...
 							</textarea>
 	<br>
                             <div class="lang-content lang-en">
