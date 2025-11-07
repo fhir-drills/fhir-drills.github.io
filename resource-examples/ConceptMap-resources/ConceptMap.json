@@ -33,7 +33,7 @@
           "target": [
             {
               "code": "present",
-              "relationship": "equivalent"
+              "equivalence": "equal"
             }
           ]
         },
@@ -42,7 +42,7 @@
           "target": [
             {
               "code": "not-present",
-              "relationship": "source-is-narrower-than-target"
+              "equivalence": "wider"
             }
           ]
         },
@@ -51,7 +51,7 @@
           "target": [
             {
               "code": "not-present",
-              "relationship": "source-is-narrower-than-target"
+              "equivalence": "wider"
             }
           ]
         },
@@ -60,7 +60,7 @@
           "target": [
             {
               "code": "not-present",
-              "relationship": "source-is-narrower-than-target"
+              "equivalence": "wider"
             }
           ]
         },
@@ -69,7 +69,7 @@
           "target": [
             {
               "code": "sick",
-              "relationship": "equivalent"
+              "equivalence": "equal"
             }
           ]
         },
@@ -78,7 +78,7 @@
           "target": [
             {
               "code": "not-present",
-              "relationship": "source-is-narrower-than-target"
+              "equivalence": "wider"
             }
           ]
         },
@@ -87,7 +87,7 @@
           "target": [
             {
               "code": "present",
-              "relationship": "not-related-to",
+              "equivalence": "disjoint",
               "comment": "An example mapping demonstrating how you can explicitly show that two concepts are not related"
             }
           ]

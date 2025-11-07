@@ -119,6 +119,41 @@ function completeUpload() {
         element.innerHTML = uploaded[uploadedId].baseUrl;
     }
 
+    // Special handling for ConceptMap $translate URL
+    if (uploadedId === 'conceptmap') {
+        var translateUrls = document.getElementsByClassName('conceptmap-translate-url');
+        if (translateUrls.length > 0) {
+            var conceptMapUrl = uploaded[uploadedId].baseUrl + '/' +
+                uploaded[uploadedId].resourceMap['cm-conceptmap'].type + '/' +
+                uploaded[uploadedId].resourceMap['cm-conceptmap'].serverId;
+
+            // Fetch the ConceptMap to get the actual group.source and targetUri values
+            $.ajax({
+                url: conceptMapUrl,
+                method: "GET",
+                headers: {
+                    Accept: "application/json; charset=utf-8"
+                }
+            }).done(function(conceptMap) {
+                var codeSystemUUID = conceptMap.group && conceptMap.group[0] ? conceptMap.group[0].source : '';
+                var targetValueSetUUID = conceptMap.targetUri || '';
+
+                // Extract just the UUID part from urn:uuid: format
+                codeSystemUUID = codeSystemUUID.replace('urn:uuid:', '');
+                targetValueSetUUID = targetValueSetUUID.replace('urn:uuid:', '');
+
+                var translateUrl = conceptMapUrl + '/$translate?code=in-office&system=urn:uuid:' +
+                    codeSystemUUID + '&target=urn:uuid:' + targetValueSetUUID;
+
+                for (var i = 0; i < translateUrls.length; i++) {
+                    translateUrls[i].innerHTML = translateUrl;
+                }
+            }).fail(function() {
+                console.log("Failed to fetch ConceptMap for $translate URL generation");
+            });
+        }
+    }
+
     $('#' + uploadedId + '-progress').hide("slow");
 
     window.uploadServer = null;

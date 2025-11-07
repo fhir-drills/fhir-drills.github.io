@@ -200,33 +200,33 @@
                         </h5>
                         
                         <div class="lang-content lang-en">
-                            <p>The <a href="http://hl7.org/fhir/R4/conceptmap.html">ConceptMap</a> resource in general has <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">four parts</a> to it: 
-                              <p>
-                              <li>Metadata about the resource</li> 
-                              <li>The source of the data</li> 
+                            <p>The <a href="http://hl7.org/fhir/R4/conceptmap.html">ConceptMap</a> resource in general has <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">four parts</a> to it:</p>
+                            <ol>
+                              <li>Metadata about the resource</li>
+                              <li>The source of the data</li>
                               <li>The target the data is mapped to, and </li>
-                              <li>The groups of mappings themselves:</li>
-                              </p>
-                            <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview"><img src="images/conceptmap-overview-thumbnail.png" class="thumbnail"/></a>
+                              <li>The groups of mappings themselves</li>
+                            </ol>
+                            <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview"><img src="images/conceptmap-overview.png" class="thumbnail"/></a>
                             <p><b>Metadata</b> describes general information about the mapping - who made it, what version it is, copyright...etc.</p>
                             <p><b>Source</b> is a reference to the ValueSet that you are mapping from. Remember that ConceptMap is a one-way mapping so there's always a clear source and a target.</p>
                             <p><b>Target</b> is similar to source - it is a reference to the ValueSet you are mapping to.</p>
-                            <p><b>Mappings</b> are the translations themselves, organised in groups. Each mapping (called an 'element' in the data) can have one or more <b>target</b> elements, which specify a connection between a code from one ValueSet to code(s) in another ValueSet. The type/strength of connection is described by the <b>equivalence</b> property. The equivalence expresses that the two elements are exactly the same, wider than, narrower than or the two concepts aren't related at all. The full list of equivalence values is available in the <a href="http://hl7.org/fhir/R4/valueset-concept-map-equivalence.html">ConceptMap Equivalence</a> ValueSet.</p>
+                            <p><b>Mappings</b> are the translations themselves, organised in groups. Each mapping (called an 'element' in the data) can have one or more <b>target</b> elements, which specify a connection between a code from one ValueSet to code(s) in another ValueSet. The type/strength of connection is described by the <b>equivalence</b> property. In FHIR R4, the equivalence codes include: <b>relatedto</b> (concepts are related but exact relationship unknown), <b>equivalent</b> (identical meaning), <b>equal</b> (exactly the same), <b>wider</b> (target is broader), <b>subsumes</b> (target encompasses source), <b>narrower</b> (target is more restrictive), <b>specializes</b> (target refines source), <b>inexact</b> (overlap but imprecise boundaries), <b>unmatched</b> (no corresponding concept), and <b>disjoint</b> (explicitly no mapping exists). The full list with detailed definitions is available in the <a href="http://hl7.org/fhir/R4/valueset-concept-map-equivalence.html">ConceptMap Equivalence</a> ValueSet.</p>
                         </div>
                         
                         <div class="lang-content lang-ru">
-                            <p>Ресурс <a href="http://hl7.org/fhir/R4/conceptmap.html">ConceptMap</a> в по сути имеет <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">четыре части</a>: 
-                              <p>
-                              <li>Метаданные о ресурсе</li> 
-                              <li>Источник данных</li> 
+                            <p>Ресурс <a href="http://hl7.org/fhir/R4/conceptmap.html">ConceptMap</a> в по сути имеет <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview">четыре части</a>:</p>
+                            <ol>
+                              <li>Метаданные о ресурсе</li>
+                              <li>Источник данных</li>
                               <li>Цель, к которой сопоставляются данные, и </li>
-                              <li>Группы самих сопоставлений:</li>
-                              </p>
-                            <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview"><img src="images/conceptmap-overview-thumbnail.png" class="thumbnail"/></a>
+                              <li>Группы самих сопоставлений</li>
+                            </ol>
+                            <a href="images/conceptmap-overview.png" data-lightbox="conceptmap-overview"><img src="images/conceptmap-overview.png" class="thumbnail"/></a>
                             <p><b>Метаданные</b> описывают общую информацию о сопоставлении - кто его создал, какая версия, авторские права и т.д.</p>
                             <p><b>Источник</b> - это ссылка на ValueSet, из которого вы выполняете сопоставление. Помните, что ConceptMap - это одностороннее сопоставление, поэтому всегда есть четкий источник и цель.</p>
                             <p><b>Цель</b> похожа на источник - это ссылка на ValueSet, к которому вы выполняете сопоставление.</p>
-                            <p><b>Сопоставления</b> - это сами переводы, организованные в группы. Каждое сопоставление (называемое 'элементом' в данных) может иметь один или несколько <b>целевых</b> элементов, которые определяют связь между кодом из одного ValueSet с кодом(ами) в другом ValueSet. Тип/сила связи описывается свойством <b>эквивалентности</b>. Эквивалентность выражает, что два элемента точно одинаковы, шире, уже или два понятия вообще не связаны. Полный список значений эквивалентности доступен в <a href="http://hl7.org/fhir/R4/valueset-concept-map-equivalence.html">ValueSet эквивалентности ConceptMap</a>.</p>
+                            <p><b>Сопоставления</b> - это сами переводы, организованные в группы. Каждое сопоставление (называемое 'элементом' в данных) может иметь один или несколько <b>целевых</b> элементов, которые определяют связь между кодом из одного ValueSet с кодом(ами) в другом ValueSet. Тип/сила связи описывается свойством <b>эквивалентности</b>. В FHIR R4 коды эквивалентности включают: <b>relatedto</b> (понятия связаны, но точное отношение неизвестно), <b>equivalent</b> (идентичное значение), <b>equal</b> (точно такое же), <b>wider</b> (цель шире), <b>subsumes</b> (цель охватывает источник), <b>narrower</b> (цель более ограничена), <b>specializes</b> (цель уточняет источник), <b>inexact</b> (перекрытие, но неточные границы), <b>unmatched</b> (нет соответствующего понятия), и <b>disjoint</b> (явно нет сопоставления). Полный список с подробными определениями доступен в <a href="http://hl7.org/fhir/R4/valueset-concept-map-equivalence.html">ValueSet эквивалентности ConceptMap</a>.</p>
                         </div>
                         
                         <h5 id="cm-sample-data-mapping">
@@ -415,18 +415,18 @@
                         </h5>
                         
                         <div class="lang-content lang-en">
-                            <p>The <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> operation allows you to utilise a FHIR terminology server to get an equivalent code as specified by a ConceptMap mapping. To use it, you need to provide the ConceptMap you'd like to use, the input code and its CodeSystem, and the valueset you'd like to get a translation from. Try the <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> operation on the four sample resources uploaded above (a CodeSystem, two ValueSets, and a ConceptMap) via Postman using this template:</p>
-                            <p><code>https://r4.ontoserver.csiro.au/fhir/ConceptMap/servers-conceptmap-id/$translate?code=my-code&system=codes-codesystem&target=target-valueset</code></p>
-                            <p>Here's a sample code you could try, once you've uploaded your conceptmap to a terminology server of choice:</p>
-                            <p><code>https://r4.ontoserver.csiro.au/fhir/ConceptMap/a912ee54-30e8-4a1a-8f2a-1a4337aaf69c/$translate?code=in-office&system=urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a&target=urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55</code></p>
+                            <p>The <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> operation allows you to utilise a FHIR terminology server to get an equivalent code as specified by a ConceptMap mapping. To use it, you need to provide the ConceptMap you'd like to use, the input code and its CodeSystem, and the target valueset you'd like to translate to.</p>
+                            <p>Try the <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> operation on the ConceptMap you uploaded above via Postman. For example, to translate the code "in-office" from the new system to your current system's valueset, use:</p>
+                            <note class="conceptmap-translate-url" id="cm-translate"><i>(press Upload to get the $translate URL)</i></note>
+                            <p>This will return the mapping showing that "in-office" translates to "present" with an equivalence of "equal".</p>
                             <p>That's it! You're done for now.</p>
                         </div>
                         
                         <div class="lang-content lang-ru">
-                            <p>Операция <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> позволяет использовать терминологический сервер FHIR для получения эквивалентного кода, как указано в сопоставлении ConceptMap. Для её использования вам нужно предоставить ConceptMap, который вы хотите использовать, входной код и его CodeSystem, а также valueset, из которого вы хотите получить перевод. Попробуйте операцию <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> на четырех примерах ресурсов, загруженных выше (CodeSystem, два ValueSet и ConceptMap) через Postman, используя этот шаблон:</p>
-                            <p><code>https://r4.ontoserver.csiro.au/fhir//ConceptMap/servers-conceptmap-id/$translate?code=my-code&system=codes-codesystem&target=target-valueset</code></p>
-                            <p>Вот пример кода, который вы можете попробовать, после того как загрузите свой conceptmap на выбранный терминологический сервер:</p>
-                            <p><code>https://r4.ontoserver.csiro.au/fhir//ConceptMap/a912ee54-30e8-4a1a-8f2a-1a4337aaf69c/$translate?code=in-office&system=urn:uuid:bb6efb79-2b93-4569-a51e-6fcf103b6e9a&target=urn:uuid:a5f94e22-ddba-474e-80e3-b067d9c27a55</code></p>
+                            <p>Операция <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> позволяет использовать терминологический сервер FHIR для получения эквивалентного кода, как указано в сопоставлении ConceptMap. Для её использования вам нужно предоставить ConceptMap, который вы хотите использовать, входной код и его CodeSystem, а также целевой valueset, в который вы хотите перевести.</p>
+                            <p>Попробуйте операцию <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> на ConceptMap, который вы загрузили выше, через Postman. Например, чтобы перевести код "in-office" из новой системы в valueset вашей текущей системы, используйте:</p>
+                            <note class="conceptmap-translate-url" id="cm-translate"><i>(сначала нажмите Загрузить, чтобы получить URL $translate)</i></note>
+                            <p>Это вернет сопоставление, показывающее, что "in-office" переводится в "present" с эквивалентностью "equal".</p>
                             <p>Вот и всё! На данный момент вы закончили.</p>
                         </div>
                         

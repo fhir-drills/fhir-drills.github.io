@@ -25,6 +25,11 @@ var idMap = [
 // keeps track of old UUID → new UUID mappings for ephemeral IDs
 var uuidMap = {};
 
+// Expose uuidMap for other scripts to use
+function getUuidMap() {
+	return uuidMap;
+}
+
 function isObject(obj) {
   return obj === Object(obj);
 }
