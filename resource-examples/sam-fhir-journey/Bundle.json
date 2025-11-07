@@ -94,6 +94,10 @@
       "resource": {
         "resourceType": "AllergyIntolerance",
         "id": "allergyintolerance",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Allergy: Fish - dietary (active, confirmed, high criticality)</p></div>"
+        },
         "clinicalStatus": {
           "coding": [
             {
@@ -138,6 +142,10 @@
       "resource": {
         "resourceType": "Appointment",
         "id": "appointment",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Appointment: General Practice (fulfilled) - 2016-10-31 08:00-08:30</p></div>"
+        },
         "status": "fulfilled",
         "serviceCategory": [
           {
@@ -184,6 +192,10 @@
       "resource": {
         "resourceType": "Encounter",
         "id": "encounter",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Encounter: Inpatient non-acute (finished) - Lower respiratory tract infection</p></div>"
+        },
         "status": "finished",
         "class": {
           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
@@ -254,6 +266,10 @@
       "resource": {
         "resourceType": "Practitioner",
         "id": "practitioner",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Practitioner: Dr. Peter Junior (male)</p></div>"
+        },
         "name": [
           {
             "family": "Junior",
@@ -273,6 +289,10 @@
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "servicerequest",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>ServiceRequest: Complete blood count (completed)</p></div>"
+        },
         "status": "completed",
         "intent": "order",
         "code": {
@@ -310,6 +330,10 @@
       "resource": {
         "resourceType": "Task",
         "id": "task",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Task: Progress tracker for Complete blood count (completed)</p></div>"
+        },
         "identifier": [
           {
             "use": "official",
@@ -368,6 +392,10 @@
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "diagnosticreport",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>DiagnosticReport: Complete blood count (final) - 2016-10-31</p></div>"
+        },
         "status": "final",
         "code": {
           "coding": [
@@ -409,6 +437,10 @@
       "resource": {
         "resourceType": "Observation",
         "id": "path-lab-observation",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Observation: Complete blood count (final, laboratory)</p></div>"
+        },
         "status": "final",
         "category": [
           {
@@ -450,6 +482,10 @@
       "resource": {
         "resourceType": "Organization",
         "id": "hospital-organization",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Organization: Sample Hospital (Hospital Department)</p></div>"
+        },
         "type": [
           {
             "coding": [
@@ -488,6 +524,10 @@
       "resource": {
         "resourceType": "Organization",
         "id": "pathlab",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Organization: Pathology Laboratory (Healthcare Provider)</p></div>"
+        },
         "type": [
           {
             "coding": [
