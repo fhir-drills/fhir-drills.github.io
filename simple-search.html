@@ -180,7 +180,7 @@
                             
                             <h5 id="ss-step2">Step 2: Extended Search</h5>
                             
-                            <p>In the previous step we searched by the patient's family name, but what else can we search upon? The search parameters you can use are Resource type dependant. Each resource type defines the parameters which you can search upon it. Right click and open the <b><a href="http://hl7.org/fhir/STU3/patient.html">Patient</a></b> resource page in a second browser tab and scroll to the very bottom of the page. Here you will find the list of possible search parameters for the Patient resource. Take a look at some other resource types and the search parameters they define.</p>
+                            <p>In the previous step we searched by the patient's family name, but what else can we search upon? The search parameters you can use are Resource type dependant. Each resource type defines the parameters which you can search upon it. Right click and open the <b><a href="http://hl7.org/fhir/R4/patient.html">Patient</a></b> resource page in a second browser tab and scroll to the very bottom of the page. Here you will find the list of possible search parameters for the Patient resource. Take a look at some other resource types and the search parameters they define.</p>
                             
                             <p>In the previous tutorial, <a href="./simple-patient.html">Simple Patient</a>, you should have created a new patient resource with your own name as the patient's name. Try and find that resource using your own surname and first name. <i>Remember to reference the FHIR specification to work out which search parameters you will need.</i></p>
                             
@@ -189,20 +189,20 @@
                             <p>The searches we have done so far, family &amp; given, were on simple string datatypes. FHIR defines eight different search datatypes as follows: </p>
                             
                             <p>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#number">Number</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#date">Date/DateTime</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#string">String</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#token">Token</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#reference">Reference</a></li>                        
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#composite">Composite</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#quantity">Quantity</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#uri">URI</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#number">Number</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#date">Date/DateTime</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#string">String</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#token">Token</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#reference">Reference</a></li>                        
+                            <li><a href="http://hl7.org/fhir/R4/search.html#composite">Composite</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#quantity">Quantity</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#uri">URI</a></li>
                             </p>
                             
                             <p>Each and every search parameter on each resource page also defines the search parameter data type it uses. The screenshot below is taken from the Patient resource page. Notice that <b>given</b> uses <b>string</b> in column two and that <b>identifier</b> uses datatype <b>token</b>.</p>
                             <p><img src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
                             
-                            <b><a href="http://hl7.org/fhir/STU3/search.html#number">FHIR specification Search page</a></b>
+                            <b><a href="http://hl7.org/fhir/R4/search.html#number">FHIR specification Search page</a></b>
                             
                             <h6><b>Using the references above try and answer these questions:</b></h6>
                             
@@ -213,7 +213,7 @@
                             <li>Try and find the patient name for the person with an IHI (Individual  Health Identifier) of '<b>8003601043886154</b>'?</li>
                             <br>
                             
-                            <p>These few questions have focused on the <b>token</b> search parameter datatype but I strongly encourage you to read then entire <a href="http://hl7.org/fhir/STU3/search.html#uri">Search</a> page in the FHIR specification at a later date.</p>
+                            <p>These few questions have focused on the <b>token</b> search parameter datatype but I strongly encourage you to read then entire <a href="http://hl7.org/fhir/R4/search.html#uri">Search</a> page in the FHIR specification at a later date.</p>
                         </div>
                         
                         <!-- Russian Content -->
@@ -243,7 +243,7 @@
                             
                             <h5 id="ss-step2">Шаг 2: Расширенный поиск</h5>
                             
-                            <p>На предыдущем шаге мы искали по фамилии пациента, но по чему еще мы можем искать? Параметры поиска, которые вы можете использовать, зависят от типа ресурса. Каждый тип ресурса определяет параметры, по которым вы можете искать в нем. Щелкните правой кнопкой мыши и откройте страницу ресурса <b><a href="http://hl7.org/fhir/STU3/patient.html">Patient</a></b> во второй вкладке браузера и прокрутите до самого низа страницы. Здесь вы найдете список возможных параметров поиска для ресурса Patient. Посмотрите на некоторые другие типы ресурсов и параметры поиска, которые они определяют.</p>
+                            <p>На предыдущем шаге мы искали по фамилии пациента, но по чему еще мы можем искать? Параметры поиска, которые вы можете использовать, зависят от типа ресурса. Каждый тип ресурса определяет параметры, по которым вы можете искать в нем. Щелкните правой кнопкой мыши и откройте страницу ресурса <b><a href="http://hl7.org/fhir/R4/patient.html">Patient</a></b> во второй вкладке браузера и прокрутите до самого низа страницы. Здесь вы найдете список возможных параметров поиска для ресурса Patient. Посмотрите на некоторые другие типы ресурсов и параметры поиска, которые они определяют.</p>
                             
                             <p>В предыдущем уроке <a href="./simple-patient.html">Пациент</a> вы должны были создать новый ресурс пациента с вашим собственным именем в качестве имени пациента. Попробуйте найти этот ресурс, используя вашу собственную фамилию и имя. <i>Не забудьте обратиться к спецификации FHIR, чтобы выяснить, какие параметры поиска вам понадобятся.</i></p>
                             
@@ -252,20 +252,20 @@
                             <p>Поиски, которые мы делали до сих пор, family и given, были по простым строковым типам данных. FHIR определяет восемь различных типов данных поиска следующим образом: </p>
                             
                             <p>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#number">Число</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#date">Дата/Время</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#string">Строка</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#token">Токен</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#reference">Ссылка</a></li>                        
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#composite">Составной</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#quantity">Количество</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3/search.html#uri">URI</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#number">Число</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#date">Дата/Время</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#string">Строка</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#token">Токен</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#reference">Ссылка</a></li>                        
+                            <li><a href="http://hl7.org/fhir/R4/search.html#composite">Составной</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#quantity">Количество</a></li>
+                            <li><a href="http://hl7.org/fhir/R4/search.html#uri">URI</a></li>
                             </p>
                             
                             <p>Каждый параметр поиска на каждой странице ресурса также определяет тип данных параметра поиска, который он использует. Скриншот ниже взят со страницы ресурса Patient. Обратите внимание, что <b>given</b> использует <b>string</b> во втором столбце, а <b>identifier</b> использует тип данных <b>token</b>.</p>
                             <p><img src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
                             
-                            <b><a href="http://hl7.org/fhir/STU3/search.html#number">Страница поиска спецификации FHIR</a></b>
+                            <b><a href="http://hl7.org/fhir/R4/search.html#number">Страница поиска спецификации FHIR</a></b>
                             
                             <h6><b>Используя приведенные выше ссылки, попробуйте ответить на эти вопросы:</b></h6>
                             
@@ -276,7 +276,7 @@
                             <li>Попробуйте найти имя пациента для человека с IHI (Individual Health Identifier) '<b>8003601043886154</b>'?</li>
                             <br>
                             
-                            <p>Эти несколько вопросов были сосредоточены на типе данных параметра поиска <b>token</b>, но я настоятельно рекомендую вам прочитать всю страницу <a href="http://hl7.org/fhir/STU3/search.html#uri">Поиск</a> в спецификации FHIR позже.</p>
+                            <p>Эти несколько вопросов были сосредоточены на типе данных параметра поиска <b>token</b>, но я настоятельно рекомендую вам прочитать всю страницу <a href="http://hl7.org/fhir/R4/search.html#uri">Поиск</a> в спецификации FHIR позже.</p>
                         </div>
                         
                     </div>
@@ -301,8 +301,8 @@
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
                         <h1 class="mdl-mega-footer--heading">FHIR</h1>
                         <ul class="mdl-mega-footer--link-list">
-                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_15" title="Next FHIR get-together in Madrid in May 2017">Connectathon 15</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3" title="Latest release of FHIR, for use in Madrid Connectathon">FHIR STU3 Release</a></li>
+                            <li><a href="https://confluence.hl7.org/spaces/FHIR/pages/391191767/2026-01+Connectathon+41" title="Virtual FHIR Connectathon, January 13-15, 2026">Connectathon 41</a></li>
+                            <li><a href="http://hl7.org/fhir/R4" title="FHIR R4 Release">FHIR R4 Release</a></li>
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
                     </div>
@@ -316,7 +316,7 @@
                         </h1>
                         <div class="language-selector">
                             <button onclick="switchLanguage('en')" class="lang-btn" id="lang-en-btn">English</button>
-                            <button onclick="switchLanguage('ru')" class="lang-btn" id="lang-ru-btn">Русский</button>
+                            <button onclick="switchLanguage('ru')" class="lang-btn" id="lang-ru-btn" title="Russian language support for Central Asian countries adopting FHIR">Русский</button>
                         </div>
                     </div>
                 </div>
@@ -337,8 +337,8 @@
 
     <script>
       $( document ).ready((document) => {
-        $("#fhir-server").html("<span> " + servers.wildfhir3 + "</<span>");
-        $("#fhir-server-ru").html("<span> " + servers.wildfhir3 + "</<span>");
+        $("#fhir-server").html("<span> " + servers.hapiFhirR4 + "</<span>");
+        $("#fhir-server-ru").html("<span> " + servers.hapiFhirR4 + "</<span>");
       });
     </script>
     

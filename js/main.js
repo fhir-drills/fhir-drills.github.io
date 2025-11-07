@@ -1,7 +1,6 @@
 var servers = {
     // all of these need to be made https, can't upload to http from an https page
-    ontoserverr4: "https://r4.ontoserver.csiro.au/fhir",
-    wildfhir3: "https://wildfhir3.aegis.net/fhir3-0-2",
+    hapiFhirR4: "https://hapi.fhir.org/baseR4",
     hapiHL7AU: "https://hapi-hl7-au-training-server.australiaeast.cloudapp.azure.com/fhir"
 }
 
@@ -120,6 +119,41 @@ function completeUpload() {
         element.innerHTML = uploaded[uploadedId].baseUrl;
     }
 
+    // Special handling for ConceptMap $translate URL
+    if (uploadedId === 'conceptmap') {
+        var translateUrls = document.getElementsByClassName('conceptmap-translate-url');
+        if (translateUrls.length > 0) {
+            var conceptMapUrl = uploaded[uploadedId].baseUrl + '/' +
+                uploaded[uploadedId].resourceMap['cm-conceptmap'].type + '/' +
+                uploaded[uploadedId].resourceMap['cm-conceptmap'].serverId;
+
+            // Fetch the ConceptMap to get the actual group.source and targetUri values
+            $.ajax({
+                url: conceptMapUrl,
+                method: "GET",
+                headers: {
+                    Accept: "application/json; charset=utf-8"
+                }
+            }).done(function(conceptMap) {
+                var codeSystemUUID = conceptMap.group && conceptMap.group[0] ? conceptMap.group[0].source : '';
+                var targetValueSetUUID = conceptMap.targetUri || '';
+
+                // Extract just the UUID part from urn:uuid: format
+                codeSystemUUID = codeSystemUUID.replace('urn:uuid:', '');
+                targetValueSetUUID = targetValueSetUUID.replace('urn:uuid:', '');
+
+                var translateUrl = conceptMapUrl + '/$translate?code=in-office&system=urn:uuid:' +
+                    codeSystemUUID + '&target=urn:uuid:' + targetValueSetUUID;
+
+                for (var i = 0; i < translateUrls.length; i++) {
+                    translateUrls[i].innerHTML = translateUrl;
+                }
+            }).fail(function() {
+                console.log("Failed to fetch ConceptMap for $translate URL generation");
+            });
+        }
+    }
+
     $('#' + uploadedId + '-progress').hide("slow");
 
     window.uploadServer = null;
@@ -143,10 +177,10 @@ function failedUpload() {
 var patientWithReferencesButton = document.getElementById('patient-with-references-button');
 if (patientWithReferencesButton) {
 	patientWithReferencesButton.onclick = function () {
-		uploadFiles("patient-with-references", servers.wildfhir3, [
+		uploadFiles("patient-with-references", servers.hapiFhirR4, [
 		["rf-patient", "resource-examples/Patient-f001.json"],
 		["rf-encounter", "resource-examples/Encounter-f001.json"],
-		["rf-procedurerequest", "resource-examples/ProcedureRequest-f001.json"],
+		["rf-servicerequest", "resource-examples/ServiceRequest-f001.json"],
 		["rf-observation1", "resource-examples/Observation-f001.json"],
 		["rf-observation2", "resource-examples/Observation-f002.json"],
 		["rf-diagnosticreport", "resource-examples/DiagnosticReport-f001.json"]]);
@@ -156,7 +190,7 @@ if (patientWithReferencesButton) {
 var simplePatientButton = document.getElementById('simple-patient-button');
 if (simplePatientButton) {
 	simplePatientButton.onclick = function () {
-		uploadFiles("simple-patient", servers.wildfhir3, [
+		uploadFiles("simple-patient", servers.hapiFhirR4, [
 		["simple-patient-resourcePatient1", "resource-examples/SimplePatient-resources/PatientResourceExample1.json"]]);
 	};
 }
@@ -165,7 +199,7 @@ if (simplePatientButton) {
 var conceptMapButton = document.getElementById('conceptmap-button');
 if (conceptMapButton) {
 	conceptMapButton.onclick = function () {
-		uploadFiles("conceptmap", servers.wildfhir3, [
+		uploadFiles("conceptmap", servers.hapiFhirR4, [
 			["cm-codesystem", "resource-examples/ConceptMap-resources/Codesystem.json"],
 			["cm-old-valueset", "resource-examples/ConceptMap-resources/Old-ValueSet.json"],
 			["cm-new-valueset", "resource-examples/ConceptMap-resources/New-ValueSet.json"],
@@ -176,7 +210,7 @@ if (conceptMapButton) {
 var expandOperationButton = document.getElementById('expand-operation-button');
 if (expandOperationButton) {
 	expandOperationButton.onclick = function () {
-		uploadFiles("expand-operation", servers.wildfhir3, [
+		uploadFiles("expand-operation", servers.hapiFhirR4, [
 		["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
 	};
 }
