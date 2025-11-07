@@ -266,7 +266,7 @@
                             <p>Thus, given the patient's server ID of <code class="patient-with-references-serverid" id="rf-patient"><i>(press Upload first)</i></code> (this can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field), in order to find which encounters our patient has, the query follows this format:</p> 
                             <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</span>/Encounter?patient=Patient/&lt;patient id&gt;</b></pre>
                             <p>It essentially says - "give me all Encounters that have this patient ID as the subject patient". Try entering <code class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</code><code>/Encounter?patient=Patient/</code><code class="patient-with-references-serverid" id="rf-patient"></code> into Postman - you'll see a result like this:</p>
-                            <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search-thumb.png" class="thumbnail"/></a>.
+                            <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search.png" class="thumbnail"/></a>.
                             <p>Three things are of interest are:</p>
                             <ol>
                                 <li>We get a <a href="http://hl7.org/fhir/R4/bundle.html">Bundle</a> resource back. A Bundle is essentially a container for resources, used in many places including search results.</li>
@@ -282,7 +282,7 @@
                             <p>Таким образом, учитывая серверный ID пациента <code class="patient-with-references-serverid" id="rf-patient"><i>(сначала нажмите Загрузить)</i></code> (это можно увидеть в конце URL и в поле <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a>), чтобы найти, какие встречи есть у нашего пациента, запрос следует этому формату:</p> 
                             <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(сначала нажмите Загрузить)</span>/Encounter?patient=Patient/&lt;patient id&gt;</b></pre>
                             <p>По сути это говорит - "дайте мне все Encounter, которые имеют этот ID пациента в качестве субъекта пациента". Попробуйте ввести <code class="patient-with-references-baseurl" id="rf-patient">(сначала нажмите Загрузить)</code><code>/Encounter?patient=Patient/</code><code class="patient-with-references-serverid" id="rf-patient"></code> в Postman - вы увидите результат, подобный этому:</p>
-                            <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search-thumb.png" class="thumbnail"/></a>.
+                            <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search.png" class="thumbnail"/></a>.
                             <p>Три вещи представляют интерес:</p>
                             <ol>
                                 <li>Мы получаем ресурс <a href="http://hl7.org/fhir/R4/bundle.html">Bundle</a> обратно. Bundle - это по сути контейнер для ресурсов, используемый во многих местах, включая результаты поиска.</li>
