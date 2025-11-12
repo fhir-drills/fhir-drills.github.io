@@ -24,6 +24,33 @@ body.lang-ru .lang-ru.inline {
     margin: 20px 0;
 }
 
+.lang-dropdown {
+    background: #673ab7;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    min-width: 120px;
+}
+
+.lang-dropdown:hover {
+    background: #5e35b1;
+}
+
+.lang-dropdown:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.lang-dropdown option {
+    background: white;
+    color: #333;
+    padding: 8px;
+}
+
 .lang-btn {
     background: #673ab7;
     color: white;

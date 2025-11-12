@@ -19,26 +19,32 @@ class LanguageSwitcher {
     switchLanguage(lang) {
         // Remove existing language classes
         document.body.classList.remove('lang-en', 'lang-ru');
-        
+
         // Add new language class
         document.body.classList.add('lang-' + lang);
-        
-        // Update active button
+
+        // Update active button (for backward compatibility)
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.remove('active');
         });
-        
+
         const activeBtn = document.getElementById('lang-' + lang + '-btn');
         if (activeBtn) {
             activeBtn.classList.add('active');
         }
-        
+
+        // Update dropdown selection
+        const dropdown = document.getElementById('language-dropdown');
+        if (dropdown) {
+            dropdown.value = lang;
+        }
+
         // Save preference to localStorage
         localStorage.setItem('preferred-language', lang);
-        
+
         // Update HTML lang attribute for accessibility
         document.documentElement.lang = lang;
-        
+
         // Update URL parameter
         this.updateUrlWithLanguage(lang);
     }
