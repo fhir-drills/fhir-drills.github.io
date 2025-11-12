@@ -232,7 +232,7 @@
                             <p>Let's take a closer look at the FHIR resource named CodeSystem, you will find the resource page in the FHIR specification here:</p>
 
                             <ul>
-                            <li><b><a href="http://hl7.org/fhir/STU3/codesystem.html" rel="stylesheet">Resource CodeSystem</a></b></li>
+                            <li><b><a href="http://hl7.org/fhir/R4/codesystem.html" rel="stylesheet">Resource CodeSystem</a></b></li>
                             </ul>
                             <p><b>Below is a simple example of a CodeSystem FHIR resource</b></p>
                             
@@ -248,7 +248,7 @@
                             <p>Давайте внимательнее рассмотрим ресурс FHIR под названием CodeSystem, страницу ресурса в спецификации FHIR вы найдете здесь:</p>
 
                             <ul>
-                            <li><b><a href="http://hl7.org/fhir/STU3/codesystem.html" rel="stylesheet">Ресурс CodeSystem</a></b></li>
+                            <li><b><a href="http://hl7.org/fhir/R4/codesystem.html" rel="stylesheet">Ресурс CodeSystem</a></b></li>
                             </ul>
                             <p><b>Ниже приведен простой пример ресурса CodeSystem FHIR</b></p>
                             
@@ -257,63 +257,60 @@
                             <p>Не забывайте, CodeSystem - это каталог кодов для выбора в ValueSet.</p>
                         </div>
 						
-						<textarea id="codesystem-1" class="fhir-resource-xml">
-<?xml version="1.0" encoding="UTF-8"?>
-<CodeSystem xmlns="http://hl7.org/fhir">
-  <id value="1"/>
-  <meta>
-    <versionId value="1"/>
-    <lastUpdated value="2016-06-27T13:50:00Z"/>
-  </meta>
-  <text>
-    <status value="additional"/>
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Code System for FHIR tutorial participants to rate the difficulty of understanding of the training material</p>
-      <p>Developed by: Australian Digital Health Agency Connectathon team (example)</p>
-      <p>Published for testing on 27-June 2016</p>      
-      <table>
-        <tr><td><b>Code</b></td><td><b>Display</b></td></tr>
-        <tr><td>easy</td><td>I found the material easy to understand</td></tr>
-        <tr><td>hard</td><td>I found the material hard to understand</td></tr>       
-      </table> 
-    </div>
-  </text>
-  <url value="urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1"/>  
-  <version value="20162726"/>
-  <name value="FHIR tutorial difficulty levels"/>
-  <title value="FHIR tutorial difficulty levels"/>
-  <status value="draft"/>
-  <experimental value="true"/>
-  <publisher value="Australian Digital Health Agency"/>
-  <contact>
-    <name value="Angus Millar"/>
-    <telecom>
-      <system value="email"/>
-      <value value="angus.millar@digitalhealth.gov.au"/>
-    </telecom>
-  </contact>
-  <date value="2016-06-27"/>
-  <description value="Code System for FHIR tutorial participants to rate the difficulty of understanding of the training material"/>
-  <caseSensitive value="true"/>
-  <content value="complete"/>
-  <concept>
-    <code value="easy"/>
-    <display value="I found the material easy to understand"/>   
-  </concept>
-  <concept>
-    <code value="hard"/>
-    <display value="I found the material hard to understand"/>   
-  </concept>  
-</CodeSystem></textarea>
+						<textarea id="codesystem-1" class="fhir-resource-json">
+{
+  "resourceType": "CodeSystem",
+  "id": "1",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2016-06-27T13:50:00Z"
+  },
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Code System for FHIR tutorial participants to rate the difficulty of understanding of the training material</p><p>Developed by: Australian Digital Health Agency Connectathon team (example)</p><p>Published for testing on 27-June 2016</p><table><tr><td><b>Code</b></td><td><b>Display</b></td></tr><tr><td>easy</td><td>I found the material easy to understand</td></tr><tr><td>hard</td><td>I found the material hard to understand</td></tr></table></div>"
+  },
+  "url": "urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1",
+  "version": "20162726",
+  "name": "FHIR tutorial difficulty levels",
+  "title": "FHIR tutorial difficulty levels",
+  "status": "draft",
+  "experimental": true,
+  "publisher": "Australian Digital Health Agency",
+  "contact": [
+    {
+      "name": "Angus Millar",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "angus.millar@digitalhealth.gov.au"
+        }
+      ]
+    }
+  ],
+  "date": "2016-06-27",
+  "description": "Code System for FHIR tutorial participants to rate the difficulty of understanding of the training material",
+  "caseSensitive": true,
+  "content": "complete",
+  "concept": [
+    {
+      "code": "easy",
+      "display": "I found the material easy to understand"
+    },
+    {
+      "code": "hard",
+      "display": "I found the material hard to understand"
+    }
+  ]
+}</textarea>
                         
                         <!-- English continuation -->
                         <div class="lang-content lang-en">
-                            <p>This example does not show every property of a CodeSystem resource. I've only used the ones I thought were key while also trying to keep the example nice and short. Take a look at <a href="http://hl7.org/fhir/STU3/codesystem.html" rel="stylesheet">CodeSystem</a> in the FHIR specification to see all the properties available.</p>
+                            <p>This example does not show every property of a CodeSystem resource. I've only used the ones I thought were key while also trying to keep the example nice and short. Take a look at <a href="http://hl7.org/fhir/R4/codesystem.html" rel="stylesheet">CodeSystem</a> in the FHIR specification to see all the properties available.</p>
                         </div>
                         
                         <!-- Russian continuation -->
                         <div class="lang-content lang-ru">
-                            <p>Этот пример не показывает все свойства ресурса CodeSystem. Я использовал только те, которые считал ключевыми, стараясь при этом сохранить пример коротким и понятным. Посмотрите на <a href="http://hl7.org/fhir/STU3/codesystem.html" rel="stylesheet">CodeSystem</a> в спецификации FHIR, чтобы увидеть все доступные свойства.</p>
+                            <p>Этот пример не показывает все свойства ресурса CodeSystem. Я использовал только те, которые считал ключевыми, стараясь при этом сохранить пример коротким и понятным. Посмотрите на <a href="http://hl7.org/fhir/R4/codesystem.html" rel="stylesheet">CodeSystem</a> в спецификации FHIR, чтобы увидеть все доступные свойства.</p>
                         </div>
 
                         <!-- Step 3 - English -->
@@ -323,7 +320,7 @@
                             <p>Let's take a closer look at the FHIR resource named ValueSet, you will find the resource page in the FHIR specification here:</p>
                         
                             <ul>
-                            <li><b><a href="http://hl7.org/fhir/STU3/valueset.html" rel="stylesheet">Resource ValueSet</a></b></li>
+                            <li><b><a href="http://hl7.org/fhir/R4/valueset.html" rel="stylesheet">Resource ValueSet</a></b></li>
                             </ul>
                             <p><b>Here is a simple example of a ValueSet FHIR resource</b></p>
                             
@@ -341,7 +338,7 @@
                             <p>Давайте внимательнее рассмотрим ресурс FHIR под названием ValueSet, страницу ресурса в спецификации FHIR вы найдете здесь:</p>
                         
                             <ul>
-                            <li><b><a href="http://hl7.org/fhir/STU3/valueset.html" rel="stylesheet">Ресурс ValueSet</a></b></li>
+                            <li><b><a href="http://hl7.org/fhir/R4/valueset.html" rel="stylesheet">Ресурс ValueSet</a></b></li>
                             </ul>
                             <p><b>Вот простой пример ресурса ValueSet FHIR</b></p>
                             
@@ -352,62 +349,62 @@
                             <p>Помните, что ValueSet свободен выбирать любые коды, которые ему требуются из CodeSystem, он может даже выбрать больше кодов из другого CodeSystem, если это необходимо.</p>
                         </div>
                         
-						<textarea id="valuesystem-1" class="fhir-resource-xml"><?xml version="1.0" encoding="UTF-8"?>
-<ValueSet xmlns="http://hl7.org/fhir">
-  <id value="1"/>
-  <meta>
-    <versionId value="1"/>
-    <lastUpdated value="2016-06-27T15:00:00Z"/>
-  </meta>
-  <text>
-    <status value="additional"/>
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>ValueSet for FHIR tutorial participants to rate the difficulty of understanding of the training material</p>
-      <p>Developed by: Australian Digital Health Agency Connectathon team (example)</p>
-      <p>Published for testing on 28-June 2016</p>      
-      <table>
-        <tr><td><b>Code</b></td><td><b>Display</b></td></tr>
-        <tr><td>easy</td><td>I found the material easy to understand</td></tr>
-        <tr><td>hard</td><td>I found the material hard to understand</td></tr>       
-      </table> 
-    </div>      
-  </text>
-  <url value="urn:uuid:8ec3847e-789e-4994-a74b-7bbf55d88190"/>  
-  <version value="20160530"/>
-  <name value="FHIR tutorial difficulty levels"/>
-  <title value="FHIR tutorial difficulty levels"/>
-  <status value="draft"/>
-  <experimental value="true"/>
-  <publisher value="Australian Digital Health Agency"/>
-  <contact>
-    <name value="Angus Millar"/>
-    <telecom>
-      <system value="email"/>
-      <value value="angus.millar@digitalhealth.gov.au"/>
-    </telecom>
-  </contact>
-  <date value="2016-06-27"/>
-  <description value="Codes for FHIR tutorial participants to rate the difficulty of understanding of the training material"/>
-  <compose>
-    <lockedDate value="2016-06-27"/>
-    <include>
-      <system value="urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1"/>
-      <version value="20162726"/>
-      <concept>
-        <code value="easy"/>        
-      </concept>
-      <concept>
-        <code value="hard"/>        
-      </concept>     
-    </include>
-  </compose>
-</ValueSet></textarea>
+						<textarea id="valuesystem-1" class="fhir-resource-json">
+{
+  "resourceType": "ValueSet",
+  "id": "1",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2016-06-27T15:00:00Z"
+  },
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>ValueSet for FHIR tutorial participants to rate the difficulty of understanding of the training material</p><p>Developed by: Australian Digital Health Agency Connectathon team (example)</p><p>Published for testing on 28-June 2016</p><table><tr><td><b>Code</b></td><td><b>Display</b></td></tr><tr><td>easy</td><td>I found the material easy to understand</td></tr><tr><td>hard</td><td>I found the material hard to understand</td></tr></table></div>"
+  },
+  "url": "urn:uuid:8ec3847e-789e-4994-a74b-7bbf55d88190",
+  "version": "20160530",
+  "name": "FHIR tutorial difficulty levels",
+  "title": "FHIR tutorial difficulty levels",
+  "status": "draft",
+  "experimental": true,
+  "publisher": "Australian Digital Health Agency",
+  "contact": [
+    {
+      "name": "Angus Millar",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "angus.millar@digitalhealth.gov.au"
+        }
+      ]
+    }
+  ],
+  "date": "2016-06-27",
+  "description": "Codes for FHIR tutorial participants to rate the difficulty of understanding of the training material",
+  "compose": {
+    "lockedDate": "2016-06-27",
+    "include": [
+      {
+        "system": "urn:uuid:c4a698d9-6749-4c2a-abd3-9d2eb9e8e0a1",
+        "version": "20162726",
+        "concept": [
+          {
+            "code": "easy"
+          },
+          {
+            "code": "hard"
+          }
+        ]
+      }
+    ]
+  }
+}</textarea>
                         
                         <!-- English continuation -->
                         <div class="lang-content lang-en">
                             <p>Remember, a ValueSet is a grouping of codes, codes are taken from CodeSystems, to be used for a purpose. ValueSet codes adds value to some use case, for example: a clinical systems drop down box to select an allergy.</p>
                             
-                            <p>Once again you should go to the FHIR specification page for <a href="http://hl7.org/fhir/STU3/valueset.html" rel="stylesheet">ValueSet</a> to see the full list of properties available.</p>
+                            <p>Once again you should go to the FHIR specification page for <a href="http://hl7.org/fhir/R4/valueset.html" rel="stylesheet">ValueSet</a> to see the full list of properties available.</p>
                             
                             <p><b>Question:</b> If you had two copies of a ValueSet resource given to you, from different people, how would you determine that the two instances were actually the same ValueSet?</p>
                             
@@ -419,7 +416,7 @@
                         <div class="lang-content lang-ru">
                             <p>Помните, ValueSet - это группировка кодов, коды берутся из CodeSystems для использования в определенных целях. Коды ValueSet добавляют ценность для некоторого случая использования, например: выпадающий список клинической системы для выбора аллергии.</p>
                             
-                            <p>Еще раз вам следует перейти на страницу спецификации FHIR для <a href="http://hl7.org/fhir/STU3/valueset.html" rel="stylesheet">ValueSet</a>, чтобы увидеть полный список доступных свойств.</p>
+                            <p>Еще раз вам следует перейти на страницу спецификации FHIR для <a href="http://hl7.org/fhir/R4/valueset.html" rel="stylesheet">ValueSet</a>, чтобы увидеть полный список доступных свойств.</p>
                             
                             <p><b>Вопрос:</b> Если бы вам дали две копии ресурса ValueSet от разных людей, как бы вы определили, что эти два экземпляра на самом деле являются одним и тем же ValueSet?</p>
                             
@@ -486,7 +483,7 @@
                             
                             <p>With hierarchical code systems, we can use a filter to say <i>"include all codes under this parent code"</i>. This way, as new codes are introduced under a parent code, in the code system, they will automatically be included in our ValueSet's selected codes. In the very same way we can include codes, we can also <b>exclude</b> codes either by stating the code to exclude or by using another filter.</p>
                             
-                            <p>The image below is taken from the <a href="http://hl7.org/fhir/STU3/valueset.html#resource" rel="stylesheet"><b>ValueSet tree structure in the FHIR specification</b></a> and highlights the sections that deals with the topic discussed in this step (Include, Exclude &amp; Filter).</p>
+                            <p>The image below is taken from the <a href="http://hl7.org/fhir/R4/valueset.html#resource" rel="stylesheet"><b>ValueSet tree structure in the FHIR specification</b></a> and highlights the sections that deals with the topic discussed in this step (Include, Exclude &amp; Filter).</p>
                             <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img src="images/ValueSetFilterTreeDiagram.png" width="100%" class="thumbnail"/></a></p>
                         </div>
                         
@@ -501,7 +498,7 @@
                             
                             <p>С иерархическими системами кодов мы можем использовать фильтр, чтобы сказать <i>"включить все коды под этим родительским кодом"</i>. Таким образом, когда новые коды вводятся под родительским кодом в системе кодов, они автоматически будут включены в выбранные коды нашего ValueSet. Точно так же, как мы можем включать коды, мы также можем <b>исключать</b> коды, либо указав код для исключения, либо используя другой фильтр.</p>
                             
-                            <p>Изображение ниже взято из <a href="http://hl7.org/fhir/STU3/valueset.html#resource" rel="stylesheet"><b>древовидной структуры ValueSet в спецификации FHIR</b></a> и выделяет разделы, которые касаются темы, обсуждаемой в этом шаге (Include, Exclude и Filter).</p>
+                            <p>Изображение ниже взято из <a href="http://hl7.org/fhir/R4/valueset.html#resource" rel="stylesheet"><b>древовидной структуры ValueSet в спецификации FHIR</b></a> и выделяет разделы, которые касаются темы, обсуждаемой в этом шаге (Include, Exclude и Filter).</p>
                             <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img src="images/ValueSetFilterTreeDiagram.png" width="100%" class="thumbnail"/></a></p>
                         </div>
                         
@@ -529,13 +526,13 @@
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
                         <h1 class="mdl-mega-footer--heading">FHIR</h1>
                         <ul class="mdl-mega-footer--link-list">
-                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_15" title="Next FHIR get-together in Madrid in May 2017">
-                                <span class="lang-content lang-en">Connectathon 15</span>
-                                <span class="lang-content lang-ru">Connectathon 15</span>
+                            <li><a href="https://confluence.hl7.org/spaces/FHIR/pages/391191767/2026-01+Connectathon+41" title="Virtual FHIR Connectathon, January 13-15, 2026">
+                                <span class="lang-content lang-en">Connectathon 41</span>
+                                <span class="lang-content lang-ru">Connectathon 41</span>
                             </a></li>
-                            <li><a href="http://hl7.org/fhir/STU3" title="Latest release of FHIR, for use in Madrid Connectathon">
-                                <span class="lang-content lang-en">FHIR STU3 Release</span>
-                                <span class="lang-content lang-ru">Релиз FHIR STU3</span>
+                            <li><a href="http://hl7.org/fhir/R4" title="FHIR R4 Release">
+                                <span class="lang-content lang-en">FHIR R4 Release</span>
+                                <span class="lang-content lang-ru">Релиз FHIR R4</span>
                             </a></li>
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">
                                 <span class="lang-content lang-en">FHIR Continuous Integration Build</span>

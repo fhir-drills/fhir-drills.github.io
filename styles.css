@@ -20,6 +20,26 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* Animated gradient header */
+.mdl-layout__header {
+    background: linear-gradient(-45deg, #673ab7, #9c27b0, #e91e63, #f06292, #673ab7);
+    background-size: 400% 400%;
+    animation: gradient-shift 30s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 .mdl-demo .mdl-layout__header-row {
     padding-left: 40px;
 }
@@ -256,7 +276,9 @@ note {
 .thumbnail {
     display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
+    max-width: 300px;
+    height: auto;
 }
 
 .centered {

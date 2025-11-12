@@ -153,7 +153,7 @@
                             <!-- English Content -->
                             <div class="lang-content lang-en">
                                 <h4>Bundle tutorial</h4>
-                                <p>Bundle is a container for resources, enabling you to group and transmit resources altogether at once. Guidance on the resource in general is available on the <a href="http://hl7.org/fhir/STU3/bundle.html">Bundle</a> page, and on the <a href="http://hl7.org/fhir/STU3/http.html#transaction">RESTful API</a> pages of the FHIR specification, with specific bundle types like transactions, messaging and documents having their own documentation.</p>
+                                <p>Bundle is a container for resources, enabling you to group and transmit resources altogether at once. Guidance on the resource in general is available on the <a href="http://hl7.org/fhir/R4/bundle.html">Bundle</a> page, and on the <a href="http://hl7.org/fhir/R4/http.html#transaction">RESTful API</a> pages of the FHIR specification, with specific bundle types like transactions, messaging and documents having their own documentation.</p>
                                 <ul class="toc">
                                     <h4>Contents</h4>
                                     <!-- pr prefix stands for 'patient references'-->
@@ -175,7 +175,8 @@
                                 <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
                                 
                                 <ol>
-                                <li>Metadata describing the Bundle type, the total amount of entries (some which may not be visible because of paging), and a link if you need to retrieve this Bundle later.</li>
+                                <li>Metadata describing the Bundle type and the total amount of entries (some which may not be visible because of paging).</li>
+                                <li>The <code>Bundle.link</code> element provides navigation links for the Bundle, including links to retrieve the Bundle later ("self"), paginate through results ("next", "previous", "first", "last"), or access related content. These links enable efficient navigation through large result sets and Bundle retrieval.</li>
                                 <li>The meat of the resource, so to speak - this is where the resources that the Bundle has are stored. Included with resources are URLs which you can use to retrieve the resource individually.</li>
                                 <li>Used when you're uploading Bundles - this is where you specify to the server what to do with each resource.</li>
                                 <li>Used by the server when it's responding to your upload request - this is where it says how each operation went.</li>
@@ -187,7 +188,7 @@
                             <!-- Russian Content -->
                             <div class="lang-content lang-ru">
                                 <h4>Урок по Bundle (Пакетам)</h4>
-                                <p>Bundle - это контейнер для ресурсов, позволяющий группировать и передавать ресурсы все сразу. Руководство по ресурсу в целом доступно на странице <a href="http://hl7.org/fhir/STU3/bundle.html">Bundle</a>, а также на страницах <a href="http://hl7.org/fhir/STU3/http.html#transaction">RESTful API</a> спецификации FHIR, при этом конкретные типы пакетов, такие как транзакции, сообщения и документы, имеют свою собственную документацию.</p>
+                                <p>Bundle - это контейнер для ресурсов, позволяющий группировать и передавать ресурсы все сразу. Руководство по ресурсу в целом доступно на странице <a href="http://hl7.org/fhir/R4/bundle.html">Bundle</a>, а также на страницах <a href="http://hl7.org/fhir/R4/http.html#transaction">RESTful API</a> спецификации FHIR, при этом конкретные типы пакетов, такие как транзакции, сообщения и документы, имеют свою собственную документацию.</p>
                                 <ul class="toc">
                                     <h4>Содержание</h4>
                                     <a href="#bn-about-bundle">Шаг 1: О Bundle</a>
@@ -208,7 +209,8 @@
                                 <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
                                 
                                 <ol>
-                                <li>Метаданные, описывающие тип Bundle, общее количество записей (некоторые из которых могут быть не видны из-за пагинации), и ссылка, если вам нужно получить этот Bundle позже.</li>
+                                <li>Метаданные, описывающие тип Bundle и общее количество записей (некоторые из которых могут быть не видны из-за пагинации).</li>
+                                <li>Элемент <code>Bundle.link</code> предоставляет навигационные ссылки для Bundle, включая ссылки для получения Bundle позже ("self"), для пагинации результатов ("next", "previous", "first", "last") или для доступа к связанному содержимому. Эти ссылки обеспечивают эффективную навигацию по большим наборам результатов и получение Bundle.</li>
                                 <li>Суть ресурса, так сказать - здесь хранятся ресурсы, которые содержит Bundle. Вместе с ресурсами включены URL-адреса, которые можно использовать для получения ресурса индивидуально.</li>
                                 <li>Используется при загрузке Bundle - здесь вы указываете серверу, что делать с каждым ресурсом.</li>
                                 <li>Используется сервером при ответе на ваш запрос загрузки - здесь он сообщает, как прошла каждая операция.</li>
@@ -217,203 +219,206 @@
                                 <p>Вот аннотированный пример Bundle, который вы получили бы от сервера при поиске:</p>
                             </div>
 
-<textarea class="fhir-resource-xml">
-<Bundle xmlns="http://hl7.org/fhir">
-    <id value="fdcc9869-0bd6-4422-876b-1d0b53a2db"/>
-    <meta>
-        <lastUpdated value="2016-11-04T01:35:48Z"/>
-    </meta>
-
-    <!-- bundle type: this is from as a search result. See below on other
-         bundle types -->
-    <!-- тип пакета: это результат поиска. См. ниже для других типов пакетов.-->
-    <type value="searchset"/>
-
-    <!-- if this is a search or history type, it'll also report how many
-         resources matched in total.  -->
-    <!-- если это тип поиска или истории, также будет указано, сколько
-         всего найдено ресурсов.-->
-    <total value="253"/>
-    <link>
-
-        <!-- a link to retrieve this bundle again later -->
-        <!-- ссылка, чтобы получить этот пакет снова позже -->
-        <relation value="self"/>
-        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id"/>
-    </link>
-    <link>
-
-        <!-- a link to the first 'page' of the bundle to get more resources
-             that didn't fit in this bundle - see below for how pagination works -->
-        <!-- ссылка на первую страницу комплекта, где можно найти дополнительные ресурсы,
-             которые не вошли в пакет. Подробнее о том, как работает пагинация, см. ниже.-->
-        <relation value="first"/>
-        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=0&amp;_count=3"/>
-    </link>
-    <link>
-
-        <!-- a link to the next page to get more search results -->
-        <!-- ссылка на следующую страницу для получения дополнительных результатов поиска -->
-        <relation value="next"/>
-        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=3&amp;_count=3"/>
-    </link>
-    <link>
-
-        <!-- a link to the last page of search results -->
-        <!-- ссылка на последнюю страницу результатов поиска -->
-        <relation value="last"/>
-        <url value="http://fhir3.healthintersections.com.au/open/Patient?_format=text/xml+fhir&amp;search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&amp;&amp;_sort=_id&amp;search-offset=252&amp;_count=3"/>
-    </link>
-
-    <!-- the bundle will have many entries, each entry containing a found
-         resource and some other data related to it -->
-    <!-- в пакете будет много записей, каждая из которых содержит найденный
-         ресурс и некоторые другие данные, связанные с ним.-->
-    <entry>
-
-        <!-- a direct link to access this resource on its own, outside
-             of the bundle -->
-        <!-- прямая ссылка для доступа к этому ресурсу отдельно, вне пакета -->
-        <fullUrl value="http://fhir3.healthintersections.com.au/open/Patient/1"/>
-
-        <!-- resource itself in full - nothing is different about being
-             in a bundle compared to just retrieving it directly -->
-        <!-- сам ресурс в полном объёме – ничем не отличается от его прямого извлечения по ссылке -->
-        <resource>
-            <Patient xmlns="http://hl7.org/fhir">
-                <id value="1"/>
-                <meta>
-                    <versionId value="1"/>
-                    <lastUpdated value="2016-11-03T06:01:40Z"/>
-                </meta>
-                <text>
-                    <status value="generated"/>
-                    <div xmlns="http://www.w3.org/1999/xhtml">
-                        <h1>Eve Everywoman</h1>
-                    </div>
-                </text>
-                <active value="true"/>
-                <name>
-                    <text value="Eve Everywoman"/>
-                    <family value="Everywoman1"/>
-                    <given value="Eve"/>
-                </name>
-                <telecom>
-                    <system value="phone"/>
-                    <value value="555-555-2003"/>
-                    <use value="work"/>
-                </telecom>
-                <gender value="female"/>
-                <birthDate value="1955-01-06"/>
-                <address>
-                    <use value="home"/>
-                    <line value="2222 Home Street"/>
-                </address>
-            </Patient>
-        </resource>
-
-        <!-- reason why this resource is included in search results. In this
-             case, because it matched the search query. Resources can also be
-             included because they were included by a matching resource -->
-        <!-- Причина, по которой этот ресурс включен в результаты поиска. В
-             данном случае, потому что он соответствует поисковому запросу. 
-             Ресурсы также могут быть включены, потому что они были включены 
-             соответствующим ресурсом. -->
-        <search>
-            <mode value="match"/>
-        </search>
-    </entry>
-    <!-- similar layout as above entry -->
-    <!-- аналогично как в записи выше -->
-    <entry>
-        <fullUrl value="http://fhir3.healthintersections.com.au/open/Patient/10"/>
-        <resource>
-            <Patient xmlns="http://hl7.org/fhir">
-                <id value="10"/>
-                <meta>
-                    <versionId value="1"/>
-                    <lastUpdated value="2016-11-03T06:15:27Z"/>
-                </meta>
-                <text>
-                    <status value="generated"/>
-                    <div xmlns="http://www.w3.org/1999/xhtml">Betterhalf, Boris. SSN: 444888888</div>
-                </text>
-                <identifier>
-                    <type>
-                        <coding>
-                            <system value="http://hl7.org/fhir/v2/0203"/>
-                            <code value="SS"/>
-                        </coding>
-                    </type>
-                    <system value="http://hl7.org/fhir/sid/us-ssn"/>
-                    <value value="444888888"/>
-                </identifier>
-                <active value="true"/>
-                <name>
-                    <use value="official"/>
-                    <family value="Betterhalf"/>
-                    <given value="Boris"/>
-                </name>
-                <telecom>
-                    <system value="phone"/>
-                    <value value="555-555-2008"/>
-                    <use value="work"/>
-                </telecom>
-                <gender value="male"/>
-                <address>
-                    <use value="home"/>
-                    <line value="2222 Home Street"/>
-                </address>
-                <managingOrganization>
-                    <reference value="Organization/hl7"/>
-                </managingOrganization>
-            </Patient>
-        </resource>
-        <search>
-            <mode value="match"/>
-        </search>
-    </entry>
-    <entry>
-        <fullUrl value="http://fhir3.healthintersections.com.au/open/Patient/100"/>
-        <resource>
-            <Patient xmlns="http://hl7.org/fhir">
-                <id value="100"/>
-                <meta>
-                    <versionId value="1"/>
-                    <lastUpdated value="2016-11-03T06:14:41Z"/>
-                </meta>
-                <text>
-                    <status value="generated"/>
-                    <div xmlns="http://www.w3.org/1999/xhtml">Garrett, Gordon. MRN: 577419</div>
-                </text>
-                <identifier>
-                    <type>
-                        <coding>
-                            <system value="http://hl7.org/fhir/v2/0203"/>
-                            <code value="SS"/>
-                        </coding>
-                    </type>
-                    <system value="https://github.com/projectcypress/cypress/patient"/>
-                    <value value="577419"/>
-                </identifier>
-                <active value="true"/>
-                <name>
-                    <use value="official"/>
-                    <family value="Garrett"/>
-                    <given value="Gordon"/>
-                </name>
-                <gender value="male"/>
-                <birthDate value="1935-05-08"/>
-                <managingOrganization>
-                    <reference value="Organization/1"/>
-                </managingOrganization>
-            </Patient>
-        </resource>
-        <search>
-            <mode value="match"/>
-        </search>
-    </entry>
-</Bundle></textarea>
+<textarea class="fhir-resource-json">
+{
+  "resourceType": "Bundle",
+  "id": "fdcc9869-0bd6-4422-876b-1d0b53a2db",
+  "meta": {
+    "lastUpdated": "2016-11-04T01:35:48Z"
+  },
+  // bundle type: this is from as a search result. See below on other bundle types
+  // тип пакета: это результат поиска. См. ниже для других типов пакетов.
+  "type": "searchset",
+  // if this is a search or history type, it'll also report how many resources matched in total.
+  // если это тип поиска или истории, также будет указано, сколько всего найдено ресурсов.
+  "total": 253,
+  "link": [
+    {
+      // a link to retrieve this bundle again later
+      // ссылка, чтобы получить этот пакет снова позже
+      "relation": "self",
+      "url": "http://fhir3.healthintersections.com.au/open/Patient?_format=application/fhir+json&search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&&_sort=_id"
+    },
+    {
+      // a link to the first 'page' of the bundle to get more resources that didn't fit in this bundle
+      // see below for how pagination works
+      // ссылка на первую страницу комплекта, где можно найти дополнительные ресурсы,
+      // которые не вошли в пакет. Подробнее о том, как работает пагинация, см. ниже.
+      "relation": "first",
+      "url": "http://fhir3.healthintersections.com.au/open/Patient?_format=application/fhir+json&search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&&_sort=_id&search-offset=0&_count=3"
+    },
+    {
+      // a link to the next page to get more search results
+      // ссылка на следующую страницу для получения дополнительных результатов поиска
+      "relation": "next",
+      "url": "http://fhir3.healthintersections.com.au/open/Patient?_format=application/fhir+json&search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&&_sort=_id&search-offset=3&_count=3"
+    },
+    {
+      // a link to the last page of search results
+      // ссылка на последнюю страницу результатов поиска
+      "relation": "last",
+      "url": "http://fhir3.healthintersections.com.au/open/Patient?_format=application/fhir+json&search-id=d3479951-64ed-43de-a8f3-e6cd7ddb20&&_sort=_id&search-offset=252&_count=3"
+    }
+  ],
+  // the bundle will have many entries, each entry containing a found resource and some other data related to it
+  // в пакете будет много записей, каждая из которых содержит найденный ресурс и некоторые другие данные, связанные с ним.
+  "entry": [
+    {
+      // a direct link to access this resource on its own, outside of the bundle
+      // прямая ссылка для доступа к этому ресурсу отдельно, вне пакета
+      "fullUrl": "http://fhir3.healthintersections.com.au/open/Patient/1",
+      // resource itself in full - nothing is different about being in a bundle compared to just retrieving it directly
+      // сам ресурс в полном объёме – ничем не отличается от его прямого извлечения по ссылке
+      "resource": {
+        "resourceType": "Patient",
+        "id": "1",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2016-11-03T06:01:40Z"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h1>Eve Everywoman</h1></div>"
+        },
+        "active": true,
+        "name": [
+          {
+            "text": "Eve Everywoman",
+            "family": "Everywoman1",
+            "given": ["Eve"]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-555-2003",
+            "use": "work"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1955-01-06",
+        "address": [
+          {
+            "use": "home",
+            "line": ["2222 Home Street"]
+          }
+        ]
+      },
+      // reason why this resource is included in search results. In this case, because it matched the search query.
+      // Resources can also be included because they were included by a matching resource
+      // Причина, по которой этот ресурс включен в результаты поиска. В данном случае, потому что он соответствует поисковому запросу.
+      // Ресурсы также могут быть включены, потому что они были включены соответствующим ресурсом.
+      "search": {
+        "mode": "match"
+      }
+    },
+    // similar layout as above entry
+    // аналогично как в записи выше
+    {
+      "fullUrl": "http://fhir3.healthintersections.com.au/open/Patient/10",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "10",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2016-11-03T06:15:27Z"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Betterhalf, Boris. SSN: 444888888</div>"
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "SS"
+                }
+              ]
+            },
+            "system": "http://hl7.org/fhir/sid/us-ssn",
+            "value": "444888888"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Betterhalf",
+            "given": ["Boris"]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "555-555-2008",
+            "use": "work"
+          }
+        ],
+        "gender": "male",
+        "address": [
+          {
+            "use": "home",
+            "line": ["2222 Home Street"]
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/hl7"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://fhir3.healthintersections.com.au/open/Patient/100",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "100",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2016-11-03T06:14:41Z"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Garrett, Gordon. MRN: 577419</div>"
+        },
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "SS"
+                }
+              ]
+            },
+            "system": "https://github.com/projectcypress/cypress/patient",
+            "value": "577419"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Garrett",
+            "given": ["Gordon"]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1935-05-08",
+        "managingOrganization": {
+          "reference": "Organization/1"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}
+</textarea>
 
                             <!-- English Content Continues -->
                             <div class="lang-content lang-en">
@@ -427,43 +432,45 @@
                                 <p>Когда Bundle слишком большой для отправки за один раз, поскольку он содержит много ресурсов, сервер может разбить его на части (называемые "страницами"). Чтобы позволить вам легко переходить от одной страницы к следующей, Bundle предоставляет ссылки на следующую страницу внутри себя. Таким образом, клиент, получив страницу, может запросить следующую страницу и так далее до конца. Кроме того, в каждом Bundle также предоставляются ссылки на предыдущую, первую и последнюю страницы (см. пример ниже):</p>
                             </div>
 								
-							<textarea id="codesystem-1" class="fhir-resource-xml">
-<!-- ... snipped ... -->
-<link>
-  <relation value="first"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=1"/>
-</link>
-<link>
-  <relation value="previous"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=2"/>
-</link>
-<link>
-  <relation value="next"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=4"/>
-</link>
-<link>
-  <relation value="last"/>
-  <url value="http://example.org/Patient?name=peter&stateid=23&page=26"/>
-</link>	
-<!-- ... snipped ... -->
+							<textarea id="codesystem-1" class="fhir-resource-json">
+// ... snipped ...
+"link": [
+  {
+    "relation": "first",
+    "url": "http://example.org/Patient?name=peter&stateid=23&page=1"
+  },
+  {
+    "relation": "previous",
+    "url": "http://example.org/Patient?name=peter&stateid=23&page=2"
+  },
+  {
+    "relation": "next",
+    "url": "http://example.org/Patient?name=peter&stateid=23&page=4"
+  },
+  {
+    "relation": "last",
+    "url": "http://example.org/Patient?name=peter&stateid=23&page=26"
+  }
+]
+// ... snipped ...
 							</textarea>
 	<br>
                             <div class="lang-content lang-en">
-                                <p>See <a href="http://hl7.org/fhir/STU3/http.html#paging">more information on paging</a> on the FHIR spec.</p>
+                                <p>See <a href="http://hl7.org/fhir/R4/http.html#paging">more information on paging</a> on the FHIR spec.</p>
                             </div>
                             
                             <div class="lang-content lang-ru">
-                                <p>См. <a href="http://hl7.org/fhir/STU3/http.html#paging">больше информации о пагинации</a> в спецификации FHIR.</p>
+                                <p>См. <a href="http://hl7.org/fhir/R4/http.html#paging">больше информации о пагинации</a> в спецификации FHIR.</p>
                             </div>
 							
                             <div class="lang-content lang-en">
                                 <h5 id="bn-bundle-types">Step 3: Bundle Types</h5>
-                                <p>There are <a href="http://hl7.org/fhir/STU3/valueset-bundle-type.html#expansion">several types</a> of Bundles defined by FHIR: document, message, transaction, transaction-response, batch, batch-response, history, searchset, and collection.</p>
+                                <p>There are <a href="http://hl7.org/fhir/R4/valueset-bundle-type.html#expansion">several types</a> of Bundles defined by FHIR: document, message, transaction, transaction-response, batch, batch-response, history, searchset, and collection.</p>
                             </div>
                             
                             <div class="lang-content lang-ru">
                                 <h5 id="bn-bundle-types">Шаг 3: Типы Bundle</h5>
-                                <p>FHIR определяет <a href="http://hl7.org/fhir/STU3/valueset-bundle-type.html#expansion">несколько типов</a> Bundle: document, message, transaction, transaction-response, batch, batch-response, history, searchset и collection.</p>
+                                <p>FHIR определяет <a href="http://hl7.org/fhir/R4/valueset-bundle-type.html#expansion">несколько типов</a> Bundle: document, message, transaction, transaction-response, batch, batch-response, history, searchset и collection.</p>
                             </div>
 
 							<table class="table-fill">
@@ -497,8 +504,8 @@
 									<tr>
 										<td class="text-left">history</td>
 										<td class="text-left">
-                                            <span class="lang-content lang-en">Similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/STU3/http.html#history">_history</a> operations when you're looking at the history of operations on single instance of a resource. For example, looking at all the edits made to a single Patient resource.</span>
-                                            <span class="lang-content lang-ru">Похож на searchset, но специализирован для операций <a href="http://hl7.org/fhir/STU3/http.html#history">_history</a>, когда вы просматриваете историю операций над одним экземпляром ресурса. Например, просмотр всех изменений, внесенных в один ресурс Patient.</span>
+                                            <span class="lang-content lang-en">Similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/R4/http.html#history">_history</a> operations when you're looking at the history of operations on single instance of a resource. For example, looking at all the edits made to a single Patient resource.</span>
+                                            <span class="lang-content lang-ru">Похож на searchset, но специализирован для операций <a href="http://hl7.org/fhir/R4/http.html#history">_history</a>, когда вы просматриваете историю операций над одним экземпляром ресурса. Например, просмотр всех изменений, внесенных в один ресурс Patient.</span>
                                         </td>
 									</tr>
 									<tr>
@@ -547,7 +554,7 @@
 								</thead>
 								<tbody class="table-hover">
 									<tr>
-										<td class="text-left"><a href="http://hl7.org/fhir/STU3/http.html#transaction"><code>[Service Root URL]</code></a></td>
+										<td class="text-left"><a href="http://hl7.org/fhir/R4/http.html#transaction"><code>[Service Root URL]</code></a></td>
 										<td class="text-left">batch, transaction</td>
 										<td class="text-left">
                                             <span class="lang-content lang-en">Bundle is processed by the server - individual operations/resources are unpacked and acted upon.</span>
@@ -555,7 +562,7 @@
                                         </td>
 									</tr>
 									<tr>
-										<td class="text-left"><a href="http://hl7.org/fhir/STU3/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
+										<td class="text-left"><a href="http://hl7.org/fhir/R4/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
 										<td class="text-left">history</td>
 										<td class="text-left">
                                             <span class="lang-content lang-en">Bundle may be be processed by the server as its structure is very similar to batch/transaction type.</span>
@@ -563,7 +570,7 @@
                                         </td>
 									</tr>
 									<tr>
-										<td class="text-left"><a href="http://hl7.org/fhir/STU3/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
+										<td class="text-left"><a href="http://hl7.org/fhir/R4/http.html#other-bundles"><code>[Service Root URL]</code></a></td>
 										<td class="text-left">document, message, transaction-response, batch-response, history, searchset, collection</td>
 										<td class="text-left">
                                             <span class="lang-content lang-en">Bundle may be processed by the server as create/update operations.</span>
@@ -571,7 +578,7 @@
                                         </td>
 									</tr>
 									<tr>
-										<td class="text-left"><a href="http://hl7.org/fhir/STU3/binary.html"><code>[Service Root URL]/Binary</code></a></td>
+										<td class="text-left"><a href="http://hl7.org/fhir/R4/binary.html"><code>[Service Root URL]/Binary</code></a></td>
 										<td class="text-left">document</td>
 										<td class="text-left">
                                             <span class="lang-content lang-en">Bundle is stored as-is by the server as binary content and not acted upon.</span>
@@ -579,7 +586,7 @@
                                         </td>
 									</tr>
 									<tr>
-										<td class="text-left"><a href="http://hl7.org/fhir/STU3/bundle.html"><code>[Service Root URL]/Bundle</code></a></td>
+										<td class="text-left"><a href="http://hl7.org/fhir/R4/bundle.html"><code>[Service Root URL]/Bundle</code></a></td>
 										<td class="text-left">document, transaction, transaction-response, batch,&nbsp;batch-response,&nbsp;history,&nbsp;searchset, and&nbsp;collection</td>
 										<td class="text-left">
                                             <span class="lang-content lang-en">Bundle is stored as-is by the server and not acted upon, same as if you uploaded a Patient resource.</span>
@@ -587,7 +594,7 @@
                                         </td>
 									</tr>
 									<tr>
-										<td class="text-left"><a title="Asynchronous Messaging using the RESTful API" href="http://hl7.org/fhir/STU3/messaging.html#rest"><code>[Service Root URL]/Bundle</code></a></td>
+										<td class="text-left"><a title="Asynchronous Messaging using the RESTful API" href="http://hl7.org/fhir/R4/messaging.html#rest"><code>[Service Root URL]/Bundle</code></a></td>
 										<td class="text-left">message</td>
 										<td class="text-left">
                                             <span class="lang-content lang-en">Bundle is processed by the server - server will store the Bundle as-is, index it on the MessageHeader, and act on the message. This is the RESTful endpoint for a message Bundle</span>
@@ -595,7 +602,7 @@
                                         </td>
 									</tr>
 									<tr>
-										<td class="text-left"><a href="http://hl7.org/fhir/STU3/messaging.html#process"><code>[Service Root URL]/$process-message</code></a></td>
+										<td class="text-left"><a href="http://hl7.org/fhir/R4/messaging.html#process"><code>[Service Root URL]/$process-message</code></a></td>
 										<td class="text-left">message</td>
 										<td class="text-left">
                                             <span class="lang-content lang-en">Bundle is processed by the server as if it is a message.</span>
@@ -617,7 +624,7 @@
                                 
                                 <p>The simple answer is that the bundle creator can assign temporary resource IDs to resources in order to create the references between each resource. Then depending on the way you upload the Bundle to the server the server can use your IDs to understand the linkage between resources and will assign its own server IDs and update all the existing references with the new IDs. In these cases, the server will then reply with a return Bundle that informs the sender of these updated IDs. If you refer back the Bundle layout image at the beginning of this page you can see the '<code>Bundle/entry/response/location</code>' element where these new IDs would be returned as a URI.   Whether the server performs this identification or not is dependant on the Bundle type you are uploading and the endpoint you are uploading it to. The table below talks more to this point.</p>
 
-                                <p>Unlike general resources you need to take care when resolving references between resources in Bundles, you can not just assume the reference is to a resource on a server, it may be a reference to a resource within the same Bundle and you should assume this first. For more on this topic refer to the FHIR specification here:<a href="http://hl7.org/fhir/STU3/bundle.html#references">Resolving references in Bundles</a> </p>
+                                <p>Unlike general resources you need to take care when resolving references between resources in Bundles, you can not just assume the reference is to a resource on a server, it may be a reference to a resource within the same Bundle and you should assume this first. For more on this topic refer to the FHIR specification here: <a href="http://hl7.org/fhir/R4/bundle.html#references">Resolving references in Bundles</a> </p>
         
                                 <p>The table below describes the effect Bundle type can have on uploading Bundles:</p>
                             </div>
@@ -634,7 +641,7 @@
                                 
                                 <p>Ответ заключается в том, что создатель bundle может назначить временные ID ресурсов для создания ссылок между каждым ресурсом. Затем, в зависимости от способа загрузки Bundle на сервер, сервер может использовать ваши ID для понимания связи между ресурсами и назначит свои собственные серверные ID и обновит все существующие ссылки новыми ID. В этих случаях сервер затем ответит возвращаемым Bundle, который информирует отправителя об этих обновленных ID. Если вы вернетесь к изображению структуры Bundle в начале этой страницы, вы можете увидеть элемент '<code>Bundle/entry/response/location</code>', где эти новые ID будут возвращены как URI. Выполняет ли сервер эту идентификацию или нет, зависит от типа Bundle, который вы загружаете, и конечной точки, в которую вы его загружаете. Таблица ниже более подробно рассматривает этот момент.</p>
 
-                                <p>В отличие от общих ресурсов, вам нужно быть осторожным при разрешении ссылок между ресурсами в Bundle, вы не можете просто предполагать, что ссылка указывает на ресурс на сервере, это может быть ссылка на ресурс внутри того же Bundle, и вы должны предполагать это в первую очередь. Для получения дополнительной информации по этой теме обратитесь к спецификации FHIR здесь: <a href="http://hl7.org/fhir/STU3/bundle.html#references">Разрешение ссылок в Bundle</a></p>
+                                <p>В отличие от общих ресурсов, вам нужно быть осторожным при разрешении ссылок между ресурсами в Bundle, вы не можете просто предполагать, что ссылка указывает на ресурс на сервере, это может быть ссылка на ресурс внутри того же Bundle, и вы должны предполагать это в первую очередь. Для получения дополнительной информации по этой теме обратитесь к спецификации FHIR здесь: <a href="http://hl7.org/fhir/R4/bundle.html#references">Разрешение ссылок в Bundle</a></p>
         
                                 <p>Таблица ниже описывает влияние, которое тип Bundle может оказать на загрузку Bundle:</p>
                             </div>
@@ -657,8 +664,8 @@
 										<td class="text-left">document</td>
 										<!-- GG's response on server replacing IDs: https://chat.fhir.org/#narrow/stream/implementers/subject/Document.20references -->
 										<td class="text-left">
-                                            <span class="lang-content lang-en">You can create your own IDs for resources and use them as references for other resources within the Bundle. A document Bundle typically is stored as-is on the server, without it getting unpacked - although if you upload it to the <code><b>[Service Root URL]</b></code> instead of the <a href="http://hl7.org/fhir/STU3/documents.html#bundle">usual endpoints</a> then it will be up to the server to unpack the Bundle and replace your assigned resource ID's with its own (though it doesn't have to).</span>
-                                            <span class="lang-content lang-ru">Вы можете создать свои собственные ID для ресурсов и использовать их как ссылки для других ресурсов внутри Bundle. Document Bundle обычно сохраняется как есть на сервере, без распаковки - хотя если вы загружаете его в <code><b>[Service Root URL]</b></code> вместо <a href="http://hl7.org/fhir/STU3/documents.html#bundle">обычных конечных точек</a>, то сервер может распаковать Bundle и заменить ваши назначенные ID ресурсов своими собственными (хотя он не обязан это делать).</span>
+                                            <span class="lang-content lang-en">You can create your own IDs for resources and use them as references for other resources within the Bundle. A document Bundle typically is stored as-is on the server, without it getting unpacked - although if you upload it to the <code><b>[Service Root URL]</b></code> instead of the <a href="http://hl7.org/fhir/R4/documents.html#bundle">usual endpoints</a> then it will be up to the server to unpack the Bundle and replace your assigned resource ID's with its own (though it doesn't have to).</span>
+                                            <span class="lang-content lang-ru">Вы можете создать свои собственные ID для ресурсов и использовать их как ссылки для других ресурсов внутри Bundle. Document Bundle обычно сохраняется как есть на сервере, без распаковки - хотя если вы загружаете его в <code><b>[Service Root URL]</b></code> вместо <a href="http://hl7.org/fhir/R4/documents.html#bundle">обычных конечных точек</a>, то сервер может распаковать Bundle и заменить ваши назначенные ID ресурсов своими собственными (хотя он не обязан это делать).</span>
                                         </td>
 									</tr>	
 									<tr>
@@ -671,8 +678,8 @@
 									<tr>
 										<td class="text-left">transaction</td>
 										<td class="text-left">
-                                            <span class="lang-content lang-en">You can reference other resources inside the Bundle using their business identifiers in a simplified search query. It is then on the server to replace the search query with the resource ID's when processing the Bundle. See Conditional References section of <a href="http://hl7.org/fhir/STU3/http.html#2.42.0.16.2">Transaction Processing Rules</a> for more.</span>
-                                            <span class="lang-content lang-ru">Вы можете ссылаться на другие ресурсы внутри Bundle, используя их бизнес-идентификаторы в упрощенном поисковом запросе. Затем сервер должен заменить поисковый запрос на ID ресурсов при обработке Bundle. См. раздел Условные ссылки в <a href="http://hl7.org/fhir/STU3/http.html#2.42.0.16.2">Правилах обработки транзакций</a> для получения дополнительной информации.</span>
+                                            <span class="lang-content lang-en">You can reference other resources inside the Bundle using their business identifiers in a simplified search query. It is then on the server to replace the search query with the resource ID's when processing the Bundle. See Conditional References section of <a href="http://hl7.org/fhir/R4/http.html#2.42.0.16.2">Transaction Processing Rules</a> for more.</span>
+                                            <span class="lang-content lang-ru">Вы можете ссылаться на другие ресурсы внутри Bundle, используя их бизнес-идентификаторы в упрощенном поисковом запросе. Затем сервер должен заменить поисковый запрос на ID ресурсов при обработке Bundle. См. раздел Условные ссылки в <a href="http://hl7.org/fhir/R4/http.html#2.42.0.16.2">Правилах обработки транзакций</a> для получения дополнительной информации.</span>
                                         </td>
 									</tr>
 									<tr>
@@ -694,11 +701,11 @@
 							
 							<br>
                             <div class="lang-content lang-en">
-                                <p>That's about it for the difficult parts of a Bundle! Have a look at the <a href="http://hl7.org/fhir/STU3/bundle.html">FHIR page for Bundle</a> now for things like uniqueness rules and search parameters of a Bundle.</p>
+                                <p>That's about it for the difficult parts of a Bundle! Have a look at the <a href="http://hl7.org/fhir/R4/bundle.html">FHIR page for Bundle</a> now for things like uniqueness rules and search parameters of a Bundle.</p>
                             </div>
                             
                             <div class="lang-content lang-ru">
-                                <p>Это все о сложных частях Bundle! Теперь взгляните на <a href="http://hl7.org/fhir/STU3/bundle.html">страницу FHIR для Bundle</a> для изучения таких вещей, как правила уникальности и параметры поиска Bundle.</p>
+                                <p>Это все о сложных частях Bundle! Теперь взгляните на <a href="http://hl7.org/fhir/R4/bundle.html">страницу FHIR для Bundle</a> для изучения таких вещей, как правила уникальности и параметры поиска Bundle.</p>
                             </div>
 						
 	
@@ -725,8 +732,8 @@
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
                         <h1 class="mdl-mega-footer--heading">FHIR</h1>
                         <ul class="mdl-mega-footer--link-list">
-                            <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_15" title="Next FHIR get-together in Madrid in May 2017">Connectathon 15</a></li>
-                            <li><a href="http://hl7.org/fhir/STU3" title="Latest release of FHIR, for use in Madrid Connectathon">FHIR STU3 Release</a></li>
+                            <li><a href="https://confluence.hl7.org/spaces/FHIR/pages/391191767/2026-01+Connectathon+41" title="Virtual FHIR Connectathon, January 13-15, 2026">Connectathon 41</a></li>
+                            <li><a href="http://hl7.org/fhir/R4" title="FHIR R4 Release">FHIR R4 Release</a></li>
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
                     </div>

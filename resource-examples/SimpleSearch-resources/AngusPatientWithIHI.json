@@ -4,7 +4,7 @@
   "maritalStatus": {
     "coding": [
       {
-        "system": "http://hl7.org/fhir/v3/MaritalStatus",
+        "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
         "display": "Married",
         "code": "M"
       }
@@ -33,7 +33,7 @@
         "text": "IHI",
         "coding": [
           {
-            "system": "http://hl7.org/fhir/v2/0203",
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
             "display": "National unique individual identifier",
             "code": "NI"
           }
@@ -49,9 +49,7 @@
         "Brian"
       ],
       "text": "Angus Brian Millar",
-      "family": [
-        "Millar"
-      ],
+      "family": "Millar",
       "use": "official",
       "prefix": [
         "Mr"

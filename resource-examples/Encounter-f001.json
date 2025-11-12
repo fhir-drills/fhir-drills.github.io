@@ -14,9 +14,9 @@
   ],
   "status": "finished",
   "class": {
+	  "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
 	  "code": "SS",
 	  "display": "short stay"
-	
   },
   "type": [
     {
@@ -48,7 +48,7 @@
     "system": "http://unitsofmeasure.org",
     "code": "min"
   },
-  "reason": [
+  "reasonCode": [
     {
       "coding": [
         {
