@@ -367,8 +367,10 @@
                             <span class="lang-content lang-ru">Язык</span>
                         </h1>
                         <div class="language-selector">
-                            <button onclick="switchLanguage('en')" class="lang-btn" id="lang-en-btn">English</button>
-                            <button onclick="switchLanguage('ru')" class="lang-btn" id="lang-ru-btn" title="Russian language support for Central Asian countries adopting FHIR">Русский</button>
+                            <select id="language-dropdown" class="lang-dropdown" onchange="switchLanguage(this.value)">
+                                <option value="en">English</option>
+                                <option value="ru" title="Russian language support for Central Asian countries adopting FHIR">Русский</option>
+                            </select>
                         </div>
                     </div>
                 </div>
