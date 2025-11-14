@@ -1,8 +1,77 @@
 var servers = {
     // all of these need to be made https, can't upload to http from an https page
-    hapiFhirR4: "https://hapi.fhir.org/baseR4",
-    hapiHL7AU: "https://hapi-hl7-au-training-server.australiaeast.cloudapp.azure.com/fhir"
+    options: [
+        { name: "HAPI FHIR R4", url: "https://hapi.fhir.org/baseR4" },
+        { name: "Firely Server R4", url: "https://server.fire.ly/r4" }
+    ],
+    hapiFhirR4: null,  // Will be set to a working server after health check
+    activeServerName: null  // Track which server we're using
 }
+
+// Health check function - checks if server is responsive
+async function isServerHealthy(serverUrl) {
+    try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+
+        const response = await fetch(serverUrl + '/metadata', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            },
+            signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+        return response.ok;
+    } catch (error) {
+        console.log("Server health check failed for " + serverUrl + ": " + error.message);
+        return false;
+    }
+}
+
+// Select the first healthy server from the options
+async function selectHealthyServer() {
+    console.log("Checking server health...");
+
+    for (let server of servers.options) {
+        console.log("Checking " + server.name + " at " + server.url);
+        if (await isServerHealthy(server.url)) {
+            servers.hapiFhirR4 = server.url;
+            servers.activeServerName = server.name;
+            console.log("✓ Using " + server.name + " at " + server.url);
+            updateServerStatusUI(server.name, true);
+            return true;
+        }
+    }
+
+    // If no server is healthy, default to Firely and show warning
+    console.warn("No servers responded to health check. Defaulting to Firely Server.");
+    servers.hapiFhirR4 = "https://server.fire.ly/r4";
+    servers.activeServerName = "Firely Server R4 (no health check)";
+    updateServerStatusUI(servers.activeServerName, false);
+    return false;
+}
+
+// Update UI to show which server is being used
+function updateServerStatusUI(serverName, isHealthy) {
+    // Create or update server status indicator
+    var statusDiv = document.getElementById('server-status-indicator');
+    if (!statusDiv) {
+        statusDiv = document.createElement('div');
+        statusDiv.id = 'server-status-indicator';
+        statusDiv.style.cssText = 'position: fixed; bottom: 10px; right: 10px; background: #4CAF50; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2);';
+        document.body.appendChild(statusDiv);
+    }
+
+    var icon = isHealthy ? '✓' : '⚠';
+    var bgColor = isHealthy ? '#4CAF50' : '#FF9800';
+    statusDiv.style.backgroundColor = bgColor;
+    statusDiv.innerHTML = icon + ' Using: ' + serverName;
+}
+
+// Initialize server selection on page load
+window.serverReady = selectHealthyServer();
 
 uploaded = {
     //    object structure:
@@ -176,7 +245,8 @@ function failedUpload() {
 
 var patientWithReferencesButton = document.getElementById('patient-with-references-button');
 if (patientWithReferencesButton) {
-	patientWithReferencesButton.onclick = function () {
+	patientWithReferencesButton.onclick = async function () {
+		await window.serverReady;  // Wait for server selection
 		uploadFiles("patient-with-references", servers.hapiFhirR4, [
 		["rf-patient", "resource-examples/Patient-f001.json"],
 		["rf-encounter", "resource-examples/Encounter-f001.json"],
@@ -189,7 +259,8 @@ if (patientWithReferencesButton) {
 
 var simplePatientButton = document.getElementById('simple-patient-button');
 if (simplePatientButton) {
-	simplePatientButton.onclick = function () {
+	simplePatientButton.onclick = async function () {
+		await window.serverReady;  // Wait for server selection
 		uploadFiles("simple-patient", servers.hapiFhirR4, [
 		["simple-patient-resourcePatient1", "resource-examples/SimplePatient-resources/PatientResourceExample1.json"]]);
 	};
@@ -198,7 +269,8 @@ if (simplePatientButton) {
 
 var conceptMapButton = document.getElementById('conceptmap-button');
 if (conceptMapButton) {
-	conceptMapButton.onclick = function () {
+	conceptMapButton.onclick = async function () {
+		await window.serverReady;  // Wait for server selection
 		uploadFiles("conceptmap", servers.hapiFhirR4, [
 			["cm-codesystem", "resource-examples/ConceptMap-resources/Codesystem.json"],
 			["cm-old-valueset", "resource-examples/ConceptMap-resources/Old-ValueSet.json"],
@@ -209,7 +281,8 @@ if (conceptMapButton) {
 
 var expandOperationButton = document.getElementById('expand-operation-button');
 if (expandOperationButton) {
-	expandOperationButton.onclick = function () {
+	expandOperationButton.onclick = async function () {
+		await window.serverReady;  // Wait for server selection
 		uploadFiles("expand-operation", servers.hapiFhirR4, [
 		["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
 	};
