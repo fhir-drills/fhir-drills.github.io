@@ -132,11 +132,6 @@ function getResourceId (fileContent) {
 function upload(file) {
 	var fileLocation = file.localLocation;
 	var resourceType = file.type;
-
-	// Print resource to console before uploading
-	console.log("Uploading " + resourceType + " from " + fileLocation + ":");
-	console.log(JSON.stringify(file.content, null, 2));
-
 	var jqxhr = $.ajax({
 		url: serverUrl + '/' + resourceType,
 		method: "POST",
