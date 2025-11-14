@@ -4,15 +4,14 @@ var servers = {
         { name: "HAPI FHIR R4", url: "https://hapi.fhir.org/baseR4" },
         { name: "Firely Server R4", url: "https://server.fire.ly/r4" }
     ],
-    hapiFhirR4: null,  // Will be set to a working server after health check
-    activeServerName: null  // Track which server we're using
+    hapiFhirR4: null,
+    activeServerName: null
 }
 
-// Health check function - checks if server is responsive
 async function isServerHealthy(serverUrl) {
     try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
 
         const response = await fetch(serverUrl + '/metadata', {
             method: 'GET',
@@ -30,7 +29,6 @@ async function isServerHealthy(serverUrl) {
     }
 }
 
-// Select the first healthy server from the options
 async function selectHealthyServer() {
     console.log("Checking server health...");
 
@@ -51,7 +49,6 @@ async function selectHealthyServer() {
     return false;
 }
 
-// Initialize server selection on page load
 window.serverReady = selectHealthyServer();
 
 uploaded = {
@@ -227,7 +224,7 @@ function failedUpload() {
 var patientWithReferencesButton = document.getElementById('patient-with-references-button');
 if (patientWithReferencesButton) {
 	patientWithReferencesButton.onclick = async function () {
-		await window.serverReady;  // Wait for server selection
+		await window.serverReady;
 		uploadFiles("patient-with-references", servers.hapiFhirR4, [
 		["rf-patient", "resource-examples/Patient-f001.json"],
 		["rf-encounter", "resource-examples/Encounter-f001.json"],
@@ -241,7 +238,7 @@ if (patientWithReferencesButton) {
 var simplePatientButton = document.getElementById('simple-patient-button');
 if (simplePatientButton) {
 	simplePatientButton.onclick = async function () {
-		await window.serverReady;  // Wait for server selection
+		await window.serverReady;
 		uploadFiles("simple-patient", servers.hapiFhirR4, [
 		["simple-patient-resourcePatient1", "resource-examples/SimplePatient-resources/PatientResourceExample1.json"]]);
 	};
@@ -251,7 +248,7 @@ if (simplePatientButton) {
 var conceptMapButton = document.getElementById('conceptmap-button');
 if (conceptMapButton) {
 	conceptMapButton.onclick = async function () {
-		await window.serverReady;  // Wait for server selection
+		await window.serverReady;
 		uploadFiles("conceptmap", servers.hapiFhirR4, [
 			["cm-codesystem", "resource-examples/ConceptMap-resources/Codesystem.json"],
 			["cm-old-valueset", "resource-examples/ConceptMap-resources/Old-ValueSet.json"],
@@ -263,7 +260,7 @@ if (conceptMapButton) {
 var expandOperationButton = document.getElementById('expand-operation-button');
 if (expandOperationButton) {
 	expandOperationButton.onclick = async function () {
-		await window.serverReady;  // Wait for server selection
+		await window.serverReady;
 		uploadFiles("expand-operation", servers.hapiFhirR4, [
 		["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
 	};
