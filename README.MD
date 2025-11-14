@@ -1,5 +1,13 @@
+# FHIR Drills
+
+Interactive tutorials for learning FHIR.
+
+## Server Selection
+
+The site automatically selects a working FHIR server on page load by performing health checks against multiple public servers (HAPI FHIR R4, Firely Server R4). This ensures the tutorials continue to work even if one server is unavailable. The server selection is transparent to users and happens in the background.
+
 # HTML
- 
+
 Decide on an exercise name - in this example, the exercise name is ``patient-with-references``.
 
 ## Full URL
