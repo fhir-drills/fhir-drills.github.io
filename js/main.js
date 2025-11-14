@@ -40,34 +40,15 @@ async function selectHealthyServer() {
             servers.hapiFhirR4 = server.url;
             servers.activeServerName = server.name;
             console.log("✓ Using " + server.name + " at " + server.url);
-            updateServerStatusUI(server.name, true);
             return true;
         }
     }
 
-    // If no server is healthy, default to Firely and show warning
+    // If no server is healthy, default to Firely
     console.warn("No servers responded to health check. Defaulting to Firely Server.");
     servers.hapiFhirR4 = "https://server.fire.ly/r4";
     servers.activeServerName = "Firely Server R4 (no health check)";
-    updateServerStatusUI(servers.activeServerName, false);
     return false;
-}
-
-// Update UI to show which server is being used
-function updateServerStatusUI(serverName, isHealthy) {
-    // Create or update server status indicator
-    var statusDiv = document.getElementById('server-status-indicator');
-    if (!statusDiv) {
-        statusDiv = document.createElement('div');
-        statusDiv.id = 'server-status-indicator';
-        statusDiv.style.cssText = 'position: fixed; bottom: 10px; right: 10px; background: #4CAF50; color: white; padding: 8px 12px; border-radius: 4px; font-size: 12px; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2);';
-        document.body.appendChild(statusDiv);
-    }
-
-    var icon = isHealthy ? '✓' : '⚠';
-    var bgColor = isHealthy ? '#4CAF50' : '#FF9800';
-    statusDiv.style.backgroundColor = bgColor;
-    statusDiv.innerHTML = icon + ' Using: ' + serverName;
 }
 
 // Initialize server selection on page load
