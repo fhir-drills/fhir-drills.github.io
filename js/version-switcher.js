@@ -39,6 +39,9 @@ class VersionSwitcher {
         if (window.updateServersForVersion) {
             window.updateServersForVersion(version);
         }
+
+        // Dispatch event for pages that need to update their display
+        window.dispatchEvent(new Event('versionChanged'));
     }
 
     initializeVersion() {

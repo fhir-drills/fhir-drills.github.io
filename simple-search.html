@@ -392,12 +392,20 @@
     <script src="js/main.js"></script>
 
     <script>
-      $( document ).ready((document) => {
-        $("#fhir-server").html("<span> " + servers.hapiFhirR4 + "</<span>");
-        $("#fhir-server-ru").html("<span> " + servers.hapiFhirR4 + "</<span>");
+      async function updateServerDisplay() {
+        await window.serverReady;
+        $("#fhir-server").html("<span> " + servers.hapiFhirR4 + "</span>");
+        $("#fhir-server-ru").html("<span> " + servers.hapiFhirR4 + "</span>");
+      }
+
+      $( document ).ready(async (document) => {
+        await updateServerDisplay();
       });
+
+      // Update display when version changes
+      window.addEventListener('versionChanged', updateServerDisplay);
     </script>
-    
+
     <script src="js/language-switcher.js"></script>
     <script src="js/version-switcher.js"></script>
 
