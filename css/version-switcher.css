@@ -1,0 +1,52 @@
+/* FHIR Version switching CSS */
+.version-content {
+    display: none;
+}
+
+body.version-r4 .version-r4 {
+    display: block;
+}
+
+body.version-r4 .version-r4.inline {
+    display: inline;
+}
+
+body.version-r5 .version-r5 {
+    display: block;
+}
+
+body.version-r5 .version-r5.inline {
+    display: inline;
+}
+
+/* Version selector styling */
+.version-selector {
+    margin: 20px 0;
+}
+
+.version-dropdown {
+    background: #673ab7;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    min-width: 120px;
+}
+
+.version-dropdown:hover {
+    background: #5e35b1;
+}
+
+.version-dropdown:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.version-dropdown option {
+    background: white;
+    color: #333;
+    padding: 8px;
+}

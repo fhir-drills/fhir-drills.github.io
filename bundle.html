@@ -53,6 +53,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.deep_purple-pink.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/language-switcher.css">
+    <link rel="stylesheet" href="css/version-switcher.css">
     <style>
         #view-source {
             position: fixed;
@@ -76,7 +77,7 @@
   </script>	
 </head>
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base lang-en">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base lang-en version-r4">
 <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -153,7 +154,7 @@
                             <!-- English Content -->
                             <div class="lang-content lang-en">
                                 <h4>Bundle tutorial</h4>
-                                <p>Bundle is a container for resources, enabling you to group and transmit resources altogether at once. Guidance on the resource in general is available on the <a href="http://hl7.org/fhir/R4/bundle.html">Bundle</a> page, and on the <a href="http://hl7.org/fhir/R4/http.html#transaction">RESTful API</a> pages of the FHIR specification, with specific bundle types like transactions, messaging and documents having their own documentation.</p>
+                                <p>Bundle is a container for resources, enabling you to group and transmit resources altogether at once. Guidance on the resource in general is available on the <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4/bundle.html">Bundle</a></span><span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5/bundle.html">Bundle</a></span> page, and on the <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4/http.html#transaction">RESTful API</a></span><span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5/http.html#transaction">RESTful API</a></span> pages of the FHIR specification, with specific bundle types like transactions, messaging and documents having their own documentation.</p>
                                 <ul class="toc">
                                     <h4>Contents</h4>
                                     <!-- pr prefix stands for 'patient references'-->
@@ -456,21 +457,21 @@
 							</textarea>
 	<br>
                             <div class="lang-content lang-en">
-                                <p>See <a href="http://hl7.org/fhir/R4/http.html#paging">more information on paging</a> on the FHIR spec.</p>
+                                <p>See <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4/http.html#paging">more information on paging</a></span><span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5/http.html#paging">more information on paging</a></span> on the FHIR spec.</p>
                             </div>
                             
                             <div class="lang-content lang-ru">
-                                <p>См. <a href="http://hl7.org/fhir/R4/http.html#paging">больше информации о пагинации</a> в спецификации FHIR.</p>
+                                <p>См. <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4/http.html#paging">больше информации о пагинации</a></span><span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5/http.html#paging">больше информации о пагинации</a></span> в спецификации FHIR.</p>
                             </div>
 							
                             <div class="lang-content lang-en">
                                 <h5 id="bn-bundle-types">Step 3: Bundle Types</h5>
-                                <p>There are <a href="http://hl7.org/fhir/R4/valueset-bundle-type.html#expansion">several types</a> of Bundles defined by FHIR: document, message, transaction, transaction-response, batch, batch-response, history, searchset, and collection.</p>
+                                <p>There are <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4/valueset-bundle-type.html#expansion">several types</a></span><span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5/valueset-bundle-type.html#expansion">several types</a></span> of Bundles defined by FHIR: document, message, transaction, transaction-response, batch, batch-response, history, searchset, and collection.</p>
                             </div>
                             
                             <div class="lang-content lang-ru">
                                 <h5 id="bn-bundle-types">Шаг 3: Типы Bundle</h5>
-                                <p>FHIR определяет <a href="http://hl7.org/fhir/R4/valueset-bundle-type.html#expansion">несколько типов</a> Bundle: document, message, transaction, transaction-response, batch, batch-response, history, searchset и collection.</p>
+                                <p>FHIR определяет <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4/valueset-bundle-type.html#expansion">несколько типов</a></span><span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5/valueset-bundle-type.html#expansion">несколько типов</a></span> Bundle: document, message, transaction, transaction-response, batch, batch-response, history, searchset и collection.</p>
                             </div>
 
 							<table class="table-fill">
@@ -504,8 +505,8 @@
 									<tr>
 										<td class="text-left">history</td>
 										<td class="text-left">
-                                            <span class="lang-content lang-en">Similar to searchset, but is specialised for the <a href="http://hl7.org/fhir/R4/http.html#history">_history</a> operations when you're looking at the history of operations on single instance of a resource. For example, looking at all the edits made to a single Patient resource.</span>
-                                            <span class="lang-content lang-ru">Похож на searchset, но специализирован для операций <a href="http://hl7.org/fhir/R4/http.html#history">_history</a>, когда вы просматриваете историю операций над одним экземпляром ресурса. Например, просмотр всех изменений, внесенных в один ресурс Patient.</span>
+                                            <span class="lang-content lang-en">Similar to searchset, but is specialised for the <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4/http.html#history">_history</a></span><span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5/http.html#history">_history</a></span> operations when you're looking at the history of operations on single instance of a resource. For example, looking at all the edits made to a single Patient resource.</span>
+                                            <span class="lang-content lang-ru">Похож на searchset, но специализирован для операций <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4/http.html#history">_history</a></span><span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5/http.html#history">_history</a></span>, когда вы просматриваете историю операций над одним экземпляром ресурса. Например, просмотр всех изменений, внесенных в один ресурс Patient.</span>
                                         </td>
 									</tr>
 									<tr>
@@ -624,7 +625,7 @@
                                 
                                 <p>The simple answer is that the bundle creator can assign temporary resource IDs to resources in order to create the references between each resource. Then depending on the way you upload the Bundle to the server the server can use your IDs to understand the linkage between resources and will assign its own server IDs and update all the existing references with the new IDs. In these cases, the server will then reply with a return Bundle that informs the sender of these updated IDs. If you refer back the Bundle layout image at the beginning of this page you can see the '<code>Bundle/entry/response/location</code>' element where these new IDs would be returned as a URI.   Whether the server performs this identification or not is dependant on the Bundle type you are uploading and the endpoint you are uploading it to. The table below talks more to this point.</p>
 
-                                <p>Unlike general resources you need to take care when resolving references between resources in Bundles, you can not just assume the reference is to a resource on a server, it may be a reference to a resource within the same Bundle and you should assume this first. For more on this topic refer to the FHIR specification here: <a href="http://hl7.org/fhir/R4/bundle.html#references">Resolving references in Bundles</a> </p>
+                                <p>Unlike general resources you need to take care when resolving references between resources in Bundles, you can not just assume the reference is to a resource on a server, it may be a reference to a resource within the same Bundle and you should assume this first. For more on this topic refer to the FHIR specification here: <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4/bundle.html#references">Resolving references in Bundles</a></span><span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5/bundle.html#references">Resolving references in Bundles</a></span> </p>
         
                                 <p>The table below describes the effect Bundle type can have on uploading Bundles:</p>
                             </div>
@@ -701,11 +702,11 @@
 							
 							<br>
                             <div class="lang-content lang-en">
-                                <p>That's about it for the difficult parts of a Bundle! Have a look at the <a href="http://hl7.org/fhir/R4/bundle.html">FHIR page for Bundle</a> now for things like uniqueness rules and search parameters of a Bundle.</p>
+                                <p>That's about it for the difficult parts of a Bundle! Have a look at the <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4/bundle.html">FHIR page for Bundle</a></span><span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5/bundle.html">FHIR page for Bundle</a></span> now for things like uniqueness rules and search parameters of a Bundle.</p>
                             </div>
                             
                             <div class="lang-content lang-ru">
-                                <p>Это все о сложных частях Bundle! Теперь взгляните на <a href="http://hl7.org/fhir/R4/bundle.html">страницу FHIR для Bundle</a> для изучения таких вещей, как правила уникальности и параметры поиска Bundle.</p>
+                                <p>Это все о сложных частях Bundle! Теперь взгляните на <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4/bundle.html">страницу FHIR для Bundle</a></span><span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5/bundle.html">страницу FHIR для Bundle</a></span> для изучения таких вещей, как правила уникальности и параметры поиска Bundle.</p>
                             </div>
 						
 	
@@ -733,11 +734,14 @@
                         <h1 class="mdl-mega-footer--heading">FHIR</h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="https://confluence.hl7.org/spaces/FHIR/pages/391191767/2026-01+Connectathon+41" title="Virtual FHIR Connectathon, January 13-15, 2026">Connectathon 41</a></li>
-                            <li><a href="http://hl7.org/fhir/R4" title="FHIR R4 Release">FHIR R4 Release</a></li>
+                            <li>
+                                <span class="version-content version-r4 inline"><a href="http://hl7.org/fhir/R4" title="FHIR R4 Release">FHIR R4 Release</a></span>
+                                <span class="version-content version-r5 inline"><a href="http://hl7.org/fhir/R5" title="FHIR R5 Release">FHIR R5 Release</a></span>
+                            </li>
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
                     </div>
-                    
+
                     <!-- Language Selector -->
                     <div class="mdl-mega-footer--drop-down-section">
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
@@ -749,6 +753,18 @@
                             <select id="language-dropdown" class="lang-dropdown" onchange="switchLanguage(this.value)">
                                 <option value="en">English</option>
                                 <option value="ru" title="Russian language support for Central Asian countries adopting FHIR">Русский</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- FHIR Version Selector -->
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">FHIR Version</h1>
+                        <div class="version-selector">
+                            <select id="version-dropdown" class="version-dropdown" onchange="switchVersion(this.value)">
+                                <option value="r4">R4 (4.0.1)</option>
+                                <option value="r5">R5 (5.0.0)</option>
                             </select>
                         </div>
                     </div>
@@ -770,6 +786,7 @@
 <!-- supporting javascript to actually do the uploading -->	
 	<script src="js/post-resources.js"></script>
     <script src="js/language-switcher.js"></script>
+    <script src="js/version-switcher.js"></script>
 </body>
 
 </html>

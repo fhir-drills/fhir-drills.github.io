@@ -1,11 +1,41 @@
 var servers = {
     // all of these need to be made https, can't upload to http from an https page
-    options: [
+    r4: [
         { name: "HAPI FHIR R4", url: "https://hapi.fhir.org/baseR4" },
         { name: "Firely Server R4", url: "https://server.fire.ly/r4" }
     ],
+    r5: [
+        { name: "HAPI FHIR R5", url: "https://hapi.fhir.org/baseR5" },
+        { name: "Firely Server R5", url: "https://server.fire.ly/r5" }
+    ],
+    options: [],
+    currentVersion: 'r4',
     hapiFhirR4: null,
     activeServerName: null
+}
+
+// Initialize with R4 servers by default
+servers.options = servers.r4;
+
+// Function to update servers based on FHIR version
+window.updateServersForVersion = function(version) {
+    servers.currentVersion = version;
+    if (version === 'r5') {
+        servers.options = servers.r5;
+    } else {
+        servers.options = servers.r4;
+    }
+    // Re-select healthy server for new version and update the promise
+    window.serverReady = selectHealthyServer();
+}
+
+// Helper function to get version-specific resource path
+function getResourcePath(basePath) {
+    if (servers.currentVersion === 'r5') {
+        // Insert R5 after resource-examples/
+        return basePath.replace('resource-examples/', 'resource-examples/R5/');
+    }
+    return basePath;
 }
 
 async function isServerHealthy(serverUrl) {
@@ -42,10 +72,15 @@ async function selectHealthyServer() {
         }
     }
 
-    // If no server is healthy, default to Firely
+    // If no server is healthy, default to Firely for current version
     console.warn("No servers responded to health check. Defaulting to Firely Server.");
-    servers.hapiFhirR4 = "https://server.fire.ly/r4";
-    servers.activeServerName = "Firely Server R4 (no health check)";
+    if (servers.currentVersion === 'r5') {
+        servers.hapiFhirR4 = "https://server.fire.ly/r5";
+        servers.activeServerName = "Firely Server R5 (no health check)";
+    } else {
+        servers.hapiFhirR4 = "https://server.fire.ly/r4";
+        servers.activeServerName = "Firely Server R4 (no health check)";
+    }
     return false;
 }
 
@@ -240,7 +275,7 @@ if (simplePatientButton) {
 	simplePatientButton.onclick = async function () {
 		await window.serverReady;
 		uploadFiles("simple-patient", servers.hapiFhirR4, [
-		["simple-patient-resourcePatient1", "resource-examples/SimplePatient-resources/PatientResourceExample1.json"]]);
+		["simple-patient-resourcePatient1", getResourcePath("resource-examples/SimplePatient-resources/PatientResourceExample1.json")]]);
 	};
 }
 
@@ -250,10 +285,10 @@ if (conceptMapButton) {
 	conceptMapButton.onclick = async function () {
 		await window.serverReady;
 		uploadFiles("conceptmap", servers.hapiFhirR4, [
-			["cm-codesystem", "resource-examples/ConceptMap-resources/Codesystem.json"],
-			["cm-old-valueset", "resource-examples/ConceptMap-resources/Old-ValueSet.json"],
-			["cm-new-valueset", "resource-examples/ConceptMap-resources/New-ValueSet.json"],
-			["cm-conceptmap", "resource-examples/ConceptMap-resources/ConceptMap.json"]]);
+			["cm-codesystem", getResourcePath("resource-examples/ConceptMap-resources/Codesystem.json")],
+			["cm-old-valueset", getResourcePath("resource-examples/ConceptMap-resources/Old-ValueSet.json")],
+			["cm-new-valueset", getResourcePath("resource-examples/ConceptMap-resources/New-ValueSet.json")],
+			["cm-conceptmap", getResourcePath("resource-examples/ConceptMap-resources/ConceptMap.json")]]);
 	};
 }
 
@@ -262,7 +297,7 @@ if (expandOperationButton) {
 	expandOperationButton.onclick = async function () {
 		await window.serverReady;
 		uploadFiles("expand-operation", servers.hapiFhirR4, [
-		["vac-expand-valueset", "resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json"]]);
+		["vac-expand-valueset", getResourcePath("resource-examples/SimpleValueSet-resources/ValueSet_SimpleExample.json")]]);
 	};
 }
 
