@@ -506,3 +506,8 @@ body.lang-ru .lang-ru.inline {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* JSON examples: scroll sideways on narrow screens instead of being cut off */
+pre.json-example {
+    overflow-x: auto;
+}
