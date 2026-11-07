@@ -165,7 +165,7 @@
                                 <a href="#vac-step1">Step 1: What are ValueSets and CodeSystems</a>                            
                                 <a href="#vac-step2">Step 2: CodeSystem the FHIR Resources</a>  
                                 <a href="#vac-step3">Step 3: ValueSet the FHIR Resources</a>  
-                                <a href="#vac-step4">Step 4: Understanding how ValueSet codes are used</a>
+                                <a href="#vac-step4">Step 4: Understanding how ValueSet codes are stored</a>
                                 <a href="#vac-step5">Step 5: Creating ValueSets using filters (Include, Exclude and Filter)</a>
                                 <a href="#vac-step6">Step 6: Using the $expand operation</a>
                             </nav>
@@ -201,9 +201,9 @@
                                 <a href="#vac-step1-ru">Шаг 1: Что такое ValueSet и CodeSystem</a>                            
                                 <a href="#vac-step2-ru">Шаг 2: CodeSystem - ресурс FHIR</a>  
                                 <a href="#vac-step3-ru">Шаг 3: ValueSet - ресурс FHIR</a>  
-                                <a href="#vac-step4-ru">Шаг 4: Понимание того, как используются коды ValueSet</a>
+                                <a href="#vac-step4-ru">Шаг 4: Понимание того, как хранятся коды ValueSet</a>
                                 <a href="#vac-step5-ru">Шаг 5: Создание ValueSet с использованием фильтров (Include, Exclude и Filter)</a>
-                                <a href="#vac-step6">Шаг 6: Использование операции $expand</a>
+                                <a href="#vac-step6-ru">Шаг 6: Использование операции $expand</a>
                             </nav>
 
                             <h5 id="vac-step1-ru">Шаг 1: Что такое ValueSet и CodeSystem</h5>                        
@@ -445,7 +445,7 @@
                             
                             <p>Легко попасть в ловушку, думая, что информация о кодах, которую вы перечисляете в ValueSet, будет точно такой же информацией о кодах, используемой, когда ValueSet вызывается системой. Однако это не так, поскольку коды, хранящиеся в ValueSet, фактически принадлежат CodeSystem - экземпляр valueset содержит только 'ссылки' на фактические коды в codesystem. Таким образом, когда коды codesystem обновляются, valuesets, содержащие эти коды, будут автоматически содержать обновленные коды. Это хорошо демонстрируется одним из основных применений ValueSet: получение списка кодов для представления пользователю, как указано ссылками в valueset, это делается с помощью специальной операции на FHIR Terminology Server, называемой <b>'<code>$expand</code>'</b>. Это известно как ValueSet Expansion или ValueSet enumeration.</p>
                             
-                            <p>Мы не будем сейчас углубляться в то, как выполнить расширение (см. <a href="#vac-step6">шаг 6</a> для этого), но вам нужно знать, что происходит в FHIR Terminology Server при выполнении расширения, поскольку это ключ к вашему пониманию.</p>
+                            <p>Мы не будем сейчас углубляться в то, как выполнить расширение (см. <a href="#vac-step6-ru">шаг 6</a> для этого), но вам нужно знать, что происходит в FHIR Terminology Server при выполнении расширения, поскольку это ключ к вашему пониманию.</p>
                             
                             <p>Как видно на этой первой диаграмме (вы можете нажать для увеличения), разработчик вызывает операцию <b>'<code>&#36;expand</code>'</b> на данном ValueSet, потому что он хочет получить список кодов и описаний для отображения пользователю. Как мы видели, ValueSet имеет список кодов и знает CodeSystems для каждого кода.</p>
                         </div>
@@ -502,6 +502,80 @@
                             
                             <p>Изображение ниже взято из <a href="http://hl7.org/fhir/R4/valueset.html#resource"><b>древовидной структуры ValueSet в спецификации FHIR</b></a> и выделяет разделы, которые касаются темы, обсуждаемой в этом шаге (Include, Exclude и Filter).</p>
                             <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img alt="Дерево ValueSet из спецификации FHIR с выделенными compose.include, compose.exclude, разделом concept и разделом filter; concept и filter используются либо одно, либо другое, но не вместе" src="images/ValueSetFilterTreeDiagram.png" width="100%" class="thumbnail"/></a></p>
+                        </div>
+
+                        <!-- Step 6 - English -->
+                        <div class="lang-content lang-en">
+                            <h5 id="vac-step6">Step 6: Using the $expand operation</h5>
+                            <p>In <a href="#vac-step4">Step 4</a> we saw what a FHIR Terminology Server does when it expands a ValueSet. Now let's ask one to do it. The <a href="http://hl7.org/fhir/R4/valueset-operation-expand.html"><code>$expand</code> operation</a> can be called in two ways:</p>
+                            <ul>
+                                <li>on a ValueSet stored on the server, by its id: <code>GET [base]/ValueSet/[id]/$expand</code></li>
+                                <li>on any ValueSet the server knows, by its canonical URL: <code>GET [base]/ValueSet/$expand?url=[canonical URL]</code></li>
+                            </ul>
+                            <p>Try it with the <a href="http://hl7.org/fhir/R4/valueset-administrative-gender.html">AdministrativeGender</a> ValueSet - the one <code>Patient.gender</code> uses, so every FHIR server knows it. Open this link in your browser; it asks tx.fhir.org, HL7's public terminology server, to expand the ValueSet:</p>
+                            <p><a class="fhir-r4-only" href="https://tx.fhir.org/r4/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;_format=json"><code>https://tx.fhir.org/r4/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender</code></a><a class="fhir-r5-only" href="https://tx.fhir.org/r5/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;_format=json"><code>https://tx.fhir.org/r5/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender</code></a></p>
+                            <p>The server answers with the ValueSet plus a new <code>expansion</code> element. Its <code>contains</code> list has each code with its <code>system</code>, <code>code</code> and <code>display</code>, looked up in the CodeSystem when you made the request, and <code>timestamp</code> records when that was:</p>
+                            <pre class="json-example">"expansion": {
+  "timestamp": "2026-11-07T18:02:35.492Z",
+  "total": 4,
+  "contains": [
+    {
+      "system": "http://hl7.org/fhir/administrative-gender",
+      "code": "male",
+      "display": "Male"
+    },
+    {
+      "system": "http://hl7.org/fhir/administrative-gender",
+      "code": "female",
+      "display": "Female"
+    },
+    ...
+  ]
+}</pre>
+                            <p>A few more parameters are handy when you build a user interface:</p>
+                            <ul>
+                                <li><code>filter</code> returns only the codes whose display matches some text - just what a search-as-you-type box needs. Adding <code>&amp;filter=fem</code> returns only 'female': <a class="fhir-r4-only" href="https://tx.fhir.org/r4/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;filter=fem&amp;_format=json"><code>https://tx.fhir.org/r4/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;filter=fem</code></a><a class="fhir-r5-only" href="https://tx.fhir.org/r5/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;filter=fem&amp;_format=json"><code>https://tx.fhir.org/r5/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;filter=fem</code></a></li>
+                                <li><code>count</code> and <code>offset</code> return a large expansion, such as one from SNOMED CT, a page at a time.</li>
+                                <li><code>displayLanguage</code> asks for the displays in another language, if the CodeSystem has them.</li>
+                            </ul>
+                            <p>Because the codes are looked up at the time of the request, an expansion is a snapshot: if the CodeSystem changes, run <code>$expand</code> again to get the current codes.</p>
+                        </div>
+
+                        <!-- Step 6 - Russian -->
+                        <div class="lang-content lang-ru">
+                            <h5 id="vac-step6-ru">Шаг 6: Использование операции $expand</h5>
+                            <p>В <a href="#vac-step4-ru">Шаге 4</a> мы увидели, что делает FHIR Terminology Server, когда расширяет ValueSet. Теперь попросим сервер сделать это. <a href="http://hl7.org/fhir/R4/valueset-operation-expand.html">Операцию <code>$expand</code></a> можно вызвать двумя способами:</p>
+                            <ul>
+                                <li>для ValueSet, сохранённого на сервере, по его id: <code>GET [base]/ValueSet/[id]/$expand</code></li>
+                                <li>для любого ValueSet, известного серверу, по его canonical URL: <code>GET [base]/ValueSet/$expand?url=[canonical URL]</code></li>
+                            </ul>
+                            <p>Попробуйте на ValueSet <a href="http://hl7.org/fhir/R4/valueset-administrative-gender.html">AdministrativeGender</a> - его использует <code>Patient.gender</code>, поэтому его знает любой FHIR-сервер. Откройте эту ссылку в браузере: она просит tx.fhir.org, публичный терминологический сервер HL7, расширить ValueSet:</p>
+                            <p><a class="fhir-r4-only" href="https://tx.fhir.org/r4/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;_format=json"><code>https://tx.fhir.org/r4/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender</code></a><a class="fhir-r5-only" href="https://tx.fhir.org/r5/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;_format=json"><code>https://tx.fhir.org/r5/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender</code></a></p>
+                            <p>Сервер возвращает ValueSet с новым элементом <code>expansion</code>. В его списке <code>contains</code> для каждого кода указаны <code>system</code>, <code>code</code> и <code>display</code>, взятые из CodeSystem в момент запроса, а <code>timestamp</code> показывает, когда это было:</p>
+                            <pre class="json-example">"expansion": {
+  "timestamp": "2026-11-07T18:02:35.492Z",
+  "total": 4,
+  "contains": [
+    {
+      "system": "http://hl7.org/fhir/administrative-gender",
+      "code": "male",
+      "display": "Male"
+    },
+    {
+      "system": "http://hl7.org/fhir/administrative-gender",
+      "code": "female",
+      "display": "Female"
+    },
+    ...
+  ]
+}</pre>
+                            <p>Ещё несколько параметров пригодятся при создании пользовательского интерфейса:</p>
+                            <ul>
+                                <li><code>filter</code> возвращает только коды, display которых совпадает с текстом, - как раз то, что нужно для поиска по мере ввода. Если добавить <code>&amp;filter=fem</code>, вернётся только 'female': <a class="fhir-r4-only" href="https://tx.fhir.org/r4/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;filter=fem&amp;_format=json"><code>https://tx.fhir.org/r4/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;filter=fem</code></a><a class="fhir-r5-only" href="https://tx.fhir.org/r5/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;filter=fem&amp;_format=json"><code>https://tx.fhir.org/r5/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/administrative-gender&amp;filter=fem</code></a></li>
+                                <li><code>count</code> и <code>offset</code> возвращают большое расширение, например из SNOMED CT, по частям.</li>
+                                <li><code>displayLanguage</code> запрашивает display на другом языке, если они есть в CodeSystem.</li>
+                            </ul>
+                            <p>Поскольку коды берутся в момент запроса, расширение - это снимок: если CodeSystem изменится, выполните <code>$expand</code> снова, чтобы получить актуальные коды.</p>
                         </div>
                         
                         
