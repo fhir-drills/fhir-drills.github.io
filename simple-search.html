@@ -103,7 +103,7 @@
         <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
         <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
     </span>
-    <nav class="mdl-navigation">
+    <nav class="mdl-navigation" aria-label="Tutorials">
         <a href="./index.html" class="mdl-navigation__link">
             <span class="lang-content lang-en">Overview</span>
             <span class="lang-content lang-ru">Обзор</span>
@@ -136,7 +136,7 @@
             <span class="lang-content lang-en">ConceptMap</span>
             <span class="lang-content lang-ru">ConceptMap</span>
         </a>
-        <a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">
+        <a href="./fhir-api.html" id="fhir-api" class="mdl-navigation__link">
             <span class="lang-content lang-en">FHIR APIs</span>
             <span class="lang-content lang-ru">FHIR API</span>
         </a>
@@ -157,13 +157,13 @@
                             <h4>Simple Search</h4>
                             
                             <p>This tutorial will build on the foundation laid out in the <a href="./simple-patient.html">Simple Patient</a> tutorial to introduce searching against FHIR resources.</p>
-                            <ul class="toc">
+                            <nav class="toc" aria-label="Contents">
                                 <h4>Contents</h4>
                                 <!-- pr prefix stands for 'patient references'-->
                                 <a href="#ss-step1">Step 1: Name Searching</a>  
                                 <a href="#ss-step2">Step 2: Extended Search</a>  
                                 <a href="#ss-step3">Step 3: Search Parameter Types</a>  
-                            </ul>
+                            </nav>
 
                             <h5 id="ss-step1">Step 1: Name Searching</h5>
                             <p>Let's start with the simplest of searches, a patient's family name search.</p> 
@@ -188,7 +188,7 @@
                             
                             <p>The searches we have done so far, family &amp; given, were on simple string datatypes. FHIR defines eight different search datatypes as follows: </p>
                             
-                            <p>
+                            <ul>
                             <li><a href="http://hl7.org/fhir/R4/search.html#number">Number</a></li>
                             <li><a href="http://hl7.org/fhir/R4/search.html#date">Date/DateTime</a></li>
                             <li><a href="http://hl7.org/fhir/R4/search.html#string">String</a></li>
@@ -197,7 +197,7 @@
                             <li><a href="http://hl7.org/fhir/R4/search.html#composite">Composite</a></li>
                             <li><a href="http://hl7.org/fhir/R4/search.html#quantity">Quantity</a></li>
                             <li><a href="http://hl7.org/fhir/R4/search.html#uri">URI</a></li>
-                            </p>
+                            </ul>
                             
                             <p>Each and every search parameter on each resource page also defines the search parameter data type it uses. The screenshot below is taken from the Patient resource page. Notice that <b>given</b> uses <b>string</b> in column two and that <b>identifier</b> uses datatype <b>token</b>.</p>
                             <p><img src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
@@ -206,13 +206,12 @@
                             
                             <h6><b>Using the references above try and answer these questions:</b></h6>
                             
-                            <li>What datatype does the search parameter <b>length</b> use on the <b>Encounter</b> resource?</li>
-                            <br>
-                            <li>Using the references above try and find the patient with an <b>old</b> address in the suburb of <b>'Erinsborough'</b>?</li>
-                            <br>
-                            <li>Try and find the patient name for the person with an IHI (Individual  Health Identifier) of '<b>8003601043886154</b>'?</li>
-                            <br>
-                            
+                            <ul>
+                                <li>What datatype does the search parameter <b>length</b> use on the <b>Encounter</b> resource?</li>
+                                <li>Using the references above try and find the patient with an <b>old</b> address in the suburb of <b>'Erinsborough'</b>?</li>
+                                <li>Try and find the patient name for the person with an IHI (Individual  Health Identifier) of '<b>8003601043886154</b>'?</li>
+                            </ul>
+
                             <p>These few questions have focused on the <b>token</b> search parameter datatype but I strongly encourage you to read then entire <a href="http://hl7.org/fhir/R4/search.html#uri">Search</a> page in the FHIR specification at a later date.</p>
                         </div>
                         
@@ -221,14 +220,14 @@
                             <h4>Поиск</h4>
                             
                             <p>Этот урок будет основываться на фундаменте, заложенном в уроке <a href="./simple-patient.html">Пациент</a>, чтобы представить поиск по ресурсам FHIR.</p>
-                            <ul class="toc">
+                            <nav class="toc" aria-label="Содержание">
                                 <h4>Содержание</h4>
-                                <a href="#ss-step1">Шаг 1: Поиск по имени</a>  
-                                <a href="#ss-step2">Шаг 2: Расширенный поиск</a>  
-                                <a href="#ss-step3">Шаг 3: Типы параметров поиска</a>  
-                            </ul>
+                                <a href="#ss-step1-ru">Шаг 1: Поиск по имени</a>  
+                                <a href="#ss-step2-ru">Шаг 2: Расширенный поиск</a>  
+                                <a href="#ss-step3-ru">Шаг 3: Типы параметров поиска</a>  
+                            </nav>
 
-                            <h5 id="ss-step1">Шаг 1: Поиск по имени</h5>
+                            <h5 id="ss-step1-ru">Шаг 1: Поиск по имени</h5>
                             <p>Начнем с самого простого поиска - поиска по фамилии пациента.</p> 
                             
                             <p>В уроке <a href="./simple-patient.html">Пациент</a> был загружен ресурс Patient для <b>г-на Сэма Файрмэна</b>. Давайте попробуем найти этот ресурс Patient, выполнив поиск по фамилии. Для этого нам нужно построить URL, начинающийся с <b><code>[Service Root URL]</code></b>, за которым следует тип ресурса <b>Patient</b>, символ вопроса '<b>?</b>' и заканчивающийся параметрами поиска, с которыми мы хотим искать <b>family=Fhirman</b> в данном случае.</p>  
@@ -241,17 +240,17 @@
 
                             <p>Не беспокойтесь о том, чтобы обширно знать структуру ресурса Bundle - мы вскоре рассмотрим Bundle в нашем уроке <a href="bundle.html">Bundle</a>.</p>
                             
-                            <h5 id="ss-step2">Шаг 2: Расширенный поиск</h5>
+                            <h5 id="ss-step2-ru">Шаг 2: Расширенный поиск</h5>
                             
                             <p>На предыдущем шаге мы искали по фамилии пациента, но по чему еще мы можем искать? Параметры поиска, которые вы можете использовать, зависят от типа ресурса. Каждый тип ресурса определяет параметры, по которым вы можете искать в нем. Щелкните правой кнопкой мыши и откройте страницу ресурса <b><a href="http://hl7.org/fhir/R4/patient.html">Patient</a></b> во второй вкладке браузера и прокрутите до самого низа страницы. Здесь вы найдете список возможных параметров поиска для ресурса Patient. Посмотрите на некоторые другие типы ресурсов и параметры поиска, которые они определяют.</p>
                             
                             <p>В предыдущем уроке <a href="./simple-patient.html">Пациент</a> вы должны были создать новый ресурс пациента с вашим собственным именем в качестве имени пациента. Попробуйте найти этот ресурс, используя вашу собственную фамилию и имя. <i>Не забудьте обратиться к спецификации FHIR, чтобы выяснить, какие параметры поиска вам понадобятся.</i></p>
                             
-                            <h5 id="ss-step3">Шаг 3: Типы параметров поиска</h5>
+                            <h5 id="ss-step3-ru">Шаг 3: Типы параметров поиска</h5>
                             
                             <p>Поиски, которые мы делали до сих пор, family и given, были по простым строковым типам данных. FHIR определяет восемь различных типов данных поиска следующим образом: </p>
                             
-                            <p>
+                            <ul>
                             <li><a href="http://hl7.org/fhir/R4/search.html#number">Число</a></li>
                             <li><a href="http://hl7.org/fhir/R4/search.html#date">Дата/Время</a></li>
                             <li><a href="http://hl7.org/fhir/R4/search.html#string">Строка</a></li>
@@ -260,7 +259,7 @@
                             <li><a href="http://hl7.org/fhir/R4/search.html#composite">Составной</a></li>
                             <li><a href="http://hl7.org/fhir/R4/search.html#quantity">Количество</a></li>
                             <li><a href="http://hl7.org/fhir/R4/search.html#uri">URI</a></li>
-                            </p>
+                            </ul>
                             
                             <p>Каждый параметр поиска на каждой странице ресурса также определяет тип данных параметра поиска, который он использует. Скриншот ниже взят со страницы ресурса Patient. Обратите внимание, что <b>given</b> использует <b>string</b> во втором столбце, а <b>identifier</b> использует тип данных <b>token</b>.</p>
                             <p><img src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
@@ -269,16 +268,16 @@
                             
                             <h6><b>Используя приведенные выше ссылки, попробуйте ответить на эти вопросы:</b></h6>
                             
-                            <li>Какой тип данных использует параметр поиска <b>length</b> в ресурсе <b>Encounter</b>?</li>
-                            <br>
-                            <li>Используя приведенные выше ссылки, попробуйте найти пациента со <b>старым</b> адресом в пригороде <b>'Erinsborough'</b>?</li>
-                            <br>
-                            <li>Попробуйте найти имя пациента для человека с IHI (Individual Health Identifier) '<b>8003601043886154</b>'?</li>
-                            <br>
-                            
+                            <ul>
+                                <li>Какой тип данных использует параметр поиска <b>length</b> в ресурсе <b>Encounter</b>?</li>
+                                <li>Используя приведенные выше ссылки, попробуйте найти пациента со <b>старым</b> адресом в пригороде <b>'Erinsborough'</b>?</li>
+                                <li>Попробуйте найти имя пациента для человека с IHI (Individual Health Identifier) '<b>8003601043886154</b>'?</li>
+                            </ul>
+
                             <p>Эти несколько вопросов были сосредоточены на типе данных параметра поиска <b>token</b>, но я настоятельно рекомендую вам прочитать всю страницу <a href="http://hl7.org/fhir/R4/search.html#uri">Поиск</a> в спецификации FHIR позже.</p>
                         </div>
                         
+                    </div>
                     </div>
                 </section>
             <footer class="mdl-mega-footer">

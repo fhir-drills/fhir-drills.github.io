@@ -1,0 +1,26 @@
+name: HTML validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  html-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      # Rules live in .htmlvalidate.json: the "recommended" preset, minus purely
+      # stylistic rules (whitespace, quoting, case, self-closing style, raw "&"/"<"
+      # in text and JSON textareas). Rules set to "warn" are reported here but don't fail
+      # the build yet; raise them to "error" once the fixes for them are on master.
+      - name: Validate pages
+        run: npx --yes html-validate@11.19.0 *.html

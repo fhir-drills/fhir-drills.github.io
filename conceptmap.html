@@ -105,7 +105,7 @@
         <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
         <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
     </span>
-    <nav class="mdl-navigation">
+    <nav class="mdl-navigation" aria-label="Tutorials">
         <a href="./index.html" class="mdl-navigation__link">
             <span class="lang-content lang-en">Overview</span>
             <span class="lang-content lang-ru">Обзор</span>
@@ -138,7 +138,7 @@
             <span class="lang-content lang-en">ConceptMap</span>
             <span class="lang-content lang-ru">ConceptMap</span>
         </a>
-        <a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">
+        <a href="./fhir-api.html" id="fhir-api" class="mdl-navigation__link">
             <span class="lang-content lang-en">FHIR APIs</span>
             <span class="lang-content lang-ru">FHIR API</span>
         </a>
@@ -157,16 +157,16 @@
                         <div class="lang-content lang-en">
                             <h4>ConceptMap tutorial</h4>
                             <p><a href="http://hl7.org/fhir/R4/conceptmap.html">ConceptMap</a> is a FHIR resource that allows you to establish a one-way map between codes. We'll use latter as an example in this tutorial to demonstrate how two concepts can be related (mapped) to each other and how their equivalence (or lack of) can be specified.</p>
-                            <note>This describes ConceptMap as it is in the <a href="http://hl7.org/fhir/R4/conceptmap.html">FHIR R4</a></note>
+                            <div class="note">This describes ConceptMap as it is in the <a href="http://hl7.org/fhir/R4/conceptmap.html">FHIR R4</a></div>
                         </div>
                         
                         <div class="lang-content lang-ru">
                             <h4>Урок по ConceptMap</h4>
                             <p><a href="http://hl7.org/fhir/R4/conceptmap.html">ConceptMap</a> - это ресурс FHIR, который позволяет установить одностороннее сопоставление между кодами. Мы будем использовать его в качестве примера в этом уроке, чтобы продемонстрировать, как два понятия могут быть связаны (сопоставлены) друг с другом и как может быть указана их эквивалентность (или её отсутствие).</p>
-                            <note>Тут описан ConceptMap как он представлен в <a href="http://hl7.org/fhir/R4/conceptmap.html">FHIR R4</a></note>
+                            <div class="note">Тут описан ConceptMap как он представлен в <a href="http://hl7.org/fhir/R4/conceptmap.html">FHIR R4</a></div>
                         </div>
                         
-                        <ul class="toc">
+                        <nav class="toc" aria-label="Contents">
                             <h4>
                                 <span class="lang-content lang-en inline">Contents</span>
                                 <span class="lang-content lang-ru inline">Содержание</span>
@@ -192,7 +192,7 @@
                                 <span class="lang-content lang-en inline">Step 5: $translate operation</span>
                                 <span class="lang-content lang-ru inline">Шаг 5: Операция $translate</span>
                             </a>
-                        </ul>
+                        </nav>
 
                         <h5 id="cm-about-conceptmap">
                             <span class="lang-content lang-en inline">Step 1: About ConceptMap</span>
@@ -356,16 +356,16 @@
                             <p>Нажмите кнопку ниже, чтобы загрузить эти ресурсы на FHIR сервер!</p>
                         </div>
                         
-                        <p>
-                            <center>
+                        <div class="upload-action">
+                            
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="conceptmap-button">
                                     <span class="lang-content lang-en inline">Upload</span>
                                     <span class="lang-content lang-ru inline">Загрузить</span>
                                 </button>
                                 <br>
                                 <div id="conceptmap-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
-                            </center>
-                        </p>
+                            
+                        </div>
 
                         <div class="lang-content lang-en">
                             <p>The ConceptMap resource will be available at this URL:</p>
@@ -375,10 +375,10 @@
                             <p>Ресурс ConceptMap будет доступен по этому URL:</p>
                         </div>
                         
-                        <note class="conceptmap-location-full" id="cm-conceptmap">
+                        <div class="note conceptmap-location-full" data-resource="cm-conceptmap">
                             <span class="lang-content lang-en inline"><i>(press Upload to get a ConceptMap)</i></span>
                             <span class="lang-content lang-ru inline"><i>(нажмите Загрузить, чтобы получить ConceptMap)</i></span>
-                        </note>
+                        </div>
                         
                         <div class="lang-content lang-en">
                             <p>Once uploaded, it'll look something <a href="images/conceptmap-in-postman.png" data-lightbox="conceptmap-in-postman">like this</a> when you GET the ConceptMap via Postman.</p>
@@ -417,7 +417,7 @@
                         <div class="lang-content lang-en">
                             <p>The <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> operation allows you to utilise a FHIR terminology server to get an equivalent code as specified by a ConceptMap mapping. To use it, you need to provide the ConceptMap you'd like to use, the input code and its CodeSystem, and the target valueset you'd like to translate to.</p>
                             <p>Try the <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> operation on the ConceptMap you uploaded above via Postman. For example, to translate the code "in-office" from the new system to your current system's valueset, use:</p>
-                            <note class="conceptmap-translate-url" id="cm-translate"><i>(press Upload to get the $translate URL)</i></note>
+                            <div class="note conceptmap-translate-url" id="cm-translate"><i>(press Upload to get the $translate URL)</i></div>
                             <p>This will return the mapping showing that "in-office" translates to "present" with an equivalence of "equal".</p>
                             <p>That's it! You're done for now.</p>
                         </div>
@@ -425,11 +425,12 @@
                         <div class="lang-content lang-ru">
                             <p>Операция <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> позволяет использовать терминологический сервер FHIR для получения эквивалентного кода, как указано в сопоставлении ConceptMap. Для её использования вам нужно предоставить ConceptMap, который вы хотите использовать, входной код и его CodeSystem, а также целевой valueset, в который вы хотите перевести.</p>
                             <p>Попробуйте операцию <a href="http://hl7.org/fhir/R4/conceptmap-operations.html#translate">$translate</a> на ConceptMap, который вы загрузили выше, через Postman. Например, чтобы перевести код "in-office" из новой системы в valueset вашей текущей системы, используйте:</p>
-                            <note class="conceptmap-translate-url" id="cm-translate"><i>(сначала нажмите Загрузить, чтобы получить URL $translate)</i></note>
+                            <div class="note conceptmap-translate-url" id="cm-translate-ru"><i>(сначала нажмите Загрузить, чтобы получить URL $translate)</i></div>
                             <p>Это вернет сопоставление, показывающее, что "in-office" переводится в "present" с эквивалентностью "equal".</p>
                             <p>Вот и всё! На данный момент вы закончили.</p>
                         </div>
                         
+                    </div>
                     </div>
                 </section>
             <footer class="mdl-mega-footer">

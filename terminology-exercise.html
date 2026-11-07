@@ -100,7 +100,7 @@
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">FHIR<sup>®</sup> exercises</span>
-    <nav class="mdl-navigation">
+    <nav class="mdl-navigation" aria-label="Tutorials">
 		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
 		<a href="./terminology-exercise.html" class="mdl-navigation__link is-active-tab">Terminology exercise</a>
 		<a href="./sam-fhir-journey.html" class="mdl-navigation__link">Sam's FHIR journey</a>
@@ -115,14 +115,14 @@
 							<h4>Terminology exercise</h4>
 
 							<p>This exercise will help you solidify your FHIR terminology knowledge by having you create a couple of resources, and then working together with a connectathon partner to create a mapping between the said resources.</p>
-							<ul class="toc">
+							<nav class="toc" aria-label="Contents">
 								<h4>Contents</h4>
 								<a href="#step1">Step 1: Create a CodeSystem</a>                            
 								<a href="#step2">Step 2: Create a ValueSet</a>  
 								<a href="#step3">Step 3: Perform an $expand on your ValueSet</a>  
 								<a href="#step4">Step 4: Create a ConceptMap mapping</a>
 								<a href="#step5">Step 5: Perform a $translate on your ConceptMap</a>                            
-							</ul>
+							</nav>
 
 							<h5 id="step1">Step 1: Create a CodeSystem</h5>
 							<p>Create a <a href="http://hl7.org/fhir/R4/codesystem.html">CodeSystem</a> resource with various codes for the human emotional state (ie 'happy, 'sad', etc.) - try to choose an original list, as that'll help you later on. Feel free to refresh your CodeSystem knowledge with the <a href="ValueSet-And-CodeSystem.html">terminology tutorial</a> if need be, or just ask us should you get stuck. Once finished, upload your CodeSystem resource to the specified FHIR terminology server.</p>

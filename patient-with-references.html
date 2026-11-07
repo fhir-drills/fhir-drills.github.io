@@ -103,7 +103,7 @@
         <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
         <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
     </span>
-    <nav class="mdl-navigation">
+    <nav class="mdl-navigation" aria-label="Tutorials">
         <a href="./index.html" class="mdl-navigation__link">
             <span class="lang-content lang-en">Overview</span>
             <span class="lang-content lang-ru">Обзор</span>
@@ -136,7 +136,7 @@
             <span class="lang-content lang-en">ConceptMap</span>
             <span class="lang-content lang-ru">ConceptMap</span>
         </a>
-        <a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">
+        <a href="./fhir-api.html" id="fhir-api" class="mdl-navigation__link">
             <span class="lang-content lang-en">FHIR APIs</span>
             <span class="lang-content lang-ru">FHIR API</span>
         </a>
@@ -156,7 +156,7 @@
                         <div class="lang-content lang-en">
                             <h4>Patient with References tutorial</h4>
                             <p>This tutorial will build on the foundation laid out in the <a href="./simple-patient.html">Simple Patient</a> tutorial to introduce resource linking in FHIR by the way of <a href="http://hl7.org/fhir/R4/references.html">references</a>.</p>
-                            <ul class="toc">
+                            <nav class="toc" aria-label="Contents">
                                 <h4>Contents</h4>
                                 <!-- pr prefix stands for 'patient references'-->
                                 <a href="#pr-setup">Step 1: Setup</a>
@@ -164,21 +164,21 @@
                                 <a href="#pr-observe-external-references">Step 3: Observe external references</a>
                                 <a href="#pr-search-resource-using-reference">Step 4: Search for a resource using a reference</a>
                                 <a href="#pr-observe-contained-references">Step 5: Observe contained resource references</a>
-                            </ul>
+                            </nav>
                         </div>
                         
                         <!-- Russian Content -->
                         <div class="lang-content lang-ru">
                             <h4>Урок "Пациент со ссылками"</h4>
                             <p>Этот урок будет основываться на фундаменте, заложенном в уроке <a href="./simple-patient.html">Пациент</a>, чтобы представить связывание ресурсов в FHIR посредством <a href="http://hl7.org/fhir/R4/references.html">ссылок</a>.</p>
-                            <ul class="toc">
+                            <nav class="toc" aria-label="Содержание">
                                 <h4>Содержание</h4>
-                                <a href="#pr-setup">Шаг 1: Настройка</a>
-                                <a href="#pr-find-patient">Шаг 2: Найдите своего пациента</a>
-                                <a href="#pr-observe-external-references">Шаг 3: Наблюдайте внешние ссылки</a>
-                                <a href="#pr-search-resource-using-reference">Шаг 4: Поиск ресурса с использованием ссылки</a>
-                                <a href="#pr-observe-contained-references">Шаг 5: Наблюдайте ссылки на содержащиеся ресурсы</a>
-                            </ul>
+                                <a href="#pr-setup-ru">Шаг 1: Настройка</a>
+                                <a href="#pr-find-patient-ru">Шаг 2: Найдите своего пациента</a>
+                                <a href="#pr-observe-external-references-ru">Шаг 3: Наблюдайте внешние ссылки</a>
+                                <a href="#pr-search-resource-using-reference-ru">Шаг 4: Поиск ресурса с использованием ссылки</a>
+                                <a href="#pr-observe-contained-references-ru">Шаг 5: Наблюдайте ссылки на содержащиеся ресурсы</a>
+                            </nav>
                         </div>
 
                         <!-- Step 1: Setup -->
@@ -188,21 +188,21 @@
                         </div>
                         
                         <div class="lang-content lang-ru">
-                            <h5 id="pr-setup">Шаг 1: Настройка</h5>
+                            <h5 id="pr-setup-ru">Шаг 1: Настройка</h5>
                             <p>Перед выполнением урока необходимо загрузить набор ресурсов FHIR на учебный сервер FHIR, чтобы вы могли их запрашивать. Нажмите кнопку <code>Загрузить</code> ниже, чтобы отправить ваши ресурсы:</p>
                         </div>
 
                         <!-- fix this crime -->
-                        <p>
-                            <center>
+                        <div class="upload-action">
+                            
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="patient-with-references-button">
                                     <span class="lang-content lang-en inline">Upload</span>
                                     <span class="lang-content lang-ru inline">Загрузить</span>
                                 </button>
                                 <br>
                                 <div id="patient-with-references-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
-                            </center>
-                        </p>
+                            
+                        </div>
 
                         <!-- Step 2: Find your patient -->
                         <div class="lang-content lang-en">
@@ -211,14 +211,14 @@
                         </div>
                         
                         <div class="lang-content lang-ru">
-                            <h5 id="pr-find-patient">Шаг 2: Найдите своего пациента</h5>
+                            <h5 id="pr-find-patient-ru">Шаг 2: Найдите своего пациента</h5>
                             <p>Пациент, с которым вы будете работать:</p>
                         </div>
                         
-                        <note class="patient-with-references-location-full" id="rf-patient">
+                        <div class="note patient-with-references-location-full" data-resource="rf-patient">
                             <span class="lang-content lang-en inline"><i>(press Upload to get a Patient)</i></span>
                             <span class="lang-content lang-ru inline"><i>(нажмите Загрузить, чтобы получить пациента)</i></span>
-                        </note>
+                        </div>
                         
                         <div class="lang-content lang-en">
                             <p>Open Postman and retrieve the resource, if you have forgotten how then revisit the <a href="./simple-patient.html#Step2">Simple Patient tutorial</a>. You should see <a href="images/patient-in-postman.png" data-lightbox="patient-in-postman">this</a> in Postman when successful.</p>
@@ -249,7 +249,7 @@
                         </div>
                         
                         <div class="lang-content lang-ru">
-                            <h5 id="pr-observe-external-references">Шаг 3: Посмотрите на внешние ссылки</h5>
+                            <h5 id="pr-observe-external-references-ru">Шаг 3: Посмотрите на внешние ссылки</h5>
                             <p>В FHIR ресурсы ссылаются или связываются только в одном направлении. Например, если у вас есть два ресурса - Patient и Observation - Patient не будет связан ни с одним из Observation; вместо этого все Observation будут связаны с Patient. Это мера оптимизации - это означает, что при добавлении новых Observation вам не нужно постоянно обновлять ресурс Patient новыми ссылками. Это также означает, что Patient не имеет явной ссылки на какие-либо Observation - но не беспокойтесь, есть способ увидеть все Observation, которые есть у Patient, что мы рассмотрим позже.</p>
                             
                             <p>Чтобы увидеть, какой ресурс ссылается на какой, откройте спецификацию FHIR для конкретного ресурса и посмотрите на список ресурсов, которые на него ссылаются. В нашем примере вы можете выяснить, ссылается ли Patient на Observation или Observation ссылается на Patient, открыв страницы спецификации FHIR как для <a href="http://hl7.org/fhir/R4/patient.html">Patient</a>, так и для <a href="http://hl7.org/fhir/R4/observation.html">Observation</a>. Вы заметите, что <a href="images/observation-references-patient.png" data-lightbox="observation-references-patient">Patient упоминает</a>, что на него ссылается ресурс Observation, а Observation не упоминает, вместо этого у него есть поле <code>subject</code>, которое <a href="images/observations-patient-subject.png" data-lightbox="observations-patient-subject">ссылается на Patient</a>.</p>
@@ -263,9 +263,9 @@
                         <div class="lang-content lang-en">
                             <h5 id="pr-search-resource-using-reference">Step 4: Search for a resource using a reference</h5>
                             <p>FHIR has a notion of Search Parameters, which allow you to locate resources given certain information you know about them. As a sample use case, let's find the Encounter that's associated with our patient. Scrolling down to the <a href="http://hl7.org/fhir/R4/encounter.html#search">Search Parameters</a> section of Encounter, we see that there's one named <a href="images/encounter-search-parameters.png" data-lightbox="encounter-search-parameters">patient</a> which allows us to search for the patient present in the encounter.</p>
-                            <p>Thus, given the patient's server ID of <code class="patient-with-references-serverid" id="rf-patient"><i>(press Upload first)</i></code> (this can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field), in order to find which encounters our patient has, the query follows this format:</p> 
-                            <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</span>/Encounter?patient=Patient/&lt;patient id&gt;</b></pre>
-                            <p>It essentially says - "give me all Encounters that have this patient ID as the subject patient". Try entering <code class="patient-with-references-baseurl" id="rf-patient">(press Upload first)</code><code>/Encounter?patient=Patient/</code><code class="patient-with-references-serverid" id="rf-patient"></code> into Postman - you'll see a result like this:</p>
+                            <p>Thus, given the patient's server ID of <code class="patient-with-references-serverid" data-resource="rf-patient"><i>(press Upload first)</i></code> (this can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field), in order to find which encounters our patient has, the query follows this format:</p> 
+                            <pre><b><span class="patient-with-references-baseurl">(press Upload first)</span>/Encounter?patient=Patient/&lt;patient id&gt;</b></pre>
+                            <p>It essentially says - "give me all Encounters that have this patient ID as the subject patient". Try entering <code class="patient-with-references-baseurl">(press Upload first)</code><code>/Encounter?patient=Patient/</code><code class="patient-with-references-serverid" data-resource="rf-patient"></code> into Postman - you'll see a result like this:</p>
                             <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search.png" class="thumbnail"/></a>.
                             <p>Three things are of interest are:</p>
                             <ol>
@@ -277,11 +277,11 @@
                         </div>
                         
                         <div class="lang-content lang-ru">
-                            <h5 id="pr-search-resource-using-reference">Шаг 4: Поиск ресурса с использованием ссылки</h5>
+                            <h5 id="pr-search-resource-using-reference-ru">Шаг 4: Поиск ресурса с использованием ссылки</h5>
                             <p>В FHIR есть понятие параметров поиска, которые позволяют находить ресурсы, используя определенную известную вам о них информацию. В качестве примера использования давайте найдем Encounter, связанный с нашим пациентом. Прокрутив вниз к разделу <a href="http://hl7.org/fhir/R4/encounter.html#search">Параметры поиска</a> Encounter, мы видим, что есть один с именем <a href="images/encounter-search-parameters.png" data-lightbox="encounter-search-parameters">patient</a>, который позволяет нам искать пациента, присутствующего во встрече.</p>
-                            <p>Таким образом, учитывая серверный ID пациента <code class="patient-with-references-serverid" id="rf-patient"><i>(сначала нажмите Загрузить)</i></code> (это можно увидеть в конце URL и в поле <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a>), чтобы найти, какие встречи есть у нашего пациента, запрос следует этому формату:</p> 
-                            <pre><b><span class="patient-with-references-baseurl" id="rf-patient">(сначала нажмите Загрузить)</span>/Encounter?patient=Patient/&lt;patient id&gt;</b></pre>
-                            <p>По сути это говорит - "дайте мне все Encounter, которые имеют этот ID пациента в качестве субъекта пациента". Попробуйте ввести <code class="patient-with-references-baseurl" id="rf-patient">(сначала нажмите Загрузить)</code><code>/Encounter?patient=Patient/</code><code class="patient-with-references-serverid" id="rf-patient"></code> в Postman - вы увидите результат, подобный этому:</p>
+                            <p>Таким образом, учитывая серверный ID пациента <code class="patient-with-references-serverid" data-resource="rf-patient"><i>(сначала нажмите Загрузить)</i></code> (это можно увидеть в конце URL и в поле <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a>), чтобы найти, какие встречи есть у нашего пациента, запрос следует этому формату:</p> 
+                            <pre><b><span class="patient-with-references-baseurl">(сначала нажмите Загрузить)</span>/Encounter?patient=Patient/&lt;patient id&gt;</b></pre>
+                            <p>По сути это говорит - "дайте мне все Encounter, которые имеют этот ID пациента в качестве субъекта пациента". Попробуйте ввести <code class="patient-with-references-baseurl">(сначала нажмите Загрузить)</code><code>/Encounter?patient=Patient/</code><code class="patient-with-references-serverid" data-resource="rf-patient"></code> в Postman - вы увидите результат, подобный этому:</p>
                             <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search.png" class="thumbnail"/></a>.
                             <p>Три вещи представляют интерес:</p>
                             <ol>
@@ -296,7 +296,7 @@
                         <div class="lang-content lang-en">
                             <h5 id="pr-observe-contained-references">Step 5: Observe contained resource references</h5>
                             <p>References don't always have to point to a resource located elsewhere, they can also point to resources that are <a href="http://hl7.org/fhir/R4/references.html#contained">contained</a> (embedded) in the resource. Load up  our ServiceRequest in Postman:</p>
-                            <pre><b><span class="patient-with-references-location-full" id="rf-servicerequest">(press Upload first)</span></b></pre>
+                            <pre><b><span class="patient-with-references-location-full" data-resource="rf-servicerequest">(press Upload first)</span></b></pre>
                             
                             <p>Press Ctrl/&#8984;+F and copy/paste <code>practitionerid</code> - you'll find two references to it, one in <code>"reference": "#practitionerid"</code> and another in a <code>"contained"</code> field:</p>
                             <img src="images/postman-contained-reference.png" class="centered"/>
@@ -304,14 +304,15 @@
                         </div>
                         
                         <div class="lang-content lang-ru">
-                            <h5 id="pr-observe-contained-references">Шаг 5: Наблюдайте ссылки на содержащиеся ресурсы</h5>
+                            <h5 id="pr-observe-contained-references-ru">Шаг 5: Наблюдайте ссылки на содержащиеся ресурсы</h5>
                             <p>Ссылки не всегда должны указывать на ресурс, расположенный в другом месте, они также могут указывать на ресурсы, которые <a href="http://hl7.org/fhir/R4/references.html#contained">содержатся</a> (встроены) в ресурсе. Загрузите наш ServiceRequest в Postman:</p>
-                            <pre><b><span class="patient-with-references-location-full" id="rf-servicerequest">(сначала нажмите Загрузить)</span></b></pre>
+                            <pre><b><span class="patient-with-references-location-full" data-resource="rf-servicerequest">(сначала нажмите Загрузить)</span></b></pre>
                             
                             <p>Нажмите Ctrl/&#8984;+F и скопируйте/вставьте <code>practitionerid</code> - вы найдете две ссылки на него, одну в <code>&lt;reference value="#practitionerid" /&gt;</code> и другую в поле <code>&lt;contained&gt;</code>:</p>
                             <img src="images/postman-contained-reference.png" class="centered"/>
                             <p>Всякий раз, когда вы видите идентификатор, начинающийся со знака решетки (#), вы увидите соответствующий ресурс в поле &lt;contained&gt;, встроенный в родительский ресурс. Такое встраивание должно выполняться только в случаях, когда встроенный ресурс не может существовать самостоятельно - например, он не может иметь идентификатор для уникальной идентификации или имеет смысл только в определенной области транзакции.</p>
                         </div>
+                    </div>
                     </div>
                 </section>
             <footer class="mdl-mega-footer">

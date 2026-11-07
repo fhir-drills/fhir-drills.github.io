@@ -257,7 +257,7 @@ body {
 .mdl-demo .mdl-menu__container {
     z-index: 99;
 }
-note {
+.note {
     color: #616E14;
     border: solid 1px #BFD62F;
     background-color: #DAE691;
@@ -487,4 +487,14 @@ body.lang-ru .lang-ru.inline {
         font-size: 12px;
         margin: 0 2px;
     }
+}
+
+/* Upload buttons and their progress bars, centred under the text */
+.upload-action {
+    text-align: center;
+    margin-bottom: 16px;
+}
+.upload-action .mdl-progress {
+    margin-left: auto;
+    margin-right: auto;
 }
