@@ -46,7 +46,7 @@
     -->
 	
 	<!-- CodeMirror -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -105,7 +105,7 @@
         <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
         <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
     </span>
-    <nav class="mdl-navigation">
+    <nav class="mdl-navigation" aria-label="Tutorials">
 		<a href="./index.html" class="mdl-navigation__link">
 			<span class="lang-content lang-en">Overview</span>
 			<span class="lang-content lang-ru">Обзор</span>
@@ -157,7 +157,7 @@
 							<h4>Working with APIs for FHIR</h4>
 							<p>If you're a developer, or just someone interested in coding with FHIR, then this is the page for you to read! In this tutorial we'll walk you through doing all of the tutorials you've been doing with Postman programmatically.</p>
 
-							<note>This tutorial requires technical knowledge to do! If you're not technically minded, you can still learn FHIR by doing other tutorials on this website.</note>
+							<div class="note">This tutorial requires technical knowledge to do! If you're not technically minded, you can still learn FHIR by doing other tutorials on this website.</div>
                             
                             <h6>Click the appropriate button below depending on which programming language you are interested in. This will help this web site display the examples most relevant to your choice. </h6>
 						</div>
@@ -166,7 +166,7 @@
 							<h4>Работа с API для FHIR</h4>
 							<p>Если вы разработчик или просто хотите писать код для работы с FHIR, эта страница для вас! В этом уроке мы покажем, как программно выполнить всё то, что вы делали в предыдущих уроках с помощью Postman.</p>
 
-							<note>Для этого урока нужны технические знания! Если вы не программист, вы всё равно можете изучать FHIR с помощью других уроков на этом сайте.</note>
+							<div class="note">Для этого урока нужны технические знания! Если вы не программист, вы всё равно можете изучать FHIR с помощью других уроков на этом сайте.</div>
 
 							<h6>Нажмите кнопку ниже, соответствующую интересующему вас языку программирования. Тогда сайт будет показывать примеры, наиболее подходящие для вашего выбора.</h6>
 						</div>
@@ -180,7 +180,7 @@
 									<span class="lang-content lang-ru inline">Показать код на Java</span>
 								</button>
 							</div>
-							<ul class="toc">
+							<nav class="toc" aria-label="Contents">
 								<h4>
 									<span class="lang-content lang-en inline">Contents</span>
 									<span class="lang-content lang-ru inline">Содержание</span>
@@ -206,7 +206,7 @@
 									<span class="lang-content lang-en inline">Step 5: Run an operation</span>
 									<span class="lang-content lang-ru inline">Шаг 5: Выполнение операции</span>
 								</a>
-							</ul>
+							</nav>
 							<h5 id="api-setup">
 								<span class="lang-content lang-en inline">Step 1: Setup</span>
 								<span class="lang-content lang-ru inline">Шаг 1: Подготовка</span>
@@ -251,11 +251,11 @@
 						</div>
 							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 								<div class="mdl-tabs__tab-bar">
-									<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
-									<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
+									<a href="#csharp-panel-1" class="mdl-tabs__tab is-active csharp">C#</a>
+									<a href="#java-panel-1" class="mdl-tabs__tab java">Java</a>
 								</div>
 
-								<div class="mdl-tabs__panel is-active" id="csharp-panel">
+								<div class="mdl-tabs__panel is-active" id="csharp-panel-1">
 									<textarea class="csharp-code">
 using System;
 using System.Collections.Generic;
@@ -271,7 +271,7 @@ namespace SimpleFhir
   }
 }</textarea>
 								</div>
-								<div class="mdl-tabs__panel" id="java-panel">
+								<div class="mdl-tabs__panel" id="java-panel-1">
 									<textarea class="java-code">
 package com.myhotcompany;
 
@@ -294,11 +294,11 @@ public class Main {
 
 							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 								<div class="mdl-tabs__tab-bar">
-									<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
-									<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
+									<a href="#csharp-panel-2" class="mdl-tabs__tab is-active csharp">C#</a>
+									<a href="#java-panel-2" class="mdl-tabs__tab java">Java</a>
 								</div>
 
-								<div class="mdl-tabs__panel is-active" id="csharp-panel">
+								<div class="mdl-tabs__panel is-active" id="csharp-panel-2">
 									<textarea class="csharp-code">
 using System;
 using System.Collections.Generic;
@@ -348,7 +348,7 @@ namespace SimpleFhir
   }
 }</textarea>
 								</div>
-								<div class="mdl-tabs__panel" id="java-panel">
+								<div class="mdl-tabs__panel" id="java-panel-2">
 									<textarea class="java-code">
 package com.myhotcompany;
 
@@ -436,11 +436,11 @@ public class Main {
 						</div>
 							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 								<div class="mdl-tabs__tab-bar">
-									<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
-									<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
+									<a href="#csharp-panel-3" class="mdl-tabs__tab is-active csharp">C#</a>
+									<a href="#java-panel-3" class="mdl-tabs__tab java">Java</a>
 								</div>
 
-								<div class="mdl-tabs__panel is-active" id="csharp-panel">
+								<div class="mdl-tabs__panel is-active" id="csharp-panel-3">
 									<textarea class="csharp-code">
 using System;
 using System.Collections.Generic;
@@ -519,7 +519,7 @@ namespace SimpleFhir
   }
 }</textarea>
 								</div>
-								<div class="mdl-tabs__panel" id="java-panel">
+								<div class="mdl-tabs__panel" id="java-panel-3">
 									<textarea class="java-code">
 package com.myhotcompany;
 
@@ -611,11 +611,11 @@ public class Main {
 								</div>
 									<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 										<div class="mdl-tabs__tab-bar">
-											<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
-											<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
+											<a href="#csharp-panel-4" class="mdl-tabs__tab is-active csharp">C#</a>
+											<a href="#java-panel-4" class="mdl-tabs__tab java">Java</a>
 										</div>
 
-										<div class="mdl-tabs__panel is-active" id="csharp-panel">
+										<div class="mdl-tabs__panel is-active" id="csharp-panel-4">
 											<textarea class="csharp-code">
 using System;
 using System.Collections.Generic;
@@ -669,7 +669,7 @@ namespace SimpleFhir
   }
 }</textarea>
 										</div>
-										<div class="mdl-tabs__panel" id="java-panel">
+										<div class="mdl-tabs__panel" id="java-panel-4">
 											<textarea class="java-code">
 package com.myhotcompany;
 
@@ -741,32 +741,32 @@ public class Main {
 							<p>Сначала загрузим пример пациента, который мы уже рассматривали в уроке <a href="patient-with-references.html">Пациент со ссылками</a>:</p>
 						</div>
 							
-							<p>
-								<center>
+							<div class="upload-action">
+								
 									<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="patient-with-references-button">
 										<span class="lang-content lang-en inline">Upload</span>
 										<span class="lang-content lang-ru inline">Загрузить</span>
 									</button>
 									<br>
 									<div id="patient-with-references-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
-								</center>
-							</p>
+								
+							</div>
 
 						<div class="lang-content lang-en">
-							<p>Now we can run a query on the operation to get a Bundle with the Patient and associated resources. Here's how it looks in code. Make sure to update MY_PATIENT_ID with <span class="patient-with-references-serverid" id="rf-patient">(press Upload first)</span>.</p>
+							<p>Now we can run a query on the operation to get a Bundle with the Patient and associated resources. Here's how it looks in code. Make sure to update MY_PATIENT_ID with <span class="patient-with-references-serverid" data-resource="rf-patient">(press Upload first)</span>.</p>
 						</div>
 
 						<div class="lang-content lang-ru">
-							<p>Теперь можно вызвать операцию и получить Bundle с ресурсом Patient и связанными с ним ресурсами. Вот как это выглядит в коде. Не забудьте заменить MY_PATIENT_ID на <span class="patient-with-references-serverid" id="rf-patient">(сначала нажмите Загрузить)</span>.</p>
+							<p>Теперь можно вызвать операцию и получить Bundle с ресурсом Patient и связанными с ним ресурсами. Вот как это выглядит в коде. Не забудьте заменить MY_PATIENT_ID на <span class="patient-with-references-serverid" data-resource="rf-patient">(сначала нажмите Загрузить)</span>.</p>
 						</div>
 							
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 	<div class="mdl-tabs__tab-bar">
-		<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
-		<a href="#java-panel" class="mdl-tabs__tab java">Java</a>
+		<a href="#csharp-panel-5" class="mdl-tabs__tab is-active csharp">C#</a>
+		<a href="#java-panel-5" class="mdl-tabs__tab java">Java</a>
 	</div>
 
-	<div class="mdl-tabs__panel is-active" id="csharp-panel">
+	<div class="mdl-tabs__panel is-active" id="csharp-panel-5">
 		<textarea class="csharp-code">
 using System;
 using System.Collections.Generic;
@@ -831,7 +831,7 @@ namespace SimpleFhir
   }
 }</textarea>
 	</div>
-	<div class="mdl-tabs__panel" id="java-panel">
+	<div class="mdl-tabs__panel" id="java-panel-5">
 		<textarea class="java-code">
 package com.myhotcompany;
 
@@ -906,11 +906,11 @@ public class Main {
 						<div class="lang-content lang-ru">
 							<p>Запустите код — вы должны увидеть те же ID связанных ресурсов, что и на этой странице:</p>
 						</div>
-							<pre>Patient/<span class="patient-with-references-serverid" id="rf-patient"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
-							<pre>Encounter/<span class="patient-with-references-serverid" id="rf-encounter"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
-							<pre>Observation/<span class="patient-with-references-serverid" id="rf-observation1"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
-							<pre>Observation/<span class="patient-with-references-serverid" id="rf-observation2"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
-							<pre>DiagnosticReport/<span class="patient-with-references-serverid" id="rf-diagnosticreport"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
+							<pre>Patient/<span class="patient-with-references-serverid" data-resource="rf-patient"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
+							<pre>Encounter/<span class="patient-with-references-serverid" data-resource="rf-encounter"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
+							<pre>Observation/<span class="patient-with-references-serverid" data-resource="rf-observation1"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
+							<pre>Observation/<span class="patient-with-references-serverid" data-resource="rf-observation2"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
+							<pre>DiagnosticReport/<span class="patient-with-references-serverid" data-resource="rf-diagnosticreport"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
 
 						<div class="lang-content lang-en">
 							<p>That's about it for the basics! Happy coding. Check out the <a href="https://hapifhir.io/hapi-fhir/docs/">HAPI documentation</a> if you're using Java for more as well.</p>

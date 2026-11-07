@@ -46,7 +46,7 @@
     -->
 	
 	<!-- CodeMirror -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -104,7 +104,7 @@
         <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
         <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
     </span>
-    <nav class="mdl-navigation">
+    <nav class="mdl-navigation" aria-label="Tutorials">
         <a href="./index.html" class="mdl-navigation__link">
             <span class="lang-content lang-en">Overview</span>
             <span class="lang-content lang-ru">Обзор</span>
@@ -156,7 +156,7 @@
                             <div class="lang-content lang-en">
                                 <h4>Bundle tutorial</h4>
                                 <p>Bundle is a container for resources, enabling you to group and transmit resources altogether at once. Guidance on the resource in general is available on the <a href="http://hl7.org/fhir/R4/bundle.html">Bundle</a> page, and on the <a href="http://hl7.org/fhir/R4/http.html#transaction">RESTful API</a> pages of the FHIR specification, with specific bundle types like transactions, messaging and documents having their own documentation.</p>
-                                <ul class="toc">
+                                <nav class="toc" aria-label="Contents">
                                     <h4>Contents</h4>
                                     <!-- pr prefix stands for 'patient references'-->
                                     <a href="#bn-about-bundle">Step 1: About Bundle</a>
@@ -164,12 +164,12 @@
                                     <a href="#bn-bundle-types">Step 3: Bundle types</a>
                                     <a href="#bn-upload-endpoints">Step 4: Upload endpoints</a>
                                     <a href="#bn-reference-resolution">Step 5: Reference resolution</a>
-                                </ul>
+                                </nav>
 
                                 <h5 id="bn-about-bundle">Step 1: About Bundle</h5>
                                 <p>We've mentioned in the previous <a href="patient-with-references.html#pr-observe-contained-references">tutorial on resource references</a> that resources can "contain" other resources. So how are Bundles different? The FHIR spec is quite helpful in this regard:</p>
-                                <note><ul><li>Contained resources are "in" the container resource - they can only ever be interpreted and/or changed in the context of the container</li>
-                                <li>A Bundle is a collection of resources that have an independent existence - for example, they can also be accessed directly using the RESTful API</li></ul></note>
+                                <div class="note"><ul><li>Contained resources are "in" the container resource - they can only ever be interpreted and/or changed in the context of the container</li>
+                                <li>A Bundle is a collection of resources that have an independent existence - for example, they can also be accessed directly using the RESTful API</li></ul></div>
 
                                 <p>So, contained resources cannot be GET'd, PUT'd and DELETE'd separately, or even referenced individually from outside the containing resource. Resources inside a Bundle, depending on your Bundle type and how you've uploaded it, do get created individually on the server and thus can be acted on independently.</p>
                                 
@@ -191,19 +191,19 @@
                             <div class="lang-content lang-ru">
                                 <h4>Урок по Bundle (Пакетам)</h4>
                                 <p>Bundle - это контейнер для ресурсов, позволяющий группировать и передавать ресурсы все сразу. Руководство по ресурсу в целом доступно на странице <a href="http://hl7.org/fhir/R4/bundle.html">Bundle</a>, а также на страницах <a href="http://hl7.org/fhir/R4/http.html#transaction">RESTful API</a> спецификации FHIR, при этом конкретные типы пакетов, такие как транзакции, сообщения и документы, имеют свою собственную документацию.</p>
-                                <ul class="toc">
+                                <nav class="toc" aria-label="Содержание">
                                     <h4>Содержание</h4>
-                                    <a href="#bn-about-bundle">Шаг 1: О Bundle</a>
-                                    <a href="#bn-paging">Шаг 2: Пагинация</a>
-                                    <a href="#bn-bundle-types">Шаг 3: Типы Bundle</a>
-                                    <a href="#bn-upload-endpoints">Шаг 4: Конечные точки загрузки</a>
-                                    <a href="#bn-reference-resolution">Шаг 5: Разрешение ссылок</a>
-                                </ul>
+                                    <a href="#bn-about-bundle-ru">Шаг 1: О Bundle</a>
+                                    <a href="#bn-paging-ru">Шаг 2: Пагинация</a>
+                                    <a href="#bn-bundle-types-ru">Шаг 3: Типы Bundle</a>
+                                    <a href="#bn-upload-endpoints-ru">Шаг 4: Конечные точки загрузки</a>
+                                    <a href="#bn-reference-resolution-ru">Шаг 5: Разрешение ссылок</a>
+                                </nav>
 
-                                <h5 id="bn-about-bundle">Шаг 1: О Bundle</h5>
-                                <p>Мы упоминали в предыдущем <a href="patient-with-references.html#pr-observe-contained-references">уроке по ссылкам на ресурсы</a>, что ресурсы могут "содержать" другие ресурсы. Так чем же отличаются Bundle? Спецификация FHIR довольно полезна в этом отношении:</p>
-                                <note><ul><li>Содержащиеся ресурсы находятся "внутри" контейнерного ресурса - они могут интерпретироваться и/или изменяться только в контексте контейнера</li>
-                                <li>Bundle - это коллекция ресурсов, которые имеют независимое существование - например, к ним также можно получить прямой доступ с помощью RESTful API</li></ul></note>
+                                <h5 id="bn-about-bundle-ru">Шаг 1: О Bundle</h5>
+                                <p>Мы упоминали в предыдущем <a href="patient-with-references.html#pr-observe-contained-references-ru">уроке по ссылкам на ресурсы</a>, что ресурсы могут "содержать" другие ресурсы. Так чем же отличаются Bundle? Спецификация FHIR довольно полезна в этом отношении:</p>
+                                <div class="note"><ul><li>Содержащиеся ресурсы находятся "внутри" контейнерного ресурса - они могут интерпретироваться и/или изменяться только в контексте контейнера</li>
+                                <li>Bundle - это коллекция ресурсов, которые имеют независимое существование - например, к ним также можно получить прямой доступ с помощью RESTful API</li></ul></div>
 
                                 <p>Таким образом, содержащиеся ресурсы нельзя получить, обновить или удалить отдельно с помощью GET, PUT и DELETE, или даже ссылаться на них индивидуально извне содержащего ресурса. Ресурсы внутри Bundle, в зависимости от типа Bundle и способа загрузки, создаются индивидуально на сервере и, таким образом, могут обрабатываться независимо.</p>
                                 
@@ -430,7 +430,7 @@
 
                             <!-- Russian Content Continues -->
                             <div class="lang-content lang-ru">
-                                <h5 id="bn-paging">Пагинация</h5>
+                                <h5 id="bn-paging-ru">Пагинация</h5>
                                 <p>Когда Bundle слишком большой для отправки за один раз, поскольку он содержит много ресурсов, сервер может разбить его на части (называемые "страницами"). Чтобы позволить вам легко переходить от одной страницы к следующей, Bundle предоставляет ссылки на следующую страницу внутри себя. Таким образом, клиент, получив страницу, может запросить следующую страницу и так далее до конца. Кроме того, в каждом Bundle также предоставляются ссылки на предыдущую, первую и последнюю страницы (см. пример ниже):</p>
                             </div>
 								
@@ -471,7 +471,7 @@
                             </div>
                             
                             <div class="lang-content lang-ru">
-                                <h5 id="bn-bundle-types">Шаг 3: Типы Bundle</h5>
+                                <h5 id="bn-bundle-types-ru">Шаг 3: Типы Bundle</h5>
                                 <p>FHIR определяет <a href="http://hl7.org/fhir/R4/valueset-bundle-type.html#expansion">несколько типов</a> Bundle: document, message, transaction, transaction-response, batch, batch-response, history, searchset и collection.</p>
                             </div>
 
@@ -533,7 +533,7 @@
                             </div>
                             
                             <div class="lang-content lang-ru">
-                                <h5 id="bn-upload-endpoints">Шаг 4: Эндпоинты для загрузки</h5>
+                                <h5 id="bn-upload-endpoints-ru">Шаг 4: Эндпоинты для загрузки</h5>
                                 <p>Если вы загружаете Bundle в <code><b>[Service Root URL]/Bundle</b></code>, ваш Bundle будет сохранен как есть, как и любой другой ресурс. Иногда это желаемое поведение - но обычно вы хотите, чтобы сервер обработал Bundle. Например, чтобы транзакции в вашем transaction Bundle были выполнены. Чтобы заставить сервер распаковать и обработать ваш Bundle, вам нужно загрузить его непосредственно в <code><b>[Service Root URL]</b></code>. Это наиболее надежно работает для типов Bundle: transaction, batch и document. То, как сервер обрабатывает другие типы Bundle, зависит от него. Вот полный список конечных точек, в которые могут быть загружены Bundle:</p>
                             </div>
 
@@ -632,7 +632,7 @@
                             </div>
                             
                             <div class="lang-content lang-ru">
-                                <h5 id="bn-reference-resolution">Шаг 5: Разрешение ссылок</h5>
+                                <h5 id="bn-reference-resolution-ru">Шаг 5: Разрешение ссылок</h5>
                                 <p>Ссылки между ресурсами внутри Bundle могут быть двух типов. Либо ссылки на ресурсы, где каждый ресурс находится внутри Bundle, но еще не на сервере.</p> 
                                 <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img alt="Схема: Bundle с ресурсами Patient, DiagnosticReport и Observation, ещё без ID, которые ссылаются друг на друга до загрузки на FHIR-сервер" src="images/BundleOutOfServer.PNG" width="50%"/></a>
 

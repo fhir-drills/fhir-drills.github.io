@@ -167,14 +167,14 @@ function completeUpload() {
     for (var i = 0; i < fullLocations.length; i++) {
         var element = fullLocations[i];
         element.innerHTML = uploaded[uploadedId].baseUrl + '/' +
-            uploaded[uploadedId].resourceMap[element.id].type + '/' +
-            uploaded[uploadedId].resourceMap[element.id].serverId;
+            uploaded[uploadedId].resourceMap[element.dataset.resource].type + '/' +
+            uploaded[uploadedId].resourceMap[element.dataset.resource].serverId;
     }
 
     var serverIds = document.getElementsByClassName(uploadedId + '-serverid');
     for (var i = 0; i < serverIds.length; i++) {
         var element = serverIds[i];
-        element.innerHTML = uploaded[uploadedId].resourceMap[element.id].serverId;
+        element.innerHTML = uploaded[uploadedId].resourceMap[element.dataset.resource].serverId;
     }
 
     var baseUrls = document.getElementsByClassName(uploadedId + '-baseurl');

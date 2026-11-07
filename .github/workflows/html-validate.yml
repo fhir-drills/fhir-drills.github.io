@@ -1,0 +1,27 @@
+name: HTML validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  html-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      # Rules live in .htmlvalidate.json: the "recommended" preset, minus purely
+      # stylistic rules (whitespace, quoting, case, self-closing style, raw "&"/"<"
+      # in text and JSON textareas). The two rules set to "warn" (percentage width and
+      # align attributes on images) are reported but don't fail the build: fixing them
+      # means moving image sizing into CSS.
+      - name: Validate pages
+        run: npx --yes html-validate@11.19.0 *.html

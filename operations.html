@@ -46,7 +46,7 @@
     -->
 	
 	<!-- CodeMirror -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -105,7 +105,7 @@
         <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
         <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
     </span>
-    <nav class="mdl-navigation">
+    <nav class="mdl-navigation" aria-label="Tutorials">
         <a href="./index.html" class="mdl-navigation__link">
             <span class="lang-content lang-en">Overview</span>
             <span class="lang-content lang-ru">Обзор</span>
@@ -159,14 +159,14 @@
                             <h4>Operations</h4>
                                                     
                             <p>This tutorial will give you an overview of <b>Operations</b> in the FHIR specification.</p>
-                            <ul class="toc">
+                            <nav class="toc" aria-label="Contents">
                                 <h4>Contents</h4>
                                 <!-- pr prefix stands for 'patient references'-->
                                 <a href="#op-step1">Step 1: What are Operations</a>  
                                 <a href="#op-step2">Step 2: Operations input parameters</a>  
                                 <a href="#op-step3">Step 3: Operations output parameters</a>  
                                 <a href="#op-step4">Step 4: Custom Operations</a>  
-                            </ul>
+                            </nav>
 
                             <h5 id="op-step1">Step 1: What are Operations</h5>
                             
@@ -241,7 +241,7 @@
                              <p><b>Activity:</b> Using a post client GET your servers' CapabilityStatement resource and identify the operations it supports?<br>
                             <i><b>Tip</b> <code>GET: &#91;Service Root URL&#93;/metadata</code></i></p>
 
-                            <note>All operations in FHIR are accessed using a dollar symbol e.g <code>GET: &#91;Service Root URL&#93;/$MyOperationName</code>. Yet, the metadata call to get the servers' CapabilityStatement does not use a dollar sign. This is a quirk of the early development of FHIR. The 'metadata' operation was the very first operation ever defined by FHIR and as it returns the information about what the server supports. It is a critical piece of infrastructure. The FHIR team thought changing this call to '$metadata' would be to much of a breaking change.</note>
+                            <div class="note">All operations in FHIR are accessed using a dollar symbol e.g <code>GET: &#91;Service Root URL&#93;/$MyOperationName</code>. Yet, the metadata call to get the servers' CapabilityStatement does not use a dollar sign. This is a quirk of the early development of FHIR. The 'metadata' operation was the very first operation ever defined by FHIR and as it returns the information about what the server supports. It is a critical piece of infrastructure. The FHIR team thought changing this call to '$metadata' would be to much of a breaking change.</div>
                         </div>
                         
                         <!-- Russian Content -->
@@ -249,15 +249,15 @@
                             <h4>Операции</h4>
                                                     
                             <p>Этот урок даст вам обзор <b>Операций</b> в спецификации FHIR.</p>
-                            <ul class="toc">
+                            <nav class="toc" aria-label="Содержание">
                                 <h4>Содержание</h4>
-                                <a href="#op-step1">Шаг 1: Что такое операции</a>  
-                                <a href="#op-step2">Шаг 2: Входные параметры операций</a>  
-                                <a href="#op-step3">Шаг 3: Выходные параметры операций</a>  
-                                <a href="#op-step4">Шаг 4: Пользовательские операции</a>  
-                            </ul>
+                                <a href="#op-step1-ru">Шаг 1: Что такое операции</a>  
+                                <a href="#op-step2-ru">Шаг 2: Входные параметры операций</a>  
+                                <a href="#op-step3-ru">Шаг 3: Выходные параметры операций</a>  
+                                <a href="#op-step4-ru">Шаг 4: Пользовательские операции</a>  
+                            </nav>
 
-                            <h5 id="op-step1">Шаг 1: Что такое операции</h5>
+                            <h5 id="op-step1-ru">Шаг 1: Что такое операции</h5>
                             
                             <p>В уроке <a href="simple-patient.html">Пациент</a> мы рассмотрели взаимодействие с FHIR-сервером с использованием CRUD-действий (Создание, Чтение, Обновление и Удаление). <b>Операции</b> расширяют эти базовые действия, предоставляя уникальную функциональность там, где это необходимо. Например, операция <b>&#36;validate</b> может проверить, что предоставленный ресурс приемлем для сервера, прежде чем вы попытаетесь его загрузить. <b>&#36;translate</b> может сопоставить один код с другим, используя ConceptMap. Полный список операций, определенных спецификацией FHIR, можно найти здесь: <a href="http://hl7.org/fhir/R4/operationslist.html">Операции, определенные FHIR</a>, а для операций, специфичных для данного ресурса FHIR, вы найдете вкладку операций в верхней части страницы данного ресурса.</p>
                             
@@ -294,7 +294,7 @@
                             
                             <p>Операции также могут иметь любое количество входных и выходных параметров. Далее мы рассмотрим входные параметры.</p>
 
-                            <h5 id="op-step2">Шаг 2: Входные параметры операций</h5>
+                            <h5 id="op-step2-ru">Шаг 2: Входные параметры операций</h5>
                             
                             <p>Существует два различных способа передачи входных параметров операции на FHIR-сервер. Обычно используется действие POST, и параметры передаются в теле HTTP как ресурс <a href="http://hl7.org/fhir/R4/parameters.html">Parameters</a>. Взгляните на ресурс <a href="http://hl7.org/fhir/R4/parameters.html">Parameters</a> в спецификации FHIR сейчас, чтобы понять его содержимое. По сути, это ресурс, содержащий пары значений (ключ, значение), где значение может быть типом данных FHIR или целым ресурсом. Главное, что нужно понять здесь, это то, что ресурс <a href="http://hl7.org/fhir/R4/parameters.html">Parameters</a> позволяет передавать типы данных и целые ресурсы в качестве параметров.</p>
                             
@@ -318,11 +318,11 @@
                             <p><i>Что такое идемпотентность?</i><br>
                             <b>Идемпотентность: </b>Идемпотентная операция может применяться несколько раз без изменения результата после первоначального применения. Например, если я делаю вызов для удаления ресурса, действие называется 'Идемпотентным', потому что если я повторю тот же самый вызов много раз, никаких дальнейших изменений не произойдет, ресурс просто останется удаленным, как это было при первом вызове.</p>
                             
-                            <h5 id="op-step3">Шаг 3: Выходные параметры операций</h5>                        
+                            <h5 id="op-step3-ru">Шаг 3: Выходные параметры операций</h5>                        
                             
                             <p>Выход операции в некоторой степени такой же, как и вход. Если операция была успешной, будет возвращен HTTP-код состояния 200 OK вместе с ресурсом <a href="http://hl7.org/fhir/R4/parameters.html">Parameters</a> или вы можете получить целый ресурс в зависимости от операции. Если сервер столкнется с ошибкой, вы получите ресурс OperationOutcome и HTTP-код состояния 4xx или 5xx. Не все операции одинаковы, поэтому просмотрите <a href="http://hl7.org/fhir/R4/operationslist.html">полный список</a>, чтобы понять входы и выходы каждой.</p>
                             
-                            <h5 id="op-step4">Шаг 4: Пользовательские операции</h5>
+                            <h5 id="op-step4-ru">Шаг 4: Пользовательские операции</h5>
                             <p>Хотя спецификация FHIR определяет набор операций, нет требования, чтобы какой-либо данный сервер поддерживал эти операции. Чтобы выяснить, какие операции поддерживает сервер, вам нужно будет проверить собственный CapabilityStatement сервера, который является ресурсом, который все серверы должны предоставлять при следующем вызове: <code>GET: &#91;URL корня службы&#93;/metadata</code>. Проверьте этот ресурс, чтобы увидеть, какие ресурсы OperationDefinition он перечисляет как поддерживаемые. Они должны быть перечислены по следующему пути в ресурсе CapabilityStatement: <code>CapabilityStatement/rest/operation</code> Здесь вы должны увидеть ссылку на другой ресурс с именем OperationDefinition, который используется для определения операции в ее полноте; что делает операция и какие входы и выходы она использует.</p>
                             
                             <p>Серверам также разрешено предлагать свои собственные пользовательские операции. Каждая из них должна быть определена в ресурсе CapabilityStatement этого сервера ресурсом OperationDefinition, как описано выше. Сервер может даже расширить существующую операцию новыми входными и выходными параметрами, опять же все это должно быть указано в соответствующем OperationDefinition и ссылаться в собственном CapabilityStatement сервера.</p>
@@ -330,9 +330,10 @@
                              <p><b>Задание:</b> Используя POST-клиент, получите ресурс CapabilityStatement вашего сервера и определите операции, которые он поддерживает?<br>
                             <i><b>Подсказка</b> <code>GET: &#91;URL корня службы&#93;/metadata</code></i></p>
 
-                            <note>Все операции в FHIR доступны с использованием символа доллара, например <code>GET: &#91;URL корня службы&#93;/$MyOperationName</code>. Однако вызов metadata для получения CapabilityStatement сервера не использует знак доллара. Это особенность раннего развития FHIR. Операция 'metadata' была самой первой операцией, когда-либо определенной FHIR, и поскольку она возвращает информацию о том, что поддерживает сервер, это критически важная часть инфраструктуры. Команда FHIR посчитала, что изменение этого вызова на '$metadata' будет слишком кардинальным изменением.</note>
+                            <div class="note">Все операции в FHIR доступны с использованием символа доллара, например <code>GET: &#91;URL корня службы&#93;/$MyOperationName</code>. Однако вызов metadata для получения CapabilityStatement сервера не использует знак доллара. Это особенность раннего развития FHIR. Операция 'metadata' была самой первой операцией, когда-либо определенной FHIR, и поскольку она возвращает информацию о том, что поддерживает сервер, это критически важная часть инфраструктуры. Команда FHIR посчитала, что изменение этого вызова на '$metadata' будет слишком кардинальным изменением.</div>
                         </div>
                         
+                    </div>
                     </div>
                 </section>
             <footer class="mdl-mega-footer">
