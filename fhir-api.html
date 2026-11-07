@@ -42,7 +42,7 @@
 
     <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
     <!--
-    <link rel="canonical" href="http://www.example.com/">
+    <link rel="canonical" href="https://fhir-drills.github.io/fhir-api.html">
     -->
 	
 	<!-- CodeMirror -->
@@ -146,7 +146,7 @@
                             <p>They are:</p> 
                             <b>Java</b>
 							
-							<p><a href="http://hapifhir.io">HAPI FHIR library</a>: To get started with HAPI, add the dependency <a href="http://hapifhir.io/download.html#Maven_Users">via Maven</a> or <a href="http://hapifhir.io/download.html#Gradle_Users">Gradle</a> - or download the library from the <a href="https://github.com/hapifhir/hapi-fhir/releases">releases page</a>. For R4, include all non-hapi jars in your classpath, and the following HAPI jars: <code>hapi-fhir-base</code>, <code>hapi-fhir-structures-r4</code>, <code>hapi-fhir-validation-resources-r4</code>.</p>
+							<p><a href="https://hapifhir.io/">HAPI FHIR library</a>: To get started with HAPI, add the dependency <a href="https://hapifhir.io/hapi-fhir/docs/getting_started/downloading_and_importing.html#maven-users">via Maven</a> or <a href="https://hapifhir.io/hapi-fhir/docs/getting_started/downloading_and_importing.html#gradle-users">Gradle</a> - or download the library from the <a href="https://github.com/hapifhir/hapi-fhir/releases">releases page</a>. For R4, include all non-hapi jars in your classpath, and the following HAPI jars: <code>hapi-fhir-base</code>, <code>hapi-fhir-structures-r4</code>, <code>hapi-fhir-validation-resources-r4</code>.</p>
 							
 							<p>The Java examples listed in this tutorial require Java 8 SDK installed, however HAPI itself supports Java all the way back to 6.</p>
 							
@@ -263,13 +263,13 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         // context - create this once, as it's an expensive operation
-        // see http://hapifhir.io/doc_intro.html
+        // see https://hapifhir.io/hapi-fhir/docs/getting_started/introduction.html
         FhirContext ctx = FhirContext.forDstu3();
 
         Patient patient = new Patient();
 
         // you can use the Fluent API to chain calls
-        // see http://hapifhir.io/doc_fhirobjects.html
+        // see https://hapifhir.io/hapi-fhir/docs/model/working_with_resources.html
         patient.addName().setUse(HumanName.NameUse.OFFICIAL)
                 .addPrefix("Mr").addFamily("Fhirman").addGiven("Sam");
         patient.addIdentifier()
@@ -310,7 +310,7 @@ public class Main {
     }
   ]
 }</textarea>
-							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/R4/patient.html">Patient</a> page to see what can you populate your resource with (<a href="http://hapifhir.io/apidocs-dstu3/org/hl7/fhir/dstu3/model/Patient.html">Javadoc</a> is also available).</p>
+							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/R4/patient.html">Patient</a> page to see what can you populate your resource with (<a href="https://hapifhir.io/hapi-fhir/apidocs/hapi-fhir-structures-r4/org/hl7/fhir/r4/model/Patient.html">Javadoc</a> is also available).</p>
 							
 							<h5 id="api-upload-patient">Step 3: Upload your basic Patient</h5>
 							<p>Now that we can create a simple resource, let's upload it to a FHIR server:</p>
@@ -416,14 +416,14 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         // context - create this once, as it's an expensive operation
-        // see http://hapifhir.io/doc_intro.html
+        // see https://hapifhir.io/hapi-fhir/docs/getting_started/introduction.html
         FhirContext ctx = FhirContext.forDstu3();
         String serverBaseUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";
 
         Patient ourPatient = new Patient();
 
         // you can use the Fluent API to chain calls
-        // see http://hapifhir.io/doc_fhirobjects.html
+        // see https://hapifhir.io/hapi-fhir/docs/model/working_with_resources.html
         ourPatient.addName().setUse(HumanName.NameUse.OFFICIAL)
                 .addPrefix("Mr").addFamily("Fhirman").addGiven("Sam");
         ourPatient.addIdentifier()
@@ -431,12 +431,12 @@ public class Main {
                 .setValue("8003608166690503");
 
         // increase timeouts since the server might be powered down
-        // see http://hapifhir.io/doc_rest_client_http_config.html
+        // see https://hapifhir.io/hapi-fhir/docs/client/client_configuration.html
         ctx.getRestfulClientFactory().setConnectTimeout(60 * 1000);
         ctx.getRestfulClientFactory().setSocketTimeout(60 * 1000);
 
         // create the RESTful client to work with our FHIR server
-        // see http://hapifhir.io/doc_rest_client.html
+        // see https://hapifhir.io/hapi-fhir/docs/client/generic_client.html
         IGenericClient client = ctx.newRestfulGenericClient(serverBaseUrl);
 
         System.out.println("Press Enter to send to server: " + serverBaseUrl);
@@ -444,7 +444,7 @@ public class Main {
 
         try {
             // send our resource up - result will be stored in 'outcome'
-            // see http://hapifhir.io/doc_rest_client.html#Create_-_Type
+            // see https://hapifhir.io/hapi-fhir/docs/client/generic_client.html#create-type
             MethodOutcome outcome = client.create()
                     .resource(ourPatient)
                     .prettyPrint()
@@ -550,17 +550,17 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         // context - create this once, as it's an expensive operation
-        // see http://hapifhir.io/doc_intro.html
+        // see https://hapifhir.io/hapi-fhir/docs/getting_started/introduction.html
         FhirContext ctx = FhirContext.forDstu3();
         String serverBaseUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";
 
         // increase timeouts since the server might be powered down
-        // see http://hapifhir.io/doc_rest_client_http_config.html
+        // see https://hapifhir.io/hapi-fhir/docs/client/client_configuration.html
         ctx.getRestfulClientFactory().setConnectTimeout(60 * 1000);
         ctx.getRestfulClientFactory().setSocketTimeout(60 * 1000);
 
         // create the RESTful client to work with our FHIR server
-        // see http://hapifhir.io/doc_rest_client.html
+        // see https://hapifhir.io/hapi-fhir/docs/client/generic_client.html
         IGenericClient client = ctx.newRestfulGenericClient(serverBaseUrl);
 
         System.out.println("Press Enter to send to server: " + serverBaseUrl);
@@ -568,7 +568,7 @@ public class Main {
 
         try {
             // perform a search for Patients with last name 'Fhirman'
-            // see http://hapifhir.io/doc_rest_client.html#SearchQuery_-_Type
+            // see https://hapifhir.io/hapi-fhir/docs/client/generic_client.html#search-by-type
             Bundle response = client.search()
                     .forResource(Patient.class)
                     .where(Patient.FAMILY.matches().values("Fhirman"))
@@ -593,7 +593,7 @@ public class Main {
 								</div>
 							</div>	
 							<h5 id="api-operations">Step 5: Run an operation</h5>
-							<p>Lastly, let's execute an operation on the server. A simple operation we can do is the <a href="https://hl7-fhir.github.io/patient-operations.html#everything">Patient/$everything</a> - this'll fetch us the Patient resource and all related resources to it.</p>
+							<p>Lastly, let's execute an operation on the server. A simple operation we can do is the <a href="https://hl7.org/fhir/R4/patient-operation-everything.html">Patient/$everything</a> - this'll fetch us the Patient resource and all related resources to it.</p>
 							<p>Firstly, lets upload the sample Patient we've explored before in the <a href="patient-with-references.html">Patient with References</a> tutorial:</p>
 							
 							<p>
@@ -693,17 +693,17 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         // context - create this once, as it's an expensive operation
-        // see http://hapifhir.io/doc_intro.html
+        // see https://hapifhir.io/hapi-fhir/docs/getting_started/introduction.html
         FhirContext ctx = FhirContext.forDstu3();
         String serverBaseUrl = "http://sqlonfhir-stu3.azurewebsites.net/fhir";
 
         // increase timeouts since the server might be powered down
-        // see http://hapifhir.io/doc_rest_client_http_config.html
+        // see https://hapifhir.io/hapi-fhir/docs/client/client_configuration.html
         ctx.getRestfulClientFactory().setConnectTimeout(60 * 1000);
         ctx.getRestfulClientFactory().setSocketTimeout(60 * 1000);
 
         // create the RESTful client to work with our FHIR server
-        // see http://hapifhir.io/doc_rest_client.html
+        // see https://hapifhir.io/hapi-fhir/docs/client/generic_client.html
         IGenericClient client = ctx.newRestfulGenericClient(serverBaseUrl);
 
         client.registerInterceptor(new LoggingInterceptor(true));
@@ -713,7 +713,7 @@ public class Main {
 
         try {
             // Invoke $everything on our Patient
-            // See http://hapifhir.io/doc_rest_client.html#Extended_Operations
+            // See https://hapifhir.io/hapi-fhir/docs/client/generic_client.html#extended-operations
             Parameters outParams = client
                     .operation()
                     .onInstance(new IdType("Patient", "MY_PATIENT_ID"))
@@ -753,7 +753,7 @@ public class Main {
 							<pre>Observation/<span class="patient-with-references-serverid" id="rf-observation2">(press Upload first)</span></pre>
 							<pre>DiagnosticReport/<span class="patient-with-references-serverid" id="rf-diagnosticreport">(press Upload first)</span></pre>
 
-							<p>That's about it for the basics! Happy coding. Check out the <a href="http://hapifhir.io/docindex.html">HAPI documentation</a> if you're using Java for more as well.</p>
+							<p>That's about it for the basics! Happy coding. Check out the <a href="https://hapifhir.io/hapi-fhir/docs/">HAPI documentation</a> if you're using Java for more as well.</p>
 						</div>                     
                     </div>
                 </section>
@@ -764,7 +764,7 @@ public class Main {
                         <h1 class="mdl-mega-footer--heading">The Agency</h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
-                            <li><a href="https://myhealthrecord.gov.au/internet/mhr/publishing.nsf/content/home" title="Australian national health record">My Health Record</a></li>
+                            <li><a href="https://www.myhealthrecord.gov.au/" title="Australian national health record">My Health Record</a></li>
                         </ul>
                     </div>
                     <div class="mdl-mega-footer--drop-down-section">

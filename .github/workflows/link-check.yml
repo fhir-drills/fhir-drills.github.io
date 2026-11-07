@@ -1,0 +1,37 @@
+name: Link check
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Weekly, Monday 03:17 UTC: external links rot even when the site doesn't change.
+    - cron: "17 3 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Restore lychee cache
+        uses: actions/cache@v5
+        with:
+          path: .lycheecache
+          key: lychee-${{ github.sha }}
+          restore-keys: lychee-
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Settings (excludes, accepted status codes, timeouts) live in lychee.toml.
+          args: >-
+            --config lychee.toml
+            --cache
+            --root-dir "${{ github.workspace }}"
+            './**/*.html'
+            README.MD
+          fail: true
