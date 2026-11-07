@@ -15,10 +15,10 @@ jobs:
   links:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Restore lychee cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: .lycheecache
           key: lychee-${{ github.sha }}

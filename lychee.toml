@@ -22,4 +22,14 @@ exclude = [
   '^https?://server\.fire\.ly/r4',
   # Search-results link built in js/main.js.
   '^https://www\.google\.com(\.au)?/search',
+  # These sites sit behind bot protection that rejects every automated client
+  # (Confluence answers with an AWS WAF "Human Verification" page / 405; the
+  # Australian government sites drop the connection), so they cannot be checked
+  # automatically. Check them by hand in a browser occasionally instead.
+  '^https://confluence\.hl7\.org/',
+  '^https://(www\.)?digitalhealth\.gov\.au/',
+  '^https://(www\.)?myhealthrecord\.gov\.au/',
 ]
+
+# Vendored third-party library docs, not part of the site's own content.
+exclude_path = ['js/lua\.vm\.js/']
