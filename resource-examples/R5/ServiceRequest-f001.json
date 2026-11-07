@@ -1,0 +1,66 @@
+{
+   "resourceType":"ServiceRequest",
+   "id":"digitalhealth-f001",
+   "status":"active",
+   "intent":"order",
+   "identifier":[
+      {
+         "use":"official",
+         "system":"http://www.bmc.nl/zorgportal/identifiers/labresults",
+         "value":"L2381"
+      }
+   ],
+   "subject":{
+      "reference":"Patient/digitalhealth-f001",
+      "display":"P. van den Heuvel"
+   },
+   "requester":{
+      "reference":"#practitionerid",
+      "display":"Dr. Adam Careful"
+   },
+   "contained":[
+      {
+         "resourceType":"Practitioner",
+         "id":"practitionerid",
+         "identifier":[
+            {
+               "system":"http://www.acme.org/practitioners",
+               "value":"23"
+            }
+         ],
+         "active":true,
+         "name":[
+            {
+               "family":"Careful",
+               "given":[
+                  "Adam"
+               ],
+               "prefix":[
+                  "Dr"
+               ]
+            }
+         ]
+      }
+   ],
+   "encounter":{
+      "reference":"Encounter/digitalhealth-f001"
+   },
+   "reason":[
+      {
+         "concept":{
+            "text":"patient fainted before a procedure"
+         }
+      }
+   ],
+   "code":{
+      "concept":{
+         "coding":[
+            {
+               "system":"http://loinc.org",
+               "code":"58410-2",
+               "display":"CBC panel - Blood by Automated count"
+            }
+         ]
+      }
+   }
+}
