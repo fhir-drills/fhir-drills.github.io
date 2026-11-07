@@ -348,7 +348,7 @@
                             <p>После обновления попробуйте выполнить <b>GET</b>, как в <a href="#Step2">Шаге 2</a>, чтобы увидеть, был ли обновлён ваш ресурс. Если вы сравните <b>versionId</b> внутри ресурса, вы увидите, что он увеличился на единицу.</p>
                         </div>
                         
-                        <img src="images/Resource-VersionID.PNG" width="50%"> 
+                        <img alt="Patient JSON after the update, with meta.versionId &quot;2&quot; highlighted" data-alt-ru="JSON ресурса Patient после обновления с выделенным meta.versionId &quot;2&quot;" src="images/Resource-VersionID.PNG" width="50%"> 
                         
                         <h5 id="Step4">
                             <span class="lang-content lang-en">Step 4: Adding a new resource to the FHIR server</span>
@@ -410,7 +410,7 @@
                             
                             <p>That is the URL done, now for the resource itself. Near the very top of the resource, you will see an <b>id</b> element with an attribute of <b>value</b> which is equal to the <b>id</b> of the resource we copied. This is the resource id and as we are creating a brand new resource we need to remove this whole element. If we don't the server could return a <b>400 Bad Request</b> error. Feel free to hit <b>Send</b> before you remove it to see this error in action: don't worry, the server won't catch on fire.</p>
                             
-                            <p><img src="images/Resource-id.PNG" width="40%"></p>
+                            <p><img alt="Top of the Patient JSON with the &quot;id&quot; element highlighted – the element to remove before POSTing it as a new resource" src="images/Resource-id.PNG" width="40%"></p>
                             
                             <p> So after hitting <b>Send</b> with the <b>id</b> element removed you should be returned the entire resource and a status of <b>201 Created</b>. If you inspect the returned resource's <b>id</b> element you will find that the server has assigned a new <b>id</b> value, this is now the FHIR servers assigned <b>id</b> for your resource. It's also worth noting the <b>versionId</b> in the <b>meta</b> element, this should be set to '1' as this is the very first version of this resource.</p>
                             
@@ -426,7 +426,7 @@
                             
                             <p>Это URL готов, теперь для самого ресурса. В самом верху ресурса вы увидите элемент <b>id</b> с атрибутом <b>value</b>, который равен <b>id</b> ресурса, который мы скопировали. Это id ресурса, и поскольку мы создаём совершенно новый ресурс, нам нужно удалить весь этот элемент. Если мы этого не сделаем, сервер может вернуть ошибку <b>400 Bad Request</b>. Не стесняйтесь нажать <b>Send</b> перед тем, как удалить его, чтобы увидеть эту ошибку в действии: не волнуйтесь, сервер не загорится.</p>
                             
-                            <p><img src="images/Resource-id.PNG" width="40%"></p>
+                            <p><img alt="Начало JSON ресурса Patient с выделенным элементом &quot;id&quot; – его нужно удалить перед отправкой через POST как нового ресурса" src="images/Resource-id.PNG" width="40%"></p>
                             
                             <p>Итак, после нажатия <b>Send</b> с удалённым элементом <b>id</b> вы должны получить весь ресурс и статус <b>201 Created</b>. Если вы проверите элемент <b>id</b> возвращённого ресурса, вы обнаружите, что сервер назначил новое значение <b>id</b> - это теперь назначенный сервером FHIR <b>id</b> для вашего ресурса. Также стоит отметить <b>versionId</b> в элементе <b>meta</b> - он должен быть установлен в '1', поскольку это самая первая версия этого ресурса.</p>
                             
