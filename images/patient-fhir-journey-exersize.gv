@@ -1,29 +1,30 @@
+// References between the resources in the Sam's FHIR journey answer
+// (resource-examples/sam-fhir-journey/Bundle.json), FHIR R4.
+// Render with: dot -Tpng patient-fhir-journey-exersize.gv -o patient-fhir-journey-exersize.png
 digraph g {
   rankdir = TB
-  ordering = "in"
-  size="10,10"
-  ratio = "auto"
-  "Appointment"
+  graph [fontname="Helvetica", nodesep=0.35, ranksep=0.55, pad=0.2]
+  node [fontname="Helvetica", fontsize=13]
+  edge [fontname="Helvetica", fontsize=12]
+  "Patient" [style="filled", fillcolor="lightgrey"]
   "Appointment" -> "Patient" [label="participant.actor"]
-  "Encounter" -> "Patient" [label="patient"]
+  "Encounter" -> "Patient" [label="subject"]
   "Encounter" -> "Practitioner" [label="participant.individual"]
   "Encounter" -> "Appointment" [label="appointment"]
   "Encounter" -> "Organization (hospital)" [label="serviceProvider"]
-  "Patient" [style="filled"]
+  "AllergyIntolerance" -> "Patient" [label="patient"]
   "AllergyIntolerance" -> "Practitioner" [label="recorder"]
-  "AllergyIntolerance" -> "Patient" [label="patient"]  
-  "Organization (hospital)"
-  "DiagnosticRequest" -> "Patient" [label="subject"]
-  "DiagnosticRequest" -> "Practitioner" [label="requester"]
-  "DiagnosticRequest" -> "Encounter" [label="context"]
-  "DiagnosticRequest" -> "Organization (pathlab)" [label="performer"]
+  "ServiceRequest" -> "Patient" [label="subject"]
+  "ServiceRequest" -> "Encounter" [label="encounter"]
+  "ServiceRequest" -> "Practitioner" [label="requester"]
+  "ServiceRequest" -> "Organization (pathlab)" [label="performer"]
+  "Task" -> "Practitioner" [label="requester"]
+  "Task" -> "ServiceRequest" [label="input"]
+  "Task" -> "DiagnosticReport" [label="output"]
   "DiagnosticReport" -> "Patient" [label="subject"]
   "DiagnosticReport" -> "Organization (pathlab)" [label="performer"]
-  "DiagnosticReport" -> "DiagnosticRequest" [label="request"]
+  "DiagnosticReport" -> "ServiceRequest" [label="basedOn"]
   "DiagnosticReport" -> "Observation" [label="result"]
-  "Organization (pathlab)"
   "Observation" -> "Patient" [label="subject"]
-  "Practitioner" -> "Organization (hospital)" [label="role.organization"]
-  "Task" -> "DiagnosticRequest" [label="input"]
-  "Task" -> "DiagnosticReport" [label="output"]
+  "Observation" -> "Organization (pathlab)" [label="performer"]
 }
