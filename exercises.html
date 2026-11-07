@@ -77,7 +77,7 @@
   </script>	
 </head>
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base lang-en">
 <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -99,13 +99,28 @@
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">FHIR<sup>®</sup> exercises</span>
+    <span class="mdl-layout-title">
+        <span class="lang-content lang-en">FHIR<sup>®</sup> exercises</span>
+        <span class="lang-content lang-ru">FHIR<sup>®</sup> упражнения</span>
+    </span>
     <nav class="mdl-navigation">
-		<a href="./exercises.html" class="mdl-navigation__link  is-active-tab">FHIR exercises</a>
-		<a href="./terminology-exercise.html" class="mdl-navigation__link">Terminology exercise</a>
-		<a href="./sam-fhir-journey.html" class="mdl-navigation__link">Sam's FHIR journey</a>
+		<a href="./exercises.html" class="mdl-navigation__link  is-active-tab">
+			<span class="lang-content lang-en">FHIR exercises</span>
+			<span class="lang-content lang-ru">FHIR упражнения</span>
+		</a>
+		<a href="./terminology-exercise.html" class="mdl-navigation__link">
+			<span class="lang-content lang-en">Terminology exercise</span>
+			<span class="lang-content lang-ru">Упражнение по терминологии</span>
+		</a>
+		<a href="./sam-fhir-journey.html" class="mdl-navigation__link">
+			<span class="lang-content lang-en">Sam's FHIR journey</span>
+			<span class="lang-content lang-ru">Путешествие Сэма по FHIR</span>
+		</a>
 		<span class="mdl-navigation__link nav-spacer" aria-hidden="true"></span>
-		<a href="./index.html" class="mdl-navigation__link">FHIR tutorials</a>
+		<a href="./index.html" class="mdl-navigation__link">
+			<span class="lang-content lang-en">FHIR tutorials</span>
+			<span class="lang-content lang-ru">FHIR уроки</span>
+		</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
@@ -113,6 +128,8 @@
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
 							<img alt="FHIR logo" data-alt-ru="Логотип FHIR" src="images/fhir-logo-www.png" align="right" width="20%">
+
+                            <div class="lang-content lang-en">
 							<h3>FHIR Drills</h3>
                             <h4>FHIR<sup>®</sup> group exercises</h4> 
                             <p>This set of pages is designed for a group connectathon setting to do together with other people. At present these group exercises are in their beta stage of development and we would appreciate any feedback you may have.</p>
@@ -120,6 +137,17 @@
                             <p>Please note these tutorials have been written against <a href="http://hl7.org/fhir/R4/">FHIR R4</a> (version 4.0.1)</p>
                             
                             <p>To continue, use the tabs left of the page and work through the exercises from top to bottom starting with the <a href="./terminology-exercise.html">Terminology exercise</a>.</p>
+                            </div>
+
+                            <div class="lang-content lang-ru">
+                                <h3>FHIR Упражнения</h3>
+                                <h4>Групповые упражнения FHIR<sup>®</sup></h4>
+                                <p>Этот набор страниц предназначен для групповой работы в формате коннектатона, вместе с другими участниками. Сейчас эти групповые упражнения находятся на стадии бета-версии, и мы будем благодарны за любые ваши отзывы.</p>
+
+                                <p>Обратите внимание: эти материалы написаны для <a href="http://hl7.org/fhir/R4/">FHIR R4</a> (версия 4.0.1).</p>
+
+                                <p>Чтобы продолжить, используйте вкладки слева от страницы и выполняйте упражнения сверху вниз, начиная с <a href="./terminology-exercise.html">Упражнения по терминологии</a>.</p>
+                            </div>
 						</div>
 					</div>
                 </section>
@@ -127,10 +155,16 @@
                 <div class="mdl-mega-footer--middle-section">
                     <div class="mdl-mega-footer--drop-down-section">
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">The Agency</span>
+                            <span class="lang-content lang-ru">Агентство</span>
+                        </h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
-                            <li><a href="https://www.myhealthrecord.gov.au/" title="Australian national health record">My Health Record</a></li>
+                            <li><a href="https://www.myhealthrecord.gov.au/" title="Australian national health record">
+                                <span class="lang-content lang-en">My Health Record</span>
+                                <span class="lang-content lang-ru">Моя медицинская карта</span>
+                            </a></li>
                         </ul>
                     </div>
                     <div class="mdl-mega-footer--drop-down-section">
@@ -141,6 +175,21 @@
                             <li><a href="http://hl7.org/fhir/R4" title="FHIR R4 Release">FHIR R4 Release</a></li>
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
+                    </div>
+                    
+                    <!-- Language Selector -->
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">Language</span>
+                            <span class="lang-content lang-ru">Язык</span>
+                        </h1>
+                        <div class="language-selector">
+                            <select id="language-dropdown" class="lang-dropdown" onchange="switchLanguage(this.value)">
+                                <option value="en">English</option>
+                                <option value="ru" title="Russian language support for Central Asian countries adopting FHIR">Русский</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </footer>
@@ -157,6 +206,8 @@
     <script src="js/main.js"></script>
 <!-- supporting javascript to actually do the uploading -->	
 	<script src="js/post-resources.js"></script>
+    
+    <script src="js/language-switcher.js"></script>
 </body>
 
 </html>
