@@ -119,11 +119,11 @@
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
 						<div class="mdl-card__supporting-text">
 							<h4>Working with APIs for FHIR</h4>
-							<p>If you're a developer, or just someone interested in coding with FHIR, then this is the page for you to read! In this tutorial we'll walk you through doing all of the tutorials you've been doing with Postman programatically.</p>
+							<p>If you're a developer, or just someone interested in coding with FHIR, then this is the page for you to read! In this tutorial we'll walk you through doing all of the tutorials you've been doing with Postman programmatically.</p>
 
 							<note>This tutorial requires technical knowledge to do! If you're not technically minded, you can still learn FHIR by doing other tutorials on this website.</note>
                             
-                            <h6>Click the apropirate button below depending on which programming language you are intrested in. This will help this web site display the examples most relevant to your choice. </h6>
+                            <h6>Click the appropriate button below depending on which programming language you are interested in. This will help this web site display the examples most relevant to your choice. </h6>
 							<div id="fhir-api-code-buttons">
 								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="switchCodeTabs('csharp')">
 									Show me C# code
@@ -142,16 +142,16 @@
 								<a href="#api-operations">Step 5: Run an operation</a>
 							</ul>
 							<h5 id="api-setup">Step 1: Setup</h5>
-                            <p>FHIR provides some official API code libaraies in Java and .Net to help you work with the standard.</p> 
+                            <p>FHIR provides some official API code libraries in Java and .NET to help you work with the standard.</p> 
                             <p>They are:</p> 
                             <b>Java</b>
 							
 							<p><a href="https://hapifhir.io/">HAPI FHIR library</a>: To get started with HAPI, add the dependency <a href="https://hapifhir.io/hapi-fhir/docs/getting_started/downloading_and_importing.html#maven-users">via Maven</a> or <a href="https://hapifhir.io/hapi-fhir/docs/getting_started/downloading_and_importing.html#gradle-users">Gradle</a> - or download the library from the <a href="https://github.com/hapifhir/hapi-fhir/releases">releases page</a>. For R4, include all non-hapi jars in your classpath, and the following HAPI jars: <code>hapi-fhir-base</code>, <code>hapi-fhir-structures-r4</code>, <code>hapi-fhir-validation-resources-r4</code>.</p>
 							
-							<p>The Java examples listed in this tutorial require Java 8 SDK installed, however HAPI itself supports Java all the way back to 6.</p>
+							<p>To run the Java examples you need a Java Development Kit (JDK); current HAPI FHIR releases require JDK 17 or newer.</p>
 							
                             <b>Microsoft .Net</b>
-                            <p><a href="https://github.com/FirelyTeam/firely-net-sdk">FHIR .NET SDK</a>: The simplest way to get started with the .NET SDK is to search for it in the NuGet package manager built into Visual Studio. Right click your Solution and select 'Manage NuGet Packages' and then search and install both 'Hl7.Fhir.R4' and 'Hl7.Fhir.Support.Poco'. You can find a C# project <a href="https://github.com/angusmillar/SimpleFhir">here</a> on GitHub that contains C# examples.</p>
+                            <p><a href="https://github.com/FirelyTeam/firely-net-sdk">FHIR .NET SDK</a>: The simplest way to get started with the .NET SDK is to search for it in the NuGet package manager built into Visual Studio. Right click your Solution and select 'Manage NuGet Packages' and then search for and install 'Hl7.Fhir.R4'. You can find a C# project <a href="https://github.com/angusmillar/SimpleFhir">here</a> on GitHub that contains C# examples.</p>
 							
 							
 							<h5 id="api-find-patient">Step 2: Create a basic Patient</h5>
@@ -310,7 +310,7 @@ public class Main {
     }
   ]
 }</textarea>
-							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/R4/patient.html">Patient</a> page to see what can you populate your resource with (<a href="https://hapifhir.io/hapi-fhir/apidocs/hapi-fhir-structures-r4/org/hl7/fhir/r4/model/Patient.html">Javadoc</a> is also available).</p>
+							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/R4/patient.html">Patient</a> page to see what you can populate your resource with (<a href="https://hapifhir.io/hapi-fhir/apidocs/hapi-fhir-structures-r4/org/hl7/fhir/r4/model/Patient.html">Javadoc</a> is also available).</p>
 							
 							<h5 id="api-upload-patient">Step 3: Upload your basic Patient</h5>
 							<p>Now that we can create a simple resource, let's upload it to a FHIR server:</p>
