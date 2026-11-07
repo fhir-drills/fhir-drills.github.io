@@ -61,29 +61,6 @@ uploaded = {
     //    }
 };
 
-//helper for Lua to load JSON examples
-function ioRead(url, success) {
-    $.ajax({
-        url: url,
-        success: window.read_result
-    });
-}
-
-//helper for Lua to create a settings object for jQuery.ajax()
-function makeAjaxPost(url, data) {
-    var ob = {};
-    ob["method"] = "POST";
-    ob["type"] = "POST";
-    ob["contentType"] = "application/json";
-    ob["url"] = url;
-    ob["data"] = data;
-    ob["headers"] = {
-        Accept: "application/json+fhir; charset=utf-8",
-        Prefer: "return=representation"
-    };
-    return ob;
-}
-
 function switchCodeTabs(tabid) {
 	var tabs = document.getElementsByClassName(tabid);
 	for (var tab = 0, l = tabs.length; tab < l; tab++) {
