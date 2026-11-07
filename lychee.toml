@@ -1,0 +1,25 @@
+# Configuration for the link checker (https://lychee.cli.rs), used by
+# .github/workflows/link-check.yml. Run locally with: lychee --config lychee.toml './**/*.html'
+
+# Check links that fail transiently a few times before giving up.
+max_retries = 3
+retry_wait_time = 5
+timeout = 30
+max_concurrency = 16
+
+# 429 = rate limited: the page exists, the host just wants us to slow down.
+accept = ["200..=299", "429"]
+
+# Re-use results for a day so the scheduled run and pushes don't hammer the same hosts.
+max_cache_age = "1d"
+
+exclude = [
+  # Placeholder domains used in example FHIR resources.
+  '^https?://([a-z0-9-]+\.)?example\.(com|org|net)',
+  # Tutorial FHIR server endpoints are API bases, not web pages; the site
+  # health-checks them itself at runtime (see js/main.js).
+  '^https?://hapi\.fhir\.org/baseR4',
+  '^https?://server\.fire\.ly/r4',
+  # Search-results link built in js/main.js.
+  '^https://www\.google\.com(\.au)?/search',
+]
