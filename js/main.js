@@ -51,6 +51,28 @@ async function selectHealthyServer() {
 
 window.serverReady = selectHealthyServer();
 
+// Firely Server only runs $translate with ConceptMaps from its administration
+// database, never with ones uploaded to the regular endpoint (it answers 404),
+// so the ConceptMap tutorial's $translate step needs another server.
+function supportsTranslate(serverUrl) {
+    return !/^https:\/\/server\.fire\.ly\//.test(serverUrl || '');
+}
+
+// Server for the ConceptMap upload: if the page fell back to a server that can't
+// run $translate (usually because HAPI was slow at page load), check again whether
+// one that can is up now.
+async function translateServer() {
+    if (supportsTranslate(servers.hapiFhirR4)) {
+        return servers.hapiFhirR4;
+    }
+    for (let server of servers.options) {
+        if (supportsTranslate(server.url) && await isServerHealthy(server.url)) {
+            return server.url;
+        }
+    }
+    return servers.hapiFhirR4;
+}
+
 uploaded = {
     //    object structure:
     //    id: {
@@ -169,7 +191,20 @@ function completeUpload() {
     // Special handling for ConceptMap $translate URL
     if (uploadedId === 'conceptmap') {
         var translateUrls = document.getElementsByClassName('conceptmap-translate-url');
-        if (translateUrls.length > 0) {
+        if (translateUrls.length > 0 && !supportsTranslate(uploaded[uploadedId].baseUrl)) {
+            // no working $translate URL to give: say why instead of showing one that 404s
+            for (var i = 0; i < translateUrls.length; i++) {
+                translateUrls[i].innerHTML = translateUrls[i].closest('.lang-content.lang-ru') ?
+                    '<i>Ресурсы загружены на Firely Server, потому что HAPI FHIR сейчас не отвечает. ' +
+                    'Firely Server не выполняет $translate с загруженными ConceptMap ' +
+                    '(он использует только ConceptMap из своей административной базы данных). ' +
+                    'Нажмите «Загрузить» ещё раз чуть позже, чтобы загрузить ресурсы на HAPI FHIR и получить URL $translate.</i>' :
+                    '<i>Your resources were uploaded to Firely Server because HAPI FHIR isn\'t responding right now. ' +
+                    'Firely Server doesn\'t run $translate with uploaded ConceptMaps ' +
+                    '(it only uses ConceptMaps from its administration database). ' +
+                    'Press Upload again a bit later to upload to HAPI FHIR and get a $translate URL.</i>';
+            }
+        } else if (translateUrls.length > 0) {
             var conceptMapUrl = uploaded[uploadedId].baseUrl + '/' +
                 uploaded[uploadedId].resourceMap['cm-conceptmap'].type + '/' +
                 uploaded[uploadedId].resourceMap['cm-conceptmap'].serverId;
@@ -249,7 +284,7 @@ var conceptMapButton = document.getElementById('conceptmap-button');
 if (conceptMapButton) {
 	conceptMapButton.onclick = async function () {
 		await window.serverReady;
-		uploadFiles("conceptmap", servers.hapiFhirR4, [
+		uploadFiles("conceptmap", await translateServer(), [
 			["cm-codesystem", "resource-examples/ConceptMap-resources/Codesystem.json"],
 			["cm-old-valueset", "resource-examples/ConceptMap-resources/Old-ValueSet.json"],
 			["cm-new-valueset", "resource-examples/ConceptMap-resources/New-ValueSet.json"],
