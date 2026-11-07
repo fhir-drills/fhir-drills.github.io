@@ -6,6 +6,25 @@ Interactive tutorials for learning FHIR.
 
 The site automatically selects a working FHIR server on page load by performing health checks against multiple public servers (HAPI FHIR R4, Firely Server R4). This ensures the tutorials continue to work even if one server is unavailable. The server selection is transparent to users and happens in the background.
 
+## FHIR versions (R4 / R5)
+
+The tutorials are written against FHIR R4 (4.0.1), which is the default. Learners can switch to FHIR R5 (5.0.0) with the **FHIR version** selector that `js/version-switcher.js` adds to the page header. The choice is remembered in `localStorage` and can also be given in the URL as `?fhir=r5` (or `?fhir=r4`). Changing it reloads the page.
+
+With R5 selected:
+
+- the test servers are HAPI FHIR R5 (`https://hapi.fhir.org/baseR5`) and Firely Server R5 (`https://server.fire.ly/r5`), with the same health check and fallback as for R4;
+- links to the R4 specification (`hl7.org/fhir/R4/...`) point at the R5 specification instead, and "R4" in their text becomes "R5";
+- example files that aren't valid R5 are replaced by their R5 copies under `resource-examples/R5/`, both for uploads and for links to them. Files without an R5 copy are valid in both versions and are used as-is. When adding an R5 copy, list it in `R5_EXAMPLES` in `js/version-switcher.js`;
+- an embedded example can show its R5 copy with `<textarea class="fhir-resource-json" data-fhir-r5-src="resource-examples/R5/...">`;
+- content that only applies to one version can be marked with `class="fhir-r4-only"` or `class="fhir-r5-only"`.
+
+Every page needs these two lines in its `<head>` (the script must run before `js/main.js`):
+
+```html
+<link rel="stylesheet" href="css/version-switcher.css">
+<script src="js/version-switcher.js"></script>
+```
+
 # HTML
 
 Decide on an exercise name - in this example, the exercise name is ``patient-with-references``.

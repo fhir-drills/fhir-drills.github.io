@@ -1,0 +1,56 @@
+/* FHIR version (R4 / R5) switching - see js/version-switcher.js.
+   These rules only ever hide, so they combine with the lang-content rules
+   in language-switcher.css. Without JavaScript the R4 content is shown. */
+html:not(.fhir-r5) .fhir-r5-only,
+html.fhir-r5 .fhir-r4-only {
+    display: none !important;
+}
+
+/* Version selector in the page header */
+.fhir-version-switcher {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.fhir-version-switcher label {
+    margin-right: 8px;
+    opacity: 0.85;
+}
+
+/* pages without a language switcher are English-only */
+body:not(.lang-en):not(.lang-ru) .fhir-version-switcher .lang-en {
+    display: inline;
+}
+
+.fhir-version-dropdown {
+    background: transparent;
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.fhir-version-dropdown:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.fhir-version-dropdown:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.fhir-version-dropdown option {
+    background: white;
+    color: #333;
+}
+
+@media screen and (max-width: 479px) {
+    .fhir-version-switcher label {
+        display: none;
+    }
+}
