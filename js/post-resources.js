@@ -78,6 +78,16 @@ function generateEphemeralUUIDs(content) {
 		}
 	}
 
+	// Replace in sourceScopeUri/targetScopeUri (R5 ConceptMap referencing the ValueSets),
+	// so that $translate's targetScope points at the ValueSet uploaded in this session
+	["sourceScopeUri", "targetScopeUri"].forEach(function (field) {
+		var scopeMatch = typeof content[field] === "string" && content[field].match(/urn:uuid:([a-f0-9-]+)/);
+		if (scopeMatch && uuidMap[scopeMatch[1]]) {
+			content[field] = content[field].replace(scopeMatch[1], uuidMap[scopeMatch[1]]);
+			console.log("Replaced UUID in ConceptMap." + field);
+		}
+	});
+
 	// Replace in compose.include[].system (ValueSets referencing CodeSystem)
 	if (content.compose && content.compose.include) {
 		for (var i = 0; i < content.compose.include.length; i++) {

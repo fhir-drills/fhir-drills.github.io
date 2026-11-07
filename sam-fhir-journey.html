@@ -53,6 +53,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.deep_purple-pink.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/language-switcher.css">
+    <link rel="stylesheet" href="css/version-switcher.css">
+    <script src="js/version-switcher.js"></script>
     <style>
         #view-source {
             position: fixed;
@@ -198,7 +200,7 @@
 							<p>Ответ со всеми ресурсами <a href="resource-examples/sam-fhir-journey/Bundle.json">доступен здесь</a> (щёлкните правой кнопкой мыши и выберите 'Сохранить как'). Поскольку этот пример представляет собой Bundle FHIR типа transaction, его можно просто отправить методом POST на конечную точку FHIR-сервера, и все ресурсы будут созданы на сервере автоматически. Но это было бы жульничеством!</p>
 							<p>Ответ также можно посмотреть ниже:</p>
 						</div>
-<textarea class="fhir-resource-json">
+<textarea class="fhir-resource-json" data-fhir-r5-src="resource-examples/R5/sam-fhir-journey/Bundle.json">
 {
   "resourceType": "Bundle",
   "type": "transaction",
