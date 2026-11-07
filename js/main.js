@@ -4,8 +4,18 @@ var servers = {
         { name: "HAPI FHIR R4", url: "https://hapi.fhir.org/baseR4" },
         { name: "Firely Server R4", url: "https://server.fire.ly/r4" }
     ],
+    r5Options: [
+        { name: "HAPI FHIR R5", url: "https://hapi.fhir.org/baseR5" },
+        { name: "Firely Server R5", url: "https://server.fire.ly/r5" }
+    ],
+    // URL of the server in use - despite the name, an R5 server when R5 is selected
     hapiFhirR4: null,
     activeServerName: null
+}
+
+// FHIR version picked with the switcher in the header (js/version-switcher.js)
+if (window.fhirVersion && window.fhirVersion.current === "r5") {
+    servers.options = servers.r5Options;
 }
 
 async function isServerHealthy(serverUrl) {
@@ -42,10 +52,11 @@ async function selectHealthyServer() {
         }
     }
 
-    // If no server is healthy, default to Firely
+    // If no server is healthy, default to Firely (the last option)
     console.warn("No servers responded to health check. Defaulting to Firely Server.");
-    servers.hapiFhirR4 = "https://server.fire.ly/r4";
-    servers.activeServerName = "Firely Server R4 (no health check)";
+    var fallback = servers.options[servers.options.length - 1];
+    servers.hapiFhirR4 = fallback.url;
+    servers.activeServerName = fallback.name + " (no health check)";
     return false;
 }
 
@@ -97,6 +108,13 @@ function uploadFiles(id, server, data) {
     if (window.uploading) {
         console.log("Already uploading " + window.uploading);
         return;
+    }
+
+    // use the R5 copy of an example file where the R4 one isn't valid R5
+    if (window.fhirVersion) {
+        data = data.map(function (entry) {
+            return [entry[0], window.fhirVersion.examplePath(entry[1])];
+        });
     }
 
     uploaded[id] = {
@@ -195,7 +213,8 @@ function completeUpload() {
                 }
             }).done(function(conceptMap) {
                 var codeSystemUUID = conceptMap.group && conceptMap.group[0] ? conceptMap.group[0].source : '';
-                var targetValueSetUUID = conceptMap.targetUri || '';
+                // R4: targetUri, R5: targetScopeUri
+                var targetValueSetUUID = conceptMap.targetUri || conceptMap.targetScopeUri || '';
 
                 // Extract just the UUID part from urn:uuid: format
                 codeSystemUUID = codeSystemUUID.replace('urn:uuid:', '');
@@ -203,6 +222,12 @@ function completeUpload() {
 
                 var translateUrl = conceptMapUrl + '/$translate?code=in-office&system=urn:uuid:' +
                     codeSystemUUID + '&target=urn:uuid:' + targetValueSetUUID;
+
+                // R5 renamed the $translate parameters: code -> sourceCode, target -> targetScope
+                if (window.fhirVersion && window.fhirVersion.current === 'r5') {
+                    translateUrl = conceptMapUrl + '/$translate?sourceCode=in-office&system=urn:uuid:' +
+                        codeSystemUUID + '&targetScope=urn:uuid:' + targetValueSetUUID;
+                }
 
                 for (var i = 0; i < translateUrls.length; i++) {
                     translateUrls[i].innerHTML = translateUrl;
@@ -321,6 +346,20 @@ $(".java-code").each(function(index, element) {
 		readOnly: true
 	  });
 });
+
+// In R5 mode, show the R5 version of inline examples that have one
+// (<textarea data-fhir-r5-src="resource-examples/R5/...">)
+if (window.fhirVersion && window.fhirVersion.current === "r5") {
+    $("textarea[data-fhir-r5-src]").each(function (index, element) {
+        $.ajax({ url: element.getAttribute("data-fhir-r5-src"), dataType: "text" }).done(function (text) {
+            if (element.codemirror) {
+                element.codemirror.setValue(text);
+            } else {
+                element.value = text;
+            }
+        });
+    });
+}
 
 // makes the search top-right work
 $('#fixed-header-drawer-exp').keyup(function (e) {
