@@ -20,7 +20,8 @@ jobs:
 
       # Rules live in .htmlvalidate.json: the "recommended" preset, minus purely
       # stylistic rules (whitespace, quoting, case, self-closing style, raw "&"/"<"
-      # in text and JSON textareas). Rules set to "warn" are reported here but don't fail
-      # the build yet; raise them to "error" once the fixes for them are on master.
+      # in text and JSON textareas). The two rules set to "warn" (percentage width and
+      # align attributes on images) are reported but don't fail the build: fixing them
+      # means moving image sizing into CSS.
       - name: Validate pages
         run: npx --yes html-validate@11.19.0 *.html

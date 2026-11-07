@@ -489,6 +489,14 @@ body.lang-ru .lang-ru.inline {
     }
 }
 
+/* Blank gap between groups of links in the side drawer. It keeps the
+   spacing of a nav link but isn't one, so it can't be focused or hovered. */
+.mdl-layout__drawer .mdl-navigation .nav-spacer,
+.mdl-layout__drawer .mdl-navigation .nav-spacer:hover {
+    background-color: transparent;
+    cursor: default;
+}
+
 /* Upload buttons and their progress bars, centred under the text */
 .upload-action {
     text-align: center;

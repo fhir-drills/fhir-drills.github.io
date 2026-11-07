@@ -46,7 +46,7 @@
     -->
 	
 	<!-- CodeMirror -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -140,7 +140,7 @@
             <span class="lang-content lang-en">FHIR APIs</span>
             <span class="lang-content lang-ru">FHIR API</span>
         </a>
-        <a href="#" class="mdl-navigation__link"></a>
+        <span class="mdl-navigation__link nav-spacer" aria-hidden="true"></span>
         <a href="./exercises.html" class="mdl-navigation__link">
             <span class="lang-content lang-en">FHIR exercises</span>
             <span class="lang-content lang-ru">FHIR упражнения</span>
@@ -178,11 +178,11 @@
 
                             <p>I love Allen's lollies. Let's imagine that each different lolly is a code. We have RipeRaspberries, Pineapples, MilkBottles, Snakes and all of the other Allen's lollies. If we listed the entire catalogue of Allen's lollies with a description for each, the date the list was put together, the lists publisher details and more then this would be the CodeSystem.</p>
                             
-                            <img src="images/Lollies-Mix.jpg" width="30%"> 
+                            <img alt="A big pile of assorted lollies – snakes, frogs, milk bottles – standing for a CodeSystem: the full catalogue of codes" src="images/Lollies-Mix.jpg" width="30%"> 
                             
                             <p>The CodeSystem does not get used by the consumers, it is just the reference catalogue for all Allen's lollies, so if you want to find out more about the code 'RipeRaspberrie' then you would go to the CodeSystem. What a consumer uses is a ValueSet, because a ValueSet adds value to the consumer. In our lolly analogy, the ValueSet is the packet of lollies you buy, like the Party Mix or the bag of lollies you choose because they're your favourites. This is a ValueSet because it serves a purpose. It is a selection of codes from the CodeSystem to be used for a purpose.</p>
                             
-                            <img src="images/Lollies-BagOf.jpg" width="20%">
+                            <img alt="A small tied bag holding a chosen selection of lollies, representing a ValueSet: codes picked from CodeSystems for a purpose" src="images/Lollies-BagOf.jpg" width="20%">
                             
                             <p>A ValueSet is not limited to a single CodeSystem just as our bag of lollies is not limited to Allen's lollies. I'm also quite fond of Smarties, but only Red and Blue ones, from the Smarties CodeSystem, and also a few RedSkins from the Wonka CodeSystem. All of these can go into my same lolly bag which is a single ValueSet.</p>
                             
@@ -214,11 +214,11 @@
 
                             <p>Я люблю конфеты Allen's. Давайте представим, что каждая разная конфета - это код. У нас есть RipeRaspberries, Pineapples, MilkBottles, Snakes и все остальные конфеты Allen's. Если бы мы перечислили весь каталог конфет Allen's с описанием для каждой, датой составления списка, деталями издателя списка и многим другим, то это был бы CodeSystem.</p>
                             
-                            <img src="images/Lollies-Mix.jpg" width="30%"> 
+                            <img alt="Большая куча разных конфет – змейки, лягушки, бутылочки – олицетворяет CodeSystem: полный каталог кодов" src="images/Lollies-Mix.jpg" width="30%"> 
                             
                             <p>CodeSystem не используется потребителями напрямую, это просто справочный каталог всех конфет Allen's, поэтому если вы хотите узнать больше о коде 'RipeRaspberries', то вы обратитесь к CodeSystem. То, что использует потребитель, это ValueSet, потому что ValueSet добавляет ценность для потребителя. В нашей аналогии с конфетами ValueSet - это пакет конфет, который вы покупаете, например Party Mix или пакет конфет, который вы выбираете, потому что они ваши любимые. Это ValueSet, потому что он служит цели. Это выборка кодов из CodeSystem для использования в определенных целях.</p>
                             
-                            <img src="images/Lollies-BagOf.jpg" width="20%">
+                            <img alt="Небольшой завязанный пакет с выбранными конфетами олицетворяет ValueSet: коды, отобранные из CodeSystem для определённой цели" src="images/Lollies-BagOf.jpg" width="20%">
                             
                             <p>ValueSet не ограничен одним CodeSystem, так же как наш пакет конфет не ограничен конфетами Allen's. Я также довольно люблю Smarties, но только красные и синие, из CodeSystem Smarties, а также несколько RedSkins из CodeSystem Wonka. Все это может попасть в мой же пакет конфет, который является единым ValueSet.</p>
                             
@@ -424,7 +424,7 @@
                             <p>Snapper - это онлайн-инструмент, разработанный командой CSIRO, которая создала терминологический сервер ONTO FHIR. Инструмент предоставляет дружественный пользовательский интерфейс для создания и редактирования FHIR CodeSystems, ValueSets и ConceptMaps, вместо того чтобы заставлять вас возиться с XML или JSON. Ваш готовый ресурс затем может быть загружен локально или опубликован непосредственно на FHIR-сервере по вашему выбору. Этот бесплатный инструмент можно найти здесь: <a href="http://ontoserver.csiro.au/snapper">Snapper</a></p>
                         </div>
                         
-                        <p><a href="images/ValueSetSnapperScreenshot.png" data-lightbox="ValueSetSnapperScreenshot"><img src="images/ValueSetSnapperScreenshot.png" width="60%" class="thumbnail"/></a></p>                                                                           
+                        <p><a href="images/ValueSetSnapperScreenshot.png" data-lightbox="ValueSetSnapperScreenshot"><img alt="CSIRO Snapper's Code System Editor, 'Define codes' tab, with lolly codes Pineapple and MilkBottle entered with display and definition text" data-alt-ru="Редактор Code System в Snapper от CSIRO, вкладка 'Define codes', с кодами конфет Pineapple и MilkBottle, их отображаемым текстом и определением" src="images/ValueSetSnapperScreenshot.png" width="60%" class="thumbnail"/></a></p>                                                                           
                         
                         <!-- Step 4 - English -->
                         <div class="lang-content lang-en">
@@ -448,7 +448,7 @@
                             <p>Как видно на этой первой диаграмме (вы можете нажать для увеличения), разработчик вызывает операцию <b>'<code>&#36;expand</code>'</b> на данном ValueSet, потому что он хочет получить список кодов и описаний для отображения пользователю. Как мы видели, ValueSet имеет список кодов и знает CodeSystems для каждого кода.</p>
                         </div>
                         
-                        <p><a href="images/ValueSetExpansionRequestDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img src="images/ValueSetExpansionRequestDiagram.png" width="50%" class="thumbnail"/></a></p>
+                        <p><a href="images/ValueSetExpansionRequestDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img alt="Diagram: a developer sends GET [base]/ValueSet/1/$expand to a FHIR Terminology Server; ValueSet 1 holds only links to codes in CodeSystem A and CodeSystem B" data-alt-ru="Схема: разработчик отправляет GET [base]/ValueSet/1/$expand на FHIR Terminology Server; ValueSet 1 содержит лишь ссылки на коды из CodeSystem A и CodeSystem B" src="images/ValueSetExpansionRequestDiagram.png" width="50%" class="thumbnail"/></a></p>
                         
                         <!-- English continuation -->
                         <div class="lang-content lang-en">
@@ -460,7 +460,7 @@
                             <p>FHIR terminology server не просто возвращает коды в ValueSet, он ссылается на CodeSystems, как указано для каждого кода в ValueSet, и получает информацию о коде из ресурса CodeSystem в реальном времени и возвращает это разработчику как расширенный ValueSet.</p>
                         </div>
                         
-                        <p><a href="images/ValueSetExpansionResponseDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img src="images/ValueSetExpansionResponseDiagram.png" width="50%" class="thumbnail"/></a></p>
+                        <p><a href="images/ValueSetExpansionResponseDiagram.png" data-lightbox="ValueSetExpansionResponseDiagram"><img alt="Diagram: for the $expand response, the server pulls each code's details from CodeSystem A and B through ValueSet 1 and returns the expanded codes to the developer" data-alt-ru="Схема: для ответа на $expand сервер получает данные каждого кода из CodeSystem A и B через ValueSet 1 и возвращает разработчику расширенный список кодов" src="images/ValueSetExpansionResponseDiagram.png" width="50%" class="thumbnail"/></a></p>
                         
                         <!-- English continuation -->
                         <div class="lang-content lang-en">
@@ -479,12 +479,12 @@
                             
                             <p>We will avoid deep diving on filters but it is worth noting they exist and can be used. Typically a filter would be used when the code system being used has a hierarchical structure, meaning each code can have a parent or children codes such as the LOINC code system or even a poly-hierarchical system where codes can have many parents and many children codes such as SNOMED-CT.</p>
                             
-                            <p><a href="images/ValueSetToeNailSNOMEDCode.png" data-lightbox="ValueSetToeNailSNOMEDCode"><img src="images/ValueSetToeNailSNOMEDCode.png" width="80%" class="thumbnail"/></a></p>
+                            <p><a href="images/ValueSetToeNailSNOMEDCode.png" data-lightbox="ValueSetToeNailSNOMEDCode"><img alt="Poly-hierarchical SNOMED CT structure for 'Toe nail': 'Entire nail of toe' has several parent paths (e.g. nail, toe, foot structure) and five child codes, one per toe" src="images/ValueSetToeNailSNOMEDCode.png" width="80%" class="thumbnail"/></a></p>
                             
                             <p>With hierarchical code systems, we can use a filter to say <i>"include all codes under this parent code"</i>. This way, as new codes are introduced under a parent code, in the code system, they will automatically be included in our ValueSet's selected codes. In the very same way we can include codes, we can also <b>exclude</b> codes either by stating the code to exclude or by using another filter.</p>
                             
                             <p>The image below is taken from the <a href="http://hl7.org/fhir/R4/valueset.html#resource"><b>ValueSet tree structure in the FHIR specification</b></a> and highlights the sections that deals with the topic discussed in this step (Include, Exclude &amp; Filter).</p>
-                            <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img src="images/ValueSetFilterTreeDiagram.png" width="100%" class="thumbnail"/></a></p>
+                            <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img alt="ValueSet tree from the FHIR spec with compose.include, compose.exclude, the concept section and the filter section highlighted; concept and filter are one or the other, not both" src="images/ValueSetFilterTreeDiagram.png" width="100%" class="thumbnail"/></a></p>
                         </div>
                         
                         <!-- Step 5 - Russian -->
@@ -494,12 +494,12 @@
                             
                             <p>Мы избежим глубокого погружения в фильтры, но стоит отметить, что они существуют и могут быть использованы. Обычно фильтр используется, когда используемая система кодов имеет иерархическую структуру, что означает, что каждый код может иметь родительский или дочерние коды, такие как система кодов LOINC, или даже поли-иерархическую систему, где коды могут иметь много родителей и много дочерних кодов, такую как SNOMED-CT.</p>
                             
-                            <p><a href="images/ValueSetToeNailSNOMEDCode.png" data-lightbox="ValueSetToeNailSNOMEDCode"><img src="images/ValueSetToeNailSNOMEDCode.png" width="80%" class="thumbnail"/></a></p>
+                            <p><a href="images/ValueSetToeNailSNOMEDCode.png" data-lightbox="ValueSetToeNailSNOMEDCode"><img alt="Полииерархическая структура SNOMED CT для «ногтя пальца ноги»: у 'Entire nail of toe' несколько родительских путей (ноготь, палец, стопа) и пять дочерних кодов – по одному на палец" src="images/ValueSetToeNailSNOMEDCode.png" width="80%" class="thumbnail"/></a></p>
                             
                             <p>С иерархическими системами кодов мы можем использовать фильтр, чтобы сказать <i>"включить все коды под этим родительским кодом"</i>. Таким образом, когда новые коды вводятся под родительским кодом в системе кодов, они автоматически будут включены в выбранные коды нашего ValueSet. Точно так же, как мы можем включать коды, мы также можем <b>исключать</b> коды, либо указав код для исключения, либо используя другой фильтр.</p>
                             
                             <p>Изображение ниже взято из <a href="http://hl7.org/fhir/R4/valueset.html#resource"><b>древовидной структуры ValueSet в спецификации FHIR</b></a> и выделяет разделы, которые касаются темы, обсуждаемой в этом шаге (Include, Exclude и Filter).</p>
-                            <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img src="images/ValueSetFilterTreeDiagram.png" width="100%" class="thumbnail"/></a></p>
+                            <p><a href="images/ValueSetFilterTreeDiagram.png" data-lightbox="ValueSetFilterTreeDiagram"><img alt="Дерево ValueSet из спецификации FHIR с выделенными compose.include, compose.exclude, разделом concept и разделом filter; concept и filter используются либо одно, либо другое, но не вместе" src="images/ValueSetFilterTreeDiagram.png" width="100%" class="thumbnail"/></a></p>
                         </div>
                         
                         
@@ -560,14 +560,12 @@
         </main>
     </div>
 	
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/javascript/javascript.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
     <script src="js/lightbox-plus-jquery.min.js"></script>
-    <!-- lua.vm.js -->
-     <script src="js/lua.vm.js/dist/lua.vm.js"></script>   
 <!--     main javascript for this page-->
     <script src="js/main.js"></script>
 <!-- supporting javascript to actually do the uploading -->	

@@ -46,7 +46,7 @@
     -->
 
 	<!-- CodeMirror -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -77,7 +77,7 @@
   </script>	
 </head>
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base lang-en">
 <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -99,41 +99,105 @@
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">FHIR<sup>®</sup> exercises</span>
+    <span class="mdl-layout-title">
+        <span class="lang-content lang-en">FHIR<sup>®</sup> exercises</span>
+        <span class="lang-content lang-ru">FHIR<sup>®</sup> упражнения</span>
+    </span>
     <nav class="mdl-navigation" aria-label="Tutorials">
-		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
-		<a href="./terminology-exercise.html" class="mdl-navigation__link">Terminology exercise</a>
-		<a href="./sam-fhir-journey.html" class="mdl-navigation__link is-active-tab">Sam's FHIR journey</a>
-		<a href="#" class="mdl-navigation__link"></a>
-		<a href="./index.html" class="mdl-navigation__link">FHIR tutorials</a>
+		<a href="./exercises.html" class="mdl-navigation__link">
+			<span class="lang-content lang-en">FHIR exercises</span>
+			<span class="lang-content lang-ru">FHIR упражнения</span>
+		</a>
+		<a href="./terminology-exercise.html" class="mdl-navigation__link">
+			<span class="lang-content lang-en">Terminology exercise</span>
+			<span class="lang-content lang-ru">Упражнение по терминологии</span>
+		</a>
+		<a href="./sam-fhir-journey.html" class="mdl-navigation__link is-active-tab">
+			<span class="lang-content lang-en">Sam's FHIR journey</span>
+			<span class="lang-content lang-ru">Путешествие Сэма по FHIR</span>
+		</a>
+		<span class="mdl-navigation__link nav-spacer" aria-hidden="true"></span>
+		<a href="./index.html" class="mdl-navigation__link">
+			<span class="lang-content lang-en">FHIR tutorials</span>
+			<span class="lang-content lang-ru">FHIR уроки</span>
+		</a>
     </nav>
   </div>
    <main class="mdl-layout__content">
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                         <div class="mdl-card__supporting-text">
+						<div class="lang-content lang-en">
 							<h4>Sam's FHIR journey</h4>
 							<p>This exercise will help you practice your FHIR skills by having you create resources that follow our Sam Fhirman's small journey through the healthcare system.</p>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<h4>Путешествие Сэма по FHIR</h4>
+							<p>Это упражнение поможет отработать навыки работы с FHIR: вы создадите ресурсы, описывающие небольшое путешествие нашего Сэма Файрмэна по системе здравоохранения.</p>
+						</div>
 							<nav class="toc" aria-label="Contents">
-								<h4>Contents</h4>
-								<a href="#sam-description">Step 1: Exercise description</a>
-								<a href="#step2">Step 2: Create a ValueSet</a>
-								<a href="#step3">Step 3: Perform an $expand on your ValueSet</a>
-								<a href="#step4">Step 4: Create a ConceptMap mapping</a>
-								<a href="#step5">Step 5: Perform a $translate on your ConceptMap</a>
+								<h4>
+									<span class="lang-content lang-en inline">Contents</span>
+									<span class="lang-content lang-ru inline">Содержание</span>
+								</h4>
+								<a href="#sam-description">
+									<span class="lang-content lang-en inline">Step 1: Exercise description</span>
+									<span class="lang-content lang-ru inline">Шаг 1: Описание упражнения</span>
+								</a>
+								<a href="#step2">
+									<span class="lang-content lang-en inline">Step 2: Create a ValueSet</span>
+									<span class="lang-content lang-ru inline">Шаг 2: Создайте ValueSet</span>
+								</a>
+								<a href="#step3">
+									<span class="lang-content lang-en inline">Step 3: Perform an $expand on your ValueSet</span>
+									<span class="lang-content lang-ru inline">Шаг 3: Выполните $expand для своего ValueSet</span>
+								</a>
+								<a href="#step4">
+									<span class="lang-content lang-en inline">Step 4: Create a ConceptMap mapping</span>
+									<span class="lang-content lang-ru inline">Шаг 4: Создайте сопоставление ConceptMap</span>
+								</a>
+								<a href="#step5">
+									<span class="lang-content lang-en inline">Step 5: Perform a $translate on your ConceptMap</span>
+									<span class="lang-content lang-ru inline">Шаг 5: Выполните $translate для своего ConceptMap</span>
+								</a>
 							</nav>
 
-							<h5 id="sam-description">Step 1: Exercise description</h5>
+							<h5 id="sam-description">
+								<span class="lang-content lang-en inline">Step 1: Exercise description</span>
+								<span class="lang-content lang-ru inline">Шаг 1: Описание упражнения</span>
+							</h5>
+						<div class="lang-content lang-en">
 							<p>Sam, our <a href="http://hl7.org/fhir/R4/patient.html">Patient</a> with a known allergy (<a href="http://hl7.org/fhir/R4/allergyintolerance.html">AllergyIntolerance</a>) has an <a href="http://hl7.org/fhir/R4/appointment.html">Appointment</a> at a hospital (<a href="https://hl7.org/fhir/R4/organization.html">Organization</a>) which results in a hospital <a href="http://hl7.org/fhir/R4/encounter.html">Encounter</a>. The doctor (<a href="http://hl7.org/fhir/R4/practitioner.html">Practitioner</a>), who previously recorded Sams allergy, examines Sam and notices an allergy to fish, so he orders a test to be done (<a href="http://hl7.org/fhir/R4/servicerequest.html">ServiceRequest</a>) at the pathology lab (<a href="https://hl7.org/fhir/R4/organization.html">Organization</a>). The hospitals system tracks this request using a <a href="http://hl7.org/fhir/R4/task.html">Task</a>, so the doctor can check the task at any time to see if there's been any progress made. When the pathology lab performs its analysis, it records 'Hemoglobin' result as an <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> in its 'Complete blood count' <a href="http://hl7.org/fhir/R4/diagnosticreport.html">DiagnosticReport</a> which is send to the FHIR server of the hospital. The pathology lab system updates the Task with the DiagnosticReport and notifies the doctor that results are available.</p>
                             
                             <p>Ok, so maybe this doctor and pathology lab have no idea about healthcare, a 'Complete blood count' with only a single 'Hemoglobin' result for a Fish allergy. Sounds very fishy to me!</p>
 							
                             <p>We need you to model this scenario as FHIR resources. You will need to create a Patient, AllergyIntolerance, Appointment, Encounter, Practitioner, ServiceRequest, Task, DiagnosticReport, Observation, and two Organization resources and have them reference each other appropriately. Try working as a group to split the load, or just work through the resources one by one together!</p>
 							<p>See diagram below for how the resources could be setup:</p>
-							<a href="images/patient-fhir-journey-exersize.png" data-lightbox="patient-fhir-journey-exersize"><img src="images/patient-fhir-journey-exersize.png" class="thumbnail"/></a>
-							<h5 id="sam-answer">Exercise answer</h5>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<p>Сэм — наш пациент (<a href="http://hl7.org/fhir/R4/patient.html">Patient</a>) с известной аллергией (<a href="http://hl7.org/fhir/R4/allergyintolerance.html">AllergyIntolerance</a>) — записан на приём (<a href="http://hl7.org/fhir/R4/appointment.html">Appointment</a>) в больницу (<a href="https://hl7.org/fhir/R4/organization.html">Organization</a>), в результате чего в больнице регистрируется обращение (<a href="http://hl7.org/fhir/R4/encounter.html">Encounter</a>). Врач (<a href="http://hl7.org/fhir/R4/practitioner.html">Practitioner</a>), который ранее зафиксировал аллергию Сэма, осматривает его, обращает внимание на аллергию на рыбу и назначает анализ (<a href="http://hl7.org/fhir/R4/servicerequest.html">ServiceRequest</a>) в лаборатории (<a href="https://hl7.org/fhir/R4/organization.html">Organization</a>). Больничная система отслеживает это назначение с помощью задачи (<a href="http://hl7.org/fhir/R4/task.html">Task</a>), так что врач в любой момент может проверить её и узнать, как продвигается работа. Выполнив анализ, лаборатория записывает результат 'Hemoglobin' (гемоглобин) как <a href="http://hl7.org/fhir/R4/observation.html">Observation</a> в свой <a href="http://hl7.org/fhir/R4/diagnosticreport.html">DiagnosticReport</a> 'Complete blood count' (общий анализ крови), который отправляется на FHIR-сервер больницы. Лабораторная система добавляет DiagnosticReport в Task и уведомляет врача о готовности результатов.</p>
+
+							<p>Ладно, возможно, этот врач и эта лаборатория ничего не смыслят в медицине: 'Complete blood count' с единственным результатом 'Hemoglobin' при аллергии на рыбу? Что-то тут нечисто — рыбой попахивает!</p>
+
+							<p>Ваша задача — смоделировать этот сценарий в виде ресурсов FHIR. Вам нужно создать ресурсы Patient, AllergyIntolerance, Appointment, Encounter, Practitioner, ServiceRequest, Task, DiagnosticReport, Observation и два ресурса Organization и правильно связать их ссылками друг с другом. Попробуйте работать группой и распределить нагрузку — или просто пройдите по ресурсам вместе, один за другим!</p>
+							<p>На схеме ниже показано, как можно организовать ресурсы:</p>
+						</div>
+							<a href="images/patient-fhir-journey-exersize.png" data-lightbox="patient-fhir-journey-exersize"><img alt="Reference diagram for Sam's journey: Task, DiagnosticReport, ProcedureRequest (now ServiceRequest), Observation, Encounter, Appointment, AllergyIntolerance, Practitioner, Organizations, all leading to Patient" data-alt-ru="Схема ссылок для пути Сэма: Task, DiagnosticReport, ProcedureRequest (теперь ServiceRequest), Observation, Encounter, Appointment, AllergyIntolerance, Practitioner, Organization – все ведут к Patient" src="images/patient-fhir-journey-exersize.png" class="thumbnail"/></a>
+							<h5 id="sam-answer">
+								<span class="lang-content lang-en inline">Exercise answer</span>
+								<span class="lang-content lang-ru inline">Ответ к упражнению</span>
+							</h5>
+						<div class="lang-content lang-en">
 							<p>The answer with all resources included is <a href="resource-examples/sam-fhir-journey/Bundle.json">available here</a> (right-click and use 'Save as'). As this example is a FHIR transaction bundle, you can also just POST it to a FHIR servers endpoint and have all of the resources created for you on the server. But that would be cheating!</p>
 							<p>Answer is also available for viewing below:</p>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<p>Ответ со всеми ресурсами <a href="resource-examples/sam-fhir-journey/Bundle.json">доступен здесь</a> (щёлкните правой кнопкой мыши и выберите 'Сохранить как'). Поскольку этот пример представляет собой Bundle FHIR типа transaction, его можно просто отправить методом POST на конечную точку FHIR-сервера, и все ресурсы будут созданы на сервере автоматически. Но это было бы жульничеством!</p>
+							<p>Ответ также можно посмотреть ниже:</p>
+						</div>
 <textarea class="fhir-resource-json">
 {
   "resourceType": "Bundle",
@@ -701,7 +765,13 @@
   ]
 }
 </textarea>
+						<div class="lang-content lang-en">
 							<p>That's it for this exercise!</p>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<p>Вот и всё, упражнение завершено!</p>
+						</div>
 						</div>
                     </div>
                 </section>
@@ -709,10 +779,16 @@
                 <div class="mdl-mega-footer--middle-section">
                     <div class="mdl-mega-footer--drop-down-section">
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">The Agency</span>
+                            <span class="lang-content lang-ru">Агентство</span>
+                        </h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
-                            <li><a href="https://www.myhealthrecord.gov.au/" title="Australian national health record">My Health Record</a></li>
+                            <li><a href="https://www.myhealthrecord.gov.au/" title="Australian national health record">
+                                <span class="lang-content lang-en">My Health Record</span>
+                                <span class="lang-content lang-ru">Моя медицинская карта</span>
+                            </a></li>
                         </ul>
                     </div>
                     <div class="mdl-mega-footer--drop-down-section">
@@ -724,23 +800,38 @@
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
                     </div>
+                    
+                    <!-- Language Selector -->
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">Language</span>
+                            <span class="lang-content lang-ru">Язык</span>
+                        </h1>
+                        <div class="language-selector">
+                            <select id="language-dropdown" class="lang-dropdown" onchange="switchLanguage(this.value)">
+                                <option value="en">English</option>
+                                <option value="ru" title="Russian language support for Central Asian countries adopting FHIR">Русский</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </footer>
         </main>
     </div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/javascript/javascript.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/javascript/javascript.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
     <script src="js/lightbox-plus-jquery.min.js"></script>
-    <!-- lua.vm.js -->
-     <script src="js/lua.vm.js/dist/lua.vm.js"></script>
 <!--     main javascript for this page-->
     <script src="js/main.js"></script>
 <!-- supporting javascript to actually do the uploading -->
 	<script src="js/post-resources.js"></script>
+    
+    <script src="js/language-switcher.js"></script>
 </body>
 
 </html>

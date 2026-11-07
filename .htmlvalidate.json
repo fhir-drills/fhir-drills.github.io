@@ -18,9 +18,6 @@
     "void-style": "off",
 
     "attribute-allowed-values": "warn",
-    "no-deprecated-attr": "warn",
-    "void-content": "warn",
-    "wcag/h30": "warn",
-    "wcag/h37": "warn"
+    "no-deprecated-attr": "warn"
   }
 }

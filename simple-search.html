@@ -46,7 +46,7 @@
     -->
 	
 	<!-- CodeMirror -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -140,7 +140,7 @@
             <span class="lang-content lang-en">FHIR APIs</span>
             <span class="lang-content lang-ru">FHIR API</span>
         </a>
-        <a href="#" class="mdl-navigation__link"></a>
+        <span class="mdl-navigation__link nav-spacer" aria-hidden="true"></span>
         <a href="./exercises.html" class="mdl-navigation__link">
             <span class="lang-content lang-en">FHIR exercises</span>
             <span class="lang-content lang-ru">FHIR упражнения</span>
@@ -180,7 +180,7 @@
                             
                             <h5 id="ss-step2">Step 2: Extended Search</h5>
                             
-                            <p>In the previous step we searched by the patient's family name, but what else can we search upon? The search parameters you can use are Resource type dependant. Each resource type defines the parameters which you can search upon it. Right click and open the <b><a href="http://hl7.org/fhir/R4/patient.html">Patient</a></b> resource page in a second browser tab and scroll to the very bottom of the page. Here you will find the list of possible search parameters for the Patient resource. Take a look at some other resource types and the search parameters they define.</p>
+                            <p>In the previous step we searched by the patient's family name, but what else can we search upon? The search parameters you can use are Resource type dependent. Each resource type defines the parameters which you can search upon it. Right click and open the <b><a href="http://hl7.org/fhir/R4/patient.html">Patient</a></b> resource page in a second browser tab and scroll to the very bottom of the page. Here you will find the list of possible search parameters for the Patient resource. Take a look at some other resource types and the search parameters they define.</p>
                             
                             <p>In the previous tutorial, <a href="./simple-patient.html">Simple Patient</a>, you should have created a new patient resource with your own name as the patient's name. Try and find that resource using your own surname and first name. <i>Remember to reference the FHIR specification to work out which search parameters you will need.</i></p>
                             
@@ -200,7 +200,7 @@
                             </ul>
                             
                             <p>Each and every search parameter on each resource page also defines the search parameter data type it uses. The screenshot below is taken from the Patient resource page. Notice that <b>given</b> uses <b>string</b> in column two and that <b>identifier</b> uses datatype <b>token</b>.</p>
-                            <p><img src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
+                            <p><img alt="Patient search parameters table from the FHIR spec: given is type string; identifier and language are token; link is reference" src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
                             
                             <b><a href="http://hl7.org/fhir/R4/search.html#number">FHIR specification Search page</a></b>
                             
@@ -262,7 +262,7 @@
                             </ul>
                             
                             <p>Каждый параметр поиска на каждой странице ресурса также определяет тип данных параметра поиска, который он использует. Скриншот ниже взят со страницы ресурса Patient. Обратите внимание, что <b>given</b> использует <b>string</b> во втором столбце, а <b>identifier</b> использует тип данных <b>token</b>.</p>
-                            <p><img src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
+                            <p><img alt="Таблица параметров поиска Patient из спецификации FHIR: given имеет тип string, identifier и language – token, link – reference" src="images/PatientSearchParameter-SimpleSearch.PNG" width="100%"></p> 
                             
                             <b><a href="http://hl7.org/fhir/R4/search.html#number">Страница поиска спецификации FHIR</a></b>
                             
@@ -325,14 +325,12 @@
         </main>
     </div>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/javascript/javascript.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/javascript/javascript.min.js"></script>
 	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
     <script src="js/lightbox-plus-jquery.min.js"></script>
-    <!-- lua.vm.js -->
-     <script src="js/lua.vm.js/dist/lua.vm.js"></script>   
 <!--     main javascript for this page-->
     <script src="js/main.js"></script>
 

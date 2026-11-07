@@ -46,7 +46,7 @@
     -->
 	
 	<!-- CodeMirror -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -140,7 +140,7 @@
             <span class="lang-content lang-en">FHIR APIs</span>
             <span class="lang-content lang-ru">FHIR API</span>
         </a>
-        <a href="#" class="mdl-navigation__link"></a>
+        <span class="mdl-navigation__link nav-spacer" aria-hidden="true"></span>
         <a href="./exercises.html" class="mdl-navigation__link">
             <span class="lang-content lang-en">FHIR exercises</span>
             <span class="lang-content lang-ru">FHIR упражнения</span>
@@ -266,7 +266,7 @@
                             <p>Thus, given the patient's server ID of <code class="patient-with-references-serverid" data-resource="rf-patient"><i>(press Upload first)</i></code> (this can be seen at the end of the URL and in the <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a> field), in order to find which encounters our patient has, the query follows this format:</p> 
                             <pre><b><span class="patient-with-references-baseurl">(press Upload first)</span>/Encounter?patient=Patient/&lt;patient id&gt;</b></pre>
                             <p>It essentially says - "give me all Encounters that have this patient ID as the subject patient". Try entering <code class="patient-with-references-baseurl">(press Upload first)</code><code>/Encounter?patient=Patient/</code><code class="patient-with-references-serverid" data-resource="rf-patient"></code> into Postman - you'll see a result like this:</p>
-                            <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search.png" class="thumbnail"/></a>.
+                            <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img alt="Postman result of GET Encounter?patient=Patient/51545758, marked: 1 – a Bundle is returned, 2 – total is 1, 3 – the entry is the Encounter" src="images/postman-encounter-search.png" class="thumbnail"/></a>.
                             <p>Three things are of interest are:</p>
                             <ol>
                                 <li>We get a <a href="http://hl7.org/fhir/R4/bundle.html">Bundle</a> resource back. A Bundle is essentially a container for resources, used in many places including search results.</li>
@@ -282,7 +282,7 @@
                             <p>Таким образом, учитывая серверный ID пациента <code class="patient-with-references-serverid" data-resource="rf-patient"><i>(сначала нажмите Загрузить)</i></code> (это можно увидеть в конце URL и в поле <a href="images/patients-id.png" data-lightbox="patients-id">&lt;id&gt;</a>), чтобы найти, какие встречи есть у нашего пациента, запрос следует этому формату:</p> 
                             <pre><b><span class="patient-with-references-baseurl">(сначала нажмите Загрузить)</span>/Encounter?patient=Patient/&lt;patient id&gt;</b></pre>
                             <p>По сути это говорит - "дайте мне все Encounter, которые имеют этот ID пациента в качестве субъекта пациента". Попробуйте ввести <code class="patient-with-references-baseurl">(сначала нажмите Загрузить)</code><code>/Encounter?patient=Patient/</code><code class="patient-with-references-serverid" data-resource="rf-patient"></code> в Postman - вы увидите результат, подобный этому:</p>
-                            <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img src="images/postman-encounter-search.png" class="thumbnail"/></a>.
+                            <a href="images/postman-encounter-search.png" data-lightbox="postman-encounter-search"><img alt="Результат в Postman для GET Encounter?patient=Patient/51545758 с пометками: 1 – возвращается Bundle, 2 – total равен 1, 3 – запись является ресурсом Encounter" src="images/postman-encounter-search.png" class="thumbnail"/></a>.
                             <p>Три вещи представляют интерес:</p>
                             <ol>
                                 <li>Мы получаем ресурс <a href="http://hl7.org/fhir/R4/bundle.html">Bundle</a> обратно. Bundle - это по сути контейнер для ресурсов, используемый во многих местах, включая результаты поиска.</li>
@@ -299,7 +299,7 @@
                             <pre><b><span class="patient-with-references-location-full" data-resource="rf-servicerequest">(press Upload first)</span></b></pre>
                             
                             <p>Press Ctrl/&#8984;+F and copy/paste <code>practitionerid</code> - you'll find two references to it, one in <code>"reference": "#practitionerid"</code> and another in a <code>"contained"</code> field:</p>
-                            <img src="images/postman-contained-reference.png" class="centered"/>
+                            <img alt="ServiceRequest JSON in Postman: a contained Practitioner with id 'practitionerid', and requester.reference '#practitionerid' pointing to it" src="images/postman-contained-reference.png" class="centered"/>
                             <p>Whenever you see an identifier start with the hash sign (#), you will see a corresponding resource within the "contained" field, embedded in the parent resource. Such embedding should only be done in the cases where the embedded resource can't exist on its own - for example it can't have an identifier to uniquely identify it or it only makes sense in a particular transaction scope.</p>
                         </div>
                         
@@ -309,7 +309,7 @@
                             <pre><b><span class="patient-with-references-location-full" data-resource="rf-servicerequest">(сначала нажмите Загрузить)</span></b></pre>
                             
                             <p>Нажмите Ctrl/&#8984;+F и скопируйте/вставьте <code>practitionerid</code> - вы найдете две ссылки на него, одну в <code>&lt;reference value="#practitionerid" /&gt;</code> и другую в поле <code>&lt;contained&gt;</code>:</p>
-                            <img src="images/postman-contained-reference.png" class="centered"/>
+                            <img alt="JSON ServiceRequest в Postman: содержащийся ресурс Practitioner с id 'practitionerid' и requester.reference '#practitionerid', ссылающийся на него" src="images/postman-contained-reference.png" class="centered"/>
                             <p>Всякий раз, когда вы видите идентификатор, начинающийся со знака решетки (#), вы увидите соответствующий ресурс в поле &lt;contained&gt;, встроенный в родительский ресурс. Такое встраивание должно выполняться только в случаях, когда встроенный ресурс не может существовать самостоятельно - например, он не может иметь идентификатор для уникальной идентификации или имеет смысл только в определенной области транзакции.</p>
                         </div>
                     </div>
@@ -360,14 +360,12 @@
         </main>
     </div>
 		
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/javascript/javascript.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/javascript/javascript.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
     <script src="js/lightbox-plus-jquery.min.js"></script>
-    <!-- lua.vm.js -->
-     <script src="js/lua.vm.js/dist/lua.vm.js"></script>   
 <!--     main javascript for this page-->
     <script src="js/main.js"></script>
 <!-- supporting javascript to actually do the uploading -->	
