@@ -46,7 +46,7 @@
     -->
 	
 	<!-- CodeMirror -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css"></link>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -136,11 +136,11 @@
 			<span class="lang-content lang-en">ConceptMap</span>
 			<span class="lang-content lang-ru">ConceptMap</span>
 		</a>
-		<a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link is-active-tab">
+		<a href="./fhir-api.html" id="fhir-api" class="mdl-navigation__link is-active-tab">
 			<span class="lang-content lang-en">FHIR APIs</span>
 			<span class="lang-content lang-ru">FHIR API</span>
 		</a>
-		<a href="#" class="mdl-navigation__link"></a>
+		<span class="mdl-navigation__link nav-spacer" aria-hidden="true"></span>
 		<a href="./exercises.html" class="mdl-navigation__link">
 			<span class="lang-content lang-en">FHIR exercises</span>
 			<span class="lang-content lang-ru">FHIR упражнения</span>
@@ -153,11 +153,11 @@
 						<div class="mdl-card__supporting-text">
 						<div class="lang-content lang-en">
 							<h4>Working with APIs for FHIR</h4>
-							<p>If you're a developer, or just someone interested in coding with FHIR, then this is the page for you to read! In this tutorial we'll walk you through doing all of the tutorials you've been doing with Postman programatically.</p>
+							<p>If you're a developer, or just someone interested in coding with FHIR, then this is the page for you to read! In this tutorial we'll walk you through doing all of the tutorials you've been doing with Postman programmatically.</p>
 
 							<note>This tutorial requires technical knowledge to do! If you're not technically minded, you can still learn FHIR by doing other tutorials on this website.</note>
                             
-                            <h6>Click the apropirate button below depending on which programming language you are intrested in. This will help this web site display the examples most relevant to your choice. </h6>
+                            <h6>Click the appropriate button below depending on which programming language you are interested in. This will help this web site display the examples most relevant to your choice. </h6>
 						</div>
 
 						<div class="lang-content lang-ru">
@@ -210,16 +210,16 @@
 								<span class="lang-content lang-ru inline">Шаг 1: Подготовка</span>
 							</h5>
 						<div class="lang-content lang-en">
-                            <p>FHIR provides some official API code libaraies in Java and .Net to help you work with the standard.</p> 
+                            <p>FHIR provides some official API code libraries in Java and .NET to help you work with the standard.</p> 
                             <p>They are:</p> 
                             <b>Java</b>
 							
 							<p><a href="https://hapifhir.io/">HAPI FHIR library</a>: To get started with HAPI, add the dependency <a href="https://hapifhir.io/hapi-fhir/docs/getting_started/downloading_and_importing.html#maven-users">via Maven</a> or <a href="https://hapifhir.io/hapi-fhir/docs/getting_started/downloading_and_importing.html#gradle-users">Gradle</a> - or download the library from the <a href="https://github.com/hapifhir/hapi-fhir/releases">releases page</a>. For R4, include all non-hapi jars in your classpath, and the following HAPI jars: <code>hapi-fhir-base</code>, <code>hapi-fhir-structures-r4</code>, <code>hapi-fhir-validation-resources-r4</code>.</p>
 							
-							<p>The Java examples listed in this tutorial require Java 8 SDK installed, however HAPI itself supports Java all the way back to 6.</p>
+							<p>To run the Java examples you need a Java Development Kit (JDK); current HAPI FHIR releases require JDK 17 or newer.</p>
 							
                             <b>Microsoft .Net</b>
-                            <p><a href="https://github.com/FirelyTeam/firely-net-sdk">FHIR .NET SDK</a>: The simplest way to get started with the .NET SDK is to search for it in the NuGet package manager built into Visual Studio. Right click your Solution and select 'Manage NuGet Packages' and then search and install both 'Hl7.Fhir.R4' and 'Hl7.Fhir.Support.Poco'. You can find a C# project <a href="https://github.com/angusmillar/SimpleFhir">here</a> on GitHub that contains C# examples.</p>
+                            <p><a href="https://github.com/FirelyTeam/firely-net-sdk">FHIR .NET SDK</a>: The simplest way to get started with the .NET SDK is to search for it in the NuGet package manager built into Visual Studio. Right click your Solution and select 'Manage NuGet Packages' and then search for and install 'Hl7.Fhir.R4'. You can find a C# project <a href="https://github.com/angusmillar/SimpleFhir">here</a> on GitHub that contains C# examples.</p>
 						</div>
 
 						<div class="lang-content lang-ru">
@@ -414,7 +414,7 @@ public class Main {
   ]
 }</textarea>
 						<div class="lang-content lang-en">
-							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/R4/patient.html">Patient</a> page to see what can you populate your resource with (<a href="https://hapifhir.io/hapi-fhir/apidocs/hapi-fhir-structures-r4/org/hl7/fhir/r4/model/Patient.html">Javadoc</a> is also available).</p>
+							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/R4/patient.html">Patient</a> page to see what you can populate your resource with (<a href="https://hapifhir.io/hapi-fhir/apidocs/hapi-fhir-structures-r4/org/hl7/fhir/r4/model/Patient.html">Javadoc</a> is also available).</p>
 						</div>
 							
 						<div class="lang-content lang-ru">
@@ -965,15 +965,13 @@ public class Main {
         </main>
     </div>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/clike/clike.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/javascript/javascript.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/clike/clike.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
     <script src="js/lightbox-plus-jquery.min.js"></script>
-    <!-- lua.vm.js -->
-     <script src="js/lua.vm.js/dist/lua.vm.js"></script>   
 <!--     main javascript for this page-->
     <script src="js/main.js"></script>
 <!-- supporting javascript to actually do the uploading -->	

@@ -46,7 +46,7 @@
     -->
 	
 	<!-- CodeMirror -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css"></link>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -135,11 +135,11 @@
             <span class="lang-content lang-en">ConceptMap</span>
             <span class="lang-content lang-ru">ConceptMap</span>
         </a>
-        <a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link">
+        <a href="./fhir-api.html" id="fhir-api" class="mdl-navigation__link">
             <span class="lang-content lang-en">FHIR APIs</span>
             <span class="lang-content lang-ru">FHIR API</span>
         </a>
-        <a href="#" class="mdl-navigation__link"></a>
+        <span class="mdl-navigation__link nav-spacer" aria-hidden="true"></span>
         <a href="./exercises.html" class="mdl-navigation__link">
             <span class="lang-content lang-en">FHIR exercises</span>
             <span class="lang-content lang-ru">FHIR упражнения</span>
@@ -172,7 +172,7 @@
                                 <p>So, contained resources cannot be GET'd, PUT'd and DELETE'd separately, or even referenced individually from outside the containing resource. Resources inside a Bundle, depending on your Bundle type and how you've uploaded it, do get created individually on the server and thus can be acted on independently.</p>
                                 
                                 <p>Here is how the general layout of a bundle looks like:</p>
-                                <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
+                                <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img alt="Bundle element tree from the FHIR spec, numbered 1–5: metadata (type, timestamp, total), link, entry, entry.request and entry.response" src="images/bundle-explanation.png"/></a>
                                 
                                 <ol>
                                 <li>Metadata describing the Bundle type and the total amount of entries (some which may not be visible because of paging).</li>
@@ -206,7 +206,7 @@
                                 <p>Таким образом, содержащиеся ресурсы нельзя получить, обновить или удалить отдельно с помощью GET, PUT и DELETE, или даже ссылаться на них индивидуально извне содержащего ресурса. Ресурсы внутри Bundle, в зависимости от типа Bundle и способа загрузки, создаются индивидуально на сервере и, таким образом, могут обрабатываться независимо.</p>
                                 
                                 <p>Вот как выглядит общая структура bundle:</p>
-                                <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
+                                <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img alt="Дерево элементов Bundle из спецификации FHIR с номерами 1–5: метаданные (type, timestamp, total), link, entry, entry.request и entry.response" src="images/bundle-explanation.png"/></a>
                                 
                                 <ol>
                                 <li>Метаданные, описывающие тип Bundle и общее количество записей (некоторые из которых могут быть не видны из-за пагинации).</li>
@@ -615,14 +615,14 @@
                             <div class="lang-content lang-en">
                                 <h5 id="bn-reference-resolution">Step 5: Reference resolution</h5>
                                 <p>References between resources within a Bundle can come in two types. Either references to resources where each resource is within the Bundle but not as yet on the server.</p> 
-                                <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleOutOfServer.PNG" width="50%"/></a>
+                                <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img alt="Diagram: a Bundle holding Patient, DiagnosticReport and Observation, all without IDs yet, referencing each other before upload to the FHIR server" src="images/BundleOutOfServer.PNG" width="50%"/></a>
 
                                 <p>Or references from resources in the bundle to resources that are on the server but not found in the bundle.</p> 
-                                <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleInOfServer.PNG" width="50%"/></a>
+                                <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img alt="Diagram: a Bundle's Observation references its DiagnosticReport inside the Bundle, while the DiagnosticReport references a Patient (ID 55) already on the FHIR server" src="images/BundleInOfServer.PNG" width="50%"/></a>
 
                                 <p>When uploading a bundle of resources to a server, as in the first case, it can be a little confusing to understand how to form the reference between the resources. How can you reference a resource if the server has not as yet assigned an ID to it?</p>
                                 
-                                <p>The simple answer is that the bundle creator can assign temporary resource IDs to resources in order to create the references between each resource. Then depending on the way you upload the Bundle to the server the server can use your IDs to understand the linkage between resources and will assign its own server IDs and update all the existing references with the new IDs. In these cases, the server will then reply with a return Bundle that informs the sender of these updated IDs. If you refer back the Bundle layout image at the beginning of this page you can see the '<code>Bundle/entry/response/location</code>' element where these new IDs would be returned as a URI.   Whether the server performs this identification or not is dependant on the Bundle type you are uploading and the endpoint you are uploading it to. The table below talks more to this point.</p>
+                                <p>The simple answer is that the bundle creator can assign temporary resource IDs to resources in order to create the references between each resource. Then depending on the way you upload the Bundle to the server the server can use your IDs to understand the linkage between resources and will assign its own server IDs and update all the existing references with the new IDs. In these cases, the server will then reply with a return Bundle that informs the sender of these updated IDs. If you refer back the Bundle layout image at the beginning of this page you can see the '<code>Bundle/entry/response/location</code>' element where these new IDs would be returned as a URI.   Whether the server performs this identification or not is dependent on the Bundle type you are uploading and the endpoint you are uploading it to. The table below talks more to this point.</p>
 
                                 <p>Unlike general resources you need to take care when resolving references between resources in Bundles, you can not just assume the reference is to a resource on a server, it may be a reference to a resource within the same Bundle and you should assume this first. For more on this topic refer to the FHIR specification here: <a href="http://hl7.org/fhir/R4/bundle.html#references">Resolving references in Bundles</a> </p>
         
@@ -632,10 +632,10 @@
                             <div class="lang-content lang-ru">
                                 <h5 id="bn-reference-resolution">Шаг 5: Разрешение ссылок</h5>
                                 <p>Ссылки между ресурсами внутри Bundle могут быть двух типов. Либо ссылки на ресурсы, где каждый ресурс находится внутри Bundle, но еще не на сервере.</p> 
-                                <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleOutOfServer.PNG" width="50%"/></a>
+                                <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img alt="Схема: Bundle с ресурсами Patient, DiagnosticReport и Observation, ещё без ID, которые ссылаются друг на друга до загрузки на FHIR-сервер" src="images/BundleOutOfServer.PNG" width="50%"/></a>
 
                                 <p>Или ссылки от ресурсов в bundle на ресурсы, которые находятся на сервере, но не найдены в bundle.</p> 
-                                <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleInOfServer.PNG" width="50%"/></a>
+                                <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img alt="Схема: Observation в Bundle ссылается на DiagnosticReport внутри того же Bundle, а DiagnosticReport – на Patient (ID 55), уже находящийся на FHIR-сервере" src="images/BundleInOfServer.PNG" width="50%"/></a>
 
                                 <p>При загрузке bundle ресурсов на сервер, как в первом случае, может быть не совсем понятно, как формировать ссылку между ресурсами. Как можно ссылаться на ресурс, если сервер еще не назначил ему ID?</p>
                                 
@@ -664,7 +664,7 @@
 										<td class="text-left">document</td>
 										<!-- GG's response on server replacing IDs: https://chat.fhir.org/#narrow/stream/implementers/subject/Document.20references -->
 										<td class="text-left">
-                                            <span class="lang-content lang-en">You can create your own IDs for resources and use them as references for other resources within the Bundle. A document Bundle typically is stored as-is on the server, without it getting unpacked - although if you upload it to the <code><b>[Service Root URL]</b></code> instead of the <a href="http://hl7.org/fhir/R4/documents.html#bundle">usual endpoints</a> then it will be up to the server to unpack the Bundle and replace your assigned resource ID's with its own (though it doesn't have to).</span>
+                                            <span class="lang-content lang-en">You can create your own IDs for resources and use them as references for other resources within the Bundle. A document Bundle typically is stored as-is on the server, without it getting unpacked - although if you upload it to the <code><b>[Service Root URL]</b></code> instead of the <a href="http://hl7.org/fhir/R4/documents.html#bundle">usual endpoints</a> then it will be up to the server to unpack the Bundle and replace your assigned resource IDs with its own (though it doesn't have to).</span>
                                             <span class="lang-content lang-ru">Вы можете создать свои собственные ID для ресурсов и использовать их как ссылки для других ресурсов внутри Bundle. Document Bundle обычно сохраняется как есть на сервере, без распаковки - хотя если вы загружаете его в <code><b>[Service Root URL]</b></code> вместо <a href="http://hl7.org/fhir/R4/documents.html#bundle">обычных конечных точек</a>, то сервер может распаковать Bundle и заменить ваши назначенные ID ресурсов своими собственными (хотя он не обязан это делать).</span>
                                         </td>
 									</tr>	
@@ -678,7 +678,7 @@
 									<tr>
 										<td class="text-left">transaction</td>
 										<td class="text-left">
-                                            <span class="lang-content lang-en">You can reference other resources inside the Bundle using their business identifiers in a simplified search query. It is then on the server to replace the search query with the resource ID's when processing the Bundle. See Conditional References section of <a href="http://hl7.org/fhir/R4/http.html#2.42.0.16.2">Transaction Processing Rules</a> for more.</span>
+                                            <span class="lang-content lang-en">You can reference other resources inside the Bundle using their business identifiers in a simplified search query. It is then on the server to replace the search query with the resource IDs when processing the Bundle. See Conditional References section of <a href="http://hl7.org/fhir/R4/http.html#2.42.0.16.2">Transaction Processing Rules</a> for more.</span>
                                             <span class="lang-content lang-ru">Вы можете ссылаться на другие ресурсы внутри Bundle, используя их бизнес-идентификаторы в упрощенном поисковом запросе. Затем сервер должен заменить поисковый запрос на ID ресурсов при обработке Bundle. См. раздел Условные ссылки в <a href="http://hl7.org/fhir/R4/http.html#2.42.0.16.2">Правилах обработки транзакций</a> для получения дополнительной информации.</span>
                                         </td>
 									</tr>
@@ -757,14 +757,12 @@
         </main>
     </div>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/javascript/javascript.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/javascript/javascript.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
     <script src="js/lightbox-plus-jquery.min.js"></script>
-    <!-- lua.vm.js -->
-     <script src="js/lua.vm.js/dist/lua.vm.js"></script>   
 <!--     main javascript for this page-->
     <script src="js/main.js"></script>
 <!-- supporting javascript to actually do the uploading -->	
