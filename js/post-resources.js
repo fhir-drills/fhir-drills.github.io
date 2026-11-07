@@ -113,6 +113,28 @@ function generateEphemeralUUIDs(content) {
 	return content;
 }
 
+// HAPI's public servers refuse to create a Patient identical to one they already
+// hold (412, HAPI-2840), so every learner after the first would fail to upload the
+// example. Give each uploaded Patient an extra, temporary identifier that is unique
+// to this upload. Resources uploaded after it reference the new Patient, so they
+// differ too. (A meta.tag is not enough: HAPI ignores meta when comparing.)
+function makeUploadUnique(content) {
+	if (content.resourceType !== "Patient") {
+		return content;
+	}
+
+	if (!Array.isArray(content.identifier)) {
+		content.identifier = [];
+	}
+	content.identifier.push({
+		use: "temp",
+		system: "urn:ietf:rfc:3986",
+		value: "urn:uuid:" + generateUUID()
+	});
+
+	return content;
+}
+
 var serverUrl;
 
 function findReferences(data, key, f) {
@@ -198,6 +220,7 @@ function loadFile(file) {
 			file.content = generateEphemeralUUIDs(file.content);
 		}
 
+		file.content = makeUploadUnique(file.content);
 		file.content = updateResourceReferences(file.content);
 		file.originalId = getResourceId(file.content);
 		file.type = getResourceType(file.content);

@@ -30,6 +30,3 @@ exclude = [
   '^https://(www\.)?digitalhealth\.gov\.au/',
   '^https://(www\.)?myhealthrecord\.gov\.au/',
 ]
-
-# Vendored third-party library docs, not part of the site's own content.
-exclude_path = ['js/lua\.vm\.js/']

@@ -23,6 +23,12 @@ class LanguageSwitcher {
         // Add new language class
         document.body.classList.add('lang-' + lang);
 
+        // Images shown in both languages carry their Russian alt text in data-alt-ru
+        document.querySelectorAll('img[data-alt-ru]').forEach(img => {
+            if (img.dataset.altEn === undefined) img.dataset.altEn = img.alt;
+            img.alt = lang === 'ru' ? img.dataset.altRu : img.dataset.altEn;
+        });
+
         // Update active button (for backward compatibility)
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.remove('active');

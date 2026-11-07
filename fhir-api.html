@@ -46,7 +46,7 @@
     -->
 	
 	<!-- CodeMirror -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.css"></link>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -79,7 +79,7 @@
   </script>	
 </head>
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base lang-en">
 <!-- The drawer is always open in large screens. The header is always shown,
   even in small screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -101,63 +101,154 @@
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">FHIR<sup>®</sup> tutorials</span>
+    <span class="mdl-layout-title">
+        <span class="lang-content lang-en">FHIR<sup>®</sup> tutorials</span>
+        <span class="lang-content lang-ru">FHIR<sup>®</sup> уроки</span>
+    </span>
     <nav class="mdl-navigation">
-		<a href="./index.html" class="mdl-navigation__link">Overview</a>
-		<a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">Simple Patient</a>
-		<a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">Simple Search</a>
-		<a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">Patient with References</a>
-		<a href="./bundle.html" id="bundle" class="mdl-navigation__link">Bundle</a>
-		<a href="./operations.html" id="operations" class="mdl-navigation__link">Operations</a>
-		<a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">ValueSet &amp; CodeSystem</a>
-		<a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">ConceptMap</a>
-		<a href="./fhir-api.html" id="conceptmap" class="mdl-navigation__link is-active-tab">FHIR APIs</a>
-		<a href="#" class="mdl-navigation__link"></a>
-		<a href="./exercises.html" class="mdl-navigation__link">FHIR exercises</a>
+		<a href="./index.html" class="mdl-navigation__link">
+			<span class="lang-content lang-en">Overview</span>
+			<span class="lang-content lang-ru">Обзор</span>
+		</a>
+		<a href="./simple-patient.html" id="simple-patient" class="mdl-navigation__link">
+			<span class="lang-content lang-en">Simple Patient</span>
+			<span class="lang-content lang-ru">Пациент</span>
+		</a>
+		<a href="./simple-search.html" id="simple-search" class="mdl-navigation__link">
+			<span class="lang-content lang-en">Simple Search</span>
+			<span class="lang-content lang-ru">Поиск</span>
+		</a>
+		<a href="./patient-with-references.html" id="patient-with-references" class="mdl-navigation__link">
+			<span class="lang-content lang-en">Patient with References</span>
+			<span class="lang-content lang-ru">Пациент со ссылками</span>
+		</a>
+		<a href="./bundle.html" id="bundle" class="mdl-navigation__link">
+			<span class="lang-content lang-en">Bundle</span>
+			<span class="lang-content lang-ru">Пакет</span>
+		</a>
+		<a href="./operations.html" id="operations" class="mdl-navigation__link">
+			<span class="lang-content lang-en">Operations</span>
+			<span class="lang-content lang-ru">Операции</span>
+		</a>
+		<a href="./ValueSet-And-CodeSystem.html" id="ValueSet-And-CodeSystem" class="mdl-navigation__link">
+			<span class="lang-content lang-en">ValueSet &amp; CodeSystem</span>
+			<span class="lang-content lang-ru">ValueSet и CodeSystem</span>
+		</a>
+		<a href="./conceptmap.html" id="conceptmap" class="mdl-navigation__link">
+			<span class="lang-content lang-en">ConceptMap</span>
+			<span class="lang-content lang-ru">ConceptMap</span>
+		</a>
+		<a href="./fhir-api.html" id="fhir-api" class="mdl-navigation__link is-active-tab">
+			<span class="lang-content lang-en">FHIR APIs</span>
+			<span class="lang-content lang-ru">FHIR API</span>
+		</a>
+		<span class="mdl-navigation__link nav-spacer" aria-hidden="true"></span>
+		<a href="./exercises.html" class="mdl-navigation__link">
+			<span class="lang-content lang-en">FHIR exercises</span>
+			<span class="lang-content lang-ru">FHIR упражнения</span>
+		</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
                 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">                      
                     <div class="mdl-card mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
 						<div class="mdl-card__supporting-text">
+						<div class="lang-content lang-en">
 							<h4>Working with APIs for FHIR</h4>
-							<p>If you're a developer, or just someone interested in coding with FHIR, then this is the page for you to read! In this tutorial we'll walk you through doing all of the tutorials you've been doing with Postman programatically.</p>
+							<p>If you're a developer, or just someone interested in coding with FHIR, then this is the page for you to read! In this tutorial we'll walk you through doing all of the tutorials you've been doing with Postman programmatically.</p>
 
 							<note>This tutorial requires technical knowledge to do! If you're not technically minded, you can still learn FHIR by doing other tutorials on this website.</note>
                             
-                            <h6>Click the apropirate button below depending on which programming language you are intrested in. This will help this web site display the examples most relevant to your choice. </h6>
+                            <h6>Click the appropriate button below depending on which programming language you are interested in. This will help this web site display the examples most relevant to your choice. </h6>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<h4>Работа с API для FHIR</h4>
+							<p>Если вы разработчик или просто хотите писать код для работы с FHIR, эта страница для вас! В этом уроке мы покажем, как программно выполнить всё то, что вы делали в предыдущих уроках с помощью Postman.</p>
+
+							<note>Для этого урока нужны технические знания! Если вы не программист, вы всё равно можете изучать FHIR с помощью других уроков на этом сайте.</note>
+
+							<h6>Нажмите кнопку ниже, соответствующую интересующему вас языку программирования. Тогда сайт будет показывать примеры, наиболее подходящие для вашего выбора.</h6>
+						</div>
 							<div id="fhir-api-code-buttons">
 								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="switchCodeTabs('csharp')">
-									Show me C# code
+									<span class="lang-content lang-en inline">Show me C# code</span>
+									<span class="lang-content lang-ru inline">Показать код на C#</span>
 								</button>
 								<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="switchCodeTabs('java')">
-									Show me Java code
+									<span class="lang-content lang-en inline">Show me Java code</span>
+									<span class="lang-content lang-ru inline">Показать код на Java</span>
 								</button>
 							</div>
 							<ul class="toc">
-								<h4>Contents</h4>
+								<h4>
+									<span class="lang-content lang-en inline">Contents</span>
+									<span class="lang-content lang-ru inline">Содержание</span>
+								</h4>
 								<!-- pr prefix stands for 'patient references'-->
-								<a href="#api-setup">Step 1: Setup</a>
-								<a href="#api-find-patient">Step 2: Create a basic Patient</a>
-								<a href="#api-upload-patient">Step 3: Upload your basic Patient</a>
-								<a href="#api-search">Step 4: Search for a resource</a>
-								<a href="#api-operations">Step 5: Run an operation</a>
+								<a href="#api-setup">
+									<span class="lang-content lang-en inline">Step 1: Setup</span>
+									<span class="lang-content lang-ru inline">Шаг 1: Подготовка</span>
+								</a>
+								<a href="#api-find-patient">
+									<span class="lang-content lang-en inline">Step 2: Create a basic Patient</span>
+									<span class="lang-content lang-ru inline">Шаг 2: Создание простого ресурса Patient</span>
+								</a>
+								<a href="#api-upload-patient">
+									<span class="lang-content lang-en inline">Step 3: Upload your basic Patient</span>
+									<span class="lang-content lang-ru inline">Шаг 3: Загрузка ресурса Patient на сервер</span>
+								</a>
+								<a href="#api-search">
+									<span class="lang-content lang-en inline">Step 4: Search for a resource</span>
+									<span class="lang-content lang-ru inline">Шаг 4: Поиск ресурса</span>
+								</a>
+								<a href="#api-operations">
+									<span class="lang-content lang-en inline">Step 5: Run an operation</span>
+									<span class="lang-content lang-ru inline">Шаг 5: Выполнение операции</span>
+								</a>
 							</ul>
-							<h5 id="api-setup">Step 1: Setup</h5>
-                            <p>FHIR provides some official API code libaraies in Java and .Net to help you work with the standard.</p> 
+							<h5 id="api-setup">
+								<span class="lang-content lang-en inline">Step 1: Setup</span>
+								<span class="lang-content lang-ru inline">Шаг 1: Подготовка</span>
+							</h5>
+						<div class="lang-content lang-en">
+                            <p>FHIR provides some official API code libraries in Java and .NET to help you work with the standard.</p> 
                             <p>They are:</p> 
                             <b>Java</b>
 							
 							<p><a href="https://hapifhir.io/">HAPI FHIR library</a>: To get started with HAPI, add the dependency <a href="https://hapifhir.io/hapi-fhir/docs/getting_started/downloading_and_importing.html#maven-users">via Maven</a> or <a href="https://hapifhir.io/hapi-fhir/docs/getting_started/downloading_and_importing.html#gradle-users">Gradle</a> - or download the library from the <a href="https://github.com/hapifhir/hapi-fhir/releases">releases page</a>. For R4, include all non-hapi jars in your classpath, and the following HAPI jars: <code>hapi-fhir-base</code>, <code>hapi-fhir-structures-r4</code>, <code>hapi-fhir-validation-resources-r4</code>.</p>
 							
-							<p>The Java examples listed in this tutorial require Java 8 SDK installed, however HAPI itself supports Java all the way back to 6.</p>
+							<p>To run the Java examples you need a Java Development Kit (JDK); current HAPI FHIR releases require JDK 17 or newer.</p>
 							
                             <b>Microsoft .Net</b>
-                            <p><a href="https://github.com/FirelyTeam/firely-net-sdk">FHIR .NET SDK</a>: The simplest way to get started with the .NET SDK is to search for it in the NuGet package manager built into Visual Studio. Right click your Solution and select 'Manage NuGet Packages' and then search and install both 'Hl7.Fhir.R4' and 'Hl7.Fhir.Support.Poco'. You can find a C# project <a href="https://github.com/angusmillar/SimpleFhir">here</a> on GitHub that contains C# examples.</p>
+                            <p><a href="https://github.com/FirelyTeam/firely-net-sdk">FHIR .NET SDK</a>: The simplest way to get started with the .NET SDK is to search for it in the NuGet package manager built into Visual Studio. Right click your Solution and select 'Manage NuGet Packages' and then search for and install 'Hl7.Fhir.R4'. You can find a C# project <a href="https://github.com/angusmillar/SimpleFhir">here</a> on GitHub that contains C# examples.</p>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<p>Для FHIR существуют официальные библиотеки API на Java и .NET, которые помогают работать со стандартом.</p>
+							<p>Вот они:</p>
+							<b>Java</b>
+
+							<p><a href="https://hapifhir.io/">Библиотека HAPI FHIR</a>: чтобы начать работу с HAPI, добавьте зависимость <a href="https://hapifhir.io/hapi-fhir/docs/getting_started/downloading_and_importing.html#maven-users">через Maven</a> или <a href="https://hapifhir.io/hapi-fhir/docs/getting_started/downloading_and_importing.html#gradle-users">Gradle</a> — или скачайте библиотеку со <a href="https://github.com/hapifhir/hapi-fhir/releases">страницы релизов</a>. Для R4 добавьте в classpath все jar-файлы, не относящиеся к HAPI, а также следующие jar-файлы HAPI: <code>hapi-fhir-base</code>, <code>hapi-fhir-structures-r4</code>, <code>hapi-fhir-validation-resources-r4</code>.</p>
+
+							<p>Актуальные версии HAPI FHIR требуют Java 17 или новее.</p>
+
+							<b>Microsoft .NET</b>
+							<p><a href="https://github.com/FirelyTeam/firely-net-sdk">FHIR .NET SDK</a>: проще всего начать работу с .NET SDK, найдя его в менеджере пакетов NuGet, встроенном в Visual Studio. Щёлкните правой кнопкой мыши по решению (Solution), выберите 'Manage NuGet Packages', затем найдите и установите пакет 'Hl7.Fhir.R4'. Проект с примерами на C# можно найти на GitHub <a href="https://github.com/angusmillar/SimpleFhir">здесь</a>.</p>
+						</div>
 							
 							
-							<h5 id="api-find-patient">Step 2: Create a basic Patient</h5>
+							<h5 id="api-find-patient">
+								<span class="lang-content lang-en inline">Step 2: Create a basic Patient</span>
+								<span class="lang-content lang-ru inline">Шаг 2: Создание простого ресурса Patient</span>
+							</h5>
+						<div class="lang-content lang-en">
 							<p>Upon creating a new project, you'll see a new blank class not much different from this:</p>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<p>Создав новый проект, вы увидите пустой класс примерно такого вида:</p>
+						</div>
 							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 								<div class="mdl-tabs__tab-bar">
 									<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
@@ -193,7 +284,13 @@ public class Main {
 								</div>
 							</div>							
 							
+						<div class="lang-content lang-en">
 							<p>Create a basic Patient resource and populate it with some information. Running this code will print the resource as JSON for you:</p>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<p>Создайте простой ресурс Patient и заполните его какими-нибудь данными. При запуске этот код выведет ресурс в формате JSON:</p>
+						</div>
 
 							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 								<div class="mdl-tabs__tab-bar">
@@ -293,7 +390,13 @@ public class Main {
 }</textarea>
 								</div>
 							</div>
+						<div class="lang-content lang-en">
 							<p>Once run, you should see something like this:</p>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<p>После запуска вы увидите примерно следующее:</p>
+						</div>
 							<textarea class="fhir-resource-json">
 {
   "resourceType": "Patient",
@@ -312,10 +415,25 @@ public class Main {
     }
   ]
 }</textarea>
-							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/R4/patient.html">Patient</a> page to see what can you populate your resource with (<a href="https://hapifhir.io/hapi-fhir/apidocs/hapi-fhir-structures-r4/org/hl7/fhir/r4/model/Patient.html">Javadoc</a> is also available).</p>
+						<div class="lang-content lang-en">
+							<p>If your IDE supports <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">code completion</a>, try using it to explore the Patient resource and populate it with some information such as the gender, birthday and phone number. Otherwise, consult the FHIR <a href="http://hl7.org/fhir/R4/patient.html">Patient</a> page to see what you can populate your resource with (<a href="https://hapifhir.io/hapi-fhir/apidocs/hapi-fhir-structures-r4/org/hl7/fhir/r4/model/Patient.html">Javadoc</a> is also available).</p>
+						</div>
 							
-							<h5 id="api-upload-patient">Step 3: Upload your basic Patient</h5>
+						<div class="lang-content lang-ru">
+							<p>Если ваша IDE поддерживает <a href="https://en.wikipedia.org/wiki/Intelligent_code_completion">автодополнение кода</a>, попробуйте с его помощью изучить ресурс Patient и добавить в него другие данные, например пол, дату рождения и номер телефона. Если нет, загляните на страницу FHIR <a href="http://hl7.org/fhir/R4/patient.html">Patient</a>, чтобы узнать, чем можно заполнить ресурс (также доступна документация <a href="https://hapifhir.io/hapi-fhir/apidocs/hapi-fhir-structures-r4/org/hl7/fhir/r4/model/Patient.html">Javadoc</a>).</p>
+						</div>
+
+							<h5 id="api-upload-patient">
+								<span class="lang-content lang-en inline">Step 3: Upload your basic Patient</span>
+								<span class="lang-content lang-ru inline">Шаг 3: Загрузка ресурса Patient на сервер</span>
+							</h5>
+						<div class="lang-content lang-en">
 							<p>Now that we can create a simple resource, let's upload it to a FHIR server:</p>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<p>Теперь, когда мы умеем создавать простой ресурс, давайте загрузим его на FHIR-сервер:</p>
+						</div>
 							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 								<div class="mdl-tabs__tab-bar">
 									<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
@@ -473,9 +591,24 @@ public class Main {
 }</textarea>
 										</div>
 									</div>
+								<div class="lang-content lang-en">
 									<p>Comparing the resource that we sent up to the resource we received back, you'll notice that the server generated a basic narrative for us from the data available and also added its <a href="http://hl7.org/fhir/R4/resource.html#id">logical ID</a></p>
-									<h5 id="api-search">Step 4: Search for a resource</h5>
+								</div>
+
+								<div class="lang-content lang-ru">
+									<p>Сравнив отправленный ресурс с ресурсом, полученным в ответ, вы заметите, что сервер сгенерировал для нас простое текстовое представление (narrative) на основе имеющихся данных, а также присвоил ресурсу <a href="http://hl7.org/fhir/R4/resource.html#id">логический ID</a>.</p>
+								</div>
+									<h5 id="api-search">
+										<span class="lang-content lang-en inline">Step 4: Search for a resource</span>
+										<span class="lang-content lang-ru inline">Шаг 4: Поиск ресурса</span>
+									</h5>
+								<div class="lang-content lang-en">
 									<p>Now that you've uploaded a resource, try searching for it. Remember that you'll get <a href="bundle.html">a bundle</a> back with many entries, one resource per entry.</p>
+								</div>
+
+								<div class="lang-content lang-ru">
+									<p>Теперь, когда вы загрузили ресурс, попробуйте его найти. Помните, что в ответ вы получите <a href="bundle.html">Bundle</a> с множеством записей (entry) — по одному ресурсу в каждой.</p>
+								</div>
 									<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 										<div class="mdl-tabs__tab-bar">
 											<a href="#csharp-panel" class="mdl-tabs__tab is-active csharp">C#</a>
@@ -594,20 +727,38 @@ public class Main {
 }</textarea>
 								</div>
 							</div>	
-							<h5 id="api-operations">Step 5: Run an operation</h5>
+							<h5 id="api-operations">
+								<span class="lang-content lang-en inline">Step 5: Run an operation</span>
+								<span class="lang-content lang-ru inline">Шаг 5: Выполнение операции</span>
+							</h5>
+						<div class="lang-content lang-en">
 							<p>Lastly, let's execute an operation on the server. A simple operation we can do is the <a href="https://hl7.org/fhir/R4/patient-operation-everything.html">Patient/$everything</a> - this'll fetch us the Patient resource and all related resources to it.</p>
 							<p>Firstly, lets upload the sample Patient we've explored before in the <a href="patient-with-references.html">Patient with References</a> tutorial:</p>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<p>Напоследок выполним операцию на сервере. Простая операция, с которой можно начать, — <a href="https://hl7.org/fhir/R4/patient-operation-everything.html">Patient/$everything</a>: она вернёт ресурс Patient и все связанные с ним ресурсы.</p>
+							<p>Сначала загрузим пример пациента, который мы уже рассматривали в уроке <a href="patient-with-references.html">Пациент со ссылками</a>:</p>
+						</div>
 							
 							<p>
 								<center>
 									<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="patient-with-references-button">
-										Upload</button>
+										<span class="lang-content lang-en inline">Upload</span>
+										<span class="lang-content lang-ru inline">Загрузить</span>
+									</button>
 									<br>
 									<div id="patient-with-references-progress" class="mdl-progress mdl-js-progress" style="display: none;"></div>
 								</center>
 							</p>
 
+						<div class="lang-content lang-en">
 							<p>Now we can run a query on the operation to get a Bundle with the Patient and associated resources. Here's how it looks in code. Make sure to update MY_PATIENT_ID with <span class="patient-with-references-serverid" id="rf-patient">(press Upload first)</span>.</p>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<p>Теперь можно вызвать операцию и получить Bundle с ресурсом Patient и связанными с ним ресурсами. Вот как это выглядит в коде. Не забудьте заменить MY_PATIENT_ID на <span class="patient-with-references-serverid" id="rf-patient">(сначала нажмите Загрузить)</span>.</p>
+						</div>
 							
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 	<div class="mdl-tabs__tab-bar">
@@ -748,14 +899,26 @@ public class Main {
 	</div>
 </div>							
 							
+						<div class="lang-content lang-en">
 							<p>Try running the code and you should see the same IDs for related resources as on this page:</p>
-							<pre>Patient/<span class="patient-with-references-serverid" id="rf-patient">(press Upload first)</span></pre>
-							<pre>Encounter/<span class="patient-with-references-serverid" id="rf-encounter">(press Upload first)</span></pre>
-							<pre>Observation/<span class="patient-with-references-serverid" id="rf-observation1">(press Upload first)</span></pre>
-							<pre>Observation/<span class="patient-with-references-serverid" id="rf-observation2">(press Upload first)</span></pre>
-							<pre>DiagnosticReport/<span class="patient-with-references-serverid" id="rf-diagnosticreport">(press Upload first)</span></pre>
+						</div>
 
+						<div class="lang-content lang-ru">
+							<p>Запустите код — вы должны увидеть те же ID связанных ресурсов, что и на этой странице:</p>
+						</div>
+							<pre>Patient/<span class="patient-with-references-serverid" id="rf-patient"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
+							<pre>Encounter/<span class="patient-with-references-serverid" id="rf-encounter"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
+							<pre>Observation/<span class="patient-with-references-serverid" id="rf-observation1"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
+							<pre>Observation/<span class="patient-with-references-serverid" id="rf-observation2"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
+							<pre>DiagnosticReport/<span class="patient-with-references-serverid" id="rf-diagnosticreport"><span class="lang-content lang-en inline">(press Upload first)</span><span class="lang-content lang-ru inline">(сначала нажмите Загрузить)</span></span></pre>
+
+						<div class="lang-content lang-en">
 							<p>That's about it for the basics! Happy coding. Check out the <a href="https://hapifhir.io/hapi-fhir/docs/">HAPI documentation</a> if you're using Java for more as well.</p>
+						</div>
+
+						<div class="lang-content lang-ru">
+							<p>Вот и всё, что касается основ! Удачи в программировании. Если вы пишете на Java, загляните также в <a href="https://hapifhir.io/hapi-fhir/docs/">документацию HAPI</a> — там вы найдёте больше информации.</p>
+						</div>
 						</div>                     
                     </div>
                 </section>
@@ -763,10 +926,16 @@ public class Main {
                 <div class="mdl-mega-footer--middle-section">
                     <div class="mdl-mega-footer--drop-down-section">
                         <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">The Agency</h1>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">The Agency</span>
+                            <span class="lang-content lang-ru">Агентство</span>
+                        </h1>
                         <ul class="mdl-mega-footer--link-list">
                             <li><a href="https://www.digitalhealth.gov.au/">digitalhealth.gov.au</a></li>
-                            <li><a href="https://www.myhealthrecord.gov.au/" title="Australian national health record">My Health Record</a></li>
+                            <li><a href="https://www.myhealthrecord.gov.au/" title="Australian national health record">
+                                <span class="lang-content lang-en">My Health Record</span>
+                                <span class="lang-content lang-ru">Моя медицинская карта</span>
+                            </a></li>
                         </ul>
                     </div>
                     <div class="mdl-mega-footer--drop-down-section">
@@ -778,24 +947,39 @@ public class Main {
                             <li><a href="http://build.fhir.org/" title="The latest FHIR as it is in development">FHIR Continuous Integration Build</a></li>
                         </ul>
                     </div>
+                    
+                    <!-- Language Selector -->
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">
+                            <span class="lang-content lang-en">Language</span>
+                            <span class="lang-content lang-ru">Язык</span>
+                        </h1>
+                        <div class="language-selector">
+                            <select id="language-dropdown" class="lang-dropdown" onchange="switchLanguage(this.value)">
+                                <option value="en">English</option>
+                                <option value="ru" title="Russian language support for Central Asian countries adopting FHIR">Русский</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </footer>
         </main>
     </div>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/javascript/javascript.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/mode/clike/clike.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/javascript/javascript.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.21/mode/clike/clike.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.js"></script>
     <script src="js/lightbox-plus-jquery.min.js"></script>
-    <!-- lua.vm.js -->
-     <script src="js/lua.vm.js/dist/lua.vm.js"></script>   
 <!--     main javascript for this page-->
     <script src="js/main.js"></script>
 <!-- supporting javascript to actually do the uploading -->	
 	<script src="js/post-resources.js"></script>
+    
+    <script src="js/language-switcher.js"></script>
 </body>
 
 </html>

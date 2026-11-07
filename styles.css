@@ -488,3 +488,11 @@ body.lang-ru .lang-ru.inline {
         margin: 0 2px;
     }
 }
+
+/* Blank gap between groups of links in the side drawer. It keeps the
+   spacing of a nav link but isn't one, so it can't be focused or hovered. */
+.mdl-layout__drawer .mdl-navigation .nav-spacer,
+.mdl-layout__drawer .mdl-navigation .nav-spacer:hover {
+    background-color: transparent;
+    cursor: default;
+}
