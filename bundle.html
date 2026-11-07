@@ -172,7 +172,7 @@
                                 <p>So, contained resources cannot be GET'd, PUT'd and DELETE'd separately, or even referenced individually from outside the containing resource. Resources inside a Bundle, depending on your Bundle type and how you've uploaded it, do get created individually on the server and thus can be acted on independently.</p>
                                 
                                 <p>Here is how the general layout of a bundle looks like:</p>
-                                <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
+                                <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img alt="Bundle element tree from the FHIR spec, numbered 1–5: metadata (type, timestamp, total), link, entry, entry.request and entry.response" src="images/bundle-explanation.png"/></a>
                                 
                                 <ol>
                                 <li>Metadata describing the Bundle type and the total amount of entries (some which may not be visible because of paging).</li>
@@ -206,7 +206,7 @@
                                 <p>Таким образом, содержащиеся ресурсы нельзя получить, обновить или удалить отдельно с помощью GET, PUT и DELETE, или даже ссылаться на них индивидуально извне содержащего ресурса. Ресурсы внутри Bundle, в зависимости от типа Bundle и способа загрузки, создаются индивидуально на сервере и, таким образом, могут обрабатываться независимо.</p>
                                 
                                 <p>Вот как выглядит общая структура bundle:</p>
-                                <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img src="images/bundle-explanation.png"/></a>
+                                <a href="images/bundle-explanation.png" data-lightbox="bundle-explanation"><img alt="Дерево элементов Bundle из спецификации FHIR с номерами 1–5: метаданные (type, timestamp, total), link, entry, entry.request и entry.response" src="images/bundle-explanation.png"/></a>
                                 
                                 <ol>
                                 <li>Метаданные, описывающие тип Bundle и общее количество записей (некоторые из которых могут быть не видны из-за пагинации).</li>
@@ -615,10 +615,10 @@
                             <div class="lang-content lang-en">
                                 <h5 id="bn-reference-resolution">Step 5: Reference resolution</h5>
                                 <p>References between resources within a Bundle can come in two types. Either references to resources where each resource is within the Bundle but not as yet on the server.</p> 
-                                <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleOutOfServer.PNG" width="50%"/></a>
+                                <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img alt="Diagram: a Bundle holding Patient, DiagnosticReport and Observation, all without IDs yet, referencing each other before upload to the FHIR server" src="images/BundleOutOfServer.PNG" width="50%"/></a>
 
                                 <p>Or references from resources in the bundle to resources that are on the server but not found in the bundle.</p> 
-                                <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleInOfServer.PNG" width="50%"/></a>
+                                <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img alt="Diagram: a Bundle's Observation references its DiagnosticReport inside the Bundle, while the DiagnosticReport references a Patient (ID 55) already on the FHIR server" src="images/BundleInOfServer.PNG" width="50%"/></a>
 
                                 <p>When uploading a bundle of resources to a server, as in the first case, it can be a little confusing to understand how to form the reference between the resources. How can you reference a resource if the server has not as yet assigned an ID to it?</p>
                                 
@@ -632,10 +632,10 @@
                             <div class="lang-content lang-ru">
                                 <h5 id="bn-reference-resolution">Шаг 5: Разрешение ссылок</h5>
                                 <p>Ссылки между ресурсами внутри Bundle могут быть двух типов. Либо ссылки на ресурсы, где каждый ресурс находится внутри Bundle, но еще не на сервере.</p> 
-                                <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleOutOfServer.PNG" width="50%"/></a>
+                                <a href="images/BundleOutOfServer.PNG" data-lightbox="bundleOutOfServer"><img alt="Схема: Bundle с ресурсами Patient, DiagnosticReport и Observation, ещё без ID, которые ссылаются друг на друга до загрузки на FHIR-сервер" src="images/BundleOutOfServer.PNG" width="50%"/></a>
 
                                 <p>Или ссылки от ресурсов в bundle на ресурсы, которые находятся на сервере, но не найдены в bundle.</p> 
-                                <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img src="images/BundleInOfServer.PNG" width="50%"/></a>
+                                <a href="images/BundleInOfServer.PNG" data-lightbox="bundleOutOfServer"><img alt="Схема: Observation в Bundle ссылается на DiagnosticReport внутри того же Bundle, а DiagnosticReport – на Patient (ID 55), уже находящийся на FHIR-сервере" src="images/BundleInOfServer.PNG" width="50%"/></a>
 
                                 <p>При загрузке bundle ресурсов на сервер, как в первом случае, может быть не совсем понятно, как формировать ссылку между ресурсами. Как можно ссылаться на ресурс, если сервер еще не назначил ему ID?</p>
                                 
